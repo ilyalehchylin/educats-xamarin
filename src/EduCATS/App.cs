@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using EduCATS.Configuration;
+using Nyxbull.Plugins.CrossLocalization;
+using Xamarin.Forms;
 
 namespace EduCATS
 {
@@ -6,9 +8,11 @@ namespace EduCATS
 	{
 		public App()
 		{
+			AppConfig.InitialSetup();
+
 			MainPage = new ContentPage {
 				Content = new Label {
-					Text = "EduCATS"
+					Text = CrossLocalization.Translate("hello")
 				}
 			};
 		}

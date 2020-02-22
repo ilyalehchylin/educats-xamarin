@@ -12,6 +12,26 @@
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.4.0" />
+    <PackageReference Include="Nyxbull.Plugins.CrossLocalization" Version="1.2.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Settings\" />
+    <Folder Include="Helpers\Themes\" />
+    <Folder Include="Helpers\Themes\Interfaces\" />
+    <Folder Include="Helpers\Themes\Templates\" />
+    <Folder Include="Helpers\Themes\DependencyServices\" />
+    <Folder Include="Helpers\Themes\DependencyServices\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Localization\en.json" />
+    <None Remove="Localization\ru.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\en.json" />
+    <EmbeddedResource Include="Localization\ru.json" />
   </ItemGroup>
 </Project>
