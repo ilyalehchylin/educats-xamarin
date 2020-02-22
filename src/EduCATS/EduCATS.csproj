@@ -14,6 +14,7 @@
     <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
     <PackageReference Include="Xamarin.Essentials" Version="1.4.0" />
     <PackageReference Include="Nyxbull.Plugins.CrossLocalization" Version="1.2.1" />
+    <PackageReference Include="MonkeyCache.FileStore" Version="1.3.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\" />
@@ -33,6 +34,8 @@
     <Folder Include="Helpers\Networking\Models\Login\" />
     <Folder Include="Pages\Login\" />
     <Folder Include="Pages\Login\Models\" />
+    <Folder Include="Data\" />
+    <Folder Include="Data\Caching\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />
