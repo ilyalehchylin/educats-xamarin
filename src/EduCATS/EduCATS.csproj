@@ -25,6 +25,14 @@
     <Folder Include="Helpers\Themes\Templates\" />
     <Folder Include="Helpers\Themes\DependencyServices\" />
     <Folder Include="Helpers\Themes\DependencyServices\Interfaces\" />
+    <Folder Include="Pages\" />
+    <Folder Include="Helpers\Networking\" />
+    <Folder Include="Helpers\Networking\AppServices\" />
+    <Folder Include="Helpers\Json\" />
+    <Folder Include="Helpers\Networking\Models\" />
+    <Folder Include="Helpers\Networking\Models\Login\" />
+    <Folder Include="Pages\Login\" />
+    <Folder Include="Pages\Login\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

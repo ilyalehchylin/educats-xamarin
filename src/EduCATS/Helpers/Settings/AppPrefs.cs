@@ -1,13 +1,17 @@
-﻿using Xamarin.Essentials;
+﻿using EduCATS.Helpers.Networking;
+using Nyxbull.Plugins.CrossLocalization;
+using Xamarin.Essentials;
 
 namespace EduCATS.Helpers.Settings
 {
 	public static class AppPrefs
 	{
 		static string languageCodeKey = "APP_LANG_CODE";
-		static string languageCodeDefault = "en";
+		static string languageCodeDefault = Languages.EN.LangCode;
 		static string themeKey = "APP_THEME";
-		static string themeDefault = "THEME_DEFAULT";
+		static string themeDefault = Themes.AppTheme.ThemeDefault;
+		static string serverKey = "APP_SERVER";
+		static string serverDefault = Servers.EduCatsBntuAddress;
 
 		public static string LanguageCode {
 			get {
@@ -22,6 +26,14 @@ namespace EduCATS.Helpers.Settings
 				return Preferences.Get(themeKey, themeDefault);
 			} set {
 				Preferences.Set(themeKey, value);
+			}
+		}
+
+		public static string Server {
+			get {
+				return Preferences.Get(serverKey, serverDefault);
+			} set {
+				Preferences.Set(serverKey, value);
 			}
 		}
 

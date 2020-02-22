@@ -1,4 +1,5 @@
 ﻿using EduCATS.Configuration;
+using EduCATS.Helpers.Networking.AppServices;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
