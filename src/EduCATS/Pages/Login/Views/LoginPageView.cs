@@ -45,7 +45,7 @@ namespace EduCATS.Pages.Login.Views
 			var loginButton = createLoginButton();
 			var activityIndicator = createActivityIndicator();
 
-			return new StackLayout {
+			var mainStackLayout = new StackLayout {
 				Spacing = 0,
 				Padding = new Thickness(20, 0),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -57,6 +57,9 @@ namespace EduCATS.Pages.Login.Views
 					activityIndicator
 				}
 			};
+
+			mainStackLayout.SetBinding(IsEnabledProperty, "IsUIEnabled");
+			return mainStackLayout;
 		}
 
 		CachedImage createBackgroundImage()

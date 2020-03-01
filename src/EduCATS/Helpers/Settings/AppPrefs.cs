@@ -6,12 +6,8 @@ namespace EduCATS.Helpers.Settings
 {
 	public static class AppPrefs
 	{
-		static string languageCodeKey = "APP_LANG_CODE";
-		static string languageCodeDefault = Languages.EN.LangCode;
-		static string themeKey = "APP_THEME";
-		static string themeDefault = Themes.AppTheme.ThemeDefault;
-		static string serverKey = "APP_SERVER";
-		static string serverDefault = Servers.EduCatsBntuAddress;
+		const string languageCodeKey = "APP_LANG_CODE";
+		static readonly string languageCodeDefault = Languages.EN.LangCode;
 
 		public static string LanguageCode {
 			get {
@@ -21,6 +17,9 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		const string themeKey = "APP_THEME";
+		const string themeDefault = Themes.AppTheme.ThemeDefault;
+
 		public static string Theme {
 			get {
 				return Preferences.Get(themeKey, themeDefault);
@@ -29,11 +28,26 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		const string serverKey = "APP_SERVER";
+		const string serverDefault = Servers.EduCatsBntuAddress;
+
 		public static string Server {
 			get {
 				return Preferences.Get(serverKey, serverDefault);
 			} set {
 				Preferences.Set(serverKey, value);
+			}
+		}
+
+		const string isLoggedInKey = "IS_LOGGED_IN";
+		const bool isLoggedInDefault = false;
+
+		public static bool IsLoggedIn {
+			get {
+				return Preferences.Get(isLoggedInKey, isLoggedInDefault);
+			}
+			set {
+				Preferences.Set(isLoggedInKey, value);
 			}
 		}
 
