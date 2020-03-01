@@ -1,6 +1,5 @@
 ﻿using EduCATS.Configuration;
-using EduCATS.Helpers.Networking.AppServices;
-using Nyxbull.Plugins.CrossLocalization;
+using EduCATS.Pages.Login.Views;
 using Xamarin.Forms;
 
 namespace EduCATS
@@ -11,11 +10,7 @@ namespace EduCATS
 		{
 			AppConfig.InitialSetup();
 
-			MainPage = new ContentPage {
-				Content = new Label {
-					Text = CrossLocalization.Translate("hello")
-				}
-			};
+			MainPage = new NavigationPage(new LoginPageView());
 		}
 	}
 }

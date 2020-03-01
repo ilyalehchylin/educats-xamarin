@@ -1,3 +1,5 @@
 ﻿{
-
+  "login_username": "Username",
+  "login_password": "Password",
+  "login_text": "Login"
 }

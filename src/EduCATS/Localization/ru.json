@@ -1,3 +1,5 @@
 ﻿{
-
+  "login_username": "Имя пользователя",
+  "login_password": "Пароль",
+  "login_text": "Войти"
 }
