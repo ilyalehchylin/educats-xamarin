@@ -1,4 +1,4 @@
-﻿using EduCATS.Helpers.Themes.DependencyServices.Interfaces;
+﻿using EduCATS.Themes.DependencyServices.Interfaces;
 using EduCATS.iOS.DependencyServices;
 using Xamarin.Forms;
 

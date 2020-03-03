@@ -1,6 +1,6 @@
 ﻿using EduCATS.Helpers.Settings;
 
-namespace EduCATS.Helpers.Networking
+namespace EduCATS.Networking
 {
 	public static class Servers
 	{

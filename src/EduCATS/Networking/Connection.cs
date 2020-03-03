@@ -1,6 +1,6 @@
 ﻿using Xamarin.Essentials;
 
-namespace EduCATS.Helpers.Networking
+namespace EduCATS.Networking
 {
 	public static class Connection
 	{

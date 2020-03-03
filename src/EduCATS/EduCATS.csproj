@@ -18,29 +18,27 @@
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.440" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\" />
-    <Folder Include="Localization\" />
     <Folder Include="Helpers\" />
     <Folder Include="Helpers\Settings\" />
-    <Folder Include="Helpers\Themes\" />
-    <Folder Include="Helpers\Themes\Interfaces\" />
-    <Folder Include="Helpers\Themes\Templates\" />
-    <Folder Include="Helpers\Themes\DependencyServices\" />
-    <Folder Include="Helpers\Themes\DependencyServices\Interfaces\" />
     <Folder Include="Pages\" />
-    <Folder Include="Helpers\Networking\" />
-    <Folder Include="Helpers\Networking\AppServices\" />
     <Folder Include="Helpers\Json\" />
-    <Folder Include="Helpers\Networking\Models\" />
-    <Folder Include="Helpers\Networking\Models\Login\" />
     <Folder Include="Pages\Login\" />
-    <Folder Include="Pages\Login\Models\" />
     <Folder Include="Data\" />
     <Folder Include="Data\Caching\" />
     <Folder Include="Pages\Login\Views\" />
     <Folder Include="Pages\Login\ViewModels\" />
+    <Folder Include="Localization\" />
+    <Folder Include="Networking\" />
+    <Folder Include="Themes\" />
+    <Folder Include="Data\Models\" />
+    <Folder Include="Data\Models\User\" />
+    <Folder Include="Data\User\" />
+    <Folder Include="Helpers\Dialogs\" />
+    <Folder Include="Helpers\Dialogs\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

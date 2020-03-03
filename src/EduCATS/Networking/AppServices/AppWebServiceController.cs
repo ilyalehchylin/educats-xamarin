@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EduCATS.Helpers.Json;
 
-namespace EduCATS.Helpers.Networking.AppServices
+namespace EduCATS.Networking.AppServices
 {
 	public class AppWebServiceController<T>
 	{

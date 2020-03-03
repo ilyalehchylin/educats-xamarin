@@ -1,4 +1,4 @@
-﻿namespace EduCATS.Helpers.Themes.Templates
+﻿namespace EduCATS.Themes.Templates
 {
 	public class DarkTheme : DefaultTheme
 	{

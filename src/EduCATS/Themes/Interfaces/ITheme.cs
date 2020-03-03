@@ -1,4 +1,4 @@
-﻿namespace EduCATS.Helpers.Themes.Interfaces
+﻿namespace EduCATS.Themes.Interfaces
 {
 	public interface ITheme
 	{

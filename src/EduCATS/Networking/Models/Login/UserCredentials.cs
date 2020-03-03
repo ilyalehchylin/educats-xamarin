@@ -1,4 +1,4 @@
-﻿namespace EduCATS.Helpers.Networking.Models.Login
+﻿namespace EduCATS.Networking.Models.Login
 {
 	public class UserCredentials
 	{

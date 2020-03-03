@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Themes.DependencyServices.Interfaces
+namespace EduCATS.Themes.DependencyServices.Interfaces
 {
 	public interface IThemeNative
 	{

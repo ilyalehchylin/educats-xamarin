@@ -1,7 +1,7 @@
-﻿using EduCATS.Helpers.Themes.DependencyServices.Interfaces;
+﻿using EduCATS.Themes.DependencyServices.Interfaces;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Themes.DependencyServices
+namespace EduCATS.Themes.DependencyServices
 {
 	public static class ThemePlatformSpecific
 	{

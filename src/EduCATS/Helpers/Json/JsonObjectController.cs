@@ -13,5 +13,14 @@ namespace EduCATS.Helpers.Json
 			var items = JsonConvert.DeserializeObject<T>(content);
 			return items;
 		}
+
+		public static T ConvertJsonToObject(object contentObject)
+		{
+			if (contentObject != null) {
+				return ConvertJsonToObject(contentObject.ToString());
+			}
+
+			return default;
+		}
 	}
 }

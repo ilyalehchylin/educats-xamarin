@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace EduCATS.Helpers.Networking.AppServices
+namespace EduCATS.Networking.AppServices
 {
 	public static class AppServicesController<T>
 	{

@@ -1,4 +1,4 @@
-﻿using EduCATS.Helpers.Networking;
+﻿using EduCATS.Networking;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Essentials;
 

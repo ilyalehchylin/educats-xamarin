@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace EduCATS.Pages
 {
@@ -6,9 +7,20 @@ namespace EduCATS.Pages
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 
-		protected void OnPropertyChanged(string propName)
+        protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (Equals(storage, value)) {
+                return false;
+            }
+
+            storage = value;
+            OnPropertyChanged(propertyName);
+            return true;
+        }
+
+        protected void OnPropertyChanged(string propertyName)
 		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }

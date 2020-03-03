@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 using EduCATS.Helpers.Settings;
-using EduCATS.Helpers.Themes;
+using EduCATS.Themes;
 using MonkeyCache.FileStore;
 using Nyxbull.Plugins.CrossLocalization;
 

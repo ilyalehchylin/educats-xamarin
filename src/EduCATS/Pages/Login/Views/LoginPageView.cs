@@ -1,9 +1,10 @@
 ﻿using System;
-using EduCATS.Helpers.Themes;
+using EduCATS.Themes;
 using EduCATS.Pages.Login.ViewModels;
 using FFImageLoading.Forms;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
+using EduCATS.Helpers.Dialogs;
 
 namespace EduCATS.Pages.Login.Views
 {
@@ -20,7 +21,7 @@ namespace EduCATS.Pages.Login.Views
 		public LoginPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
-			BindingContext = new LoginPageViewModel();
+			BindingContext = new LoginPageViewModel(new AppDialogs());
 			createView();
 		}
 
@@ -58,7 +59,7 @@ namespace EduCATS.Pages.Login.Views
 				}
 			};
 
-			mainStackLayout.SetBinding(IsEnabledProperty, "IsUIEnabled");
+			mainStackLayout.SetBinding(IsEnabledProperty, "IsLoadingCompleted");
 			return mainStackLayout;
 		}
 
@@ -144,7 +145,7 @@ namespace EduCATS.Pages.Login.Views
 			};
 
 			var showPasswordTapGesture = new TapGestureRecognizer();
-			showPasswordTapGesture.SetBinding(TapGestureRecognizer.CommandProperty, "ShowPasswordCommand");
+			showPasswordTapGesture.SetBinding(TapGestureRecognizer.CommandProperty, "HidePasswordCommand");
 			showPasswordImage.GestureRecognizers.Add(showPasswordTapGesture);
 			return showPasswordImage;
 		}

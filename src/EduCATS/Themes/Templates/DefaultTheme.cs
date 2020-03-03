@@ -1,6 +1,6 @@
-﻿using EduCATS.Helpers.Themes.Interfaces;
+﻿using EduCATS.Themes.Interfaces;
 
-namespace EduCATS.Helpers.Themes.Templates
+namespace EduCATS.Themes.Templates
 {
 	public class DefaultTheme : ITheme
 	{

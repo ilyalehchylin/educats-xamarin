@@ -1,9 +1,9 @@
-﻿using EduCATS.Helpers.Themes.DependencyServices;
-using EduCATS.Helpers.Themes.Interfaces;
-using EduCATS.Helpers.Themes.Templates;
+﻿using EduCATS.Themes.DependencyServices;
+using EduCATS.Themes.Interfaces;
+using EduCATS.Themes.Templates;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Themes
+namespace EduCATS.Themes
 {
 	public static class Theme
 	{

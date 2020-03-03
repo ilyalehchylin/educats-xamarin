@@ -1,8 +1,8 @@
 ﻿using EduCATS.Helpers.Settings;
-using EduCATS.Helpers.Themes.Interfaces;
-using EduCATS.Helpers.Themes.Templates;
+using EduCATS.Themes.Interfaces;
+using EduCATS.Themes.Templates;
 
-namespace EduCATS.Helpers.Themes
+namespace EduCATS.Themes
 {
 	public static class AppTheme
 	{

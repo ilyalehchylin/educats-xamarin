@@ -1,6 +1,6 @@
 ﻿using Android.OS;
 using EduCATS.Droid.DependencyServices;
-using EduCATS.Helpers.Themes.DependencyServices.Interfaces;
+using EduCATS.Themes.DependencyServices.Interfaces;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 

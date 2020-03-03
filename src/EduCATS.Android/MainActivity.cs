@@ -4,6 +4,7 @@ using Android.Runtime;
 using Android.OS;
 using FFImageLoading.Forms.Platform;
 using Xamarin.Essentials;
+using Acr.UserDialogs;
 
 namespace EduCATS.Droid
 {
@@ -27,6 +28,7 @@ namespace EduCATS.Droid
 			Platform.Init(this, savedInstanceState);
 			Xamarin.Forms.Forms.Init(this, savedInstanceState);
 			CachedImageRenderer.Init(enableFastRenderer: true);
+			UserDialogs.Init(this);
 		}
 
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
