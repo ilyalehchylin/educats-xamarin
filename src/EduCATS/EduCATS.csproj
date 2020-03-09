@@ -39,6 +39,8 @@
     <Folder Include="Data\User\" />
     <Folder Include="Helpers\Dialogs\" />
     <Folder Include="Helpers\Dialogs\Interfaces\" />
+    <Folder Include="Helpers\Pages\" />
+    <Folder Include="Helpers\Pages\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />
