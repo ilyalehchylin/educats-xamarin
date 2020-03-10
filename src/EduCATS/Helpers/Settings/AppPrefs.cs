@@ -51,6 +51,30 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		const string userLoginKey = "USER_LOGIN";
+		const string userLoginDefault = null;
+
+		public static string UserLogin {
+			get {
+				return Preferences.Get(userLoginKey, userLoginDefault);
+			}
+			set {
+				Preferences.Set(userLoginKey, value);
+			}
+		}
+
+		const string userIdKey = "USER_ID";
+		const int userIdDefault = 0;
+
+		public static int UserId {
+			get {
+				return Preferences.Get(userIdKey, userIdDefault);
+			}
+			set {
+				Preferences.Set(userIdKey, value);
+			}
+		}
+
 		public static void ResetPrefs()
 		{
 			Preferences.Clear();

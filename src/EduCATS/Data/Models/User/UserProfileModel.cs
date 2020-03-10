@@ -2,7 +2,7 @@
 
 namespace EduCATS.Data.Models.User
 {
-	public class UserProfileModel : Models.DataModel
+	public class UserProfileModel : DataModel
 	{
 		[JsonProperty("Name")]
 		public string Name { get; set; }

@@ -169,5 +169,6 @@
     <BundleResource Include="Resources\icon_today%401x.png" />
     <BundleResource Include="Resources\icon_today%402x.png" />
     <BundleResource Include="Resources\icon_today%403x.png" />
+    <BundleResource Include="Resources\icon_clock.png" />
   </ItemGroup>
 </Project>

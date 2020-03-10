@@ -1,6 +1,6 @@
 ﻿using System;
 using EduCATS.Helpers.Effects;
-using EduCATS.Pages.News.Base;
+using EduCATS.Pages.Today.Base.Views;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
@@ -32,7 +32,7 @@ namespace EduCATS.Pages.Main
 		void setPages()
 		{
 			Children.Add(
-				createPage(new BaseNewsPageView(),
+				createPage(new TodayPageView(),
 				CrossLocalization.Translate("main_today"),
 				Theme.Current.MainTodayIcon));
 		}

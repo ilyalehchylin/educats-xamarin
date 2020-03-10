@@ -1,5 +1,8 @@
-﻿using EduCATS.Configuration;
+﻿using System.Threading.Tasks;
+using EduCATS.Configuration;
+using EduCATS.Data;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
 using Xamarin.Forms;
 
@@ -22,6 +25,23 @@ namespace EduCATS
 			} else {
 				pages.OpenLogin();
 			}
+		}
+
+		protected override void OnStart()
+		{
+			base.OnStart();
+			Task.Run(async () => await getProfileInfo());
+		}
+
+		async Task getProfileInfo()
+		{
+			var username = AppPrefs.UserLogin;
+
+			if (string.IsNullOrEmpty(username)) {
+				return;
+			}
+
+			await DataAccess.GetProfileInfo(AppPrefs.UserLogin);
 		}
 	}
 }

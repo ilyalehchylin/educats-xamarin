@@ -28,12 +28,12 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Dialog service.
 		/// </summary>
-		IDialogs dialogService;
+		readonly IDialogs dialogService;
 
 		/// <summary>
 		/// Navigation service.
 		/// </summary>
-		IPages navigationService;
+		readonly IPages navigationService;
 
 		/// <summary>
 		/// Login page ViewModel constructor.
@@ -172,7 +172,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Gets user data (username and user's id) by provided credentials and saves it.
 		/// </summary>
-		/// <returns><see cref="DataModel"/> on success, <code>null</code> otherwise.</returns>
+		/// <returns><see cref="UserModel"/> on success, <code>null</code> otherwise.</returns>
 		async Task<UserModel> loginRequest()
 		{
 			var userLogin = await DataAccess.Login(Username, Password) as UserModel;

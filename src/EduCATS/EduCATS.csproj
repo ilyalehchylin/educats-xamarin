@@ -43,8 +43,24 @@
     <Folder Include="Helpers\Pages\Interfaces\" />
     <Folder Include="Pages\Main\" />
     <Folder Include="Helpers\Effects\" />
-    <Folder Include="Pages\News\" />
-    <Folder Include="Pages\News\Base\" />
+    <Folder Include="Pages\Today\" />
+    <Folder Include="Pages\Today\Base\" />
+    <Folder Include="Pages\Today\Base\Views\" />
+    <Folder Include="Pages\Today\Base\ViewModels\" />
+    <Folder Include="Pages\Today\Base\Views\ViewCells\" />
+    <Folder Include="Controls\" />
+    <Folder Include="Controls\RoundedListView\" />
+    <Folder Include="Controls\RoundedListView\Enums\" />
+    <Folder Include="Controls\RoundedListView\Interfaces\" />
+    <Folder Include="Controls\RoundedListView\Selectors\" />
+    <Folder Include="Pages\Today\Base\Models\" />
+    <Folder Include="Helpers\Date\" />
+    <Folder Include="Helpers\Date\Extensions\" />
+    <Folder Include="Helpers\Date\Enums\" />
+    <Folder Include="Data\Models\Subjects\" />
+    <Folder Include="Helpers\Colors\" />
+    <Folder Include="Data\Models\News\" />
+    <Folder Include="Data\Models\Calendar\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

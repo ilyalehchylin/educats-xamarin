@@ -1,4 +1,6 @@
-﻿namespace EduCATS.Data.User
+﻿using EduCATS.Helpers.Settings;
+
+namespace EduCATS.Data.User
 {
 	public class AppUserData
 	{
@@ -12,6 +14,9 @@
 
 		public static void SetLoginData(int userId, string username)
 		{
+			AppPrefs.UserId = userId;
+			AppPrefs.UserLogin = username;
+
 			UserId = userId;
 			Username = username;
 		}

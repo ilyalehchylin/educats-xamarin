@@ -25,10 +25,10 @@ namespace EduCATS.Pages.Login.Views
 			var dialogService = new AppDialogs();
 			var navigationService = new AppPages();
 			BindingContext = new LoginPageViewModel(dialogService, navigationService);
-			createView();
+			createViews();
 		}
 
-		void createView()
+		void createViews()
 		{
 			var backgroundImage = createBackgroundImage();
 			var mainLayout = createLoginForm();

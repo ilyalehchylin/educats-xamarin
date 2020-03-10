@@ -8,6 +8,10 @@ namespace EduCATS.Helpers.Json
 	{
 		public static bool IsJsonValid(string json)
 		{
+			if (string.IsNullOrEmpty(json)) {
+				return false;
+			}
+
 			json = json.Trim();
 			if ((json.StartsWith("{", StringComparison.Ordinal) &&
 				json.EndsWith("}", StringComparison.Ordinal)) ||

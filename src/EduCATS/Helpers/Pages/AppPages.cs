@@ -2,6 +2,7 @@
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Helpers.Pages
@@ -75,7 +76,10 @@ namespace EduCATS.Helpers.Pages
 		/// <returns></returns>
 		NavigationPage getNavigationPage(Page page)
 		{
-			return new NavigationPage(page);
+			return new NavigationPage(page) {
+				BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
+				BarTextColor = Color.FromHex(Theme.Current.CommonAppColor)
+			};
 		}
 	}
 }

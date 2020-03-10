@@ -4,6 +4,7 @@
   "common_error": "Error",
   "common_loading": "Loading...",
   "common_unexpected_error_text": "Unexpected error occurred. Please try again or contact support.",
+  "common_connection_error_text": "No internet connection. Check your network settings and try again.",
 
   "login_username": "Username",
   "login_password": "Password",
@@ -17,5 +18,11 @@
   "main_today": "Today",
   "main_learning": "Learning",
   "main_statistics": "Statistics",
-  "main_settings": "Settings"
+  "main_settings": "Settings",
+
+  "today_subjects": "Subjects",
+  "today_news": "News",
+  "today_news_load_error_text": "Error occurred during retrieving news. Please try to refresh page or contact support.",
+  "today_subjects_error_text": "Error occurred during retrieving subjects. Please try to refresh page or contact support.",
+  "today_calendar_error_text": "Error occurred during retrieving subjects in calendar. Please try to refresh page or contact support."
 }

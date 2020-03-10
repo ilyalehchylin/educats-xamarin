@@ -9,7 +9,7 @@ namespace EduCATS.Networking.AppServices
 {
 	public static partial class AppServices
 	{
-		public static async Task<KeyValuePair<object, HttpStatusCode>> Login(string username, string password)
+		public static async Task<KeyValuePair<string, HttpStatusCode>> Login(string username, string password)
 		{
 			var userCreds = new UserCredentials {
 				Username = username,
@@ -17,17 +17,40 @@ namespace EduCATS.Networking.AppServices
 			};
 
 			var body = JsonController.ConvertObjectToJson(userCreds);
-			return await AppServicesController<object>.Request(Links.Login, body);
+			return await AppServicesController.Request(Links.Login, body);
 		}
 
-		public static async Task<KeyValuePair<object, HttpStatusCode>> GetProfileInfo(string username)
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetProfileInfo(string username)
+		{
+			var body = getUserLoginBody(username);
+			return await AppServicesController.Request(Links.GetProfileInfo, body);
+		}
+
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetNews(string username)
+		{
+			var body = getUserLoginBody(username);
+			return await AppServicesController.Request(Links.GetNews, body);
+		}
+
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetProfileInfoSubjects(string username)
+		{
+			var body = getUserLoginBody(username);
+			return await AppServicesController.Request(Links.GetProfileInfoSubjects, body);
+		}
+
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetProfileInfoCalendar(string username)
+		{
+			var body = getUserLoginBody(username);
+			return await AppServicesController.Request(Links.GetProfileInfoCalendar, body);
+		}
+
+		static string getUserLoginBody(string username)
 		{
 			var userLogin = new UserLoginModel {
 				UserLogin = username
 			};
 
-			var body = JsonController.ConvertObjectToJson(userLogin);
-			return await AppServicesController<object>.Request(Links.GetProfileInfo, body);
+			return JsonController.ConvertObjectToJson(userLogin);
 		}
 	}
 }

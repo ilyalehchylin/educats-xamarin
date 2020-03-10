@@ -1,20 +1,36 @@
 ﻿using System.Collections.Generic;
 using System.Net;
 using EduCATS.Data.Caching;
-using Xamarin.Essentials;
+using EduCATS.Helpers.Json;
 
 namespace EduCATS.Data
 {
-	public static partial class DataAccess
+	public partial class DataAccess<T>
 	{
-		static object parseResponse(object responseObject, bool isCaching = true)
+		public T GetAccess(KeyValuePair<string, HttpStatusCode> response, string key = null, bool isCaching = true)
+		{
+			switch (response.Value) {
+				case HttpStatusCode.OK:
+					var data = parseResponse(response, key, isCaching);
+
+					if (!JsonController.IsJsonValid(data)) {
+						return default;
+					}
+
+					return JsonController<T>.ConvertJsonToObject(data);
+				default:
+					return default;
+			}
+		}
+
+		string parseResponse(object responseObject, string key = null, bool isCaching = true)
 		{
 			if (responseObject != null) {
-				var response = (KeyValuePair<object, HttpStatusCode>)responseObject;
+				var response = (KeyValuePair<string, HttpStatusCode>)responseObject;
 
 				if (response.Value == HttpStatusCode.OK && response.Key != null) {
-					if (isCaching) {
-						DataCaching<object>.Save(profileInfoKey, response.Key);
+					if (isCaching && !string.IsNullOrEmpty(key)) {
+						DataCaching<string>.Save(key, response.Key);
 					}
 
 					return response.Key;
@@ -22,16 +38,6 @@ namespace EduCATS.Data
 			}
 
 			return null;
-		}
-
-		static object getDataFromCache(string key)
-		{
-			return DataCaching<object>.Get(key);
-		}
-
-		static bool checkConnection()
-		{
-			return Connectivity.NetworkAccess == NetworkAccess.Internet;
 		}
 	}
 }
