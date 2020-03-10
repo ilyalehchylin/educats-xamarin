@@ -4,7 +4,9 @@ namespace EduCATS.Themes.Templates
 {
 	public class DefaultTheme : ITheme
 	{
-		virtual public string AppStatusBarBackgroundColor => "#27AAE1";
+		virtual public string CommonAppColor => "#27AAE1";
+
+		virtual public string AppStatusBarBackgroundColor => CommonAppColor;
 
 		virtual public string LoginBackground1Image => "image_background_1";
 		virtual public string LoginBackground2Image => "image_background_2";
@@ -14,5 +16,12 @@ namespace EduCATS.Themes.Templates
 		virtual public string LoginEntryBackgroundColor => "#FFFFFF";
 		virtual public string LoginButtonBackgroundColor => "#27AAE1";
 		virtual public string LoginButtonTextColor => "#FFFFFF";
+
+		virtual public string MainSelectedTabColor => CommonAppColor;
+		virtual public string MainUnselectedTabColor => "#808080";
+		virtual public string MainTodayIcon => "icon_today";
+		virtual public string MainLearningIcon => "icon_learning";
+		virtual public string MainStatisticsIcon => "icon_stats";
+		virtual public string MainSettingsIcon => "icon_settings";
 	}
 }

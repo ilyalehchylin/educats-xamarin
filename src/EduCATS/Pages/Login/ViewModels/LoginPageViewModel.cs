@@ -3,6 +3,7 @@ using EduCATS.Data;
 using EduCATS.Data.Models.User;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Dialogs.Interfaces;
+using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
@@ -30,13 +31,19 @@ namespace EduCATS.Pages.Login.ViewModels
 		IDialogs dialogService;
 
 		/// <summary>
+		/// Navigation service.
+		/// </summary>
+		IPages navigationService;
+
+		/// <summary>
 		/// Login page ViewModel constructor.
 		/// </summary>
-		public LoginPageViewModel(IDialogs dialogs)
+		public LoginPageViewModel(IDialogs dialogs, IPages pages)
 		{
 			IsLoadingCompleted = true;
 			IsPasswordHidden = true;
 			dialogService = dialogs;
+			navigationService = pages;
 		}
 
 		/// <summary>
@@ -146,7 +153,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		{
 			if (profile != null && !profile.IsError) {
 				AppPrefs.IsLoggedIn = true;
-				// Open main page
+				navigationService.OpenMain();
 			} else if (profile != null && profile.IsError) {
 				await dialogService.ShowError(profile.ErrorMessage);
 			} else {

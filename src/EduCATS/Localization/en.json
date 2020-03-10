@@ -12,5 +12,10 @@
   "login_profile_loading": "Retrieving profile data...",
   "login_empty_credentials_error": "Username and password are required.",
   "login_error_text": "Invalid login attempt. Please check your credentials.",
-  "login_user_profile_error_text": "Error occurred during retrieving profile data. Please try again or contact support."
+  "login_user_profile_error_text": "Error occurred during retrieving profile data. Please try again or contact support.",
+
+  "main_today": "Today",
+  "main_learning": "Learning",
+  "main_statistics": "Statistics",
+  "main_settings": "Settings"
 }

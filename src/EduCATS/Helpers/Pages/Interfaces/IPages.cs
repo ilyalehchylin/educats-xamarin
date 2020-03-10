@@ -3,5 +3,6 @@
 	public interface IPages
 	{
 		void OpenLogin();
+		void OpenMain();
 	}
 }

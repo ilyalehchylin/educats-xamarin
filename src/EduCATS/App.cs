@@ -1,5 +1,6 @@
 ﻿using EduCATS.Configuration;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Settings;
 using Xamarin.Forms;
 
 namespace EduCATS
@@ -9,13 +10,18 @@ namespace EduCATS
 		public App()
 		{
 			AppConfig.InitialSetup();
-			openMainPage();
+			setMainPage();
 		}
 
-		void openMainPage()
+		void setMainPage()
 		{
 			var pages = new AppPages();
-			pages.OpenLogin();
+
+			if (AppPrefs.IsLoggedIn) {
+				pages.OpenMain();
+			} else {
+				pages.OpenLogin();
+			}
 		}
 	}
 }

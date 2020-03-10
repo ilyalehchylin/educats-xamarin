@@ -2,6 +2,8 @@
 {
 	public interface ITheme
 	{
+		string CommonAppColor { get; }
+
 		string AppStatusBarBackgroundColor { get; }
 
 		string LoginBackground1Image { get; }
@@ -12,5 +14,12 @@
 		string LoginEntryBackgroundColor { get; }
 		string LoginButtonBackgroundColor { get; }
 		string LoginButtonTextColor { get; }
+
+		string MainSelectedTabColor { get; }
+		string MainUnselectedTabColor { get; }
+		string MainTodayIcon { get; }
+		string MainLearningIcon { get; }
+		string MainStatisticsIcon { get; }
+		string MainSettingsIcon { get; }
 	}
 }

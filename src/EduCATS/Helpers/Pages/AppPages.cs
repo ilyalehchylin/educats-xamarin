@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Login.Views;
+using EduCATS.Pages.Main;
 using Xamarin.Forms;
 
 namespace EduCATS.Helpers.Pages
@@ -28,6 +29,14 @@ namespace EduCATS.Helpers.Pages
 		public void OpenLogin()
 		{
 			switchMainPage(new LoginPageView());
+		}
+
+		/// <summary>
+		/// Open main page.
+		/// </summary>
+		public void OpenMain()
+		{
+			switchMainPage(new MainPageView());
 		}
 
 		/// <summary>

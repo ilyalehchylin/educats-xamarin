@@ -157,5 +157,17 @@
     <BundleResource Include="Resources\image_background_3.jpg" />
     <BundleResource Include="Resources\image_mascot.png" />
     <BundleResource Include="Resources\icon_show_password.png" />
+    <BundleResource Include="Resources\icon_learning%401x.png" />
+    <BundleResource Include="Resources\icon_learning%402x.png" />
+    <BundleResource Include="Resources\icon_learning%403x.png" />
+    <BundleResource Include="Resources\icon_settings%401x.png" />
+    <BundleResource Include="Resources\icon_settings%402x.png" />
+    <BundleResource Include="Resources\icon_settings%403x.png" />
+    <BundleResource Include="Resources\icon_stats%401x.png" />
+    <BundleResource Include="Resources\icon_stats%402x.png" />
+    <BundleResource Include="Resources\icon_stats%403x.png" />
+    <BundleResource Include="Resources\icon_today%401x.png" />
+    <BundleResource Include="Resources\icon_today%402x.png" />
+    <BundleResource Include="Resources\icon_today%403x.png" />
   </ItemGroup>
 </Project>
