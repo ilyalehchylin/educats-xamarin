@@ -1,3 +1,5 @@
+[![EduCATS](./graphics/banner.png)](https://educats.bntu.by/)
+
 # EduCATS
 
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
