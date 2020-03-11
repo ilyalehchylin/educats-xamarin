@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using EduCATS.Themes;
+using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.Base.Views.ViewCells
 {
@@ -9,6 +10,8 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 
 		public CalendarCarouselViewCell()
 		{
+			addResources();
+
 			var collection = new CollectionView {
 				ItemsLayout = new GridItemsLayout(daysOfWeekNumber, ItemsLayoutOrientation.Vertical),
 				ItemTemplate = new DataTemplate(() => new CalendarCollectionViewCell(dataBindingDay, true)),
@@ -35,6 +38,41 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 					collection, monthYearLabel
 				}
 			};
+		}
+
+		void addResources()
+		{
+			var visualState = new VisualState {
+				Name = "Selected",
+				Setters = {
+					new Setter {
+						Property = BackgroundColorProperty,
+						Value = Color.FromHex(Theme.Current.TodayCalendarBackgroundColor)
+					}
+				}
+			};
+
+			var visualStateGroup = new VisualStateGroup {
+				Name = "CommonStates",
+				States = {
+					visualState
+				}
+			};
+
+			var setter = new Setter {
+				Property = VisualStateManager.VisualStateGroupsProperty,
+				Value = new VisualStateGroupList {
+					visualStateGroup
+				}
+			};
+
+			var style = new Style(typeof(CalendarCollectionViewCell)) {
+				Setters = {
+					setter
+				}
+			};
+
+			Resources.Add(style);
 		}
 	}
 }

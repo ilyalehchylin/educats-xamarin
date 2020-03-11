@@ -9,6 +9,8 @@ using EduCATS.Data.Models.News;
 using EduCATS.Data.Models.Subjects;
 using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Date.Enums;
+using EduCATS.Helpers.Dialogs.Interfaces;
+using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
 using EduCATS.Pages.Today.Base.Models;
 using EduCATS.Themes;
@@ -18,172 +20,33 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 {
 	public class TodayPageViewModel : ViewModel
 	{
+		/// <summary>
+		/// Dialog service.
+		/// </summary>
+		readonly IDialogs dialogService;
+
+		/// <summary>
+		/// Navigation service.
+		/// </summary>
+		readonly IPages navigationService;
+
 		const int minimumCalendarPosition = 0;
 		const int maximumCalendarPosition = 2;
+		const double subjectsHeightByCount = 60;
+		const double subjectsAdditionalHeight = 50;
 
 		bool isManualSelectedCalendarDay;
-		DateTime manualSelectedCalendarDay = new DateTime();
+		DateTime manualSelectedCalendarDay;
+		List<CalendarSubjectsModel> calendatSubjectsListBackup;
 
-		List<SubjectItemModel> subjects { get; set; }
-		List<NewsPageModel> newsBackupList { get; set; }
-
-		public TodayPageViewModel()
+		public TodayPageViewModel(IDialogs dialogs, IPages pages)
 		{
-			CalendarDaysOfWeekList = new ObservableCollection<string>(
-				DateHelper.GetDaysOfWeekWithFirstLetters());
-			CalendarSubjects = new List<CalendarSubjectsModel>();
+			dialogService = dialogs;
+			navigationService = pages;
 
-			setInitialCalendarState();
+			initSetup();
 
-			CalendarPosition = 1;
-
-			subjects = new List<SubjectItemModel>();
-			NewsList = new List<NewsPageModel>();
-			newsBackupList = new List<NewsPageModel>();
-			IsNewsRefreshing = true;
-			IsNewsRefreshed = false;
-			loadNews();
-
-			ChosenDate = DateTime.Now;
-
-			Device.BeginInvokeOnMainThread(async () => await getCalendarNotes());
-		}
-
-		void setInitialCalendarState()
-		{
-			var todayDateTime = DateTime.Today;
-			var previousWeekCalendarModel = getCalendarViewModel(todayDateTime, WeekEnum.Previous);
-			var currentWeekCalendarModel = getCalendarViewModel(todayDateTime, WeekEnum.Current);
-			var nextWeekCalendarModel = getCalendarViewModel(todayDateTime, WeekEnum.Next);
-
-			CalendarList = new ObservableCollection<CalendarViewModel> {
-				previousWeekCalendarModel,
-				currentWeekCalendarModel,
-				nextWeekCalendarModel
-			};
-
-			selectCalendarDay(todayDateTime);
-		}
-
-		CalendarViewModel getCalendarViewModel(DateTime date, WeekEnum week)
-		{
-			var calendarDaysModelList = new ObservableCollection<CalendarViewDayModel>();
-			var weekStartDate = DateHelper.GetWeekStartDate(date, week);
-			var weekDates = DateHelper.GetWeekDays(weekStartDate);
-
-			if (weekDates != null && weekDates.Count > 0) {
-				foreach (var weekDate in weekDates) {
-					calendarDaysModelList.Add(new CalendarViewDayModel {
-						Day = weekDate.Day,
-						Month = weekDate.Month,
-						Year = weekDate.Year
-					});
-				}
-			}
-
-			return new CalendarViewModel(this) {
-				Days = calendarDaysModelList,
-				Month = weekStartDate.Month,
-				Year = weekStartDate.Year
-			};
-		}
-
-		void selectTodayDateWithoutSelectedFlag()
-		{
-			if (CalendarList != null && CalendarList.Count > 0) {
-				foreach (var calendarModel in CalendarList) {
-					var calendarDayModel = calendarModel.Days.FirstOrDefault(
-						dayModel => dayModel.Date.ToShortDateString()
-							.Equals(DateTime.Today.ToShortDateString()));
-
-					if (calendarDayModel != null) {
-						changeCalendarSelection(calendarModel, calendarDayModel, false);
-						break;
-					}
-				}
-			}
-		}
-
-		void selectCalendarDay(DateTime dateToSelect)
-		{
-			if (CalendarList != null && CalendarList.Count > 0) {
-				foreach (var calendarModel in CalendarList) {
-					CalendarViewDayModel calendarDayModel = calendarModel.Days.FirstOrDefault(
-						dayModel => dayModel.Date.ToShortDateString()
-							.Equals(dateToSelect.ToShortDateString()));
-
-					if (calendarDayModel != null) {
-						changeCalendarSelection(calendarModel, calendarDayModel, true);
-						break;
-					}
-				}
-			}
-		}
-
-		void deselectAllCalendarDays()
-		{
-			if (CalendarList != null && CalendarList.Count > 0) {
-				foreach (var calendarModel in CalendarList) {
-					var calendarDayModel = calendarModel.Days.FirstOrDefault(
-						dayModel => dayModel.Selected);
-					if (calendarDayModel != null) {
-						changeCalendarSelection(calendarModel, calendarDayModel, false);
-						break;
-					}
-				}
-			}
-		}
-
-		void changeCalendarSelection(
-			CalendarViewModel calendarModel,
-			CalendarViewDayModel calendarDayModel,
-			bool selected)
-		{
-			var indexCalendarModel = CalendarList.IndexOf(calendarModel);
-			var indexCalendarDayModel = calendarModel.Days.IndexOf(calendarDayModel);
-
-			if (DateTime.Today == calendarDayModel.Date) {
-				calendarDayModel.SelectionColor = Theme.Current.TodaySelectedTodayDateColor;
-			} else {
-				if (selected) {
-					calendarDayModel.SelectionColor = Theme.Current.TodaySelectedAnotherDateColor;
-				} else {
-					calendarDayModel.SelectionColor = Theme.Current.TodayNotSelectedDateColor;
-				}
-			}
-
-			calendarDayModel.Selected = selected;
-
-			if (selected) {
-				calendarDayModel.TextColor = Theme.Current.TodaySelectedDateTextColor;
-			} else {
-				calendarDayModel.TextColor = Theme.Current.TodayNotSelectedDateTextColor;
-			}
-
-			try {
-				CalendarList[indexCalendarModel].Days[indexCalendarDayModel] = calendarDayModel;
-			} catch (ObjectDisposedException) { }
-		}
-
-		DateTime chosenDate;
-		public DateTime ChosenDate {
-			get { return chosenDate; }
-			set { SetProperty(ref chosenDate, value); }
-		}
-
-		void setChosenDate(DateTime chosenDateTime)
-		{
-			var previousWeekCalendarModel = getCalendarViewModel(chosenDateTime, WeekEnum.Previous);
-			var currentWeekCalendarModel = getCalendarViewModel(chosenDateTime, WeekEnum.Current);
-			var nextWeekCalendarModel = getCalendarViewModel(chosenDateTime, WeekEnum.Next);
-
-			CalendarList = new ObservableCollection<CalendarViewModel> {
-				previousWeekCalendarModel,
-				currentWeekCalendarModel,
-				nextWeekCalendarModel
-			};
-
-			ExecuteCalendarSelectionChangedEvent(chosenDateTime);
+			Task.Run(async () => await startRetrievingData());
 		}
 
 		int calendarPosition;
@@ -255,51 +118,9 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		Command newsRefreshCommand;
 		public Command NewsRefreshCommand {
 			get {
-				return newsRefreshCommand ?? (newsRefreshCommand = new Command(ExecuteNewsRefreshCommand));
+				return newsRefreshCommand ?? (newsRefreshCommand = new Command(
+					async () => await executeNewsRefreshCommand()));
 			}
-		}
-
-		protected void ExecuteNewsRefreshCommand()
-		{
-			IsNewsRefreshed = false;
-			IsNewsRefreshing = true;
-			loadNews();
-		}
-
-		void loadNews()
-		{
-			Device.BeginInvokeOnMainThread(
-				async () => {
-					var newsModel = await DataAccess.GetNews(AppPrefs.UserLogin) as NewsModel;
-					var subjectsModel = await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin) as SubjectModel;
-					subjects = new List<SubjectItemModel>(subjectsModel.SubjectsList);
-
-					var newsPageList = new List<NewsPageModel>();
-
-					if (subjects != null) {
-						if (subjects.Count > 0) {
-							foreach (var news in newsModel.News) {
-								var subject = subjects.FirstOrDefault(x => x.Id == news.SubjectId);
-								if (subject != null) {
-									newsPageList.Add(new NewsPageModel(news, subject.Color));
-								} else {
-									newsPageList.Add(new NewsPageModel(news, null));
-								}
-							}
-						}
-					}
-
-					NewsList = newsPageList;
-					newsBackupList = newsPageList;
-					IsNewsRefreshing = false;
-					IsNewsRefreshed = true;
-				});
-		}
-
-		void openDetailsPage(object obj)
-		{
-			var newsPageModel = (NewsPageModel)obj;
-			//AppPage.NewsDetails(newsPageModel);
 		}
 
 		Command calendarPositionChangedCommand;
@@ -309,6 +130,206 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					calendarPositionChangedCommand = new Command(
 						ExecuteCalendarPositionChangedEvent));
 			}
+		}
+
+		void initSetup()
+		{
+			manualSelectedCalendarDay = new DateTime();
+			CalendarPosition = 1;
+			CalendarSubjects = new List<CalendarSubjectsModel>();
+			CalendarDaysOfWeekList = new ObservableCollection<string>(DateHelper.GetDaysWithFirstLetters());
+			setInitialCalendarState();
+
+			NewsList = new List<NewsPageModel>();
+			calendatSubjectsListBackup = new List<CalendarSubjectsModel>();
+		}
+
+		void setInitialCalendarState()
+		{
+			var todayDateTime = DateTime.Today;
+			var previousWeekCalendarModel = getCalendarViewModel(todayDateTime, WeekEnum.Previous);
+			var currentWeekCalendarModel = getCalendarViewModel(todayDateTime, WeekEnum.Current);
+			var nextWeekCalendarModel = getCalendarViewModel(todayDateTime, WeekEnum.Next);
+
+			CalendarList = new ObservableCollection<CalendarViewModel> {
+				previousWeekCalendarModel,
+				currentWeekCalendarModel,
+				nextWeekCalendarModel
+			};
+
+			selectCalendarDay(todayDateTime);
+		}
+
+		protected async Task executeNewsRefreshCommand()
+		{
+			await startRetrievingData();
+		}
+
+		async Task startRetrievingData()
+		{
+			await getAndSetNews();
+			await getAndSetCalendarNotes();
+		}
+
+		async Task getAndSetCalendarNotes()
+		{
+			var calendarNotesModel = await DataAccess.GetProfileInfoCalendar(AppPrefs.UserLogin);
+
+			if (calendarNotesModel.IsError) {
+				await dialogService.ShowError(calendarNotesModel.ErrorMessage);
+			}
+
+			var calendarSubjectsList = calendarNotesModel.Labs.Select(
+				c => new CalendarSubjectsModel {
+					Color = c.Color,
+					Subject = c.Title,
+					Date = DateTime.Parse(c.Start)
+				});
+
+			calendatSubjectsListBackup = new List<CalendarSubjectsModel>(calendarSubjectsList);
+			setFilteredSubjectsList();
+		}
+
+		async Task getAndSetNews()
+		{
+			setRefreshing(true);
+			var newsPageList = await getNews();
+			NewsList = newsPageList;
+			setRefreshing(false);
+		}
+
+		async Task<List<NewsPageModel>> getNews()
+		{
+			var newsModel = await DataAccess.GetNews(AppPrefs.UserLogin);
+
+			if (newsModel.IsError) {
+				await dialogService.ShowError(newsModel.ErrorMessage);
+				return null;
+			}
+
+			var subjectList = await getSubjects();
+
+			if (subjectList == null) {
+				return null;
+			}
+
+			return composeNewsWithSubjects(newsModel.News, subjectList);
+		}
+
+		async Task<IList<SubjectItemModel>> getSubjects()
+		{
+			var subjects = await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin);
+
+			if (subjects.IsError) {
+				await dialogService.ShowError(subjects.ErrorMessage);
+				return null;
+			}
+
+			return subjects.SubjectsList;
+		}
+
+		List<NewsPageModel> composeNewsWithSubjects(IList<NewsItemModel> news, IList<SubjectItemModel> subjects)
+		{
+			if (news == null || subjects == null) {
+				return null;
+			}
+
+			return news.Select(n => {
+				var subject = subjects.FirstOrDefault(s => s.Id == n.SubjectId);
+				return new NewsPageModel(n, subject?.Color);
+			}).ToList();
+		}
+
+		void openDetailsPage(object obj)
+		{
+			var newsPageModel = (NewsPageModel)obj;
+			navigationService.OpenNewsDetails(newsPageModel.Title, newsPageModel.Body);
+		}
+
+		CalendarViewModel getCalendarViewModel(DateTime date, WeekEnum week)
+		{
+			var weekStartDate = DateHelper.GetWeekStartDate(date, week);
+			var weekDates = DateHelper.GetWeekDays(weekStartDate);
+
+			var calendarDaysModelList = weekDates
+				.Select(d => new CalendarViewDayModel {
+					Day = d.Day,
+					Month = d.Month,
+					Year = d.Year
+				});
+
+			return new CalendarViewModel(this) {
+				Days = new ObservableCollection<CalendarViewDayModel>(calendarDaysModelList),
+				Month = weekStartDate.Month,
+				Year = weekStartDate.Year
+			};
+		}
+
+		void selectTodayDateWithoutSelectedFlag()
+		{
+			selectDay(DateTime.Today, false);
+		}
+
+		void selectCalendarDay(DateTime dateToSelect)
+		{
+			selectDay(dateToSelect, true);
+		}
+
+		void deselectAllCalendarDays()
+		{
+			selectDay(deselect: true);
+		}
+
+		void selectDay(DateTime dateToCheck = default, bool selected = false, bool deselect = false)
+		{
+			if (CalendarList == null) {
+				return;
+			}
+
+			foreach (var calendarModel in CalendarList) {
+				var calendarDayModel = calendarModel.Days.FirstOrDefault(d => {
+					return deselect ?
+					d.Selected :
+					d.Date.ToShortDateString().Equals(dateToCheck.ToShortDateString());
+
+				});
+
+				if (calendarDayModel != null) {
+					changeCalendarSelection(calendarModel, calendarDayModel, selected);
+					break;
+				}
+			}
+		}
+
+		void changeCalendarSelection(
+			CalendarViewModel calendarModel,
+			CalendarViewDayModel calendarDayModel,
+			bool selected)
+		{
+			try {
+				var indexCalendarModel = CalendarList.IndexOf(calendarModel);
+				var indexCalendarDayModel = calendarModel.Days.IndexOf(calendarDayModel);
+
+				if (DateTime.Today == calendarDayModel.Date) {
+					calendarDayModel.SelectionColor = Theme.Current.TodaySelectedTodayDateColor;
+				} else {
+					if (selected) {
+						calendarDayModel.SelectionColor = Theme.Current.TodaySelectedAnotherDateColor;
+					} else {
+						calendarDayModel.SelectionColor = Theme.Current.TodayNotSelectedDateColor;
+					}
+				}
+
+				calendarDayModel.Selected = selected;
+
+				if (selected) {
+					calendarDayModel.TextColor = Theme.Current.TodaySelectedDateTextColor;
+				} else {
+					calendarDayModel.TextColor = Theme.Current.TodayNotSelectedDateTextColor;
+				}
+
+				CalendarList[indexCalendarModel].Days[indexCalendarDayModel] = calendarDayModel;
+			} catch (ObjectDisposedException) { }
 		}
 
 		protected void ExecuteCalendarPositionChangedEvent()
@@ -339,9 +360,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 						CalendarPosition = maximumCalendarPosition - 1;
 						break;
 				}
-			} catch (Exception ex) {
-
-			}
+			} catch (Exception) { }
 		}
 
 		public void ExecuteCalendarSelectionChangedEvent(DateTime date)
@@ -351,48 +370,38 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			manualSelectedCalendarDay = date;
 			isManualSelectedCalendarDay = true;
 			selectCalendarDay(date);
+			setFilteredSubjectsList();
+		}
 
+		void setFilteredSubjectsList()
+		{
 			var filteredList = new List<CalendarSubjectsModel>();
 
 			if (isManualSelectedCalendarDay) {
-				filteredList = cnListBackup.Where(x => x.Date.ToShortDateString() == manualSelectedCalendarDay.ToShortDateString()).ToList();
+				filteredList = calendatSubjectsListBackup.Where(
+					x => x.Date.ToShortDateString() == manualSelectedCalendarDay.ToShortDateString()).ToList();
 			} else {
-				filteredList = cnListBackup.Where(x => x.Date.ToShortDateString() == DateTime.Today.ToShortDateString()).ToList();
+				filteredList = calendatSubjectsListBackup.Where(
+					x => x.Date.ToShortDateString() == DateTime.Today.ToShortDateString()).ToList();
 			}
 
 			CalendarSubjects = new List<CalendarSubjectsModel>(filteredList);
-			CalendarSubjectsHeight = 60 * CalendarSubjects.Count;
+			setupSubjectsHeight();
+		}
+
+		void setupSubjectsHeight()
+		{
+			CalendarSubjectsHeight = subjectsHeightByCount * CalendarSubjects.Count;
+
 			if (CalendarSubjectsHeight != 0) {
-				CalendarSubjectsHeight += 50;
+				CalendarSubjectsHeight += subjectsAdditionalHeight;
 			}
 		}
 
-		List<CalendarSubjectsModel> cnListBackup = new List<CalendarSubjectsModel>();
-
-		async Task getCalendarNotes()
+		void setRefreshing(bool isRefreshing)
 		{
-			var calendarNotesModel = await DataAccess.GetProfileInfoCalendar(AppPrefs.UserLogin) as CalendarModel;
-			var cnList = calendarNotesModel.Labs.Select(c => new CalendarSubjectsModel {
-				Color = c.Color,
-				Subject = c.Title,
-				Date = DateTime.Parse(c.Start)
-			});
-
-			cnListBackup = new List<CalendarSubjectsModel>(cnList);
-
-			var filteredList = new List<CalendarSubjectsModel>();
-
-			if (isManualSelectedCalendarDay) {
-				filteredList = cnList.Where(x => x.Date.ToShortDateString() == manualSelectedCalendarDay.ToShortDateString()).ToList();
-			} else {
-				filteredList = cnList.Where(x => x.Date.ToShortDateString() == DateTime.Today.ToShortDateString()).ToList();
-			}
-
-			CalendarSubjects = new List<CalendarSubjectsModel>(filteredList);
-			CalendarSubjectsHeight = 60 * CalendarSubjects.Count;
-			if (CalendarSubjectsHeight != 0) {
-				CalendarSubjectsHeight += 50;
-			}
+			IsNewsRefreshing = isRefreshing;
+			IsNewsRefreshed = !isRefreshing;
 		}
 	}
 }

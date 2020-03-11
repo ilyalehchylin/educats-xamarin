@@ -41,6 +41,16 @@ namespace EduCATS.Helpers.Pages
 		}
 
 		/// <summary>
+		/// Open news details page.
+		/// </summary>
+		/// <param name="title">News title.</param>
+		/// <param name="body">News html body.</param>
+		public void OpenNewsDetails(string title, string body)
+		{
+
+		}
+
+		/// <summary>
 		/// Change Application's main page without animation.
 		/// </summary>
 		/// <param name="newPage">Page to set.</param>

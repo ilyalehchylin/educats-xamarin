@@ -4,5 +4,6 @@
 	{
 		void OpenLogin();
 		void OpenMain();
+		void OpenNewsDetails(string title, string body);
 	}
 }

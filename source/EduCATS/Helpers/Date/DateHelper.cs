@@ -118,7 +118,7 @@ namespace EduCATS.Helpers.Date
 			return cultureInfo.DateTimeFormat.GetDayName(getDayOfWeek(dayOfWeek));
 		}
 
-		public static List<string> GetDaysOfWeekWithFirstLetters()
+		public static List<string> GetDaysWithFirstLetters()
 		{
 			var daysOfWeek = new List<string>();
 

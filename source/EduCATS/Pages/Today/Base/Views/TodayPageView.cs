@@ -1,5 +1,7 @@
 ﻿using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
+using EduCATS.Helpers.Dialogs;
+using EduCATS.Helpers.Pages;
 using EduCATS.Pages.Today.Base.ViewModels;
 using EduCATS.Pages.Today.Base.Views.ViewCells;
 using EduCATS.Themes;
@@ -19,7 +21,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		public TodayPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
-			BindingContext = new TodayPageViewModel();
+			BindingContext = new TodayPageViewModel(new AppDialogs(), new AppPages());
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			createViews();
 		}
@@ -130,7 +132,6 @@ namespace EduCATS.Pages.Today.Base.Views
 				Text = CrossLocalization.Translate("today_news")
 			};
 
-			newsLabel.SetBinding(IsVisibleProperty, "IsNewsRefreshed");
 			return newsLabel;
 		}
 
