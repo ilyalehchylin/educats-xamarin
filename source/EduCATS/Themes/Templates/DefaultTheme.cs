@@ -42,5 +42,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string TodayNotSelectedDateColor => "Transparent";
 		virtual public string TodaySelectedDateTextColor => "#FFFFFF";
 		virtual public string TodayNotSelectedDateTextColor => "#000000";
+
+		virtual public string NewsTextColor => "#000000";
 	}
 }

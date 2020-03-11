@@ -170,5 +170,8 @@
     <BundleResource Include="Resources\icon_today%402x.png" />
     <BundleResource Include="Resources\icon_today%403x.png" />
     <BundleResource Include="Resources\icon_clock.png" />
+    <BundleResource Include="Resources\icon_close%401x.png" />
+    <BundleResource Include="Resources\icon_close%402x.png" />
+    <BundleResource Include="Resources\icon_close%403x.png" />
   </ItemGroup>
 </Project>

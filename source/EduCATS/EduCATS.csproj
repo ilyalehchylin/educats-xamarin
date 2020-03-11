@@ -61,6 +61,9 @@
     <Folder Include="Helpers\Colors\" />
     <Folder Include="Data\Models\News\" />
     <Folder Include="Data\Models\Calendar\" />
+    <Folder Include="Pages\Today\NewsDetails\" />
+    <Folder Include="Pages\Today\NewsDetails\Views\" />
+    <Folder Include="Pages\Today\NewsDetails\ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

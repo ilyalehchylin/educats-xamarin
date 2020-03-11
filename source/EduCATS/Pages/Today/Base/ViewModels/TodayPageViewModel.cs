@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.Calendar;
 using EduCATS.Data.Models.News;
 using EduCATS.Data.Models.Subjects;
 using EduCATS.Helpers.Date;
@@ -128,7 +127,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			get {
 				return calendarPositionChangedCommand ?? (
 					calendarPositionChangedCommand = new Command(
-						ExecuteCalendarPositionChangedEvent));
+						executeCalendarPositionChangedEvent));
 			}
 		}
 
@@ -332,7 +331,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			} catch (ObjectDisposedException) { }
 		}
 
-		protected void ExecuteCalendarPositionChangedEvent()
+		protected void executeCalendarPositionChangedEvent()
 		{
 			try {
 				selectTodayDateWithoutSelectedFlag();

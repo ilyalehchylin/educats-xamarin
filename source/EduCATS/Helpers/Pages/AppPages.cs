@@ -2,6 +2,7 @@
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
+using EduCATS.Pages.Today.NewsDetails.Views;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
@@ -21,6 +22,20 @@ namespace EduCATS.Helpers.Pages
 			}
 			set {
 				Application.Current.MainPage = value;
+			}
+		}
+
+		/// <summary>
+		/// Close page.
+		/// </summary>
+		/// <param name="modal">Is page modal.</param>
+		/// <returns>Task</returns>
+		public async Task ClosePage(bool modal)
+		{
+			if (modal) {
+				await popModalPageAsync();
+			} else {
+				await popPageAsync();
 			}
 		}
 
@@ -45,9 +60,10 @@ namespace EduCATS.Helpers.Pages
 		/// </summary>
 		/// <param name="title">News title.</param>
 		/// <param name="body">News html body.</param>
-		public void OpenNewsDetails(string title, string body)
+		/// <returns>Task</returns>
+		public async Task OpenNewsDetails(string title, string body)
 		{
-
+			await pushModalPageAsync(new NewsDetailsPageView(title, body));
 		}
 
 		/// <summary>
@@ -63,7 +79,7 @@ namespace EduCATS.Helpers.Pages
 		/// Push a page to existing navigation stack.
 		/// </summary>
 		/// <param name="newPage">Page to push.</param>
-		/// <returns></returns>
+		/// <returns>Task</returns>
 		async Task pushPageAsync(Page newPage)
 		{
 			await mainPage.Navigation.PushAsync(getNavigationPage(newPage));
@@ -73,17 +89,35 @@ namespace EduCATS.Helpers.Pages
 		/// Push a page modally to existing navigation stack.
 		/// </summary>
 		/// <param name="newPage">Page to push.</param>
-		/// <returns></returns>
+		/// <returns>Task</returns>
 		async Task pushModalPageAsync(Page newPage)
 		{
 			await mainPage.Navigation.PushModalAsync(getNavigationPage(newPage));
 		}
 
 		/// <summary>
+		/// Pop a page from existing navigation stack.
+		/// </summary>
+		/// <returns>Task</returns>
+		async Task popPageAsync()
+		{
+			await mainPage.Navigation.PopAsync();
+		}
+
+		/// <summary>
+		/// Pop a modally pushed page.
+		/// </summary>
+		/// <returns>Task.</returns>
+		async Task popModalPageAsync()
+		{
+			await mainPage.Navigation.PopModalAsync();
+		}
+
+		/// <summary>
 		/// Converts <see cref="Page"/> to <see cref="NavigationPage"/>.
 		/// </summary>
 		/// <param name="page">Page to convert.</param>
-		/// <returns></returns>
+		/// <returns>Task</returns>
 		NavigationPage getNavigationPage(Page page)
 		{
 			return new NavigationPage(page) {

@@ -40,5 +40,7 @@
 		string TodayNotSelectedDateColor { get; }
 		string TodaySelectedDateTextColor { get; }
 		string TodayNotSelectedDateTextColor { get; }
+
+		string NewsTextColor { get; }
 	}
 }

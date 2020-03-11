@@ -1,9 +1,12 @@
-﻿namespace EduCATS.Helpers.Pages.Interfaces
+﻿using System.Threading.Tasks;
+
+namespace EduCATS.Helpers.Pages.Interfaces
 {
 	public interface IPages
 	{
+		Task ClosePage(bool modal);
 		void OpenLogin();
 		void OpenMain();
-		void OpenNewsDetails(string title, string body);
+		Task OpenNewsDetails(string title, string body);
 	}
 }
