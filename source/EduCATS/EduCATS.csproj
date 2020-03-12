@@ -64,6 +64,13 @@
     <Folder Include="Pages\Today\NewsDetails\" />
     <Folder Include="Pages\Today\NewsDetails\Views\" />
     <Folder Include="Pages\Today\NewsDetails\ViewModels\" />
+    <Folder Include="Pages\Utils\" />
+    <Folder Include="Pages\Utils\ViewModels\" />
+    <Folder Include="Pages\Statistics\" />
+    <Folder Include="Pages\Statistics\Base\" />
+    <Folder Include="Pages\Statistics\Base\Views\" />
+    <Folder Include="Pages\Statistics\Base\ViewModels\" />
+    <Folder Include="Controls\SubjectsPickerView\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

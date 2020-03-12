@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace EduCATS.Helpers.Dialogs.Interfaces
 {
@@ -9,5 +10,6 @@ namespace EduCATS.Helpers.Dialogs.Interfaces
 		void ShowLoading();
 		void ShowLoading(string message);
 		void HideLoading();
+		Task<string> ShowSheet(string title, List<string> buttons);
 	}
 }

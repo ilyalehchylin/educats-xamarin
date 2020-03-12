@@ -26,5 +26,7 @@
 	"today_subjects_error_text": "Error occurred during retrieving subjects. Please try to refresh page or contact support.",
 	"today_calendar_error_text": "Error occurred during retrieving subjects in calendar. Please try to refresh page or contact support.",
 
-	"news_details_title": "News"
+	"news_details_title": "News",
+
+	"subjects_choose": "Choose a subject"
 }

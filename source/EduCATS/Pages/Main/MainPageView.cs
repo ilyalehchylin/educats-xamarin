@@ -1,5 +1,6 @@
 ﻿using System;
 using EduCATS.Helpers.Effects;
+using EduCATS.Pages.Statistics.Base.Views;
 using EduCATS.Pages.Today.Base.Views;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -35,6 +36,11 @@ namespace EduCATS.Pages.Main
 				createPage(new TodayPageView(),
 				CrossLocalization.Translate("main_today"),
 				Theme.Current.MainTodayIcon));
+
+			Children.Add(
+				createPage(new StatisticsPageView(),
+				CrossLocalization.Translate("main_statistics"),
+				Theme.Current.MainStatisticsIcon));
 		}
 
 		NavigationPage createPage(Page page, string title, string icon)

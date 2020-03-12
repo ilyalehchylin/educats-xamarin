@@ -75,6 +75,18 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		const string chosenSubjectIdKey = "CHOSEN_SUBJECT_ID";
+		static readonly int chosenSubjectIdDefault;
+
+		public static int ChosenSubjectId {
+			get {
+				return Preferences.Get(chosenSubjectIdKey, chosenSubjectIdDefault);
+			}
+			set {
+				Preferences.Set(chosenSubjectIdKey, value);
+			}
+		}
+
 		public static void ResetPrefs()
 		{
 			Preferences.Clear();

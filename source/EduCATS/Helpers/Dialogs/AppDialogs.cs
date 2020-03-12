@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Acr.UserDialogs;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using Nyxbull.Plugins.CrossLocalization;
@@ -8,20 +9,25 @@ namespace EduCATS.Helpers.Dialogs
 {
 	public class AppDialogs : IDialogs
 	{
+		/// <summary>
+		/// Property for getting <see cref="Application.Current.MainPage"/>.
+		/// </summary>
+		Page mainPage {
+			get {
+				return Application.Current.MainPage;
+			}
+		}
+
 		public async Task ShowError(string message)
 		{
-			await Application.Current.MainPage.DisplayAlert(
-				CrossLocalization.Translate("common_error"),
-				message,
-				CrossLocalization.Translate("common_ok"));
+			await mainPage.DisplayAlert(
+				CrossLocalization.Translate("common_error"), message, CrossLocalization.Translate("common_ok"));
 		}
 
 		public async Task ShowMessage(string title, string message)
 		{
-			await Application.Current.MainPage.DisplayAlert(
-				title,
-				message,
-				CrossLocalization.Translate("common_ok"));
+			await mainPage.DisplayAlert(
+				title, message, CrossLocalization.Translate("common_ok"));
 		}
 
 		public void ShowLoading()
@@ -37,6 +43,18 @@ namespace EduCATS.Helpers.Dialogs
 		public void HideLoading()
 		{
 			UserDialogs.Instance.HideLoading();
+		}
+
+		public async Task<string> ShowSheet(string title, List<string> buttonList)
+		{
+			if (buttonList == null) {
+				return null;
+			}
+
+			var buttons = buttonList.ToArray();
+
+			return await mainPage.DisplayActionSheet(
+				title, CrossLocalization.Translate("common_cancel"), null, buttons);
 		}
 	}
 }
