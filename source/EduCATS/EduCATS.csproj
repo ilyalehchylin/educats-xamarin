@@ -71,6 +71,7 @@
     <Folder Include="Pages\Statistics\Base\Views\" />
     <Folder Include="Pages\Statistics\Base\ViewModels\" />
     <Folder Include="Controls\SubjectsPickerView\" />
+    <Folder Include="Data\Models\Statistics\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

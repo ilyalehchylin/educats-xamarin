@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using EduCATS.Configuration;
 using EduCATS.Data;
+using EduCATS.Data.User;
 using EduCATS.Helpers.Pages;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
@@ -35,13 +36,24 @@ namespace EduCATS
 
 		async Task getProfileInfo()
 		{
+			if (!AppPrefs.IsLoggedIn) {
+				return;
+			}
+
 			var username = AppPrefs.UserLogin;
 
 			if (string.IsNullOrEmpty(username)) {
 				return;
 			}
 
-			await DataAccess.GetProfileInfo(AppPrefs.UserLogin);
+			var profile = await DataAccess.GetProfileInfo(username);
+
+			if (profile.IsError) {
+				return;
+			}
+
+			AppUserData.SetLoginData(AppPrefs.UserId, username);
+			AppUserData.SetProfileData(profile);
 		}
 	}
 }

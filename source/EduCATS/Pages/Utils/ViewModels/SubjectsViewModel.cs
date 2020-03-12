@@ -13,7 +13,7 @@ namespace EduCATS.Pages.Utils.ViewModels
 {
 	public class SubjectsViewModel : ViewModel
 	{
-		readonly IDialogs dialogService;
+		public readonly IDialogs DialogService;
 
 		public List<SubjectItemModel> CurrentSubjects { get; set; }
 		public SubjectItemModel CurrentSubject { get; set; }
@@ -23,8 +23,7 @@ namespace EduCATS.Pages.Utils.ViewModels
 
 		public SubjectsViewModel(IDialogs dialogService)
 		{
-			this.dialogService = dialogService;
-			Task.Run(async () => await setupData());
+			DialogService = dialogService;
 		}
 
 		string chosenSubject;
@@ -55,7 +54,7 @@ namespace EduCATS.Pages.Utils.ViewModels
 			}
 
 			var buttons = CurrentSubjects.Select(s => s.Name).ToList();
-			var name = await dialogService.ShowSheet(CrossLocalization.Translate("subjects_choose"), buttons);
+			var name = await DialogService.ShowSheet(CrossLocalization.Translate("subjects_choose"), buttons);
 
 			if (string.IsNullOrEmpty(name) ||
 				string.Compare(name, CrossLocalization.Translate("common_cancel")) == 0) {
@@ -69,7 +68,7 @@ namespace EduCATS.Pages.Utils.ViewModels
 			}
 		}
 
-		async Task setupData()
+		public async Task SetupSubjects()
 		{
 			var subjects = await getSubjects();
 
@@ -86,7 +85,7 @@ namespace EduCATS.Pages.Utils.ViewModels
 			var subjects = await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin);
 
 			if (subjects.IsError) {
-				await dialogService.ShowError(subjects.ErrorMessage);
+				await DialogService.ShowError(subjects.ErrorMessage);
 				return null;
 			}
 

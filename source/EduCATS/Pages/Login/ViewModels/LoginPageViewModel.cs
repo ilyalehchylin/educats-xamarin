@@ -152,6 +152,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		async Task profileRetrieved(UserProfileModel profile)
 		{
 			if (profile != null && !profile.IsError) {
+				AppPrefs.GroupId = profile.GroupId;
 				AppPrefs.IsLoggedIn = true;
 				navigationService.OpenMain();
 			} else if (profile != null && profile.IsError) {
@@ -195,12 +196,7 @@ namespace EduCATS.Pages.Login.ViewModels
 			var userProfile = await DataAccess.GetProfileInfo(username) as UserProfileModel;
 
 			if (userProfile != null) {
-				AppUserData.SetProfileData(
-					userProfile.GroupId,
-					userProfile.GroupName,
-					userProfile.UserType,
-					userProfile.Avatar,
-					userProfile.Name);
+				AppUserData.SetProfileData(userProfile);
 			}
 
 			return userProfile;

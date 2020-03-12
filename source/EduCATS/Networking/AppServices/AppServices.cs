@@ -44,6 +44,12 @@ namespace EduCATS.Networking.AppServices
 			return await AppServicesController.Request(Links.GetProfileInfoCalendar, body);
 		}
 
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetStatistics(int subjectId, int groupId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetStatistics}?subjectID={subjectId}&groupID={groupId}");
+		}
+
 		static string getUserLoginBody(string username)
 		{
 			var userLogin = new UserLoginModel {

@@ -28,5 +28,7 @@
 
 	"news_details_title": "News",
 
-	"subjects_choose": "Choose a subject"
+	"subjects_choose": "Choose a subject",
+
+	"statistics_marks_error_text": "Error occurred during retrieving statistics. Please try to refresh page or contact support."
 }

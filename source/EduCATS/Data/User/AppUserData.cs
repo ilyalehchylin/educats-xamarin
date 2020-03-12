@@ -1,4 +1,5 @@
-﻿using EduCATS.Helpers.Settings;
+﻿using EduCATS.Data.Models.User;
+using EduCATS.Helpers.Settings;
 
 namespace EduCATS.Data.User
 {
@@ -21,14 +22,18 @@ namespace EduCATS.Data.User
 			Username = username;
 		}
 
-		public static void SetProfileData(int groupId, string groupName, string userType, string avatar, string name)
+		public static void SetProfileData(UserProfileModel profile)
 		{
-			GroupId = groupId;
-			GroupName = groupName;
-			Avatar = avatar;
-			Name = name;
+			if (profile == null) {
+				return;
+			}
 
-			switch (userType) {
+			GroupId = profile.GroupId;
+			GroupName = profile.GroupName;
+			Avatar = profile.Avatar;
+			Name = profile.Name;
+
+			switch (profile.UserType) {
 				case "1":
 					UserType = UserTypeEnum.Professor;
 					break;

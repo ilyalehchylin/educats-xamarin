@@ -87,6 +87,18 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		const string groupIdKey = "USER_GROUP_ID";
+		static readonly int groupIdDefault = -1;
+
+		public static int GroupId {
+			get {
+				return Preferences.Get(groupIdKey, groupIdDefault);
+			}
+			set {
+				Preferences.Set(groupIdKey, value);
+			}
+		}
+
 		public static void ResetPrefs()
 		{
 			Preferences.Clear();

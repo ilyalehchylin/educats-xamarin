@@ -4,6 +4,7 @@ using EduCATS.Data.Caching;
 using EduCATS.Data.Models;
 using EduCATS.Data.Models.Calendar;
 using EduCATS.Data.Models.News;
+using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.Models.Subjects;
 using EduCATS.Data.Models.User;
 using EduCATS.Helpers.Json;
@@ -19,6 +20,7 @@ namespace EduCATS.Data
 		const string getNewsKey = "GET_NEWS_KEY";
 		const string getProfileInfoSubjectKey = "GET_PROFILE_INFO_SUBJECT_KEY";
 		const string getProfileInfoCalendarKey = "GET_PROFILE_INFO_CALENDAR_KEY";
+		const string getMarksKey = "GET_MARKS_KEY";
 
 		public static void ResetData()
 		{
@@ -122,6 +124,24 @@ namespace EduCATS.Data
 			}
 
 			return calendar;
+		}
+
+		public async static Task<StatisticsModel> GetStatistics(int subjectId, int groupId)
+		{
+			if (!checkConnectionEstablished()) {
+				var data = getDataFromCache(getMarksKey);
+				return JsonController<StatisticsModel>.ConvertJsonToObject(data);
+			}
+
+			var response = await AppServices.GetStatistics(subjectId, groupId);
+			var dataAccess = new DataAccess<StatisticsModel>();
+			var stats = dataAccess.GetAccess(response, getMarksKey);
+
+			if (stats == null) {
+				return getErrorObject("statistics_marks_error_text") as StatisticsModel;
+			}
+
+			return stats;
 		}
 
 		static bool checkConnectionEstablished()
