@@ -5,12 +5,13 @@ namespace EduCATS.Themes.Templates
 	public class DefaultTheme : ITheme
 	{
 		virtual public string CommonAppColor => "#27AAE1";
+		virtual public string CommonBlockColor => "#FFFFFF";
 
 		virtual public string AppBackgroundColor => "#F7F5F3";
 		virtual public string AppStatusBarBackgroundColor => CommonAppColor;
 		virtual public string AppNavigationBarBackgroundColor => "#FFFFFF";
 
-		virtual public string RoundedListViewBackgroundColor => "#FFFFFF";
+		virtual public string RoundedListViewBackgroundColor => CommonBlockColor;
 
 		virtual public string LoginBackground1Image => "image_background_1";
 		virtual public string LoginBackground2Image => "image_background_2";
@@ -44,5 +45,12 @@ namespace EduCATS.Themes.Templates
 		virtual public string TodayNotSelectedDateTextColor => "#000000";
 
 		virtual public string NewsTextColor => "#000000";
+
+		virtual public string StatisticsChartLabsColor => "#2A4D69";
+		virtual public string StatisticsChartTestsColor => "#4B86B4";
+		virtual public string StatisticsChartVisitingColor => "#ADCBE3";
+		virtual public string StatisticsExpandableTextColor => "#808080";
+		virtual public string StatisticsExpandIcon => "icon_expand";
+		virtual public string StatisticsCollapseIcon => "icon_collapse";
 	}
 }

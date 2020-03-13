@@ -140,6 +140,12 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.1.0.440</Version>
     </PackageReference>
+    <PackageReference Include="Microcharts">
+      <Version>0.7.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microcharts.Forms">
+      <Version>0.7.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -173,5 +179,11 @@
     <BundleResource Include="Resources\icon_close%401x.png" />
     <BundleResource Include="Resources\icon_close%402x.png" />
     <BundleResource Include="Resources\icon_close%403x.png" />
+    <BundleResource Include="Resources\icon_collapse%401x.png" />
+    <BundleResource Include="Resources\icon_collapse%402x.png" />
+    <BundleResource Include="Resources\icon_collapse%403x.png" />
+    <BundleResource Include="Resources\icon_expand%401x.png" />
+    <BundleResource Include="Resources\icon_expand%402x.png" />
+    <BundleResource Include="Resources\icon_expand%403x.png" />
   </ItemGroup>
 </Project>

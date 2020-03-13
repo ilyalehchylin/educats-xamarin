@@ -29,6 +29,16 @@
 	"news_details_title": "News",
 
 	"subjects_choose": "Choose a subject",
+	"subjects_identical_error": "There is more than one subject exists with the same name. Please contact support to resolve this issue.",
 
-	"statistics_marks_error_text": "Error occurred during retrieving statistics. Please try to refresh page or contact support."
+	"statistics_marks_error_text": "Error occurred during retrieving statistics. Please try to refresh page or contact support.",
+	"statistics_expand_chart_text": "More details",
+	"statistics_collapse_chart_text": "Hide",
+	"statistics_chart_average_labs": "Average laboratory works rating (top of the chart)",
+	"statistics_chart_average_tests": "Average tests rating (right side of the chart)",
+	"statistics_chart_average_visiting": "Average visiting rating (left side of the chart)",
+	"statistics_chart_not_enough_data": "Not enough data to display chart",
+	"statistics_page_labs_rating": "Laboratory works rating",
+	"statistics_page_labs_visiting": "Laboratory works visiting",
+	"statistics_page_lectures_visiting": "Lectures visiting"
 }

@@ -122,10 +122,16 @@ namespace EduCATS.Pages.Utils.ViewModels
 
 		bool setChosenSubject(string subjectName)
 		{
-			var subject = CurrentSubjects.SingleOrDefault(
-						s => string.Compare(s.Name, subjectName) == 0);
-
-			return setChosenSubject(subject);
+			try {
+				var subject = CurrentSubjects.SingleOrDefault(
+							s => string.Compare(s.Name, subjectName) == 0);
+				return setChosenSubject(subject);
+			} catch (InvalidOperationException) {
+				DialogService.ShowError(CrossLocalization.Translate("subjects_identical_error"));
+				return false;
+			} catch (Exception) {
+				return false;
+			}
 		}
 
 		bool setChosenSubject(SubjectItemModel subject)

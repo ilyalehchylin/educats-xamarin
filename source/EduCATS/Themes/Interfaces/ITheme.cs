@@ -3,6 +3,7 @@
 	public interface ITheme
 	{
 		string CommonAppColor { get; }
+		string CommonBlockColor { get; }
 
 		string AppStatusBarBackgroundColor { get; }
 		string AppBackgroundColor { get; }
@@ -42,5 +43,12 @@
 		string TodayNotSelectedDateTextColor { get; }
 
 		string NewsTextColor { get; }
+
+		string StatisticsChartLabsColor { get; }
+		string StatisticsChartTestsColor { get; }
+		string StatisticsChartVisitingColor { get; }
+		string StatisticsExpandableTextColor { get; }
+		string StatisticsExpandIcon { get; }
+		string StatisticsCollapseIcon { get; }
 	}
 }

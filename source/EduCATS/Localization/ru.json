@@ -29,6 +29,16 @@
     "news_details_title": "Новости",
 
     "subjects_choose": "Выберите предмет",
+    "subjects_identical_error": "Существует более одного предмета с таким именем. Пожалуйста, обратитест в службу поддержки для разрешения данной проблемы.",
 
-    "statistics_marks_error_text": "Произошла ошибка во время получения статистики. Пожалуйста, обновите страницу или обратитесь в службу поддержки."
+    "statistics_marks_error_text": "Произошла ошибка во время получения статистики. Пожалуйста, обновите страницу или обратитесь в службу поддержки.",
+    "statistics_expand_chart_text": "Подробнее",
+    "statistics_collapse_chart_text": "Скрыть",
+    "statistics_chart_average_labs": "Средняя оценка за лабораторные работы (верхняя часть графика)",
+    "statistics_chart_average_tests": "Средний оценка за тесты (правая часть графика)",
+    "statistics_chart_average_visiting": "Средний рейтинг посещаемости (левая часть графика)",
+    "statistics_chart_not_enough_data": "Недостаточно данных для отображения графика",
+    "statistics_page_labs_rating": "Оценки по лабораторным работам",
+    "statistics_page_labs_visiting": "Пропуски лабораторных работ",
+    "statistics_page_lectures_visiting": "Пропуски лекций"
 }
