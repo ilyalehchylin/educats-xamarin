@@ -4,6 +4,8 @@ using EduCATS.Data.Models.Statistics;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
+using EduCATS.Pages.Statistics.Enums;
+using EduCATS.Pages.Statistics.Results.Views;
 using EduCATS.Pages.Statistics.Students.Views;
 using EduCATS.Pages.Today.NewsDetails.Views;
 using EduCATS.Themes;
@@ -80,30 +82,17 @@ namespace EduCATS.Helpers.Pages
 		}
 
 		/// <summary>
-		/// Open page with rating for laboratory works.
+		/// Open page with detailed statistics by page type.
 		/// </summary>
+		/// <param name="userLogin">User's login (username)</param>
+		/// <param name="subjectId">Subject ID</param>
+		/// <param name="groupId">Group ID</param>
+		/// <param name="pageIndex">Page index (<see cref="StatisticsPageEnum"/>)</param>
 		/// <returns>Task</returns>
-		public async Task OpenLabsRatingStats()
+		public async Task OpenDetailedStatistics(string userLogin, int subjectId, int groupId, int pageIndex)
 		{
-
-		}
-
-		/// <summary>
-		/// Open page with laboratory works visiting statistics.
-		/// </summary>
-		/// <returns>Task</returns>
-		public async Task OpenLabsVisitingStats()
-		{
-
-		}
-
-		/// <summary>
-		/// Open page with lectures visiting statistics.
-		/// </summary>
-		/// <returns>Task</returns>
-		public async Task OpenLecturesVisitingStats()
-		{
-
+			await pushPageAsync(new StatisticsResultsPageView(
+				userLogin, subjectId, groupId, (StatisticsPageEnum)pageIndex));
 		}
 
 		/// <summary>

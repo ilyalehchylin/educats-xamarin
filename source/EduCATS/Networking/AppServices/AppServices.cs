@@ -55,6 +55,18 @@ namespace EduCATS.Networking.AppServices
 			return await AppServicesController.Request($"{Links.GetOnlyGroups}/{subjectId}");
 		}
 
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetLabs(int subjectId, int groupId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetLabs}?subjectID={subjectId}&groupID={groupId}");
+		}
+
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetLectures(int subjectId, int groupId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetLectures}?subjectID={subjectId}&groupID={groupId}");
+		}
+
 		static string getUserLoginBody(string username)
 		{
 			var userLogin = new UserLoginModel {

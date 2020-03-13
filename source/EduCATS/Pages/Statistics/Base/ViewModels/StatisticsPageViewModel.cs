@@ -217,22 +217,14 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				return;
 			}
 
-			openPageByType(pageType);
-		}
+			var user = students.SingleOrDefault(s => s.StudentId == AppPrefs.UserId);
 
-		void openPageByType(StatisticsPageEnum pageType)
-		{
-			switch (pageType) {
-				case StatisticsPageEnum.LabsRating:
-					navigationService.OpenLabsRatingStats();
-					return;
-				case StatisticsPageEnum.LabsVisiting:
-					navigationService.OpenLabsVisitingStats();
-					return;
-				default:
-					navigationService.OpenLecturesVisitingStats();
-					return;
+			if (user == null) {
+				return;
 			}
+
+			navigationService.OpenDetailedStatistics(
+				user.Login, CurrentSubject.Id, AppPrefs.GroupId, (int)pageType);
 		}
 
 		StatisticsPageEnum getPageToOpen(string pageString)

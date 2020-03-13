@@ -62,7 +62,7 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 				SetProperty(ref selectedItem, value);
 
 				if (selectedItem != null) {
-					// Open stats
+					openPage(selectedItem);
 				}
 			}
 		}
@@ -135,6 +135,18 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 		protected async Task executeRefreshCommand()
 		{
 			await getAndSetStudents();
+		}
+
+		void openPage(object selectedObject)
+		{
+			if (selectedObject == null || selectedObject.GetType() != typeof(StudentsPageModel)) {
+				return;
+			}
+
+			var studentModel = selectedObject as StudentsPageModel;
+
+			navigationService.OpenDetailedStatistics(
+				studentModel.Username, SubjectId, CurrentGroup.GroupId, pageIndex);
 		}
 	}
 }

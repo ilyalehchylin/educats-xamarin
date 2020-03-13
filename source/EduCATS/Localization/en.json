@@ -44,5 +44,9 @@
 
 	"groups_retieval_error": "Error occurred during retrieving groups. Please try to refresh page or contact support.",
 
-	"statistics_students_search_text": "Search students..."
+	"statistics_students_search_text": "Search students...",
+
+	"labs_retrieval_error": "Error occurred during retrieving laboratory works. Please try to refresh page or contact support.",
+
+	"lectures_retrieval_error": "Error occurred during retrieving lectures. Please try to refresh page or contact support."
 }

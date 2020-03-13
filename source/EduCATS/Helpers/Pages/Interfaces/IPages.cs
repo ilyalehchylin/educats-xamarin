@@ -11,8 +11,6 @@ namespace EduCATS.Helpers.Pages.Interfaces
 		void OpenMain();
 		Task OpenNewsDetails(string title, string body);
 		Task OpenStudentsListStats(int pageIndex, int subjectId, List<StatisticsStudentModel> students);
-		Task OpenLabsRatingStats();
-		Task OpenLabsVisitingStats();
-		Task OpenLecturesVisitingStats();
+		Task OpenDetailedStatistics(string userLogin, int subjectId, int groupId, int pageIndex);
 	}
 }

@@ -86,6 +86,13 @@
     <Folder Include="Controls\GroupsPickerView\" />
     <Folder Include="Data\Models\Groups\" />
     <Folder Include="Pages\Statistics\Students\Models\" />
+    <Folder Include="Pages\Statistics\Results\" />
+    <Folder Include="Pages\Statistics\Results\Views\" />
+    <Folder Include="Pages\Statistics\Results\ViewModels\" />
+    <Folder Include="Data\Models\Labs\" />
+    <Folder Include="Data\Models\Lectures\" />
+    <Folder Include="Pages\Statistics\Results\Models\" />
+    <Folder Include="Pages\Statistics\Results\Views\ViewCells\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />
