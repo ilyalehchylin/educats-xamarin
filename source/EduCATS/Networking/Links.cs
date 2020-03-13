@@ -8,5 +8,6 @@
 		public static string GetProfileInfoSubjects { get { return $"{Servers.Current}/Profile/GetProfileInfoSubjects"; } }
 		public static string GetProfileInfoCalendar { get { return $"{Servers.Current}/Profile/GetProfileInfoCalendar"; } }
 		public static string GetStatistics { get { return $"{Servers.Current}/Services/Labs/LabsService.svc/GetMarksV2"; } }
+		public static string GetOnlyGroups { get { return $"{Servers.Current}/Services/CoreService.svc/GetOnlyGroups"; } }
 	}
 }

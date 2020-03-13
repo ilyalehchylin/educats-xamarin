@@ -1,7 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using EduCATS.Data.Models.Statistics;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
+using EduCATS.Pages.Statistics.Students.Views;
 using EduCATS.Pages.Today.NewsDetails.Views;
 using EduCATS.Themes;
 using Xamarin.Forms;
@@ -64,6 +67,43 @@ namespace EduCATS.Helpers.Pages
 		public async Task OpenNewsDetails(string title, string body)
 		{
 			await pushModalPageAsync(new NewsDetailsPageView(title, body));
+		}
+
+		/// <summary>
+		/// Open page with students.
+		/// </summary>
+		/// <param name="pageIndex">Index of a page to open after choosing a student.</param>
+		/// <returns>Task</returns>
+		public async Task OpenStudentsListStats(int pageIndex, int subjectId, List<StatisticsStudentModel> students)
+		{
+			await pushPageAsync(new StudentsPageView(pageIndex, subjectId, students));
+		}
+
+		/// <summary>
+		/// Open page with rating for laboratory works.
+		/// </summary>
+		/// <returns>Task</returns>
+		public async Task OpenLabsRatingStats()
+		{
+
+		}
+
+		/// <summary>
+		/// Open page with laboratory works visiting statistics.
+		/// </summary>
+		/// <returns>Task</returns>
+		public async Task OpenLabsVisitingStats()
+		{
+
+		}
+
+		/// <summary>
+		/// Open page with lectures visiting statistics.
+		/// </summary>
+		/// <returns>Task</returns>
+		public async Task OpenLecturesVisitingStats()
+		{
+
 		}
 
 		/// <summary>

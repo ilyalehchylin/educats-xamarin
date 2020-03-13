@@ -50,6 +50,11 @@ namespace EduCATS.Networking.AppServices
 				$"{Links.GetStatistics}?subjectID={subjectId}&groupID={groupId}");
 		}
 
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetOnlyGroups(int subjectId)
+		{
+			return await AppServicesController.Request($"{Links.GetOnlyGroups}/{subjectId}");
+		}
+
 		static string getUserLoginBody(string username)
 		{
 			var userLogin = new UserLoginModel {

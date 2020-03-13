@@ -99,6 +99,18 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		const string chosenGroupIdKey = "CHOSEN_GROUP_ID";
+		static readonly int chosenGroupIdDefault;
+
+		public static int ChosenGroupId {
+			get {
+				return Preferences.Get(chosenGroupIdKey, chosenGroupIdDefault);
+			}
+			set {
+				Preferences.Set(chosenGroupIdKey, value);
+			}
+		}
+
 		public static void ResetPrefs()
 		{
 			Preferences.Clear();

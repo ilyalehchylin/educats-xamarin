@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EduCATS.Data.Caching;
 using EduCATS.Data.Models;
 using EduCATS.Data.Models.Calendar;
+using EduCATS.Data.Models.Groups;
 using EduCATS.Data.Models.News;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.Models.Subjects;
@@ -21,6 +22,7 @@ namespace EduCATS.Data
 		const string getProfileInfoSubjectKey = "GET_PROFILE_INFO_SUBJECT_KEY";
 		const string getProfileInfoCalendarKey = "GET_PROFILE_INFO_CALENDAR_KEY";
 		const string getMarksKey = "GET_MARKS_KEY";
+		const string getOnlyGroupsKey = "GET_ONLY_GROUPS_KEY";
 
 		public static void ResetData()
 		{
@@ -139,6 +141,24 @@ namespace EduCATS.Data
 
 			if (stats == null) {
 				return getErrorObject("statistics_marks_error_text") as StatisticsModel;
+			}
+
+			return stats;
+		}
+
+		public async static Task<GroupModel> GetOnlyGroups(int subjectId)
+		{
+			if (!checkConnectionEstablished()) {
+				var data = getDataFromCache(getOnlyGroupsKey);
+				return JsonController<GroupModel>.ConvertJsonToObject(data);
+			}
+
+			var response = await AppServices.GetOnlyGroups(subjectId);
+			var dataAccess = new DataAccess<GroupModel>();
+			var stats = dataAccess.GetAccess(response, getOnlyGroupsKey);
+
+			if (stats == null) {
+				return getErrorObject("groups_retieval_error") as GroupModel;
 			}
 
 			return stats;

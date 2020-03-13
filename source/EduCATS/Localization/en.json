@@ -40,5 +40,9 @@
 	"statistics_chart_not_enough_data": "Not enough data to display chart",
 	"statistics_page_labs_rating": "Laboratory works rating",
 	"statistics_page_labs_visiting": "Laboratory works visiting",
-	"statistics_page_lectures_visiting": "Lectures visiting"
+	"statistics_page_lectures_visiting": "Lectures visiting",
+
+	"groups_retieval_error": "Error occurred during retrieving groups. Please try to refresh page or contact support.",
+
+	"statistics_students_search_text": "Search students..."
 }

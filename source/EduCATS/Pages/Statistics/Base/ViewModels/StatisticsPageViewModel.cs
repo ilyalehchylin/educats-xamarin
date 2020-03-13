@@ -3,10 +3,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models.Statistics;
+using EduCATS.Data.User;
 using EduCATS.Helpers.Dialogs.Interfaces;
+using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Rating;
 using EduCATS.Helpers.Settings;
 using EduCATS.Pages.Statistics.Base.Models;
+using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Utils.ViewModels;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
@@ -15,8 +18,14 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 {
 	public class StatisticsPageViewModel : SubjectsViewModel
 	{
-		public StatisticsPageViewModel(IDialogs dialogService) : base(dialogService)
+		readonly IPages navigationService;
+
+		List<StatisticsStudentModel> students;
+
+		public StatisticsPageViewModel(
+			IDialogs dialogService, IPages navigationService) : base(dialogService)
 		{
+			this.navigationService = navigationService;
 			setPagesList();
 			setCollapsedDetails();
 
@@ -79,7 +88,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				SetProperty(ref selectedItem, value);
 
 				if (selectedItem != null) {
-					// open page
+					openPage(selectedItem);
 				}
 			}
 		}
@@ -125,6 +134,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				var currentStudentStatistics = studentsStatistics.SingleOrDefault(
 					s => s.StudentId == AppPrefs.UserId);
 				setChartData(currentStudentStatistics);
+				students = studentsStatistics;
 			}
 		}
 
@@ -191,6 +201,52 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			IsEnoughDetails = !isNotEnough;
 			IsNotEnoughDetails = isNotEnough;
+		}
+
+		void openPage(object selectedObject)
+		{
+			if (selectedObject == null || selectedObject.GetType() != typeof(StatisticsPageModel)) {
+				return;
+			}
+
+			var pageModel = selectedObject as StatisticsPageModel;
+			var pageType = getPageToOpen(pageModel.Title);
+
+			if (AppUserData.UserType ==  UserTypeEnum.Professor) {
+				navigationService.OpenStudentsListStats((int)pageType, CurrentSubject.Id, students);
+				return;
+			}
+
+			openPageByType(pageType);
+		}
+
+		void openPageByType(StatisticsPageEnum pageType)
+		{
+			switch (pageType) {
+				case StatisticsPageEnum.LabsRating:
+					navigationService.OpenLabsRatingStats();
+					return;
+				case StatisticsPageEnum.LabsVisiting:
+					navigationService.OpenLabsVisitingStats();
+					return;
+				default:
+					navigationService.OpenLecturesVisitingStats();
+					return;
+			}
+		}
+
+		StatisticsPageEnum getPageToOpen(string pageString)
+		{
+			var labsRatingString = CrossLocalization.Translate("statistics_page_labs_rating");
+			var labsVisitingString = CrossLocalization.Translate("statistics_page_labs_visiting");
+
+			if (pageString.Equals(labsRatingString)) {
+				return StatisticsPageEnum.LabsRating;
+			} else if (pageString.Equals(labsVisitingString)) {
+				return StatisticsPageEnum.LabsVisiting;
+			} else {
+				return StatisticsPageEnum.LecturesVisiting;
+			}
 		}
 	}
 }

@@ -78,6 +78,14 @@
     <Folder Include="Helpers\Rating\" />
     <Folder Include="Pages\Statistics\Base\Views\ViewCells\" />
     <Folder Include="Pages\Statistics\Base\Models\" />
+    <Folder Include="Pages\Statistics\Enums\" />
+    <Folder Include="Pages\Statistics\Students\" />
+    <Folder Include="Pages\Statistics\Students\Views\" />
+    <Folder Include="Pages\Statistics\Students\ViewModels\" />
+    <Folder Include="Pages\Statistics\Students\Views\ViewCells\" />
+    <Folder Include="Controls\GroupsPickerView\" />
+    <Folder Include="Data\Models\Groups\" />
+    <Folder Include="Pages\Statistics\Students\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

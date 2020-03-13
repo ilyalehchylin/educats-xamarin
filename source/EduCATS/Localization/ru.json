@@ -40,5 +40,9 @@
     "statistics_chart_not_enough_data": "Недостаточно данных для отображения графика",
     "statistics_page_labs_rating": "Оценки по лабораторным работам",
     "statistics_page_labs_visiting": "Пропуски лабораторных работ",
-    "statistics_page_lectures_visiting": "Пропуски лекций"
+    "statistics_page_lectures_visiting": "Пропуски лекций",
+
+    "groups_retieval_error": "Произошла ошибка во время получения списка групп. Пожалуйста, обновите страницу или обратитесь в службу поддержки.",
+
+    "statistics_students_search_text": "Поиск студентов..."
 }
