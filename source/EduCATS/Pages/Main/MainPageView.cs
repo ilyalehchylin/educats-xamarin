@@ -25,6 +25,7 @@ namespace EduCATS.Pages.Main
 
 		void setPageDetails()
 		{
+			BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor);
 			SelectedTabColor = Color.FromHex(Theme.Current.MainSelectedTabColor);
 			UnselectedTabColor = Color.FromHex(Theme.Current.MainUnselectedTabColor);
 			HeightRequest = tabHeight;
@@ -38,7 +39,7 @@ namespace EduCATS.Pages.Main
 				Theme.Current.MainTodayIcon));
 
 			Children.Add(
-				createPage(new StatisticsPageView(),
+				createPage(new StatsPageView(),
 				CrossLocalization.Translate("main_statistics"),
 				Theme.Current.MainStatisticsIcon));
 		}

@@ -3,9 +3,9 @@ using Xamarin.Forms;
 
 namespace EduCATS.Pages.Statistics.Base.Views.ViewCells
 {
-	public class StatisticsPageViewCell : ViewCell
+	public class StatsPageViewCell : ViewCell
 	{
-		public StatisticsPageViewCell()
+		public StatsPageViewCell()
 		{
 			var menuLabel = new Label();
 			menuLabel.SetBinding(Label.TextProperty, "Title");

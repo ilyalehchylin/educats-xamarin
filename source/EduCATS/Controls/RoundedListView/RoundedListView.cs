@@ -13,6 +13,8 @@ namespace EduCATS.Controls.RoundedListView
 			HasUnevenRows = true;
 			SeparatorVisibility = SeparatorVisibility.None;
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
+			HorizontalScrollBarVisibility = ScrollBarVisibility.Never;
+			VerticalScrollBarVisibility = ScrollBarVisibility.Never;
 			ItemTemplate = templateSelector;
 
 			var headerGrid = new Grid {

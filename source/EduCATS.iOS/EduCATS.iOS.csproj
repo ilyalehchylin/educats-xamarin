@@ -185,5 +185,11 @@
     <BundleResource Include="Resources\icon_expand%401x.png" />
     <BundleResource Include="Resources\icon_expand%402x.png" />
     <BundleResource Include="Resources\icon_expand%403x.png" />
+    <BundleResource Include="Resources\icon_calendar%401x.png" />
+    <BundleResource Include="Resources\icon_calendar%402x.png" />
+    <BundleResource Include="Resources\icon_calendar%403x.png" />
+    <BundleResource Include="Resources\icon_comment%401x.png" />
+    <BundleResource Include="Resources\icon_comment%402x.png" />
+    <BundleResource Include="Resources\icon_comment%403x.png" />
   </ItemGroup>
 </Project>

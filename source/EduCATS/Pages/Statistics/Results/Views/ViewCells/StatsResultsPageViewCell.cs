@@ -1,15 +1,20 @@
 ﻿using System.Collections.Generic;
+using EduCATS.Themes;
 using FFImageLoading.Forms;
 using FFImageLoading.Transformations;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 {
-	public class StatisticsResultsPageViewCell : ViewCell
+	public class StatsResultsPageViewCell : ViewCell
 	{
-		public StatisticsResultsPageViewCell()
+		const double iconSize = 20;
+
+		public StatsResultsPageViewCell()
 		{
 			var titleLabel = new Label {
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor)
 			};
 
 			titleLabel.SetBinding(Label.TextProperty, "Title");
@@ -17,13 +22,13 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 			var dateIcon = new CachedImage {
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				Source = ImageSource.FromFile("ic_calendar"),
-				HeightRequest = 20,
-				WidthRequest = 20,
+				Source = ImageSource.FromFile(Theme.Current.StatisticsCalendarIcon),
+				HeightRequest = iconSize,
+				WidthRequest = iconSize,
 				Transformations = new List<FFImageLoading.Work.ITransformation> {
 					new TintTransformation {
 						EnableSolidColor = true,
-						HexColor = "#cccac9"
+						HexColor = Theme.Current.StatisticsDetailsColor
 					}
 				}
 			};
@@ -31,7 +36,7 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			var dateLabel = new Label {
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				TextColor = Color.Gray
+				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsColor)
 			};
 
 			dateLabel.SetBinding(Label.TextProperty, "Date");
@@ -49,13 +54,13 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 			var commentIcon = new CachedImage {
 				VerticalOptions = LayoutOptions.StartAndExpand,
-				Source = ImageSource.FromFile("ic_comment"),
-				HeightRequest = 20,
-				WidthRequest = 20,
+				Source = ImageSource.FromFile(Theme.Current.StatisticsCommentIcon),
+				HeightRequest = iconSize,
+				WidthRequest = iconSize,
 				Transformations = new List<FFImageLoading.Work.ITransformation> {
 					new TintTransformation {
 						EnableSolidColor = true,
-						HexColor = "#cccac9"
+						HexColor = Theme.Current.StatisticsDetailsColor
 					}
 				}
 			};
@@ -63,7 +68,7 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			var commentLabel = new Label {
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-				TextColor = Color.Gray
+				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsColor)
 			};
 
 			commentLabel.SetBinding(Label.TextProperty, "Comment");
@@ -79,7 +84,7 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 			commentLayout.SetBinding(VisualElement.IsVisibleProperty, "IsComment");
 
-			var leftLayout = new StackLayout {
+			var infoLayout = new StackLayout {
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Spacing = 10,
 				Children = {
@@ -90,9 +95,9 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			};
 
 			var resultLabel = new Label {
-				TextColor = Color.Gray,
+				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsResultsColor),
 				HorizontalOptions = LayoutOptions.EndAndExpand,
-				FontAttributes = FontAttributes.Bold,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
 			};
 
@@ -101,20 +106,26 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			var gridLayout = new Grid {
 				Padding = new Thickness(15),
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				BackgroundColor = Color.White,
-				RowDefinitions = {
-					new RowDefinition { Height = new GridLength(1, GridUnitType.Star) }
-				},
 				ColumnDefinitions = {
 					new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) },
 					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
 				}
 			};
 
-			gridLayout.Children.Add(leftLayout, 0, 0);
+			gridLayout.Children.Add(infoLayout, 0, 0);
 			gridLayout.Children.Add(resultLabel, 1, 0);
 
-			View = gridLayout;
+			View = new StackLayout {
+				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
+				Children = {
+					gridLayout,
+					new BoxView {
+						Color = Color.FromHex(Theme.Current.StatisticsDetailsSeparatorColor),
+						HeightRequest = 1,
+						HorizontalOptions = LayoutOptions.FillAndExpand
+					}
+				}
+			};
 		}
 	}
 }

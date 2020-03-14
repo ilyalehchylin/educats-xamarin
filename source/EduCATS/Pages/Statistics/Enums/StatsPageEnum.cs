@@ -1,6 +1,6 @@
 ﻿namespace EduCATS.Pages.Statistics.Enums
 {
-	public enum StatisticsPageEnum
+	public enum StatsPageEnum
 	{
 		LabsRating = 0,
 		LabsVisiting = 1,

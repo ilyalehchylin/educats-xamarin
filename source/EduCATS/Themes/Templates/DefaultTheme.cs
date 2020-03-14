@@ -49,8 +49,16 @@ namespace EduCATS.Themes.Templates
 		virtual public string StatisticsChartLabsColor => "#2A4D69";
 		virtual public string StatisticsChartTestsColor => "#4B86B4";
 		virtual public string StatisticsChartVisitingColor => "#ADCBE3";
+		virtual public string StatisticsBoxTextColor => "#FFFFFF";
 		virtual public string StatisticsExpandableTextColor => "#808080";
+		virtual public string StatisticsDetailsTitleColor => "#000000";
+		virtual public string StatisticsDetailsColor => "#808080";
+		virtual public string StatisticsDetailsSeparatorColor => "#FCFAF8";
+		virtual public string StatisticsDetailsResultsColor => CommonAppColor;
+		virtual public string StatisticsDetailsNameColor => "#000000";
 		virtual public string StatisticsExpandIcon => "icon_expand";
 		virtual public string StatisticsCollapseIcon => "icon_collapse";
+		virtual public string StatisticsCalendarIcon => "icon_calendar";
+		virtual public string StatisticsCommentIcon => "icon_comment";
 	}
 }

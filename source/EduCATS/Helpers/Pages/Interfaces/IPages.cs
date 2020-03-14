@@ -10,7 +10,7 @@ namespace EduCATS.Helpers.Pages.Interfaces
 		void OpenLogin();
 		void OpenMain();
 		Task OpenNewsDetails(string title, string body);
-		Task OpenStudentsListStats(int pageIndex, int subjectId, List<StatisticsStudentModel> students);
-		Task OpenDetailedStatistics(string userLogin, int subjectId, int groupId, int pageIndex);
+		Task OpenStudentsListStats(int pageIndex, int subjectId, List<StatisticsStudentModel> students, string title);
+		Task OpenDetailedStatistics(string userLogin, int subjectId, int groupId, int pageIndex, string title, string name = null);
 	}
 }

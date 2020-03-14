@@ -5,8 +5,10 @@ using EduCATS.Data;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Students.Models;
 using EduCATS.Pages.Utils.ViewModels;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Statistics.Students.ViewModels
@@ -143,10 +145,22 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 				return;
 			}
 
-			var studentModel = selectedObject as StudentsPageModel;
-
+			var student = selectedObject as StudentsPageModel;
+			var title = getTitle((StatsPageEnum)pageIndex);
 			navigationService.OpenDetailedStatistics(
-				studentModel.Username, SubjectId, CurrentGroup.GroupId, pageIndex);
+				student.Username, SubjectId, CurrentGroup.GroupId, pageIndex, title, student.Name);
+		}
+
+		string getTitle(StatsPageEnum pageType)
+		{
+			switch (pageType) {
+				case StatsPageEnum.LabsRating:
+					return CrossLocalization.Translate("statistics_page_labs_rating");
+				case StatsPageEnum.LabsVisiting:
+					return CrossLocalization.Translate("statistics_page_labs_visiting");
+				default:
+					return CrossLocalization.Translate("statistics_page_lectures_visiting");
+			}
 		}
 	}
 }

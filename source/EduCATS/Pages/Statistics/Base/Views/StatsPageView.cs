@@ -16,14 +16,16 @@ using Xamarin.Forms;
 
 namespace EduCATS.Pages.Statistics.Base.Views
 {
-	public class StatisticsPageView : ContentPage
+	public class StatsPageView : ContentPage
 	{
-		public StatisticsPageView()
+		const double _boxSize = 30;
+
+		public StatsPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = new Thickness(10);
-			BindingContext = new StatisticsPageViewModel(new AppDialogs(), new AppPages());
+			BindingContext = new StatsPageViewModel(new AppDialogs(), new AppPages());
 			createViews();
 		}
 
@@ -37,7 +39,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		RoundedListView createRoundedList(View header)
 		{
 			var templateSelector = new RoundedListTemplateSelector {
-				NavigationTemplate = new DataTemplate(typeof(StatisticsPageViewCell))
+				NavigationTemplate = new DataTemplate(typeof(StatsPageViewCell))
 			};
 
 			var roundedListView = new RoundedListView(templateSelector, header) {
@@ -56,6 +58,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		{
 			var subjectsView = new SubjectsPickerView();
 			var radarChartView = createFrameWithChartView();
+			radarChartView.SetBinding(IsVisibleProperty, "IsStudent");
 
 			return new StackLayout {
 				Padding = new Thickness(0, 0, 0, 10),
@@ -94,31 +97,39 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 		StackLayout createHiddenDetailsView()
 		{
-			var averageLabsView = createStatisticsView(
+			var avgLabsView = createStatisticsView(
 				CrossLocalization.Translate("statistics_chart_average_labs"),
-				Color.FromHex(Theme.Current.StatisticsChartLabsColor));
-			averageLabsView.SetBinding(IsVisibleProperty, "IsEnoughDetails");
+				Color.FromHex(Theme.Current.StatisticsChartLabsColor),
+				"AverageLabs");
 
-			var averageTestsView = createStatisticsView(
+			var avgTestsView = createStatisticsView(
 				CrossLocalization.Translate("statistics_chart_average_tests"),
-				Color.FromHex(Theme.Current.StatisticsChartTestsColor));
-			averageTestsView.SetBinding(IsVisibleProperty, "IsEnoughDetails");
+				Color.FromHex(Theme.Current.StatisticsChartTestsColor),
+				"AverageTests");
 
-			var averageVisitingView = createStatisticsView(
-				CrossLocalization.Translate("statistics_chart_average_visiting"),
-				Color.FromHex(Theme.Current.StatisticsChartVisitingColor));
-			averageVisitingView.SetBinding(IsVisibleProperty, "IsEnoughDetails");
+			var avgRatingView = createStatisticsView(
+				CrossLocalization.Translate("statistics_chart_rating"),
+				Color.FromHex(Theme.Current.StatisticsChartVisitingColor),
+				"Rating");
+
+
+			var avgStatsLayout = new StackLayout {
+				Children = {
+					avgLabsView, avgTestsView, avgRatingView
+				}
+			};
+
+			avgStatsLayout.SetBinding(IsVisibleProperty, "IsEnoughDetails");
 
 			var notEnoughDataLabel = createStatisticsLabel(
-				CrossLocalization.Translate("statistics_chart_not_enough_data"));
+				CrossLocalization.Translate("statistics_chart_not_enough_data"), true);
+
 			notEnoughDataLabel.SetBinding(IsVisibleProperty, "IsNotEnoughDetails");
 
 			var hiddenDetailsView = new StackLayout {
 				Padding = new Thickness(0, 10, 0, 0),
 				Children = {
-					averageLabsView,
-					averageTestsView,
-					averageVisitingView,
+					avgStatsLayout,
 					notEnoughDataLabel
 				}
 			};
@@ -127,38 +138,59 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			return hiddenDetailsView;
 		}
 
-		StackLayout createStatisticsView(string text, Color color)
+		Grid createStatisticsView(string text, Color color, string property)
 		{
-			var boxView = createStatisticsBoxView(color);
-			var label = createStatisticsLabel(text);
+			var statsBoxView = createStatisticsBoxView(color, property);
+			var statsLabel = createStatisticsLabel(text);
+
+			var grid = new Grid {
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+				ColumnSpacing = 10,
+				ColumnDefinitions = {
+					new ColumnDefinition { Width = _boxSize },
+					new ColumnDefinition { Width = new GridLength(3, GridUnitType.Star) }
+				}
+			};
+
+			grid.Children.Add(statsBoxView, 0, 0);
+			grid.Children.Add(statsLabel, 1, 0);
+			return grid;
+		}
+
+		StackLayout createStatisticsBoxView(Color color, string property)
+		{
+			var ratingLabel = new Label {
+				TextColor = Color.FromHex(Theme.Current.StatisticsBoxTextColor),
+				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand
+			};
+
+			ratingLabel.SetBinding(Label.TextProperty, property);
 
 			return new StackLayout {
-				Orientation = StackOrientation.Horizontal,
-				Spacing = 10,
+				HeightRequest = _boxSize,
+				BackgroundColor = color,
 				Children = {
-					boxView,
-					label
+					ratingLabel
 				}
 			};
 		}
 
-		BoxView createStatisticsBoxView(Color color)
+		Label createStatisticsLabel(string text, bool isCenteredHorizontally = false)
 		{
-			return new BoxView {
-				Color = color,
-				WidthRequest = 30,
-				HeightRequest = 30,
-				VerticalOptions = LayoutOptions.CenterAndExpand
-			};
-		}
-
-		Label createStatisticsLabel(string text)
-		{
-			return new Label {
+			var statsLabel = new Label {
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Text = text
 			};
+
+			if (isCenteredHorizontally) {
+				statsLabel.HorizontalOptions = LayoutOptions.CenterAndExpand;
+				statsLabel.HorizontalTextAlignment = TextAlignment.Center;
+			}
+
+			return statsLabel;
 		}
 
 		StackLayout createExpandableView(bool isExpand = true)

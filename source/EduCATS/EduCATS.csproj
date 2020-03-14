@@ -75,7 +75,6 @@
     <Folder Include="Controls\SubjectsPickerView\" />
     <Folder Include="Data\Models\Statistics\" />
     <Folder Include="Helpers\Charts\" />
-    <Folder Include="Helpers\Rating\" />
     <Folder Include="Pages\Statistics\Base\Views\ViewCells\" />
     <Folder Include="Pages\Statistics\Base\Models\" />
     <Folder Include="Pages\Statistics\Enums\" />
@@ -93,6 +92,8 @@
     <Folder Include="Data\Models\Lectures\" />
     <Folder Include="Pages\Statistics\Results\Models\" />
     <Folder Include="Pages\Statistics\Results\Views\ViewCells\" />
+    <Folder Include="Constants\" />
+    <Folder Include="Helpers\Converters\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

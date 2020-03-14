@@ -47,8 +47,16 @@
 		string StatisticsChartLabsColor { get; }
 		string StatisticsChartTestsColor { get; }
 		string StatisticsChartVisitingColor { get; }
+		string StatisticsBoxTextColor { get; }
 		string StatisticsExpandableTextColor { get; }
+		string StatisticsDetailsTitleColor { get; }
+		string StatisticsDetailsColor { get; }
+		string StatisticsDetailsSeparatorColor { get; }
+		string StatisticsDetailsResultsColor { get; }
+		string StatisticsDetailsNameColor { get; }
 		string StatisticsExpandIcon { get; }
 		string StatisticsCollapseIcon { get; }
+		string StatisticsCalendarIcon { get; }
+		string StatisticsCommentIcon { get; }
 	}
 }

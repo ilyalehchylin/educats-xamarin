@@ -76,9 +76,10 @@ namespace EduCATS.Helpers.Pages
 		/// </summary>
 		/// <param name="pageIndex">Index of a page to open after choosing a student.</param>
 		/// <returns>Task</returns>
-		public async Task OpenStudentsListStats(int pageIndex, int subjectId, List<StatisticsStudentModel> students)
+		public async Task OpenStudentsListStats(
+			int pageIndex, int subjectId, List<StatisticsStudentModel> students, string title)
 		{
-			await pushPageAsync(new StudentsPageView(pageIndex, subjectId, students));
+			await pushPageAsync(new StudentsPageView(pageIndex, subjectId, students), title);
 		}
 
 		/// <summary>
@@ -87,12 +88,15 @@ namespace EduCATS.Helpers.Pages
 		/// <param name="userLogin">User's login (username)</param>
 		/// <param name="subjectId">Subject ID</param>
 		/// <param name="groupId">Group ID</param>
-		/// <param name="pageIndex">Page index (<see cref="StatisticsPageEnum"/>)</param>
+		/// <param name="pageIndex">Page index (<see cref="StatsPageEnum"/>)</param>
+		/// <param name="title">Page title</param>
+		/// <param name="name">Student's name.</param>
 		/// <returns>Task</returns>
-		public async Task OpenDetailedStatistics(string userLogin, int subjectId, int groupId, int pageIndex)
+		public async Task OpenDetailedStatistics(
+			string userLogin, int subjectId, int groupId, int pageIndex, string title, string name = null)
 		{
-			await pushPageAsync(new StatisticsResultsPageView(
-				userLogin, subjectId, groupId, (StatisticsPageEnum)pageIndex));
+			await pushPageAsync(new StatsResultsPageView(
+				userLogin, subjectId, groupId, (StatsPageEnum)pageIndex, name), title);
 		}
 
 		/// <summary>
@@ -108,10 +112,12 @@ namespace EduCATS.Helpers.Pages
 		/// Push a page to existing navigation stack.
 		/// </summary>
 		/// <param name="newPage">Page to push.</param>
+		/// <param name="title">Page title.</param>
 		/// <returns>Task</returns>
-		async Task pushPageAsync(Page newPage)
+		async Task pushPageAsync(Page newPage, string title = null)
 		{
-			await mainPage.Navigation.PushAsync(getNavigationPage(newPage));
+			await mainPage.Navigation.PushAsync(
+				getNavigationPage(newPage, title));
 		}
 
 		/// <summary>
@@ -146,10 +152,12 @@ namespace EduCATS.Helpers.Pages
 		/// Converts <see cref="Page"/> to <see cref="NavigationPage"/>.
 		/// </summary>
 		/// <param name="page">Page to convert.</param>
+		/// <param name="title">Page title.</param>
 		/// <returns>Task</returns>
-		NavigationPage getNavigationPage(Page page)
+		NavigationPage getNavigationPage(Page page, string title = null)
 		{
 			return new NavigationPage(page) {
+				Title = title,
 				BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
 				BarTextColor = Color.FromHex(Theme.Current.CommonAppColor)
 			};

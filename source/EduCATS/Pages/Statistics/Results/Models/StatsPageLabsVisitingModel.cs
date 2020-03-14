@@ -3,9 +3,9 @@ using EduCATS.Controls.RoundedListView.Interfaces;
 
 namespace EduCATS.Pages.Statistics.Results.Models
 {
-	public class StatisticsResultsPageLabsVisitingModel : IRoundedListType
+	public class StatsPageLabsVisitingModel : IRoundedListType
 	{
-		public StatisticsResultsPageLabsVisitingModel(int protectionLabId, string date)
+		public StatsPageLabsVisitingModel(int protectionLabId, string date)
 		{
 			ProtectionLabId = protectionLabId;
 			Date = date;

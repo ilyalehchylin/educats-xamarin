@@ -7,7 +7,7 @@ namespace EduCATS.Helpers.Settings
 	public static class AppPrefs
 	{
 		const string languageCodeKey = "APP_LANG_CODE";
-		static readonly string languageCodeDefault = Languages.EN.LangCode;
+		static readonly string languageCodeDefault = Languages.SYSTEM.LangCode;
 
 		public static string LanguageCode {
 			get {

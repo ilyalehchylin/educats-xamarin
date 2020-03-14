@@ -3,9 +3,9 @@ using EduCATS.Controls.RoundedListView.Interfaces;
 
 namespace EduCATS.Pages.Statistics.Results.Models
 {
-	public class StatisticsResultsPageLabsMarkModel : IRoundedListType
+	public class StatsPageLabsRatingModel : IRoundedListType
 	{
-		public StatisticsResultsPageLabsMarkModel(int labId, string shortName, string theme)
+		public StatsPageLabsRatingModel(int labId, string shortName, string theme)
 		{
 			LabId = labId;
 			ShortName = shortName;
