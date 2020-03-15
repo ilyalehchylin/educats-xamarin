@@ -93,6 +93,7 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		void setStudents(List<StatisticsStudentModel> studentsStatistics)
 		{
+			// TODO: error handling
 			var students = studentsStatistics?.Select(s => new StudentsPageModel(s.Login, s.Name));
 
 			if (students == null) {

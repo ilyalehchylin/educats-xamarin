@@ -59,6 +59,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getData()
 		{
+			// TODO: error handling
 			IsLoading = true;
 
 			switch (_statisticsPage) {

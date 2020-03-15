@@ -11,5 +11,6 @@ namespace EduCATS.Helpers.Dialogs.Interfaces
 		void ShowLoading(string message);
 		void HideLoading();
 		Task<string> ShowSheet(string title, List<string> buttons);
+		Task<bool> ShowConfirmationMessage(string title, string message);
 	}
 }

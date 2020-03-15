@@ -1,5 +1,7 @@
 ﻿{
 	"common_ok": "OK",
+	"common_no": "No",
+	"common_yes": "Yes",
 	"common_cancel": "Cancel",
 	"common_error": "Error",
 	"common_loading": "Loading...",
@@ -55,5 +57,9 @@
 	"learning_card_files": "Files",
 	"learning_card_adaptive": "Adaptive learning",
 
-	"testing_get_tests_error": "Error occurred during retrieving tests. Please try to refresh page or contact support."
+	"testing_get_tests_error": "Error occurred during retrieving tests. Please try to refresh page or contact support.",
+	"testing_knowledge_control": "Tests for knowledge control",
+	"testing_self_study": "Tests for self-study",
+	"testing_start_test_title": "Do you want to start the test?",
+	"testing_start_test_description": "A timer will start after confirmation. Every question without an answer will become wrong after timer expiration."
 }

@@ -7,6 +7,7 @@ using EduCATS.Pages.Main;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Views;
 using EduCATS.Pages.Statistics.Students.Views;
+using EduCATS.Pages.Testing.Base.Views;
 using EduCATS.Pages.Today.NewsDetails.Views;
 using EduCATS.Themes;
 using Xamarin.Forms;
@@ -97,6 +98,16 @@ namespace EduCATS.Helpers.Pages
 		{
 			await pushPageAsync(new StatsResultsPageView(
 				userLogin, subjectId, groupId, (StatsPageEnum)pageIndex, name), title);
+		}
+
+		/// <summary>
+		/// Open base testing page.
+		/// </summary>
+		/// <param name="title">Page title</param>
+		/// <returns>Task</returns>
+		public async Task OpenTesting(string title)
+		{
+			await pushPageAsync(new TestingPageView(), title);
 		}
 
 		/// <summary>

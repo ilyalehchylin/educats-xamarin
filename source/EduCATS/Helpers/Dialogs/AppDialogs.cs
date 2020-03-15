@@ -56,5 +56,13 @@ namespace EduCATS.Helpers.Dialogs
 			return await mainPage.DisplayActionSheet(
 				title, CrossLocalization.Translate("common_cancel"), null, buttons);
 		}
+
+		public async Task<bool> ShowConfirmationMessage(string title, string message)
+		{
+			return await mainPage.DisplayAlert(
+				title, message,
+				CrossLocalization.Translate("common_yes"),
+				CrossLocalization.Translate("common_no"));
+		}
 	}
 }

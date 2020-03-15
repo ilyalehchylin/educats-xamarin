@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Learning.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -7,8 +8,11 @@ namespace EduCATS.Pages.Learning.ViewModels
 {
 	public class LearningPageViewModel : ViewModel
 	{
-		public LearningPageViewModel()
+		readonly IPages _navigationService;
+
+		public LearningPageViewModel(IPages navigationService)
 		{
+			_navigationService = navigationService;
 			setCardList();
 		}
 
@@ -75,6 +79,8 @@ namespace EduCATS.Pages.Learning.ViewModels
 		{
 			switch (id) {
 				case 0:
+					_navigationService.OpenTesting(
+						CrossLocalization.Translate("learning_card_tests"));
 					break;
 				case 1:
 					break;

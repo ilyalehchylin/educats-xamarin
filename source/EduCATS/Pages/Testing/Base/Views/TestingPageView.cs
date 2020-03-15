@@ -1,4 +1,6 @@
 ﻿using EduCATS.Controls.SubjectsPickerView;
+using EduCATS.Helpers.Dialogs;
+using EduCATS.Pages.Testing.Base.ViewModels;
 using EduCATS.Pages.Testing.Base.Views.ViewCells;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
@@ -12,7 +14,7 @@ namespace EduCATS.Pages.Testing.Base.Views
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			Padding = new Thickness(10);
+			BindingContext = new TestingPageViewModel(new AppDialogs());
 			createViews();
 		}
 
