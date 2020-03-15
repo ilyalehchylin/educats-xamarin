@@ -11,5 +11,6 @@
 		public static string GetOnlyGroups => $"{Servers.Current}/Services/CoreService.svc/GetOnlyGroups";
 		public static string GetLabs => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2";
 		public static string GetLectures => $"{Servers.Current}/Services/CoreService.svc/GetLecturesMarkVisitingV2";
+		public static string GetAvailableTests => $"{Servers.Current}/TestPassing/GetAvailableTestsForMobile";
 	}
 }

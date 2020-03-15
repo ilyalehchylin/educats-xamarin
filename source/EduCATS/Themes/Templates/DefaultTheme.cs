@@ -6,6 +6,7 @@ namespace EduCATS.Themes.Templates
 	{
 		virtual public string CommonAppColor => "#27AAE1";
 		virtual public string CommonBlockColor => "#FFFFFF";
+		virtual public string BaseArrowForwardIcon => "icon_forward";
 
 		virtual public string AppBackgroundColor => "#F7F5F3";
 		virtual public string AppStatusBarBackgroundColor => CommonAppColor;
@@ -63,9 +64,13 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string LearningCardTextColor => "#FFFFFF";
 
-		public string LearningCardTestsImage => "image_test_square";
-		public string LearningCardEumcImage => "image_book_square";
-		public string LearningCardFilesImage => "image_file_square";
-		public string LearningCardAdaptiveImage => "image_circuit_square";
+		virtual public string LearningCardTestsImage => "image_test_square";
+		virtual public string LearningCardEumcImage => "image_book_square";
+		virtual public string LearningCardFilesImage => "image_file_square";
+		virtual public string LearningCardAdaptiveImage => "image_circuit_square";
+
+		virtual public string TestingTitleColor => "#000000";
+		virtual public string TestingDescriptionColor => "#808080";
+		virtual public string TestingHeaderImage => "image_test_rectangle";
 	}
 }

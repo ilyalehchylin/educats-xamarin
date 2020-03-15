@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using EduCATS.Pages.Learning.Base.Models;
+using EduCATS.Pages.Learning.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 
-namespace EduCATS.Pages.Learning.Base.ViewModels
+namespace EduCATS.Pages.Learning.ViewModels
 {
 	public class LearningPageViewModel : ViewModel
 	{

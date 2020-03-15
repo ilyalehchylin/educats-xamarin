@@ -10,6 +10,7 @@ using EduCATS.Data.Models.Lectures;
 using EduCATS.Data.Models.News;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.Models.Subjects;
+using EduCATS.Data.Models.Testing;
 using EduCATS.Data.Models.User;
 using EduCATS.Helpers.Json;
 using EduCATS.Networking.AppServices;
@@ -28,6 +29,7 @@ namespace EduCATS.Data
 		const string getOnlyGroupsKey = "GET_ONLY_GROUPS_KEY";
 		const string getLabsKey = "GET_LABS_KEY";
 		const string getLectures = "GET_LECTURES_KEY";
+		const string getAvailableTests = "GET_AVAILABLE_TESTS_KEY";
 
 		public static void ResetData()
 		{
@@ -90,11 +92,6 @@ namespace EduCATS.Data
 			return new NewsModel {
 				News = newsList
 			};
-		}
-
-		internal static Task GetLecturesMarkVisiting(int currentSubjectId, int currentGroupId)
-		{
-			throw new NotImplementedException();
 		}
 
 		public async static Task<SubjectModel> GetProfileInfoSubjects(string username)
@@ -208,6 +205,29 @@ namespace EduCATS.Data
 			}
 
 			return lectures;
+		}
+
+		public async static Task<TestingModel> GetAvailableTests(int subjectId, int userId)
+		{
+			if (!checkConnectionEstablished()) {
+				var data = getDataFromCache(getAvailableTests);
+				var list = JsonController<List<TestingItemModel>>.ConvertJsonToObject(data);
+				return new TestingModel {
+					Tests = list
+				};
+			}
+
+			var response = await AppServices.GetAvailableTests(subjectId, userId);
+			var dataAccess = new DataAccess<List<TestingItemModel>>();
+			var testList = dataAccess.GetAccess(response, getAvailableTests);
+
+			if (testList == null) {
+				return getErrorObject("testing_get_tests_error") as TestingModel;
+			}
+
+			return new TestingModel {
+				Tests = testList
+			};
 		}
 
 		static bool checkConnectionEstablished()

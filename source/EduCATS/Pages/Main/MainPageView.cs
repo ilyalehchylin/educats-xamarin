@@ -1,6 +1,6 @@
 ﻿using System;
 using EduCATS.Helpers.Effects;
-using EduCATS.Pages.Learning.Base.Views;
+using EduCATS.Pages.Learning.Views;
 using EduCATS.Pages.Statistics.Base.Views;
 using EduCATS.Pages.Today.Base.Views;
 using EduCATS.Themes;

@@ -53,5 +53,7 @@
     "learning_card_tests": "Тесты",
     "learning_card_eumc": "ЭУМК",
     "learning_card_files": "Файлы",
-    "learning_card_adaptive": "Адаптивное обучение"
+    "learning_card_adaptive": "Адаптивное обучение",
+
+    "testing_get_tests_error": "Произошла ошибка во время получения тестов. Пожалуйста, обновите страницу или обратитесь в службу поддержки."
 }

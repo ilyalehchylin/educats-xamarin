@@ -1,4 +1,4 @@
-﻿namespace EduCATS.Pages.Learning.Base.Models
+﻿namespace EduCATS.Pages.Learning.Models
 {
 	public class LearningPageModel
 	{

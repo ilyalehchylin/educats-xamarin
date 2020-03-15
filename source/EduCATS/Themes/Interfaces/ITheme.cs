@@ -4,6 +4,7 @@
 	{
 		string CommonAppColor { get; }
 		string CommonBlockColor { get; }
+		string BaseArrowForwardIcon { get; }
 
 		string AppStatusBarBackgroundColor { get; }
 		string AppBackgroundColor { get; }
@@ -64,5 +65,9 @@
 		string LearningCardEumcImage { get; }
 		string LearningCardFilesImage { get; }
 		string LearningCardAdaptiveImage { get; }
+
+		string TestingTitleColor { get; }
+		string TestingDescriptionColor { get; }
+		string TestingHeaderImage { get; }
 	}
 }

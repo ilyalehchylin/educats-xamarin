@@ -199,5 +199,8 @@
     <BundleResource Include="Resources\image_file_square.jpg" />
     <BundleResource Include="Resources\image_test_rectangle.jpg" />
     <BundleResource Include="Resources\image_test_square.jpg" />
+    <BundleResource Include="Resources\icon_forward%401x.png" />
+    <BundleResource Include="Resources\icon_forward%402x.png" />
+    <BundleResource Include="Resources\icon_forward%403x.png" />
   </ItemGroup>
 </Project>

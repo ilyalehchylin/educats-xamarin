@@ -3,7 +3,7 @@ using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Xamarin.Forms;
 
-namespace EduCATS.Pages.Learning.Base.Views.ViewCells
+namespace EduCATS.Pages.Learning.Views.ViewCells
 {
 	public class LearningPageViewCell : StackLayout
 	{

@@ -93,11 +93,16 @@
     <Folder Include="Constants\" />
     <Folder Include="Helpers\Converters\" />
     <Folder Include="Pages\Learning\" />
-    <Folder Include="Pages\Learning\Base\" />
-    <Folder Include="Pages\Learning\Base\Views\" />
-    <Folder Include="Pages\Learning\Base\Views\ViewCells\" />
-    <Folder Include="Pages\Learning\Base\ViewModels\" />
-    <Folder Include="Pages\Learning\Base\Models\" />
+    <Folder Include="Pages\Learning\Models\" />
+    <Folder Include="Pages\Learning\ViewModels\" />
+    <Folder Include="Pages\Learning\Views\" />
+    <Folder Include="Pages\Testing\" />
+    <Folder Include="Pages\Testing\Base\" />
+    <Folder Include="Pages\Testing\Base\Views\" />
+    <Folder Include="Pages\Testing\Base\ViewModels\" />
+    <Folder Include="Pages\Testing\Base\Views\ViewCells\" />
+    <Folder Include="Data\Models\Testing\" />
+    <Folder Include="Pages\Testing\Base\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

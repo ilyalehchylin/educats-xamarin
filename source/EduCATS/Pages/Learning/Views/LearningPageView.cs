@@ -1,9 +1,9 @@
-﻿using EduCATS.Pages.Learning.Base.ViewModels;
-using EduCATS.Pages.Learning.Base.Views.ViewCells;
+﻿using EduCATS.Pages.Learning.ViewModels;
+using EduCATS.Pages.Learning.Views.ViewCells;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
-namespace EduCATS.Pages.Learning.Base.Views
+namespace EduCATS.Pages.Learning.Views
 {
 	public class LearningPageView : ContentPage
 	{

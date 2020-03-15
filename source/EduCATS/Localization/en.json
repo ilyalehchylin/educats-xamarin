@@ -53,5 +53,7 @@
 	"learning_card_tests": "Tests",
 	"learning_card_eumc": "EUMC",
 	"learning_card_files": "Files",
-	"learning_card_adaptive": "Adaptive learning"
+	"learning_card_adaptive": "Adaptive learning",
+
+	"testing_get_tests_error": "Error occurred during retrieving tests. Please try to refresh page or contact support."
 }
