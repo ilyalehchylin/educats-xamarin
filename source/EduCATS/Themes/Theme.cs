@@ -1,7 +1,6 @@
 ﻿using EduCATS.Themes.DependencyServices;
 using EduCATS.Themes.Interfaces;
 using EduCATS.Themes.Templates;
-using Xamarin.Forms;
 
 namespace EduCATS.Themes
 {
@@ -17,8 +16,7 @@ namespace EduCATS.Themes
 		public static void Set(ITheme iTheme)
 		{
 			Current = iTheme;
-			ThemePlatformSpecific.SetColors(
-				Color.FromHex(Current.AppStatusBarBackgroundColor));
+			ThemePlatformSpecific.SetColors(Current.AppStatusBarBackgroundColor);
 		}
 	}
 }

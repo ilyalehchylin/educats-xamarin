@@ -60,5 +60,12 @@ namespace EduCATS.Themes.Templates
 		virtual public string StatisticsCollapseIcon => "icon_collapse";
 		virtual public string StatisticsCalendarIcon => "icon_calendar";
 		virtual public string StatisticsCommentIcon => "icon_comment";
+
+		virtual public string LearningCardTextColor => "#FFFFFF";
+
+		public string LearningCardTestsImage => "image_test_square";
+		public string LearningCardEumcImage => "image_book_square";
+		public string LearningCardFilesImage => "image_file_square";
+		public string LearningCardAdaptiveImage => "image_circuit_square";
 	}
 }

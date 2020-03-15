@@ -48,5 +48,10 @@
 
 	"labs_retrieval_error": "Error occurred during retrieving laboratory works. Please try to refresh page or contact support.",
 
-	"lectures_retrieval_error": "Error occurred during retrieving lectures. Please try to refresh page or contact support."
+	"lectures_retrieval_error": "Error occurred during retrieving lectures. Please try to refresh page or contact support.",
+
+	"learning_card_tests": "Tests",
+	"learning_card_eumc": "EUMC",
+	"learning_card_files": "Files",
+	"learning_card_adaptive": "Adaptive learning"
 }

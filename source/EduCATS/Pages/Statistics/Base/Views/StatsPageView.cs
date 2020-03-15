@@ -2,7 +2,7 @@
 using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Controls.SubjectsPickerView;
-using EduCATS.Helpers.Charts;
+using EduCATS.Helpers.Converters;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
 using EduCATS.Pages.Statistics.Base.ViewModels;

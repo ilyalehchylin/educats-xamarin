@@ -5,9 +5,9 @@ namespace EduCATS.Themes.DependencyServices
 {
 	public static class ThemePlatformSpecific
 	{
-		public static void SetColors(Color color)
+		public static void SetColors(string colorHex)
 		{
-			DependencyService.Get<IThemeNative>().SetColors(color);
+			DependencyService.Get<IThemeNative>().SetColors(colorHex);
 		}
 	}
 }

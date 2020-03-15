@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Colors
+namespace EduCATS.Helpers.Converters
 {
 	public class StringToColorConverter : IValueConverter
 	{

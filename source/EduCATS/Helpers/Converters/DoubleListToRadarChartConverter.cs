@@ -7,7 +7,7 @@ using Microcharts;
 using SkiaSharp;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Charts
+namespace EduCATS.Helpers.Converters
 {
 	public class DoubleListToRadarChartConverter : IValueConverter
 	{

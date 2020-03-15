@@ -191,5 +191,13 @@
     <BundleResource Include="Resources\icon_comment%401x.png" />
     <BundleResource Include="Resources\icon_comment%402x.png" />
     <BundleResource Include="Resources\icon_comment%403x.png" />
+    <BundleResource Include="Resources\image_book_rectangle.jpg" />
+    <BundleResource Include="Resources\image_book_square.jpg" />
+    <BundleResource Include="Resources\image_circuit_rectangle.jpg" />
+    <BundleResource Include="Resources\image_circuit_square.jpg" />
+    <BundleResource Include="Resources\image_file_rectangle.jpg" />
+    <BundleResource Include="Resources\image_file_square.jpg" />
+    <BundleResource Include="Resources\image_test_rectangle.jpg" />
+    <BundleResource Include="Resources\image_test_square.jpg" />
   </ItemGroup>
 </Project>

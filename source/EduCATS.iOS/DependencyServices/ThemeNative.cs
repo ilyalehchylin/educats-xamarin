@@ -7,6 +7,6 @@ namespace EduCATS.iOS.DependencyServices
 {
 	public class ThemeNative : IThemeNative
 	{
-		public void SetColors(Color color) { }
+		public void SetColors(string colorHex) { }
 	}
 }

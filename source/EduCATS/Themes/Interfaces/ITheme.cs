@@ -58,5 +58,11 @@
 		string StatisticsCollapseIcon { get; }
 		string StatisticsCalendarIcon { get; }
 		string StatisticsCommentIcon { get; }
+
+		string LearningCardTextColor { get; }
+		string LearningCardTestsImage { get; }
+		string LearningCardEumcImage { get; }
+		string LearningCardFilesImage { get; }
+		string LearningCardAdaptiveImage { get; }
 	}
 }
