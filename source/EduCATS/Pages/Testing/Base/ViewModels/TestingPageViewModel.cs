@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
+using EduCATS.Data.Models.Testing;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Pages.Testing.Base.Models;
@@ -75,24 +77,35 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 				return null;
 			}
 
-			var testsForSelfStudy = new TestingGroupModel(
-				CrossLocalization.Translate("testing_self_study"));
+			var tests = item.Tests;
+			var testsForSelfStudy = getGroup(tests, "testing_self_study", true);
+			var testsForControl =  getGroup(tests, "testing_knowledge_control", false);
+			var groups = new List<TestingGroupModel>();
+			groups = addNonEmptyGroup(groups, testsForSelfStudy);
+			groups = addNonEmptyGroup(groups, testsForControl);
+			return groups;
+		}
 
-			var testsForControl = new TestingGroupModel(
-				CrossLocalization.Translate("testing_knowledge_control"));
-
-			foreach (var test in item?.Tests) {
-				if (test.ForSelfStudy) {
-					testsForSelfStudy.Add(test);
-				} else {
-					testsForControl.Add(test);
-				}
+		List<TestingGroupModel> addNonEmptyGroup(List<TestingGroupModel> groups, TestingGroupModel group)
+		{
+			if (group.Count > 0) {
+				groups.Add(group);
 			}
 
-			return new List<TestingGroupModel> {
-				testsForSelfStudy,
-				testsForControl
-			};
+			return groups;
+		}
+
+		TestingGroupModel getGroup(IList<TestingItemModel> tests, string localizedTag, bool isSelfStudy)
+		{
+			return new TestingGroupModel(
+				CrossLocalization.Translate(localizedTag),
+				getSeparateTests(tests, isSelfStudy));
+		}
+
+		List<TestingItemModel> getSeparateTests(IList<TestingItemModel> tests, bool isSelfStudy)
+		{
+			return tests.Where(
+				t => t.ForSelfStudy.Equals(isSelfStudy)).ToList();
 		}
 
 		void openTest()
