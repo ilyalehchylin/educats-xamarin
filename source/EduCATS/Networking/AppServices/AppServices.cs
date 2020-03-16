@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EduCATS.Data.Models.User;
 using EduCATS.Helpers.Json;
 using EduCATS.Networking.Models.Login;
+using EduCATS.Networking.Models.Testing;
 
 namespace EduCATS.Networking.AppServices
 {
@@ -71,6 +72,26 @@ namespace EduCATS.Networking.AppServices
 		{
 			return await AppServicesController.Request(
 				$"{Links.GetAvailableTests}?subjectId={subjectId}&userId={userId}");
+		}
+
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetTest(int testId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetTest}?id={testId}");
+		}
+
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetNextQuestion(
+			int testId, int questionNumber, int userId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&userId={userId}");
+		}
+
+		public static async Task<KeyValuePair<string, HttpStatusCode>> AnswerQuestionAndGetNext(
+			TestingCommonAnswerPostModel answer)
+		{
+			var body = JsonController.ConvertObjectToJson(answer);
+			return await AppServicesController.Request($"{Links.AnswerQuestionAndGetNext}", body);
 		}
 
 		static string getUserLoginBody(string username)

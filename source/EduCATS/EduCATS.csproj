@@ -103,6 +103,14 @@
     <Folder Include="Pages\Testing\Base\Views\ViewCells\" />
     <Folder Include="Data\Models\Testing\" />
     <Folder Include="Pages\Testing\Base\Models\" />
+    <Folder Include="Pages\Testing\Passing\" />
+    <Folder Include="Pages\Testing\Passing\Models\" />
+    <Folder Include="Pages\Testing\Passing\Views\" />
+    <Folder Include="Pages\Testing\Passing\ViewModels\" />
+    <Folder Include="Data\Models\Testing\Base\" />
+    <Folder Include="Data\Models\Testing\Passing\" />
+    <Folder Include="Helpers\Lists\" />
+    <Folder Include="Networking\Models\Testing\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

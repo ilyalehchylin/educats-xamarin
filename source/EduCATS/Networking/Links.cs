@@ -12,5 +12,8 @@
 		public static string GetLabs => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2";
 		public static string GetLectures => $"{Servers.Current}/Services/CoreService.svc/GetLecturesMarkVisitingV2";
 		public static string GetAvailableTests => $"{Servers.Current}/TestPassing/GetAvailableTestsForMobile";
+		public static string GetTest => $"{Servers.Current}/Tests/GetTest";
+		public static string GetNextQuestion => $"{Servers.Current}/TestPassing/GetNextQuestionJson";
+		public static string AnswerQuestionAndGetNext => $"{Servers.Current}/TestPassing/AnswerQuestionAndGetNextMobile";
 	}
 }

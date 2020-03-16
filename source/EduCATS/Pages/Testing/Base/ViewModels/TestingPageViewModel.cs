@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.Testing;
+using EduCATS.Data.Models.Testing.Base;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Pages.Testing.Base.Models;

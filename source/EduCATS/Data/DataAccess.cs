@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data.Caching;
 using EduCATS.Data.Models;
@@ -10,10 +9,12 @@ using EduCATS.Data.Models.Lectures;
 using EduCATS.Data.Models.News;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.Models.Subjects;
-using EduCATS.Data.Models.Testing;
+using EduCATS.Data.Models.Testing.Base;
+using EduCATS.Data.Models.Testing.Passing;
 using EduCATS.Data.Models.User;
 using EduCATS.Helpers.Json;
 using EduCATS.Networking.AppServices;
+using EduCATS.Networking.Models.Testing;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Essentials;
 
@@ -28,8 +29,8 @@ namespace EduCATS.Data
 		const string getMarksKey = "GET_MARKS_KEY";
 		const string getOnlyGroupsKey = "GET_ONLY_GROUPS_KEY";
 		const string getLabsKey = "GET_LABS_KEY";
-		const string getLectures = "GET_LECTURES_KEY";
-		const string getAvailableTests = "GET_AVAILABLE_TESTS_KEY";
+		const string getLecturesKey = "GET_LECTURES_KEY";
+		const string getAvailableTestsKey = "GET_AVAILABLE_TESTS_KEY";
 
 		public static void ResetData()
 		{
@@ -192,13 +193,13 @@ namespace EduCATS.Data
 		public async static Task<LecturesModel> GetLectures(int subjectId, int groupId)
 		{
 			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getLectures);
+				var data = getDataFromCache(getLecturesKey);
 				return JsonController<LecturesModel>.ConvertJsonToObject(data);
 			}
 
 			var response = await AppServices.GetLectures(subjectId, groupId);
 			var dataAccess = new DataAccess<LecturesModel>();
-			var lectures = dataAccess.GetAccess(response, getLectures);
+			var lectures = dataAccess.GetAccess(response, getLecturesKey);
 
 			if (lectures == null) {
 				return getErrorObject("lectures_retrieval_error") as LecturesModel;
@@ -210,7 +211,7 @@ namespace EduCATS.Data
 		public async static Task<TestingModel> GetAvailableTests(int subjectId, int userId)
 		{
 			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getAvailableTests);
+				var data = getDataFromCache(getAvailableTestsKey);
 				var list = JsonController<List<TestingItemModel>>.ConvertJsonToObject(data);
 				return new TestingModel {
 					Tests = list
@@ -219,7 +220,7 @@ namespace EduCATS.Data
 
 			var response = await AppServices.GetAvailableTests(subjectId, userId);
 			var dataAccess = new DataAccess<List<TestingItemModel>>();
-			var testList = dataAccess.GetAccess(response, getAvailableTests);
+			var testList = dataAccess.GetAccess(response, getAvailableTestsKey);
 
 			if (testList == null) {
 				return getErrorObject("testing_get_tests_error") as TestingModel;
@@ -228,6 +229,58 @@ namespace EduCATS.Data
 			return new TestingModel {
 				Tests = testList
 			};
+		}
+
+		public async static Task<TestDetailsModel> GetTest(int testId)
+		{
+			if (!checkConnectionEstablished()) {
+				return getErrorObject() as TestDetailsModel;
+			}
+
+			var response = await AppServices.GetTest(testId);
+			var dataAccess = new DataAccess<TestDetailsModel>();
+			var test = dataAccess.GetAccess(response, isCaching: false);
+
+			if (test == null) {
+				return getErrorObject("get_test_error") as TestDetailsModel;
+			}
+
+			return test;
+		}
+
+		public async static Task<TestQuestionCommonModel> GetNextQuestion(
+			int testId, int questionNumber, int userId)
+		{
+			if (!checkConnectionEstablished()) {
+				return getErrorObject() as TestQuestionCommonModel;
+			}
+
+			var response = await AppServices.GetNextQuestion(testId, questionNumber, userId);
+			var dataAccess = new DataAccess<TestQuestionCommonModel>();
+			var testQuestion = dataAccess.GetAccess(response, isCaching: false);
+
+			if (testQuestion == null) {
+				return getErrorObject("get_test_question_error") as TestQuestionCommonModel;
+			}
+
+			return testQuestion;
+		}
+
+		public async static Task<DataModel> AnswerQuestionAndGetNext(TestingCommonAnswerPostModel answer)
+		{
+			if (!checkConnectionEstablished()) {
+				return getErrorObject();
+			}
+
+			var response = await AppServices.AnswerQuestionAndGetNext(answer);
+			var dataAccess = new DataAccess<DataModel>();
+			var responseAnswer = dataAccess.GetAccess(response, isCaching: false);
+
+			if (responseAnswer == null) {
+				return getErrorObject("answer_question_error");
+			}
+
+			return responseAnswer;
 		}
 
 		static bool checkConnectionEstablished()

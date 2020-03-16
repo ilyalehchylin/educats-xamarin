@@ -61,5 +61,11 @@
 	"testing_knowledge_control": "Tests for knowledge control",
 	"testing_self_study": "Tests for self-study",
 	"testing_start_test_title": "Do you want to start the test?",
-	"testing_start_test_description": "A timer will start after confirmation. Every question without an answer will become wrong after timer expiration."
+	"testing_start_test_description": "A timer will start after confirmation. Every question without an answer will become wrong after timer expiration.",
+
+	"get_test_error": "Error occurred during retrieving test details. Please try again or contact support.",
+	"get_test_question_error": "Error occurred during retrieving a question. Please try again or contact support.",
+	"answer_question_error": "Error occurred during answering a question. Please try again or contact support.",
+	"answer_question_not_selected_error": "You didn't select any answers. Please answer the question.",
+	"question_title": "Question"
 }
