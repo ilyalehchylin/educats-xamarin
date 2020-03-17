@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using EduCATS.Themes;
+using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 {
@@ -8,8 +9,8 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 		{
 			var answerEntry = new Entry {
 				HorizontalOptions = LayoutOptions.FillAndExpand,
-				BackgroundColor = Color.White,
-				TextColor = Color.Gray,
+				BackgroundColor = Color.FromHex(Theme.Current.TestPassingEntryColor),
+				TextColor = Color.FromHex(Theme.Current.TestPassingAnswerColor),
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 

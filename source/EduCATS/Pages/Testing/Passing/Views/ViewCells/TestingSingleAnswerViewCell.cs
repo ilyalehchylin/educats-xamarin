@@ -6,27 +6,28 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 {
 	public class TestingSingleAnswerViewCell : ViewCell
 	{
-		private TestPassingAnswerModel ta;
+		const double _boxSize = 40;
 
-		Label answer;
-		BoxView boxView;
+		TestPassingAnswerModel _answerModel;
+		readonly Label _answer;
+		readonly BoxView _boxView;
 
 		public TestingSingleAnswerViewCell()
 		{
-			boxView = new BoxView {
-				HeightRequest = 40,
-				WidthRequest = 40,
-				CornerRadius = 20,
+			_boxView = new BoxView {
+				HeightRequest = _boxSize,
+				WidthRequest = _boxSize,
+				CornerRadius = _boxSize / 2,
 				Color = Color.FromHex(Theme.Current.AppBackgroundColor),
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
-			answer = new Label {
-				TextColor = Color.Gray,
+			_answer = new Label {
+				TextColor = Color.FromHex(Theme.Current.TestPassingAnswerColor),
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
-			answer.SetBinding(Label.TextProperty, "Content");
+			_answer.SetBinding(Label.TextProperty, "Content");
 
 			View = new Frame {
 				HasShadow = false,
@@ -35,7 +36,8 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 				Content = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
 					Children = {
-						boxView, answer
+						_boxView,
+						_answer
 					}
 				}
 			};
@@ -43,17 +45,17 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 
 		protected override void OnBindingContextChanged()
 		{
-			ta = (TestPassingAnswerModel)BindingContext;
+			base.OnBindingContextChanged();
 
-			if (ta != null) {
-				if (ta.IsSelected) {
-					boxView.Color = Color.FromHex(Theme.Current.AppStatusBarBackgroundColor);
-					answer.FontAttributes = FontAttributes.Bold;
-					answer.TextColor = Color.FromHex(Theme.Current.AppStatusBarBackgroundColor);
-				}
+			_answerModel = (TestPassingAnswerModel)BindingContext;
+
+			if (_answerModel == null || !_answerModel.IsSelected) {
+				return;
 			}
 
-			base.OnBindingContextChanged();
+			_boxView.Color = Color.FromHex(Theme.Current.AppStatusBarBackgroundColor);
+			_answer.TextColor = Color.FromHex(Theme.Current.AppStatusBarBackgroundColor);
+			_answer.FontAttributes = FontAttributes.Bold;
 		}
 	}
 }

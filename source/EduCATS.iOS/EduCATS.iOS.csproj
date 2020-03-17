@@ -202,5 +202,11 @@
     <BundleResource Include="Resources\icon_forward%401x.png" />
     <BundleResource Include="Resources\icon_forward%402x.png" />
     <BundleResource Include="Resources\icon_forward%403x.png" />
+    <BundleResource Include="Resources\icon_arrow_down%401x.png" />
+    <BundleResource Include="Resources\icon_arrow_down%402x.png" />
+    <BundleResource Include="Resources\icon_arrow_down%403x.png" />
+    <BundleResource Include="Resources\icon_arrow_up%401x.png" />
+    <BundleResource Include="Resources\icon_arrow_up%402x.png" />
+    <BundleResource Include="Resources\icon_arrow_up%403x.png" />
   </ItemGroup>
 </Project>

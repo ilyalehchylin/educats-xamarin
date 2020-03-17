@@ -1,4 +1,5 @@
-﻿using FFImageLoading.Forms;
+﻿using EduCATS.Themes;
+using FFImageLoading.Forms;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
@@ -7,51 +8,9 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 	{
 		public TestingMovableAnswerViewCell()
 		{
-			var answer = new Label {
-				TextColor = Color.Gray,
-				VerticalOptions = LayoutOptions.CenterAndExpand
-			};
-
-			answer.SetBinding(Label.TextProperty, "Content");
-
-			var arrowUpImage = new CachedImage {
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				VerticalOptions = LayoutOptions.CenterAndExpand,
-				Source = ImageSource.FromFile("icon_arrow_up")
-			};
-
-			var arrowUpLayout = new StackLayout {
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				WidthRequest = 50,
-				Children = {
-					arrowUpImage
-				}
-			};
-
-			var upGestureRecognizer = new TapGestureRecognizer();
-			upGestureRecognizer.SetBinding(TapGestureRecognizer.CommandParameterProperty, "Id");
-			upGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "UpMovableAnswerCommand");
-			arrowUpLayout.GestureRecognizers.Add(upGestureRecognizer);
-
-			var arrowDownImage = new CachedImage {
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				VerticalOptions = LayoutOptions.CenterAndExpand,
-				Source = ImageSource.FromFile("icon_arrow_down")
-			};
-
-			var arrowDownLayout = new StackLayout {
-				VerticalOptions = LayoutOptions.FillAndExpand,
-				HorizontalOptions = LayoutOptions.EndAndExpand,
-				WidthRequest = 50,
-				Children = {
-					arrowDownImage
-				}
-			};
-
-			var downGestureRecognizer = new TapGestureRecognizer();
-			downGestureRecognizer.SetBinding(TapGestureRecognizer.CommandParameterProperty, "Id");
-			downGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "DownMovableAnswerCommand");
-			arrowDownLayout.GestureRecognizers.Add(downGestureRecognizer);
+			var answer = createAnswerLabel();
+			var upArrow = createArrow(true, "UpMovableAnswerCommand");
+			var downArrow = createArrow(false, "DownMovableAnswerCommand");
 
 			View = new Frame {
 				HasShadow = false,
@@ -60,11 +19,54 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 				Content = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
 					Children = {
-						arrowUpLayout,
+						upArrow,
 						answer,
-						arrowDownLayout
+						downArrow
 					}
 				}
+			};
+		}
+
+		Label createAnswerLabel()
+		{
+			var answer = new Label {
+				TextColor = Color.FromHex(Theme.Current.TestPassingAnswerColor),
+				VerticalOptions = LayoutOptions.CenterAndExpand
+			};
+
+			answer.SetBinding(Label.TextProperty, "Content");
+			return answer;
+		}
+
+		StackLayout createArrow(bool up, string commandString)
+		{
+			var arrowIcon = createArrowIcon(up);
+
+			var arrowLayout = new StackLayout {
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = up ? LayoutOptions.StartAndExpand : LayoutOptions.EndAndExpand,
+				WidthRequest = 50,
+				Children = {
+					arrowIcon
+				}
+			};
+
+			var gestureRecognizer = new TapGestureRecognizer();
+			gestureRecognizer.SetBinding(TapGestureRecognizer.CommandParameterProperty, "Id");
+			gestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, commandString);
+			arrowLayout.GestureRecognizers.Add(gestureRecognizer);
+			return arrowLayout;
+		}
+
+		CachedImage createArrowIcon(bool up)
+		{
+			return new CachedImage {
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Source = ImageSource.FromFile(
+					up ?
+					Theme.Current.TestPassingArrowUpIcon :
+					Theme.Current.TestPassingArrowDownIcon)
 			};
 		}
 	}

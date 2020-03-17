@@ -69,5 +69,11 @@
 		string TestingTitleColor { get; }
 		string TestingDescriptionColor { get; }
 		string TestingHeaderImage { get; }
+
+		string TestPassingButtonTextColor { get; }
+		string TestPassingEntryColor { get; }
+		string TestPassingAnswerColor { get; }
+		string TestPassingArrowUpIcon { get; }
+		string TestPassingArrowDownIcon { get; }
 	}
 }

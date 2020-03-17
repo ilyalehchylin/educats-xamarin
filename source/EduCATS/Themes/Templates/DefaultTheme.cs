@@ -72,5 +72,11 @@ namespace EduCATS.Themes.Templates
 		virtual public string TestingTitleColor => "#000000";
 		virtual public string TestingDescriptionColor => "#808080";
 		virtual public string TestingHeaderImage => "image_test_rectangle";
+
+		virtual public string TestPassingButtonTextColor => "#FFFFFF";
+		virtual public string TestPassingEntryColor => "#FFFFFF";
+		virtual public string TestPassingAnswerColor => "#808080";
+		virtual public string TestPassingArrowUpIcon => "icon_arrow_up";
+		virtual public string TestPassingArrowDownIcon => "icon_arrow_down";
 	}
 }

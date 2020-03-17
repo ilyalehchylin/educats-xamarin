@@ -4,6 +4,7 @@
 	"common_yes": "Yes",
 	"common_cancel": "Cancel",
 	"common_error": "Error",
+	"common_warning": "Warning",
 	"common_loading": "Loading...",
 	"common_unexpected_error_text": "Unexpected error occurred. Please try again or contact support.",
 	"common_connection_error_text": "No internet connection. Check your network settings and try again.",
@@ -67,5 +68,9 @@
 	"get_test_question_error": "Error occurred during retrieving a question. Please try again or contact support.",
 	"answer_question_error": "Error occurred during answering a question. Please try again or contact support.",
 	"answer_question_not_selected_error": "You didn't select any answers. Please answer the question.",
-	"question_title": "Question"
+	"question_title": "Question",
+
+	"test_passing_skip": "SKIP",
+	"test_passing_answer": "ANSWER",
+	"test_passing_cancel_message": "Are you sure you want to interrupt the test? Every question without an answer will become incorrect."
 }

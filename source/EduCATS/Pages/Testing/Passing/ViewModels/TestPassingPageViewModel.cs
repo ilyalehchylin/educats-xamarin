@@ -117,6 +117,14 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
+		Command closeCommand;
+		public Command CloseCommand {
+			get {
+				return closeCommand ?? (closeCommand = new Command(
+					async () => await ExecuteCloseCommand()));
+			}
+		}
+
 		async Task getData(int number)
 		{
 			setLoading(true);
@@ -275,6 +283,17 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			setLoading(true);
 			await getAndSetQuestion(getNextQuestion());
 			setLoading(false);
+		}
+
+		protected async Task ExecuteCloseCommand()
+		{
+			var result = await _dialogs.ShowConfirmationMessage(
+				CrossLocalization.Translate("common_warning"),
+				CrossLocalization.Translate("test_passing_cancel_message"));
+
+			if (result) {
+				await _navigation.ClosePage(true);
+			}
 		}
 
 		void setLoading(bool loading)
