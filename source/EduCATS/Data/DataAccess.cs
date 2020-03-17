@@ -11,6 +11,7 @@ using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.Models.Subjects;
 using EduCATS.Data.Models.Testing.Base;
 using EduCATS.Data.Models.Testing.Passing;
+using EduCATS.Data.Models.Testing.Results;
 using EduCATS.Data.Models.User;
 using EduCATS.Networking.AppServices;
 using EduCATS.Networking.Models.Testing;
@@ -32,6 +33,7 @@ namespace EduCATS.Data
 		const string getLabsKey = "GET_LABS_KEY";
 		const string getLecturesKey = "GET_LECTURES_KEY";
 		const string getAvailableTestsKey = "GET_AVAILABLE_TESTS_KEY";
+		const string getUserAnswersKey = "GET_USER_ANSWERS_KEY";
 
 		public static bool IsError { get; set; }
 		public static bool IsConnectionError { get; set; }
@@ -189,6 +191,18 @@ namespace EduCATS.Data
 			var singleObject = await dataAccess.GetSingle(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;
+		}
+
+		public async static Task<List<TestingResultsModel>> GetUserAnswers(int userId, int testId)
+		{
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetUserAnswers(userId, testId);
+
+			var dataAccess = new DataAccess<TestingResultsModel>(
+				"test_results_error", $"{getUserAnswersKey}/{userId}/{testId}");
+			var list = await dataAccess.GetList(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return list;
 		}
 
 		static void setError(string message, bool isConnectionError)

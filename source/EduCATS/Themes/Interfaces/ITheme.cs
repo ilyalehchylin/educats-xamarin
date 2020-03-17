@@ -5,6 +5,7 @@
 		string CommonAppColor { get; }
 		string CommonBlockColor { get; }
 		string BaseArrowForwardIcon { get; }
+		string BaseCloseIcon { get; }
 
 		string AppStatusBarBackgroundColor { get; }
 		string AppBackgroundColor { get; }
@@ -75,5 +76,9 @@
 		string TestPassingAnswerColor { get; }
 		string TestPassingArrowUpIcon { get; }
 		string TestPassingArrowDownIcon { get; }
+
+		string TestResultsAnswerTextColor { get; }
+		string TestResultsCorrectAnswerColor { get; }
+		string TestResultsNotCorrectAnswerColor { get; }
 	}
 }

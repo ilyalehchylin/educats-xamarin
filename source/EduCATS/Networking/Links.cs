@@ -15,5 +15,6 @@
 		public static string GetTest => $"{Servers.Current}/Tests/GetTest";
 		public static string GetNextQuestion => $"{Servers.Current}/TestPassing/GetNextQuestionJson";
 		public static string AnswerQuestionAndGetNext => $"{Servers.Current}/TestPassing/AnswerQuestionAndGetNextMobile";
+		public static string GetUserAnswers => $"{Servers.Current}/TestPassing/GetUserAnswers";
 	}
 }

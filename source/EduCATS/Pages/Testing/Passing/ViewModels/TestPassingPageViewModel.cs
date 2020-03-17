@@ -233,7 +233,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		void completeTest()
 		{
 			_timerCancellation = true;
-			// open results page
+			_navigation.OpenTestResults(_testId);
 		}
 
 		void completeQuestion()

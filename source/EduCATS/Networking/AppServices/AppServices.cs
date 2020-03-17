@@ -94,6 +94,12 @@ namespace EduCATS.Networking.AppServices
 			return await AppServicesController.Request($"{Links.AnswerQuestionAndGetNext}", body);
 		}
 
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetUserAnswers(int userId, int testId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetUserAnswers}?studentId={userId}&testId={testId}");
+		}
+
 		static string getUserLoginBody(string username)
 		{
 			var userLogin = new UserLoginModel {

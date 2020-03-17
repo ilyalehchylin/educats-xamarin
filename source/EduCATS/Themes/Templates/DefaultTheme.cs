@@ -7,6 +7,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string CommonAppColor => "#27AAE1";
 		virtual public string CommonBlockColor => "#FFFFFF";
 		virtual public string BaseArrowForwardIcon => "icon_forward";
+		virtual public string BaseCloseIcon => "icon_close";
 
 		virtual public string AppBackgroundColor => "#F7F5F3";
 		virtual public string AppStatusBarBackgroundColor => CommonAppColor;
@@ -78,5 +79,9 @@ namespace EduCATS.Themes.Templates
 		virtual public string TestPassingAnswerColor => "#808080";
 		virtual public string TestPassingArrowUpIcon => "icon_arrow_up";
 		virtual public string TestPassingArrowDownIcon => "icon_arrow_down";
+
+		public string TestResultsAnswerTextColor => "#000000";
+		public string TestResultsCorrectAnswerColor => "#00AA55";
+		public string TestResultsNotCorrectAnswerColor => "#E63022";
 	}
 }

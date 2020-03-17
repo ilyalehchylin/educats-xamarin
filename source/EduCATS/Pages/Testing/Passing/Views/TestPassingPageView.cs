@@ -27,7 +27,7 @@ namespace EduCATS.Pages.Testing.Passing.Views
 		void setToolbar()
 		{
 			var toolbarItem = new ToolbarItem {
-				IconImageSource = ImageSource.FromFile("icon_close")
+				IconImageSource = ImageSource.FromFile(Theme.Current.BaseCloseIcon)
 			};
 
 			toolbarItem.SetBinding(MenuItem.CommandProperty, "CloseCommand");

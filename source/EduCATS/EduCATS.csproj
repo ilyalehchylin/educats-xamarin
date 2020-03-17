@@ -118,6 +118,11 @@
     <Folder Include="Pages\Testing\Passing\Views\ViewCells\" />
     <Folder Include="Helpers\Devices\" />
     <Folder Include="Helpers\Devices\Interfaces\" />
+    <Folder Include="Data\Models\Testing\Results\" />
+    <Folder Include="Pages\Testing\Results\" />
+    <Folder Include="Pages\Testing\Results\Views\" />
+    <Folder Include="Pages\Testing\Results\ViewModels\" />
+    <Folder Include="Pages\Testing\Results\Views\ViewCells\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

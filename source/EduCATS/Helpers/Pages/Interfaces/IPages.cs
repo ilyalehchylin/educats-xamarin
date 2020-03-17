@@ -14,5 +14,6 @@ namespace EduCATS.Helpers.Pages.Interfaces
 		Task OpenDetailedStatistics(string userLogin, int subjectId, int groupId, int pageIndex, string title, string name = null);
 		Task OpenTesting(string title);
 		Task OpenTestPassing(int testId, bool forSelfStudy, bool fromComplexLearning = false);
+		Task OpenTestResults(int testId, bool fromComplexLearning = false);
 	}
 }
