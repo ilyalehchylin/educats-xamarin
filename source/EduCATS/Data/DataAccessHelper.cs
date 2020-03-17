@@ -5,13 +5,19 @@ using EduCATS.Helpers.Json;
 
 namespace EduCATS.Data
 {
-	public partial class DataAccess<T>
+	public partial class DataAccess<T> where T : new()
 	{
+		const string _nonJsonSuccessResponse = "\"Ok\"";
+
 		public T GetAccess(KeyValuePair<string, HttpStatusCode> response, string key = null, bool isCaching = true)
 		{
 			switch (response.Value) {
 				case HttpStatusCode.OK:
 					var data = parseResponse(response, key, isCaching);
+
+					if (data.Equals(_nonJsonSuccessResponse)) {
+						return new T();
+					}
 
 					if (!JsonController.IsJsonValid(data)) {
 						return default;

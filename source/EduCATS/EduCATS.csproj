@@ -111,6 +111,9 @@
     <Folder Include="Data\Models\Testing\Passing\" />
     <Folder Include="Helpers\Lists\" />
     <Folder Include="Networking\Models\Testing\" />
+    <Folder Include="Pages\Testing\Passing\Views\ViewCells\" />
+    <Folder Include="Helpers\Devices\" />
+    <Folder Include="Helpers\Devices\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

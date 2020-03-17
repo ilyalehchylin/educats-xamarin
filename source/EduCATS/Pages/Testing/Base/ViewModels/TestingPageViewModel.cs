@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models.Testing.Base;
 using EduCATS.Data.User;
+using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
+using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Testing.Base.Models;
 using EduCATS.Pages.Utils.ViewModels;
 using Nyxbull.Plugins.CrossLocalization;
@@ -15,10 +17,15 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 	public class TestingPageViewModel : SubjectsViewModel
 	{
 		readonly IDialogs _dialogService;
+		readonly IPages _navigation;
+		readonly IAppDevice _device;
 
-		public TestingPageViewModel(IDialogs dialogService) : base(dialogService)
+		public TestingPageViewModel(IDialogs dialogService, IPages navigation, IAppDevice device)
+			: base(dialogService)
 		{
 			_dialogService = dialogService;
+			_navigation = navigation;
+			_device = device;
 
 			Task.Run(async () => {
 				await SetupSubjects();
@@ -43,7 +50,7 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 				SetProperty(ref _selectedItem, value);
 
 				if (_selectedItem != null) {
-					openTest();
+					openTest(_selectedItem);
 				}
 			}
 		}
@@ -79,7 +86,7 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 
 			var tests = item.Tests;
 			var testsForSelfStudy = getGroup(tests, "testing_self_study", true);
-			var testsForControl =  getGroup(tests, "testing_knowledge_control", false);
+			var testsForControl = getGroup(tests, "testing_knowledge_control", false);
 			var groups = new List<TestingGroupModel>();
 			groups = addNonEmptyGroup(groups, testsForSelfStudy);
 			groups = addNonEmptyGroup(groups, testsForControl);
@@ -108,23 +115,33 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 				t => t.ForSelfStudy.Equals(isSelfStudy)).ToList();
 		}
 
-		void openTest()
+		void openTest(object testObject)
 		{
-			var result = _dialogService.ShowConfirmationMessage(
+			if (testObject == null || testObject.GetType() != typeof(TestingItemModel)) {
+				return;
+			}
+
+			var test = testObject as TestingItemModel;
+			_device.MainThread((
+				async () => await showStartTestDialog(test.Id, test.ForSelfStudy)));
+		}
+
+		async Task showStartTestDialog(int testId, bool forSelfStudy)
+		{
+			var result = await _dialogService.ShowConfirmationMessage(
 				CrossLocalization.Translate("testing_start_test_title"),
-				CrossLocalization.Translate("testing_start_test_description"))
-				.ContinueWith(response => {
-					if (response.Result) {
-						// open page
-					}
-				});
+				CrossLocalization.Translate("testing_start_test_description"));
+
+			if (result) {
+				await _navigation.OpenTestPassing(testId, forSelfStudy);
+			}
 		}
 
 		protected async Task executeRefreshCommand()
 		{
-				IsRefreshing = true;
-				await getAndSetTests();
-				IsRefreshing = false;
+			IsRefreshing = true;
+			await getAndSetTests();
+			IsRefreshing = false;
 		}
 	}
 }

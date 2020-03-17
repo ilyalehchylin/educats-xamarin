@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.Testing.Base;
 using EduCATS.Data.Models.Testing.Passing;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Date;
+using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Lists;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Networking.Models.Testing;
 using EduCATS.Pages.Testing.Passing.Models;
@@ -17,43 +15,42 @@ using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Passing.ViewModels
 {
-	public class TestPassingPageViewModel : ViewModel
+	public partial class TestPassingPageViewModel : ViewModel
 	{
-		/// <summary>
-		/// Time for question/entire test completion.
-		/// If isTimeForEntireTest is set to TRUE,
-		/// the time will be in minutes, otherwise - in seconds.
-		/// </summary>
 		readonly bool _fromComplexLearning;
-		readonly TestingItemModel _testModel;
 		readonly IDialogs _dialogs;
 		readonly IPages _navigation;
+		readonly IAppDevice _device;
+		readonly int _testId;
 
 		bool _timerCancellation;
 		int _timeForCompletion;
+
+		/// <summary>
+		/// Time for question/entire test completion.
+		/// If _isTimeForEntireTest is set to TRUE,
+		/// the time will be in minutes, otherwise - in seconds.
+		/// </summary>
 		bool _isTimeForEntireTest;
 		int _questionCount;
-		string _testId;
+		string _testIdString;
 		int _questionNumber;
 		int _questionType;
 		DateTime _testStarted;
 		DateTime _questionStarted;
 
 		public TestPassingPageViewModel(
-			IDialogs dialogs, IPages navigation, TestingItemModel testModel, bool fromComplexLearning)
+			IDialogs dialogs, IPages navigation, IAppDevice device,
+			int testId, bool forSelfStudy, bool fromComplexLearning)
 		{
 			_fromComplexLearning = fromComplexLearning;
-			_testModel = testModel;
 			_dialogs = dialogs;
 			_navigation = navigation;
-			IsTestForSelfStudy = testModel.ForSelfStudy;
+			_device = device;
+			_testId = testId;
+			_testIdString = testId.ToString();
+			IsTestForSelfStudy = forSelfStudy;
 			Task.Run(async () => await getData(1));
-		}
-
-		bool _isLoading;
-		public bool IsLoading {
-			get { return _isLoading; }
-			set { SetProperty(ref _isLoading, value); }
 		}
 
 		bool _isNotLoading;
@@ -137,7 +134,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		async Task<TestDetailsModel> getTest()
 		{
-			var test = await DataAccess.GetTest(_testModel.Id);
+			var test = await DataAccess.GetTest(_testId);
 
 			if (test.IsError) {
 				await _dialogs.ShowError(test.ErrorMessage);
@@ -162,7 +159,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		async Task<TestQuestionCommonModel> getQuestion(int number)
 		{
 			var question = await DataAccess.GetNextQuestion(
-				_testModel.Id, number, AppUserData.UserId);
+				_testId, number, AppUserData.UserId);
 
 			if (question.IsError) {
 				await _dialogs.ShowError(question.ErrorMessage);
@@ -171,61 +168,6 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 
 			return question;
-		}
-
-		async Task answerQuestion()
-		{
-			setLoading(true);
-
-			TestingCommonAnswerPostModel commonPostModel = null;
-
-			switch (_questionType) {
-				case 0:
-				case 1:
-					commonPostModel = getSelectedAnswer();
-					break;
-				case 2:
-					commonPostModel = getEditableAnswer();
-					break;
-				case 3:
-					commonPostModel = getMovableAnswer();
-					break;
-			}
-
-			await answerCommonQuestion(commonPostModel);
-
-			setLoading(false);
-		}
-
-		TestingCommonAnswerPostModel getSelectedAnswer()
-		{
-			var answersList = Answers?.Select(
-				a => a.IsSelected ? new TestingAnswerPostModel(a.Id, 1) : null);
-			return composeAnswer(answersList.ToList());
-		}
-
-		TestingCommonAnswerPostModel getMovableAnswer()
-		{
-			var answersList = Answers?.Select(
-				(a, index) => new TestingAnswerPostModel(Answers[index].Id, index));
-			return composeAnswer(answersList.ToList());
-		}
-
-		TestingCommonAnswerPostModel getEditableAnswer()
-		{
-			var answersList = Answers?.Select(
-				a => new TestingAnswerPostModel(Answers[0].Id, Answers[0].ContentToAnswer));
-			return composeAnswer(answersList.ToList());
-		}
-
-		TestingCommonAnswerPostModel composeAnswer(List<TestingAnswerPostModel> answersList)
-		{
-			return new TestingCommonAnswerPostModel {
-				Answers = answersList,
-				QuestionNumber = _questionNumber,
-				TestId = _testId,
-				UserId = AppUserData.UserId
-			};
 		}
 
 		async Task answerCommonQuestion(TestingCommonAnswerPostModel answerModel)
@@ -246,15 +188,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				_timerCancellation = true;
 			}
 
-			await getQuestion(getNextQuestion());
-		}
-
-		void setTestData(TestDetailsModel test)
-		{
-			_isTimeForEntireTest = test.SetTimeForAllTest;
-			_timeForCompletion = test.TimeForCompleting;
-			_questionCount = test.CountOfQuestions;
-			_testId = test.Id.ToString();
+			await getAndSetQuestion(getNextQuestion());
 		}
 
 		void setQuestionData(TestQuestionCommonModel testQuestionCommonModel)
@@ -286,72 +220,6 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			var questionDetails = $"{_questionNumber}/{_questionCount}";
 			var timeLeftFormatted = timeLeft.ToString(@"hh\:mm\:ss");
 			Title = $"{CrossLocalization.Translate("question_title")} {questionDetails} ({timeLeftFormatted})";
-		}
-
-		void setTimer()
-		{
-			if (_timeForCompletion == 0)
-				return;
-
-			if (_isTimeForEntireTest) {
-				setTimerForEntireTest();
-			} else {
-				setTimerForQuestion();
-			}
-		}
-
-		void setTimerForEntireTest()
-		{
-			_testStarted = DateTime.Now;
-
-			Device.StartTimer(TimeSpan.FromSeconds(1), () => {
-				if (checkTimerCancellation()) {
-					return false;
-				}
-
-				var timePassed = DateHelper.CheckDatesDifference(_testStarted, DateTime.Now);
-				var timeLeft = new TimeSpan(0, _timeForCompletion, 0).Subtract(timePassed);
-				setTitle(timeLeft);
-
-				if (timePassed.TotalMinutes >= _timeForCompletion) {
-					completeTest();
-					return false;
-				}
-
-				return true;
-			});
-		}
-
-		void setTimerForQuestion()
-		{
-			_questionStarted = DateTime.Now;
-
-			Device.StartTimer(TimeSpan.FromSeconds(1), () => {
-				if (checkTimerCancellation()) {
-					return false;
-				}
-
-				var timePassed = DateHelper.CheckDatesDifference(_questionStarted, DateTime.Now);
-				var timeLeft = new TimeSpan(0, _timeForCompletion, 0).Subtract(timePassed);
-				setTitle(timeLeft);
-
-				if (timePassed.TotalSeconds >= _timeForCompletion) {
-					completeQuestion();
-					return false;
-				}
-
-				return true;
-			});
-		}
-
-		bool checkTimerCancellation()
-		{
-			if (_timerCancellation) {
-				_timerCancellation = false;
-				return true;
-			}
-
-			return false;
 		}
 
 		void completeTest()
@@ -402,50 +270,21 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			moveAnswer(obj, true);
 		}
 
-		void moveAnswer(object obj, bool down)
-		{
-			if (obj == null || obj.GetType() != typeof(int)) {
-				return;
-			}
-
-			var id = (int)obj;
-			var answers = Answers;
-			var answer = answers.SingleOrDefault(a => a.Id == id);
-
-			if (answer == null) {
-				return;
-			}
-
-			var index = answers.IndexOf(answer);
-
-			if (down) {
-				answers.Swap(
-					index,
-					index == answers.Count - 1 ? 0 : index + 1);
-			} else {
-				answers.Swap(
-					index == 0 ? 0 : index,
-					index == 0 ? answers.Count - 1 : index - 1);
-			}
-
-			Answers = new List<TestPassingAnswerModel>(answers);
-		}
-
 		protected async Task ExecuteSkipCommand()
 		{
 			setLoading(true);
-			await getQuestion(getNextQuestion());
+			await getAndSetQuestion(getNextQuestion());
 			setLoading(false);
-		}
-
-		int getNextQuestion()
-		{
-			return _questionNumber + 1 <= _questionCount ? _questionNumber + 1 : 1;
 		}
 
 		void setLoading(bool loading)
 		{
-			IsLoading = loading;
+			if (loading) {
+				_dialogs.ShowLoading();
+			} else {
+				_dialogs.HideLoading();
+			}
+
 			IsNotLoading = !loading;
 		}
 	}

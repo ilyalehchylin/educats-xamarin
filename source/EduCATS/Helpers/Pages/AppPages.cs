@@ -8,6 +8,7 @@ using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Views;
 using EduCATS.Pages.Statistics.Students.Views;
 using EduCATS.Pages.Testing.Base.Views;
+using EduCATS.Pages.Testing.Passing.Views;
 using EduCATS.Pages.Today.NewsDetails.Views;
 using EduCATS.Themes;
 using Xamarin.Forms;
@@ -108,6 +109,18 @@ namespace EduCATS.Helpers.Pages
 		public async Task OpenTesting(string title)
 		{
 			await pushPageAsync(new TestingPageView(), title);
+		}
+
+		/// <summary>
+		/// Open test passing page.
+		/// </summary>
+		/// <param name="testId">Test ID</param>
+		/// <param name="forSelfStudy">Is test for self-study</param>
+		/// <param name="fromComplexLearning">Is opened from Complex learning page</param>
+		/// <returns>Task</returns>
+		public async Task OpenTestPassing(int testId, bool forSelfStudy, bool fromComplexLearning = false)
+		{
+			await pushModalPageAsync(new TestPassingPageView(testId, forSelfStudy, fromComplexLearning));
 		}
 
 		/// <summary>
