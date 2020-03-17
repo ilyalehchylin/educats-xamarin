@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EduCATS.Data.Models.Calendar
 {
-	public class CalendarModel : DataModel
+	public class CalendarModel
 	{
 		[JsonProperty("Labs")]
 		public IList<CalendarSubjectModel> Labs { get; set; }

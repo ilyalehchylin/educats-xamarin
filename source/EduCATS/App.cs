@@ -46,13 +46,14 @@ namespace EduCATS
 				return;
 			}
 
+			AppUserData.SetLoginData(AppPrefs.UserId, username);
+
 			var profile = await DataAccess.GetProfileInfo(username);
 
-			if (profile.IsError) {
+			if (profile == null) {
 				return;
 			}
-
-			AppUserData.SetLoginData(AppPrefs.UserId, username);
+			
 			AppUserData.SetProfileData(profile);
 		}
 	}

@@ -2,7 +2,7 @@
 
 namespace EduCATS.Data.Models.Testing.Base
 {
-	public class TestingModel : DataModel
+	public class TestingModel
 	{
 		public IList<TestingItemModel> Tests { get; set; }
 	}

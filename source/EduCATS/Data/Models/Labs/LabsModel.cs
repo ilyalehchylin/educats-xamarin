@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace EduCATS.Data.Models.Labs
 {
-	public class LabsModel : DataModel
+	public class LabsModel
 	{
 		[JsonProperty("Labs")]
 		public IList<LabsDetailsModel> Labs { get; set; }

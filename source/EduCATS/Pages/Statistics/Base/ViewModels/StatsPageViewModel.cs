@@ -6,6 +6,7 @@ using EduCATS.Data;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Converters;
+using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
@@ -24,7 +25,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		List<StatisticsStudentModel> _students;
 
 		public StatsPageViewModel(
-			IDialogs dialogService, IPages navigationService) : base(dialogService)
+			IDialogs dialogService, IAppDevice device, IPages navigationService) : base(dialogService, device)
 		{
 			_navigationService = navigationService;
 			setPagesList();
@@ -196,9 +197,8 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 			var statisticsModel = await DataAccess.GetStatistics(CurrentSubject.Id, AppPrefs.GroupId);
 
-			if (statisticsModel.IsError) {
-				await DialogService.ShowError(statisticsModel.ErrorMessage);
-				return null;
+			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
+				DialogService.ShowError(DataAccess.ErrorMessage);
 			}
 
 			return statisticsModel.Students?.ToList();

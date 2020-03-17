@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models.Statistics;
+using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Statistics.Enums;
@@ -21,8 +22,9 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 		List<StudentsPageModel> backupStudentsList;
 
 		public StudentsPageViewModel(
-			IPages navigationService, IDialogs dialogService, int subjectId,
-			List<StatisticsStudentModel> studentsList, int pageIndex) : base(dialogService, subjectId)
+			IPages navigationService, IDialogs dialogService, IAppDevice device, int subjectId,
+			List<StatisticsStudentModel> studentsList, int pageIndex)
+			: base(dialogService, device, subjectId)
 		{
 			this.navigationService = navigationService;
 			this.pageIndex = pageIndex;
@@ -30,16 +32,14 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			setStudents(studentsList);
 
 			Task.Run(async () => {
-				await SetupGroups();
-
 				if (studentsList == null || studentsList.Count == 0) {
-					await getAndSetStudents();
+					await update();
+				} else {
+					await update(true);
 				}
 			});
 
-			GroupChanged += async (id, name) => {
-				await getAndSetStudents();
-			};
+			GroupChanged += async (id, name) => await update();
 		}
 
 		bool isLoading;
@@ -83,6 +83,17 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			}
 		}
 
+		async Task update(bool groupsOnly = false)
+		{
+			await SetupGroups();
+
+			if (groupsOnly) {
+				return;
+			}
+
+			await getAndSetStudents();
+		}
+
 		async Task getAndSetStudents()
 		{
 			IsLoading = true;
@@ -93,7 +104,6 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		void setStudents(List<StatisticsStudentModel> studentsStatistics)
 		{
-			// TODO: error handling
 			var students = studentsStatistics?.Select(s => new StudentsPageModel(s.Login, s.Name));
 
 			if (students == null) {
@@ -112,12 +122,11 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 			var statisticsModel = await DataAccess.GetStatistics(SubjectId, CurrentGroup.GroupId);
 
-			if (statisticsModel.IsError) {
-				await DialogService.ShowError(statisticsModel.ErrorMessage);
-				return null;
+			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
+				DialogService.ShowError(DataAccess.ErrorMessage);
 			}
 
-			return statisticsModel.Students?.ToList();
+			return statisticsModel?.Students?.ToList();
 		}
 
 		void search(string text)
@@ -148,6 +157,11 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 			var student = selectedObject as StudentsPageModel;
 			var title = getTitle((StatsPageEnum)pageIndex);
+
+			if (CurrentGroup == null) {
+				return;
+			}
+
 			navigationService.OpenDetailedStatistics(
 				student.Username, SubjectId, CurrentGroup.GroupId, pageIndex, title, student.Name);
 		}

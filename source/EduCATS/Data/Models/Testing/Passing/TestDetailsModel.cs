@@ -2,7 +2,7 @@
 
 namespace EduCATS.Data.Models.Testing.Passing
 {
-	public class TestDetailsModel : DataModel
+	public class TestDetailsModel
 	{
 		[JsonProperty("Id")]
 		public int Id { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data.Caching;
-using EduCATS.Data.Models;
 using EduCATS.Data.Models.Calendar;
 using EduCATS.Data.Models.Groups;
 using EduCATS.Data.Models.Labs;
@@ -12,14 +12,15 @@ using EduCATS.Data.Models.Subjects;
 using EduCATS.Data.Models.Testing.Base;
 using EduCATS.Data.Models.Testing.Passing;
 using EduCATS.Data.Models.User;
-using EduCATS.Helpers.Json;
 using EduCATS.Networking.AppServices;
 using EduCATS.Networking.Models.Testing;
 using Nyxbull.Plugins.CrossLocalization;
-using Xamarin.Essentials;
 
 namespace EduCATS.Data
 {
+	/// <summary>
+	/// Won't be null.
+	/// </summary>
 	public static partial class DataAccess
 	{
 		const string profileInfoKey = "PROFILE_INFO_KEY";
@@ -32,6 +33,10 @@ namespace EduCATS.Data
 		const string getLecturesKey = "GET_LECTURES_KEY";
 		const string getAvailableTestsKey = "GET_AVAILABLE_TESTS_KEY";
 
+		public static bool IsError { get; set; }
+		public static bool IsConnectionError { get; set; }
+		public static string ErrorMessage { get; set; }
+
 		public static void ResetData()
 		{
 			DataCaching<object>.RemoveCache();
@@ -39,266 +44,162 @@ namespace EduCATS.Data
 
 		public async static Task<UserModel> Login(string username, string password)
 		{
-			if (!checkConnectionEstablished()) {
-				return getErrorObject() as UserModel;
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.Login(username, password);
 
-			var response = await AppServices.Login(username, password);
-			var dataAccess = new DataAccess<UserModel>();
-			var user = dataAccess.GetAccess(response, isCaching: false);
-
-			if (user == null) {
-				return getErrorObject("login_error_text") as UserModel;
-			}
-
-			return user;
+			var dataAccess = new DataAccess<UserModel>("login_error_text");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
 		public async static Task<UserProfileModel> GetProfileInfo(string username)
 		{
-			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(profileInfoKey);
-				return JsonController<UserProfileModel>.ConvertJsonToObject(data);
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetProfileInfo(username);
 
-			var response = await AppServices.GetProfileInfo(username);
-			var dataAccess = new DataAccess<UserProfileModel>();
-			var userProfile = dataAccess.GetAccess(response, profileInfoKey);
-
-			if (userProfile == null) {
-				return getErrorObject("login_user_profile_error_text") as UserProfileModel;
-			}
-
-			return userProfile;
+			var dataAccess = new DataAccess<UserProfileModel>("login_user_profile_error_text", profileInfoKey);
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
-		public async static Task<NewsModel> GetNews(string username)
+		public async static Task<List<NewsItemModel>> GetNews(string username)
 		{
-			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getNewsKey);
-				var list = JsonController<List<NewsItemModel>>.ConvertJsonToObject(data);
-				return new NewsModel {
-					News = list
-				};
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetNews(username);
 
-			var response = await AppServices.GetNews(username);
-			var dataAccess = new DataAccess<List<NewsItemModel>>();
-			var newsList = dataAccess.GetAccess(response, getNewsKey);
-
-			if (newsList == null) {
-				return getErrorObject("today_news_load_error_text") as NewsModel;
-			}
-
-			return new NewsModel {
-				News = newsList
-			};
+			var dataAccess = new DataAccess<NewsItemModel>("today_news_load_error_text", getNewsKey);
+			var list = await dataAccess.GetList(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return list;
 		}
 
-		public async static Task<SubjectModel> GetProfileInfoSubjects(string username)
+		public async static Task<List<SubjectItemModel>> GetProfileInfoSubjects(string username)
 		{
-			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getProfileInfoSubjectKey);
-				var list = JsonController<List<SubjectItemModel>>.ConvertJsonToObject(data);
-				return new SubjectModel {
-					SubjectsList = list
-				};
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetProfileInfoSubjects(username);
 
-			var response = await AppServices.GetProfileInfoSubjects(username);
-			var dataAccess = new DataAccess<List<SubjectItemModel>>();
-			var subjectsList = dataAccess.GetAccess(response, getProfileInfoSubjectKey);
-
-			if (subjectsList == null) {
-				return getErrorObject("today_subjects_error_text") as SubjectModel;
-			}
-
-			return new SubjectModel {
-				SubjectsList = subjectsList
-			};
+			var dataAccess = new DataAccess<SubjectItemModel>("today_subjects_error_text", getProfileInfoSubjectKey);
+			var list = await dataAccess.GetList(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return list;
 		}
 
 		public async static Task<CalendarModel> GetProfileInfoCalendar(string username)
 		{
-			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getProfileInfoCalendarKey);
-				return JsonController<CalendarModel>.ConvertJsonToObject(data);
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetProfileInfoCalendar(username);
 
-			var response = await AppServices.GetProfileInfoCalendar(username);
-			var dataAccess = new DataAccess<CalendarModel>();
-			var calendar = dataAccess.GetAccess(response, getProfileInfoCalendarKey);
-
-			if (calendar == null) {
-				return getErrorObject("today_calendar_error_text") as CalendarModel;
-			}
-
-			return calendar;
+			var dataAccess = new DataAccess<CalendarModel>("today_calendar_error_text", getProfileInfoCalendarKey);
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
 		public async static Task<StatisticsModel> GetStatistics(int subjectId, int groupId)
 		{
-			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getMarksKey);
-				return JsonController<StatisticsModel>.ConvertJsonToObject(data);
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetStatistics(subjectId, groupId);
 
-			var response = await AppServices.GetStatistics(subjectId, groupId);
-			var dataAccess = new DataAccess<StatisticsModel>();
-			var stats = dataAccess.GetAccess(response, getMarksKey);
-
-			if (stats == null) {
-				return getErrorObject("statistics_marks_error_text") as StatisticsModel;
-			}
-
-			return stats;
+			var dataAccess = new DataAccess<StatisticsModel>(
+				"statistics_marks_error_text", $"{getMarksKey}/{subjectId}/{groupId}");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
 		public async static Task<GroupModel> GetOnlyGroups(int subjectId)
 		{
-			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getOnlyGroupsKey);
-				return JsonController<GroupModel>.ConvertJsonToObject(data);
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetOnlyGroups(subjectId);
 
-			var response = await AppServices.GetOnlyGroups(subjectId);
-			var dataAccess = new DataAccess<GroupModel>();
-			var stats = dataAccess.GetAccess(response, getOnlyGroupsKey);
-
-			if (stats == null) {
-				return getErrorObject("groups_retieval_error") as GroupModel;
-			}
-
-			return stats;
+			var dataAccess = new DataAccess<GroupModel>(
+				"groups_retieval_error", $"{getOnlyGroupsKey}/{subjectId}");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
 		public async static Task<LabsModel> GetLabs(int subjectId, int groupId)
 		{
-			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getLabsKey);
-				return JsonController<LabsModel>.ConvertJsonToObject(data);
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetLabs(subjectId, groupId);
 
-			var response = await AppServices.GetLabs(subjectId, groupId);
-			var dataAccess = new DataAccess<LabsModel>();
-			var labs = dataAccess.GetAccess(response, getLabsKey);
-
-			if (labs == null) {
-				return getErrorObject("labs_retrieval_error") as LabsModel;
-			}
-
-			return labs;
+			var dataAccess = new DataAccess<LabsModel>(
+				"labs_retrieval_error", $"{getLabsKey}/{subjectId}/{groupId}");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
 		public async static Task<LecturesModel> GetLectures(int subjectId, int groupId)
 		{
-			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getLecturesKey);
-				return JsonController<LecturesModel>.ConvertJsonToObject(data);
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetLectures(subjectId, groupId);
 
-			var response = await AppServices.GetLectures(subjectId, groupId);
-			var dataAccess = new DataAccess<LecturesModel>();
-			var lectures = dataAccess.GetAccess(response, getLecturesKey);
-
-			if (lectures == null) {
-				return getErrorObject("lectures_retrieval_error") as LecturesModel;
-			}
-
-			return lectures;
+			var dataAccess = new DataAccess<LecturesModel>(
+				"lectures_retrieval_error", $"{getLecturesKey}/{subjectId}/{groupId}");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
-		public async static Task<TestingModel> GetAvailableTests(int subjectId, int userId)
+		public async static Task<List<TestingItemModel>> GetAvailableTests(int subjectId, int userId)
 		{
-			if (!checkConnectionEstablished()) {
-				var data = getDataFromCache(getAvailableTestsKey);
-				var list = JsonController<List<TestingItemModel>>.ConvertJsonToObject(data);
-				return new TestingModel {
-					Tests = list
-				};
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetAvailableTests(subjectId, userId);
 
-			var response = await AppServices.GetAvailableTests(subjectId, userId);
-			var dataAccess = new DataAccess<List<TestingItemModel>>();
-			var testList = dataAccess.GetAccess(response, getAvailableTestsKey);
-
-			if (testList == null) {
-				return getErrorObject("testing_get_tests_error") as TestingModel;
-			}
-
-			return new TestingModel {
-				Tests = testList
-			};
+			var dataAccess = new DataAccess<TestingItemModel>(
+				"testing_get_tests_error", $"{getAvailableTestsKey}/{subjectId}/{userId}");
+			var list = await dataAccess.GetList(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return list;
 		}
 
 		public async static Task<TestDetailsModel> GetTest(int testId)
 		{
-			if (!checkConnectionEstablished()) {
-				return getErrorObject() as TestDetailsModel;
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetTest(testId);
 
-			var response = await AppServices.GetTest(testId);
-			var dataAccess = new DataAccess<TestDetailsModel>();
-			var test = dataAccess.GetAccess(response, isCaching: false);
-
-			if (test == null) {
-				return getErrorObject("get_test_error") as TestDetailsModel;
-			}
-
-			return test;
+			var dataAccess = new DataAccess<TestDetailsModel>("get_test_error");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
 		public async static Task<TestQuestionCommonModel> GetNextQuestion(
 			int testId, int questionNumber, int userId)
 		{
-			if (!checkConnectionEstablished()) {
-				return getErrorObject() as TestQuestionCommonModel;
-			}
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetNextQuestion(testId, questionNumber, userId);
 
-			var response = await AppServices.GetNextQuestion(testId, questionNumber, userId);
-			var dataAccess = new DataAccess<TestQuestionCommonModel>();
-			var testQuestion = dataAccess.GetAccess(response, isCaching: false);
-
-			if (testQuestion == null) {
-				return getErrorObject("get_test_question_error") as TestQuestionCommonModel;
-			}
-
-			return testQuestion;
+			var dataAccess = new DataAccess<TestQuestionCommonModel>("get_test_question_error");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
-		public async static Task<DataModel> AnswerQuestionAndGetNext(TestingCommonAnswerPostModel answer)
+		public async static Task<object> AnswerQuestionAndGetNext(TestingCommonAnswerPostModel answer)
 		{
-			if (!checkConnectionEstablished()) {
-				return getErrorObject();
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.AnswerQuestionAndGetNext(answer);
+
+			var dataAccess = new DataAccess<object>("answer_question_error");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
+		}
+
+		static void setError(string message, bool isConnectionError)
+		{
+			if (message == null) {
+				return;
 			}
 
-			var response = await AppServices.AnswerQuestionAndGetNext(answer);
-			var dataAccess = new DataAccess<DataModel>();
-			var responseAnswer = dataAccess.GetAccess(response, isCaching: false);
-
-			if (responseAnswer == null) {
-				return getErrorObject("answer_question_error");
-			}
-
-			return responseAnswer;
-		}
-
-		static bool checkConnectionEstablished()
-		{
-			return Connectivity.NetworkAccess == NetworkAccess.Internet;
-		}
-
-		static string getDataFromCache(string key)
-		{
-			return DataCaching<string>.Get(key);
-		}
-
-		static DataModel getErrorObject(string localizedString = null)
-		{
-			return new DataModel {
-				IsError = true,
-				ErrorMessage = CrossLocalization.Translate(localizedString ?? "common_connection_error_text")
-			};
+			IsError = true;
+			IsConnectionError = isConnectionError;
+			ErrorMessage = CrossLocalization.Translate(message);
 		}
 	}
 }

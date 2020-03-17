@@ -120,7 +120,7 @@ namespace EduCATS.Pages.Login.ViewModels
 				var user = await loginRequest();
 				await loginCompleted(user);
 			} else {
-				await dialogService.ShowError(CrossLocalization.Translate("login_empty_credentials_error"));
+				dialogService.ShowError(CrossLocalization.Translate("login_empty_credentials_error"));
 			}
 		}
 
@@ -132,15 +132,15 @@ namespace EduCATS.Pages.Login.ViewModels
 		async Task loginCompleted(UserModel user)
 		{
 			setLoading(false);
-			if (user != null && !user.IsError) {
+			if (user != null && !DataAccess.IsError) {
 				setLoading(true, CrossLocalization.Translate("login_profile_loading"));
 				var profile = await getProfileData(user.Username);
 				setLoading(false);
-				await profileRetrieved(profile);
-			} else if (user != null && user.IsError) {
-				await dialogService.ShowError(user.ErrorMessage);
+				profileRetrieved(profile);
+			} else if (user != null && DataAccess.IsError) {
+				dialogService.ShowError(DataAccess.ErrorMessage);
 			} else {
-				await dialogService.ShowError(CrossLocalization.Translate("login_error_text"));
+				dialogService.ShowError(CrossLocalization.Translate("login_error_text"));
 			}
 		}
 
@@ -148,17 +148,16 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// Is called after successful login.
 		/// </summary>
 		/// <param name="profile">Profile model.</param>
-		/// <returns>Task.</returns>
-		async Task profileRetrieved(UserProfileModel profile)
+		void profileRetrieved(UserProfileModel profile)
 		{
-			if (profile != null && !profile.IsError) {
+			if (profile != null && !DataAccess.IsError) {
 				AppPrefs.GroupId = profile.GroupId;
 				AppPrefs.IsLoggedIn = true;
 				navigationService.OpenMain();
-			} else if (profile != null && profile.IsError) {
-				await dialogService.ShowError(profile.ErrorMessage);
+			} else if (profile != null && DataAccess.IsError) {
+				dialogService.ShowError(DataAccess.ErrorMessage);
 			} else {
-				await dialogService.ShowError(CrossLocalization.Translate("login_user_profile_error_text"));
+				dialogService.ShowError(CrossLocalization.Translate("login_user_profile_error_text"));
 			}
 		}
 
@@ -176,7 +175,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns><see cref="UserModel"/> on success, <code>null</code> otherwise.</returns>
 		async Task<UserModel> loginRequest()
 		{
-			var userLogin = await DataAccess.Login(Username, Password) as UserModel;
+			var userLogin = await DataAccess.Login(Username, Password);
 
 			if (userLogin != null) {
 				AppUserData.SetLoginData(userLogin.UserId, userLogin.Username);
@@ -193,7 +192,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns>Task.</returns>
 		async Task<UserProfileModel> getProfileData(string username)
 		{
-			var userProfile = await DataAccess.GetProfileInfo(username) as UserProfileModel;
+			var userProfile = await DataAccess.GetProfileInfo(username);
 
 			if (userProfile != null) {
 				AppUserData.SetProfileData(userProfile);

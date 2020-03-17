@@ -1,5 +1,7 @@
 ﻿using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
+using EduCATS.Helpers.Devices;
+using EduCATS.Helpers.Dialogs;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.ViewModels;
 using EduCATS.Pages.Statistics.Results.Views.ViewCells;
@@ -16,7 +18,8 @@ namespace EduCATS.Pages.Statistics.Results.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			Padding = new Thickness(10);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new StatsResultsPageViewModel(userLogin, subjectId, groupId, pageType);
+			BindingContext = new StatsResultsPageViewModel(
+				new AppDialogs(), new AppDevice(), userLogin, subjectId, groupId, pageType);
 			createViews(studentName);
 		}
 

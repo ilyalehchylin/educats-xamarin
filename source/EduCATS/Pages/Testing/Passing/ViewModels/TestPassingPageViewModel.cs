@@ -50,7 +50,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			_testId = testId;
 			_testIdString = testId.ToString();
 			IsTestForSelfStudy = forSelfStudy;
-			Task.Run(async () => await getData(1));
+			getData(1);
 		}
 
 		bool _isNotLoading;
@@ -125,13 +125,15 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
-		async Task getData(int number)
+		void getData(int number)
 		{
-			setLoading(true);
-			await getAndSetTest();
-			await getAndSetQuestion(number);
-			setTimer();
-			setLoading(false);
+			_device.MainThread(async () => {
+				setLoading(true);
+				await getAndSetTest();
+				await getAndSetQuestion(number);
+				setTimer();
+				setLoading(false);
+			});
 		}
 
 		async Task getAndSetTest()
@@ -144,9 +146,8 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		{
 			var test = await DataAccess.GetTest(_testId);
 
-			if (test.IsError) {
-				await _dialogs.ShowError(test.ErrorMessage);
-				await _navigation.ClosePage(true);
+			if (DataAccess.IsError) {
+				_dialogs.ShowError(DataAccess.ErrorMessage);
 				return new TestDetailsModel();
 			}
 
@@ -169,9 +170,8 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			var question = await DataAccess.GetNextQuestion(
 				_testId, number, AppUserData.UserId);
 
-			if (question.IsError) {
-				await _dialogs.ShowError(question.ErrorMessage);
-				await _navigation.ClosePage(true);
+			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
+				_dialogs.ShowError(DataAccess.ErrorMessage);
 				return new TestQuestionCommonModel();
 			}
 
@@ -181,14 +181,14 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		async Task answerCommonQuestion(TestingCommonAnswerPostModel answerModel)
 		{
 			if (answerModel == null || answerModel.Answers == null || answerModel.Answers.Count == 0) {
-				await _dialogs.ShowError(CrossLocalization.Translate("answer_question_not_selected_error"));
+				_dialogs.ShowError(CrossLocalization.Translate("answer_question_not_selected_error"));
 				return;
 			}
 
-			var data = await DataAccess.AnswerQuestionAndGetNext(answerModel);
+			await DataAccess.AnswerQuestionAndGetNext(answerModel);
 
-			if (data.IsError) {
-				await _dialogs.ShowError(data.ErrorMessage);
+			if (DataAccess.IsError) {
+				_dialogs.ShowError(DataAccess.ErrorMessage);
 				return;
 			}
 

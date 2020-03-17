@@ -172,18 +172,22 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		async Task getAndSetCalendarNotes()
 		{
-			var calendarNotesModel = await DataAccess.GetProfileInfoCalendar(AppPrefs.UserLogin);
+			var calendar = await DataAccess.GetProfileInfoCalendar(AppPrefs.UserLogin);
 
-			if (calendarNotesModel.IsError) {
-				await dialogService.ShowError(calendarNotesModel.ErrorMessage);
+			if (calendar == null) {
+				return;
 			}
 
-			var calendarSubjectsList = calendarNotesModel.Labs.Select(
+			var calendarSubjectsList = calendar.Labs?.Select(
 				c => new CalendarSubjectsModel {
 					Color = c.Color,
 					Subject = c.Title,
-					Date = DateTime.Parse(c.Start)
+					Date = DateTime.Parse(c.Start) // TODO: handle null value
 				});
+
+			if (calendarSubjectsList == null) {
+				return;
+			}
 
 			calendatSubjectsListBackup = new List<CalendarSubjectsModel>(calendarSubjectsList);
 			setFilteredSubjectsList();
@@ -199,32 +203,19 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		async Task<List<NewsPageModel>> getNews()
 		{
-			var newsModel = await DataAccess.GetNews(AppPrefs.UserLogin);
+			var news = await DataAccess.GetNews(AppPrefs.UserLogin);
 
-			if (newsModel.IsError) {
-				await dialogService.ShowError(newsModel.ErrorMessage);
-				return null;
+			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
+				dialogService.ShowError(DataAccess.ErrorMessage);
 			}
 
 			var subjectList = await getSubjects();
-
-			if (subjectList == null) {
-				return null;
-			}
-
-			return composeNewsWithSubjects(newsModel.News, subjectList);
+			return composeNewsWithSubjects(news, subjectList);
 		}
 
 		async Task<IList<SubjectItemModel>> getSubjects()
 		{
-			var subjects = await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin);
-
-			if (subjects.IsError) {
-				await dialogService.ShowError(subjects.ErrorMessage);
-				return null;
-			}
-
-			return subjects.SubjectsList;
+			return await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin);
 		}
 
 		List<NewsPageModel> composeNewsWithSubjects(IList<NewsItemModel> news, IList<SubjectItemModel> subjects)

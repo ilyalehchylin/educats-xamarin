@@ -2,7 +2,7 @@
 
 namespace EduCATS.Data.Models.News
 {
-	public class NewsModel : DataModel
+	public class NewsModel
 	{
 		public IList<NewsItemModel> News { get; set; }
 	}

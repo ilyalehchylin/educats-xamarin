@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models.Subjects;
+using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Settings;
 using Nyxbull.Plugins.CrossLocalization;
@@ -14,6 +15,7 @@ namespace EduCATS.Pages.Utils.ViewModels
 	public class SubjectsViewModel : ViewModel
 	{
 		public readonly IDialogs DialogService;
+		public readonly IAppDevice DeviceService;
 
 		public List<SubjectItemModel> CurrentSubjects { get; set; }
 		public SubjectItemModel CurrentSubject { get; set; }
@@ -21,9 +23,10 @@ namespace EduCATS.Pages.Utils.ViewModels
 		public delegate void SubjectEventHandler(int id, string name);
 		public event SubjectEventHandler SubjectChanged;
 
-		public SubjectsViewModel(IDialogs dialogService)
+		public SubjectsViewModel(IDialogs dialogService, IAppDevice deviceService)
 		{
 			DialogService = dialogService;
+			DeviceService = deviceService;
 		}
 
 		string chosenSubject;
@@ -84,12 +87,12 @@ namespace EduCATS.Pages.Utils.ViewModels
 		{
 			var subjects = await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin);
 
-			if (subjects.IsError) {
-				await DialogService.ShowError(subjects.ErrorMessage);
-				return null;
+			if (DataAccess.IsError) {
+				DeviceService.MainThread(
+					() => DialogService.ShowError(DataAccess.ErrorMessage));
 			}
 
-			return subjects.SubjectsList;
+			return subjects;
 		}
 
 		void setupSubject(string subjectName = null)

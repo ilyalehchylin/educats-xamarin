@@ -6,6 +6,8 @@ using EduCATS.Data;
 using EduCATS.Data.Models.Labs;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.User;
+using EduCATS.Helpers.Devices.Interfaces;
+using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Models;
 using Xamarin.Forms;
@@ -18,17 +20,22 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		readonly int _currentGroupId;
 		readonly string _currentUserLogin;
 		readonly StatsPageEnum _statisticsPage;
+		readonly IDialogs _dialogs;
+		readonly IAppDevice _device;
 
 		List<StatsPageLabsVisitingModel> _currentLabsVisitingList;
 		List<StatsPageLabsRatingModel> _currentLabsMarksList;
 
 		public StatsResultsPageViewModel(
-			string userLogin, int subjectId, int groupId, StatsPageEnum statisticsPage)
+			IDialogs dialogs, IAppDevice device, string userLogin,
+			int subjectId, int groupId, StatsPageEnum statisticsPage)
 		{
+			_dialogs = dialogs;
+			_device = device;
 			_currentUserLogin = userLogin;
 			_currentSubjectId = subjectId;
 			_currentGroupId = groupId;
-			this._statisticsPage = statisticsPage;
+			_statisticsPage = statisticsPage;
 			Task.Run(async () => await getData());
 		}
 
@@ -74,6 +81,11 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 				case StatsPageEnum.LecturesVisiting:
 					await getLecturesVisiting();
 					break;
+			}
+
+			if (DataAccess.IsError) {
+				_device.MainThread(
+					() => _dialogs.ShowError(DataAccess.ErrorMessage));
 			}
 
 			IsLoading = false;
@@ -128,14 +140,18 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			var userLecturesVisiting = groupVisiting?.LecturesVisiting
 				.SingleOrDefault(v => string.Compare(v.Login?.ToLower(), _currentUserLogin?.ToLower()) == 0);
 
-			var stats = userLecturesVisiting.VisitingList?.Select(
+			var stats = userLecturesVisiting?.VisitingList?.Select(
 				u => new StatsResultsPageModel(
 					null, u.Date, null, string.IsNullOrEmpty(u.Mark) ? GlobalConsts.EmptyRatingString : u.Mark));
 
-			var statsList = stats.ToList();
+			var statsList = stats?.ToList();
 
 			if (AppUserData.UserType == UserTypeEnum.Student) {
 				statsList?.RemoveAll(s => s.Result.Equals(GlobalConsts.EmptyRatingString));
+			}
+
+			if (statsList == null) {
+				return;
 			}
 
 			Marks = new List<StatsResultsPageModel>(statsList);

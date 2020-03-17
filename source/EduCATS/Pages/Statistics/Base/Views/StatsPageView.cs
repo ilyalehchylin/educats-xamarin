@@ -3,6 +3,7 @@ using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Controls.SubjectsPickerView;
 using EduCATS.Helpers.Converters;
+using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
 using EduCATS.Pages.Statistics.Base.ViewModels;
@@ -25,7 +26,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = new Thickness(10);
-			BindingContext = new StatsPageViewModel(new AppDialogs(), new AppPages());
+			BindingContext = new StatsPageViewModel(new AppDialogs(), new AppDevice(), new AppPages());
 			createViews();
 		}
 

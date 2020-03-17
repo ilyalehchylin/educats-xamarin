@@ -21,20 +21,14 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 		readonly IAppDevice _device;
 
 		public TestingPageViewModel(IDialogs dialogService, IPages navigation, IAppDevice device)
-			: base(dialogService)
+			: base(dialogService, device)
 		{
 			_dialogService = dialogService;
 			_navigation = navigation;
 			_device = device;
 
-			Task.Run(async () => {
-				await SetupSubjects();
-				await getAndSetTests();
-			});
-
-			SubjectChanged += async (id, name) => {
-				await getAndSetTests();
-			};
+			Task.Run(async () => await update());
+			SubjectChanged += async (id, name) => await update();
 		}
 
 		bool _isRefreshing;
@@ -69,6 +63,12 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 			}
 		}
 
+		async Task update()
+		{
+			await SetupSubjects();
+			await getAndSetTests();
+		}
+
 		async Task getAndSetTests()
 		{
 			var tests = await getTests();
@@ -77,14 +77,13 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 
 		async Task<List<TestingGroupModel>> getTests()
 		{
-			var item = await DataAccess.GetAvailableTests(CurrentSubject.Id, AppUserData.UserId);
+			var tests = await DataAccess.GetAvailableTests(CurrentSubject.Id, AppUserData.UserId);
 
-			if (item.IsError) {
-				await _dialogService.ShowError(item.ErrorMessage);
-				return null;
+			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
+				_device.MainThread(
+					() => _dialogService.ShowError(DataAccess.ErrorMessage));
 			}
 
-			var tests = item.Tests;
 			var testsForSelfStudy = getGroup(tests, "testing_self_study", true);
 			var testsForControl = getGroup(tests, "testing_knowledge_control", false);
 			var groups = new List<TestingGroupModel>();

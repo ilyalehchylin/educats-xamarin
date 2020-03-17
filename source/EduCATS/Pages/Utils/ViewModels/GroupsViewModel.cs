@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models.Groups;
+using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Settings;
 using Nyxbull.Plugins.CrossLocalization;
@@ -14,6 +15,7 @@ namespace EduCATS.Pages.Utils.ViewModels
 	{
 		public readonly int SubjectId;
 		public readonly IDialogs DialogService;
+		public readonly IAppDevice DeviceService;
 
 		public List<GroupItemModel> CurrentGroups { get; set; }
 		public GroupItemModel CurrentGroup { get; set; }
@@ -21,10 +23,11 @@ namespace EduCATS.Pages.Utils.ViewModels
 		public delegate void GroupEventHandler(int id, string name);
 		public event GroupEventHandler GroupChanged;
 
-		public GroupsViewModel(IDialogs dialogService, int subjectId)
+		public GroupsViewModel(IDialogs dialogService, IAppDevice deviceService, int subjectId)
 		{
 			SubjectId = subjectId;
 			DialogService = dialogService;
+			DeviceService = deviceService;
 		}
 
 		string chosenGroup;
@@ -58,9 +61,9 @@ namespace EduCATS.Pages.Utils.ViewModels
 		{
 			var groups = await DataAccess.GetOnlyGroups(SubjectId);
 
-			if (groups.IsError) {
-				await DialogService.ShowError(groups.ErrorMessage);
-				return null;
+			if (DataAccess.IsError) {
+				DeviceService.MainThread(
+					() => DialogService.ShowError(DataAccess.ErrorMessage));
 			}
 
 			return groups.GroupsList;
@@ -136,7 +139,7 @@ namespace EduCATS.Pages.Utils.ViewModels
 
 		void setCurrentGroupsList(List<GroupItemModel> groups)
 		{
-			CurrentGroups = groups;
+			CurrentGroups = groups.OrderBy(g => g.GroupName).ToList();
 		}
 
 		bool checkGroupsList()

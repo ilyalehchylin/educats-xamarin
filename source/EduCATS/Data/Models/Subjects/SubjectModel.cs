@@ -2,7 +2,7 @@
 
 namespace EduCATS.Data.Models.Subjects
 {
-	public class SubjectModel : DataModel
+	public class SubjectModel
 	{
 		public IList<SubjectItemModel> SubjectsList { get; set; }
 	}

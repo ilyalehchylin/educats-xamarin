@@ -18,15 +18,15 @@ namespace EduCATS.Helpers.Dialogs
 			}
 		}
 
-		public async Task ShowError(string message)
+		public void ShowError(string message)
 		{
-			await mainPage.DisplayAlert(
+			mainPage.DisplayAlert(
 				CrossLocalization.Translate("common_error"), message, CrossLocalization.Translate("common_ok"));
 		}
 
-		public async Task ShowMessage(string title, string message)
+		public void ShowMessage(string title, string message)
 		{
-			await mainPage.DisplayAlert(
+			mainPage.DisplayAlert(
 				title, message, CrossLocalization.Translate("common_ok"));
 		}
 
