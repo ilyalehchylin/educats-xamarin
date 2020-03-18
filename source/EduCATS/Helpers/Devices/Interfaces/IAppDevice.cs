@@ -6,5 +6,6 @@ namespace EduCATS.Helpers.Devices.Interfaces
 	{
 		void MainThread(Action action);
 		void SetTimer(TimeSpan interval, Func<bool> callback);
+		void OpenUri(string uri);
 	}
 }

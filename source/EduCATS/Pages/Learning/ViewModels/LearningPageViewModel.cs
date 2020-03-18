@@ -42,8 +42,8 @@ namespace EduCATS.Pages.Learning.ViewModels
 					Theme.Current.LearningCardTestsImage, 0),
 
 				getCard(
-					CrossLocalization.Translate("learning_card_eumc"),
-					Theme.Current.LearningCardEumcImage, 1),
+					CrossLocalization.Translate("learning_card_eemc"),
+					Theme.Current.LearningCardEemcImage, 1),
 
 				getCard(
 					CrossLocalization.Translate("learning_card_files"),
@@ -83,6 +83,8 @@ namespace EduCATS.Pages.Learning.ViewModels
 						CrossLocalization.Translate("learning_card_tests"));
 					break;
 				case 1:
+					_navigationService.OpenEemc(
+						CrossLocalization.Translate("learning_card_eemc"));
 					break;
 				case 2:
 					break;

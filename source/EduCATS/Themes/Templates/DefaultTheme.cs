@@ -40,7 +40,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string TodayNewsDateColor => "#808080";
 		virtual public string TodayNewsDateIconColor => "#ADABAA";
 		virtual public string TodayNewsDateIcon => "icon_clock";
-		virtual public string TodaySelectedTodayDateColor => "#27AAE1";
+		virtual public string TodaySelectedTodayDateColor => CommonAppColor;
 		virtual public string TodaySelectedAnotherDateColor => "#808080";
 		virtual public string TodayNotSelectedDateColor => "Transparent";
 		virtual public string TodaySelectedDateTextColor => "#FFFFFF";
@@ -66,7 +66,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string LearningCardTextColor => "#FFFFFF";
 
 		virtual public string LearningCardTestsImage => "image_test_square";
-		virtual public string LearningCardEumcImage => "image_book_square";
+		virtual public string LearningCardEemcImage => "image_book_square";
 		virtual public string LearningCardFilesImage => "image_file_square";
 		virtual public string LearningCardAdaptiveImage => "image_circuit_square";
 
@@ -80,8 +80,18 @@ namespace EduCATS.Themes.Templates
 		virtual public string TestPassingArrowUpIcon => "icon_arrow_up";
 		virtual public string TestPassingArrowDownIcon => "icon_arrow_down";
 
-		public string TestResultsAnswerTextColor => "#000000";
-		public string TestResultsCorrectAnswerColor => "#00AA55";
-		public string TestResultsNotCorrectAnswerColor => "#E63022";
+		virtual public string TestResultsAnswerTextColor => "#000000";
+		virtual public string TestResultsCorrectAnswerColor => "#00AA55";
+		virtual public string TestResultsNotCorrectAnswerColor => "#E63022";
+
+		virtual public string EemcHeaderImage => "image_book_rectangle";
+		virtual public string EemcBackButtonColor => CommonAppColor;
+		virtual public string EemcBackButtonTextColor => "#FFFFFF";
+		virtual public string EemcDirectoryActiveIcon => "icon_directory_active";
+		virtual public string EemcDirectoryInactiveIcon => "icon_directory_inactive";
+		virtual public string EemcDocumentActiveIcon => "icon_document_pdf_active";
+		virtual public string EemcDocumentInactiveIcon => "icon_document_pdf_inactive";
+		virtual public string EemcDocumentTestActiveIcon => "icon_document_test_active";
+		virtual public string EemcDocumentTestInactiveIcon => "icon_document_test_active";
 	}
 }

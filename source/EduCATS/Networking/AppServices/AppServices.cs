@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data.Models.User;
 using EduCATS.Helpers.Json;
+using EduCATS.Networking.Models.Eemc;
 using EduCATS.Networking.Models.Login;
 using EduCATS.Networking.Models.Testing;
 
@@ -98,6 +99,21 @@ namespace EduCATS.Networking.AppServices
 		{
 			return await AppServicesController.Request(
 				$"{Links.GetUserAnswers}?studentId={userId}&testId={testId}");
+		}
+
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetRootConcepts(
+			string userId, string subjectId)
+		{
+			var body = new RootConceptsPostModel(userId, subjectId);
+			var bodyString = JsonController.ConvertObjectToJson(body);
+			return await AppServicesController.Request($"{Links.GetRootConcepts}", bodyString);
+		}
+
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetConceptTree(
+			int elementId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetConceptTree}?elementId={elementId}");
 		}
 
 		static string getUserLoginBody(string username)

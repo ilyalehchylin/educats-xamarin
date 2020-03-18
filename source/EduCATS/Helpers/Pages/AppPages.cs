@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Pages.Eemc.Views;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
 using EduCATS.Pages.Statistics.Enums;
@@ -129,10 +130,21 @@ namespace EduCATS.Helpers.Pages
 		/// </summary>
 		/// <param name="testId">Test ID</param>
 		/// <param name="fromComplexLearning">Is opened from Complex learning page</param>
-		/// <returns></returns>
+		/// <returns>Task</returns>
 		public async Task OpenTestResults(int testId, bool fromComplexLearning = false)
 		{
 			await pushModalPageAsync(new TestingResultsPageView(testId, fromComplexLearning));
+		}
+
+		/// <summary>
+		/// Open Electronic educational methodological complexes page.
+		/// </summary>
+		/// <param name="title">Title</param>
+		/// <param name="searchId">(optional) Search ID</param>
+		/// <returns></returns>
+		public async Task OpenEemc(string title, int searchId = -1)
+		{
+			await pushPageAsync(new EemcPageView(searchId), title);
 		}
 
 		/// <summary>

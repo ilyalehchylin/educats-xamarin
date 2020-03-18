@@ -63,7 +63,7 @@
 
 		string LearningCardTextColor { get; }
 		string LearningCardTestsImage { get; }
-		string LearningCardEumcImage { get; }
+		string LearningCardEemcImage { get; }
 		string LearningCardFilesImage { get; }
 		string LearningCardAdaptiveImage { get; }
 
@@ -80,5 +80,15 @@
 		string TestResultsAnswerTextColor { get; }
 		string TestResultsCorrectAnswerColor { get; }
 		string TestResultsNotCorrectAnswerColor { get; }
+
+		string EemcHeaderImage { get; }
+		string EemcBackButtonColor { get; }
+		string EemcBackButtonTextColor { get; }
+		string EemcDirectoryActiveIcon { get; }
+		string EemcDirectoryInactiveIcon { get; }
+		string EemcDocumentActiveIcon { get; }
+		string EemcDocumentInactiveIcon { get; }
+		string EemcDocumentTestActiveIcon { get; }
+		string EemcDocumentTestInactiveIcon { get; }
 	}
 }

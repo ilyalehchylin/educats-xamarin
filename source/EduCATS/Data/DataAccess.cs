@@ -3,6 +3,7 @@ using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data.Caching;
 using EduCATS.Data.Models.Calendar;
+using EduCATS.Data.Models.Eemc;
 using EduCATS.Data.Models.Groups;
 using EduCATS.Data.Models.Labs;
 using EduCATS.Data.Models.Lectures;
@@ -34,6 +35,8 @@ namespace EduCATS.Data
 		const string getLecturesKey = "GET_LECTURES_KEY";
 		const string getAvailableTestsKey = "GET_AVAILABLE_TESTS_KEY";
 		const string getUserAnswersKey = "GET_USER_ANSWERS_KEY";
+		const string getRootConceptKey = "GET_ROOT_CONCEPT_KEY";
+		const string getConceptTreeKey = "GET_CONCEPT_TREE_KEY";
 
 		public static bool IsError { get; set; }
 		public static bool IsConnectionError { get; set; }
@@ -203,6 +206,30 @@ namespace EduCATS.Data
 			var list = await dataAccess.GetList(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return list;
+		}
+
+		public async static Task<RootConceptModel> GetRootConcepts(string userId, string subjectId)
+		{
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetRootConcepts(userId, subjectId);
+
+			var dataAccess = new DataAccess<RootConceptModel>(
+				"eemc_root_concepts_error", $"{getRootConceptKey}/{userId}/{subjectId}");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
+		}
+
+		public async static Task<ConceptModel> GetConceptTree(int elementId)
+		{
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetConceptTree(elementId);
+
+			var dataAccess = new DataAccess<ConceptModel>(
+				"eemc_concept_tree_error", $"{getConceptTreeKey}/{elementId}");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
 		}
 
 		static void setError(string message, bool isConnectionError)

@@ -15,5 +15,6 @@ namespace EduCATS.Helpers.Pages.Interfaces
 		Task OpenTesting(string title);
 		Task OpenTestPassing(int testId, bool forSelfStudy, bool fromComplexLearning = false);
 		Task OpenTestResults(int testId, bool fromComplexLearning = false);
+		Task OpenEemc(string title, int searchId = -1);
 	}
 }

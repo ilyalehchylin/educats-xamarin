@@ -211,5 +211,23 @@
     <BundleResource Include="Resources\icon_arrow_up%401x.png" />
     <BundleResource Include="Resources\icon_arrow_up%402x.png" />
     <BundleResource Include="Resources\icon_arrow_up%403x.png" />
+    <BundleResource Include="Resources\icon_directory_active%401x.png" />
+    <BundleResource Include="Resources\icon_directory_active%402x.png" />
+    <BundleResource Include="Resources\icon_directory_active%403x.png" />
+    <BundleResource Include="Resources\icon_directory_inactive%401x.png" />
+    <BundleResource Include="Resources\icon_directory_inactive%402x.png" />
+    <BundleResource Include="Resources\icon_directory_inactive%403x.png" />
+    <BundleResource Include="Resources\icon_document_pdf_active%401x.png" />
+    <BundleResource Include="Resources\icon_document_pdf_active%402x.png" />
+    <BundleResource Include="Resources\icon_document_pdf_active%403x.png" />
+    <BundleResource Include="Resources\icon_document_pdf_inactive%401x.png" />
+    <BundleResource Include="Resources\icon_document_pdf_inactive%402x.png" />
+    <BundleResource Include="Resources\icon_document_pdf_inactive%403x.png" />
+    <BundleResource Include="Resources\icon_document_test_active%401x.png" />
+    <BundleResource Include="Resources\icon_document_test_active%402x.png" />
+    <BundleResource Include="Resources\icon_document_test_active%403x.png" />
+    <BundleResource Include="Resources\icon_document_test_inactive%401x.png" />
+    <BundleResource Include="Resources\icon_document_test_inactive%402x.png" />
+    <BundleResource Include="Resources\icon_document_test_inactive%403x.png" />
   </ItemGroup>
 </Project>

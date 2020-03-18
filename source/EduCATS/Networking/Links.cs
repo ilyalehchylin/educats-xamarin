@@ -16,5 +16,7 @@
 		public static string GetNextQuestion => $"{Servers.Current}/TestPassing/GetNextQuestionJson";
 		public static string AnswerQuestionAndGetNext => $"{Servers.Current}/TestPassing/AnswerQuestionAndGetNextMobile";
 		public static string GetUserAnswers => $"{Servers.Current}/TestPassing/GetUserAnswers";
+		public static string GetRootConcepts => $"{Servers.Current}/Services/Concept/ConceptService.svc/GetRootConceptsMobile";
+		public static string GetConceptTree => $"{Servers.Current}/Services/Concept/ConceptService.svc/GetConceptTreeMobile";
 	}
 }
