@@ -101,6 +101,11 @@ namespace EduCATS.Networking.AppServices
 				$"{Links.GetUserAnswers}?studentId={userId}&testId={testId}");
 		}
 
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetFiles(int subjectId)
+		{
+			return await AppServicesController.Request($"{Links.GetFiles}?subjectId={subjectId}");
+		}
+
 		public static async Task<KeyValuePair<string, HttpStatusCode>> GetRootConcepts(
 			string userId, string subjectId)
 		{

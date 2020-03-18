@@ -90,5 +90,7 @@
 		string EemcDocumentInactiveIcon { get; }
 		string EemcDocumentTestActiveIcon { get; }
 		string EemcDocumentTestInactiveIcon { get; }
+
+		string FilesHeaderImage { get; }
 	}
 }

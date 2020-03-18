@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using EduCATS.Helpers.Dialogs.Interfaces;
@@ -45,6 +46,28 @@ namespace EduCATS.Helpers.Dialogs
 			UserDialogs.Instance.HideLoading();
 		}
 
+		public object ShowProgress(string message, string cancelText, Action onCancel)
+		{
+			return UserDialogs.Instance.Progress(message, onCancel, cancelText);
+		}
+
+		public void UpdateProgress(object dialog, int percent)
+		{
+			var progressDialog = getProgressDialog(dialog);
+
+			if (progressDialog == null) {
+				return;
+			}
+
+			progressDialog.PercentComplete = percent;
+		}
+
+		public void HideProgress(object dialog)
+		{
+			var progressDialog = getProgressDialog(dialog);
+			progressDialog?.Hide();
+		}
+
 		public async Task<string> ShowSheet(string title, List<string> buttonList)
 		{
 			if (buttonList == null) {
@@ -63,6 +86,16 @@ namespace EduCATS.Helpers.Dialogs
 				title, message,
 				CrossLocalization.Translate("common_yes"),
 				CrossLocalization.Translate("common_no"));
+		}
+
+		IProgressDialog getProgressDialog(object dialog)
+		{
+			if (dialog == null || !(dialog is IProgressDialog)) {
+				return null;
+			}
+
+			var progressDialog = dialog as IProgressDialog;
+			return progressDialog;
 		}
 	}
 }

@@ -18,5 +18,7 @@
 		public static string GetUserAnswers => $"{Servers.Current}/TestPassing/GetUserAnswers";
 		public static string GetRootConcepts => $"{Servers.Current}/Services/Concept/ConceptService.svc/GetRootConceptsMobile";
 		public static string GetConceptTree => $"{Servers.Current}/Services/Concept/ConceptService.svc/GetConceptTreeMobile";
+		public static string GetFiles => $"{Servers.Current}/Subject/GetFileSubjectJson";
+		public static string GetFile => $"{Servers.Current}/api/Upload";
 	}
 }

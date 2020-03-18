@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using EduCATS.Data.Caching;
 using EduCATS.Data.Models.Calendar;
 using EduCATS.Data.Models.Eemc;
+using EduCATS.Data.Models.Files;
 using EduCATS.Data.Models.Groups;
 using EduCATS.Data.Models.Labs;
 using EduCATS.Data.Models.Lectures;
@@ -25,18 +26,19 @@ namespace EduCATS.Data
 	/// </summary>
 	public static partial class DataAccess
 	{
-		const string profileInfoKey = "PROFILE_INFO_KEY";
-		const string getNewsKey = "GET_NEWS_KEY";
-		const string getProfileInfoSubjectKey = "GET_PROFILE_INFO_SUBJECT_KEY";
-		const string getProfileInfoCalendarKey = "GET_PROFILE_INFO_CALENDAR_KEY";
-		const string getMarksKey = "GET_MARKS_KEY";
-		const string getOnlyGroupsKey = "GET_ONLY_GROUPS_KEY";
-		const string getLabsKey = "GET_LABS_KEY";
-		const string getLecturesKey = "GET_LECTURES_KEY";
-		const string getAvailableTestsKey = "GET_AVAILABLE_TESTS_KEY";
-		const string getUserAnswersKey = "GET_USER_ANSWERS_KEY";
-		const string getRootConceptKey = "GET_ROOT_CONCEPT_KEY";
-		const string getConceptTreeKey = "GET_CONCEPT_TREE_KEY";
+		const string _profileInfoKey = "PROFILE_INFO_KEY";
+		const string _getNewsKey = "GET_NEWS_KEY";
+		const string _getProfileInfoSubjectKey = "GET_PROFILE_INFO_SUBJECT_KEY";
+		const string _getProfileInfoCalendarKey = "GET_PROFILE_INFO_CALENDAR_KEY";
+		const string _getMarksKey = "GET_MARKS_KEY";
+		const string _getOnlyGroupsKey = "GET_ONLY_GROUPS_KEY";
+		const string _getLabsKey = "GET_LABS_KEY";
+		const string _getLecturesKey = "GET_LECTURES_KEY";
+		const string _getAvailableTestsKey = "GET_AVAILABLE_TESTS_KEY";
+		const string _getUserAnswersKey = "GET_USER_ANSWERS_KEY";
+		const string _getRootConceptKey = "GET_ROOT_CONCEPT_KEY";
+		const string _getConceptTreeKey = "GET_CONCEPT_TREE_KEY";
+		const string _getFilesKey = "GET_FILES_KEY";
 
 		public static bool IsError { get; set; }
 		public static bool IsConnectionError { get; set; }
@@ -63,7 +65,7 @@ namespace EduCATS.Data
 			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
 				await AppServices.GetProfileInfo(username);
 
-			var dataAccess = new DataAccess<UserProfileModel>("login_user_profile_error_text", profileInfoKey);
+			var dataAccess = new DataAccess<UserProfileModel>("login_user_profile_error_text", _profileInfoKey);
 			var singleObject = await dataAccess.GetSingle(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;
@@ -74,7 +76,7 @@ namespace EduCATS.Data
 			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
 				await AppServices.GetNews(username);
 
-			var dataAccess = new DataAccess<NewsItemModel>("today_news_load_error_text", getNewsKey);
+			var dataAccess = new DataAccess<NewsItemModel>("today_news_load_error_text", _getNewsKey);
 			var list = await dataAccess.GetList(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return list;
@@ -85,7 +87,7 @@ namespace EduCATS.Data
 			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
 				await AppServices.GetProfileInfoSubjects(username);
 
-			var dataAccess = new DataAccess<SubjectItemModel>("today_subjects_error_text", getProfileInfoSubjectKey);
+			var dataAccess = new DataAccess<SubjectItemModel>("today_subjects_error_text", _getProfileInfoSubjectKey);
 			var list = await dataAccess.GetList(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return list;
@@ -96,7 +98,7 @@ namespace EduCATS.Data
 			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
 				await AppServices.GetProfileInfoCalendar(username);
 
-			var dataAccess = new DataAccess<CalendarModel>("today_calendar_error_text", getProfileInfoCalendarKey);
+			var dataAccess = new DataAccess<CalendarModel>("today_calendar_error_text", _getProfileInfoCalendarKey);
 			var singleObject = await dataAccess.GetSingle(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;
@@ -108,7 +110,7 @@ namespace EduCATS.Data
 				await AppServices.GetStatistics(subjectId, groupId);
 
 			var dataAccess = new DataAccess<StatisticsModel>(
-				"statistics_marks_error_text", $"{getMarksKey}/{subjectId}/{groupId}");
+				"statistics_marks_error_text", $"{_getMarksKey}/{subjectId}/{groupId}");
 			var singleObject = await dataAccess.GetSingle(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;
@@ -120,7 +122,7 @@ namespace EduCATS.Data
 				await AppServices.GetOnlyGroups(subjectId);
 
 			var dataAccess = new DataAccess<GroupModel>(
-				"groups_retieval_error", $"{getOnlyGroupsKey}/{subjectId}");
+				"groups_retieval_error", $"{_getOnlyGroupsKey}/{subjectId}");
 			var singleObject = await dataAccess.GetSingle(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;
@@ -132,7 +134,7 @@ namespace EduCATS.Data
 				await AppServices.GetLabs(subjectId, groupId);
 
 			var dataAccess = new DataAccess<LabsModel>(
-				"labs_retrieval_error", $"{getLabsKey}/{subjectId}/{groupId}");
+				"labs_retrieval_error", $"{_getLabsKey}/{subjectId}/{groupId}");
 			var singleObject = await dataAccess.GetSingle(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;
@@ -144,7 +146,7 @@ namespace EduCATS.Data
 				await AppServices.GetLectures(subjectId, groupId);
 
 			var dataAccess = new DataAccess<LecturesModel>(
-				"lectures_retrieval_error", $"{getLecturesKey}/{subjectId}/{groupId}");
+				"lectures_retrieval_error", $"{_getLecturesKey}/{subjectId}/{groupId}");
 			var singleObject = await dataAccess.GetSingle(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;
@@ -156,7 +158,7 @@ namespace EduCATS.Data
 				await AppServices.GetAvailableTests(subjectId, userId);
 
 			var dataAccess = new DataAccess<TestingItemModel>(
-				"testing_get_tests_error", $"{getAvailableTestsKey}/{subjectId}/{userId}");
+				"testing_get_tests_error", $"{_getAvailableTestsKey}/{subjectId}/{userId}");
 			var list = await dataAccess.GetList(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return list;
@@ -202,7 +204,7 @@ namespace EduCATS.Data
 				await AppServices.GetUserAnswers(userId, testId);
 
 			var dataAccess = new DataAccess<TestingResultsModel>(
-				"test_results_error", $"{getUserAnswersKey}/{userId}/{testId}");
+				"test_results_error", $"{_getUserAnswersKey}/{userId}/{testId}");
 			var list = await dataAccess.GetList(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return list;
@@ -214,7 +216,7 @@ namespace EduCATS.Data
 				await AppServices.GetRootConcepts(userId, subjectId);
 
 			var dataAccess = new DataAccess<RootConceptModel>(
-				"eemc_root_concepts_error", $"{getRootConceptKey}/{userId}/{subjectId}");
+				"eemc_root_concepts_error", $"{_getRootConceptKey}/{userId}/{subjectId}");
 			var singleObject = await dataAccess.GetSingle(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;
@@ -226,7 +228,19 @@ namespace EduCATS.Data
 				await AppServices.GetConceptTree(elementId);
 
 			var dataAccess = new DataAccess<ConceptModel>(
-				"eemc_concept_tree_error", $"{getConceptTreeKey}/{elementId}");
+				"eemc_concept_tree_error", $"{_getConceptTreeKey}/{elementId}");
+			var singleObject = await dataAccess.GetSingle(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return singleObject;
+		}
+
+		public async static Task<FilesModel> GetFiles(int subjectId)
+		{
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetFiles(subjectId);
+
+			var dataAccess = new DataAccess<FilesModel>(
+				"files_fetch_error", $"{_getFilesKey}/{subjectId}");
 			var singleObject = await dataAccess.GetSingle(apiCallback);
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;

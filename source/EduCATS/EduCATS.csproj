@@ -129,6 +129,12 @@
     <Folder Include="Networking\Models\Eemc\" />
     <Folder Include="Data\Models\Eemc\" />
     <Folder Include="Pages\Eemc\Views\ViewCell\" />
+    <Folder Include="Pages\Files\" />
+    <Folder Include="Pages\Files\Views\" />
+    <Folder Include="Pages\Files\ViewModels\" />
+    <Folder Include="Data\Models\Files\" />
+    <Folder Include="Pages\Files\Models\" />
+    <Folder Include="Pages\Files\Views\ViewCells\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

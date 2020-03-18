@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Eemc.Views;
+using EduCATS.Pages.Files.Views;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
 using EduCATS.Pages.Statistics.Enums;
@@ -145,6 +146,11 @@ namespace EduCATS.Helpers.Pages
 		public async Task OpenEemc(string title, int searchId = -1)
 		{
 			await pushPageAsync(new EemcPageView(searchId), title);
+		}
+
+		public async Task OpenFiles(string title)
+		{
+			await pushPageAsync(new FilesPageView(), title);
 		}
 
 		/// <summary>
