@@ -1,6 +1,8 @@
 [![EduCATS](./graphics/banner.png)](https://educats.bntu.by/)
 
-# EduCATS
+# EduCATS Xamarin
+
+A cross-platform client for the [Leaning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
 
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
 [![Maintainability](https://api.codeclimate.com/v1/badges/6365134f4e3ce083fe15/maintainability)](https://codeclimate.com/github/IlyaLehchylin/educats-xamarin/maintainability)
