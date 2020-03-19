@@ -95,5 +95,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string EemcDocumentTestInactiveIcon => "icon_document_test_active";
 
 		public string FilesHeaderImage => "image_file_rectangle";
+
+		public string RecommendationsHeaderImage => "image_circuit_rectangle";
 	}
 }

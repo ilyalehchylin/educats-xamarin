@@ -121,6 +121,12 @@ namespace EduCATS.Networking.AppServices
 				$"{Links.GetConceptTree}?elementId={elementId}");
 		}
 
+		public static async Task<KeyValuePair<string, HttpStatusCode>> GetRecommendations(int subjectId, int userId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetRecomendations}?subjectId={subjectId}&studentId={userId}");
+		}
+
 		static string getUserLoginBody(string username)
 		{
 			var userLogin = new UserLoginModel {

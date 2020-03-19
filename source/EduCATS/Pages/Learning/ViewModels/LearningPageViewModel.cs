@@ -91,6 +91,8 @@ namespace EduCATS.Pages.Learning.ViewModels
 						CrossLocalization.Translate("learning_card_files"));
 					break;
 				case 3:
+					_navigationService.OpenRecommendations(
+						CrossLocalization.Translate("learning_card_adaptive"));
 					break;
 			}
 		}

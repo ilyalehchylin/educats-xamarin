@@ -135,6 +135,12 @@
     <Folder Include="Data\Models\Files\" />
     <Folder Include="Pages\Files\Models\" />
     <Folder Include="Pages\Files\Views\ViewCells\" />
+    <Folder Include="Data\Models\Recommendations\" />
+    <Folder Include="Pages\Recommendations\" />
+    <Folder Include="Pages\Recommendations\Views\" />
+    <Folder Include="Pages\Recommendations\Views\ViewCells\" />
+    <Folder Include="Pages\Recommendations\ViewModels\" />
+    <Folder Include="Pages\Recommendations\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

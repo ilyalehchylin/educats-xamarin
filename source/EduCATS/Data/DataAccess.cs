@@ -9,6 +9,7 @@ using EduCATS.Data.Models.Groups;
 using EduCATS.Data.Models.Labs;
 using EduCATS.Data.Models.Lectures;
 using EduCATS.Data.Models.News;
+using EduCATS.Data.Models.Recommendations;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.Models.Subjects;
 using EduCATS.Data.Models.Testing.Base;
@@ -39,6 +40,7 @@ namespace EduCATS.Data
 		const string _getRootConceptKey = "GET_ROOT_CONCEPT_KEY";
 		const string _getConceptTreeKey = "GET_CONCEPT_TREE_KEY";
 		const string _getFilesKey = "GET_FILES_KEY";
+		const string _getRecommendationsKey = "GET_RECOMMENDATIONS_KEY";
 
 		public static bool IsError { get; set; }
 		public static bool IsConnectionError { get; set; }
@@ -245,6 +247,20 @@ namespace EduCATS.Data
 			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
 			return singleObject;
 		}
+
+		public async static Task<List<RecommendationsModel>> GetRecommendations(
+			int subjectId, int userId)
+		{
+			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
+				await AppServices.GetRecommendations(subjectId, userId);
+
+			var dataAccess = new DataAccess<RecommendationsModel>(
+				"recommendations_fetch_error", $"{_getRecommendationsKey}/{subjectId}/{userId}");
+			var list = await dataAccess.GetList(apiCallback);
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return list;
+		}
+
 
 		static void setError(string message, bool isConnectionError)
 		{

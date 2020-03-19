@@ -20,5 +20,6 @@
 		public static string GetConceptTree => $"{Servers.Current}/Services/Concept/ConceptService.svc/GetConceptTreeMobile";
 		public static string GetFiles => $"{Servers.Current}/Subject/GetFileSubjectJson";
 		public static string GetFile => $"{Servers.Current}/api/Upload";
+		public static string GetRecomendations => $"{Servers.Current}/Tests/GetRecomendations";
 	}
 }

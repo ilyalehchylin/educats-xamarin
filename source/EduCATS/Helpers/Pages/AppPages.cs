@@ -6,6 +6,7 @@ using EduCATS.Pages.Eemc.Views;
 using EduCATS.Pages.Files.Views;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
+using EduCATS.Pages.Recommendations.Views;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Views;
 using EduCATS.Pages.Statistics.Students.Views;
@@ -142,15 +143,30 @@ namespace EduCATS.Helpers.Pages
 		/// </summary>
 		/// <param name="title">Title</param>
 		/// <param name="searchId">(optional) Search ID</param>
-		/// <returns></returns>
+		/// <returns>Task</returns>
 		public async Task OpenEemc(string title, int searchId = -1)
 		{
 			await pushPageAsync(new EemcPageView(searchId), title);
 		}
 
+		/// <summary>
+		/// Open Files page.
+		/// </summary>
+		/// <param name="title">Title</param>
+		/// <returns>Task</returns>
 		public async Task OpenFiles(string title)
 		{
 			await pushPageAsync(new FilesPageView(), title);
+		}
+
+		/// <summary>
+		/// Open Adaptive Learning (Recommendations) page.
+		/// </summary>
+		/// <param name="title">Title</param>
+		/// <returns>Task</returns>
+		public async Task OpenRecommendations(string title)
+		{
+			await pushPageAsync(new RecommendationsPageView(), title);
 		}
 
 		/// <summary>
