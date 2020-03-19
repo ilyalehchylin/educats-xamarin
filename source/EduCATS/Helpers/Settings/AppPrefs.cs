@@ -76,7 +76,7 @@ namespace EduCATS.Helpers.Settings
 		}
 
 		const string chosenSubjectIdKey = "CHOSEN_SUBJECT_ID";
-		static readonly int chosenSubjectIdDefault;
+		static readonly int chosenSubjectIdDefault = 0;
 
 		public static int ChosenSubjectId {
 			get {
@@ -100,7 +100,7 @@ namespace EduCATS.Helpers.Settings
 		}
 
 		const string groupNameKey = "USER_GROUP_NAME";
-		static readonly string groupNameDefault;
+		static readonly string groupNameDefault = "";
 
 		public static string GroupName {
 			get {
@@ -112,7 +112,7 @@ namespace EduCATS.Helpers.Settings
 		}
 
 		const string avatarKey = "USER_AVATAR";
-		static readonly string avatarDefault;
+		static readonly string avatarDefault = "";
 
 		public static string Avatar {
 			get {
@@ -124,7 +124,7 @@ namespace EduCATS.Helpers.Settings
 		}
 
 		const string chosenGroupIdKey = "CHOSEN_GROUP_ID";
-		static readonly int chosenGroupIdDefault;
+		static readonly int chosenGroupIdDefault = 0;
 
 		public static int ChosenGroupId {
 			get {
