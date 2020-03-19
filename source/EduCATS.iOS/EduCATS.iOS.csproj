@@ -229,5 +229,20 @@
     <BundleResource Include="Resources\icon_document_test_inactive%401x.png" />
     <BundleResource Include="Resources\icon_document_test_inactive%402x.png" />
     <BundleResource Include="Resources\icon_document_test_inactive%403x.png" />
+    <BundleResource Include="Resources\icon_settings_font%401x.png" />
+    <BundleResource Include="Resources\icon_settings_font%402x.png" />
+    <BundleResource Include="Resources\icon_settings_font%403x.png" />
+    <BundleResource Include="Resources\icon_settings_language%401x.png" />
+    <BundleResource Include="Resources\icon_settings_language%402x.png" />
+    <BundleResource Include="Resources\icon_settings_language%403x.png" />
+    <BundleResource Include="Resources\icon_settings_logout%401x.png" />
+    <BundleResource Include="Resources\icon_settings_logout%402x.png" />
+    <BundleResource Include="Resources\icon_settings_logout%403x.png" />
+    <BundleResource Include="Resources\icon_settings_server%401x.png" />
+    <BundleResource Include="Resources\icon_settings_server%402x.png" />
+    <BundleResource Include="Resources\icon_settings_server%403x.png" />
+    <BundleResource Include="Resources\icon_settings_themes%401x.png" />
+    <BundleResource Include="Resources\icon_settings_themes%402x.png" />
+    <BundleResource Include="Resources\icon_settings_themes%403x.png" />
   </ItemGroup>
 </Project>

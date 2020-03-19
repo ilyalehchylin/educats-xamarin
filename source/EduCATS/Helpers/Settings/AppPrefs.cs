@@ -99,6 +99,30 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		const string groupNameKey = "USER_GROUP_NAME";
+		static readonly string groupNameDefault;
+
+		public static string GroupName {
+			get {
+				return Preferences.Get(groupNameKey, groupNameDefault);
+			}
+			set {
+				Preferences.Set(groupNameKey, value);
+			}
+		}
+
+		const string avatarKey = "USER_AVATAR";
+		static readonly string avatarDefault;
+
+		public static string Avatar {
+			get {
+				return Preferences.Get(avatarKey, avatarDefault);
+			}
+			set {
+				Preferences.Set(avatarKey, value);
+			}
+		}
+
 		const string chosenGroupIdKey = "CHOSEN_GROUP_ID";
 		static readonly int chosenGroupIdDefault;
 

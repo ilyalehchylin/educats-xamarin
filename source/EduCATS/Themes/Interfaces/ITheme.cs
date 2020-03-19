@@ -94,5 +94,12 @@
 		string FilesHeaderImage { get; }
 
 		string RecommendationsHeaderImage { get; }
+
+		string SettingsServerIcon { get; }
+		string SettingsLanguageIcon { get; }
+		string SettingsThemeIcon { get; }
+		string SettingsFontIcon { get; }
+		string SettingsLogoutIcon { get; }
+		string SettingsUserColor { get; }
 	}
 }

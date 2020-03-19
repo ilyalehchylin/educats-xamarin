@@ -55,6 +55,8 @@ namespace EduCATS
 			}
 			
 			AppUserData.SetProfileData(profile);
+			AppPrefs.GroupName = profile.GroupName;
+			AppPrefs.Avatar = profile.Avatar;
 		}
 	}
 }

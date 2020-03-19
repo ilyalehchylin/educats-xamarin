@@ -196,6 +196,8 @@ namespace EduCATS.Pages.Login.ViewModels
 
 			if (userProfile != null) {
 				AppUserData.SetProfileData(userProfile);
+				AppPrefs.GroupName = userProfile.GroupName;
+				AppPrefs.Avatar = userProfile.Avatar;
 			}
 
 			return userProfile;

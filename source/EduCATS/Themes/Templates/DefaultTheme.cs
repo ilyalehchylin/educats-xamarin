@@ -97,5 +97,12 @@ namespace EduCATS.Themes.Templates
 		public string FilesHeaderImage => "image_file_rectangle";
 
 		public string RecommendationsHeaderImage => "image_circuit_rectangle";
+
+		public string SettingsServerIcon => "icon_settings_server";
+		public string SettingsLanguageIcon => "icon_settings_language";
+		public string SettingsThemeIcon => "icon_settings_themes";
+		public string SettingsFontIcon => "icon_settings_font";
+		public string SettingsLogoutIcon => "icon_settings_logout";
+		public string SettingsUserColor => "#808080";
 	}
 }

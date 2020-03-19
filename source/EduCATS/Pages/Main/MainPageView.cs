@@ -1,6 +1,7 @@
 ﻿using System;
 using EduCATS.Helpers.Effects;
 using EduCATS.Pages.Learning.Views;
+using EduCATS.Pages.Settings.Base.Views;
 using EduCATS.Pages.Statistics.Base.Views;
 using EduCATS.Pages.Today.Base.Views;
 using EduCATS.Themes;
@@ -48,6 +49,11 @@ namespace EduCATS.Pages.Main
 				createPage(new StatsPageView(),
 				CrossLocalization.Translate("main_statistics"),
 				Theme.Current.MainStatisticsIcon));
+
+			Children.Add(
+				createPage(new SettingsPageView(),
+				CrossLocalization.Translate("main_settings"),
+				Theme.Current.MainSettingsIcon));
 		}
 
 		NavigationPage createPage(Page page, string title, string icon)

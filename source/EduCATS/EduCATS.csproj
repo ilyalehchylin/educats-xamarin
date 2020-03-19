@@ -141,6 +141,12 @@
     <Folder Include="Pages\Recommendations\Views\ViewCells\" />
     <Folder Include="Pages\Recommendations\ViewModels\" />
     <Folder Include="Pages\Recommendations\Models\" />
+    <Folder Include="Pages\Settings\" />
+    <Folder Include="Pages\Settings\Models\" />
+    <Folder Include="Pages\Settings\ViewModels\" />
+    <Folder Include="Pages\Settings\Views\" />
+    <Folder Include="Pages\Settings\Views\ViewCells\" />
+    <Folder Include="Pages\Settings\Base\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Localization\en.json" />

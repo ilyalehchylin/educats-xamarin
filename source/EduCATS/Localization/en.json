@@ -86,5 +86,13 @@
 	"files_downloading": "Downloading",
 	"files_downloading_error": "Error occurred during downloading this file. Please try again or contact support.",
 
-	"recommendations_fetch_error": "Error occurred during retrieving recommendations. Please try again or contact support."
+	"recommendations_fetch_error": "Error occurred during retrieving recommendations. Please try again or contact support.",
+
+	"settings_server": "Server",
+	"settings_language": "Language",
+	"settings_theme": "Theme",
+	"settings_font": "Text & Font",
+	"settings_logout": "Logout",
+	"settings_logout_message": "Are you sure you want to logout?",
+	"settings_user_without_group": "No group"
 }
