@@ -94,5 +94,10 @@
 	"settings_font": "Text & Font",
 	"settings_logout": "Logout",
 	"settings_logout_message": "Are you sure you want to logout?",
-	"settings_user_without_group": "No group"
+	"settings_user_without_group": "No group",
+
+	"settings_language_system": "System language",
+	"settings_language_system_description": "Use system language as default",
+	"settings_language_choose": "Language selection",
+	"settings_language_change_message": "Are you sure you want to change language? This action will reload application."
 }

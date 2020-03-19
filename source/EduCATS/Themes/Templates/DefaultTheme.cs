@@ -104,5 +104,10 @@ namespace EduCATS.Themes.Templates
 		public string SettingsFontIcon => "icon_settings_font";
 		public string SettingsLogoutIcon => "icon_settings_logout";
 		public string SettingsUserColor => "#808080";
+
+		public string CheckboxIcon => "icon_checkmark";
+		public string CheckboxDescriptionColor => "#808080";
+
+		public string SwitchFrameDescriptionColor => "#808080";
 	}
 }

@@ -94,5 +94,10 @@
     "settings_font": "Текст & Шрифт",
     "settings_logout": "Выйти",
     "settings_logout_message": "Вы действительно хотите выйти?",
-    "settings_user_without_group": "Нет группы"
+    "settings_user_without_group": "Нет группы",
+
+    "settings_language_system": "Системный язык",
+    "settings_language_system_description": "Использовать системный язык в качестве основного",
+    "settings_language_choose": "Выбор языка",
+    "settings_language_change_message": "Вы действительно хотите изменить язык? Это действие перезагрузит приложение."
 }

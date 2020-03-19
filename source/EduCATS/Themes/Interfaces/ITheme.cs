@@ -101,5 +101,10 @@
 		string SettingsFontIcon { get; }
 		string SettingsLogoutIcon { get; }
 		string SettingsUserColor { get; }
+
+		string CheckboxIcon { get; }
+		string CheckboxDescriptionColor { get; }
+
+		string SwitchFrameDescriptionColor { get; }
 	}
 }

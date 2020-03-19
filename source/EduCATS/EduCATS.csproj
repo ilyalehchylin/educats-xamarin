@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
@@ -141,11 +141,16 @@
         <Folder Include="Pages\Recommendations\ViewModels\" />
         <Folder Include="Pages\Recommendations\Models\" />
         <Folder Include="Pages\Settings\" />
-        <Folder Include="Pages\Settings\Models\" />
-        <Folder Include="Pages\Settings\ViewModels\" />
-        <Folder Include="Pages\Settings\Views\" />
-        <Folder Include="Pages\Settings\Views\ViewCells\" />
         <Folder Include="Pages\Settings\Base\" />
+        <Folder Include="Pages\Settings\Base\Models\" />
+        <Folder Include="Pages\Settings\Base\ViewModels\" />
+        <Folder Include="Pages\Settings\Base\Views\" />
+        <Folder Include="Pages\Settings\Language\" />
+        <Folder Include="Pages\Settings\Language\ViewModels\" />
+        <Folder Include="Pages\Settings\Language\Views\" />
+        <Folder Include="Pages\Settings\Language\Models\" />
+        <Folder Include="Controls\CheckboxViewCell\" />
+        <Folder Include="Controls\SwitchFrame\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />
