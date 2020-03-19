@@ -1,159 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DebugType>portable</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <LangVersion>8.0</LangVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <LangVersion>8.0</LangVersion>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
-    <PackageReference Include="Nyxbull.Plugins.CrossLocalization" Version="1.3.0" />
-    <PackageReference Include="MonkeyCache.FileStore" Version="1.3.0" />
-    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.440" />
-    <PackageReference Include="Microcharts" Version="0.7.1" />
-    <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Helpers\Settings\" />
-    <Folder Include="Pages\" />
-    <Folder Include="Helpers\Json\" />
-    <Folder Include="Pages\Login\" />
-    <Folder Include="Data\" />
-    <Folder Include="Data\Caching\" />
-    <Folder Include="Pages\Login\Views\" />
-    <Folder Include="Pages\Login\ViewModels\" />
-    <Folder Include="Localization\" />
-    <Folder Include="Networking\" />
-    <Folder Include="Themes\" />
-    <Folder Include="Data\Models\" />
-    <Folder Include="Data\Models\User\" />
-    <Folder Include="Data\User\" />
-    <Folder Include="Helpers\Dialogs\" />
-    <Folder Include="Helpers\Dialogs\Interfaces\" />
-    <Folder Include="Helpers\Pages\" />
-    <Folder Include="Helpers\Pages\Interfaces\" />
-    <Folder Include="Pages\Main\" />
-    <Folder Include="Helpers\Effects\" />
-    <Folder Include="Pages\Today\" />
-    <Folder Include="Pages\Today\Base\" />
-    <Folder Include="Pages\Today\Base\Views\" />
-    <Folder Include="Pages\Today\Base\ViewModels\" />
-    <Folder Include="Pages\Today\Base\Views\ViewCells\" />
-    <Folder Include="Controls\" />
-    <Folder Include="Controls\RoundedListView\" />
-    <Folder Include="Controls\RoundedListView\Enums\" />
-    <Folder Include="Controls\RoundedListView\Interfaces\" />
-    <Folder Include="Controls\RoundedListView\Selectors\" />
-    <Folder Include="Pages\Today\Base\Models\" />
-    <Folder Include="Helpers\Date\" />
-    <Folder Include="Helpers\Date\Extensions\" />
-    <Folder Include="Helpers\Date\Enums\" />
-    <Folder Include="Data\Models\Subjects\" />
-    <Folder Include="Data\Models\News\" />
-    <Folder Include="Data\Models\Calendar\" />
-    <Folder Include="Pages\Today\NewsDetails\" />
-    <Folder Include="Pages\Today\NewsDetails\Views\" />
-    <Folder Include="Pages\Today\NewsDetails\ViewModels\" />
-    <Folder Include="Pages\Utils\" />
-    <Folder Include="Pages\Utils\ViewModels\" />
-    <Folder Include="Pages\Statistics\" />
-    <Folder Include="Pages\Statistics\Base\" />
-    <Folder Include="Pages\Statistics\Base\Views\" />
-    <Folder Include="Pages\Statistics\Base\ViewModels\" />
-    <Folder Include="Controls\SubjectsPickerView\" />
-    <Folder Include="Data\Models\Statistics\" />
-    <Folder Include="Pages\Statistics\Base\Views\ViewCells\" />
-    <Folder Include="Pages\Statistics\Base\Models\" />
-    <Folder Include="Pages\Statistics\Enums\" />
-    <Folder Include="Pages\Statistics\Students\" />
-    <Folder Include="Pages\Statistics\Students\Views\" />
-    <Folder Include="Pages\Statistics\Students\ViewModels\" />
-    <Folder Include="Pages\Statistics\Students\Views\ViewCells\" />
-    <Folder Include="Controls\GroupsPickerView\" />
-    <Folder Include="Data\Models\Groups\" />
-    <Folder Include="Pages\Statistics\Students\Models\" />
-    <Folder Include="Pages\Statistics\Results\" />
-    <Folder Include="Pages\Statistics\Results\Views\" />
-    <Folder Include="Pages\Statistics\Results\ViewModels\" />
-    <Folder Include="Data\Models\Labs\" />
-    <Folder Include="Data\Models\Lectures\" />
-    <Folder Include="Pages\Statistics\Results\Models\" />
-    <Folder Include="Pages\Statistics\Results\Views\ViewCells\" />
-    <Folder Include="Constants\" />
-    <Folder Include="Helpers\Converters\" />
-    <Folder Include="Pages\Learning\" />
-    <Folder Include="Pages\Learning\Models\" />
-    <Folder Include="Pages\Learning\ViewModels\" />
-    <Folder Include="Pages\Learning\Views\" />
-    <Folder Include="Pages\Testing\" />
-    <Folder Include="Pages\Testing\Base\" />
-    <Folder Include="Pages\Testing\Base\Views\" />
-    <Folder Include="Pages\Testing\Base\ViewModels\" />
-    <Folder Include="Pages\Testing\Base\Views\ViewCells\" />
-    <Folder Include="Data\Models\Testing\" />
-    <Folder Include="Pages\Testing\Base\Models\" />
-    <Folder Include="Pages\Testing\Passing\" />
-    <Folder Include="Pages\Testing\Passing\Models\" />
-    <Folder Include="Pages\Testing\Passing\Views\" />
-    <Folder Include="Pages\Testing\Passing\ViewModels\" />
-    <Folder Include="Data\Models\Testing\Base\" />
-    <Folder Include="Data\Models\Testing\Passing\" />
-    <Folder Include="Helpers\Lists\" />
-    <Folder Include="Networking\Models\Testing\" />
-    <Folder Include="Pages\Testing\Passing\Views\ViewCells\" />
-    <Folder Include="Helpers\Devices\" />
-    <Folder Include="Helpers\Devices\Interfaces\" />
-    <Folder Include="Data\Models\Testing\Results\" />
-    <Folder Include="Pages\Testing\Results\" />
-    <Folder Include="Pages\Testing\Results\Views\" />
-    <Folder Include="Pages\Testing\Results\ViewModels\" />
-    <Folder Include="Pages\Testing\Results\Views\ViewCells\" />
-    <Folder Include="Pages\Eemc\" />
-    <Folder Include="Pages\Eemc\Views\" />
-    <Folder Include="Pages\Eemc\ViewModels\" />
-    <Folder Include="Networking\Models\Eemc\" />
-    <Folder Include="Data\Models\Eemc\" />
-    <Folder Include="Pages\Eemc\Views\ViewCell\" />
-    <Folder Include="Pages\Files\" />
-    <Folder Include="Pages\Files\Views\" />
-    <Folder Include="Pages\Files\ViewModels\" />
-    <Folder Include="Data\Models\Files\" />
-    <Folder Include="Pages\Files\Models\" />
-    <Folder Include="Pages\Files\Views\ViewCells\" />
-    <Folder Include="Data\Models\Recommendations\" />
-    <Folder Include="Pages\Recommendations\" />
-    <Folder Include="Pages\Recommendations\Views\" />
-    <Folder Include="Pages\Recommendations\Views\ViewCells\" />
-    <Folder Include="Pages\Recommendations\ViewModels\" />
-    <Folder Include="Pages\Recommendations\Models\" />
-    <Folder Include="Pages\Settings\" />
-    <Folder Include="Pages\Settings\Models\" />
-    <Folder Include="Pages\Settings\ViewModels\" />
-    <Folder Include="Pages\Settings\Views\" />
-    <Folder Include="Pages\Settings\Views\ViewCells\" />
-    <Folder Include="Pages\Settings\Base\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Localization\en.json" />
-    <None Remove="Localization\ru.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Localization\en.json" />
-    <EmbeddedResource Include="Localization\ru.json" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+        <DebugType>portable</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <LangVersion>8.0</LangVersion>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <LangVersion>8.0</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
+        <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
+        <PackageReference Include="Nyxbull.Plugins.CrossLocalization" Version="1.3.0" />
+        <PackageReference Include="MonkeyCache.FileStore" Version="1.3.0" />
+        <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
+        <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+        <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+        <PackageReference Include="Acr.UserDialogs" Version="7.1.0.440" />
+        <PackageReference Include="Microcharts" Version="0.7.1" />
+        <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Configuration\" />
+        <Folder Include="Helpers\" />
+        <Folder Include="Helpers\Settings\" />
+        <Folder Include="Pages\" />
+        <Folder Include="Helpers\Json\" />
+        <Folder Include="Pages\Login\" />
+        <Folder Include="Data\" />
+        <Folder Include="Data\Caching\" />
+        <Folder Include="Pages\Login\Views\" />
+        <Folder Include="Pages\Login\ViewModels\" />
+        <Folder Include="Localization\" />
+        <Folder Include="Networking\" />
+        <Folder Include="Themes\" />
+        <Folder Include="Data\Models\" />
+        <Folder Include="Data\Models\User\" />
+        <Folder Include="Data\User\" />
+        <Folder Include="Helpers\Dialogs\" />
+        <Folder Include="Helpers\Dialogs\Interfaces\" />
+        <Folder Include="Helpers\Pages\" />
+        <Folder Include="Helpers\Pages\Interfaces\" />
+        <Folder Include="Pages\Main\" />
+        <Folder Include="Helpers\Effects\" />
+        <Folder Include="Pages\Today\" />
+        <Folder Include="Pages\Today\Base\" />
+        <Folder Include="Pages\Today\Base\Views\" />
+        <Folder Include="Pages\Today\Base\ViewModels\" />
+        <Folder Include="Pages\Today\Base\Views\ViewCells\" />
+        <Folder Include="Controls\" />
+        <Folder Include="Controls\RoundedListView\" />
+        <Folder Include="Controls\RoundedListView\Enums\" />
+        <Folder Include="Controls\RoundedListView\Interfaces\" />
+        <Folder Include="Controls\RoundedListView\Selectors\" />
+        <Folder Include="Pages\Today\Base\Models\" />
+        <Folder Include="Helpers\Date\" />
+        <Folder Include="Helpers\Date\Extensions\" />
+        <Folder Include="Helpers\Date\Enums\" />
+        <Folder Include="Data\Models\Subjects\" />
+        <Folder Include="Data\Models\News\" />
+        <Folder Include="Data\Models\Calendar\" />
+        <Folder Include="Pages\Today\NewsDetails\" />
+        <Folder Include="Pages\Today\NewsDetails\Views\" />
+        <Folder Include="Pages\Today\NewsDetails\ViewModels\" />
+        <Folder Include="Pages\Utils\" />
+        <Folder Include="Pages\Utils\ViewModels\" />
+        <Folder Include="Pages\Statistics\" />
+        <Folder Include="Pages\Statistics\Base\" />
+        <Folder Include="Pages\Statistics\Base\Views\" />
+        <Folder Include="Pages\Statistics\Base\ViewModels\" />
+        <Folder Include="Controls\SubjectsPickerView\" />
+        <Folder Include="Data\Models\Statistics\" />
+        <Folder Include="Pages\Statistics\Base\Views\ViewCells\" />
+        <Folder Include="Pages\Statistics\Base\Models\" />
+        <Folder Include="Pages\Statistics\Enums\" />
+        <Folder Include="Pages\Statistics\Students\" />
+        <Folder Include="Pages\Statistics\Students\Views\" />
+        <Folder Include="Pages\Statistics\Students\ViewModels\" />
+        <Folder Include="Pages\Statistics\Students\Views\ViewCells\" />
+        <Folder Include="Controls\GroupsPickerView\" />
+        <Folder Include="Data\Models\Groups\" />
+        <Folder Include="Pages\Statistics\Students\Models\" />
+        <Folder Include="Pages\Statistics\Results\" />
+        <Folder Include="Pages\Statistics\Results\Views\" />
+        <Folder Include="Pages\Statistics\Results\ViewModels\" />
+        <Folder Include="Data\Models\Labs\" />
+        <Folder Include="Data\Models\Lectures\" />
+        <Folder Include="Pages\Statistics\Results\Models\" />
+        <Folder Include="Pages\Statistics\Results\Views\ViewCells\" />
+        <Folder Include="Constants\" />
+        <Folder Include="Helpers\Converters\" />
+        <Folder Include="Pages\Learning\" />
+        <Folder Include="Pages\Learning\Models\" />
+        <Folder Include="Pages\Learning\ViewModels\" />
+        <Folder Include="Pages\Learning\Views\" />
+        <Folder Include="Pages\Testing\" />
+        <Folder Include="Pages\Testing\Base\" />
+        <Folder Include="Pages\Testing\Base\Views\" />
+        <Folder Include="Pages\Testing\Base\ViewModels\" />
+        <Folder Include="Pages\Testing\Base\Views\ViewCells\" />
+        <Folder Include="Data\Models\Testing\" />
+        <Folder Include="Pages\Testing\Base\Models\" />
+        <Folder Include="Pages\Testing\Passing\" />
+        <Folder Include="Pages\Testing\Passing\Models\" />
+        <Folder Include="Pages\Testing\Passing\Views\" />
+        <Folder Include="Pages\Testing\Passing\ViewModels\" />
+        <Folder Include="Data\Models\Testing\Base\" />
+        <Folder Include="Data\Models\Testing\Passing\" />
+        <Folder Include="Helpers\Lists\" />
+        <Folder Include="Networking\Models\Testing\" />
+        <Folder Include="Pages\Testing\Passing\Views\ViewCells\" />
+        <Folder Include="Helpers\Devices\" />
+        <Folder Include="Helpers\Devices\Interfaces\" />
+        <Folder Include="Data\Models\Testing\Results\" />
+        <Folder Include="Pages\Testing\Results\" />
+        <Folder Include="Pages\Testing\Results\Views\" />
+        <Folder Include="Pages\Testing\Results\ViewModels\" />
+        <Folder Include="Pages\Testing\Results\Views\ViewCells\" />
+        <Folder Include="Pages\Eemc\" />
+        <Folder Include="Pages\Eemc\Views\" />
+        <Folder Include="Pages\Eemc\ViewModels\" />
+        <Folder Include="Networking\Models\Eemc\" />
+        <Folder Include="Data\Models\Eemc\" />
+        <Folder Include="Pages\Eemc\Views\ViewCell\" />
+        <Folder Include="Pages\Files\" />
+        <Folder Include="Pages\Files\Views\" />
+        <Folder Include="Pages\Files\ViewModels\" />
+        <Folder Include="Data\Models\Files\" />
+        <Folder Include="Pages\Files\Models\" />
+        <Folder Include="Pages\Files\Views\ViewCells\" />
+        <Folder Include="Data\Models\Recommendations\" />
+        <Folder Include="Pages\Recommendations\" />
+        <Folder Include="Pages\Recommendations\Views\" />
+        <Folder Include="Pages\Recommendations\Views\ViewCells\" />
+        <Folder Include="Pages\Recommendations\ViewModels\" />
+        <Folder Include="Pages\Recommendations\Models\" />
+        <Folder Include="Pages\Settings\" />
+        <Folder Include="Pages\Settings\Models\" />
+        <Folder Include="Pages\Settings\ViewModels\" />
+        <Folder Include="Pages\Settings\Views\" />
+        <Folder Include="Pages\Settings\Views\ViewCells\" />
+        <Folder Include="Pages\Settings\Base\" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Localization\en.json" />
+        <None Remove="Localization\ru.json" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Include="Localization\en.json" />
+        <EmbeddedResource Include="Localization\ru.json" />
+    </ItemGroup>
 </Project>
