@@ -101,22 +101,22 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			}
 
 			var settings = selectedObject as SettingsPageModel;
-			var settingsServerTitle = CrossLocalization.Translate("settings_server");
-			var settingsLanguageTitle = CrossLocalization.Translate("settings_language");
-			var settingsThemeTitle = CrossLocalization.Translate("settings_theme");
-			var settingsFontTitle = CrossLocalization.Translate("settings_font");
-			var settingsLogoutTitle = CrossLocalization.Translate("settings_logout");
+			var server = CrossLocalization.Translate("settings_server");
+			var language = CrossLocalization.Translate("settings_language");
+			var theme = CrossLocalization.Translate("settings_theme");
+			var font = CrossLocalization.Translate("settings_font");
+			var logout = CrossLocalization.Translate("settings_logout");
 
-			if (settings.Title.Equals(settingsServerTitle)) {
+			if (settings.Title.Equals(server)) {
+				_navigation.OpenSettingsServer(server);
+			} else if (settings.Title.Equals(language)) {
+				_navigation.OpenSettingsLanguage(language);
+			} else if (settings.Title.Equals(theme)) {
 
-			} else if (settings.Title.Equals(settingsLanguageTitle)) {
-				_navigation.OpenSettingsLanguage(settingsLanguageTitle);
-			} else if (settings.Title.Equals(settingsThemeTitle)) {
+			} else if (settings.Title.Equals(font)) {
 
-			} else if (settings.Title.Equals(settingsFontTitle)) {
-
-			} else if (settings.Title.Equals(settingsLogoutTitle)) {
-				_device.MainThread(async () => await logout());
+			} else if (settings.Title.Equals(logout)) {
+				_device.MainThread(async () => await this.logout());
 			}
 		}
 

@@ -19,5 +19,6 @@ namespace EduCATS.Helpers.Pages.Interfaces
 		Task OpenFiles(string title);
 		Task OpenRecommendations(string title);
 		Task OpenSettingsLanguage(string title);
+		Task OpenSettingsServer(string title);
 	}
 }

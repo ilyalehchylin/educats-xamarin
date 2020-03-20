@@ -8,6 +8,7 @@ using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
 using EduCATS.Pages.Recommendations.Views;
 using EduCATS.Pages.Settings.Language.Views;
+using EduCATS.Pages.Settings.Server.Views;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Views;
 using EduCATS.Pages.Statistics.Students.Views;
@@ -178,6 +179,16 @@ namespace EduCATS.Helpers.Pages
 		public async Task OpenSettingsLanguage(string title)
 		{
 			await pushPageAsync(new LanguagePageView(), title);
+		}
+
+		/// <summary>
+		/// Open Settings Server page.
+		/// </summary>
+		/// <param name="title">Title</param>
+		/// <returns>Task</returns>
+		public async Task OpenSettingsServer(string title)
+		{
+			await pushPageAsync(new ServerPageView(), title);
 		}
 
 		/// <summary>

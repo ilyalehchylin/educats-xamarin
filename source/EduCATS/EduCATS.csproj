@@ -151,6 +151,10 @@
         <Folder Include="Pages\Settings\Language\Models\" />
         <Folder Include="Controls\CheckboxViewCell\" />
         <Folder Include="Controls\SwitchFrame\" />
+        <Folder Include="Pages\Settings\Server\" />
+        <Folder Include="Pages\Settings\Server\Views\" />
+        <Folder Include="Pages\Settings\Server\ViewModels\" />
+        <Folder Include="Pages\Settings\Server\Models\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />

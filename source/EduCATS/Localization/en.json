@@ -9,6 +9,10 @@
 	"common_unexpected_error_text": "Unexpected error occurred. Please try again or contact support.",
 	"common_connection_error_text": "No internet connection. Check your network settings and try again.",
 
+	"server_test": "Test server",
+	"server_local": "Local server",
+	"server_stable": "Stable server",
+
 	"login_username": "Username",
 	"login_password": "Password",
 	"login_text": "Login",
@@ -99,5 +103,8 @@
 	"settings_language_system": "System language",
 	"settings_language_system_description": "Use system language as default",
 	"settings_language_choose": "Language selection",
-	"settings_language_change_message": "Are you sure you want to change language? This action will reload application."
+	"settings_language_change_message": "Are you sure you want to change language? This action will reload application.",
+
+	"settings_server_choose": "Server selection",
+	"settings_server_change_message": "Are you sure you want to change server? This action will logout you from the current account."
 }

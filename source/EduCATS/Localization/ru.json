@@ -9,6 +9,10 @@
     "common_unexpected_error_text": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.",
     "common_connection_error_text": "Нет соединения с интернетом. Проверьте настройки сети и попробуйте снова.",
 
+    "server_test": "Тестовый сервер",
+    "server_local": "Локальный сервер",
+    "server_stable": "Стабильный сервер",
+
     "login_username": "Имя пользователя",
     "login_password": "Пароль",
     "login_text": "Войти",
@@ -99,5 +103,8 @@
     "settings_language_system": "Системный язык",
     "settings_language_system_description": "Использовать системный язык в качестве основного",
     "settings_language_choose": "Выбор языка",
-    "settings_language_change_message": "Вы действительно хотите изменить язык? Это действие перезагрузит приложение."
+    "settings_language_change_message": "Вы действительно хотите изменить язык? Это действие перезагрузит приложение.",
+
+    "settings_server_choose": "Выбор сервера",
+    "settings_server_change_message": "Вы действительно хотите изменить сервер? Это действие приведет вас к выходу из текущей учетной записи."
 }
