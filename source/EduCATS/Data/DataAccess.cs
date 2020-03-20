@@ -265,6 +265,8 @@ namespace EduCATS.Data
 		static void setError(string message, bool isConnectionError)
 		{
 			if (message == null) {
+				IsError = false;
+				IsConnectionError = false;
 				return;
 			}
 
