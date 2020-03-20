@@ -1,4 +1,5 @@
 ﻿using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.NewsDetails.ViewModels
@@ -7,13 +8,22 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 	{
 		readonly IPages navigationService;
 
-		const int bodySize = 20;
+		const int _fontSize = 5;
+		const int _fontPadding = 10;
+		const string _fontFamily = "Arial";
 
 		public NewsDetailsPageViewModel(string title, string body, IPages pages)
 		{
 			navigationService = pages;
 			NewsTitle = title;
-			NewsBody = $"<body style='font-size: {bodySize}px'>{body}</body>";
+			NewsBody = $"" +
+				$"<body style='" +
+					$"font-family:{_fontFamily};" +
+					$"padding:{_fontPadding}px;" +
+					$"font-size: {_fontSize}vw;" +
+					$"background-color:{Theme.Current.AppBackgroundColor};'>" +
+						$"{body}" +
+				$"</body>";
 		}
 
 		string newsTitle;

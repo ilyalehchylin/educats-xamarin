@@ -34,7 +34,6 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 			Content = new StackLayout {
 				Spacing = 20,
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
-				Padding = new Thickness(10),
 				Children = {
 					newsTitleLabel,
 					newsBodyLabel
@@ -45,6 +44,7 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 		Label createNewsTitle()
 		{
 			var newsTitleLabel = new Label {
+				Padding = new Thickness(10),
 				TextColor = Color.FromHex(Theme.Current.NewsTextColor),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalTextAlignment = TextAlignment.Center,
@@ -55,16 +55,16 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 			return newsTitleLabel;
 		}
 
-		Label createNewsBody()
+		WebView createNewsBody()
 		{
-			var newsBodyLabel = new Label {
-				TextType = TextType.Html,
-				TextColor = Color.FromHex(Theme.Current.NewsTextColor),
-				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))
-			};
+			var source = new HtmlWebViewSource();
+			source.SetBinding(HtmlWebViewSource.HtmlProperty, "NewsBody");
 
-			newsBodyLabel.SetBinding(Label.TextProperty, "NewsBody");
-			return newsBodyLabel;
+			return new WebView {
+				HorizontalOptions = LayoutOptions.FillAndExpand,
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				Source = source
+			};
 		}
 	}
 }

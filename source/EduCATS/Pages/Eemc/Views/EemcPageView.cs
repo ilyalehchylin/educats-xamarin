@@ -27,14 +27,15 @@ namespace EduCATS.Pages.Eemc.Views
 		void createViews()
 		{
 			var headerImage = createHeaderImage();
-			var subjectsView = new SubjectsPickerView();
-			var documentCollectionView = createCollection(subjectsView);
+			var subjectsView = createSubjectsPicker();
+			var documentCollectionView = createCollection();
 			var backButton = createBackButton();
 
 			Content = new StackLayout {
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				Children = {
 					headerImage,
+					subjectsView,
 					documentCollectionView,
 					backButton
 				}
@@ -51,16 +52,9 @@ namespace EduCATS.Pages.Eemc.Views
 			};
 		}
 
-		CollectionView createCollection(View headerView)
+		CollectionView createCollection()
 		{
 			var documentsCollectionView = new CollectionView {
-				Header = new StackLayout {
-					BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
-					Padding = new Thickness(10),
-					Children = {
-						headerView
-					}
-				},
 				SelectionMode = SelectionMode.Single,
 				ItemTemplate = new DataTemplate(typeof(EemcPageViewCell)),
 				ItemsLayout = new GridItemsLayout(_rowsCount, ItemsLayoutOrientation.Vertical)
@@ -69,6 +63,19 @@ namespace EduCATS.Pages.Eemc.Views
 			documentsCollectionView.SetBinding(SelectableItemsView.SelectedItemProperty, "SelectedItem");
 			documentsCollectionView.SetBinding(ItemsView.ItemsSourceProperty, "Concepts");
 			return documentsCollectionView;
+		}
+
+		StackLayout createSubjectsPicker()
+		{
+			var subjectsView = new SubjectsPickerView();
+
+			return new StackLayout {
+				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
+				Padding = new Thickness(10),
+				Children = {
+					subjectsView
+				}
+			};
 		}
 
 		Button createBackButton()

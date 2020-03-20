@@ -1,5 +1,6 @@
 ﻿using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
+using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
 using EduCATS.Pages.Today.Base.ViewModels;
@@ -12,7 +13,7 @@ namespace EduCATS.Pages.Today.Base.Views
 {
 	public class TodayPageView : ContentPage
 	{
-		const double calendarSpacing = 0;
+		const double _spacing = 0;
 		const int calendarItemsQuantity = 7;
 		const double calendarCarouselHeight = 100;
 		const double calendarDaysOfWeekCollectionHeight = 50;
@@ -21,7 +22,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		public TodayPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
-			BindingContext = new TodayPageViewModel(new AppDialogs(), new AppPages());
+			BindingContext = new TodayPageViewModel(new AppDialogs(), new AppPages(), new AppDevice());
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			createViews();
 		}
@@ -32,7 +33,7 @@ namespace EduCATS.Pages.Today.Base.Views
 			var newsView = createNewsList();
 
 			Content = new StackLayout {
-				Spacing = calendarSpacing,
+				Spacing = _spacing,
 				Margin = new Thickness(0, 0, 0, 10),
 				Children = {
 					calendarView,
@@ -47,7 +48,7 @@ namespace EduCATS.Pages.Today.Base.Views
 			var calendarCarouselView = createCalendarCarousel();
 
 			return new StackLayout {
-				Spacing = calendarSpacing,
+				Spacing = _spacing,
 				Children = {
 					calendarDaysOfWeekCollectionView,
 					calendarCarouselView

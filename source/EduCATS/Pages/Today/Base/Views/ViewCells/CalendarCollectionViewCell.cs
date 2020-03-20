@@ -16,7 +16,7 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 			};
 
 			var contentLabel = new Label {
-				HeightRequest = Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
+				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
@@ -36,7 +36,7 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 				selectedBoxView.SetBinding(BoxView.ColorProperty, "SelectionColor", converter: colorConverter);
 				grid.Children.Add(selectedBoxView);
 			} else {
-				contentLabel.FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label));
+				contentLabel.FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label));
 			}
 
 			grid.Children.Add(contentLabel);

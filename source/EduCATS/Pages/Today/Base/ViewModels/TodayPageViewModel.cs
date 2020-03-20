@@ -8,6 +8,7 @@ using EduCATS.Data.Models.News;
 using EduCATS.Data.Models.Subjects;
 using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Date.Enums;
+using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
@@ -29,6 +30,8 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		/// </summary>
 		readonly IPages navigationService;
 
+		readonly IAppDevice _device;
+
 		const int minimumCalendarPosition = 0;
 		const int maximumCalendarPosition = 2;
 		const double subjectsHeightByCount = 60;
@@ -38,14 +41,14 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		DateTime manualSelectedCalendarDay;
 		List<CalendarSubjectsModel> calendatSubjectsListBackup;
 
-		public TodayPageViewModel(IDialogs dialogs, IPages pages)
+		public TodayPageViewModel(IDialogs dialogs, IPages pages, IAppDevice device)
 		{
+			_device = device;
 			dialogService = dialogs;
 			navigationService = pages;
 
 			initSetup();
-
-			Task.Run(async () => await startRetrievingData());
+			update();
 		}
 
 		int calendarPosition;
@@ -117,8 +120,8 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		Command newsRefreshCommand;
 		public Command NewsRefreshCommand {
 			get {
-				return newsRefreshCommand ?? (newsRefreshCommand = new Command(
-					async () => await executeNewsRefreshCommand()));
+				return newsRefreshCommand ??
+					(newsRefreshCommand = new Command(update));
 			}
 		}
 
@@ -159,15 +162,14 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			selectCalendarDay(todayDateTime);
 		}
 
-		protected async Task executeNewsRefreshCommand()
+		void update()
 		{
-			await startRetrievingData();
-		}
-
-		async Task startRetrievingData()
-		{
-			await getAndSetNews();
-			await getAndSetCalendarNotes();
+			_device.MainThread(async () => {
+				IsNewsRefreshing = true;
+				await getAndSetNews();
+				await getAndSetCalendarNotes();
+				IsNewsRefreshing = false;
+			});
 		}
 
 		async Task getAndSetCalendarNotes()
@@ -195,10 +197,11 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		async Task getAndSetNews()
 		{
-			setRefreshing(true);
-			var newsPageList = await getNews();
-			NewsList = newsPageList;
-			setRefreshing(false);
+			var news = await getNews();
+
+			if (news != null) {
+				NewsList = new List<NewsPageModel>(news);
+			}
 		}
 
 		async Task<List<NewsPageModel>> getNews()
@@ -386,12 +389,6 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			if (CalendarSubjectsHeight != 0) {
 				CalendarSubjectsHeight += subjectsAdditionalHeight;
 			}
-		}
-
-		void setRefreshing(bool isRefreshing)
-		{
-			IsNewsRefreshing = isRefreshing;
-			IsNewsRefreshed = !isRefreshing;
 		}
 	}
 }

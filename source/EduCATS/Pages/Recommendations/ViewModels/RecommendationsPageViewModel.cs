@@ -21,7 +21,7 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 			IDialogs dialogs, IAppDevice device, IPages navigation) : base(dialogs, device)
 		{
 			_navigation = navigation;
-			Task.Run(async () => await update());
+			update();
 		}
 
 		List<RecommendationsPageModel> _recommendations;
@@ -51,17 +51,19 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 		Command _refreshCommand;
 		public Command RefreshCommand {
 			get {
-				return _refreshCommand ?? (_refreshCommand = new Command(
-					async () => await update()));
+				return _refreshCommand ?? (
+					_refreshCommand = new Command(update));
 			}
 		}
 
-		async Task update()
+		void update()
 		{
-			IsLoading = true;
-			await SetupSubjects();
-			await getRecList();
-			IsLoading = false;
+			DeviceService.MainThread(async () => {
+				IsLoading = true;
+				await SetupSubjects();
+				await getRecList();
+				IsLoading = false;
+			});
 		}
 
 		async Task getRecList()
