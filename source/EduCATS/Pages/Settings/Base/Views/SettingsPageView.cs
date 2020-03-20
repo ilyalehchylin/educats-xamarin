@@ -21,6 +21,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			BindingContext = new SettingsPageViewModel(
 				new AppDialogs(), new AppPages(), new AppDevice());
+
 			createViews();
 		}
 

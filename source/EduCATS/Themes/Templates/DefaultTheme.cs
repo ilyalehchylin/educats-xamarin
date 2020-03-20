@@ -23,6 +23,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string LoginEntryBackgroundColor => "#FFFFFF";
 		virtual public string LoginButtonBackgroundColor => CommonAppColor;
 		virtual public string LoginButtonTextColor => "#FFFFFF";
+		virtual public string LoginSettingsColor => "#FFFFFF";
 
 		virtual public string MainSelectedTabColor => CommonAppColor;
 		virtual public string MainUnselectedTabColor => "#808080";

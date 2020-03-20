@@ -9,6 +9,7 @@ using EduCATS.Helpers.Settings;
 using EduCATS.Pages.Settings.Base.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
+using Xamarin.Forms;
 
 namespace EduCATS.Pages.Settings.Base.ViewModels
 {
@@ -66,13 +67,22 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			}
 		}
 
+		Command _closeCommand;
+		public Command CloseCommand {
+			get {
+				return _closeCommand ?? (
+					_closeCommand = new Command(closePage));
+			}
+		}
+
 		void setInitData()
 		{
 			Username = AppPrefs.UserLogin;
 			IsLoggedIn = AppPrefs.IsLoggedIn;
 			Avatar = AppPrefs.Avatar;
-			Group = AppPrefs.GroupName ??
-				CrossLocalization.Translate("settings_user_without_group");
+			Group = string.IsNullOrEmpty(AppPrefs.GroupName) ?
+				CrossLocalization.Translate("settings_user_without_group") :
+				AppPrefs.GroupName;
 		}
 
 		void setSettings()
@@ -81,9 +91,12 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				createItem(Theme.Current.SettingsServerIcon, "settings_server"),
 				createItem(Theme.Current.SettingsLanguageIcon, "settings_language"),
 				createItem(Theme.Current.SettingsThemeIcon, "settings_theme"),
-				createItem(Theme.Current.SettingsFontIcon, "settings_font"),
-				createItem(Theme.Current.SettingsLogoutIcon, "settings_logout")
+				createItem(Theme.Current.SettingsFontIcon, "settings_font")
 			};
+
+			if (IsLoggedIn) {
+				createItem(Theme.Current.SettingsLogoutIcon, "settings_logout");
+			}
 		}
 
 		SettingsPageModel createItem(string icon, string localizedKey)
@@ -101,22 +114,27 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			}
 
 			var settings = selectedObject as SettingsPageModel;
-			var server = CrossLocalization.Translate("settings_server");
-			var language = CrossLocalization.Translate("settings_language");
-			var theme = CrossLocalization.Translate("settings_theme");
-			var font = CrossLocalization.Translate("settings_font");
-			var logout = CrossLocalization.Translate("settings_logout");
+			_device.MainThread(async () => await openPage(settings.Title));
+		}
 
-			if (settings.Title.Equals(server)) {
-				_navigation.OpenSettingsServer(server);
-			} else if (settings.Title.Equals(language)) {
-				_navigation.OpenSettingsLanguage(language);
-			} else if (settings.Title.Equals(theme)) {
+		async Task openPage(string title)
+		{
+			var serverTitle = CrossLocalization.Translate("settings_server");
+			var languageTitle = CrossLocalization.Translate("settings_language");
+			var themeTitle = CrossLocalization.Translate("settings_theme");
+			var fontTitle = CrossLocalization.Translate("settings_font");
+			var logoutTitle = CrossLocalization.Translate("settings_logout");
 
-			} else if (settings.Title.Equals(font)) {
+			if (title.Equals(serverTitle)) {
+				await _navigation.OpenSettingsServer(serverTitle);
+			} else if (title.Equals(languageTitle)) {
+				await _navigation.OpenSettingsLanguage(languageTitle);
+			} else if (title.Equals(themeTitle)) {
 
-			} else if (settings.Title.Equals(logout)) {
-				_device.MainThread(async () => await this.logout());
+			} else if (title.Equals(fontTitle)) {
+
+			} else if (title.Equals(logoutTitle)) {
+				await logout();
 			}
 		}
 
@@ -137,6 +155,11 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			AppUserData.Clear();
 			DataAccess.ResetData();
 			_navigation.OpenLogin();
+		}
+
+		protected void closePage()
+		{
+			_navigation.ClosePage(true);
 		}
 	}
 }

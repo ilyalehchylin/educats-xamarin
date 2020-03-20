@@ -18,6 +18,7 @@ namespace EduCATS.Helpers.Pages.Interfaces
 		Task OpenEemc(string title, int searchId = -1);
 		Task OpenFiles(string title);
 		Task OpenRecommendations(string title);
+		Task OpenSettings(string title);
 		Task OpenSettingsLanguage(string title);
 		Task OpenSettingsServer(string title);
 	}

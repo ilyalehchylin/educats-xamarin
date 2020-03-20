@@ -21,6 +21,7 @@
 		string LoginEntryBackgroundColor { get; }
 		string LoginButtonBackgroundColor { get; }
 		string LoginButtonTextColor { get; }
+		string LoginSettingsColor { get; }
 
 		string MainSelectedTabColor { get; }
 		string MainUnselectedTabColor { get; }

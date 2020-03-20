@@ -7,6 +7,7 @@ using EduCATS.Pages.Files.Views;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
 using EduCATS.Pages.Recommendations.Views;
+using EduCATS.Pages.Settings.Base.Views;
 using EduCATS.Pages.Settings.Language.Views;
 using EduCATS.Pages.Settings.Server.Views;
 using EduCATS.Pages.Statistics.Enums;
@@ -169,6 +170,11 @@ namespace EduCATS.Helpers.Pages
 		public async Task OpenRecommendations(string title)
 		{
 			await pushPageAsync(new RecommendationsPageView(), title);
+		}
+
+		public async Task OpenSettings(string title)
+		{
+			await pushPageAsync(new SettingsPageView(), title);
 		}
 
 		/// <summary>

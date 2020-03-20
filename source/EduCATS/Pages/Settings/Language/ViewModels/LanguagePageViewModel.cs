@@ -22,6 +22,7 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 		public LanguagePageViewModel(IDialogs dialogs, IAppDevice device, IPages pages)
 		{
 			_isInit = true;
+			_isSystemToggleActive = true;
 			_pages = pages;
 			_device = device;
 			_dialogs = dialogs;
@@ -44,7 +45,6 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 				_device.MainThread(async () => {
 					if (_isInit) {
 						_isInit = false;
-						_isSystemToggleActive = true;
 					} else {
 						await setSystemOrDefaultLanguage(value);
 					}
@@ -156,7 +156,14 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 			});
 
 			LanguageList = new List<LanguagePageModel>(languageList);
-			_device.MainThread(() => _pages.OpenMain());
+
+			_isInit = true;
+
+			if (AppPrefs.IsLoggedIn) {
+				_device.MainThread(() => _pages.OpenMain());
+			} else {
+				_device.MainThread(() => _pages.OpenLogin());
+			}
 		}
 
 		async Task<bool> changeLanguageConfirmation()

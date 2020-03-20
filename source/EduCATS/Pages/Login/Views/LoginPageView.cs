@@ -6,11 +6,15 @@ using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using FFImageLoading.Transformations;
+using System.Collections.Generic;
 
 namespace EduCATS.Pages.Login.Views
 {
 	public class LoginPageView : ContentPage
 	{
+		const double _settingsIconSize = 45;
+
 		readonly string[] backgrounds = {
 			Theme.Current.LoginBackground1Image,
 			Theme.Current.LoginBackground2Image,
@@ -31,11 +35,14 @@ namespace EduCATS.Pages.Login.Views
 		void createViews()
 		{
 			var backgroundImage = createBackgroundImage();
+			var settingsIcon = createSettingsIcon();
 			var mainLayout = createLoginForm();
 
 			Content = new Grid {
+				HorizontalOptions = LayoutOptions.EndAndExpand,
 				Children = {
 					backgroundImage,
+					settingsIcon,
 					mainLayout
 				}
 			};
@@ -72,6 +79,30 @@ namespace EduCATS.Pages.Login.Views
 				Aspect = Aspect.AspectFill,
 				Source = ImageSource.FromFile(getRandomBackgroundImage())
 			};
+		}
+
+		CachedImage createSettingsIcon()
+		{
+			var settingsIcon = new CachedImage {
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				VerticalOptions = LayoutOptions.StartAndExpand,
+				Margin = Device.RuntimePlatform == Device.iOS ? new Thickness(20, 40) : new Thickness(10),
+				Source = ImageSource.FromFile(Theme.Current.MainSettingsIcon),
+				Aspect = Aspect.AspectFill,
+				HeightRequest = _settingsIconSize,
+				WidthRequest = _settingsIconSize,
+				Transformations = new List<FFImageLoading.Work.ITransformation> {
+					new TintTransformation {
+						EnableSolidColor = true,
+						HexColor = Theme.Current.LoginSettingsColor
+					}
+				}
+			};
+
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "SettingsCommand");
+			settingsIcon.GestureRecognizers.Add(tapGestureRecognizer);
+			return settingsIcon;
 		}
 
 		CachedImage createMascotImage()

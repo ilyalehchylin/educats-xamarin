@@ -26,6 +26,11 @@ namespace EduCATS.Pages.Login.ViewModels
 		Command hidePasswordCommand;
 
 		/// <summary>
+		/// Settings command.
+		/// </summary>
+		Command _settingsCommand;
+
+		/// <summary>
 		/// Dialog service.
 		/// </summary>
 		readonly IDialogs dialogService;
@@ -109,6 +114,13 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
+		public Command SettingsCommand {
+			get {
+				return _settingsCommand ?? (_settingsCommand = new Command(
+					async () => await openSettings()));
+			}
+		}
+
 		/// <summary>
 		/// Login method.
 		/// </summary>
@@ -167,6 +179,12 @@ namespace EduCATS.Pages.Login.ViewModels
 		protected void hidePassword()
 		{
 			IsPasswordHidden = !IsPasswordHidden;
+		}
+
+		protected async Task openSettings()
+		{
+			await navigationService.OpenSettings(
+				CrossLocalization.Translate("main_settings"));
 		}
 
 		/// <summary>
