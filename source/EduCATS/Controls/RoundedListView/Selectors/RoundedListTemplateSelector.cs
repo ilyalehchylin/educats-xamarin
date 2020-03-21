@@ -6,21 +6,19 @@ namespace EduCATS.Controls.RoundedListView.Selectors
 {
 	public class RoundedListTemplateSelector : DataTemplateSelector
 	{
-		public DataTemplate NavigationTemplate;
 		public DataTemplate CheckboxTemplate;
+		public DataTemplate NavigationTemplate;
 
 		protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
 		{
 			var listType = ((IRoundedListType)item).GetListType();
 
-			switch (listType) {
-				case RoundedListTypeEnum.Checkbox:
-					return CheckboxTemplate;
-				case RoundedListTypeEnum.Navigation:
-					return NavigationTemplate;
-			}
-
-			return null;
+			return listType switch
+			{
+				RoundedListTypeEnum.Checkbox => CheckboxTemplate,
+				RoundedListTypeEnum.Navigation => NavigationTemplate,
+				_ => null,
+			};
 		}
 	}
 }

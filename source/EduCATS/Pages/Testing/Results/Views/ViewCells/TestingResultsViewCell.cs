@@ -6,12 +6,16 @@ namespace EduCATS.Pages.Testing.Results.Views.ViewCells
 {
 	public class TestingResultsViewCell : ViewCell
 	{
-		const double boxSize = 30;
+		const double _boxSize = 30;
+		const float _frameRadius = 10;
+
+		static Thickness _frameMargin = new Thickness(10);
+
 
 		readonly BoxView _boxView;
 		readonly Label _answer;
 
-		TestingResultsModel _results;
+		TestResultsModel _results;
 
 		public TestingResultsViewCell()
 		{
@@ -22,17 +26,17 @@ namespace EduCATS.Pages.Testing.Results.Views.ViewCells
 
 			_boxView = new BoxView {
 				HorizontalOptions = LayoutOptions.EndAndExpand,
-				HeightRequest = boxSize,
-				WidthRequest = boxSize,
-				CornerRadius = boxSize / 2,
+				HeightRequest = _boxSize,
+				WidthRequest = _boxSize,
+				CornerRadius = _boxSize / 2,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
 			var frame = new Frame {
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				HasShadow = false,
-				CornerRadius = 10,
-				Margin = new Thickness(10),
+				CornerRadius = _frameRadius,
+				Margin = _frameMargin,
 				Content = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
 					Children = {
@@ -47,7 +51,7 @@ namespace EduCATS.Pages.Testing.Results.Views.ViewCells
 
 		protected override void OnBindingContextChanged()
 		{
-			_results = (TestingResultsModel)BindingContext;
+			_results = (TestResultsModel)BindingContext;
 
 			if (_results != null) {
 				_answer.Text = $"{_results.Number}. {_results.QuestionTitle}";

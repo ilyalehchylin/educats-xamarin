@@ -6,9 +6,9 @@ namespace EduCATS.Data.Models.Labs
 	public class LabsModel
 	{
 		[JsonProperty("Labs")]
-		public IList<LabsDetailsModel> Labs { get; set; }
+		public IList<LabDetailsModel> Labs { get; set; }
 
 		[JsonProperty("ScheduleProtectionLabs")]
-		public IList<LabsScheduleProtectionModel> ScheduleProtectionLabs { get; set; }
+		public IList<LabProtectionModel> ProtectionLabs { get; set; }
 	}
 }

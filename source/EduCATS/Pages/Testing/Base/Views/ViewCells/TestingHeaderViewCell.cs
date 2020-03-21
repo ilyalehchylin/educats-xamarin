@@ -5,9 +5,13 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 {
 	public class TestingHeaderViewCell : ViewCell
 	{
+		static Thickness _padding = new Thickness(10);
+
+		const double _height = 40;
+
 		public TestingHeaderViewCell()
 		{
-			Height = 40;
+			Height = _height;
 
 			var sectionLabel = new Label {
 				FontAttributes = FontAttributes.Bold,
@@ -19,7 +23,7 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 
 			View = new StackLayout {
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
-				Padding = new Thickness(10),
+				Padding = _padding,
 				Children = {
 					sectionLabel
 				}

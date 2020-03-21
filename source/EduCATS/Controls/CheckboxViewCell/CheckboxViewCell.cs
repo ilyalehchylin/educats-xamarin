@@ -7,44 +7,71 @@ namespace EduCATS.Controls.CheckboxViewCell
 	public class CheckboxViewCell : ViewCell
 	{
 		const double _checkboxHeight = 25;
+		static Thickness _padding = new Thickness(20);
 
 		public CheckboxViewCell()
 		{
-			var title = new Label();
-			title.SetBinding(Label.TextProperty, "Title");
+			createViews();
+		}
 
-			var desctiption = new Label {
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-				TextColor = Color.FromHex(Theme.Current.CheckboxDescriptionColor)
-			};
-
-			desctiption.SetBinding(Label.TextProperty, "Description");
-
-			var titleLayout = new StackLayout {
-				Children = {
-					title,
-					desctiption
-				}
-			};
-
-			var checkbox = new CachedImage {
-				HeightRequest = _checkboxHeight,
-				Source = ImageSource.FromFile(Theme.Current.CheckboxIcon),
-				VerticalOptions = LayoutOptions.StartAndExpand,
-				HorizontalOptions = LayoutOptions.EndAndExpand
-			};
-
-			checkbox.SetBinding(VisualElement.IsVisibleProperty, "IsChecked");
+		void createViews()
+		{
+			var titleLayout = createTitleLayout();
+			var checkbox = createCheckbox();
 
 			View = new StackLayout {
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
-				Padding = new Thickness(20),
+				Padding = _padding,
 				Orientation = StackOrientation.Horizontal,
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Children = {
 					titleLayout,
 					checkbox
 				}
 			};
+		}
+
+		CachedImage createCheckbox()
+		{
+			var checkbox = new CachedImage {
+				HeightRequest = _checkboxHeight,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				VerticalOptions = LayoutOptions.StartAndExpand,
+				Source = ImageSource.FromFile(Theme.Current.CheckboxIcon)
+			};
+
+			checkbox.SetBinding(VisualElement.IsVisibleProperty, "IsChecked");
+			return checkbox;
+		}
+
+		StackLayout createTitleLayout()
+		{
+			var title = createTitle();
+			var description = createDescription();
+
+			return new StackLayout {
+				Children = {
+					title,
+					description
+				}
+			};
+		}
+
+		Label createTitle()
+		{
+			var title = new Label();
+			title.SetBinding(Label.TextProperty, "Title");
+			return title;
+		}
+
+		Label createDescription()
+		{
+			var description = new Label {
+				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+				TextColor = Color.FromHex(Theme.Current.CheckboxDescriptionColor)
+			};
+
+			description.SetBinding(Label.TextProperty, "Description");
+			return description;
 		}
 	}
 }

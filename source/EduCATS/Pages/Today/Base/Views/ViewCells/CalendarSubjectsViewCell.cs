@@ -6,15 +6,18 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 {
 	public class CalendarSubjectsViewCell : ViewCell
 	{
-		const double boxViewSize = 10;
+		const double _boxViewSize = 10;
+
+		static Thickness _padding = new Thickness(20, 10);
+		static Thickness _boxViewMargin = new Thickness(10, 0);
 
 		public CalendarSubjectsViewCell()
 		{
 			var subjectColorView = new BoxView {
-				Margin = new Thickness(10, 0),
-				HeightRequest = boxViewSize,
-				WidthRequest = boxViewSize,
-				CornerRadius = boxViewSize / 2,
+				Margin = _boxViewMargin,
+				HeightRequest = _boxViewSize,
+				WidthRequest = _boxViewSize,
+				CornerRadius = _boxViewSize / 2,
 				VerticalOptions = LayoutOptions.Center
 			};
 
@@ -28,7 +31,7 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 
 			View = new StackLayout {
 				BackgroundColor = Color.FromHex(Theme.Current.TodaySubjectBackgroundColor),
-				Padding = new Thickness(20, 10),
+				Padding = _padding,
 				Orientation = StackOrientation.Horizontal,
 				Children = {
 					subjectColorView,

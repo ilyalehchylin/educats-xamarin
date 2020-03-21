@@ -1,5 +1,5 @@
 ﻿using System;
-using EduCATS.Configuration;
+using EduCATS.Constants;
 using MonkeyCache.FileStore;
 
 namespace EduCATS.Data.Caching
@@ -13,7 +13,7 @@ namespace EduCATS.Data.Caching
 
 		public static void Save(string key, T data)
 		{
-			Barrel.Current.Add(key, data, TimeSpan.FromDays(AppConfig.CacheExpirationInDays));
+			Barrel.Current.Add(key, data, TimeSpan.FromDays(GlobalConsts.CacheExpirationInDays));
 		}
 
 		public static T Get(string key)

@@ -6,61 +6,86 @@ namespace EduCATS.Controls.RoundedListView
 {
 	public class RoundedListView : ListView
 	{
-		const double roundedHeaderHeight = 14;
+		const double _spacing = 0;
+		const double _padding = 0;
+		const double _roundedHeaderHeight = 14;
+
+		readonly double _cornerRadius;
 
 		public RoundedListView(RoundedListTemplateSelector templateSelector, View header = null)
 		{
 			HasUnevenRows = true;
-			SeparatorVisibility = SeparatorVisibility.None;
-			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			HorizontalScrollBarVisibility = ScrollBarVisibility.Never;
-			VerticalScrollBarVisibility = ScrollBarVisibility.Never;
 			ItemTemplate = templateSelector;
+			SeparatorVisibility = SeparatorVisibility.None;
+			VerticalScrollBarVisibility = ScrollBarVisibility.Never;
+			HorizontalScrollBarVisibility = ScrollBarVisibility.Never;
+			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 
-			var headerGrid = new Grid {
-				HeightRequest = roundedHeaderHeight,
-				Children = {
-					new StackLayout {
-						HeightRequest = roundedHeaderHeight / 2,
-						BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor),
-						VerticalOptions = LayoutOptions.End
-					},
+			_cornerRadius = _roundedHeaderHeight / 2;
 
-					new Frame {
-						HasShadow = false,
-						BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor),
-						CornerRadius = (float)roundedHeaderHeight / 2
-					}
-				}
+			Footer = createFooterCap();
+			Header = createHeader(header);
+		}
+
+		StackLayout createHeader(View view)
+		{
+			var cap = createHeaderCap();
+
+			var header = new StackLayout {
+				Padding = _padding,
+				Spacing = _spacing
 			};
 
-			var headerView = new StackLayout {
-				Padding = 0,
-				Spacing = 0
-			};
-
-			if (header != null) {
-				headerView.Children.Add(header);
+			if (view != null) {
+				header.Children.Add(view);
 			}
 
-			headerView.Children.Add(headerGrid);
+			header.Children.Add(cap);
+			return header;
+		}
 
-			Header = headerView;
+		Grid createHeaderCap()
+		{
+			var stackLayout = new StackLayout {
+				HeightRequest = _cornerRadius,
+				VerticalOptions = LayoutOptions.End,
+				BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor)
+			};
 
-			Footer = new Grid {
-				HeightRequest = roundedHeaderHeight,
+			var frame = new Frame {
+				HasShadow = false,
+				CornerRadius = (float)_cornerRadius,
+				BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor),
+			};
+
+			return new Grid {
+				HeightRequest = _roundedHeaderHeight,
 				Children = {
-					new StackLayout {
-						VerticalOptions = LayoutOptions.Start,
-						HeightRequest = roundedHeaderHeight / 2,
-						BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor)
-					},
+					stackLayout,
+					frame
+				}
+			};
+		}
 
-					new Frame {
-						HasShadow = false,
-						BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor),
-						CornerRadius = (float)roundedHeaderHeight / 2
-					}
+		Grid createFooterCap()
+		{
+			var stackLayout = new StackLayout {
+				HeightRequest = _cornerRadius,
+				VerticalOptions = LayoutOptions.Start,
+				BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor)
+			};
+
+			var frame = new Frame {
+				HasShadow = false,
+				CornerRadius = (float)_cornerRadius,
+				BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor)
+			};
+
+			return new Grid {
+				HeightRequest = _roundedHeaderHeight,
+				Children = {
+					stackLayout,
+					frame
 				}
 			};
 		}

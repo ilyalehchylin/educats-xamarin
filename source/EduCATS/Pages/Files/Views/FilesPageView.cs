@@ -1,6 +1,6 @@
-﻿using EduCATS.Controls.RoundedListView;
+﻿using EduCATS.Controls.Pickers;
+using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
-using EduCATS.Controls.SubjectsPickerView;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Pages.Files.ViewModels;
@@ -14,6 +14,10 @@ namespace EduCATS.Pages.Files.Views
 {
 	public class FilesPageView : ContentPage
 	{
+		static Thickness _headerPadding = new Thickness(10);
+		static Thickness _subjectsMargin = new Thickness(0, 0, 0, 10);
+		static Thickness _filesListMargin = new Thickness(10, 20);
+
 		public FilesPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -57,7 +61,7 @@ namespace EduCATS.Pages.Files.Views
 		Label createHeaderLabel()
 		{
 			return new Label {
-				Padding = new Thickness(10),
+				Padding = _headerPadding,
 				FontAttributes = FontAttributes.Bold,
 				Text = CrossLocalization.Translate("learning_card_files"),
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
@@ -68,7 +72,7 @@ namespace EduCATS.Pages.Files.Views
 		SubjectsPickerView createSubjectsPicker()
 		{
 			return new SubjectsPickerView {
-				Margin = new Thickness(0, 0, 0, 10)
+				Margin = _subjectsMargin
 			};
 		}
 
@@ -80,7 +84,7 @@ namespace EduCATS.Pages.Files.Views
 
 			var filesListView = new RoundedListView(templateSelector, header) {
 				IsPullToRefreshEnabled = true,
-				Margin = new Thickness(10, 20)
+				Margin = _filesListMargin
 			};
 
 			filesListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "FileList");

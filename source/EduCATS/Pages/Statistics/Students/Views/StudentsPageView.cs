@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using EduCATS.Controls.GroupsPickerView;
+using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Data.Models.Statistics;
@@ -16,11 +16,15 @@ namespace EduCATS.Pages.Statistics.Students.Views
 {
 	public class StudentsPageView : ContentPage
 	{
-		public StudentsPageView(int pageIndex, int subjectId, List<StatisticsStudentModel> students)
+		static Thickness _padding = new Thickness(10);
+		static Thickness _headerPadding = new Thickness(0, 0, 0, 10);
+		static Thickness _searchBarMargin = new Thickness(0, 5, 0, 0);
+
+		public StudentsPageView(int pageIndex, int subjectId, List<StatsStudentModel> students)
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			Padding = new Thickness(10);
+			Padding = _padding;
 			BindingContext = new StudentsPageViewModel(
 				new AppPages(), new AppDialogs(), new AppDevice(), subjectId, students, pageIndex);
 			createViews();
@@ -39,7 +43,7 @@ namespace EduCATS.Pages.Statistics.Students.Views
 			var searchBar = createSearchBar();
 
 			return new StackLayout {
-				Padding = new Thickness(0, 0, 0, 10),
+				Padding = _headerPadding,
 				Children = {
 					groupsPicker,
 					searchBar
@@ -50,10 +54,10 @@ namespace EduCATS.Pages.Statistics.Students.Views
 		SearchBar createSearchBar()
 		{
 			var searchBar = new SearchBar {
-				Margin = new Thickness(0, 5, 0, 0),
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
-				CancelButtonColor = Color.FromHex(Theme.Current.CommonAppColor),
-				Placeholder = CrossLocalization.Translate("statistics_students_search_text")
+				Margin = _searchBarMargin,
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
+				CancelButtonColor = Color.FromHex(Theme.Current.BaseAppColor),
+				Placeholder = CrossLocalization.Translate("stats_students_search_text")
 			};
 
 			searchBar.SetBinding(SearchBar.TextProperty, "SearchText");

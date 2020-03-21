@@ -12,7 +12,7 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 {
 	public class TestingResultsPageViewModel : ViewModel
 	{
-		const int maximumRating = 10;
+		const int _maximumRating = 10;
 
 		readonly IDialogs _dialogs;
 		readonly IPages _navigation;
@@ -33,22 +33,22 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 			});
 		}
 
-		List<TestingResultsModel> results;
-		public List<TestingResultsModel> Results {
-			get { return results; }
-			set { SetProperty(ref results, value); }
+		List<TestResultsModel> _results;
+		public List<TestResultsModel> Results {
+			get { return _results; }
+			set { SetProperty(ref _results, value); }
 		}
 
-		string mark;
+		string _mark;
 		public string Mark {
-			get { return mark; }
-			set { SetProperty(ref mark, value); }
+			get { return _mark; }
+			set { SetProperty(ref _mark, value); }
 		}
 
-		Command closeCommand;
+		Command _closeCommand;
 		public Command CloseCommand {
 			get {
-				return closeCommand ?? (closeCommand = new Command(executeCloseCommand));
+				return _closeCommand ?? (_closeCommand = new Command(closeCommand));
 			}
 		}
 
@@ -61,10 +61,10 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 				return;
 			}
 
-			Results = new List<TestingResultsModel>(resultList);
+			Results = new List<TestResultsModel>(resultList);
 		}
 
-		protected void executeCloseCommand()
+		protected void closeCommand()
 		{
 			if (_fromComplexLearning) {
 
@@ -88,7 +88,7 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 			});
 
 			Mark = Convert.ToInt32(
-				correctAnswers * maximumRating / Results.Count).ToString();
+				correctAnswers * _maximumRating / Results.Count).ToString();
 		}
 	}
 }

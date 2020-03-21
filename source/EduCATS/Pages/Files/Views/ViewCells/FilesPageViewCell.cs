@@ -5,14 +5,16 @@ namespace EduCATS.Pages.Files.Views.ViewCells
 {
 	public class FilesPageViewCell : ViewCell
 	{
+		static Thickness _padding = new Thickness(20);
+
 		public FilesPageViewCell()
 		{
 			var title = new Label();
 			title.SetBinding(Label.TextProperty, "Name");
 
 			View = new StackLayout {
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
-				Padding = new Thickness(20),
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
+				Padding = _padding,
 				Children = {
 					title
 				}

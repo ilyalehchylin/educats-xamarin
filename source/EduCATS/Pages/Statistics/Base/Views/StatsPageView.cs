@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
+using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
-using EduCATS.Controls.SubjectsPickerView;
 using EduCATS.Helpers.Converters;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
@@ -20,12 +20,20 @@ namespace EduCATS.Pages.Statistics.Base.Views
 	public class StatsPageView : ContentPage
 	{
 		const double _boxSize = 30;
+		const double _statsSpacing = 10;
+		const double _chartHeight = 200;
+		const double _expandIconHeight = 30;
+
+		static Thickness _padding = new Thickness(10);
+		static Thickness _headerPadding = new Thickness(0, 0, 0, 10);
+		static Thickness _hiddenDetailsPadding = new Thickness(0, 10, 0, 0);
+		static Thickness _expandableViewPadding = new Thickness(0, 5, 0, 0);
 
 		public StatsPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			Padding = new Thickness(10);
+			Padding = _padding;
 			BindingContext = new StatsPageViewModel(new AppDialogs(), new AppDevice(), new AppPages());
 			createViews();
 		}
@@ -62,7 +70,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			radarChartView.SetBinding(IsVisibleProperty, "IsStudent");
 
 			return new StackLayout {
-				Padding = new Thickness(0, 0, 0, 10),
+				Padding = _headerPadding,
 				Children = {
 					subjectsView,
 					radarChartView
@@ -84,7 +92,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 			return new Frame {
 				HasShadow = false,
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Content = new StackLayout {
 					Children = {
 						chartView,
@@ -99,17 +107,17 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		StackLayout createHiddenDetailsView()
 		{
 			var avgLabsView = createStatisticsView(
-				CrossLocalization.Translate("statistics_chart_average_labs"),
+				CrossLocalization.Translate("stats_chart_average_labs"),
 				Color.FromHex(Theme.Current.StatisticsChartLabsColor),
 				"AverageLabs");
 
 			var avgTestsView = createStatisticsView(
-				CrossLocalization.Translate("statistics_chart_average_tests"),
+				CrossLocalization.Translate("stats_chart_average_tests"),
 				Color.FromHex(Theme.Current.StatisticsChartTestsColor),
 				"AverageTests");
 
 			var avgRatingView = createStatisticsView(
-				CrossLocalization.Translate("statistics_chart_rating"),
+				CrossLocalization.Translate("stats_chart_rating"),
 				Color.FromHex(Theme.Current.StatisticsChartVisitingColor),
 				"Rating");
 
@@ -123,12 +131,12 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			avgStatsLayout.SetBinding(IsVisibleProperty, "IsEnoughDetails");
 
 			var notEnoughDataLabel = createStatisticsLabel(
-				CrossLocalization.Translate("statistics_chart_not_enough_data"), true);
+				CrossLocalization.Translate("stats_chart_not_enough_data"), true);
 
 			notEnoughDataLabel.SetBinding(IsVisibleProperty, "IsNotEnoughDetails");
 
 			var hiddenDetailsView = new StackLayout {
-				Padding = new Thickness(0, 10, 0, 0),
+				Padding = _hiddenDetailsPadding,
 				Children = {
 					avgStatsLayout,
 					notEnoughDataLabel
@@ -146,7 +154,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 			var grid = new Grid {
 				HorizontalOptions = LayoutOptions.StartAndExpand,
-				ColumnSpacing = 10,
+				ColumnSpacing = _statsSpacing,
 				ColumnDefinitions = {
 					new ColumnDefinition { Width = _boxSize },
 					new ColumnDefinition { Width = new GridLength(3, GridUnitType.Star) }
@@ -197,8 +205,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		StackLayout createExpandableView(bool isExpand = true)
 		{
 			var expandTextString = isExpand ?
-				CrossLocalization.Translate("statistics_expand_chart_text") :
-				CrossLocalization.Translate("statistics_collapse_chart_text");
+				CrossLocalization.Translate("stats_expand_chart_text") :
+				CrossLocalization.Translate("stats_collapse_chart_text");
 
 			var expandIconString = isExpand ?
 				Theme.Current.StatisticsExpandIcon :
@@ -211,7 +219,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "ExpandCommand");
 
 			return new StackLayout {
-				Padding = new Thickness(0, 5, 0, 0),
+				Padding = _expandableViewPadding,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				GestureRecognizers = {
 					tapGestureRecognizer
@@ -236,7 +244,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		CachedImage createExpandIcon(string expandIconString)
 		{
 			return new CachedImage {
-				HeightRequest = 30,
+				HeightRequest = _expandIconHeight,
 				Source = ImageSource.FromFile(expandIconString),
 				Transformations = new List<FFImageLoading.Work.ITransformation> {
 					new TintTransformation {
@@ -250,7 +258,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		ChartView createChartView()
 		{
 			var radarChartView = new ChartView {
-				HeightRequest = 200
+				HeightRequest = _chartHeight
 			};
 
 			radarChartView.SetBinding(

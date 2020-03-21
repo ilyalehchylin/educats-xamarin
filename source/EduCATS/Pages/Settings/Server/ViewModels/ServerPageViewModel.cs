@@ -16,10 +16,10 @@ namespace EduCATS.Pages.Settings.Server.ViewModels
 	public class ServerPageViewModel : ViewModel
 	{
 		readonly IDialogs _dialogs;
-		readonly IAppDevice _device;
+		readonly IDevice _device;
 		readonly IPages _pages;
 
-		public ServerPageViewModel(IDialogs dialogs, IAppDevice device, IPages pages)
+		public ServerPageViewModel(IDialogs dialogs, IDevice device, IPages pages)
 		{
 			_pages = pages;
 			_device = device;
@@ -66,7 +66,7 @@ namespace EduCATS.Pages.Settings.Server.ViewModels
 			}
 
 			var result = await _dialogs.ShowConfirmationMessage(
-				CrossLocalization.Translate("common_warning"),
+				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("settings_server_change_message"));
 
 			if (!result) {

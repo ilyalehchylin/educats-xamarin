@@ -6,13 +6,13 @@ namespace EduCATS.Pages.Today.Base.Models
 {
 	public class NewsPageModel
 	{
-		public NewsPageModel(NewsItemModel newsModel, string subjectColor)
+		public NewsPageModel(NewsModel newsModel, string subjectColor)
 		{
 			setDefaultProps(newsModel);
 			setSubjectColor(subjectColor);
 		}
 
-		void setDefaultProps(NewsItemModel newsModel)
+		void setDefaultProps(NewsModel newsModel)
 		{
 			if (newsModel != null) {
 				Id = newsModel.Id;
@@ -34,25 +34,21 @@ namespace EduCATS.Pages.Today.Base.Models
 		}
 
 		public int Id { get; set; }
-
-		public string Title { get; set; }
-
 		public string Body { get; set; }
+		public string Title { get; set; }
+		public string SubjectName { get; set; }
+		public string SubjectColor { get; set; }
 
 		string date;
 		public string Date {
 			get {
 				var unixDoble = DateHelper.GetUnixFromString(date);
 				var unixString = DateHelper.Convert13DigitsUnixToDateTime(unixDoble);
-				return unixString.ToString("dd-MM-yyyy hh:mm");
+				return unixString.ToString(DateHelper.DefaultDateTimeFormat);
 			}
 			set {
 				date = value;
 			}
 		}
-
-		public string SubjectName { get; set; }
-
-		public string SubjectColor { get; set; }
 	}
 }

@@ -31,12 +31,8 @@ namespace EduCATS.Helpers.Pages
 		/// Property for getting and setting <see cref="Application.Current.MainPage"/>.
 		/// </summary>
 		NavigationPage mainPage {
-			get {
-				return Application.Current.MainPage as NavigationPage;
-			}
-			set {
-				Application.Current.MainPage = value;
-			}
+			get => Application.Current.MainPage as NavigationPage;
+			set => Application.Current.MainPage = value;
 		}
 
 		/// <summary>
@@ -47,27 +43,23 @@ namespace EduCATS.Helpers.Pages
 		public async Task ClosePage(bool modal)
 		{
 			if (modal) {
-				await popModalPageAsync();
+				await mainPage.Navigation.PopModalAsync();
 			} else {
-				await popPageAsync();
+				await mainPage.Navigation.PopAsync();
 			}
 		}
 
 		/// <summary>
 		/// Open login page.
 		/// </summary>
-		public void OpenLogin()
-		{
+		public void OpenLogin() =>
 			switchMainPage(new LoginPageView());
-		}
 
 		/// <summary>
 		/// Open main page.
 		/// </summary>
-		public void OpenMain()
-		{
+		public void OpenMain() =>
 			switchMainPage(new MainPageView());
-		}
 
 		/// <summary>
 		/// Open news details page.
@@ -75,10 +67,8 @@ namespace EduCATS.Helpers.Pages
 		/// <param name="title">News title.</param>
 		/// <param name="body">News html body.</param>
 		/// <returns>Task</returns>
-		public async Task OpenNewsDetails(string title, string body)
-		{
-			await pushModalPageAsync(new NewsDetailsPageView(title, body));
-		}
+		public async Task OpenNewsDetails(string title, string body) =>
+			await pushPage(new NewsDetailsPageView(title, body), isModal: true);
 
 		/// <summary>
 		/// Open page with students.
@@ -86,10 +76,8 @@ namespace EduCATS.Helpers.Pages
 		/// <param name="pageIndex">Index of a page to open after choosing a student.</param>
 		/// <returns>Task</returns>
 		public async Task OpenStudentsListStats(
-			int pageIndex, int subjectId, List<StatisticsStudentModel> students, string title)
-		{
-			await pushPageAsync(new StudentsPageView(pageIndex, subjectId, students), title);
-		}
+			int pageIndex, int subjectId, List<StatsStudentModel> students, string title) =>
+			await pushPage(new StudentsPageView(pageIndex, subjectId, students), title);
 
 		/// <summary>
 		/// Open page with detailed statistics by page type.
@@ -102,33 +90,26 @@ namespace EduCATS.Helpers.Pages
 		/// <param name="name">Student's name.</param>
 		/// <returns>Task</returns>
 		public async Task OpenDetailedStatistics(
-			string userLogin, int subjectId, int groupId, int pageIndex, string title, string name = null)
-		{
-			await pushPageAsync(new StatsResultsPageView(
+			string userLogin, int subjectId, int groupId, int pageIndex, string title, string name = null) =>
+			await pushPage(new StatsResultsPageView(
 				userLogin, subjectId, groupId, (StatsPageEnum)pageIndex, name), title);
-		}
 
 		/// <summary>
 		/// Open base testing page.
 		/// </summary>
 		/// <param name="title">Page title</param>
 		/// <returns>Task</returns>
-		public async Task OpenTesting(string title)
-		{
-			await pushPageAsync(new TestingPageView(), title);
-		}
+		public async Task OpenTesting(string title) =>
+			await pushPage(new TestingPageView(), title);
 
 		/// <summary>
 		/// Open test passing page.
 		/// </summary>
 		/// <param name="testId">Test ID</param>
 		/// <param name="forSelfStudy">Is test for self-study</param>
-		/// <param name="fromComplexLearning">Is opened from Complex learning page</param>
 		/// <returns>Task</returns>
-		public async Task OpenTestPassing(int testId, bool forSelfStudy, bool fromComplexLearning = false)
-		{
-			await pushModalPageAsync(new TestPassingPageView(testId, forSelfStudy, fromComplexLearning));
-		}
+		public async Task OpenTestPassing(int testId, bool forSelfStudy) =>
+			await pushPage(new TestPassingPageView(testId, forSelfStudy), isModal: true);
 
 		/// <summary>
 		/// Open test results.
@@ -136,10 +117,8 @@ namespace EduCATS.Helpers.Pages
 		/// <param name="testId">Test ID</param>
 		/// <param name="fromComplexLearning">Is opened from Complex learning page</param>
 		/// <returns>Task</returns>
-		public async Task OpenTestResults(int testId, bool fromComplexLearning = false)
-		{
-			await pushModalPageAsync(new TestingResultsPageView(testId, fromComplexLearning));
-		}
+		public async Task OpenTestResults(int testId, bool fromComplexLearning = false) =>
+			await pushPage(new TestingResultsPageView(testId, fromComplexLearning), isModal: true);
 
 		/// <summary>
 		/// Open Electronic educational methodological complexes page.
@@ -147,103 +126,67 @@ namespace EduCATS.Helpers.Pages
 		/// <param name="title">Title</param>
 		/// <param name="searchId">(optional) Search ID</param>
 		/// <returns>Task</returns>
-		public async Task OpenEemc(string title, int searchId = -1)
-		{
-			await pushPageAsync(new EemcPageView(searchId), title);
-		}
+		public async Task OpenEemc(string title, int searchId = -1) =>
+			await pushPage(new EemcPageView(searchId), title);
 
 		/// <summary>
 		/// Open Files page.
 		/// </summary>
 		/// <param name="title">Title</param>
 		/// <returns>Task</returns>
-		public async Task OpenFiles(string title)
-		{
-			await pushPageAsync(new FilesPageView(), title);
-		}
+		public async Task OpenFiles(string title) =>
+			await pushPage(new FilesPageView(), title);
 
 		/// <summary>
 		/// Open Adaptive Learning (Recommendations) page.
 		/// </summary>
 		/// <param name="title">Title</param>
 		/// <returns>Task</returns>
-		public async Task OpenRecommendations(string title)
-		{
-			await pushPageAsync(new RecommendationsPageView(), title);
-		}
+		public async Task OpenRecommendations(string title) =>
+			await pushPage(new RecommendationsPageView(), title);
 
-		public async Task OpenSettings(string title)
-		{
-			await pushPageAsync(new SettingsPageView(), title);
-		}
+		public async Task OpenSettings(string title) =>
+			await pushPage(new SettingsPageView(), title);
 
 		/// <summary>
 		/// Open Settings Language page.
 		/// </summary>
 		/// <param name="title">Title</param>
 		/// <returns>Task</returns>
-		public async Task OpenSettingsLanguage(string title)
-		{
-			await pushPageAsync(new LanguagePageView(), title);
-		}
+		public async Task OpenSettingsLanguage(string title) =>
+			await pushPage(new LanguagePageView(), title);
 
 		/// <summary>
 		/// Open Settings Server page.
 		/// </summary>
 		/// <param name="title">Title</param>
 		/// <returns>Task</returns>
-		public async Task OpenSettingsServer(string title)
-		{
-			await pushPageAsync(new ServerPageView(), title);
-		}
+		public async Task OpenSettingsServer(string title) =>
+			await pushPage(new ServerPageView(), title);
 
 		/// <summary>
 		/// Change Application's main page without animation.
 		/// </summary>
 		/// <param name="newPage">Page to set.</param>
-		void switchMainPage(Page newPage)
-		{
+		void switchMainPage(Page newPage) =>
 			mainPage = getNavigationPage(newPage);
-		}
 
 		/// <summary>
 		/// Push a page to existing navigation stack.
 		/// </summary>
 		/// <param name="newPage">Page to push.</param>
 		/// <param name="title">Page title.</param>
+		/// <param name="isModal">Is page modal.</param>
 		/// <returns>Task</returns>
-		async Task pushPageAsync(Page newPage, string title = null)
+		async Task pushPage(Page newPage, string title = null, bool isModal = false)
 		{
-			await mainPage.Navigation.PushAsync(
-				getNavigationPage(newPage, title));
-		}
-
-		/// <summary>
-		/// Push a page modally to existing navigation stack.
-		/// </summary>
-		/// <param name="newPage">Page to push.</param>
-		/// <returns>Task</returns>
-		async Task pushModalPageAsync(Page newPage)
-		{
-			await mainPage.Navigation.PushModalAsync(getNavigationPage(newPage));
-		}
-
-		/// <summary>
-		/// Pop a page from existing navigation stack.
-		/// </summary>
-		/// <returns>Task</returns>
-		async Task popPageAsync()
-		{
-			await mainPage.Navigation.PopAsync();
-		}
-
-		/// <summary>
-		/// Pop a modally pushed page.
-		/// </summary>
-		/// <returns>Task.</returns>
-		async Task popModalPageAsync()
-		{
-			await mainPage.Navigation.PopModalAsync();
+			if (isModal) {
+				await mainPage.Navigation.PushModalAsync(
+					getNavigationPage(newPage, title));
+			} else {
+				await mainPage.Navigation.PushAsync(
+					getNavigationPage(newPage, title));
+			}
 		}
 
 		/// <summary>
@@ -252,13 +195,10 @@ namespace EduCATS.Helpers.Pages
 		/// <param name="page">Page to convert.</param>
 		/// <param name="title">Page title.</param>
 		/// <returns>Task</returns>
-		NavigationPage getNavigationPage(Page page, string title = null)
-		{
-			return new NavigationPage(page) {
-				Title = title,
-				BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
-				BarTextColor = Color.FromHex(Theme.Current.CommonAppColor)
-			};
-		}
+		NavigationPage getNavigationPage(Page page, string title = null) => new NavigationPage(page) {
+			Title = title,
+			BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
+			BarTextColor = Color.FromHex(Theme.Current.BaseAppColor)
+		};
 	}
 }

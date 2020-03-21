@@ -10,10 +10,10 @@ namespace EduCATS.Helpers.Pages.Interfaces
 		void OpenLogin();
 		void OpenMain();
 		Task OpenNewsDetails(string title, string body);
-		Task OpenStudentsListStats(int pageIndex, int subjectId, List<StatisticsStudentModel> students, string title);
+		Task OpenStudentsListStats(int pageIndex, int subjectId, List<StatsStudentModel> students, string title);
 		Task OpenDetailedStatistics(string userLogin, int subjectId, int groupId, int pageIndex, string title, string name = null);
 		Task OpenTesting(string title);
-		Task OpenTestPassing(int testId, bool forSelfStudy, bool fromComplexLearning = false);
+		Task OpenTestPassing(int testId, bool forSelfStudy);
 		Task OpenTestResults(int testId, bool fromComplexLearning = false);
 		Task OpenEemc(string title, int searchId = -1);
 		Task OpenFiles(string title);

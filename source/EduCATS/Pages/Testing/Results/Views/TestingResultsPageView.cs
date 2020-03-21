@@ -10,6 +10,8 @@ namespace EduCATS.Pages.Testing.Results.Views
 {
 	public class TestingResultsPageView : ContentPage
 	{
+		static Thickness _listPadding = new Thickness(10);
+
 		public TestingResultsPageView(int testId, bool fromComplexLearning)
 		{
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
@@ -42,7 +44,7 @@ namespace EduCATS.Pages.Testing.Results.Views
 
 			var listView = new ListView {
 				Header = new StackLayout {
-					Padding = new Thickness(10),
+					Padding = _listPadding,
 					Children = {
 						markTitleLabel,
 						markLabel

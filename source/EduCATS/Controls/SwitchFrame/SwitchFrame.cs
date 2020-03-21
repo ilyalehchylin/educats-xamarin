@@ -9,39 +9,60 @@ namespace EduCATS.Controls.SwitchFrame
 
 		public SwitchFrame(string title, string description)
 		{
-			BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor);
 			HasShadow = false;
+			BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor);
+			Switch = createSwitch();
+			createViews(title, description);
+		}
 
-			var titleLabel = new Label {
-				Text = title
-			};
+		void createViews(string title, string description)
+		{
+			var titleLayout = createTitleLayout(title, description);
+			createSwitch();
 
-			var descriptionLabel = new Label {
-				Text = description,
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-				TextColor = Color.FromHex(Theme.Current.SwitchFrameDescriptionColor)
-			};
-
-			var titleLayout = new StackLayout {
-				Children = {
-					titleLabel,
-					descriptionLabel
-				}
-			};
-
-			Switch = new Switch {
-				HorizontalOptions = LayoutOptions.EndAndExpand
-			};
-
-			var bodyLayout = new StackLayout {
+			Content = new StackLayout {
 				Orientation = StackOrientation.Horizontal,
 				Children = {
 					titleLayout,
 					Switch
 				}
 			};
+		}
 
-			Content = bodyLayout;
+		Switch createSwitch()
+		{
+			return new Switch {
+				HorizontalOptions = LayoutOptions.EndAndExpand
+			};
+		}
+
+		StackLayout createTitleLayout(string title, string description)
+		{
+			var titleLabel = createTitleLabel(title);
+			var descriptionLabel = createDescriptionLabel(description);
+
+			return new StackLayout {
+				Children = {
+					titleLabel,
+					descriptionLabel
+				}
+			};
+		}
+
+		Label createTitleLabel(string title)
+		{
+			return new Label {
+				Text = title
+			};
+		}
+
+		Label createDescriptionLabel(string description)
+		{
+			return new Label {
+				Text = description,
+				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+				TextColor = Color.FromHex(Theme.Current.SwitchFrameDescriptionColor)
+			};
 		}
 	}
 }

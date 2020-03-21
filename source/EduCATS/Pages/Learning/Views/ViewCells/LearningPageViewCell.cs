@@ -7,12 +7,15 @@ namespace EduCATS.Pages.Learning.Views.ViewCells
 {
 	public class LearningPageViewCell : StackLayout
 	{
+		const double _framePadding = 0;
 		const float _cornerRadius = 10;
+		static Thickness _padding = new Thickness(10);
+		static Thickness _titleMargin = new Thickness(10);
 
 		public LearningPageViewCell()
 		{
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			Padding = new Thickness(10);
+			Padding = _padding;
 
 			var image = new CachedImage {
 				HorizontalOptions = LayoutOptions.FillAndExpand,
@@ -26,18 +29,18 @@ namespace EduCATS.Pages.Learning.Views.ViewCells
 			var title = new Label {
 				TextColor = Color.FromHex(Theme.Current.LearningCardTextColor),
 				FontAttributes = FontAttributes.Bold,
-				Margin = new Thickness(10)
+				Margin = _titleMargin
 			};
 
 			title.SetBinding(Label.TextProperty, "Title");
 
 			Children.Add(new Frame {
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
-				CornerRadius = _cornerRadius,
-				IsClippedToBounds = true,
 				HasShadow = false,
-				Padding = 0,
-				Margin = 0,
+				Margin = _framePadding,
+				Padding = _framePadding,
+				IsClippedToBounds = true,
+				CornerRadius = _cornerRadius,
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Content = new Grid {
 					Children = {
 						image, title

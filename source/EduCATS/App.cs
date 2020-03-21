@@ -3,7 +3,6 @@ using EduCATS.Configuration;
 using EduCATS.Data;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
 using Xamarin.Forms;
 
@@ -46,17 +45,11 @@ namespace EduCATS
 				return;
 			}
 
-			AppUserData.SetLoginData(AppPrefs.UserId, username);
-
 			var profile = await DataAccess.GetProfileInfo(username);
-
-			if (profile == null) {
-				return;
-			}
-			
+			AppUserData.SetLoginData(AppPrefs.UserId, username);
 			AppUserData.SetProfileData(profile);
-			AppPrefs.GroupName = profile.GroupName;
-			AppPrefs.Avatar = profile.Avatar;
+			AppPrefs.GroupName = profile?.GroupName;
+			AppPrefs.Avatar = profile?.Avatar;
 		}
 	}
 }

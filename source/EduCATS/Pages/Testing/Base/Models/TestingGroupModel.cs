@@ -3,12 +3,12 @@ using EduCATS.Data.Models.Testing.Base;
 
 namespace EduCATS.Pages.Testing.Base.Models
 {
-	public class TestingGroupModel : List<TestingItemModel>
+	public class TestingGroupModel : List<TestModel>
 	{
 		public string SectionName { get; set; }
-		public List<TestingItemModel> Tests => this;
+		public List<TestModel> Tests => this;
 
-		public TestingGroupModel(string sectionName, List<TestingItemModel> tests = null)
+		public TestingGroupModel(string sectionName, List<TestModel> tests = null)
 		{
 			SectionName = sectionName;
 

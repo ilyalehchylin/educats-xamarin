@@ -13,15 +13,21 @@ namespace EduCATS.Pages.Login.Views
 {
 	public class LoginPageView : ContentPage
 	{
-		const double _settingsIconSize = 45;
-
-		readonly string[] backgrounds = {
+		readonly string[] _backgrounds = {
 			Theme.Current.LoginBackground1Image,
 			Theme.Current.LoginBackground2Image,
 			Theme.Current.LoginBackground3Image,
 		};
 
-		readonly Thickness commonSpacing = new Thickness(0, 10, 0, 0);
+		const double _controlHeight = 50;
+		const double _mascotImage = 200;
+		const double _loginFormSpacing = 0;
+		const double _settingsIconSize = 45;
+		static Thickness _loginFormPadding = new Thickness(20, 0);
+		static Thickness _baseSpacing = new Thickness(0, 10, 0, 0);
+		static Thickness _iosSettingsMargin = new Thickness(20, 40);
+		static Thickness _androidSettingsMargin = new Thickness(10);
+		static Thickness _showPasswordIconMargin = new Thickness(0, 10, 5, 0);
 
 		public LoginPageView()
 		{
@@ -57,8 +63,8 @@ namespace EduCATS.Pages.Login.Views
 			var activityIndicator = createActivityIndicator();
 
 			var mainStackLayout = new StackLayout {
-				Spacing = 0,
-				Padding = new Thickness(20, 0),
+				Spacing = _loginFormSpacing,
+				Padding = _loginFormPadding,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
 					mascotImage,
@@ -86,7 +92,7 @@ namespace EduCATS.Pages.Login.Views
 			var settingsIcon = new CachedImage {
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				VerticalOptions = LayoutOptions.StartAndExpand,
-				Margin = Device.RuntimePlatform == Device.iOS ? new Thickness(20, 40) : new Thickness(10),
+				Margin = Device.RuntimePlatform == Device.iOS ? _iosSettingsMargin : _androidSettingsMargin,
 				Source = ImageSource.FromFile(Theme.Current.MainSettingsIcon),
 				Aspect = Aspect.AspectFill,
 				HeightRequest = _settingsIconSize,
@@ -108,7 +114,7 @@ namespace EduCATS.Pages.Login.Views
 		CachedImage createMascotImage()
 		{
 			return new CachedImage {
-				HeightRequest = 200,
+				HeightRequest = _mascotImage,
 				Source = ImageSource.FromFile(Theme.Current.LoginMascotImage)
 			};
 		}
@@ -144,7 +150,7 @@ namespace EduCATS.Pages.Login.Views
 				Style = getEntryStyle(),
 				IsPassword = true,
 				ReturnType = ReturnType.Done,
-				Margin = commonSpacing,
+				Margin = _baseSpacing,
 				Placeholder = CrossLocalization.Translate("login_password")
 			};
 
@@ -160,8 +166,8 @@ namespace EduCATS.Pages.Login.Views
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
-				Margin = commonSpacing,
-				HeightRequest = 50
+				Margin = _baseSpacing,
+				HeightRequest = _controlHeight
 			};
 
 			loginButton.SetBinding(Button.CommandProperty, "LoginCommand");
@@ -172,7 +178,7 @@ namespace EduCATS.Pages.Login.Views
 		{
 			var showPasswordImage = new CachedImage {
 				Aspect = Aspect.AspectFit,
-				Margin = new Thickness(0, 10, 5, 0),
+				Margin = _showPasswordIconMargin,
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Source = ImageSource.FromFile(Theme.Current.LoginShowPasswordImage)
@@ -188,7 +194,7 @@ namespace EduCATS.Pages.Login.Views
 		{
 			var activityIndicator = new ActivityIndicator {
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				Margin = commonSpacing,
+				Margin = _baseSpacing,
 				Color = Color.White
 			};
 
@@ -203,7 +209,7 @@ namespace EduCATS.Pages.Login.Views
 				Setters = {
 					new Setter {
 						Property = HeightRequestProperty,
-						Value = 50
+						Value = _controlHeight
 					},
 
 					new Setter {
@@ -217,8 +223,8 @@ namespace EduCATS.Pages.Login.Views
 		string getRandomBackgroundImage()
 		{
 			var random = new Random();
-			var randomBackgroundIndex = random.Next(0, backgrounds.Length - 1);
-			return backgrounds[randomBackgroundIndex];
+			var randomBackgroundIndex = random.Next(0, _backgrounds.Length - 1);
+			return _backgrounds[randomBackgroundIndex];
 		}
 	}
 }

@@ -10,10 +10,13 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 {
 	public class NewsPageViewCell : ViewCell
 	{
-		const double boxViewSize = 10;
-		const double boxViewLayoutSize = 20;
-		const double clockIconSize = 20;
-		const float viewCornerRadius = 10;
+		const double _boxViewSize = 10;
+		const double _boxViewLayoutSize = 20;
+		const double _clockIconSize = 20;
+		const float _viewCornerRadius = 10;
+
+		static Thickness _framePadding = new Thickness(10);
+		static Thickness _frameMargin = new Thickness(10, 0, 10, 10);
 
 		public NewsPageViewCell()
 		{
@@ -27,9 +30,9 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 			var subjectBoxView = new BoxView {
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				HeightRequest = boxViewSize,
-				WidthRequest = boxViewSize,
-				CornerRadius = boxViewSize / 2
+				HeightRequest = _boxViewSize,
+				WidthRequest = _boxViewSize,
+				CornerRadius = _boxViewSize / 2
 			};
 
 			subjectBoxView.SetBinding(
@@ -38,8 +41,8 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 			var boxViewLayout = new StackLayout {
 				HorizontalOptions = LayoutOptions.Start,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				HeightRequest = boxViewLayoutSize,
-				WidthRequest = boxViewLayoutSize,
+				HeightRequest = _boxViewLayoutSize,
+				WidthRequest = _boxViewLayoutSize,
 				Children = {
 					subjectBoxView
 				}
@@ -65,7 +68,7 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 				HorizontalOptions = LayoutOptions.Start,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Source = Xamarin.Forms.ImageSource.FromFile(Theme.Current.TodayNewsDateIcon),
-				HeightRequest = clockIconSize,
+				HeightRequest = _clockIconSize,
 				Transformations = new List<ITransformation> {
 					new TintTransformation {
 						EnableSolidColor = true,
@@ -92,9 +95,9 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 
 			View = new Frame {
 				HasShadow = false,
-				CornerRadius = viewCornerRadius,
-				Padding = new Thickness(10),
-				Margin = new Thickness(10, 0, 10, 10),
+				CornerRadius = _viewCornerRadius,
+				Padding = _framePadding,
+				Margin = _frameMargin,
 				BackgroundColor = Color.FromHex(Theme.Current.TodayNewsItemBackgroundColor),
 				Content = new StackLayout {
 					Children = {

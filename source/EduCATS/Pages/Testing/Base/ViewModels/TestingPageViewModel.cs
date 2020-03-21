@@ -7,8 +7,8 @@ using EduCATS.Data.User;
 using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Testing.Base.Models;
-using EduCATS.Pages.Utils.ViewModels;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -18,9 +18,9 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 	{
 		readonly IDialogs _dialogService;
 		readonly IPages _navigation;
-		readonly IAppDevice _device;
+		readonly IDevice _device;
 
-		public TestingPageViewModel(IDialogs dialogService, IPages navigation, IAppDevice device)
+		public TestingPageViewModel(IDialogs dialogService, IPages navigation, IDevice device)
 			: base(dialogService, device)
 		{
 			_dialogService = dialogService;
@@ -59,7 +59,7 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 		public Command RefreshCommand {
 			get {
 				return _refreshCommand ?? (
-					_refreshCommand = new Command(async () => await executeRefreshCommand()));
+					_refreshCommand = new Command(async () => await refresh()));
 			}
 		}
 
@@ -101,14 +101,14 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 			return groups;
 		}
 
-		TestingGroupModel getGroup(IList<TestingItemModel> tests, string localizedTag, bool isSelfStudy)
+		TestingGroupModel getGroup(IList<TestModel> tests, string localizedTag, bool isSelfStudy)
 		{
 			return new TestingGroupModel(
 				CrossLocalization.Translate(localizedTag),
 				getSeparateTests(tests, isSelfStudy));
 		}
 
-		List<TestingItemModel> getSeparateTests(IList<TestingItemModel> tests, bool isSelfStudy)
+		List<TestModel> getSeparateTests(IList<TestModel> tests, bool isSelfStudy)
 		{
 			return tests.Where(
 				t => t.ForSelfStudy.Equals(isSelfStudy)).ToList();
@@ -116,11 +116,11 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 
 		void openTest(object testObject)
 		{
-			if (testObject == null || testObject.GetType() != typeof(TestingItemModel)) {
+			if (testObject == null || testObject.GetType() != typeof(TestModel)) {
 				return;
 			}
 
-			var test = testObject as TestingItemModel;
+			var test = testObject as TestModel;
 			_device.MainThread((
 				async () => await showStartTestDialog(test.Id, test.ForSelfStudy)));
 		}
@@ -136,7 +136,7 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 			}
 		}
 
-		protected async Task executeRefreshCommand()
+		protected async Task refresh()
 		{
 			IsRefreshing = true;
 			await getAndSetTests();

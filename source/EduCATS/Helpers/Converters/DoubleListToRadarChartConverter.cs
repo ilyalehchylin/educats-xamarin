@@ -11,6 +11,12 @@ namespace EduCATS.Helpers.Converters
 {
 	public class DoubleListToRadarChartConverter : IValueConverter
 	{
+		const float _lineSize = 5;
+		const float _poinstSize = 20;
+		const float _maxValue = 10;
+
+		static SKColor _backgroundColor = SKColor.Empty;
+
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			if (value == null) {
@@ -27,11 +33,11 @@ namespace EduCATS.Helpers.Converters
 			}
 
 			return new RadarChart {
-				LineSize = 5,
-				PointSize = 20,
-				BackgroundColor = SKColor.Empty,
-				MaxValue = 10,
-				Entries = chartEntries
+				LineSize = _lineSize,
+				MaxValue = _maxValue,
+				Entries = chartEntries,
+				PointSize = _poinstSize,
+				BackgroundColor = _backgroundColor
 			};
 		}
 

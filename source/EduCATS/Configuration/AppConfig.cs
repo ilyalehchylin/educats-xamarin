@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using EduCATS.Constants;
 using EduCATS.Helpers.Settings;
 using EduCATS.Themes;
 using MonkeyCache.FileStore;
@@ -8,9 +9,6 @@ namespace EduCATS.Configuration
 {
 	public static class AppConfig
 	{
-		public static string AppID = "by.bntu.educats";
-		public static int CacheExpirationInDays = 7;
-
 		public static void InitialSetup()
 		{
 			setupPackages();
@@ -31,7 +29,12 @@ namespace EduCATS.Configuration
 		static void setupLocalization()
 		{
 			var assembly = typeof(App).GetTypeInfo().Assembly;
-			CrossLocalization.Initialize(assembly, "EduCATS", "Localization");
+
+			CrossLocalization.Initialize(
+				assembly,
+				GlobalConsts.RunNamespace,
+				GlobalConsts.LocalizationDirectory);
+
 			CrossLocalization.AddLanguageSupport(Languages.EN);
 			CrossLocalization.AddLanguageSupport(Languages.RU);
 			CrossLocalization.SetDefaultLanguage(Languages.EN.LangCode);
@@ -40,7 +43,7 @@ namespace EduCATS.Configuration
 
 		static void setupCaching()
 		{
-			Barrel.ApplicationId = AppID;
+			Barrel.ApplicationId = GlobalConsts.AppId;
 		}
 	}
 }

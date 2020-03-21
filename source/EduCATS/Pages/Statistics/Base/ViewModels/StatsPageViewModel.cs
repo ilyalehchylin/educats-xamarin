@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EduCATS.Constants;
 using EduCATS.Data;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.User;
@@ -10,9 +9,9 @@ using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
+using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Statistics.Base.Models;
 using EduCATS.Pages.Statistics.Enums;
-using EduCATS.Pages.Utils.ViewModels;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -20,12 +19,14 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 {
 	public class StatsPageViewModel : SubjectsViewModel
 	{
+		const string _doubleStringFormat = "0.0";
+
 		readonly IPages _navigationService;
 
-		List<StatisticsStudentModel> _students;
+		List<StatsStudentModel> _students;
 
 		public StatsPageViewModel(
-			IDialogs dialogService, IAppDevice device, IPages navigationService) : base(dialogService, device)
+			IDialogs dialogService, IDevice device, IPages navigationService) : base(dialogService, device)
 		{
 			_navigationService = navigationService;
 			setPagesList();
@@ -165,20 +166,20 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 		}
 
-		void setChartData(StatisticsStudentModel stats)
+		void setChartData(StatsStudentModel stats)
 		{
 			if (stats == null) {
-				stats = new StatisticsStudentModel();
+				stats = new StatsStudentModel();
 			}
 
 			var avgLabs = StringConverter.StringToDouble(stats.AverageLabsMark);
-			AverageLabs = avgLabs.ToString(GlobalConsts.DoubleStringFormat);
+			AverageLabs = avgLabs.ToString(_doubleStringFormat);
 
 			var avgTests = StringConverter.StringToDouble(stats.AverageTestMark);
-			AverageTests = avgTests.ToString(GlobalConsts.DoubleStringFormat);
+			AverageTests = avgTests.ToString(_doubleStringFormat);
 
 			var rating = (avgLabs + avgTests) / 2;
-			Rating = rating.ToString(GlobalConsts.DoubleStringFormat);
+			Rating = rating.ToString(_doubleStringFormat);
 
 			setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
 
@@ -187,7 +188,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			};
 		}
 
-		async Task<List<StatisticsStudentModel>> getStatistics()
+		async Task<List<StatsStudentModel>> getStatistics()
 		{
 			var groupId = AppPrefs.GroupId;
 
@@ -207,9 +208,9 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		void setPagesList()
 		{
 			PagesList = new List<StatsPageModel> {
-				getPage("statistics_page_labs_rating"),
-				getPage("statistics_page_labs_visiting"),
-				getPage("statistics_page_lectures_visiting")
+				getPage("stats_page_labs_rating"),
+				getPage("stats_page_labs_visiting"),
+				getPage("stats_page_lectures_visiting")
 			};
 		}
 
@@ -259,8 +260,8 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		StatsPageEnum getPageToOpen(string pageString)
 		{
-			var labsRatingString = CrossLocalization.Translate("statistics_page_labs_rating");
-			var labsVisitingString = CrossLocalization.Translate("statistics_page_labs_visiting");
+			var labsRatingString = CrossLocalization.Translate("stats_page_labs_rating");
+			var labsVisitingString = CrossLocalization.Translate("stats_page_labs_visiting");
 
 			if (pageString.Equals(labsRatingString)) {
 				return StatsPageEnum.LabsRating;

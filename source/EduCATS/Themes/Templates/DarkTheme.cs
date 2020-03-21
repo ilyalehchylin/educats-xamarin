@@ -2,6 +2,6 @@
 {
 	public class DarkTheme : DefaultTheme
 	{
-		override public string AppStatusBarBackgroundColor { get { return "#000000"; } }
+		override public string AppStatusBarBackgroundColor => "#000000";
 	}
 }

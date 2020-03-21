@@ -12,11 +12,14 @@ namespace EduCATS.Pages.Statistics.Results.Views
 {
 	public class StatsResultsPageView : ContentPage
 	{
+		static Thickness _padding = new Thickness(10);
+		static Thickness _studentNameMargin = new Thickness(0, 20);
+
 		public StatsResultsPageView(
 			string userLogin, int subjectId, int groupId, StatsPageEnum pageType, string studentName)
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
-			Padding = new Thickness(10);
+			Padding = _padding;
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			BindingContext = new StatsResultsPageViewModel(
 				new AppDialogs(), new AppDevice(), userLogin, subjectId, groupId, pageType);
@@ -48,7 +51,7 @@ namespace EduCATS.Pages.Statistics.Results.Views
 		{
 			return new Label {
 				Text = name,
-				Margin = new Thickness(0, 20),
+				Margin = _studentNameMargin,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsNameColor),
 				FontSize = Device.GetNamedSize(NamedSize.Header, typeof(Label)),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,

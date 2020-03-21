@@ -15,6 +15,12 @@ namespace EduCATS.Pages.Settings.Base.Views
 {
 	public class SettingsPageView : ContentPage
 	{
+		const double _avatarHeight = 60;
+		const double _userLayoutSpacing = 15;
+		static Thickness _listMargin = new Thickness(10);
+		static Thickness _userFrameMargin = new Thickness(0, 0, 0, 10);
+		static Thickness _userLayoutMargin = new Thickness(0, 0, 0, 10);
+
 		public SettingsPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -45,7 +51,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 			var userGroupLabel = createGroupLabel();
 
 			var usernameLayout = new StackLayout {
-				Margin = new Thickness(0, 0, 0, 10),
+				Margin = _userLayoutMargin,
 				Children = {
 					userLabel,
 					userGroupLabel
@@ -53,7 +59,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 			};
 
 			var userLayout = new StackLayout {
-				Spacing = 15,
+				Spacing = _userLayoutSpacing,
 				Orientation = StackOrientation.Horizontal,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = {
@@ -64,8 +70,8 @@ namespace EduCATS.Pages.Settings.Base.Views
 
 			var userFrame = new Frame {
 				HasShadow = false,
-				Margin = new Thickness(0, 0, 0, 10),
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
+				Margin = _userFrameMargin,
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Content = userLayout
 			};
 
@@ -76,7 +82,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 		CachedImage createAvatar()
 		{
 			var avatarImage = new CachedImage {
-				HeightRequest = 60,
+				HeightRequest = _avatarHeight,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Transformations = {
 					new CircleTransformation()
@@ -115,7 +121,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 			};
 
 			var settingsListView = new RoundedListView(templateSelector, header) {
-				Margin = new Thickness(10)
+				Margin = _listMargin
 			};
 
 			settingsListView.ItemTapped += (sender, e) => ((ListView)sender).SelectedItem = null;

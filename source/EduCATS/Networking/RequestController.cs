@@ -8,31 +8,28 @@ namespace EduCATS.Networking
 {
 	public class RequestController
 	{
-		readonly HttpClient client;
-		StringContent postContent;
+		readonly HttpClient _client;
+		StringContent _postContent;
 
-		const int timeoutSeconds = 30;
+		const int _timeoutSeconds = 30;
 
 		public string Url { get; set; }
 
-		public Uri Uri {
-			get {
-				return Url == null ? null : new Uri(Url);
-			}
-		}
+		public Uri Uri => Url == null ? null : new Uri(Url);
 
 		public RequestController(string url = null)
 		{
 			Url = url;
-			client = new HttpClient {
-				Timeout = TimeSpan.FromSeconds(timeoutSeconds)
+
+			_client = new HttpClient {
+				Timeout = TimeSpan.FromSeconds(_timeoutSeconds)
 			};
 		}
 
 		public void SetPostContent(string content, Encoding encoding, string mediaType)
 		{
 			if (!string.IsNullOrEmpty(content)) {
-				postContent = new StringContent(content, encoding, mediaType);
+				_postContent = new StringContent(content, encoding, mediaType);
 			}
 		}
 
@@ -52,7 +49,7 @@ namespace EduCATS.Networking
 		async Task<HttpResponseMessage> get()
 		{
 			try {
-				return await client.GetAsync(Uri);
+				return await _client.GetAsync(Uri);
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
 			} catch {
@@ -63,7 +60,7 @@ namespace EduCATS.Networking
 		async Task<HttpResponseMessage> post()
 		{
 			try {
-				return await client.PostAsync(Uri, postContent);
+				return await _client.PostAsync(Uri, _postContent);
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
 			} catch (Exception) {
@@ -71,12 +68,10 @@ namespace EduCATS.Networking
 			}
 		}
 
-		HttpResponseMessage errorResponseMessage(HttpStatusCode statusCode)
-		{
-			return new HttpResponseMessage {
+		HttpResponseMessage errorResponseMessage(HttpStatusCode statusCode) =>
+			new HttpResponseMessage {
 				Content = new StringContent(string.Empty),
 				StatusCode = statusCode
 			};
-		}
 	}
 }

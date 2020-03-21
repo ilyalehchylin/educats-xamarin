@@ -8,6 +8,10 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 {
 	public class NewsDetailsPageView : ContentPage
 	{
+		const double _spacing = 20;
+
+		static Thickness _newsTitlePadding = new Thickness(10);
+
 		public NewsDetailsPageView(string title, string body)
 		{
 			Title = CrossLocalization.Translate("news_details_title");
@@ -32,7 +36,7 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 			var newsBodyLabel = createNewsBody();
 
 			Content = new StackLayout {
-				Spacing = 20,
+				Spacing = _spacing,
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				Children = {
 					newsTitleLabel,
@@ -44,7 +48,7 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 		Label createNewsTitle()
 		{
 			var newsTitleLabel = new Label {
-				Padding = new Thickness(10),
+				Padding = _newsTitlePadding,
 				TextColor = Color.FromHex(Theme.Current.NewsTextColor),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalTextAlignment = TextAlignment.Center,

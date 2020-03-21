@@ -23,127 +23,127 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		/// <summary>
 		/// Dialog service.
 		/// </summary>
-		readonly IDialogs dialogService;
+		readonly IDialogs _dialogs;
 
 		/// <summary>
 		/// Navigation service.
 		/// </summary>
-		readonly IPages navigationService;
+		readonly IPages _pages;
 
-		readonly IAppDevice _device;
+		readonly IDevice _device;
 
-		const int minimumCalendarPosition = 0;
-		const int maximumCalendarPosition = 2;
-		const double subjectsHeightByCount = 60;
-		const double subjectsAdditionalHeight = 50;
+		const int _minimumCalendarPosition = 0;
+		const int _maximumCalendarPosition = 2;
+		const double _subjectsHeightByCount = 60;
+		const double _subjectsAdditionalHeight = 50;
 
-		bool isManualSelectedCalendarDay;
-		DateTime manualSelectedCalendarDay;
-		List<CalendarSubjectsModel> calendatSubjectsListBackup;
+		bool _isManualSelectedCalendarDay;
+		DateTime _manualSelectedCalendarDay;
+		List<CalendarSubjectsModel> _calendarSubjectsBackup;
 
-		public TodayPageViewModel(IDialogs dialogs, IPages pages, IAppDevice device)
+		public TodayPageViewModel(IDialogs dialogs, IPages pages, IDevice device)
 		{
 			_device = device;
-			dialogService = dialogs;
-			navigationService = pages;
+			_dialogs = dialogs;
+			_pages = pages;
 
 			initSetup();
 			update();
 		}
 
-		int calendarPosition;
+		int _calendarPosition;
 		public int CalendarPosition {
-			get { return calendarPosition; }
-			set { SetProperty(ref calendarPosition, value); }
+			get { return _calendarPosition; }
+			set { SetProperty(ref _calendarPosition, value); }
 		}
 
-		ObservableCollection<CalendarViewModel> calendarList;
+		ObservableCollection<CalendarViewModel> _calendarList;
 		public ObservableCollection<CalendarViewModel> CalendarList {
-			get { return calendarList; }
-			set { SetProperty(ref calendarList, value); }
+			get { return _calendarList; }
+			set { SetProperty(ref _calendarList, value); }
 		}
 
-		ObservableCollection<string> calendarDaysOfWeekList;
+		ObservableCollection<string> _calendarDaysOfWeekList;
 		public ObservableCollection<string> CalendarDaysOfWeekList {
-			get { return calendarDaysOfWeekList; }
-			set { SetProperty(ref calendarDaysOfWeekList, value); }
+			get { return _calendarDaysOfWeekList; }
+			set { SetProperty(ref _calendarDaysOfWeekList, value); }
 		}
 
-		List<NewsPageModel> newsList;
+		List<NewsPageModel> _newsList;
 		public List<NewsPageModel> NewsList {
-			get { return newsList; }
-			set { SetProperty(ref newsList, value); }
+			get { return _newsList; }
+			set { SetProperty(ref _newsList, value); }
 		}
 
-		List<CalendarSubjectsModel> calendarSubjects;
+		List<CalendarSubjectsModel> _calendarSubjects;
 		public List<CalendarSubjectsModel> CalendarSubjects {
-			get { return calendarSubjects; }
-			set { SetProperty(ref calendarSubjects, value); }
+			get { return _calendarSubjects; }
+			set { SetProperty(ref _calendarSubjects, value); }
 		}
 
-		double calendarSubjectsHeight;
+		double _calendarSubjectsHeight;
 		public double CalendarSubjectsHeight {
-			get { return calendarSubjectsHeight; }
-			set { SetProperty(ref calendarSubjectsHeight, value); }
+			get { return _calendarSubjectsHeight; }
+			set { SetProperty(ref _calendarSubjectsHeight, value); }
 		}
 
-		string month;
+		string _month;
 		public string Month {
-			get { return month; }
-			set { SetProperty(ref month, value); }
+			get { return _month; }
+			set { SetProperty(ref _month, value); }
 		}
 
-		bool isNewsRefreshing;
+		bool _isNewsRefreshing;
 		public bool IsNewsRefreshing {
-			get { return isNewsRefreshing; }
-			set { SetProperty(ref isNewsRefreshing, value); }
+			get { return _isNewsRefreshing; }
+			set { SetProperty(ref _isNewsRefreshing, value); }
 		}
 
-		bool isNewsRefreshed;
+		bool _isNewsRefreshed;
 		public bool IsNewsRefreshed {
-			get { return isNewsRefreshed; }
-			set { SetProperty(ref isNewsRefreshed, value); }
+			get { return _isNewsRefreshed; }
+			set { SetProperty(ref _isNewsRefreshed, value); }
 		}
 
-		object selectedNewsItem;
+		object _selectedNewsItem;
 		public object SelectedNewsItem {
-			get { return selectedNewsItem; }
+			get { return _selectedNewsItem; }
 			set {
-				SetProperty(ref selectedNewsItem, value);
+				SetProperty(ref _selectedNewsItem, value);
 
-				if (selectedNewsItem != null) {
-					openDetailsPage(selectedNewsItem);
+				if (_selectedNewsItem != null) {
+					openDetailsPage(_selectedNewsItem);
 				}
 			}
 		}
 
-		Command newsRefreshCommand;
+		Command _newsRefreshCommand;
 		public Command NewsRefreshCommand {
 			get {
-				return newsRefreshCommand ??
-					(newsRefreshCommand = new Command(update));
+				return _newsRefreshCommand ??
+					(_newsRefreshCommand = new Command(update));
 			}
 		}
 
-		Command calendarPositionChangedCommand;
+		Command _calendarPositionChangedCommand;
 		public Command CalendarPositionChangedCommand {
 			get {
-				return calendarPositionChangedCommand ?? (
-					calendarPositionChangedCommand = new Command(
+				return _calendarPositionChangedCommand ?? (
+					_calendarPositionChangedCommand = new Command(
 						executeCalendarPositionChangedEvent));
 			}
 		}
 
 		void initSetup()
 		{
-			manualSelectedCalendarDay = new DateTime();
+			_manualSelectedCalendarDay = new DateTime();
 			CalendarPosition = 1;
 			CalendarSubjects = new List<CalendarSubjectsModel>();
 			CalendarDaysOfWeekList = new ObservableCollection<string>(DateHelper.GetDaysWithFirstLetters());
 			setInitialCalendarState();
 
 			NewsList = new List<NewsPageModel>();
-			calendatSubjectsListBackup = new List<CalendarSubjectsModel>();
+			_calendarSubjectsBackup = new List<CalendarSubjectsModel>();
 		}
 
 		void setInitialCalendarState()
@@ -184,14 +184,14 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				c => new CalendarSubjectsModel {
 					Color = c.Color,
 					Subject = c.Title,
-					Date = DateTime.Parse(c.Start) // TODO: handle null value
+					Date = DateTime.Parse(c.Start ?? DateHelper.DefaultDateTime)
 				});
 
 			if (calendarSubjectsList == null) {
 				return;
 			}
 
-			calendatSubjectsListBackup = new List<CalendarSubjectsModel>(calendarSubjectsList);
+			_calendarSubjectsBackup = new List<CalendarSubjectsModel>(calendarSubjectsList);
 			setFilteredSubjectsList();
 		}
 
@@ -209,19 +209,19 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			var news = await DataAccess.GetNews(AppPrefs.UserLogin);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				dialogService.ShowError(DataAccess.ErrorMessage);
+				_dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			var subjectList = await getSubjects();
 			return composeNewsWithSubjects(news, subjectList);
 		}
 
-		async Task<IList<SubjectItemModel>> getSubjects()
+		async Task<IList<SubjectModel>> getSubjects()
 		{
 			return await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin);
 		}
 
-		List<NewsPageModel> composeNewsWithSubjects(IList<NewsItemModel> news, IList<SubjectItemModel> subjects)
+		List<NewsPageModel> composeNewsWithSubjects(IList<NewsModel> news, IList<SubjectModel> subjects)
 		{
 			if (news == null || subjects == null) {
 				return null;
@@ -236,7 +236,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		void openDetailsPage(object obj)
 		{
 			var newsPageModel = (NewsPageModel)obj;
-			navigationService.OpenNewsDetails(newsPageModel.Title, newsPageModel.Body);
+			_pages.OpenNewsDetails(newsPageModel.Title, newsPageModel.Body);
 		}
 
 		CalendarViewModel getCalendarViewModel(DateTime date, WeekEnum week)
@@ -331,26 +331,26 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				selectTodayDateWithoutSelectedFlag();
 				deselectAllCalendarDays();
 
-				if (isManualSelectedCalendarDay) {
-					selectCalendarDay(manualSelectedCalendarDay);
+				if (_isManualSelectedCalendarDay) {
+					selectCalendarDay(_manualSelectedCalendarDay);
 				} else {
 					selectCalendarDay(DateTime.Today);
 				}
 
 				switch (CalendarPosition) {
-					case minimumCalendarPosition:
-						var dateForPreviousWeek = CalendarList[minimumCalendarPosition].Date;
+					case _minimumCalendarPosition:
+						var dateForPreviousWeek = CalendarList[_minimumCalendarPosition].Date;
 						var previosWeekViewModel = getCalendarViewModel(dateForPreviousWeek, WeekEnum.Previous);
-						CalendarList.RemoveAt(maximumCalendarPosition);
-						CalendarList.Insert(minimumCalendarPosition, previosWeekViewModel);
-						CalendarPosition = minimumCalendarPosition + 1;
+						CalendarList.RemoveAt(_maximumCalendarPosition);
+						CalendarList.Insert(_minimumCalendarPosition, previosWeekViewModel);
+						CalendarPosition = _minimumCalendarPosition + 1;
 						break;
-					case maximumCalendarPosition:
-						var dateForNextWeek = CalendarList[maximumCalendarPosition].Date;
+					case _maximumCalendarPosition:
+						var dateForNextWeek = CalendarList[_maximumCalendarPosition].Date;
 						var nextWeekViewModel = getCalendarViewModel(dateForNextWeek, WeekEnum.Next);
-						CalendarList.RemoveAt(minimumCalendarPosition);
-						CalendarList.Insert(maximumCalendarPosition, nextWeekViewModel);
-						CalendarPosition = maximumCalendarPosition - 1;
+						CalendarList.RemoveAt(_minimumCalendarPosition);
+						CalendarList.Insert(_maximumCalendarPosition, nextWeekViewModel);
+						CalendarPosition = _maximumCalendarPosition - 1;
 						break;
 				}
 			} catch (Exception) { }
@@ -360,8 +360,8 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		{
 			selectTodayDateWithoutSelectedFlag();
 			deselectAllCalendarDays();
-			manualSelectedCalendarDay = date;
-			isManualSelectedCalendarDay = true;
+			_manualSelectedCalendarDay = date;
+			_isManualSelectedCalendarDay = true;
 			selectCalendarDay(date);
 			setFilteredSubjectsList();
 		}
@@ -370,11 +370,11 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		{
 			var filteredList = new List<CalendarSubjectsModel>();
 
-			if (isManualSelectedCalendarDay) {
-				filteredList = calendatSubjectsListBackup.Where(
-					x => x.Date.ToShortDateString() == manualSelectedCalendarDay.ToShortDateString()).ToList();
+			if (_isManualSelectedCalendarDay) {
+				filteredList = _calendarSubjectsBackup.Where(
+					x => x.Date.ToShortDateString() == _manualSelectedCalendarDay.ToShortDateString()).ToList();
 			} else {
-				filteredList = calendatSubjectsListBackup.Where(
+				filteredList = _calendarSubjectsBackup.Where(
 					x => x.Date.ToShortDateString() == DateTime.Today.ToShortDateString()).ToList();
 			}
 
@@ -384,10 +384,10 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		void setupSubjectsHeight()
 		{
-			CalendarSubjectsHeight = subjectsHeightByCount * CalendarSubjects.Count;
+			CalendarSubjectsHeight = _subjectsHeightByCount * CalendarSubjects.Count;
 
 			if (CalendarSubjectsHeight != 0) {
-				CalendarSubjectsHeight += subjectsAdditionalHeight;
+				CalendarSubjectsHeight += _subjectsAdditionalHeight;
 			}
 		}
 	}

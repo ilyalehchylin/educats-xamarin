@@ -2,8 +2,8 @@
 {
 	public interface ITheme
 	{
-		string CommonAppColor { get; }
-		string CommonBlockColor { get; }
+		string BaseAppColor { get; }
+		string BaseBlockColor { get; }
 		string BaseArrowForwardIcon { get; }
 		string BaseCloseIcon { get; }
 

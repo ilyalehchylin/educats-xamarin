@@ -1,23 +1,22 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace EduCATS.Data.Models.Testing.Passing
 {
 	public class TestQuestionModel
 	{
-		[JsonProperty("Title")]
-		public string Title { get; set; }
+		[JsonProperty("Question")]
+		public TestQuestionDetailsModel Question { get; set; }
 
-		[JsonProperty("Description")]
-		public string Description { get; set; }
+		[JsonProperty("Number")]
+		public int Number { get; set; }
 
-		[JsonProperty("ComlexityLevel")]
-		public int ComlexityLevel { get; set; }
+		[JsonProperty("Seconds")]
+		public int Seconds { get; set; }
 
-		[JsonProperty("QuestionType")]
-		public int QuestionType { get; set; }
+		[JsonProperty("SetTimeForAllTest")]
+		public bool SetTimeForAllTest { get; set; }
 
-		[JsonProperty("Answers")]
-		public List<TestQuestionAnswersModel> Answers { get; set; }
+		[JsonProperty("ForSelfStudy")]
+		public bool ForSelfStudy { get; set; }
 	}
 }

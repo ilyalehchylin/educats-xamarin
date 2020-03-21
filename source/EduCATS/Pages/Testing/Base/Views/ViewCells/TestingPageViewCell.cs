@@ -6,11 +6,15 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 {
 	public class TestingPageViewCell : ViewCell
 	{
+		const double _iconHeight = 30;
+
+		static Thickness _frameMargin = new Thickness(10);
+
 		public TestingPageViewCell()
 		{
 			var frame = new Frame {
 				HasShadow = false,
-				Margin = new Thickness(10)
+				Margin = _frameMargin
 			};
 
 			var stackLayout = new StackLayout();
@@ -28,7 +32,7 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 			titleLabel.SetBinding(Label.TextProperty, "Title");
 
 			var icon = new CachedImage {
-				HeightRequest = 30,
+				HeightRequest = _iconHeight,
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Source = ImageSource.FromFile(Theme.Current.BaseArrowForwardIcon)

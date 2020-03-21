@@ -7,7 +7,9 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 {
 	public class EemcPageViewCell : ContentView
 	{
+		const double _iconHeight = 30;
 		const string _testString = "test";
+		static Thickness _margin = new Thickness(15);
 
 		readonly CachedImage _icon;
 
@@ -17,7 +19,7 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 		{
 			_icon = new CachedImage {
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				HeightRequest = 30
+				HeightRequest = _iconHeight
 			};
 
 			var title = new Label {
@@ -28,7 +30,7 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 			title.SetBinding(Label.TextProperty, "Name");
 
 			Content = new StackLayout {
-				Margin = new Thickness(15),
+				Margin = _margin,
 				Children = {
 					_icon,
 					title
@@ -48,16 +50,22 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 			_isPublished = concept.Published;
 
 			if (concept.IsGroup) {
-				setIcon(Theme.Current.EemcDirectoryActiveIcon, Theme.Current.EemcDirectoryInactiveIcon);
+				setIcon(
+					Theme.Current.EemcDirectoryActiveIcon,
+					Theme.Current.EemcDirectoryInactiveIcon);
 				return;
 			}
 
 			if (!concept.Container.Equals(_testString)) {
-				setIcon(Theme.Current.EemcDocumentActiveIcon, Theme.Current.EemcDocumentInactiveIcon);
+				setIcon(
+					Theme.Current.EemcDocumentActiveIcon,
+					Theme.Current.EemcDocumentInactiveIcon);
 				return;
 			}
 
-			setIcon(Theme.Current.EemcDocumentTestActiveIcon, Theme.Current.EemcDocumentTestInactiveIcon);
+			setIcon(
+				Theme.Current.EemcDocumentTestActiveIcon,
+				Theme.Current.EemcDocumentTestInactiveIcon);
 		}
 
 		void setIcon(string publishedIcon, string unpublishedIcon)

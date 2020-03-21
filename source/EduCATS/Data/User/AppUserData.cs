@@ -5,13 +5,16 @@ namespace EduCATS.Data.User
 {
 	public class AppUserData
 	{
+		const string _professorType = "1";
+		const string _studentType = "2";
+
 		public static int UserId { get; set; }
-		public static string Username { get; set; }
-		public static UserTypeEnum UserType { get; set; }
-		public static int GroupId { get; set; }
-		public static string GroupName { get; set; }
-		public static string Avatar { get; set; }
 		public static string Name { get; set; }
+		public static int GroupId { get; set; }
+		public static string Avatar { get; set; }
+		public static string Username { get; set; }
+		public static string GroupName { get; set; }
+		public static UserTypeEnum UserType { get; set; }
 
 		public static void SetLoginData(int userId, string username)
 		{
@@ -34,10 +37,10 @@ namespace EduCATS.Data.User
 			Name = profile.Name;
 
 			switch (profile.UserType) {
-				case "1":
+				case _professorType:
 					UserType = UserTypeEnum.Professor;
 					break;
-				case "2":
+				case _studentType:
 					UserType = UserTypeEnum.Student;
 					break;
 			}
@@ -46,12 +49,12 @@ namespace EduCATS.Data.User
 		public static void Clear()
 		{
 			UserId = 0;
-			Username = null;
-			UserType = 0;
 			GroupId = 0;
-			GroupName = null;
-			Avatar = null;
+			UserType = 0;
 			Name = null;
+			Avatar = null;
+			Username = null;
+			GroupName = null;
 		}
 	}
 }

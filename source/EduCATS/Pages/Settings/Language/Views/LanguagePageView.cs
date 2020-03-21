@@ -14,6 +14,9 @@ namespace EduCATS.Pages.Settings.Language.Views
 {
 	public class LanguagePageView : ContentPage
 	{
+		static Thickness _listMargin = new Thickness(10);
+		static Thickness _chooseLabelMargin = new Thickness(0, 10);
+
 		public LanguagePageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -37,7 +40,7 @@ namespace EduCATS.Pages.Settings.Language.Views
 			};
 
 			var languageListView = new RoundedListView(templateSelector, header) {
-				Margin = new Thickness(10)
+				Margin = _listMargin
 			};
 
 			languageListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "LanguageList");
@@ -61,7 +64,7 @@ namespace EduCATS.Pages.Settings.Language.Views
 		Label createChooseLabel()
 		{
 			var chooseLabel = new Label {
-				Margin = new Thickness(0, 10),
+				Margin = _chooseLabelMargin,
 				FontAttributes = FontAttributes.Bold,
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				Text = CrossLocalization.Translate("settings_language_choose")

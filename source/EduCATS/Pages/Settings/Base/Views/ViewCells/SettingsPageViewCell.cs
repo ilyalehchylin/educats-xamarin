@@ -7,10 +7,16 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 {
 	public class SettingsPageViewCell : ViewCell
 	{
+		const double _forwardIcon = 20;
+		const double _settingsIcon = 40;
+
+		static Thickness _padding = new Thickness(20);
+		static Thickness _settingsTitleMargin = new Thickness(10, 0, 0, 0);
+
 		public SettingsPageViewCell()
 		{
 			var settingsIcon = new CachedImage {
-				HeightRequest = 40,
+				HeightRequest = _settingsIcon,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
@@ -18,7 +24,7 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 				converter: new StringToImageSourceConverter());
 
 			var settingsTitle = new Label {
-				Margin = new Thickness(10, 0, 0, 0),
+				Margin = _settingsTitleMargin,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))
 			};
@@ -26,16 +32,16 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 			settingsTitle.SetBinding(Label.TextProperty, "Title");
 
 			var forwardIcon = new CachedImage {
-				HeightRequest = 20,
+				HeightRequest = _forwardIcon,
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Source = ImageSource.FromFile(Theme.Current.BaseArrowForwardIcon)
 			};
 
 			View = new StackLayout {
-				Padding = new Thickness(20),
+				Padding = _padding,
 				Orientation = StackOrientation.Horizontal,
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Children = {
 					settingsIcon,
 					settingsTitle,

@@ -15,7 +15,7 @@ namespace EduCATS.Pages.Testing.Passing.Models
 		public ICommand UpMovableAnswerCommand { get; set; }
 		public ICommand DownMovableAnswerCommand { get; set; }
 
-		public TestPassingAnswerModel(TestQuestionAnswersModel answerModel, int questionType)
+		public TestPassingAnswerModel(TestAnswerModel answerModel, int questionType)
 		{
 			Id = answerModel.Id;
 			QuestionType = questionType;

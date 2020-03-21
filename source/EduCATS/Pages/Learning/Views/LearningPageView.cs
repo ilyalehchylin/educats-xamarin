@@ -8,6 +8,9 @@ namespace EduCATS.Pages.Learning.Views
 {
 	public class LearningPageView : ContentPage
 	{
+		const int _columns = 2;
+		static Thickness _collectionMargin = new Thickness(0, 20, 0, 0);
+
 		public LearningPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -19,9 +22,9 @@ namespace EduCATS.Pages.Learning.Views
 		void createViews()
 		{
 			var collectionView = new CollectionView {
-				Margin = new Thickness(0, 20, 0, 0),
+				Margin = _collectionMargin,
 				ItemTemplate = new DataTemplate(typeof(LearningPageViewCell)),
-				ItemsLayout = new GridItemsLayout(2, ItemsLayoutOrientation.Vertical),
+				ItemsLayout = new GridItemsLayout(_columns, ItemsLayoutOrientation.Vertical),
 				SelectionMode = SelectionMode.Single
 			};
 

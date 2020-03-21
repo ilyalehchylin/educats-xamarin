@@ -10,7 +10,7 @@ using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Networking;
 using EduCATS.Pages.Files.Models;
-using EduCATS.Pages.Utils.ViewModels;
+using EduCATS.Pages.Pickers;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -23,7 +23,7 @@ namespace EduCATS.Pages.Files.ViewModels
 
 		object _progressDialog;
 
-		public FilesPageViewModel(IDialogs dialogs, IAppDevice device) : base(dialogs, device)
+		public FilesPageViewModel(IDialogs dialogs, IDevice device) : base(dialogs, device)
 		{
 			Task.Run(async () => await update());
 		}
@@ -34,18 +34,18 @@ namespace EduCATS.Pages.Files.ViewModels
 			set { SetProperty(ref fileList, value); }
 		}
 
-		bool isLoading;
+		bool _isLoading;
 		public bool IsLoading {
-			get { return isLoading; }
-			set { SetProperty(ref isLoading, value); }
+			get { return _isLoading; }
+			set { SetProperty(ref _isLoading, value); }
 		}
 
-		object selectedItem;
+		object _selectedItem;
 		public object SelectedItem {
-			get { return selectedItem; }
+			get { return _selectedItem; }
 			set {
-				SetProperty(ref selectedItem, value);
-				openFile(selectedItem);
+				SetProperty(ref _selectedItem, value);
+				openFile(_selectedItem);
 			}
 		}
 
@@ -155,7 +155,7 @@ namespace EduCATS.Pages.Files.ViewModels
 			DeviceService.MainThread(
 				() => _progressDialog = DialogService.ShowProgress(
 					CrossLocalization.Translate("files_downloading"),
-					CrossLocalization.Translate("common_cancel"),
+					CrossLocalization.Translate("base_cancel"),
 					() => DialogService.HideProgress(_progressDialog)));
 		}
 	}

@@ -17,9 +17,9 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 	{
 		readonly IDialogs _dialogs;
 		readonly IPages _navigation;
-		readonly IAppDevice _device;
+		readonly IDevice _device;
 
-		public SettingsPageViewModel(IDialogs dialogs, IPages navigation, IAppDevice device)
+		public SettingsPageViewModel(IDialogs dialogs, IPages navigation, IDevice device)
 		{
 			_device = device;
 			_dialogs = dialogs;
@@ -142,7 +142,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 		async Task logout()
 		{
 			var result = await _dialogs.ShowConfirmationMessage(
-				CrossLocalization.Translate("common_warning"),
+				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("settings_logout_message"));
 
 			if (result) {

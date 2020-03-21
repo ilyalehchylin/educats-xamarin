@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using EduCATS.Constants;
 using EduCATS.Data;
 using EduCATS.Data.Models.Labs;
 using EduCATS.Data.Models.Statistics;
@@ -21,13 +20,15 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		readonly string _currentUserLogin;
 		readonly StatsPageEnum _statisticsPage;
 		readonly IDialogs _dialogs;
-		readonly IAppDevice _device;
+		readonly IDevice _device;
 
 		List<StatsPageLabsVisitingModel> _currentLabsVisitingList;
 		List<StatsPageLabsRatingModel> _currentLabsMarksList;
 
+		const string _emptyRatingString = "-";
+
 		public StatsResultsPageViewModel(
-			IDialogs dialogs, IAppDevice device, string userLogin,
+			IDialogs dialogs, IDevice device, string userLogin,
 			int subjectId, int groupId, StatsPageEnum statisticsPage)
 		{
 			_dialogs = dialogs;
@@ -66,7 +67,6 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getData()
 		{
-			// TODO: error handling
 			IsLoading = true;
 
 			switch (_statisticsPage) {
@@ -108,9 +108,9 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		void setVisitingLabsStatistics(LabsModel dataLabs)
 		{
-			var labsVisitingStatus = dataLabs.ScheduleProtectionLabs?.Select(
+			var labsVisitingStatus = dataLabs.ProtectionLabs?.Select(
 					labs => new StatsPageLabsVisitingModel(
-						labs.ScheduleProtectionLabId, labs.Date));
+						labs.ProtectionLabId, labs.Date));
 
 			if (labsVisitingStatus == null) {
 				return;
@@ -142,12 +142,12 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			var stats = userLecturesVisiting?.VisitingList?.Select(
 				u => new StatsResultsPageModel(
-					null, u.Date, null, string.IsNullOrEmpty(u.Mark) ? GlobalConsts.EmptyRatingString : u.Mark));
+					null, u.Date, null, string.IsNullOrEmpty(u.Mark) ? _emptyRatingString : u.Mark));
 
 			var statsList = stats?.ToList();
 
 			if (AppUserData.UserType == UserTypeEnum.Student) {
-				statsList?.RemoveAll(s => s.Result.Equals(GlobalConsts.EmptyRatingString));
+				statsList?.RemoveAll(s => s.Result.Equals(_emptyRatingString));
 			}
 
 			if (statsList == null) {
@@ -157,7 +157,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			Marks = new List<StatsResultsPageModel>(statsList);
 		}
 
-		void setMarks(StatisticsStudentModel student)
+		void setMarks(StatsStudentModel student)
 		{
 			if (student?.MarkList == null) {
 				return;
@@ -166,14 +166,14 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			var marksResults = student.MarkList?.Select(m => {
 				var lab = _currentLabsMarksList?.FirstOrDefault(l => l.LabId == m.LabId);
 				var labTitle = lab == null ? null : $"{lab.ShortName}. {lab.Theme}";
-				var result = string.IsNullOrEmpty(m.Mark) ? GlobalConsts.EmptyRatingString : m.Mark;
+				var result = string.IsNullOrEmpty(m.Mark) ? _emptyRatingString : m.Mark;
 				return new StatsResultsPageModel(labTitle, m.Date, m.Comment, result);
 			});
 
 			Marks = new List<StatsResultsPageModel>(marksResults);
 		}
 
-		void setLabsVisiting(StatisticsStudentModel student)
+		void setLabsVisiting(StatsStudentModel student)
 		{
 			if (student?.VisitingList == null) {
 				return;
@@ -181,8 +181,8 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			var visitingLabsResult = student.VisitingList.Select(v => {
 				var lab = _currentLabsVisitingList.FirstOrDefault(
-					l => l.ProtectionLabId == v.ScheduleProtectionLabId);
-				var result = string.IsNullOrEmpty(v.Mark) ? GlobalConsts.EmptyRatingString : v.Mark;
+					l => l.ProtectionLabId == v.ProtectionLabId);
+				var result = string.IsNullOrEmpty(v.Mark) ? _emptyRatingString : v.Mark;
 				return new StatsResultsPageModel(null, lab?.Date, v.Comment, result);
 			});
 

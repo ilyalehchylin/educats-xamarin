@@ -14,7 +14,7 @@ namespace EduCATS.Pages.Main
 {
 	public class MainPageView : Xamarin.Forms.TabbedPage
 	{
-		const double tabHeight = 10;
+		const double _tabHeight = 10;
 
 		public MainPageView()
 		{
@@ -30,7 +30,7 @@ namespace EduCATS.Pages.Main
 			BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor);
 			SelectedTabColor = Color.FromHex(Theme.Current.MainSelectedTabColor);
 			UnselectedTabColor = Color.FromHex(Theme.Current.MainUnselectedTabColor);
-			HeightRequest = tabHeight;
+			HeightRequest = _tabHeight;
 		}
 
 		void setPages()

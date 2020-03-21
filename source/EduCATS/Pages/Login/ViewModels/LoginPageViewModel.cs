@@ -16,29 +16,14 @@ namespace EduCATS.Pages.Login.ViewModels
 	public class LoginPageViewModel : ViewModel
 	{
 		/// <summary>
-		/// Login command variable.
-		/// </summary>
-		Command loginCommand;
-
-		/// <summary>
-		/// Hide command variable.
-		/// </summary>
-		Command hidePasswordCommand;
-
-		/// <summary>
-		/// Settings command.
-		/// </summary>
-		Command _settingsCommand;
-
-		/// <summary>
 		/// Dialog service.
 		/// </summary>
-		readonly IDialogs dialogService;
+		readonly IDialogs _dialog;
 
 		/// <summary>
 		/// Navigation service.
 		/// </summary>
-		readonly IPages navigationService;
+		readonly IPages _pages;
 
 		/// <summary>
 		/// Login page ViewModel constructor.
@@ -47,73 +32,70 @@ namespace EduCATS.Pages.Login.ViewModels
 		{
 			IsLoadingCompleted = true;
 			IsPasswordHidden = true;
-			dialogService = dialogs;
-			navigationService = pages;
+			_dialog = dialogs;
+			_pages = pages;
 		}
 
 		/// <summary>
 		/// Property for checking loading status.
 		/// </summary>
-		bool isLoading;
+		bool _isLoading;
 		public bool IsLoading {
-			get { return isLoading; }
-			set { SetProperty(ref isLoading, value); }
+			get { return _isLoading; }
+			set { SetProperty(ref _isLoading, value); }
 		}
 
 		/// <summary>
 		/// Property for checking loading status completion.
 		/// </summary>
-		bool isLoadingCompleted;
+		bool _isLoadingCompleted;
 		public bool IsLoadingCompleted {
-			get { return isLoadingCompleted; }
-			set { SetProperty(ref isLoadingCompleted, value); }
+			get { return _isLoadingCompleted; }
+			set { SetProperty(ref _isLoadingCompleted, value); }
 		}
 
 		/// <summary>
 		/// Username property.
 		/// </summary>
-		string username;
+		string _username;
 		public string Username {
-			get { return username; }
-			set { SetProperty(ref username, value); }
+			get { return _username; }
+			set { SetProperty(ref _username, value); }
 		}
 
 		/// <summary>
 		/// Password property.
 		/// </summary>
-		string password;
+		string _password;
 		public string Password {
-			get { return password; }
-			set { SetProperty(ref password, value); }
+			get { return _password; }
+			set { SetProperty(ref _password, value); }
 		}
 
 		/// <summary>
 		/// Property for checking if password is hidden.
 		/// </summary>
-		bool isPasswordHidden;
+		bool _isPasswordHidden;
 		public bool IsPasswordHidden {
-			get { return isPasswordHidden; }
-			set { SetProperty(ref isPasswordHidden, value); }
+			get { return _isPasswordHidden; }
+			set { SetProperty(ref _isPasswordHidden, value); }
 		}
 
-		/// <summary>
-		/// Login command.
-		/// </summary>
+		Command _loginCommand;
 		public Command LoginCommand {
 			get {
-				return loginCommand ?? (loginCommand = new Command(async () => await startLogin()));
+				return _loginCommand ?? (_loginCommand = new Command(async () => await startLogin()));
 			}
 		}
 
-		/// <summary>
-		/// Hide password command.
-		/// </summary>
+		Command _hidePasswordCommand;
 		public Command HidePasswordCommand {
 			get {
-				return hidePasswordCommand ?? (hidePasswordCommand = new Command(hidePassword));
+				return _hidePasswordCommand ?? (_hidePasswordCommand = new Command(hidePassword));
 			}
 		}
 
+		Command _settingsCommand;
 		public Command SettingsCommand {
 			get {
 				return _settingsCommand ?? (_settingsCommand = new Command(
@@ -132,7 +114,7 @@ namespace EduCATS.Pages.Login.ViewModels
 				var user = await loginRequest();
 				await loginCompleted(user);
 			} else {
-				dialogService.ShowError(CrossLocalization.Translate("login_empty_credentials_error"));
+				_dialog.ShowError(CrossLocalization.Translate("login_empty_credentials_error"));
 			}
 		}
 
@@ -150,9 +132,9 @@ namespace EduCATS.Pages.Login.ViewModels
 				setLoading(false);
 				profileRetrieved(profile);
 			} else if (user != null && DataAccess.IsError) {
-				dialogService.ShowError(DataAccess.ErrorMessage);
+				_dialog.ShowError(DataAccess.ErrorMessage);
 			} else {
-				dialogService.ShowError(CrossLocalization.Translate("login_error_text"));
+				_dialog.ShowError(CrossLocalization.Translate("login_error"));
 			}
 		}
 
@@ -165,11 +147,11 @@ namespace EduCATS.Pages.Login.ViewModels
 			if (profile != null && !DataAccess.IsError) {
 				AppPrefs.GroupId = profile.GroupId;
 				AppPrefs.IsLoggedIn = true;
-				navigationService.OpenMain();
+				_pages.OpenMain();
 			} else if (profile != null && DataAccess.IsError) {
-				dialogService.ShowError(DataAccess.ErrorMessage);
+				_dialog.ShowError(DataAccess.ErrorMessage);
 			} else {
-				dialogService.ShowError(CrossLocalization.Translate("login_user_profile_error_text"));
+				_dialog.ShowError(CrossLocalization.Translate("login_user_profile_error"));
 			}
 		}
 
@@ -183,7 +165,7 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openSettings()
 		{
-			await navigationService.OpenSettings(
+			await _pages.OpenSettings(
 				CrossLocalization.Translate("main_settings"));
 		}
 
@@ -243,9 +225,9 @@ namespace EduCATS.Pages.Login.ViewModels
 		void setLoading(bool isLoading, string message = null)
 		{
 			if (isLoading) {
-				dialogService.ShowLoading(message);
+				_dialog.ShowLoading(message);
 			} else {
-				dialogService.HideLoading();
+				_dialog.HideLoading();
 			}
 		}
 	}

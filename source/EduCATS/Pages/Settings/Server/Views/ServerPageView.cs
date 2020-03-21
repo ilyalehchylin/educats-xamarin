@@ -13,6 +13,9 @@ namespace EduCATS.Pages.Settings.Server.Views
 {
 	public class ServerPageView : ContentPage
 	{
+		static Thickness _listMargin = new Thickness(10);
+		static Thickness _chooseLabelMargin = new Thickness(0, 10);
+
 		public ServerPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -32,7 +35,7 @@ namespace EduCATS.Pages.Settings.Server.Views
 		Label createChooseLabel()
 		{
 			return new Label {
-				Margin = new Thickness(0, 10),
+				Margin = _chooseLabelMargin,
 				FontAttributes = FontAttributes.Bold,
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				Text = CrossLocalization.Translate("settings_server_choose")
@@ -46,7 +49,7 @@ namespace EduCATS.Pages.Settings.Server.Views
 			};
 
 			var serverListView = new RoundedListView(templateSelector, header) {
-				Margin = new Thickness(10)
+				Margin = _listMargin
 			};
 
 			serverListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "ServerList");

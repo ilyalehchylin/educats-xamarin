@@ -14,10 +14,16 @@ namespace EduCATS.Pages.Today.Base.Views
 	public class TodayPageView : ContentPage
 	{
 		const double _spacing = 0;
-		const int calendarItemsQuantity = 7;
-		const double calendarCarouselHeight = 100;
-		const double calendarDaysOfWeekCollectionHeight = 50;
-		const string calendarCollectionDataBinding = ".";
+		const int _calendarItemsQuantity = 7;
+		const double _calendarCarouselHeight = 100;
+		const double _calendarDaysOfWeekCollectionHeight = 50;
+		const string _calendarCollectionDataBinding = ".";
+
+		static Thickness _newsLabelMagin = new Thickness(10);
+		static Thickness _subjectsMargin = new Thickness(10);
+		static Thickness _margin = new Thickness(0, 0, 0, 10);
+		static Thickness _listMargin = new Thickness(0, 10, 0, 0);
+		static Thickness _subjectsLabelMargin = new Thickness(0, 10, 10, 10);
 
 		public TodayPageView()
 		{
@@ -34,7 +40,7 @@ namespace EduCATS.Pages.Today.Base.Views
 
 			Content = new StackLayout {
 				Spacing = _spacing,
-				Margin = new Thickness(0, 0, 0, 10),
+				Margin = _margin,
 				Children = {
 					calendarView,
 					newsView
@@ -61,10 +67,10 @@ namespace EduCATS.Pages.Today.Base.Views
 			var calendarDaysOfWeekCollectionView = new CollectionView {
 				BackgroundColor = Color.FromHex(Theme.Current.TodayCalendarBackgroundColor),
 				IsEnabled = false,
-				HeightRequest = calendarDaysOfWeekCollectionHeight,
-				ItemsLayout = new GridItemsLayout(calendarItemsQuantity, ItemsLayoutOrientation.Vertical),
+				HeightRequest = _calendarDaysOfWeekCollectionHeight,
+				ItemsLayout = new GridItemsLayout(_calendarItemsQuantity, ItemsLayoutOrientation.Vertical),
 				ItemTemplate = new DataTemplate(
-					() => new CalendarCollectionViewCell(calendarCollectionDataBinding))
+					() => new CalendarCollectionViewCell(_calendarCollectionDataBinding))
 			};
 
 			calendarDaysOfWeekCollectionView.SetBinding(
@@ -78,7 +84,7 @@ namespace EduCATS.Pages.Today.Base.Views
 			var calendarCarouselView = new CarouselView {
 				BackgroundColor = Color.FromHex(Theme.Current.TodayCalendarBackgroundColor),
 				HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
-				HeightRequest = calendarCarouselHeight,
+				HeightRequest = _calendarCarouselHeight,
 				ItemTemplate = new DataTemplate(typeof(CalendarCarouselViewCell))
 			};
 
@@ -106,7 +112,7 @@ namespace EduCATS.Pages.Today.Base.Views
 						newsLabel
 					}
 				},
-				Margin = new Thickness(0, 10, 0, 0),
+				Margin = _listMargin,
 				IsPullToRefreshEnabled = true,
 				BackgroundColor = Color.FromHex(Theme.Current.TodayNewsListBackgroundColor),
 				HasUnevenRows = true,
@@ -118,22 +124,19 @@ namespace EduCATS.Pages.Today.Base.Views
 			newsListView.SetBinding(ListView.IsRefreshingProperty, "IsNewsRefreshing");
 			newsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "NewsList");
 			newsListView.SetBinding(ListView.SelectedItemProperty, "SelectedNewsItem");
-
 			newsListView.ItemSelected += (sender, e) => { ((ListView)sender).SelectedItem = null; };
 			return newsListView;
 		}
 
 		Label createNewsLabel()
 		{
-			var newsLabel = new Label {
+			return new Label {
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
-				Padding = new Thickness(10),
+				Padding = _newsLabelMagin,
 				FontAttributes = FontAttributes.Bold,
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				Text = CrossLocalization.Translate("today_news")
 			};
-
-			return newsLabel;
 		}
 
 		ListView createSubjectsList()
@@ -146,7 +149,7 @@ namespace EduCATS.Pages.Today.Base.Views
 
 			var subjectsListView = new RoundedListView(templateSelector, subjectsLabel) {
 				IsEnabled = false,
-				Margin = new Thickness(10)
+				Margin = _subjectsMargin
 			};
 
 			subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "CalendarSubjects");
@@ -158,7 +161,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		{
 			return new Label {
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
-				Padding = new Thickness(0, 10, 10, 10),
+				Padding = _subjectsLabelMargin,
 				FontAttributes = FontAttributes.Bold,
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				Text = CrossLocalization.Translate("today_subjects")

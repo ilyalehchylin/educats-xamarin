@@ -7,9 +7,9 @@ namespace EduCATS.Networking.AppServices
 {
 	public class AppWebServiceController
 	{
-		public const string mediaTypeJson = "application/json";
+		const string _mediaTypeJson = "application/json";
 
-		RequestController restController;
+		RequestController _restController;
 
 		public string Json { get; set; }
 		public HttpStatusCode StatusCode { get; set; }
@@ -19,7 +19,7 @@ namespace EduCATS.Networking.AppServices
 			setUpController(url, content);
 
 			if (Connection.IsConnected) {
-				var response = await restController.SendRequest(httpMethod);
+				var response = await _restController.SendRequest(httpMethod);
 				setStatusCode(response.StatusCode);
 				Json = await response.Content.ReadAsStringAsync();
 			} else {
@@ -29,13 +29,11 @@ namespace EduCATS.Networking.AppServices
 
 		void setUpController(string url, string content = null)
 		{
-			restController = new RequestController(url);
-			restController.SetPostContent(content, Encoding.UTF8, mediaTypeJson);
+			_restController = new RequestController(url);
+			_restController.SetPostContent(content, Encoding.UTF8, _mediaTypeJson);
 		}
 
-		void setStatusCode(HttpStatusCode statusCode)
-		{
+		void setStatusCode(HttpStatusCode statusCode) =>
 			StatusCode = statusCode;
-		}
 	}
 }

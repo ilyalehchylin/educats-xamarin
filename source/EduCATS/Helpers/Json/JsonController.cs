@@ -24,6 +24,7 @@ namespace EduCATS.Helpers.Json
 					return false;
 				}
 			}
+
 			return false;
 		}
 

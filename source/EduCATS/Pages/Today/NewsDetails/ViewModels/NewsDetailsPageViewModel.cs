@@ -26,28 +26,24 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 				$"</body>";
 		}
 
-		string newsTitle;
+		string _newsTitle;
 		public string NewsTitle {
-			get { return newsTitle; }
-			set { SetProperty(ref newsTitle, value); }
+			get { return _newsTitle; }
+			set { SetProperty(ref _newsTitle, value); }
 		}
 
-		string newsBody;
+		string _newsBody;
 		public string NewsBody {
-			get { return newsBody; }
-			set { SetProperty(ref newsBody, value); }
+			get { return _newsBody; }
+			set { SetProperty(ref _newsBody, value); }
 		}
 
-		Command closeCommand;
+		Command _closeCommand;
 		public Command CloseCommand {
 			get {
-				return closeCommand ?? (closeCommand = new Command(executeCloseCommand));
+				return _closeCommand ?? (_closeCommand = new Command(
+					() => navigationService.ClosePage(true)));
 			}
-		}
-
-		protected void executeCloseCommand()
-		{
-			navigationService.ClosePage(true);
 		}
 	}
 }

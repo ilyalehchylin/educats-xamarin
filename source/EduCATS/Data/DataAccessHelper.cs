@@ -3,31 +3,37 @@ using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data.Caching;
+using EduCATS.Data.Interfaces;
 using EduCATS.Helpers.Json;
 using Xamarin.Essentials;
 
 namespace EduCATS.Data
 {
-	public partial class DataAccess<T> where T : new()
+	public partial class DataAccess<T> : IDataAccess where T : new()
 	{
 		const string _nonJsonSuccessResponse = "\"Ok\"";
 
 		readonly string _key;
 		readonly bool _isCaching;
 		readonly string _messageForError;
+		readonly Func<Task<KeyValuePair<string, HttpStatusCode>>> _callback;
 
 		public bool IsError { get; set; }
 		public bool IsConnectionError { get; set; }
 		public string ErrorMessage { get; set; }
 
-		public DataAccess(string messageForError, string key = null)
+		public DataAccess(
+			string messageForError,
+			Func<Task<KeyValuePair<string, HttpStatusCode>>> callback,
+			string key = null)
 		{
 			_key = key;
+			_callback = callback;
 			_isCaching = !string.IsNullOrEmpty(_key);
 			_messageForError = messageForError;
 		}
 
-		public async Task<T> GetSingle(Func<Task<KeyValuePair<string, HttpStatusCode>>> apiCallback)
+		public async Task<T> GetSingle()
 		{
 			var singleObject = checkSingleObjectReadyForResponse();
 
@@ -35,7 +41,7 @@ namespace EduCATS.Data
 				return singleObject;
 			}
 
-			var response = await apiCallback();
+			var response = await _callback();
 			singleObject = getAccess(response);
 
 			if (singleObject == null) {
@@ -46,7 +52,7 @@ namespace EduCATS.Data
 			return singleObject;
 		}
 
-		public async Task<List<T>> GetList(Func<Task<KeyValuePair<string, HttpStatusCode>>> apiCallback)
+		public async Task<List<T>> GetList()
 		{
 			var list = checkListReadyForResponse();
 
@@ -54,7 +60,7 @@ namespace EduCATS.Data
 				return list;
 			}
 
-			var response = await apiCallback();
+			var response = await _callback();
 			list = getList(response);
 
 			if (list == null) {
@@ -88,7 +94,7 @@ namespace EduCATS.Data
 
 		string getCacheAndSetConnectionError()
 		{
-			setError("common_connection_error_text", true);
+			setError("base_connection_error", true);
 			return _key == null ? null : getDataFromCache(_key);
 		}
 
@@ -135,25 +141,27 @@ namespace EduCATS.Data
 		void setError(string message, bool isConnectionError = false)
 		{
 			IsError = true;
-			IsConnectionError = isConnectionError;
 			ErrorMessage = message;
+			IsConnectionError = isConnectionError;
 		}
 
 		string parseResponse(object responseObject, string key = null, bool isCaching = true)
 		{
-			if (responseObject != null) {
-				var response = (KeyValuePair<string, HttpStatusCode>)responseObject;
-
-				if (response.Value == HttpStatusCode.OK && response.Key != null) {
-					if (isCaching && !string.IsNullOrEmpty(key)) {
-						DataCaching<string>.Save(key, response.Key);
-					}
-
-					return response.Key;
-				}
+			if (responseObject == null) {
+				return null;
 			}
 
-			return null;
+			var response = (KeyValuePair<string, HttpStatusCode>)responseObject;
+
+			if (response.Value != HttpStatusCode.OK && response.Key == null) {
+				return null;
+			}
+
+			if (isCaching && !string.IsNullOrEmpty(key)) {
+				DataCaching<string>.Save(key, response.Key);
+			}
+
+			return response.Key;
 		}
 
 		static string getDataFromCache(string key)

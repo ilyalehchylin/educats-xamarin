@@ -6,8 +6,8 @@ using EduCATS.Data.User;
 using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Recommendations.Models;
-using EduCATS.Pages.Utils.ViewModels;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -18,7 +18,7 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 		readonly IPages _navigation;
 
 		public RecommendationsPageViewModel(
-			IDialogs dialogs, IAppDevice device, IPages navigation) : base(dialogs, device)
+			IDialogs dialogs, IDevice device, IPages navigation) : base(dialogs, device)
 		{
 			_navigation = navigation;
 			update();
@@ -90,7 +90,7 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 			var recommedation = selectedObject as RecommendationsPageModel;
 
 			if (recommedation.IsTest) {
-				_navigation.OpenTestPassing(recommedation.Id, true, true);
+				_navigation.OpenTestPassing(recommedation.Id, true);
 			} else {
 				_navigation.OpenEemc(
 					CrossLocalization.Translate("learning_card_eemc"),

@@ -17,10 +17,9 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 {
 	public partial class TestPassingPageViewModel : ViewModel
 	{
-		readonly bool _fromComplexLearning;
 		readonly IDialogs _dialogs;
-		readonly IPages _navigation;
-		readonly IAppDevice _device;
+		readonly IPages _pages;
+		readonly IDevice _device;
 		readonly int _testId;
 
 		bool _timerCancellation;
@@ -40,12 +39,10 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		DateTime _questionStarted;
 
 		public TestPassingPageViewModel(
-			IDialogs dialogs, IPages navigation, IAppDevice device,
-			int testId, bool forSelfStudy, bool fromComplexLearning)
+			IDialogs dialogs, IPages navigation, IDevice device, int testId, bool forSelfStudy)
 		{
-			_fromComplexLearning = fromComplexLearning;
 			_dialogs = dialogs;
-			_navigation = navigation;
+			_pages = navigation;
 			_device = device;
 			_testId = testId;
 			_testIdString = testId.ToString();
@@ -165,20 +162,20 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
-		async Task<TestQuestionCommonModel> getQuestion(int number)
+		async Task<TestQuestionModel> getQuestion(int number)
 		{
 			var question = await DataAccess.GetNextQuestion(
 				_testId, number, AppUserData.UserId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
 				_dialogs.ShowError(DataAccess.ErrorMessage);
-				return new TestQuestionCommonModel();
+				return new TestQuestionModel();
 			}
 
 			return question;
 		}
 
-		async Task answerCommonQuestion(TestingCommonAnswerPostModel answerModel)
+		async Task answerQuestion(TestAnswerPostModel answerModel)
 		{
 			if (answerModel == null || answerModel.Answers == null || answerModel.Answers.Count == 0) {
 				_dialogs.ShowError(CrossLocalization.Translate("answer_question_not_selected_error"));
@@ -199,7 +196,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			await getAndSetQuestion(getNextQuestion());
 		}
 
-		void setQuestionData(TestQuestionCommonModel testQuestionCommonModel)
+		void setQuestionData(TestQuestionModel testQuestionCommonModel)
 		{
 			var testQuestionModel = testQuestionCommonModel.Question;
 
@@ -212,7 +209,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
-		void setAnswers(List<TestQuestionAnswersModel> testQuestionAnswers)
+		void setAnswers(List<TestAnswerModel> testQuestionAnswers)
 		{
 			var answersList = testQuestionAnswers?.Select(
 				a => new TestPassingAnswerModel(a, _questionType) {
@@ -233,7 +230,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		void completeTest()
 		{
 			_timerCancellation = true;
-			_navigation.OpenTestResults(_testId);
+			_pages.OpenTestResults(_testId);
 		}
 
 		void completeQuestion()
@@ -288,11 +285,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		protected async Task ExecuteCloseCommand()
 		{
 			var result = await _dialogs.ShowConfirmationMessage(
-				CrossLocalization.Translate("common_warning"),
+				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("test_passing_cancel_message"));
 
 			if (result) {
-				await _navigation.ClosePage(true);
+				await _pages.ClosePage(true);
 			}
 		}
 

@@ -1,4 +1,4 @@
-﻿using EduCATS.Controls.SubjectsPickerView;
+﻿using EduCATS.Controls.Pickers;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
@@ -12,6 +12,8 @@ namespace EduCATS.Pages.Testing.Base.Views
 {
 	public class TestingPageView : ContentPage
 	{
+		static Thickness _headerPadding = new Thickness(10);
+
 		public TestingPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -56,7 +58,7 @@ namespace EduCATS.Pages.Testing.Base.Views
 				GroupHeaderTemplate = new DataTemplate(typeof(TestingHeaderViewCell)),
 				Header = new StackLayout {
 					BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
-					Padding = new Thickness(10),
+					Padding = _headerPadding,
 					Children = {
 						subjectsView
 					}

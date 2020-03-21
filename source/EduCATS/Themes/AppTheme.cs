@@ -11,21 +11,16 @@ namespace EduCATS.Themes
 
 		static ITheme currentTheme = new DefaultTheme();
 
-		public static void SetCurrentTheme()
-		{
+		public static void SetCurrentTheme() =>
 			SetTheme(AppPrefs.Theme);
-		}
 
 		public static void SetTheme(string theme)
 		{
-			switch (theme) {
-				case ThemeDark:
-					currentTheme = new DarkTheme();
-					break;
-				default:
-					currentTheme = new DefaultTheme();
-					break;
-			}
+			currentTheme = theme switch
+			{
+				ThemeDark => new DarkTheme(),
+				_ => new DefaultTheme(),
+			};
 
 			Theme.Set(currentTheme);
 			AppPrefs.Theme = theme;

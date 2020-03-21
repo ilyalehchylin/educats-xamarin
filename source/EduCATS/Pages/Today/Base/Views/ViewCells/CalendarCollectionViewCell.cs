@@ -5,14 +5,14 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 {
 	public class CalendarCollectionViewCell : ContentView
 	{
-		const double commonRowHeight = 30;
+		const double _baseRowHeight = 30;
 
 		public CalendarCollectionViewCell(string labelBinding, bool selectionEnabled = false)
 		{
 			var colorConverter = new StringToColorConverter();
 
 			var grid = new Grid {
-				HeightRequest = commonRowHeight
+				HeightRequest = _baseRowHeight
 			};
 
 			var contentLabel = new Label {
@@ -28,9 +28,9 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 				var selectedBoxView = new BoxView {
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.Center,
-					HeightRequest = commonRowHeight,
-					WidthRequest = commonRowHeight,
-					CornerRadius = commonRowHeight / 2
+					HeightRequest = _baseRowHeight,
+					WidthRequest = _baseRowHeight,
+					CornerRadius = _baseRowHeight / 2
 				};
 
 				selectedBoxView.SetBinding(BoxView.ColorProperty, "SelectionColor", converter: colorConverter);

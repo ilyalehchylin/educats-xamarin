@@ -1,9 +1,12 @@
-﻿using Xamarin.Forms;
+﻿using EduCATS.Constants;
+using Xamarin.Forms;
 
 namespace EduCATS.Helpers.Effects
 {
 	public class DisabledShiftEffect : RoutingEffect
 	{
-		public DisabledShiftEffect() : base("EduCATS.DisabledShiftEffect") { }
+		const string _disabledShiftEffect = GlobalConsts.RunNamespace + ".DisabledShiftEffect";
+
+		public DisabledShiftEffect() : base(_disabledShiftEffect) { }
 	}
 }

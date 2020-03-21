@@ -14,12 +14,12 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 	{
 		readonly IPages _pages;
 		readonly IDialogs _dialogs;
-		readonly IAppDevice _device;
+		readonly IDevice _device;
 
 		bool _isInit;
 		bool _isSystemToggleActive;
 
-		public LanguagePageViewModel(IDialogs dialogs, IAppDevice device, IPages pages)
+		public LanguagePageViewModel(IDialogs dialogs, IDevice device, IPages pages)
 		{
 			_isInit = true;
 			_isSystemToggleActive = true;
@@ -169,7 +169,7 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 		async Task<bool> changeLanguageConfirmation()
 		{
 			return await _dialogs.ShowConfirmationMessage(
-				CrossLocalization.Translate("common_warning"),
+				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("settings_language_change_message"));
 		}
 	}

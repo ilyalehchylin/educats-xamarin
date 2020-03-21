@@ -12,13 +12,17 @@ namespace EduCATS.Pages.Testing.Passing.Views
 	public class TestPassingPageView : ContentPage
 	{
 		const double _buttonHeight = 50;
+		const double _buttonGridHeight = 100;
 
-		public TestPassingPageView(int testId, bool forSelfStudy, bool fromComplexLearning = false)
+		static Thickness _buttonGridPadding = new Thickness(20);
+		static Thickness _titleLayoutPadding = new Thickness(20);
+
+		public TestPassingPageView(int testId, bool forSelfStudy)
 		{
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			BindingContext = new TestPassingPageViewModel(
 				new AppDialogs(), new AppPages(), new AppDevice(),
-				testId, forSelfStudy, fromComplexLearning);
+				testId, forSelfStudy);
 			this.SetBinding(TitleProperty, "Title");
 			setToolbar();
 			createViews();
@@ -60,11 +64,11 @@ namespace EduCATS.Pages.Testing.Passing.Views
 				"SkipCommand");
 
 			var buttonGridLayout = new Grid {
-				HeightRequest = 100,
+				HeightRequest = _buttonGridHeight,
 				VerticalOptions = LayoutOptions.EndAndExpand,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
-				Padding = new Thickness(20),
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
+				Padding = _buttonGridPadding,
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				ColumnDefinitions = {
 					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
 					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
@@ -100,11 +104,11 @@ namespace EduCATS.Pages.Testing.Passing.Views
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				Header = titleLayout,
 				HasUnevenRows = true,
-				ItemTemplate = new TestingAnswerDataTemplateSelector {
-					SingleTemplate = new DataTemplate(typeof(TestingSingleAnswerViewCell)),
-					EditableTemplate = new DataTemplate(typeof(TestingEditableAnswerViewCell)),
-					MultipleTemplate = new DataTemplate(typeof(TestingMultipleAnswerViewCell)),
-					MovableTemplate = new DataTemplate(typeof(TestingMovableAnswerViewCell))
+				ItemTemplate = new TestAnswerDataTemplateSelector {
+					SingleTemplate = new DataTemplate(typeof(TestSingleAnswerViewCell)),
+					EditableTemplate = new DataTemplate(typeof(TestEditableAnswerViewCell)),
+					MultipleTemplate = new DataTemplate(typeof(TestMultipleAnswerViewCell)),
+					MovableTemplate = new DataTemplate(typeof(TestMovableAnswerViewCell))
 				},
 				SeparatorColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				SeparatorVisibility = SeparatorVisibility.None
@@ -121,7 +125,7 @@ namespace EduCATS.Pages.Testing.Passing.Views
 			var questionLabel = createQuestionLabel();
 			var descriptionLabel = createDescriptionLabel();
 			return new StackLayout {
-				Padding = new Thickness(20),
+				Padding = _titleLayoutPadding,
 				Children = {
 					questionLabel,
 					descriptionLabel

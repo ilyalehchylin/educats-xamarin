@@ -12,12 +12,12 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		public int Month { get; set; }
 		public int Year { get; set; }
 
-		TodayPageViewModel todayPageViewModel { get; set; }
+		TodayPageViewModel _todayPageViewModel { get; set; }
 
 		public CalendarViewModel(object bindingContext)
 		{
 			if (bindingContext != null && bindingContext is TodayPageViewModel) {
-				todayPageViewModel = (TodayPageViewModel)bindingContext;
+				_todayPageViewModel = (TodayPageViewModel)bindingContext;
 			}
 		}
 
@@ -39,17 +39,17 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			}
 		}
 
-		object calendarSelectedItem;
+		object _calendarSelectedItem;
 		public object CalendarSelectedItem {
-			get { return calendarSelectedItem; }
-			set { SetProperty(ref calendarSelectedItem, value); }
+			get { return _calendarSelectedItem; }
+			set { SetProperty(ref _calendarSelectedItem, value); }
 		}
 
-		Command calendarSelectionChangedCommand;
+		Command _calendarSelectionChangedCommand;
 		public Command CalendarSelectionChangedCommand {
 			get {
-				return calendarSelectionChangedCommand ?? (
-					calendarSelectionChangedCommand = new Command(
+				return _calendarSelectionChangedCommand ?? (
+					_calendarSelectionChangedCommand = new Command(
 						ExecuteCalendarSelectionChangedEvent));
 			}
 		}
@@ -58,7 +58,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		{
 			if (CalendarSelectedItem != null && CalendarSelectedItem.GetType() == typeof(CalendarViewDayModel)) {
 				var calendarViewDayModel = (CalendarViewDayModel)CalendarSelectedItem;
-				todayPageViewModel.ExecuteCalendarSelectionChangedEvent(calendarViewDayModel.Date);
+				_todayPageViewModel.ExecuteCalendarSelectionChangedEvent(calendarViewDayModel.Date);
 				CalendarSelectedItem = null;
 			}
 		}

@@ -89,7 +89,7 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		public static async Task<KeyValuePair<string, HttpStatusCode>> AnswerQuestionAndGetNext(
-			TestingCommonAnswerPostModel answer)
+			TestAnswerPostModel answer)
 		{
 			var body = JsonController.ConvertObjectToJson(answer);
 			return await AppServicesController.Request($"{Links.AnswerQuestionAndGetNext}", body);

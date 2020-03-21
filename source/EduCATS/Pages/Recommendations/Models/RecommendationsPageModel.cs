@@ -6,7 +6,7 @@ namespace EduCATS.Pages.Recommendations.Models
 {
 	public class RecommendationsPageModel : IRoundedListType
 	{
-		public RecommendationsPageModel(RecommendationsModel model)
+		public RecommendationsPageModel(RecommendationModel model)
 		{
 			if (model == null) {
 				return;

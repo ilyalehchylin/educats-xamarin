@@ -1,4 +1,4 @@
-﻿using EduCATS.Controls.SubjectsPickerView;
+﻿using EduCATS.Controls.Pickers;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
@@ -15,6 +15,8 @@ namespace EduCATS.Pages.Eemc.Views
 	{
 		const int _rowsCount = 2;
 		const double _buttonHeight = 50;
+		static Thickness _subjectPadding = new Thickness(10);
+		static Thickness _backButtonMargin = new Thickness(30, 0, 30, 15);
 
 		public EemcPageView(int searchId)
 		{
@@ -71,7 +73,7 @@ namespace EduCATS.Pages.Eemc.Views
 
 			return new StackLayout {
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
-				Padding = new Thickness(10),
+				Padding = _subjectPadding,
 				Children = {
 					subjectsView
 				}
@@ -85,7 +87,7 @@ namespace EduCATS.Pages.Eemc.Views
 				VerticalOptions = LayoutOptions.EndAndExpand,
 				CornerRadius = (int)_buttonHeight / 2,
 				HeightRequest = _buttonHeight,
-				Margin = new Thickness(30, 0, 30, 15),
+				Margin = _backButtonMargin,
 				TextColor = Color.FromHex(Theme.Current.EemcBackButtonTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.EemcBackButtonColor),
 				Text = CrossLocalization.Translate("eemc_back_text")

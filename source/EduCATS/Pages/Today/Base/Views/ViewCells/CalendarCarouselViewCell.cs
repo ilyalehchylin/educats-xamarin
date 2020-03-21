@@ -5,16 +5,18 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 {
 	public class CalendarCarouselViewCell : ContentView
 	{
-		const int daysOfWeekNumber = 7;
-		const string dataBindingDay = "Day";
+		const int _daysOfWeekNumber = 7;
+		const string _dataBindingDay = "Day";
+
+		static Thickness _padding = new Thickness(0, 0, 0, 10);
 
 		public CalendarCarouselViewCell()
 		{
 			addResources();
 
 			var collection = new CollectionView {
-				ItemsLayout = new GridItemsLayout(daysOfWeekNumber, ItemsLayoutOrientation.Vertical),
-				ItemTemplate = new DataTemplate(() => new CalendarCollectionViewCell(dataBindingDay, true)),
+				ItemsLayout = new GridItemsLayout(_daysOfWeekNumber, ItemsLayoutOrientation.Vertical),
+				ItemTemplate = new DataTemplate(() => new CalendarCollectionViewCell(_dataBindingDay, true)),
 				SelectionMode = SelectionMode.Single
 			};
 
@@ -31,7 +33,7 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 			monthYearLabel.SetBinding(Label.TextProperty, "MonthYear");
 
 			Content = new StackLayout {
-				Padding = new Thickness(0, 0, 0, 10),
+				Padding = _padding,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = {

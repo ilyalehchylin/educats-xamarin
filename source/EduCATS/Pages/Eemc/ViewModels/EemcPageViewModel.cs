@@ -8,7 +8,7 @@ using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Networking;
-using EduCATS.Pages.Utils.ViewModels;
+using EduCATS.Pages.Pickers;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Eemc.ViewModels
@@ -26,7 +26,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		List<ConceptModel> _backupRootConceptsWithoutChildren;
 
 		public EemcPageViewModel(
-			IDialogs dialogs, IAppDevice device,
+			IDialogs dialogs, IDevice device,
 			IPages navigation, int searchId) : base(dialogs, device)
 		{
 			IsRoot = true;
@@ -38,37 +38,37 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			SubjectChanged += async (id, name) => await update();
 		}
 
-		List<ConceptModel> concepts;
+		List<ConceptModel> _concepts;
 		public List<ConceptModel> Concepts {
-			get { return concepts; }
-			set { SetProperty(ref concepts, value); }
+			get { return _concepts; }
+			set { SetProperty(ref _concepts, value); }
 		}
 
-		bool isBackActionPossible;
+		bool _isBackActionPossible;
 		public bool IsBackActionPossible {
-			get { return isBackActionPossible; }
-			set { SetProperty(ref isBackActionPossible, value); }
+			get { return _isBackActionPossible; }
+			set { SetProperty(ref _isBackActionPossible, value); }
 		}
 
-		bool isRoot;
+		bool _isRoot;
 		public bool IsRoot {
-			get { return isRoot; }
-			set { SetProperty(ref isRoot, value); }
+			get { return _isRoot; }
+			set { SetProperty(ref _isRoot, value); }
 		}
 
-		object selectedItem;
+		object _selectedItem;
 		public object SelectedItem {
-			get { return selectedItem; }
+			get { return _selectedItem; }
 			set {
-				SetProperty(ref selectedItem, value);
-				Task.Run(async () => await openConcepts(selectedItem));
+				SetProperty(ref _selectedItem, value);
+				Task.Run(async () => await openConcepts(_selectedItem));
 			}
 		}
 
-		Command backCommand;
+		Command _backCommand;
 		public Command BackCommand {
 			get {
-				return backCommand ?? (backCommand = new Command(goBack));
+				return _backCommand ?? (_backCommand = new Command(goBack));
 			}
 		}
 
@@ -200,7 +200,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		void openTest(int id)
 		{
 			DeviceService.MainThread(
-				async () => await _navigation.OpenTestPassing(id, true, true));
+				async () => await _navigation.OpenTestPassing(id, true));
 		}
 
 		void openConcept(ConceptModel conceptToCheck, ConceptModel conceptToPush = null)

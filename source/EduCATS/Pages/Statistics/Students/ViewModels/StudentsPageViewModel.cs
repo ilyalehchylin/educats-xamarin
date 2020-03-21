@@ -6,9 +6,9 @@ using EduCATS.Data.Models.Statistics;
 using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Students.Models;
-using EduCATS.Pages.Utils.ViewModels;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -16,18 +16,18 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 {
 	public class StudentsPageViewModel : GroupsViewModel
 	{
-		readonly IPages navigationService;
-		readonly int pageIndex;
+		readonly IPages _pages;
+		readonly int _pageIndex;
 
-		List<StudentsPageModel> backupStudentsList;
+		List<StudentsPageModel> _backupStudents;
 
 		public StudentsPageViewModel(
-			IPages navigationService, IDialogs dialogService, IAppDevice device, int subjectId,
-			List<StatisticsStudentModel> studentsList, int pageIndex)
+			IPages navigationService, IDialogs dialogService, IDevice device, int subjectId,
+			List<StatsStudentModel> studentsList, int pageIndex)
 			: base(dialogService, device, subjectId)
 		{
-			this.navigationService = navigationService;
-			this.pageIndex = pageIndex;
+			_pages = navigationService;
+			_pageIndex = pageIndex;
 
 			setStudents(studentsList);
 
@@ -42,44 +42,44 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			GroupChanged += async (id, name) => await update();
 		}
 
-		bool isLoading;
+		bool _isLoading;
 		public bool IsLoading {
-			get { return isLoading; }
-			set { SetProperty(ref isLoading, value); }
+			get { return _isLoading; }
+			set { SetProperty(ref _isLoading, value); }
 		}
 
-		string searchText;
+		string _searchText;
 		public string SearchText {
-			get { return searchText; }
+			get { return _searchText; }
 			set {
-				SetProperty(ref searchText, value);
-				search(searchText);
+				SetProperty(ref _searchText, value);
+				search(_searchText);
 			}
 		}
 
-		object selectedItem;
+		object _selectedItem;
 		public object SelectedItem {
-			get { return selectedItem; }
+			get { return _selectedItem; }
 			set {
-				SetProperty(ref selectedItem, value);
+				SetProperty(ref _selectedItem, value);
 
-				if (selectedItem != null) {
-					openPage(selectedItem);
+				if (_selectedItem != null) {
+					openPage(_selectedItem);
 				}
 			}
 		}
 
-		List<StudentsPageModel> students;
+		List<StudentsPageModel> _students;
 		public List<StudentsPageModel> Students {
-			get { return students; }
-			set { SetProperty(ref students, value); }
+			get { return _students; }
+			set { SetProperty(ref _students, value); }
 		}
 
-		Command refreshCommand;
+		Command _refreshCommand;
 		public Command RefreshCommand {
 			get {
-				return refreshCommand ?? (
-					refreshCommand = new Command(async () => await executeRefreshCommand()));
+				return _refreshCommand ?? (
+					_refreshCommand = new Command(async () => await getAndSetStudents()));
 			}
 		}
 
@@ -102,7 +102,7 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			IsLoading = false;
 		}
 
-		void setStudents(List<StatisticsStudentModel> studentsStatistics)
+		void setStudents(List<StatsStudentModel> studentsStatistics)
 		{
 			var students = studentsStatistics?.Select(s => new StudentsPageModel(s.Login, s.Name));
 
@@ -111,10 +111,10 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			}
 
 			Students = new List<StudentsPageModel>(students);
-			backupStudentsList = new List<StudentsPageModel>(students);
+			_backupStudents = new List<StudentsPageModel>(students);
 		}
 
-		async Task<List<StatisticsStudentModel>> getStatistics()
+		async Task<List<StatsStudentModel>> getStatistics()
 		{
 			if (CurrentGroup == null) {
 				return null;
@@ -132,21 +132,16 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 		void search(string text)
 		{
 			if (string.IsNullOrEmpty(text)) {
-				Students = new List<StudentsPageModel>(backupStudentsList);
+				Students = new List<StudentsPageModel>(_backupStudents);
 				return;
 			}
 
 			text = text.ToLower();
 
-			var foundStudents = backupStudentsList.Where(
+			var foundStudents = _backupStudents.Where(
 				s => string.IsNullOrEmpty(s.Name) ? false : s.Name.ToLower().Contains(text));
 
 			Students = new List<StudentsPageModel>(foundStudents);
-		}
-
-		protected async Task executeRefreshCommand()
-		{
-			await getAndSetStudents();
 		}
 
 		void openPage(object selectedObject)
@@ -156,26 +151,24 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			}
 
 			var student = selectedObject as StudentsPageModel;
-			var title = getTitle((StatsPageEnum)pageIndex);
+			var title = getTitle((StatsPageEnum)_pageIndex);
 
 			if (CurrentGroup == null) {
 				return;
 			}
 
-			navigationService.OpenDetailedStatistics(
-				student.Username, SubjectId, CurrentGroup.GroupId, pageIndex, title, student.Name);
+			_pages.OpenDetailedStatistics(
+				student.Username, SubjectId, CurrentGroup.GroupId, _pageIndex, title, student.Name);
 		}
 
 		string getTitle(StatsPageEnum pageType)
 		{
-			switch (pageType) {
-				case StatsPageEnum.LabsRating:
-					return CrossLocalization.Translate("statistics_page_labs_rating");
-				case StatsPageEnum.LabsVisiting:
-					return CrossLocalization.Translate("statistics_page_labs_visiting");
-				default:
-					return CrossLocalization.Translate("statistics_page_lectures_visiting");
-			}
+			return pageType switch
+			{
+				StatsPageEnum.LabsRating => CrossLocalization.Translate("stats_page_labs_rating"),
+				StatsPageEnum.LabsVisiting => CrossLocalization.Translate("stats_page_labs_visiting"),
+				_ => CrossLocalization.Translate("stats_page_lectures_visiting"),
+			};
 		}
 	}
 }

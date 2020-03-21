@@ -8,7 +8,11 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 {
 	public class StatsResultsPageViewCell : ViewCell
 	{
-		const double iconSize = 20;
+		const double _iconSize = 20;
+		const double _infoSpacing = 10;
+		const double _separatorHeight = 1;
+
+		static Thickness _gridPadding = new Thickness(15);
 
 		public StatsResultsPageViewCell()
 		{
@@ -23,8 +27,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			var dateIcon = new CachedImage {
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Source = ImageSource.FromFile(Theme.Current.StatisticsCalendarIcon),
-				HeightRequest = iconSize,
-				WidthRequest = iconSize,
+				HeightRequest = _iconSize,
+				WidthRequest = _iconSize,
 				Transformations = new List<FFImageLoading.Work.ITransformation> {
 					new TintTransformation {
 						EnableSolidColor = true,
@@ -55,8 +59,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			var commentIcon = new CachedImage {
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Source = ImageSource.FromFile(Theme.Current.StatisticsCommentIcon),
-				HeightRequest = iconSize,
-				WidthRequest = iconSize,
+				HeightRequest = _iconSize,
+				WidthRequest = _iconSize,
 				Transformations = new List<FFImageLoading.Work.ITransformation> {
 					new TintTransformation {
 						EnableSolidColor = true,
@@ -86,7 +90,7 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 			var infoLayout = new StackLayout {
 				VerticalOptions = LayoutOptions.StartAndExpand,
-				Spacing = 10,
+				Spacing = _infoSpacing,
 				Children = {
 					titleLabel,
 					dateLayout,
@@ -104,7 +108,7 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			resultLabel.SetBinding(Label.TextProperty, "Result");
 
 			var gridLayout = new Grid {
-				Padding = new Thickness(15),
+				Padding = _gridPadding,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				ColumnDefinitions = {
 					new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) },
@@ -116,12 +120,12 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			gridLayout.Children.Add(resultLabel, 1, 0);
 
 			View = new StackLayout {
-				BackgroundColor = Color.FromHex(Theme.Current.CommonBlockColor),
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Children = {
 					gridLayout,
 					new BoxView {
 						Color = Color.FromHex(Theme.Current.StatisticsDetailsSeparatorColor),
-						HeightRequest = 1,
+						HeightRequest = _separatorHeight,
 						HorizontalOptions = LayoutOptions.FillAndExpand
 					}
 				}

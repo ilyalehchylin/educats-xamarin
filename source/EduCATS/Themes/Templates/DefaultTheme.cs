@@ -4,90 +4,96 @@ namespace EduCATS.Themes.Templates
 {
 	public class DefaultTheme : ITheme
 	{
-		virtual public string CommonAppColor => "#27AAE1";
-		virtual public string CommonBlockColor => "#FFFFFF";
+		const string _greyColor = "#808080";
+		const string _whiteColor = "#FFFFFF";
+		const string _baseBlueColor = "#27AAE1";
+		const string _lightGreyColor = "#F7F5F3";
+		const string _blackColor = "#000000";
+
+		virtual public string BaseAppColor => _baseBlueColor;
+		virtual public string BaseBlockColor => _whiteColor;
 		virtual public string BaseArrowForwardIcon => "icon_forward";
 		virtual public string BaseCloseIcon => "icon_close";
 
-		virtual public string AppBackgroundColor => "#F7F5F3";
-		virtual public string AppStatusBarBackgroundColor => CommonAppColor;
-		virtual public string AppNavigationBarBackgroundColor => "#FFFFFF";
+		virtual public string AppBackgroundColor => _lightGreyColor;
+		virtual public string AppStatusBarBackgroundColor => _baseBlueColor;
+		virtual public string AppNavigationBarBackgroundColor => _whiteColor;
 
-		virtual public string RoundedListViewBackgroundColor => CommonBlockColor;
+		virtual public string RoundedListViewBackgroundColor => BaseBlockColor;
 
 		virtual public string LoginBackground1Image => "image_background_1";
 		virtual public string LoginBackground2Image => "image_background_2";
 		virtual public string LoginBackground3Image => "image_background_3";
 		virtual public string LoginMascotImage => "image_mascot";
 		virtual public string LoginShowPasswordImage => "icon_show_password";
-		virtual public string LoginEntryBackgroundColor => "#FFFFFF";
-		virtual public string LoginButtonBackgroundColor => CommonAppColor;
-		virtual public string LoginButtonTextColor => "#FFFFFF";
-		virtual public string LoginSettingsColor => "#FFFFFF";
+		virtual public string LoginEntryBackgroundColor => _whiteColor;
+		virtual public string LoginButtonBackgroundColor => _baseBlueColor;
+		virtual public string LoginButtonTextColor => _whiteColor;
+		virtual public string LoginSettingsColor => _whiteColor;
 
-		virtual public string MainSelectedTabColor => CommonAppColor;
-		virtual public string MainUnselectedTabColor => "#808080";
+		virtual public string MainSelectedTabColor => _baseBlueColor;
+		virtual public string MainUnselectedTabColor => _greyColor;
 		virtual public string MainTodayIcon => "icon_today";
 		virtual public string MainLearningIcon => "icon_learning";
 		virtual public string MainStatisticsIcon => "icon_stats";
 		virtual public string MainSettingsIcon => "icon_settings";
 
-		virtual public string TodayCalendarBackgroundColor => "#FFFFFF";
-		virtual public string TodaySubjectBackgroundColor => "#FFFFFF";
-		virtual public string TodayNewsItemBackgroundColor => "#FFFFFF";
-		virtual public string TodayNewsListBackgroundColor => "#F7F5F3";
+		virtual public string TodayCalendarBackgroundColor => _whiteColor;
+		virtual public string TodaySubjectBackgroundColor => _whiteColor;
+		virtual public string TodayNewsItemBackgroundColor => _whiteColor;
+		virtual public string TodayNewsListBackgroundColor => _lightGreyColor;
 		virtual public string TodayNewsTitleColor => "#222222";
-		virtual public string TodayNewsSubjectColor => "#808080";
-		virtual public string TodayNewsDateColor => "#808080";
+		virtual public string TodayNewsSubjectColor => _greyColor;
+		virtual public string TodayNewsDateColor => _greyColor;
 		virtual public string TodayNewsDateIconColor => "#ADABAA";
 		virtual public string TodayNewsDateIcon => "icon_clock";
-		virtual public string TodaySelectedTodayDateColor => CommonAppColor;
-		virtual public string TodaySelectedAnotherDateColor => "#808080";
+		virtual public string TodaySelectedTodayDateColor => _baseBlueColor;
+		virtual public string TodaySelectedAnotherDateColor => _greyColor;
 		virtual public string TodayNotSelectedDateColor => "Transparent";
-		virtual public string TodaySelectedDateTextColor => "#FFFFFF";
-		virtual public string TodayNotSelectedDateTextColor => "#000000";
+		virtual public string TodaySelectedDateTextColor => _whiteColor;
+		virtual public string TodayNotSelectedDateTextColor => _blackColor;
 
-		virtual public string NewsTextColor => "#000000";
+		virtual public string NewsTextColor => _blackColor;
 
 		virtual public string StatisticsChartLabsColor => "#2A4D69";
 		virtual public string StatisticsChartTestsColor => "#4B86B4";
 		virtual public string StatisticsChartVisitingColor => "#ADCBE3";
-		virtual public string StatisticsBoxTextColor => "#FFFFFF";
-		virtual public string StatisticsExpandableTextColor => "#808080";
-		virtual public string StatisticsDetailsTitleColor => "#000000";
-		virtual public string StatisticsDetailsColor => "#808080";
+		virtual public string StatisticsBoxTextColor => _whiteColor;
+		virtual public string StatisticsExpandableTextColor => _greyColor;
+		virtual public string StatisticsDetailsTitleColor => _blackColor;
+		virtual public string StatisticsDetailsColor => _greyColor;
 		virtual public string StatisticsDetailsSeparatorColor => "#FCFAF8";
-		virtual public string StatisticsDetailsResultsColor => CommonAppColor;
-		virtual public string StatisticsDetailsNameColor => "#000000";
+		virtual public string StatisticsDetailsResultsColor => _baseBlueColor;
+		virtual public string StatisticsDetailsNameColor => _blackColor;
 		virtual public string StatisticsExpandIcon => "icon_expand";
 		virtual public string StatisticsCollapseIcon => "icon_collapse";
 		virtual public string StatisticsCalendarIcon => "icon_calendar";
 		virtual public string StatisticsCommentIcon => "icon_comment";
 
-		virtual public string LearningCardTextColor => "#FFFFFF";
+		virtual public string LearningCardTextColor => _whiteColor;
 
 		virtual public string LearningCardTestsImage => "image_test_square";
 		virtual public string LearningCardEemcImage => "image_book_square";
 		virtual public string LearningCardFilesImage => "image_file_square";
 		virtual public string LearningCardAdaptiveImage => "image_circuit_square";
 
-		virtual public string TestingTitleColor => "#000000";
-		virtual public string TestingDescriptionColor => "#808080";
+		virtual public string TestingTitleColor => _blackColor;
+		virtual public string TestingDescriptionColor => _greyColor;
 		virtual public string TestingHeaderImage => "image_test_rectangle";
 
-		virtual public string TestPassingButtonTextColor => "#FFFFFF";
-		virtual public string TestPassingEntryColor => "#FFFFFF";
-		virtual public string TestPassingAnswerColor => "#808080";
+		virtual public string TestPassingButtonTextColor => _whiteColor;
+		virtual public string TestPassingEntryColor => _whiteColor;
+		virtual public string TestPassingAnswerColor => _greyColor;
 		virtual public string TestPassingArrowUpIcon => "icon_arrow_up";
 		virtual public string TestPassingArrowDownIcon => "icon_arrow_down";
 
-		virtual public string TestResultsAnswerTextColor => "#000000";
+		virtual public string TestResultsAnswerTextColor => _blackColor;
 		virtual public string TestResultsCorrectAnswerColor => "#00AA55";
 		virtual public string TestResultsNotCorrectAnswerColor => "#E63022";
 
 		virtual public string EemcHeaderImage => "image_book_rectangle";
-		virtual public string EemcBackButtonColor => CommonAppColor;
-		virtual public string EemcBackButtonTextColor => "#FFFFFF";
+		virtual public string EemcBackButtonColor => _baseBlueColor;
+		virtual public string EemcBackButtonTextColor => _whiteColor;
 		virtual public string EemcDirectoryActiveIcon => "icon_directory_active";
 		virtual public string EemcDirectoryInactiveIcon => "icon_directory_inactive";
 		virtual public string EemcDocumentActiveIcon => "icon_document_pdf_active";
@@ -104,11 +110,11 @@ namespace EduCATS.Themes.Templates
 		public string SettingsThemeIcon => "icon_settings_themes";
 		public string SettingsFontIcon => "icon_settings_font";
 		public string SettingsLogoutIcon => "icon_settings_logout";
-		public string SettingsUserColor => "#808080";
+		public string SettingsUserColor => _greyColor;
 
 		public string CheckboxIcon => "icon_checkmark";
-		public string CheckboxDescriptionColor => "#808080";
+		public string CheckboxDescriptionColor => _greyColor;
 
-		public string SwitchFrameDescriptionColor => "#808080";
+		public string SwitchFrameDescriptionColor => _greyColor;
 	}
 }

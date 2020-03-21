@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
+using EduCATS.Constants;
 using EduCATS.Data.Caching;
+using EduCATS.Data.Interfaces;
 using EduCATS.Data.Models.Calendar;
 using EduCATS.Data.Models.Eemc;
 using EduCATS.Data.Models.Files;
@@ -16,32 +17,13 @@ using EduCATS.Data.Models.Testing.Base;
 using EduCATS.Data.Models.Testing.Passing;
 using EduCATS.Data.Models.Testing.Results;
 using EduCATS.Data.Models.User;
-using EduCATS.Networking.AppServices;
 using EduCATS.Networking.Models.Testing;
 using Nyxbull.Plugins.CrossLocalization;
 
 namespace EduCATS.Data
 {
-	/// <summary>
-	/// Won't be null.
-	/// </summary>
 	public static partial class DataAccess
 	{
-		const string _profileInfoKey = "PROFILE_INFO_KEY";
-		const string _getNewsKey = "GET_NEWS_KEY";
-		const string _getProfileInfoSubjectKey = "GET_PROFILE_INFO_SUBJECT_KEY";
-		const string _getProfileInfoCalendarKey = "GET_PROFILE_INFO_CALENDAR_KEY";
-		const string _getMarksKey = "GET_MARKS_KEY";
-		const string _getOnlyGroupsKey = "GET_ONLY_GROUPS_KEY";
-		const string _getLabsKey = "GET_LABS_KEY";
-		const string _getLecturesKey = "GET_LECTURES_KEY";
-		const string _getAvailableTestsKey = "GET_AVAILABLE_TESTS_KEY";
-		const string _getUserAnswersKey = "GET_USER_ANSWERS_KEY";
-		const string _getRootConceptKey = "GET_ROOT_CONCEPT_KEY";
-		const string _getConceptTreeKey = "GET_CONCEPT_TREE_KEY";
-		const string _getFilesKey = "GET_FILES_KEY";
-		const string _getRecommendationsKey = "GET_RECOMMENDATIONS_KEY";
-
 		public static bool IsError { get; set; }
 		public static bool IsConnectionError { get; set; }
 		public static string ErrorMessage { get; set; }
@@ -53,214 +35,152 @@ namespace EduCATS.Data
 
 		public async static Task<UserModel> Login(string username, string password)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.Login(username, password);
-
-			var dataAccess = new DataAccess<UserModel>("login_error_text");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+			var dataAccess = new DataAccess<UserModel>(
+				"login_error", () => loginCallback(username, password));
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as UserModel;
 		}
 
 		public async static Task<UserProfileModel> GetProfileInfo(string username)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetProfileInfo(username);
-
-			var dataAccess = new DataAccess<UserProfileModel>("login_user_profile_error_text", _profileInfoKey);
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+			var dataAccess = new DataAccess<UserProfileModel>(
+				"login_user_profile_error", () => getProfileCallback(username),
+				GlobalConsts.DataProfileKey);
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as UserProfileModel;
 		}
 
-		public async static Task<List<NewsItemModel>> GetNews(string username)
+		public async static Task<List<NewsModel>> GetNews(string username)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetNews(username);
-
-			var dataAccess = new DataAccess<NewsItemModel>("today_news_load_error_text", _getNewsKey);
-			var list = await dataAccess.GetList(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return list;
+			var dataAccess = new DataAccess<NewsModel>(
+				"today_news_load_error", () => getNewsCallback(username),
+				GlobalConsts.DataGetNewsKey);
+			return getDataObject(dataAccess, await dataAccess.GetList()) as List<NewsModel>;
 		}
 
-		public async static Task<List<SubjectItemModel>> GetProfileInfoSubjects(string username)
+		public async static Task<List<SubjectModel>> GetProfileInfoSubjects(string username)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetProfileInfoSubjects(username);
-
-			var dataAccess = new DataAccess<SubjectItemModel>("today_subjects_error_text", _getProfileInfoSubjectKey);
-			var list = await dataAccess.GetList(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return list;
+			var dataAccess = new DataAccess<SubjectModel>(
+				"today_subjects_error", () => getSubjectsCallback(username),
+				GlobalConsts.DataGetSubjectsKey);
+			return getDataObject(dataAccess, await dataAccess.GetList()) as List<SubjectModel>;
 		}
 
 		public async static Task<CalendarModel> GetProfileInfoCalendar(string username)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetProfileInfoCalendar(username);
-
-			var dataAccess = new DataAccess<CalendarModel>("today_calendar_error_text", _getProfileInfoCalendarKey);
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+			var dataAccess = new DataAccess<CalendarModel>(
+				"today_calendar_error", () => getCalendarCallback(username),
+				GlobalConsts.DataGetCalendarKey);
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as CalendarModel;
 		}
 
-		public async static Task<StatisticsModel> GetStatistics(int subjectId, int groupId)
+		public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetStatistics(subjectId, groupId);
-
-			var dataAccess = new DataAccess<StatisticsModel>(
-				"statistics_marks_error_text", $"{_getMarksKey}/{subjectId}/{groupId}");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+			var dataAccess = new DataAccess<StatsModel>(
+				"stats_marks_error", () => getStatsCallback(subjectId, groupId),
+				$"{GlobalConsts.DataGetMarksKey}/{subjectId}/{groupId}");
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as StatsModel;
 		}
 
 		public async static Task<GroupModel> GetOnlyGroups(int subjectId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetOnlyGroups(subjectId);
-
 			var dataAccess = new DataAccess<GroupModel>(
-				"groups_retieval_error", $"{_getOnlyGroupsKey}/{subjectId}");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+				"groups_fetch_error", () => getGroupsCallback(subjectId),
+				$"{GlobalConsts.DataGetGroupsKey}/{subjectId}");
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as GroupModel;
 		}
 
 		public async static Task<LabsModel> GetLabs(int subjectId, int groupId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetLabs(subjectId, groupId);
-
 			var dataAccess = new DataAccess<LabsModel>(
-				"labs_retrieval_error", $"{_getLabsKey}/{subjectId}/{groupId}");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+				"labs_fetch_error", () => getLabsCallback(subjectId, groupId),
+				$"{GlobalConsts.DataGetLabsKey}/{subjectId}/{groupId}");
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as LabsModel;
 		}
 
 		public async static Task<LecturesModel> GetLectures(int subjectId, int groupId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetLectures(subjectId, groupId);
-
 			var dataAccess = new DataAccess<LecturesModel>(
-				"lectures_retrieval_error", $"{_getLecturesKey}/{subjectId}/{groupId}");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+				"lectures_fetch_error", () => getLecturesCallback(subjectId, groupId),
+				$"{GlobalConsts.DataGetLecturesKey}/{subjectId}/{groupId}");
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as LecturesModel;
 		}
 
-		public async static Task<List<TestingItemModel>> GetAvailableTests(int subjectId, int userId)
+		public async static Task<List<TestModel>> GetAvailableTests(int subjectId, int userId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetAvailableTests(subjectId, userId);
-
-			var dataAccess = new DataAccess<TestingItemModel>(
-				"testing_get_tests_error", $"{_getAvailableTestsKey}/{subjectId}/{userId}");
-			var list = await dataAccess.GetList(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return list;
+			var dataAccess = new DataAccess<TestModel>(
+				"testingGlobalConsts.Get_tests_error", () => getTestsCallback(subjectId, userId),
+				$"{GlobalConsts.DataGetTestsKey}/{subjectId}/{userId}");
+			return getDataObject(dataAccess, await dataAccess.GetList()) as List<TestModel>;
 		}
 
 		public async static Task<TestDetailsModel> GetTest(int testId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetTest(testId);
-
-			var dataAccess = new DataAccess<TestDetailsModel>("get_test_error");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+			var dataAccess = new DataAccess<TestDetailsModel>(
+				"get_test_error", () => getTestCallback(testId));
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as TestDetailsModel;
 		}
 
-		public async static Task<TestQuestionCommonModel> GetNextQuestion(
+		public async static Task<TestQuestionModel> GetNextQuestion(
 			int testId, int questionNumber, int userId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetNextQuestion(testId, questionNumber, userId);
-
-			var dataAccess = new DataAccess<TestQuestionCommonModel>("get_test_question_error");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+			var dataAccess = new DataAccess<TestQuestionModel>(
+				"get_test_question_error", () => getNextQuestionCallback(testId, questionNumber, userId));
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as TestQuestionModel;
 		}
 
-		public async static Task<object> AnswerQuestionAndGetNext(TestingCommonAnswerPostModel answer)
+		public async static Task<object> AnswerQuestionAndGetNext(TestAnswerPostModel answer)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.AnswerQuestionAndGetNext(answer);
-
-			var dataAccess = new DataAccess<object>("answer_question_error");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+			var dataAccess = new DataAccess<object>(
+				"answer_question_error", () => answerQuestionCallback(answer));
+			return getDataObject(dataAccess, await dataAccess.GetSingle());
 		}
 
-		public async static Task<List<TestingResultsModel>> GetUserAnswers(int userId, int testId)
+		public async static Task<List<TestResultsModel>> GetUserAnswers(int userId, int testId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetUserAnswers(userId, testId);
-
-			var dataAccess = new DataAccess<TestingResultsModel>(
-				"test_results_error", $"{_getUserAnswersKey}/{userId}/{testId}");
-			var list = await dataAccess.GetList(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return list;
+			var dataAccess = new DataAccess<TestResultsModel>(
+				"test_results_error", () => getTestAnswersCallback(userId, testId),
+				$"{GlobalConsts.DataGetTestAnswersKey}/{userId}/{testId}");
+			return getDataObject(dataAccess, await dataAccess.GetList()) as List<TestResultsModel>;
 		}
 
 		public async static Task<RootConceptModel> GetRootConcepts(string userId, string subjectId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetRootConcepts(userId, subjectId);
-
 			var dataAccess = new DataAccess<RootConceptModel>(
-				"eemc_root_concepts_error", $"{_getRootConceptKey}/{userId}/{subjectId}");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+				"eemc_root_concepts_error",
+				() => getRootConceptsCallback(userId, subjectId),
+				$"{GlobalConsts.DataGetRootConceptKey}/{userId}/{subjectId}");
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as RootConceptModel;
 		}
 
 		public async static Task<ConceptModel> GetConceptTree(int elementId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetConceptTree(elementId);
-
 			var dataAccess = new DataAccess<ConceptModel>(
-				"eemc_concept_tree_error", $"{_getConceptTreeKey}/{elementId}");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+				"eemc_concept_tree_error", () => getConceptTreeCallback(elementId),
+				$"{GlobalConsts.DataGetConceptTreeKey}/{elementId}");
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as ConceptModel;
 		}
 
 		public async static Task<FilesModel> GetFiles(int subjectId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetFiles(subjectId);
-
 			var dataAccess = new DataAccess<FilesModel>(
-				"files_fetch_error", $"{_getFilesKey}/{subjectId}");
-			var singleObject = await dataAccess.GetSingle(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return singleObject;
+				"files_fetch_error", () => getFilesCallback(subjectId),
+				$"{GlobalConsts.DataGetFilesKey}/{subjectId}");
+			return getDataObject(dataAccess, await dataAccess.GetSingle()) as FilesModel;
 		}
 
-		public async static Task<List<RecommendationsModel>> GetRecommendations(
+		public async static Task<List<RecommendationModel>> GetRecommendations(
 			int subjectId, int userId)
 		{
-			async Task<KeyValuePair<string, HttpStatusCode>> apiCallback() =>
-				await AppServices.GetRecommendations(subjectId, userId);
-
-			var dataAccess = new DataAccess<RecommendationsModel>(
-				"recommendations_fetch_error", $"{_getRecommendationsKey}/{subjectId}/{userId}");
-			var list = await dataAccess.GetList(apiCallback);
-			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
-			return list;
+			var dataAccess = new DataAccess<RecommendationModel>(
+				"recommendations_fetch_error", () => getRecommendationsCallback(subjectId, userId),
+				$"{GlobalConsts.DataGetRecommendationsKey}/{subjectId}/{userId}");
+			return getDataObject(dataAccess, await dataAccess.GetList()) as List<RecommendationModel>;
 		}
 
+		static object getDataObject(IDataAccess dataAccess, object objectToGet)
+		{
+			setError(dataAccess.ErrorMessage, dataAccess.IsConnectionError);
+			return objectToGet;
+		}
 
 		static void setError(string message, bool isConnectionError)
 		{

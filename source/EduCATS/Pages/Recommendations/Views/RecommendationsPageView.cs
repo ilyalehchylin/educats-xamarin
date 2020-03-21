@@ -1,6 +1,6 @@
-﻿using EduCATS.Controls.RoundedListView;
+﻿using EduCATS.Controls.Pickers;
+using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
-using EduCATS.Controls.SubjectsPickerView;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
@@ -14,6 +14,9 @@ namespace EduCATS.Pages.Recommendations.Views
 {
 	public class RecommendationsPageView : ContentPage
 	{
+		static Thickness _listMargin = new Thickness(10, 10, 10, 15);
+		static Thickness _subjectsMargin = new Thickness(0, 0, 0, 10);
+
 		public RecommendationsPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -51,7 +54,7 @@ namespace EduCATS.Pages.Recommendations.Views
 		SubjectsPickerView createSubjectsPicker()
 		{
 			return new SubjectsPickerView {
-				Margin = new Thickness(0, 0, 0, 10)
+				Margin = _subjectsMargin
 			};
 		}
 
@@ -62,7 +65,7 @@ namespace EduCATS.Pages.Recommendations.Views
 			};
 
 			var listView = new RoundedListView(templateSelector, header) {
-				Margin = new Thickness(10, 10, 10, 15),
+				Margin = _listMargin,
 				IsPullToRefreshEnabled = true
 			};
 
