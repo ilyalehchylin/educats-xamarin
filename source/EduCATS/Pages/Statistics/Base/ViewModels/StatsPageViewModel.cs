@@ -7,6 +7,7 @@ using EduCATS.Data.User;
 using EduCATS.Helpers.Converters;
 using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
+using EduCATS.Helpers.Extensions;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
 using EduCATS.Pages.Pickers;
@@ -172,10 +173,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				stats = new StatsStudentModel();
 			}
 
-			var avgLabs = StringConverter.StringToDouble(stats.AverageLabsMark);
+			var avgLabs = stats.AverageLabsMark.StringToDouble();
 			AverageLabs = avgLabs.ToString(_doubleStringFormat);
 
-			var avgTests = StringConverter.StringToDouble(stats.AverageTestMark);
+			var avgTests = stats.AverageTestMark.StringToDouble();
 			AverageTests = avgTests.ToString(_doubleStringFormat);
 
 			var rating = (avgLabs + avgTests) / 2;

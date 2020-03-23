@@ -1,6 +1,5 @@
 ﻿using EduCATS.Data.Models.News;
 using EduCATS.Helpers.Date;
-using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.Base.Models
 {
@@ -18,7 +17,7 @@ namespace EduCATS.Pages.Today.Base.Models
 				Id = newsModel.Id;
 				Title = newsModel.Title;
 				Body = newsModel.Body;
-				Date = newsModel.EditDate;
+				Date = newsModel.Date;
 
 				if (newsModel.Subject != null) {
 					SubjectName = newsModel.Subject.Name;

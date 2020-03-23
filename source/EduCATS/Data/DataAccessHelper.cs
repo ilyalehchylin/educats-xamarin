@@ -9,30 +9,73 @@ using Xamarin.Essentials;
 
 namespace EduCATS.Data
 {
+	/// <summary>
+	/// Data Access helper.
+	/// </summary>
+	/// <typeparam name="T">Type for data.</typeparam>
 	public partial class DataAccess<T> : IDataAccess where T : new()
 	{
+		/// <summary>
+		/// Success string response.
+		/// </summary>
 		const string _nonJsonSuccessResponse = "\"Ok\"";
 
+		/// <summary>
+		/// Caching key.
+		/// </summary>
 		readonly string _key;
+
+		/// <summary>
+		/// Is caching enabled.
+		/// </summary>
 		readonly bool _isCaching;
+
+		/// <summary>
+		/// Error message.
+		/// </summary>
 		readonly string _messageForError;
-		readonly Func<Task<KeyValuePair<string, HttpStatusCode>>> _callback;
 
+		/// <summary>
+		/// Callback to invoke.
+		/// </summary>
+		static Func<Task<KeyValuePair<string, HttpStatusCode>>> _callback;
+
+		/// <summary>
+		/// Is error occurred.
+		/// </summary>
 		public bool IsError { get; set; }
-		public bool IsConnectionError { get; set; }
-		public string ErrorMessage { get; set; }
 
+		/// <summary>
+		/// Is network connection issue.
+		/// </summary>
+		public bool IsConnectionError { get; set; }
+
+		/// <summary>
+		/// Error message localized key.
+		/// </summary>
+		public string ErrorMessageKey { get; set; }
+
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		/// <param name="messageForError">Error message.</param>
+		/// <param name="callback">Callback to invoke.</param>
+		/// <param name="key">Caching key.</param>
 		public DataAccess(
 			string messageForError,
-			Func<Task<KeyValuePair<string, HttpStatusCode>>> callback,
+			Task<object> callback,
 			string key = null)
 		{
 			_key = key;
-			_callback = callback;
 			_isCaching = !string.IsNullOrEmpty(_key);
 			_messageForError = messageForError;
+			setCallback(callback);
 		}
 
+		/// <summary>
+		/// Get single object.
+		/// </summary>
+		/// <returns>Single object.</returns>
 		public async Task<T> GetSingle()
 		{
 			var singleObject = checkSingleObjectReadyForResponse();
@@ -52,6 +95,10 @@ namespace EduCATS.Data
 			return singleObject;
 		}
 
+		/// <summary>
+		/// Get objects list.
+		/// </summary>
+		/// <returns>Objects list.</returns>
 		public async Task<List<T>> GetList()
 		{
 			var list = checkListReadyForResponse();
@@ -61,7 +108,7 @@ namespace EduCATS.Data
 			}
 
 			var response = await _callback();
-			list = getList(response);
+			list = getListAccess(response);
 
 			if (list == null) {
 				setError(_messageForError);
@@ -71,6 +118,11 @@ namespace EduCATS.Data
 			return list;
 		}
 
+		/// <summary>
+		/// Get data from cache
+		/// and set connection error.
+		/// </summary>
+		/// <returns>Data object.</returns>
 		T checkSingleObjectReadyForResponse()
 		{
 			if (checkConnectionEstablished()) {
@@ -81,6 +133,11 @@ namespace EduCATS.Data
 			return JsonController<T>.ConvertJsonToObject(data) ?? new T();
 		}
 
+		/// <summary>
+		/// Get data list from cache
+		/// and set connection error.
+		/// </summary>
+		/// <returns>List of data.</returns>
 		List<T> checkListReadyForResponse()
 		{
 			if (checkConnectionEstablished()) {
@@ -92,13 +149,22 @@ namespace EduCATS.Data
 			return list ?? new List<T>();
 		}
 
+		/// <summary>
+		/// Get cache and set connection error.
+		/// </summary>
+		/// <returns>Data in string format (<c>json</c>).</returns>
 		string getCacheAndSetConnectionError()
 		{
 			setError("base_connection_error", true);
 			return _key == null ? null : getDataFromCache(_key);
 		}
 
-		List<T> getList(KeyValuePair<string, HttpStatusCode> response)
+		/// <summary>
+		/// Parse response and get list of objects.
+		/// </summary>
+		/// <param name="response">Response.</param>
+		/// <returns>List of objects.</returns>
+		List<T> getListAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
 			switch (response.Value) {
 				case HttpStatusCode.OK:
@@ -118,6 +184,11 @@ namespace EduCATS.Data
 			}
 		}
 
+		/// <summary>
+		/// Parse response and get object.
+		/// </summary>
+		/// <param name="response">Response.</param>
+		/// <returns>Object.</returns>
 		T getAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
 			switch (response.Value) {
@@ -138,13 +209,25 @@ namespace EduCATS.Data
 			}
 		}
 
+		/// <summary>
+		/// Set error details.
+		/// </summary>
+		/// <param name="message">Error message.</param>
+		/// <param name="isConnectionError">Is connection error.</param>
 		void setError(string message, bool isConnectionError = false)
 		{
 			IsError = true;
-			ErrorMessage = message;
+			ErrorMessageKey = message;
 			IsConnectionError = isConnectionError;
 		}
 
+		/// <summary>
+		/// Parse response.
+		/// </summary>
+		/// <param name="responseObject">Response object.</param>
+		/// <param name="key">Caching key.</param>
+		/// <param name="isCaching">Is caching enabled.</param>
+		/// <returns>Json string.</returns>
 		string parseResponse(object responseObject, string key = null, bool isCaching = true)
 		{
 			if (responseObject == null) {
@@ -164,11 +247,36 @@ namespace EduCATS.Data
 			return response.Key;
 		}
 
+		/// <summary>
+		/// Get data from cache.
+		/// </summary>
+		/// <param name="key">Caching key.</param>
+		/// <returns>Json string.</returns>
 		static string getDataFromCache(string key)
 		{
 			return DataCaching<string>.Get(key);
 		}
 
+		/// <summary>
+		/// Set callback variable.
+		/// </summary>
+		/// <param name="callback">Callback object.</param>
+		static void setCallback(Task<object> callback)
+		{
+			if (callback == null) {
+				return;
+			}
+
+			_callback = async () => {
+				var result = await callback;
+				return (KeyValuePair<string, HttpStatusCode>)result;
+			};
+		}
+
+		/// <summary>
+		/// Check network connection.
+		/// </summary>
+		/// <returns><c>True</c> if established.</returns>
 		static bool checkConnectionEstablished()
 		{
 			return Connectivity.NetworkAccess == NetworkAccess.Internet;

@@ -2,14 +2,26 @@
 
 namespace EduCATS.Helpers.Date.Extensions
 {
+	/// <summary>
+	/// <see cref="DateTime"/> extension helpers.
+	/// </summary>
 	public static class DateTimeExtensions
 	{
-		const int _daysNumber = 7;
+		/// <summary>
+		/// Days in week.
+		/// </summary>
+		const int _daysInWeek = 7;
 
-		public static DateTime StartOfWeek(this DateTime dt, DayOfWeek startOfWeek)
+		/// <summary>
+		/// Get start of week.
+		/// </summary>
+		/// <param name="date">Original date.</param>
+		/// <param name="startOfWeek">Start day of week.</param>
+		/// <returns></returns>
+		public static DateTime StartOfWeek(this DateTime date, DayOfWeek startOfWeek)
 		{
-			int diff = (_daysNumber + (dt.DayOfWeek - startOfWeek)) % _daysNumber;
-			return dt.AddDays(-1 * diff).Date;
+			int diff = (_daysInWeek + (date.DayOfWeek - startOfWeek)) % _daysInWeek;
+			return date.AddDays(-1 * diff).Date;
 		}
 	}
 }

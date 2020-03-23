@@ -12,10 +12,19 @@ using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace EduCATS.Pages.Main
 {
+	/// <summary>
+	/// Main page view.
+	/// </summary>
 	public class MainPageView : Xamarin.Forms.TabbedPage
 	{
+		/// <summary>
+		/// Tab height.
+		/// </summary>
 		const double _tabHeight = 10;
 
+		/// <summary>
+		/// Constructor.
+		/// </summary>
 		public MainPageView()
 		{
 			setAndroidConfiguration();
@@ -25,6 +34,9 @@ namespace EduCATS.Pages.Main
 			CurrentPageChanged += pageChanged;
 		}
 
+		/// <summary>
+		/// Set page details.
+		/// </summary>
 		void setPageDetails()
 		{
 			BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor);
@@ -33,6 +45,9 @@ namespace EduCATS.Pages.Main
 			HeightRequest = _tabHeight;
 		}
 
+		/// <summary>
+		/// Set tab pages.
+		/// </summary>
 		void setPages()
 		{
 			Children.Add(
@@ -56,6 +71,13 @@ namespace EduCATS.Pages.Main
 				Theme.Current.MainSettingsIcon));
 		}
 
+		/// <summary>
+		/// Create <c>NavigationPage</c> from <c>Page</c>.
+		/// </summary>
+		/// <param name="page">Page.</param>
+		/// <param name="title">Title.</param>
+		/// <param name="icon">Icon.</param>
+		/// <returns>Navigation page.</returns>
 		NavigationPage createPage(Page page, string title, string icon)
 		{
 			return new NavigationPage(page) {
@@ -64,6 +86,9 @@ namespace EduCATS.Pages.Main
 			};
 		}
 
+		/// <summary>
+		/// Set Android configuration.
+		/// </summary>
 		void setAndroidConfiguration()
 		{
 			if (Device.RuntimePlatform != Device.Android) {
@@ -76,11 +101,19 @@ namespace EduCATS.Pages.Main
 			Effects.Add(new DisabledShiftEffect());
 		}
 
+		/// <summary>
+		/// Page changed.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">Event arguments.</param>
 		void pageChanged(object sender, EventArgs e)
 		{
 			setCurrentTitle();
 		}
 
+		/// <summary>
+		/// Set current title.
+		/// </summary>
 		void setCurrentTitle()
 		{
 			Title = CurrentPage.Title;

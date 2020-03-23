@@ -1,5 +1,12 @@
 ﻿namespace EduCATS.Themes.Interfaces
 {
+	/// <summary>
+	/// App theme interface.
+	/// </summary>
+	/// <remarks>
+	/// Implemented in <see cref="EduCATS.Themes.Templates.DefaultTheme"/>.
+	/// Must be defined here before using in <see cref="EduCATS.Themes.Templates.DefaultTheme"/>.
+	/// </remarks>
 	public interface ITheme
 	{
 		string BaseAppColor { get; }

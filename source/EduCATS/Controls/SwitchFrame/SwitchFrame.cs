@@ -3,10 +3,21 @@ using Xamarin.Forms;
 
 namespace EduCATS.Controls.SwitchFrame
 {
+	/// <summary>
+	/// Frame with switch.
+	/// </summary>
 	public class SwitchFrame : Frame
 	{
+		/// <summary>
+		/// Frame's switch control.
+		/// </summary>
 		public Switch Switch { get; }
 
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		/// <param name="title">Title.</param>
+		/// <param name="description">Description.</param>
 		public SwitchFrame(string title, string description)
 		{
 			HasShadow = false;
@@ -15,6 +26,11 @@ namespace EduCATS.Controls.SwitchFrame
 			createViews(title, description);
 		}
 
+		/// <summary>
+		/// Create views.
+		/// </summary>
+		/// <param name="title">Frame title.</param>
+		/// <param name="description">Frame description.</param>
 		void createViews(string title, string description)
 		{
 			var titleLayout = createTitleLayout(title, description);
@@ -29,6 +45,10 @@ namespace EduCATS.Controls.SwitchFrame
 			};
 		}
 
+		/// <summary>
+		/// Create switch control.
+		/// </summary>
+		/// <returns>Switch control.</returns>
 		Switch createSwitch()
 		{
 			return new Switch {
@@ -36,6 +56,12 @@ namespace EduCATS.Controls.SwitchFrame
 			};
 		}
 
+		/// <summary>
+		/// Create title layout.
+		/// </summary>
+		/// <param name="title">Frame title.</param>
+		/// <param name="description">Frame description.</param>
+		/// <returns>Title layout.</returns>
 		StackLayout createTitleLayout(string title, string description)
 		{
 			var titleLabel = createTitleLabel(title);
@@ -49,6 +75,11 @@ namespace EduCATS.Controls.SwitchFrame
 			};
 		}
 
+		/// <summary>
+		/// Create title label.
+		/// </summary>
+		/// <param name="title">Frame title.</param>
+		/// <returns>Title label.</returns>
 		Label createTitleLabel(string title)
 		{
 			return new Label {
@@ -56,6 +87,11 @@ namespace EduCATS.Controls.SwitchFrame
 			};
 		}
 
+		/// <summary>
+		/// Create description label.
+		/// </summary>
+		/// <param name="description">Frame description.</param>
+		/// <returns>Description label.</returns>
 		Label createDescriptionLabel(string description)
 		{
 			return new Label {

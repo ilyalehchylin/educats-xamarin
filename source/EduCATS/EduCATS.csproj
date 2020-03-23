@@ -145,7 +145,6 @@
         <Folder Include="Pages\Settings\Language\ViewModels\" />
         <Folder Include="Pages\Settings\Language\Views\" />
         <Folder Include="Pages\Settings\Language\Models\" />
-        <Folder Include="Controls\CheckboxViewCell\" />
         <Folder Include="Controls\SwitchFrame\" />
         <Folder Include="Pages\Settings\Server\" />
         <Folder Include="Pages\Settings\Server\Views\" />

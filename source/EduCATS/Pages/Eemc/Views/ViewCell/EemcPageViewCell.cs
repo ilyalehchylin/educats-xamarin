@@ -15,6 +15,7 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 
 		bool _isPublished;
 
+
 		public EemcPageViewCell()
 		{
 			_icon = new CachedImage {

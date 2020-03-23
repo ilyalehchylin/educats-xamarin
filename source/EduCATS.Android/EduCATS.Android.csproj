@@ -89,7 +89,6 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="Resources\AboutResources.txt" />
-        <None Include="Assets\AboutAssets.txt" />
         <None Include="Properties\AndroidManifest.xml" />
     </ItemGroup>
     <ItemGroup>
@@ -341,6 +340,7 @@
         <Folder Include="DependencyServices\" />
         <Folder Include="Effects\" />
         <Folder Include="Resources\xml\" />
+        <Folder Include="Assets\" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\EduCATS\EduCATS.csproj">

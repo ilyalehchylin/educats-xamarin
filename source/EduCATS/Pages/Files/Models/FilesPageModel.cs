@@ -14,18 +14,14 @@ namespace EduCATS.Pages.Files.Models
 
 			Id = file.Id;
 			Name = file.Name;
-			IsNew = file.IsNew;
 			FileName = file.FileName;
 			PathName = file.PathName;
-			AttachmentType = file.AttachmentType;
 		}
 
 		public int Id { get; set; }
-		public bool IsNew { get; set; }
 		public string Name { get; set; }
 		public string FileName { get; set; }
 		public string PathName { get; set; }
-		public int AttachmentType { get; set; }
 
 		public RoundedListTypeEnum GetListType()
 		{

@@ -6,6 +6,9 @@ using Nyxbull.Plugins.CrossLocalization;
 
 namespace EduCATS.Pages.Learning.ViewModels
 {
+	/// <summary>
+	/// Learning page view model.
+	/// </summary>
 	public class LearningPageViewModel : ViewModel
 	{
 		readonly IPages _navigationService;
@@ -17,6 +20,10 @@ namespace EduCATS.Pages.Learning.ViewModels
 		}
 
 		List<LearningPageModel> _cardsList;
+
+		/// <summary>
+		/// Cards list.
+		/// </summary>
 		public List<LearningPageModel> CardsList {
 			get { return _cardsList; }
 			set { SetProperty(ref _cardsList, value); }
@@ -34,6 +41,9 @@ namespace EduCATS.Pages.Learning.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// Set cards list.
+		/// </summary>
 		void setCardList()
 		{
 			CardsList = new List<LearningPageModel> {
@@ -55,6 +65,13 @@ namespace EduCATS.Pages.Learning.ViewModels
 			};
 		}
 
+		/// <summary>
+		/// Get card.
+		/// </summary>
+		/// <param name="title">Card title.</param>
+		/// <param name="image">Card image.</param>
+		/// <param name="id">Card ID.</param>
+		/// <returns></returns>
 		LearningPageModel getCard(string title, string image, int id)
 		{
 			return new LearningPageModel {
@@ -64,6 +81,10 @@ namespace EduCATS.Pages.Learning.ViewModels
 			};
 		}
 
+		/// <summary>
+		/// Open page.
+		/// </summary>
+		/// <param name="selectedObject">Selected object.</param>
 		void openPage(object selectedObject)
 		{
 			if (selectedObject == null || !selectedObject.GetType().Equals(typeof(LearningPageModel))) {
@@ -75,6 +96,10 @@ namespace EduCATS.Pages.Learning.ViewModels
 			openPageById(page.Id);
 		}
 
+		/// <summary>
+		/// Open page by ID.
+		/// </summary>
+		/// <param name="id">Card ID.</param>
 		void openPageById(int id)
 		{
 			switch (id) {

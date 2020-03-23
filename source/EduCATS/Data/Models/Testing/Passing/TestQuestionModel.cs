@@ -2,21 +2,21 @@
 
 namespace EduCATS.Data.Models.Testing.Passing
 {
+	/// <summary>
+	/// Test question model.
+	/// </summary>
 	public class TestQuestionModel
 	{
+		/// <summary>
+		/// Question.
+		/// </summary>
 		[JsonProperty("Question")]
 		public TestQuestionDetailsModel Question { get; set; }
 
+		/// <summary>
+		/// Question number.
+		/// </summary>
 		[JsonProperty("Number")]
 		public int Number { get; set; }
-
-		[JsonProperty("Seconds")]
-		public int Seconds { get; set; }
-
-		[JsonProperty("SetTimeForAllTest")]
-		public bool SetTimeForAllTest { get; set; }
-
-		[JsonProperty("ForSelfStudy")]
-		public bool ForSelfStudy { get; set; }
 	}
 }

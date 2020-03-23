@@ -1,9 +1,23 @@
 ﻿namespace EduCATS.Helpers.Date.Enums
 {
+	/// <summary>
+	/// Week enumeration.
+	/// </summary>
 	public enum WeekEnum
 	{
-		Previous,
+		/// <summary>
+		/// Next week.
+		/// </summary>
+		Next,
+
+		/// <summary>
+		/// Current week.
+		/// </summary>
 		Current,
-		Next
+
+		/// <summary>
+		/// Previous week.
+		/// </summary>
+		Previous,
 	}
 }

@@ -8,11 +8,22 @@ using Acr.UserDialogs;
 
 namespace EduCATS.Droid
 {
+	/// <summary>
+	/// Main activity.
+	/// </summary>
 	[Activity(Label = "EduCATS", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
+		/// <summary>
+		/// Main activity instance.
+		/// </summary>
+		/// <returns>Main activity.</returns>
 		internal static MainActivity Instance { get; private set; }
 
+		/// <summary>
+		/// On create overriding.
+		/// </summary>
+		/// <param name="savedInstanceState">Saved instance state.</param>
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			Instance = this;
@@ -23,6 +34,10 @@ namespace EduCATS.Droid
 			LoadApplication(new App());
 		}
 
+		/// <summary>
+		/// Initialize NuGet packages.
+		/// </summary>
+		/// <param name="savedInstanceState">Saved instance state.</param>
 		void initPackages(Bundle savedInstanceState)
 		{
 			Platform.Init(this, savedInstanceState);
@@ -31,6 +46,12 @@ namespace EduCATS.Droid
 			UserDialogs.Init(this);
 		}
 
+		/// <summary>
+		/// Permissions handler.
+		/// </summary>
+		/// <param name="requestCode">Request code.</param>
+		/// <param name="permissions">Permissions.</param>
+		/// <param name="grantResults">Grant results.</param>
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
 		{
 			Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);

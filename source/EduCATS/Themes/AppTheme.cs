@@ -4,25 +4,45 @@ using EduCATS.Themes.Templates;
 
 namespace EduCATS.Themes
 {
+	/// <summary>
+	/// Application theme helper.
+	/// </summary>
 	public static class AppTheme
 	{
+		/// <summary>
+		/// Dark theme key.
+		/// </summary>
 		public const string ThemeDark = "THEME_DARK";
+
+		/// <summary>
+		/// Default (light) theme key.
+		/// </summary>
 		public const string ThemeDefault = "THEME_DEFAULT";
 
-		static ITheme currentTheme = new DefaultTheme();
+		/// <summary>
+		/// Current theme.
+		/// </summary>
+		static ITheme _currentTheme = new DefaultTheme();
 
+		/// <summary>
+		/// Set current theme with application <see cref="AppPrefs"/>.
+		/// </summary>
 		public static void SetCurrentTheme() =>
 			SetTheme(AppPrefs.Theme);
 
+		/// <summary>
+		/// Set theme with theme key.
+		/// </summary>
+		/// <param name="theme">Theme key.</param>
 		public static void SetTheme(string theme)
 		{
-			currentTheme = theme switch
+			_currentTheme = theme switch
 			{
 				ThemeDark => new DarkTheme(),
 				_ => new DefaultTheme(),
 			};
 
-			Theme.Set(currentTheme);
+			Theme.Set(_currentTheme);
 			AppPrefs.Theme = theme;
 		}
 	}

@@ -6,17 +6,40 @@ using System.Threading.Tasks;
 
 namespace EduCATS.Networking
 {
+	/// <summary>
+	/// Network requests handler.
+	/// </summary>
 	public class RequestController
 	{
+		/// <summary>
+		/// HTTP client.
+		/// </summary>
 		readonly HttpClient _client;
+
+		/// <summary>
+		/// <c>POST</c> content.
+		/// </summary>
 		StringContent _postContent;
 
+		/// <summary>
+		/// Request timeout in seconds.
+		/// </summary>
 		const int _timeoutSeconds = 30;
 
+		/// <summary>
+		/// URL.
+		/// </summary>
 		public string Url { get; set; }
 
+		/// <summary>
+		/// Uri.
+		/// </summary>
 		public Uri Uri => Url == null ? null : new Uri(Url);
 
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		/// <param name="url">URL.</param>
 		public RequestController(string url = null)
 		{
 			Url = url;
@@ -26,6 +49,12 @@ namespace EduCATS.Networking
 			};
 		}
 
+		/// <summary>
+		/// Set <c>POST</c> content.
+		/// </summary>
+		/// <param name="content">Content.</param>
+		/// <param name="encoding">Encoding.</param>
+		/// <param name="mediaType">Content type.</param>
 		public void SetPostContent(string content, Encoding encoding, string mediaType)
 		{
 			if (!string.IsNullOrEmpty(content)) {
@@ -33,6 +62,12 @@ namespace EduCATS.Networking
 			}
 		}
 
+		/// <summary>
+		/// Send request.
+		/// </summary>
+		/// <param name="httpMethod"><c>HTTP</c> method.</param>
+		/// <remarks><c>GET</c> and <c>POST</c> requests are supported only.</remarks>
+		/// <returns>Response.</returns>
 		public async Task<HttpResponseMessage> SendRequest(HttpMethod httpMethod)
 		{
 			if (httpMethod == HttpMethod.Get) {
@@ -46,6 +81,10 @@ namespace EduCATS.Networking
 			return null;
 		}
 
+		/// <summary>
+		/// <c>GET</c> request.
+		/// </summary>
+		/// <returns>Response.</returns>
 		async Task<HttpResponseMessage> get()
 		{
 			try {
@@ -57,6 +96,10 @@ namespace EduCATS.Networking
 			}
 		}
 
+		/// <summary>
+		/// <c>POST</c> request.
+		/// </summary>
+		/// <returns>Response.</returns>
 		async Task<HttpResponseMessage> post()
 		{
 			try {
@@ -68,6 +111,11 @@ namespace EduCATS.Networking
 			}
 		}
 
+		/// <summary>
+		/// Get error response.
+		/// </summary>
+		/// <param name="statusCode">Status code.</param>
+		/// <returns>Error response.</returns>
 		HttpResponseMessage errorResponseMessage(HttpStatusCode statusCode) =>
 			new HttpResponseMessage {
 				Content = new StringContent(string.Empty),

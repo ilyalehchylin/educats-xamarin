@@ -2,8 +2,17 @@
 
 namespace EduCATS.Helpers.Json
 {
+	/// <summary>
+	/// Json helper with template.
+	/// </summary>
+	/// <typeparam name="T">Type to handle.</typeparam>
 	public static class JsonController<T>
 	{
+		/// <summary>
+		/// Convert Json string to <see cref="T"/>.
+		/// </summary>
+		/// <param name="content">Json string.</param>
+		/// <returns>Object.</returns>
 		public static T ConvertJsonToObject(string content)
 		{
 			if (string.IsNullOrEmpty(content)) {
@@ -12,15 +21,6 @@ namespace EduCATS.Helpers.Json
 
 			var items = JsonConvert.DeserializeObject<T>(content);
 			return items;
-		}
-
-		public static T ConvertJsonToObject(object contentObject)
-		{
-			if (contentObject != null) {
-				return ConvertJsonToObject(contentObject.ToString());
-			}
-
-			return default;
 		}
 	}
 }

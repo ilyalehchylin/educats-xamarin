@@ -2,6 +2,12 @@
 
 namespace EduCATS.Themes.Templates
 {
+	/// <summary>
+	/// <see cref="ITheme"/> implementation (Default light theme).
+	/// </summary>
+	/// <remarks>
+	/// Used to set values for a theme.
+	/// </remarks>
 	public class DefaultTheme : ITheme
 	{
 		const string _greyColor = "#808080";

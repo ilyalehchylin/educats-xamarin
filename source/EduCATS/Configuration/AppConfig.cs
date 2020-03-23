@@ -7,25 +7,40 @@ using Nyxbull.Plugins.CrossLocalization;
 
 namespace EduCATS.Configuration
 {
+	/// <summary>
+	/// Application configuration.
+	/// </summary>
 	public static class AppConfig
 	{
+		/// <summary>
+		/// Configure packages, app helpers and tools.
+		/// </summary>
 		public static void InitialSetup()
 		{
 			setupPackages();
 			setupTheme();
 		}
 
+		/// <summary>
+		/// Configure NuGet packages.
+		/// </summary>
 		static void setupPackages()
 		{
 			setupLocalization();
 			setupCaching();
 		}
 
+		/// <summary>
+		/// Set current app theme.
+		/// </summary>
 		static void setupTheme()
 		{
 			AppTheme.SetCurrentTheme();
 		}
 
+		/// <summary>
+		/// Configure localization package.
+		/// </summary>
 		static void setupLocalization()
 		{
 			var assembly = typeof(App).GetTypeInfo().Assembly;
@@ -41,6 +56,10 @@ namespace EduCATS.Configuration
 			CrossLocalization.SetLanguage(AppPrefs.LanguageCode);
 		}
 
+
+		/// <summary>
+		/// Configure caching package.
+		/// </summary>
 		static void setupCaching()
 		{
 			Barrel.ApplicationId = GlobalConsts.AppId;

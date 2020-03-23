@@ -4,8 +4,16 @@ using Newtonsoft.Json.Linq;
 
 namespace EduCATS.Helpers.Json
 {
+	/// <summary>
+	/// Json helper.
+	/// </summary>
 	public static class JsonController
 	{
+		/// <summary>
+		/// Is JSON valid.
+		/// </summary>
+		/// <param name="json">Json to check.</param>
+		/// <returns>Result.</returns>
 		public static bool IsJsonValid(string json)
 		{
 			if (string.IsNullOrEmpty(json)) {
@@ -28,6 +36,11 @@ namespace EduCATS.Helpers.Json
 			return false;
 		}
 
+		/// <summary>
+		/// Convert <c>object</c> to Json string.
+		/// </summary>
+		/// <param name="contentObject">Object to convert.</param>
+		/// <returns></returns>
 		public static string ConvertObjectToJson(object contentObject)
 		{
 			return contentObject != null ? JsonConvert.SerializeObject(contentObject) : null;

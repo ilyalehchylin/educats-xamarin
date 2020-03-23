@@ -4,11 +4,24 @@ using Xamarin.Essentials;
 
 namespace EduCATS.Helpers.Settings
 {
+	/// <summary>
+	/// Application preferences (settings/saved variables).
+	/// </summary>
 	public static class AppPrefs
 	{
+		/// <summary>
+		/// Language code key.
+		/// </summary>
 		const string _languageCodeKey = "APP_LANG_CODE";
+
+		/// <summary>
+		/// Default language code.
+		/// </summary>
 		static readonly string _languageCodeDefault = Languages.SYSTEM.LangCode;
 
+		/// <summary>
+		/// Language code.
+		/// </summary>
 		public static string LanguageCode {
 			get {
 				return Preferences.Get(_languageCodeKey, _languageCodeDefault);
@@ -17,9 +30,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Theme key.
+		/// </summary>
 		const string _themeKey = "APP_THEME";
+
+		/// <summary>
+		/// Default theme.
+		/// </summary>
 		const string _themeDefault = Themes.AppTheme.ThemeDefault;
 
+		/// <summary>
+		/// Theme.
+		/// </summary>
 		public static string Theme {
 			get {
 				return Preferences.Get(_themeKey, _themeDefault);
@@ -28,9 +51,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Server key.
+		/// </summary>
 		const string _serverKey = "APP_SERVER";
+
+		/// <summary>
+		/// Default server.
+		/// </summary>
 		const string _serverDefault = Servers.EduCatsBntuAddress;
 
+		/// <summary>
+		/// Current server.
+		/// </summary>
 		public static string Server {
 			get {
 				return Preferences.Get(_serverKey, _serverDefault);
@@ -39,9 +72,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Is authorized key.
+		/// </summary>
 		const string _isLoggedInKey = "IS_LOGGED_IN";
+
+		/// <summary>
+		/// Default authorized value.
+		/// </summary>
 		const bool _isLoggedInDefault = false;
 
+		/// <summary>
+		/// Is authorized.
+		/// </summary>
 		public static bool IsLoggedIn {
 			get {
 				return Preferences.Get(_isLoggedInKey, _isLoggedInDefault);
@@ -51,9 +94,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Username key.
+		/// </summary>
 		const string _userLoginKey = "USER_LOGIN";
+
+		/// <summary>
+		/// Default username.
+		/// </summary>
 		const string _userLoginDefault = null;
 
+		/// <summary>
+		/// Username.
+		/// </summary>
 		public static string UserLogin {
 			get {
 				return Preferences.Get(_userLoginKey, _userLoginDefault);
@@ -63,9 +116,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// User ID key.
+		/// </summary>
 		const string _userIdKey = "USER_ID";
+
+		/// <summary>
+		/// Default user ID.
+		/// </summary>
 		const int _userIdDefault = 0;
 
+		/// <summary>
+		/// User ID.
+		/// </summary>
 		public static int UserId {
 			get {
 				return Preferences.Get(_userIdKey, _userIdDefault);
@@ -75,9 +138,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Chosen subject ID key.
+		/// </summary>
 		const string _chosenSubjectIdKey = "CHOSEN_SUBJECT_ID";
+
+		/// <summary>
+		/// Default chosen ID.
+		/// </summary>
 		static readonly int _chosenSubjectIdDefault = 0;
 
+		/// <summary>
+		/// Chosen subject ID.
+		/// </summary>
 		public static int ChosenSubjectId {
 			get {
 				return Preferences.Get(_chosenSubjectIdKey, _chosenSubjectIdDefault);
@@ -87,9 +160,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Group ID key.
+		/// </summary>
 		const string _groupIdKey = "USER_GROUP_ID";
+
+		/// <summary>
+		/// Default group ID.
+		/// </summary>
 		static readonly int _groupIdDefault = -1;
 
+		/// <summary>
+		/// Group ID.
+		/// </summary>
 		public static int GroupId {
 			get {
 				return Preferences.Get(_groupIdKey, _groupIdDefault);
@@ -99,9 +182,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Group name key.
+		/// </summary>
 		const string _groupNameKey = "USER_GROUP_NAME";
+
+		/// <summary>
+		/// Default group name.
+		/// </summary>
 		static readonly string _groupNameDefault = "";
 
+		/// <summary>
+		/// Group name.
+		/// </summary>
 		public static string GroupName {
 			get {
 				return Preferences.Get(_groupNameKey, _groupNameDefault);
@@ -111,9 +204,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Group avatar key.
+		/// </summary>
 		const string _avatarKey = "USER_AVATAR";
+
+		/// <summary>
+		/// Default avatar string.
+		/// </summary>
 		static readonly string _avatarDefault = "";
 
+		/// <summary>
+		/// Avatar.
+		/// </summary>
 		public static string Avatar {
 			get {
 				return Preferences.Get(_avatarKey, _avatarDefault);
@@ -123,9 +226,19 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Chosen group ID key.
+		/// </summary>
 		const string _chosenGroupIdKey = "CHOSEN_GROUP_ID";
+
+		/// <summary>
+		/// Default chosen group ID.
+		/// </summary>
 		static readonly int _chosenGroupIdDefault = 0;
 
+		/// <summary>
+		/// Chosen group ID.
+		/// </summary>
 		public static int ChosenGroupId {
 			get {
 				return Preferences.Get(_chosenGroupIdKey, _chosenGroupIdDefault);
@@ -135,6 +248,9 @@ namespace EduCATS.Helpers.Settings
 			}
 		}
 
+		/// <summary>
+		/// Delete all preferences.
+		/// </summary>
 		public static void ResetPrefs()
 		{
 			Preferences.Clear();

@@ -1,10 +1,10 @@
-﻿using EduCATS.Controls.CheckboxViewCell;
-using EduCATS.Controls.RoundedListView;
+﻿using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
 using EduCATS.Pages.Settings.Server.ViewModels;
+using EduCATS.Pages.Settings.Views.Base.ViewCells;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;

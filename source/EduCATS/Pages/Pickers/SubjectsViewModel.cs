@@ -12,6 +12,10 @@ using Xamarin.Forms;
 
 namespace EduCATS.Pages.Pickers
 {
+	/// <summary>
+	/// Subjects view model.
+	/// </summary>
+	/// <remarks>Used for Subjects picker.</remarks>
 	public class SubjectsViewModel : ViewModel
 	{
 		public readonly IDialogs DialogService;
@@ -71,6 +75,10 @@ namespace EduCATS.Pages.Pickers
 			}
 		}
 
+		/// <summary>
+		/// Setup subjects.
+		/// </summary>
+		/// <returns>Task.</returns>
 		public async Task SetupSubjects()
 		{
 			var subjects = await getSubjects();
@@ -83,6 +91,10 @@ namespace EduCATS.Pages.Pickers
 			setupSubject();
 		}
 
+		/// <summary>
+		/// Fetch subjects.
+		/// </summary>
+		/// <returns>List of subjects.</returns>
 		async Task<IList<SubjectModel>> getSubjects()
 		{
 			var subjects = await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin);
@@ -95,6 +107,10 @@ namespace EduCATS.Pages.Pickers
 			return subjects;
 		}
 
+		/// <summary>
+		/// Setup subject by subject name.
+		/// </summary>
+		/// <param name="subjectName">Subject name.</param>
 		void setupSubject(string subjectName = null)
 		{
 			if (!checkSubjectsList()) {

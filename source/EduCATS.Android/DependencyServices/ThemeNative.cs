@@ -6,8 +6,15 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(ThemeNative))]
 namespace EduCATS.Droid.DependencyServices
 {
+	/// <summary>
+	/// Dependency service (<see cref="IThemeNative"/> implementation).
+	/// </summary>
 	public class ThemeNative : IThemeNative
 	{
+		/// <summary>
+		/// Set status & navigation bar colors.
+		/// </summary>
+		/// <param name="colorHex">Hex color.</param>
 		public void SetColors(string colorHex)
 		{
 			var activity = MainActivity.Instance;

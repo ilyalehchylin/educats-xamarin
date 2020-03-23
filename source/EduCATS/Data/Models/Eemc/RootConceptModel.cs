@@ -3,26 +3,21 @@ using Newtonsoft.Json;
 
 namespace EduCATS.Data.Models.Eemc
 {
+	/// <summary>
+	/// Electronic Educational Methodological Complexes
+	/// root concept model.
+	/// </summary>
 	public class RootConceptModel
 	{
-		[JsonProperty("Code")]
-		public string Code { get; set; }
-
-		[JsonProperty("DataD")]
-		public object DataD { get; set; }
-
-		[JsonProperty("Message")]
-		public string Message { get; set; }
-
-		[JsonProperty("Children")]
-		public object Children { get; set; }
-
-		[JsonProperty("Concept")]
-		public object Concept { get; set; }
-
+		/// <summary>
+		/// Root concept list.
+		/// </summary>
 		[JsonProperty("Concepts")]
 		public List<ConceptModel> Concepts { get; set; }
 
+		/// <summary>
+		/// Subject name.
+		/// </summary>
 		[JsonProperty("SubjectName")]
 		public string SubjectName { get; set; }
 	}

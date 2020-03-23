@@ -2,18 +2,34 @@
 using FFImageLoading.Forms;
 using Xamarin.Forms;
 
-namespace EduCATS.Controls.CheckboxViewCell
+namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 {
+	/// <summary>
+	/// Checkbox view cell.
+	/// </summary>
 	public class CheckboxViewCell : ViewCell
 	{
+		/// <summary>
+		/// Checkbox height.
+		/// </summary>
 		const double _checkboxHeight = 25;
+
+		/// <summary>
+		/// Checkbox padding.
+		/// </summary>
 		static Thickness _padding = new Thickness(20);
 
+		/// <summary>
+		/// Constructor.
+		/// </summary>
 		public CheckboxViewCell()
 		{
 			createViews();
 		}
 
+		/// <summary>
+		/// Create views.
+		/// </summary>
 		void createViews()
 		{
 			var titleLayout = createTitleLayout();
@@ -30,6 +46,10 @@ namespace EduCATS.Controls.CheckboxViewCell
 			};
 		}
 
+		/// <summary>
+		/// Create checkbox.
+		/// </summary>
+		/// <returns>Checkbox image.</returns>
 		CachedImage createCheckbox()
 		{
 			var checkbox = new CachedImage {
@@ -43,6 +63,10 @@ namespace EduCATS.Controls.CheckboxViewCell
 			return checkbox;
 		}
 
+		/// <summary>
+		/// Create title layout.
+		/// </summary>
+		/// <returns>Title layout.</returns>
 		StackLayout createTitleLayout()
 		{
 			var title = createTitle();
@@ -56,6 +80,10 @@ namespace EduCATS.Controls.CheckboxViewCell
 			};
 		}
 
+		/// <summary>
+		/// Create title label.
+		/// </summary>
+		/// <returns>Title label.</returns>
 		Label createTitle()
 		{
 			var title = new Label();
@@ -63,6 +91,10 @@ namespace EduCATS.Controls.CheckboxViewCell
 			return title;
 		}
 
+		/// <summary>
+		/// Create description label.
+		/// </summary>
+		/// <returns>Description label.</returns>
 		Label createDescription()
 		{
 			var description = new Label {

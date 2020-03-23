@@ -2,17 +2,40 @@
 
 namespace EduCATS.Controls.Pickers
 {
+	/// <summary>
+	/// Groups picker view.
+	/// </summary>
 	public class GroupsPickerView : Frame
 	{
-		public Color GroupTextColor { get; set; }
-		public FontAttributes GroupTextFontAttributes { get; set; }
-
+		/// <summary>
+		/// Chosen group property.
+		/// </summary>
+		/// <remarks>
+		/// <c>"ChosenGroup"</c> by default.
+		/// </remarks>
 		public string ChosenGroupProperty { get; set; }
+
+		/// <summary>
+		/// Chosen group command property.
+		/// </summary>
+		/// <remarks>
+		/// <c>"ChooseGroupCommand"</c> by default.
+		/// </remarks>
 		public string ChooseGroupCommandProperty { get; set; }
 
+		/// <summary>
+		/// Default chosen group property.
+		/// </summary>
 		const string _chosenGroupPropertyDefault = "ChosenGroup";
+
+		/// <summary>
+		/// Default choose group command property.
+		/// </summary>
 		const string _chooseGroupCommandPropertyDefault = "ChooseGroupCommand";
 
+		/// <summary>
+		/// Constructor.
+		/// </summary>
 		public GroupsPickerView()
 		{
 			HasShadow = false;
@@ -23,6 +46,9 @@ namespace EduCATS.Controls.Pickers
 			setGestureRecognizer();
 		}
 
+		/// <summary>
+		/// Create views.
+		/// </summary>
 		void createViews()
 		{
 			Content = new StackLayout {
@@ -33,11 +59,13 @@ namespace EduCATS.Controls.Pickers
 			};
 		}
 
+		/// <summary>
+		/// Create group label.
+		/// </summary>
+		/// <returns>Group label.</returns>
 		Label createGroupLabel()
 		{
 			var group = new Label {
-				TextColor = GroupTextColor,
-				FontAttributes = GroupTextFontAttributes,
 				HorizontalTextAlignment = TextAlignment.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
@@ -46,6 +74,9 @@ namespace EduCATS.Controls.Pickers
 			return group;
 		}
 
+		/// <summary>
+		/// Set tap gesture recognizer.
+		/// </summary>
 		void setGestureRecognizer()
 		{
 			var tapGesture = new TapGestureRecognizer();

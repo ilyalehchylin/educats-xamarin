@@ -27,10 +27,13 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		/// <summary>
 		/// Time for question/entire test completion.
-		/// If _isTimeForEntireTest is set to TRUE,
-		/// the time will be in minutes, otherwise - in seconds.
 		/// </summary>
+		/// <remarks>
+		/// If <c>_isTimeForEntireTest</c> is set to <c>true</c>,
+		/// the time will be in minutes, in seconds otherwise.
+		/// </remarks>
 		bool _isTimeForEntireTest;
+
 		int _questionCount;
 		string _testIdString;
 		int _questionNumber;

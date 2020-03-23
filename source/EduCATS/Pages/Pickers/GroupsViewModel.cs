@@ -11,6 +11,10 @@ using Xamarin.Forms;
 
 namespace EduCATS.Pages.Pickers
 {
+	/// <summary>
+	/// Groups view model.
+	/// </summary>
+	/// <remarks>Used for Group picker.</remarks>
 	public class GroupsViewModel : ViewModel
 	{
 		public readonly int SubjectId;
@@ -45,6 +49,10 @@ namespace EduCATS.Pages.Pickers
 			}
 		}
 
+		/// <summary>
+		/// Setup groups.
+		/// </summary>
+		/// <returns>Task.</returns>
 		public async Task SetupGroups()
 		{
 			var groups = await getGroups();
@@ -57,6 +65,10 @@ namespace EduCATS.Pages.Pickers
 			setupGroup();
 		}
 
+		/// <summary>
+		/// Fetch groups.
+		/// </summary>
+		/// <returns>List of groups.</returns>
 		async Task<IList<GroupItemModel>> getGroups()
 		{
 			var groups = await DataAccess.GetOnlyGroups(SubjectId);
@@ -69,6 +81,10 @@ namespace EduCATS.Pages.Pickers
 			return groups.GroupsList;
 		}
 
+		/// <summary>
+		/// Setup group with group name.
+		/// </summary>
+		/// <param name="groupName">Group name.</param>
 		void setupGroup(string groupName = null)
 		{
 			if (!checkGroupsList()) {

@@ -36,52 +36,61 @@ namespace EduCATS.Pages.Login.ViewModels
 			_pages = pages;
 		}
 
+		bool _isLoading;
+
 		/// <summary>
 		/// Property for checking loading status.
 		/// </summary>
-		bool _isLoading;
 		public bool IsLoading {
 			get { return _isLoading; }
 			set { SetProperty(ref _isLoading, value); }
 		}
 
+		bool _isLoadingCompleted;
+
 		/// <summary>
 		/// Property for checking loading status completion.
 		/// </summary>
-		bool _isLoadingCompleted;
 		public bool IsLoadingCompleted {
 			get { return _isLoadingCompleted; }
 			set { SetProperty(ref _isLoadingCompleted, value); }
 		}
 
+		string _username;
+
 		/// <summary>
 		/// Username property.
 		/// </summary>
-		string _username;
 		public string Username {
 			get { return _username; }
 			set { SetProperty(ref _username, value); }
 		}
 
+		string _password;
+
 		/// <summary>
 		/// Password property.
 		/// </summary>
-		string _password;
 		public string Password {
 			get { return _password; }
 			set { SetProperty(ref _password, value); }
 		}
 
+		bool _isPasswordHidden;
+
 		/// <summary>
 		/// Property for checking if password is hidden.
 		/// </summary>
-		bool _isPasswordHidden;
 		public bool IsPasswordHidden {
 			get { return _isPasswordHidden; }
 			set { SetProperty(ref _isPasswordHidden, value); }
 		}
 
 		Command _loginCommand;
+
+		/// <summary>
+		/// Login command.
+		/// </summary>
 		public Command LoginCommand {
 			get {
 				return _loginCommand ?? (_loginCommand = new Command(async () => await startLogin()));
@@ -89,6 +98,10 @@ namespace EduCATS.Pages.Login.ViewModels
 		}
 
 		Command _hidePasswordCommand;
+
+		/// <summary>
+		/// Hide password command.
+		/// </summary>
 		public Command HidePasswordCommand {
 			get {
 				return _hidePasswordCommand ?? (_hidePasswordCommand = new Command(hidePassword));
@@ -96,6 +109,10 @@ namespace EduCATS.Pages.Login.ViewModels
 		}
 
 		Command _settingsCommand;
+
+		/// <summary>
+		/// Settigns command.
+		/// </summary>
 		public Command SettingsCommand {
 			get {
 				return _settingsCommand ?? (_settingsCommand = new Command(
@@ -104,7 +121,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		}
 
 		/// <summary>
-		/// Login method.
+		/// Authorization method.
 		/// </summary>
 		/// <returns>Task.</returns>
 		protected async Task startLogin()
@@ -187,19 +204,12 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Gets profile data by username and user's ID and saves it.
 		/// </summary>
-		/// <param name="username">Username</param>
-		/// <param name="userId">User's ID</param>
+		/// <param name="username">Username.</param>
 		/// <returns>Task.</returns>
 		async Task<UserProfileModel> getProfileData(string username)
 		{
 			var userProfile = await DataAccess.GetProfileInfo(username);
-
-			if (userProfile != null) {
-				AppUserData.SetProfileData(userProfile);
-				AppPrefs.GroupName = userProfile.GroupName;
-				AppPrefs.Avatar = userProfile.Avatar;
-			}
-
+			AppUserData.SetProfileData(userProfile);
 			return userProfile;
 		}
 

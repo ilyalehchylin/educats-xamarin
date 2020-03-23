@@ -13,21 +13,55 @@ using Xamarin.Forms;
 
 namespace EduCATS.Pages.Eemc.ViewModels
 {
+	/// <summary>
+	/// EEMC page view model.
+	/// </summary>
 	public class EemcPageViewModel : SubjectsViewModel
 	{
+		/// <summary>
+		/// Test identifier string.
+		/// </summary>
 		const string _testString = "test";
 
+		/// <summary>
+		/// Search ID.
+		/// </summary>
 		readonly int _searchId;
+
+		/// <summary>
+		/// Pages navigation.
+		/// </summary>
 		readonly IPages _navigation;
+
+		/// <summary>
+		/// Previous concepts.
+		/// </summary>
 		readonly Stack<ConceptModel> _previousConcepts;
 
+		/// <summary>
+		/// Root ID.
+		/// </summary>
 		int _rootId;
+
+		/// <summary>
+		/// Backup root concepts with children.
+		/// </summary>
 		ConceptModel _backupRootConceptsWithChildren;
+
+		/// <summary>
+		/// Backup root concepts without children.
+		/// </summary>
 		List<ConceptModel> _backupRootConceptsWithoutChildren;
 
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		/// <param name="dialogs">App dialogs.</param>
+		/// <param name="device">App device.</param>
+		/// <param name="navigation">Pages navigation.</param>
+		/// <param name="searchId">Search ID.</param>
 		public EemcPageViewModel(
-			IDialogs dialogs, IDevice device,
-			IPages navigation, int searchId) : base(dialogs, device)
+			IDialogs dialogs, IDevice device, IPages navigation, int searchId) : base(dialogs, device)
 		{
 			IsRoot = true;
 			_navigation = navigation;
@@ -39,24 +73,40 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		}
 
 		List<ConceptModel> _concepts;
+
+		/// <summary>
+		/// Concepts.
+		/// </summary>
 		public List<ConceptModel> Concepts {
 			get { return _concepts; }
 			set { SetProperty(ref _concepts, value); }
 		}
 
 		bool _isBackActionPossible;
+
+		/// <summary>
+		/// Is back action possible.
+		/// </summary>
 		public bool IsBackActionPossible {
 			get { return _isBackActionPossible; }
 			set { SetProperty(ref _isBackActionPossible, value); }
 		}
 
 		bool _isRoot;
+
+		/// <summary>
+		/// Is root directory.
+		/// </summary>
 		public bool IsRoot {
 			get { return _isRoot; }
 			set { SetProperty(ref _isRoot, value); }
 		}
 
 		object _selectedItem;
+
+		/// <summary>
+		/// Selected item.
+		/// </summary>
 		public object SelectedItem {
 			get { return _selectedItem; }
 			set {
@@ -66,12 +116,20 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		}
 
 		Command _backCommand;
+
+		/// <summary>
+		/// Back command.
+		/// </summary>
 		public Command BackCommand {
 			get {
 				return _backCommand ?? (_backCommand = new Command(goBack));
 			}
 		}
 
+		/// <summary>
+		/// Refresh data.
+		/// </summary>
+		/// <returns>Task.</returns>
 		async Task update()
 		{
 			await SetupSubjects();
@@ -86,6 +144,10 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			IsBackActionPossible = false;
 		}
 
+		/// <summary>
+		/// Set root concepts.
+		/// </summary>
+		/// <returns>Task.</returns>
 		async Task setRootConcepts()
 		{
 			var userId = AppUserData.UserId.ToString();
@@ -104,6 +166,11 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// Open concepts.
+		/// </summary>
+		/// <param name="selectedObject">Selected object.</param>
+		/// <returns>Task.</returns>
 		async Task openConcepts(object selectedObject)
 		{
 			if (selectedObject == null || !(selectedObject is ConceptModel)) {
@@ -122,6 +189,10 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// Search for book.
+		/// </summary>
+		/// <param name="id">Concept ID.</param>
 		void searchForBook(int id)
 		{
 			if (Concepts == null) {
@@ -135,6 +206,12 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// Get concept.
+		/// </summary>
+		/// <param name="concepts">Concepts.</param>
+		/// <param name="id">Concept ID.</param>
+		/// <returns>Concept.</returns>
 		ConceptModel getConcept(List<ConceptModel> concepts, int id)
 		{
 			var item = concepts.FirstOrDefault(c => c.Id == id);
@@ -151,6 +228,11 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			return item;
 		}
 
+		/// <summary>
+		/// Set concepts from root.
+		/// </summary>
+		/// <param name="id">Element ID.</param>
+		/// <returns>Task.</returns>
 		async Task setConceptsFromRoot(int id)
 		{
 			var conceptTree = await DataAccess.GetConceptTree(id);
@@ -172,6 +254,11 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			IsBackActionPossible = true;
 		}
 
+		/// <summary>
+		/// Set or open concept.
+		/// </summary>
+		/// <param name="selectedConcept">Selected object.</param>
+		/// <param name="id">Concept ID.</param>
 		void setOrOpenConcept(ConceptModel selectedConcept, int id)
 		{
 			if (Concepts == null) {
@@ -192,17 +279,30 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			openConcept(concept, selectedConcept);
 		}
 
+		/// <summary>
+		/// Open file.
+		/// </summary>
+		/// <param name="filePath">File path.</param>
 		void openFile(string filePath)
 		{
 			DeviceService.MainThread(() => DeviceService.OpenUri($"{Servers.Current}/{filePath}"));
 		}
 
+		/// <summary>
+		/// Open test.
+		/// </summary>
+		/// <param name="id">Test ID.</param>
 		void openTest(int id)
 		{
 			DeviceService.MainThread(
 				async () => await _navigation.OpenTestPassing(id, true));
 		}
 
+		/// <summary>
+		/// Open concept.
+		/// </summary>
+		/// <param name="conceptToCheck">Concept to check.</param>
+		/// <param name="conceptToPush">Concept to push.</param>
 		void openConcept(ConceptModel conceptToCheck, ConceptModel conceptToPush = null)
 		{
 			if (conceptToCheck.IsGroup) {
@@ -213,6 +313,9 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// Open previous directory.
+		/// </summary>
 		void goBack()
 		{
 			if (_previousConcepts.Count == 0) {

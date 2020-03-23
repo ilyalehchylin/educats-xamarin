@@ -1,0 +1,63 @@
+{
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [
+            "source/EduCATS.sln"
+          ]
+        }
+      ],
+      "dest": "api",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": true
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files": [
+          "articles/**.md",
+          "toc.yml",
+          "articles/toc.yml",
+          "*.md"
+        ],
+        "exclude": [
+          "README.md",
+          "graphics/*"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "favicon.ico",
+          "logo.svg"
+        ]
+      }
+    ],
+    "globalMetadata": {
+      "_appFaviconPath": "favicon.ico",
+      "_appLogoPath": "logo.svg"
+    },
+    "dest": ".",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "statictoc",
+      "material/material"
+    ],
+    "postProcessors": [],
+    "markdownEngineName": "markdig",
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false,
+    "disableGitFeatures": false
+  }
+}

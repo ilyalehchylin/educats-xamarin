@@ -16,6 +16,9 @@ using Xamarin.Forms;
 
 namespace EduCATS.Pages.Files.ViewModels
 {
+	/// <summary>
+	/// Files page view model.
+	/// </summary>
 	public class FilesPageViewModel : SubjectsViewModel
 	{
 		const string _filenameKey = "filename";
@@ -23,24 +26,41 @@ namespace EduCATS.Pages.Files.ViewModels
 
 		object _progressDialog;
 
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		/// <param name="dialogs">App dialogs.</param>
+		/// <param name="device">App device.</param>
 		public FilesPageViewModel(IDialogs dialogs, IDevice device) : base(dialogs, device)
 		{
 			Task.Run(async () => await update());
 		}
 
 		List<FilesPageModel> fileList;
+
+		/// <summary>
+		/// File list.
+		/// </summary>
 		public List<FilesPageModel> FileList {
 			get { return fileList; }
 			set { SetProperty(ref fileList, value); }
 		}
 
 		bool _isLoading;
+
+		/// <summary>
+		/// Is loading.
+		/// </summary>
 		public bool IsLoading {
 			get { return _isLoading; }
 			set { SetProperty(ref _isLoading, value); }
 		}
 
 		object _selectedItem;
+
+		/// <summary>
+		/// Selected item.
+		/// </summary>
 		public object SelectedItem {
 			get { return _selectedItem; }
 			set {
@@ -50,6 +70,10 @@ namespace EduCATS.Pages.Files.ViewModels
 		}
 
 		Command _refreshCommand;
+
+		/// <summary>
+		/// Refresh command.
+		/// </summary>
 		public Command RefreshCommand {
 			get {
 				return _refreshCommand ?? (_refreshCommand = new Command(
@@ -57,6 +81,10 @@ namespace EduCATS.Pages.Files.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// Refresh data.
+		/// </summary>
+		/// <returns>Task.</returns>
 		async Task update()
 		{
 			IsLoading = true;
@@ -65,6 +93,10 @@ namespace EduCATS.Pages.Files.ViewModels
 			IsLoading = false;
 		}
 
+		/// <summary>
+		/// Get file list.
+		/// </summary>
+		/// <returns>Task.</returns>
 		async Task getFiles()
 		{
 			var filesModel = await DataAccess.GetFiles(CurrentSubject.Id);
@@ -80,6 +112,10 @@ namespace EduCATS.Pages.Files.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// Open file.
+		/// </summary>
+		/// <param name="selectedObject">Selected object.</param>
 		void openFile(object selectedObject)
 		{
 			if (selectedObject == null || !(selectedObject is FilesPageModel)) {
@@ -114,6 +150,11 @@ namespace EduCATS.Pages.Files.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// Download completed.
+		/// </summary>
+		/// <param name="sender">Web client.</param>
+		/// <param name="e">Event arguments.</param>
 		private void downloadCompleted(object sender, AsyncCompletedEventArgs e)
 		{
 			if (sender == null) {
@@ -126,12 +167,22 @@ namespace EduCATS.Pages.Files.ViewModels
 			completeDownload(fileName, pathForFile);
 		}
 
+		/// <summary>
+		/// Complete download.
+		/// </summary>
+		/// <param name="fileName">File name.</param>
+		/// <param name="pathForFile">Path for file.</param>
 		void completeDownload(string fileName, string pathForFile)
 		{
 			hideDownloading();
 			DeviceService.MainThread(() => DeviceService.ShareFile(fileName, pathForFile));
 		}
 
+		/// <summary>
+		/// Download progress changed.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">Event arguments.</param>
 		private void downloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
 		{
 			double bytesIn = double.Parse(e.BytesReceived.ToString());
@@ -140,16 +191,26 @@ namespace EduCATS.Pages.Files.ViewModels
 			updateDownloadingProgress(percentage);
 		}
 
+		/// <summary>
+		/// Hide downloading.
+		/// </summary>
 		void hideDownloading()
 		{
 			DeviceService.MainThread(() => DialogService.HideProgress(_progressDialog));
 		}
 
+		/// <summary>
+		/// Update downloading progress.
+		/// </summary>
+		/// <param name="percentage">Percentage.</param>
 		void updateDownloadingProgress(double percentage)
 		{
 			DeviceService.MainThread(() => DialogService.UpdateProgress(_progressDialog, (int)percentage));
 		}
 
+		/// <summary>
+		/// Set downloading.
+		/// </summary>
 		void setDownloading()
 		{
 			DeviceService.MainThread(
