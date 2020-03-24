@@ -368,5 +368,16 @@
             <Name>EduCATS</Name>
         </ProjectReference>
     </ItemGroup>
+    <ItemGroup>
+      <AndroidAsset Include="Assets\Pacifico-Regular.ttf" />
+      <AndroidAsset Include="Assets\CormorantGaramond-Regular.ttf" />
+      <AndroidAsset Include="Assets\Roboto-Regular.ttf" />
+      <AndroidAsset Include="Assets\Oswald-Regular.ttf" />
+      <AndroidAsset Include="Assets\RobotoCondensed-Regular.ttf" />
+      <AndroidAsset Include="Assets\Montserrat-Regular.ttf" />
+      <AndroidAsset Include="Assets\OpenSans-Regular.ttf" />
+      <AndroidAsset Include="Assets\PTSerif-Regular.ttf" />
+      <AndroidAsset Include="Assets\PTSans-Regular.ttf" />
+    </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

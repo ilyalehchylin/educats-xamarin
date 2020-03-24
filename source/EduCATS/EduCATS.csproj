@@ -157,13 +157,38 @@
         <Folder Include="Pages\Settings\Themes\Views\" />
         <Folder Include="Pages\Settings\Themes\ViewModels\" />
         <Folder Include="Pages\Settings\Themes\Models\" />
+        <Folder Include="Fonts\" />
+        <Folder Include="Fonts\Resources\" />
+        <Folder Include="Properties\" />
+        <Folder Include="Pages\Settings\Fonts\" />
+        <Folder Include="Pages\Settings\Fonts\Views\" />
+        <Folder Include="Pages\Settings\Fonts\ViewModels\" />
+        <Folder Include="Pages\Settings\Fonts\Models\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />
         <None Remove="Localization\ru.json" />
+        <None Remove="Fonts\Resources\Pacifico-Regular.ttf" />
+        <None Remove="Fonts\Resources\CormorantGaramond-Regular.ttf" />
+        <None Remove="Fonts\Resources\Roboto-Regular.ttf" />
+        <None Remove="Fonts\Resources\Oswald-Regular.ttf" />
+        <None Remove="Fonts\Resources\RobotoCondensed-Regular.ttf" />
+        <None Remove="Fonts\Resources\Montserrat-Regular.ttf" />
+        <None Remove="Fonts\Resources\OpenSans-Regular.ttf" />
+        <None Remove="Fonts\Resources\PTSerif-Regular.ttf" />
+        <None Remove="Fonts\Resources\PTSans-Regular.ttf" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Localization\en.json" />
         <EmbeddedResource Include="Localization\ru.json" />
+        <EmbeddedResource Include="Fonts\Resources\Pacifico-Regular.ttf" />
+        <EmbeddedResource Include="Fonts\Resources\CormorantGaramond-Regular.ttf" />
+        <EmbeddedResource Include="Fonts\Resources\Roboto-Regular.ttf" />
+        <EmbeddedResource Include="Fonts\Resources\Oswald-Regular.ttf" />
+        <EmbeddedResource Include="Fonts\Resources\RobotoCondensed-Regular.ttf" />
+        <EmbeddedResource Include="Fonts\Resources\Montserrat-Regular.ttf" />
+        <EmbeddedResource Include="Fonts\Resources\OpenSans-Regular.ttf" />
+        <EmbeddedResource Include="Fonts\Resources\PTSerif-Regular.ttf" />
+        <EmbeddedResource Include="Fonts\Resources\PTSans-Regular.ttf" />
     </ItemGroup>
 </Project>

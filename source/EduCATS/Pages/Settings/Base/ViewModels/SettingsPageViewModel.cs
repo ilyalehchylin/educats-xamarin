@@ -133,7 +133,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			} else if (title.Equals(themeTitle)) {
 				await _navigation.OpenSettingsTheme(themeTitle);
 			} else if (title.Equals(fontTitle)) {
-
+				await _navigation.OpenSettingsFont(fontTitle);
 			} else if (title.Equals(logoutTitle)) {
 				await logout();
 			}

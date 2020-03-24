@@ -16,32 +16,32 @@ namespace EduCATS.Helpers.Dialogs
 		/// <summary>
 		/// Localized "OK" text.
 		/// </summary>
-		static readonly string _baseOK = CrossLocalization.Translate("base_ok");
+		static string _baseOK => CrossLocalization.Translate("base_ok");
 
 		/// <summary>
 		/// Localized "No" text.
 		/// </summary>
-		static readonly string _baseNo = CrossLocalization.Translate("base_no");
+		static string _baseNo => CrossLocalization.Translate("base_no");
 
 		/// <summary>
 		/// Localized "Yes" text.
 		/// </summary>
-		static readonly string _baseYes = CrossLocalization.Translate("base_yes");
+		static string _baseYes => CrossLocalization.Translate("base_yes");
 
 		/// <summary>
 		/// Localized "Error" text.
 		/// </summary>
-		static readonly string _baseError = CrossLocalization.Translate("base_error");
+		static string _baseError => CrossLocalization.Translate("base_error");
 
 		/// <summary>
 		/// Localized "Cancel" text.
 		/// </summary>
-		static readonly string _baseCancel = CrossLocalization.Translate("base_cancel");
+		static string _baseCancel => CrossLocalization.Translate("base_cancel");
 
 		/// <summary>
 		/// Localized "Loading" text.
 		/// </summary>
-		static readonly string _baseLoading = CrossLocalization.Translate("base_loading");
+		static string _baseLoading => CrossLocalization.Translate("base_loading");
 
 		/// <summary>
 		/// Property for getting <see cref="Application.Current.MainPage"/>.

@@ -16,6 +16,8 @@
 	"theme_default": "Default theme (Light)",
 	"theme_dark": "Dark theme",
 
+	"font_default": "Default font",
+
 	"login_username": "Username",
 	"login_password": "Password",
 	"login_text": "Login",
@@ -112,5 +114,10 @@
 	"settings_server_change_message": "Are you sure you want to change server? This action will logout you from the current account.",
 
 	"settings_theme_choose": "Theme selection",
-	"settings_theme_change_message": "Are you sure you want to change theme? This action will reload application."
+	"settings_theme_change_message": "Are you sure you want to change theme? This action will reload application.",
+
+	"settings_font_choose": "Font selection",
+	"settings_font_change_message": "Are you sure you want to change font? This action will reload application.",
+	"settings_font_large": "Large font",
+	"settings_font_large_description": "Make application's text larger."
 }

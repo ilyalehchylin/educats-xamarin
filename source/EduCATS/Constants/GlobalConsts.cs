@@ -106,5 +106,10 @@
 		/// Cache expiration (in days).
 		/// </summary>
 		public const int CacheExpirationInDays = 7;
+
+		/// <summary>
+		/// Android platform.
+		/// </summary>
+		public const string AndroidPlatform = "Android";
 	}
 }

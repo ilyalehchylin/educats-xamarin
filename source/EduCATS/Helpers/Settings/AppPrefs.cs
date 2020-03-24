@@ -1,4 +1,5 @@
-﻿using EduCATS.Networking;
+﻿using EduCATS.Fonts;
+using EduCATS.Networking;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Essentials;
 
@@ -205,6 +206,42 @@ namespace EduCATS.Helpers.Settings
 		public static int ChosenGroupId {
 			get => Preferences.Get(_chosenGroupIdKey, _chosenGroupIdDefault);
 			set => Preferences.Set(_chosenGroupIdKey, value);
+		}
+
+		/// <summary>
+		/// Font key.
+		/// </summary>
+		const string _fontKey = "FONT_KEY";
+
+		/// <summary>
+		/// Default font.
+		/// </summary>
+		static readonly string _fontDefault = FontsController.DefaultFont;
+
+		/// <summary>
+		/// Font.
+		/// </summary>
+		public static string Font {
+			get => Preferences.Get(_fontKey, _fontDefault);
+			set => Preferences.Set(_fontKey, value);
+		}
+
+		/// <summary>
+		/// Is large font key.
+		/// </summary>
+		const string _isLargeFontKey = "IS_LARGE_FONT";
+
+		/// <summary>
+		/// Is large font default.
+		/// </summary>
+		static readonly bool _isLargeFontDefault = false;
+
+		/// <summary>
+		/// Is large font.
+		/// </summary>
+		public static bool IsLargeFont {
+			get => Preferences.Get(_isLargeFontKey, _isLargeFontDefault);
+			set => Preferences.Set(_isLargeFontKey, value);
 		}
 
 		/// <summary>

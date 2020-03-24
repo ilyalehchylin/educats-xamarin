@@ -90,6 +90,7 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 				TextColor = Color.FromHex(Theme.Current.SettingsTitleColor)
 			};
 
+			title.SetBinding(Label.FontFamilyProperty, "Font");
 			title.SetBinding(Label.TextProperty, "Title");
 			return title;
 		}

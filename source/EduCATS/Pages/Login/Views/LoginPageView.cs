@@ -8,6 +8,7 @@ using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
 using FFImageLoading.Transformations;
 using System.Collections.Generic;
+using EduCATS.Fonts;
 
 namespace EduCATS.Pages.Login.Views
 {
@@ -169,7 +170,9 @@ namespace EduCATS.Pages.Login.Views
 				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
 				Margin = _baseSpacing,
-				HeightRequest = _controlHeight
+				HeightRequest = _controlHeight,
+				FontFamily = FontsController.GetCurrentFont(),
+				FontSize = FontSizeController.GetSize(NamedSize.Medium, typeof(Button))
 			};
 
 			loginButton.SetBinding(Button.CommandProperty, "LoginCommand");

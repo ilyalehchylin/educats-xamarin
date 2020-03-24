@@ -16,6 +16,8 @@
     "theme_default": "Стандартная тема (Светлая)",
     "theme_dark": "Темная тема",
 
+    "font_default": "Стандартный шрифт",
+
     "login_username": "Имя пользователя",
     "login_password": "Пароль",
     "login_text": "Войти",
@@ -112,5 +114,10 @@
     "settings_server_change_message": "Вы действительно хотите изменить сервер? Это действие приведет вас к выходу из текущей учетной записи.",
 
     "settings_theme_choose": "Выбор темы",
-    "settings_theme_change_message": "Вы действительно хотите изменить тему? Это действие перезагрузит приложение."
+    "settings_theme_change_message": "Вы действительно хотите изменить тему? Это действие перезагрузит приложение.",
+
+    "settings_font_choose": "Выбор шрифта",
+    "settings_font_change_message": "Вы действительно хотите изменить шрифт? Это действие перезагрузит приложение.",
+    "settings_font_large": "Большой шрифт",
+    "settings_font_large_description": "Сделать шрифт в приложении больше."
 }

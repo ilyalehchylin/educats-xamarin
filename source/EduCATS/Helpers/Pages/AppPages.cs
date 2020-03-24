@@ -8,6 +8,7 @@ using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
 using EduCATS.Pages.Recommendations.Views;
 using EduCATS.Pages.Settings.Base.Views;
+using EduCATS.Pages.Settings.Fonts.Views;
 using EduCATS.Pages.Settings.Language.Views;
 using EduCATS.Pages.Settings.Server.Views;
 using EduCATS.Pages.Settings.Themes.Views;
@@ -177,6 +178,14 @@ namespace EduCATS.Helpers.Pages
 		/// <returns>Task.</returns>
 		public async Task OpenSettingsTheme(string title) =>
 			await pushPage(new ThemePageView(), title);
+
+		/// <summary>
+		/// Open Settings Font page.
+		/// </summary>
+		/// <param name="title">Title.</param>
+		/// <returns>Task.</returns>
+		public async Task OpenSettingsFont(string title) =>
+			await pushPage(new FontsPageView(), title);
 
 		/// <summary>
 		/// Change Application's main page without animation.
