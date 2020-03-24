@@ -136,6 +136,7 @@ namespace EduCATS.Pages.Testing.Passing.Views
 		Label createQuestionLabel()
 		{
 			var questionLabel = new Label {
+				TextColor = Color.FromHex(Theme.Current.TestPassingQuestionColor),
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
 			};
 

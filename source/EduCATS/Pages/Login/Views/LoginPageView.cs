@@ -23,6 +23,8 @@ namespace EduCATS.Pages.Login.Views
 		const double _mascotImage = 200;
 		const double _loginFormSpacing = 0;
 		const double _settingsIconSize = 45;
+		const double _showPasswordIconSize = 30;
+
 		static Thickness _loginFormPadding = new Thickness(20, 0);
 		static Thickness _baseSpacing = new Thickness(0, 10, 0, 0);
 		static Thickness _iosSettingsMargin = new Thickness(20, 40);
@@ -177,6 +179,7 @@ namespace EduCATS.Pages.Login.Views
 		CachedImage createShowPasswordImage()
 		{
 			var showPasswordImage = new CachedImage {
+				HeightRequest = _showPasswordIconSize,
 				Aspect = Aspect.AspectFit,
 				Margin = _showPasswordIconMargin,
 				HorizontalOptions = LayoutOptions.EndAndExpand,

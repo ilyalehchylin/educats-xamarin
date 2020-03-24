@@ -64,6 +64,7 @@ namespace EduCATS.Pages.Files.Views
 				Padding = _headerPadding,
 				FontAttributes = FontAttributes.Bold,
 				Text = CrossLocalization.Translate("learning_card_files"),
+				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor)
 			};

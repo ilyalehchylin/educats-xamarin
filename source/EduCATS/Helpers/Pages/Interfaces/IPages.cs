@@ -120,5 +120,12 @@ namespace EduCATS.Helpers.Pages.Interfaces
 		/// <param name="title">Title.</param>
 		/// <returns>Task.</returns>
 		Task OpenSettingsServer(string title);
+
+		/// <summary>
+		/// Open Settings Theme page.
+		/// </summary>
+		/// <param name="title">Title.</param>
+		/// <returns>Task.</returns>
+		Task OpenSettingsTheme(string title);
 	}
 }

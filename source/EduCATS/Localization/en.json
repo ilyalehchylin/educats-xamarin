@@ -13,6 +13,9 @@
 	"server_local": "Local server",
 	"server_stable": "Stable server",
 
+	"theme_default": "Default theme (Light)",
+	"theme_dark": "Dark theme",
+
 	"login_username": "Username",
 	"login_password": "Password",
 	"login_text": "Login",
@@ -106,5 +109,8 @@
 	"settings_language_change_message": "Are you sure you want to change language? This action will reload application.",
 
 	"settings_server_choose": "Server selection",
-	"settings_server_change_message": "Are you sure you want to change server? This action will logout you from the current account."
+	"settings_server_change_message": "Are you sure you want to change server? This action will logout you from the current account.",
+
+	"settings_theme_choose": "Theme selection",
+	"settings_theme_change_message": "Are you sure you want to change theme? This action will reload application."
 }

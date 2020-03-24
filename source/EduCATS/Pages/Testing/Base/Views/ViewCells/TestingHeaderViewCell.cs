@@ -16,6 +16,7 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 			var sectionLabel = new Label {
 				FontAttributes = FontAttributes.Bold,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
+				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
 			};
 

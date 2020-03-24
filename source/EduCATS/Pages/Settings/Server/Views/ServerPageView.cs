@@ -38,6 +38,7 @@ namespace EduCATS.Pages.Settings.Server.Views
 				Margin = _chooseLabelMargin,
 				FontAttributes = FontAttributes.Bold,
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
+				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				Text = CrossLocalization.Translate("settings_server_choose")
 			};
 		}

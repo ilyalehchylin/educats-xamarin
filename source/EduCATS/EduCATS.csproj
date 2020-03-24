@@ -153,6 +153,10 @@
         <Folder Include="Controls\Pickers\" />
         <Folder Include="Data\Interfaces\" />
         <Folder Include="Helpers\Extensions\" />
+        <Folder Include="Pages\Settings\Themes\" />
+        <Folder Include="Pages\Settings\Themes\Views\" />
+        <Folder Include="Pages\Settings\Themes\ViewModels\" />
+        <Folder Include="Pages\Settings\Themes\Models\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />

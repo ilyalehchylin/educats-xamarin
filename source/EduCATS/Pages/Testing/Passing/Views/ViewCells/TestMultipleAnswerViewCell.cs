@@ -32,6 +32,7 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 			_answer.SetBinding(Label.TextProperty, "Content");
 
 			View = new Frame {
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				HasShadow = false,
 				Margin = _frameMargin,
 				CornerRadius = _frameRadius,
@@ -55,8 +56,8 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 				return;
 			}
 
-			_boxView.Color = Color.FromHex(Theme.Current.AppStatusBarBackgroundColor);
-			_answer.TextColor = Color.FromHex(Theme.Current.AppStatusBarBackgroundColor);
+			_boxView.Color = Color.FromHex(Theme.Current.TestPassingSelectionColor);
+			_answer.TextColor = Color.FromHex(Theme.Current.TestPassingSelectionColor);
 			_answer.FontAttributes = FontAttributes.Bold;
 		}
 	}

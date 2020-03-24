@@ -83,6 +83,7 @@ namespace EduCATS.Controls.SwitchFrame
 		Label createTitleLabel(string title)
 		{
 			return new Label {
+				TextColor = Color.FromHex(Theme.Current.SwitchFrameTextColor),
 				Text = title
 			};
 		}

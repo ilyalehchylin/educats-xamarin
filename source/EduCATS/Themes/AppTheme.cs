@@ -27,14 +27,13 @@ namespace EduCATS.Themes
 		/// <summary>
 		/// Set current theme with application <see cref="AppPrefs"/>.
 		/// </summary>
-		public static void SetCurrentTheme() =>
-			SetTheme(AppPrefs.Theme);
+		public static void SetCurrentTheme() => SetTheme(AppPrefs.Theme, true);
 
 		/// <summary>
 		/// Set theme with theme key.
 		/// </summary>
 		/// <param name="theme">Theme key.</param>
-		public static void SetTheme(string theme)
+		public static void SetTheme(string theme, bool fromPrefs = false)
 		{
 			_currentTheme = theme switch
 			{
@@ -43,7 +42,10 @@ namespace EduCATS.Themes
 			};
 
 			Theme.Set(_currentTheme);
-			AppPrefs.Theme = theme;
+
+			if (!fromPrefs) {
+				AppPrefs.Theme = theme;
+			}
 		}
 	}
 }

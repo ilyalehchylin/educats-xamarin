@@ -97,6 +97,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 		Label createUserLabel()
 		{
 			var userLabel = new Label {
+				TextColor = Color.FromHex(Theme.Current.SettingsTitleColor),
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
@@ -107,7 +108,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 		Label createGroupLabel()
 		{
 			var userGroupLabel = new Label {
-				TextColor = Color.FromHex(Theme.Current.SettingsUserColor)
+				TextColor = Color.FromHex(Theme.Current.SettingsGroupUserColor)
 			};
 
 			userGroupLabel.SetBinding(Label.TextProperty, "Group");

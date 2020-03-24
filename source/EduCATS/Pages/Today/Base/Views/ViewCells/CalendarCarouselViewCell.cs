@@ -27,7 +27,8 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 
 			var monthYearLabel = new Label {
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				TextColor = Color.FromHex(Theme.Current.TodayCalendarBaseTextColor)
 			};
 
 			monthYearLabel.SetBinding(Label.TextProperty, "MonthYear");

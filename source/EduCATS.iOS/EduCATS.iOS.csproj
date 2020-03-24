@@ -144,7 +144,6 @@
         <BundleResource Include="Resources\image_background_1.jpg" />
         <BundleResource Include="Resources\image_background_3.jpg" />
         <BundleResource Include="Resources\image_mascot.png" />
-        <BundleResource Include="Resources\icon_show_password.png" />
         <BundleResource Include="Resources\icon_learning%401x.png" />
         <BundleResource Include="Resources\icon_learning%402x.png" />
         <BundleResource Include="Resources\icon_learning%403x.png" />
@@ -226,5 +225,14 @@
         <BundleResource Include="Resources\icon_checkmark%401x.png" />
         <BundleResource Include="Resources\icon_checkmark%402x.png" />
         <BundleResource Include="Resources\icon_checkmark%403x.png" />
+        <BundleResource Include="Resources\image_background_1_dark.jpg" />
+        <BundleResource Include="Resources\image_background_2_dark.jpg" />
+        <BundleResource Include="Resources\image_background_3_dark.jpg" />
+        <BundleResource Include="Resources\icon_show_password_dark%401x.png" />
+        <BundleResource Include="Resources\icon_show_password_dark%402x.png" />
+        <BundleResource Include="Resources\icon_show_password_dark%403x.png" />
+        <BundleResource Include="Resources\icon_show_password%401x.png" />
+        <BundleResource Include="Resources\icon_show_password%402x.png" />
+        <BundleResource Include="Resources\icon_show_password%403x.png" />
     </ItemGroup>
 </Project>

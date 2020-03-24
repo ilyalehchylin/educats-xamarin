@@ -246,6 +246,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 			var calendarDaysModelList = weekDates
 				.Select(d => new CalendarViewDayModel {
+					TextColor = Theme.Current.TodayCalendarBaseTextColor,
 					Day = d.Day,
 					Month = d.Month,
 					Year = d.Year

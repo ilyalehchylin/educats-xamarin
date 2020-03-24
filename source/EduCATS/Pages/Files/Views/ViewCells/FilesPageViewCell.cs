@@ -9,7 +9,10 @@ namespace EduCATS.Pages.Files.Views.ViewCells
 
 		public FilesPageViewCell()
 		{
-			var title = new Label();
+			var title = new Label {
+				TextColor = Color.FromHex(Theme.Current.FilesTitleColor)
+			};
+
 			title.SetBinding(Label.TextProperty, "Name");
 
 			View = new StackLayout {

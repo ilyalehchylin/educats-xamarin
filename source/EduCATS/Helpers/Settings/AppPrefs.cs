@@ -23,11 +23,8 @@ namespace EduCATS.Helpers.Settings
 		/// Language code.
 		/// </summary>
 		public static string LanguageCode {
-			get {
-				return Preferences.Get(_languageCodeKey, _languageCodeDefault);
-			} set {
-				Preferences.Set(_languageCodeKey, value);
-			}
+			get => Preferences.Get(_languageCodeKey, _languageCodeDefault);
+			set => Preferences.Set(_languageCodeKey, value);
 		}
 
 		/// <summary>
@@ -44,11 +41,8 @@ namespace EduCATS.Helpers.Settings
 		/// Theme.
 		/// </summary>
 		public static string Theme {
-			get {
-				return Preferences.Get(_themeKey, _themeDefault);
-			} set {
-				Preferences.Set(_themeKey, value);
-			}
+			get => Preferences.Get(_themeKey, _themeDefault);
+			set => Preferences.Set(_themeKey, value);
 		}
 
 		/// <summary>
@@ -65,11 +59,8 @@ namespace EduCATS.Helpers.Settings
 		/// Current server.
 		/// </summary>
 		public static string Server {
-			get {
-				return Preferences.Get(_serverKey, _serverDefault);
-			} set {
-				Preferences.Set(_serverKey, value);
-			}
+			get => Preferences.Get(_serverKey, _serverDefault);
+			set => Preferences.Set(_serverKey, value);
 		}
 
 		/// <summary>
@@ -86,12 +77,8 @@ namespace EduCATS.Helpers.Settings
 		/// Is authorized.
 		/// </summary>
 		public static bool IsLoggedIn {
-			get {
-				return Preferences.Get(_isLoggedInKey, _isLoggedInDefault);
-			}
-			set {
-				Preferences.Set(_isLoggedInKey, value);
-			}
+			get => Preferences.Get(_isLoggedInKey, _isLoggedInDefault);
+			set => Preferences.Set(_isLoggedInKey, value);
 		}
 
 		/// <summary>
@@ -108,12 +95,8 @@ namespace EduCATS.Helpers.Settings
 		/// Username.
 		/// </summary>
 		public static string UserLogin {
-			get {
-				return Preferences.Get(_userLoginKey, _userLoginDefault);
-			}
-			set {
-				Preferences.Set(_userLoginKey, value);
-			}
+			get => Preferences.Get(_userLoginKey, _userLoginDefault);
+			set => Preferences.Set(_userLoginKey, value);
 		}
 
 		/// <summary>
@@ -130,12 +113,8 @@ namespace EduCATS.Helpers.Settings
 		/// User ID.
 		/// </summary>
 		public static int UserId {
-			get {
-				return Preferences.Get(_userIdKey, _userIdDefault);
-			}
-			set {
-				Preferences.Set(_userIdKey, value);
-			}
+			get => Preferences.Get(_userIdKey, _userIdDefault);
+			set => Preferences.Set(_userIdKey, value);
 		}
 
 		/// <summary>
@@ -152,12 +131,8 @@ namespace EduCATS.Helpers.Settings
 		/// Chosen subject ID.
 		/// </summary>
 		public static int ChosenSubjectId {
-			get {
-				return Preferences.Get(_chosenSubjectIdKey, _chosenSubjectIdDefault);
-			}
-			set {
-				Preferences.Set(_chosenSubjectIdKey, value);
-			}
+			get => Preferences.Get(_chosenSubjectIdKey, _chosenSubjectIdDefault);
+			set => Preferences.Set(_chosenSubjectIdKey, value);
 		}
 
 		/// <summary>
@@ -174,12 +149,8 @@ namespace EduCATS.Helpers.Settings
 		/// Group ID.
 		/// </summary>
 		public static int GroupId {
-			get {
-				return Preferences.Get(_groupIdKey, _groupIdDefault);
-			}
-			set {
-				Preferences.Set(_groupIdKey, value);
-			}
+			get => Preferences.Get(_groupIdKey, _groupIdDefault);
+			set => Preferences.Set(_groupIdKey, value);
 		}
 
 		/// <summary>
@@ -196,12 +167,8 @@ namespace EduCATS.Helpers.Settings
 		/// Group name.
 		/// </summary>
 		public static string GroupName {
-			get {
-				return Preferences.Get(_groupNameKey, _groupNameDefault);
-			}
-			set {
-				Preferences.Set(_groupNameKey, value);
-			}
+			get => Preferences.Get(_groupNameKey, _groupNameDefault);
+			set => Preferences.Set(_groupNameKey, value);
 		}
 
 		/// <summary>
@@ -218,12 +185,8 @@ namespace EduCATS.Helpers.Settings
 		/// Avatar.
 		/// </summary>
 		public static string Avatar {
-			get {
-				return Preferences.Get(_avatarKey, _avatarDefault);
-			}
-			set {
-				Preferences.Set(_avatarKey, value);
-			}
+			get => Preferences.Get(_avatarKey, _avatarDefault);
+			set => Preferences.Set(_avatarKey, value);
 		}
 
 		/// <summary>
@@ -240,12 +203,8 @@ namespace EduCATS.Helpers.Settings
 		/// Chosen group ID.
 		/// </summary>
 		public static int ChosenGroupId {
-			get {
-				return Preferences.Get(_chosenGroupIdKey, _chosenGroupIdDefault);
-			}
-			set {
-				Preferences.Set(_chosenGroupIdKey, value);
-			}
+			get => Preferences.Get(_chosenGroupIdKey, _chosenGroupIdDefault);
+			set => Preferences.Set(_chosenGroupIdKey, value);
 		}
 
 		/// <summary>

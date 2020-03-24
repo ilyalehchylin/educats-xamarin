@@ -9,7 +9,10 @@ namespace EduCATS.Pages.Statistics.Students.Views.ViewCells
 
 		public StudentsPageViewCell()
 		{
-			var nameLabel = new Label();
+			var nameLabel = new Label {
+				TextColor = Color.FromHex(Theme.Current.StatisticsBaseTitleColor)
+			};
+
 			nameLabel.SetBinding(Label.TextProperty, "Name");
 
 			View = new StackLayout {

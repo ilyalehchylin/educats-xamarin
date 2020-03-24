@@ -9,7 +9,10 @@ namespace EduCATS.Pages.Recommendations.Views.ViewCells
 
 		public RecommendationsPageViewCell()
 		{
-			var title = new Label();
+			var title = new Label {
+				TextColor = Color.FromHex(Theme.Current.RecommendationsTitleColor)
+			};
+
 			title.SetBinding(Label.TextProperty, "Text");
 
 			View = new StackLayout {

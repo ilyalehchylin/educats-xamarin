@@ -20,6 +20,7 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 				$"<body style='" +
 					$"font-family:{_fontFamily};" +
 					$"padding:{_fontPadding}px;" +
+					$"color:{Theme.Current.NewsTextColor};" +
 					$"font-size: {_fontSize}vw;" +
 					$"background-color:{Theme.Current.AppBackgroundColor};'>" +
 						$"{body}" +

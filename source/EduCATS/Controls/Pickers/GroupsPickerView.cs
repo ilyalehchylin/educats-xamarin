@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using EduCATS.Themes;
+using Xamarin.Forms;
 
 namespace EduCATS.Controls.Pickers
 {
@@ -41,6 +42,7 @@ namespace EduCATS.Controls.Pickers
 			HasShadow = false;
 			ChosenGroupProperty = _chosenGroupPropertyDefault;
 			ChooseGroupCommandProperty = _chooseGroupCommandPropertyDefault;
+			BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor);
 
 			createViews();
 			setGestureRecognizer();
@@ -66,6 +68,7 @@ namespace EduCATS.Controls.Pickers
 		Label createGroupLabel()
 		{
 			var group = new Label {
+				TextColor = Color.FromHex(Theme.Current.BasePickerTextColor),
 				HorizontalTextAlignment = TextAlignment.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};

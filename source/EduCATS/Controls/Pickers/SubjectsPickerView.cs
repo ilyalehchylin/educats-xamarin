@@ -1,4 +1,5 @@
 ﻿using EduCATS.Helpers.Converters;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Controls.Pickers
@@ -58,6 +59,7 @@ namespace EduCATS.Controls.Pickers
 			ChosenSubjectProperty = _chosenSubjectPropertyDefault;
 			ChosenSubjectColorProperty = _chosenSubjectColorPropertyDefault;
 			ChooseSubjectCommandProperty = _chooseSubjectCommandPropertyDefault;
+			BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor);
 
 			createViews();
 			setGestureRecognizer();
@@ -107,6 +109,7 @@ namespace EduCATS.Controls.Pickers
 		Label createSubjectLabel()
 		{
 			var subject = new Label {
+				TextColor = Color.FromHex(Theme.Current.BasePickerTextColor),
 				HorizontalTextAlignment = TextAlignment.Center,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};

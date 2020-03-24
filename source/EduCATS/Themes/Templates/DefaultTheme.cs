@@ -20,12 +20,15 @@ namespace EduCATS.Themes.Templates
 		virtual public string BaseBlockColor => _whiteColor;
 		virtual public string BaseArrowForwardIcon => "icon_forward";
 		virtual public string BaseCloseIcon => "icon_close";
+		virtual public string BaseSectionTextColor => _blackColor;
+		virtual public string BaseActivityIndicatorColor => _blackColor;
+		virtual public string BasePickerTextColor => _blackColor;
 
 		virtual public string AppBackgroundColor => _lightGreyColor;
 		virtual public string AppStatusBarBackgroundColor => _baseBlueColor;
 		virtual public string AppNavigationBarBackgroundColor => _whiteColor;
 
-		virtual public string RoundedListViewBackgroundColor => BaseBlockColor;
+		virtual public string RoundedListViewBackgroundColor => _whiteColor;
 
 		virtual public string LoginBackground1Image => "image_background_1";
 		virtual public string LoginBackground2Image => "image_background_2";
@@ -58,6 +61,8 @@ namespace EduCATS.Themes.Templates
 		virtual public string TodayNotSelectedDateColor => "Transparent";
 		virtual public string TodaySelectedDateTextColor => _whiteColor;
 		virtual public string TodayNotSelectedDateTextColor => _blackColor;
+		virtual public string TodayCalendarBaseTextColor => _blackColor;
+		virtual public string TodayCalendarSubjectTextColor => _blackColor;
 
 		virtual public string NewsTextColor => _blackColor;
 
@@ -75,6 +80,8 @@ namespace EduCATS.Themes.Templates
 		virtual public string StatisticsCollapseIcon => "icon_collapse";
 		virtual public string StatisticsCalendarIcon => "icon_calendar";
 		virtual public string StatisticsCommentIcon => "icon_comment";
+		virtual public string StatisticsBaseTitleColor => _blackColor;
+		virtual public string StatisticsBaseRatingTextColor => _blackColor;
 
 		virtual public string LearningCardTextColor => _whiteColor;
 
@@ -92,10 +99,14 @@ namespace EduCATS.Themes.Templates
 		virtual public string TestPassingAnswerColor => _greyColor;
 		virtual public string TestPassingArrowUpIcon => "icon_arrow_up";
 		virtual public string TestPassingArrowDownIcon => "icon_arrow_down";
+		virtual public string TestPassingQuestionColor => _blackColor;
+		virtual public string TestPassingSelectionColor => _baseBlueColor;
+		virtual public string TestPassingUnselectedColor => _blackColor;
 
 		virtual public string TestResultsAnswerTextColor => _blackColor;
 		virtual public string TestResultsCorrectAnswerColor => "#00AA55";
 		virtual public string TestResultsNotCorrectAnswerColor => "#E63022";
+		virtual public string TestResultsRatingColor => _blackColor;
 
 		virtual public string EemcHeaderImage => "image_book_rectangle";
 		virtual public string EemcBackButtonColor => _baseBlueColor;
@@ -106,21 +117,26 @@ namespace EduCATS.Themes.Templates
 		virtual public string EemcDocumentInactiveIcon => "icon_document_pdf_inactive";
 		virtual public string EemcDocumentTestActiveIcon => "icon_document_test_active";
 		virtual public string EemcDocumentTestInactiveIcon => "icon_document_test_active";
+		virtual public string EemcItemTitleColor => _blackColor;
 
-		public string FilesHeaderImage => "image_file_rectangle";
+		virtual public string FilesHeaderImage => "image_file_rectangle";
+		virtual public string FilesTitleColor => _blackColor;
 
-		public string RecommendationsHeaderImage => "image_circuit_rectangle";
+		virtual public string RecommendationsHeaderImage => "image_circuit_rectangle";
+		virtual public string RecommendationsTitleColor => _blackColor;
 
-		public string SettingsServerIcon => "icon_settings_server";
-		public string SettingsLanguageIcon => "icon_settings_language";
-		public string SettingsThemeIcon => "icon_settings_themes";
-		public string SettingsFontIcon => "icon_settings_font";
-		public string SettingsLogoutIcon => "icon_settings_logout";
-		public string SettingsUserColor => _greyColor;
+		virtual public string SettingsServerIcon => "icon_settings_server";
+		virtual public string SettingsLanguageIcon => "icon_settings_language";
+		virtual public string SettingsThemeIcon => "icon_settings_themes";
+		virtual public string SettingsFontIcon => "icon_settings_font";
+		virtual public string SettingsLogoutIcon => "icon_settings_logout";
+		virtual public string SettingsGroupUserColor => _greyColor;
+		virtual public string SettingsTitleColor => _blackColor;
 
-		public string CheckboxIcon => "icon_checkmark";
-		public string CheckboxDescriptionColor => _greyColor;
+		virtual public string CheckboxIcon => "icon_checkmark";
+		virtual public string CheckboxDescriptionColor => _greyColor;
 
-		public string SwitchFrameDescriptionColor => _greyColor;
+		virtual public string SwitchFrameTextColor => _blackColor;
+		virtual public string SwitchFrameDescriptionColor => _greyColor;
 	}
 }

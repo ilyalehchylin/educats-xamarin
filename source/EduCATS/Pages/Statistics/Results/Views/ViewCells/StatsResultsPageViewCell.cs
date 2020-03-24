@@ -123,11 +123,11 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Children = {
 					gridLayout,
-					new BoxView {
-						Color = Color.FromHex(Theme.Current.StatisticsDetailsSeparatorColor),
-						HeightRequest = _separatorHeight,
-						HorizontalOptions = LayoutOptions.FillAndExpand
-					}
+					//new BoxView {
+					//	Color = Color.FromHex(Theme.Current.StatisticsDetailsSeparatorColor),
+					//	HeightRequest = _separatorHeight,
+					//	HorizontalOptions = LayoutOptions.FillAndExpand
+					//}
 				}
 			};
 		}

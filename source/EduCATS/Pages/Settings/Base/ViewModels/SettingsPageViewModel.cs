@@ -131,7 +131,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			} else if (title.Equals(languageTitle)) {
 				await _navigation.OpenSettingsLanguage(languageTitle);
 			} else if (title.Equals(themeTitle)) {
-
+				await _navigation.OpenSettingsTheme(themeTitle);
 			} else if (title.Equals(fontTitle)) {
 
 			} else if (title.Equals(logoutTitle)) {
@@ -155,6 +155,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			AppPrefs.ResetPrefs();
 			AppUserData.Clear();
 			DataAccess.ResetData();
+			AppTheme.SetTheme(AppTheme.ThemeDefault);
 			_navigation.OpenLogin();
 		}
 

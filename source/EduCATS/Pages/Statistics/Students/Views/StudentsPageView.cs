@@ -57,6 +57,7 @@ namespace EduCATS.Pages.Statistics.Students.Views
 				Margin = _searchBarMargin,
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				CancelButtonColor = Color.FromHex(Theme.Current.BaseAppColor),
+				TextColor = Color.FromHex(Theme.Current.StatisticsBaseTitleColor),
 				Placeholder = CrossLocalization.Translate("stats_students_search_text")
 			};
 

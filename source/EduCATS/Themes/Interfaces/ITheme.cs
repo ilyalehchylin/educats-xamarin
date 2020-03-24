@@ -13,6 +13,9 @@
 		string BaseBlockColor { get; }
 		string BaseArrowForwardIcon { get; }
 		string BaseCloseIcon { get; }
+		string BaseSectionTextColor { get; }
+		string BaseActivityIndicatorColor { get; }
+		string BasePickerTextColor { get; }
 
 		string AppStatusBarBackgroundColor { get; }
 		string AppBackgroundColor { get; }
@@ -51,6 +54,8 @@
 		string TodayNotSelectedDateColor { get; }
 		string TodaySelectedDateTextColor { get; }
 		string TodayNotSelectedDateTextColor { get; }
+		string TodayCalendarBaseTextColor { get; }
+		string TodayCalendarSubjectTextColor { get; }
 
 		string NewsTextColor { get; }
 
@@ -68,6 +73,8 @@
 		string StatisticsCollapseIcon { get; }
 		string StatisticsCalendarIcon { get; }
 		string StatisticsCommentIcon { get; }
+		string StatisticsBaseTitleColor { get; }
+		string StatisticsBaseRatingTextColor { get; }
 
 		string LearningCardTextColor { get; }
 		string LearningCardTestsImage { get; }
@@ -84,10 +91,14 @@
 		string TestPassingAnswerColor { get; }
 		string TestPassingArrowUpIcon { get; }
 		string TestPassingArrowDownIcon { get; }
+		string TestPassingQuestionColor { get; }
+		string TestPassingSelectionColor { get; }
+		string TestPassingUnselectedColor { get; }
 
 		string TestResultsAnswerTextColor { get; }
 		string TestResultsCorrectAnswerColor { get; }
 		string TestResultsNotCorrectAnswerColor { get; }
+		string TestResultsRatingColor { get; }
 
 		string EemcHeaderImage { get; }
 		string EemcBackButtonColor { get; }
@@ -98,21 +109,26 @@
 		string EemcDocumentInactiveIcon { get; }
 		string EemcDocumentTestActiveIcon { get; }
 		string EemcDocumentTestInactiveIcon { get; }
+		string EemcItemTitleColor { get; }
 
 		string FilesHeaderImage { get; }
+		string FilesTitleColor { get; }
 
 		string RecommendationsHeaderImage { get; }
+		string RecommendationsTitleColor { get; }
 
 		string SettingsServerIcon { get; }
 		string SettingsLanguageIcon { get; }
 		string SettingsThemeIcon { get; }
 		string SettingsFontIcon { get; }
 		string SettingsLogoutIcon { get; }
-		string SettingsUserColor { get; }
+		string SettingsGroupUserColor { get; }
+		string SettingsTitleColor { get; }
 
 		string CheckboxIcon { get; }
 		string CheckboxDescriptionColor { get; }
 
+		string SwitchFrameTextColor { get; }
 		string SwitchFrameDescriptionColor { get; }
 	}
 }

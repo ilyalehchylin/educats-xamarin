@@ -21,6 +21,7 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 			answerEntry.SetBinding(Entry.TextProperty, "ContentToAnswer");
 
 			View = new Frame {
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				HasShadow = false,
 				Margin = _frameMargin,
 				CornerRadius = _frameRadius,

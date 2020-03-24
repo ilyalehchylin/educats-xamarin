@@ -67,6 +67,7 @@ namespace EduCATS.Pages.Settings.Language.Views
 				Margin = _chooseLabelMargin,
 				FontAttributes = FontAttributes.Bold,
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
+				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				Text = CrossLocalization.Translate("settings_language_choose")
 			};
 

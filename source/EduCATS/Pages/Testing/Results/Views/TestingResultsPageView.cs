@@ -64,6 +64,7 @@ namespace EduCATS.Pages.Testing.Results.Views
 		Label createRatingTitleLabel()
 		{
 			return new Label {
+				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				Text = CrossLocalization.Translate("test_results_label")
@@ -76,6 +77,7 @@ namespace EduCATS.Pages.Testing.Results.Views
 				FontAttributes = FontAttributes.Bold,
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				TextColor = Color.FromHex(Theme.Current.TestResultsRatingColor),
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
 			};
 

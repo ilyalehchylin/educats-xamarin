@@ -86,7 +86,10 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 		/// <returns>Title label.</returns>
 		Label createTitle()
 		{
-			var title = new Label();
+			var title = new Label {
+				TextColor = Color.FromHex(Theme.Current.SettingsTitleColor)
+			};
+
 			title.SetBinding(Label.TextProperty, "Title");
 			return title;
 		}

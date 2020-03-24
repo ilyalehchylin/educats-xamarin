@@ -189,6 +189,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		Label createStatisticsLabel(string text, bool isCenteredHorizontally = false)
 		{
 			var statsLabel = new Label {
+				TextColor = Color.FromHex(Theme.Current.StatisticsBaseRatingTextColor),
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Text = text

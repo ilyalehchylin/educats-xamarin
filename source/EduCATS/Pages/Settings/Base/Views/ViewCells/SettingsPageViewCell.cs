@@ -26,6 +26,7 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 			var settingsTitle = new Label {
 				Margin = _settingsTitleMargin,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
+				TextColor = Color.FromHex(Theme.Current.SettingsTitleColor),
 				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))
 			};
 

@@ -24,6 +24,7 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 			};
 
 			var title = new Label {
+				TextColor = Color.FromHex(Theme.Current.EemcItemTitleColor),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalTextAlignment = TextAlignment.Center
 			};

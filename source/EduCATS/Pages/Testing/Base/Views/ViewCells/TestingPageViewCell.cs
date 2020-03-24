@@ -14,7 +14,8 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 		{
 			var frame = new Frame {
 				HasShadow = false,
-				Margin = _frameMargin
+				Margin = _frameMargin,
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor)
 			};
 
 			var stackLayout = new StackLayout();
@@ -50,9 +51,7 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 
 			stackLayout.Children.Add(titleLayout);
 			stackLayout.Children.Add(descriptionLabel);
-
 			frame.Content = stackLayout;
-
 			View = frame;
 		}
 	}

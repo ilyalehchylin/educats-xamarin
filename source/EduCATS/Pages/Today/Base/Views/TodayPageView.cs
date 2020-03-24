@@ -117,6 +117,7 @@ namespace EduCATS.Pages.Today.Base.Views
 				BackgroundColor = Color.FromHex(Theme.Current.TodayNewsListBackgroundColor),
 				HasUnevenRows = true,
 				SeparatorVisibility = SeparatorVisibility.None,
+				RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColor),
 				ItemTemplate = new DataTemplate(typeof(NewsPageViewCell))
 			};
 
@@ -132,6 +133,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		{
 			return new Label {
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
+				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				Padding = _newsLabelMagin,
 				FontAttributes = FontAttributes.Bold,
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
@@ -163,6 +165,7 @@ namespace EduCATS.Pages.Today.Base.Views
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				Padding = _subjectsLabelMargin,
 				FontAttributes = FontAttributes.Bold,
+				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				Text = CrossLocalization.Translate("today_subjects")
 			};

@@ -53,7 +53,7 @@ namespace EduCATS.Pages.Statistics.Results.Views
 				Text = name,
 				Margin = _studentNameMargin,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsNameColor),
-				FontSize = Device.GetNamedSize(NamedSize.Header, typeof(Label)),
+				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalTextAlignment = TextAlignment.Center,
 			};

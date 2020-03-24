@@ -10,6 +10,7 @@ using EduCATS.Pages.Recommendations.Views;
 using EduCATS.Pages.Settings.Base.Views;
 using EduCATS.Pages.Settings.Language.Views;
 using EduCATS.Pages.Settings.Server.Views;
+using EduCATS.Pages.Settings.Themes.Views;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Views;
 using EduCATS.Pages.Statistics.Students.Views;
@@ -168,6 +169,14 @@ namespace EduCATS.Helpers.Pages
 		/// <returns>Task.</returns>
 		public async Task OpenSettingsServer(string title) =>
 			await pushPage(new ServerPageView(), title);
+
+		/// <summary>
+		/// Open Settings Theme page.
+		/// </summary>
+		/// <param name="title">Title.</param>
+		/// <returns>Task.</returns>
+		public async Task OpenSettingsTheme(string title) =>
+			await pushPage(new ThemePageView(), title);
 
 		/// <summary>
 		/// Change Application's main page without animation.

@@ -24,6 +24,7 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 			subjectColorView.SetBinding(BoxView.ColorProperty, "Color", converter: new StringToColorConverter());
 
 			var subject = new Label {
+				TextColor = Color.FromHex(Theme.Current.TodayCalendarSubjectTextColor),
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
 
