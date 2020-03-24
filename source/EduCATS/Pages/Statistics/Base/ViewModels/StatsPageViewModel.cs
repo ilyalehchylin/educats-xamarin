@@ -140,6 +140,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		protected async Task executeRefreshCommand()
 		{
 			IsLoading = true;
+			await SetupSubjects();
 			await getAndSetStatistics();
 			IsLoading = false;
 		}
