@@ -9,7 +9,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.App.html",
-          "hash": "jlOY6PH5iXPhQaSmzJIeIA=="
+          "hash": "lVR+r79SZKuXNZa97lUCeQ=="
         }
       },
       "is_incremental": false,
@@ -21,7 +21,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Configuration.AppConfig.html",
-          "hash": "NqM+9P3OR4jYmWdTPVgn0w=="
+          "hash": "7kzfGv5ba79lROwTPdavYQ=="
         }
       },
       "is_incremental": false,
@@ -33,7 +33,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Configuration.html",
-          "hash": "katEELLEm6wGqIGJ795EqA=="
+          "hash": "YuDDzfbMLYHWcq2Qo9O8PQ=="
         }
       },
       "is_incremental": false,
@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Constants.GlobalConsts.html",
-          "hash": "0YfhRMllLNXOJUTqAZei5Q=="
+          "hash": "+odzWKxqKsdGbZ9zc0VvEg=="
         }
       },
       "is_incremental": false,
@@ -57,7 +57,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Constants.html",
-          "hash": "SifNA87yIQP+EDA9gzcyvg=="
+          "hash": "pP0j2jeUbCLQD28g2Yz72g=="
         }
       },
       "is_incremental": false,
@@ -69,7 +69,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.Pickers.GroupsPickerView.html",
-          "hash": "DqP7yl909lvK8Z8mGllNEw=="
+          "hash": "NXcmsee5DdcHcjfZWBNpiA=="
         }
       },
       "is_incremental": false,
@@ -81,7 +81,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.Pickers.SubjectsPickerView.html",
-          "hash": "/oN6Vvf25J/3ICX1DgfBvQ=="
+          "hash": "9fGa6msnYCgaF+hNOwLuVQ=="
         }
       },
       "is_incremental": false,
@@ -93,7 +93,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.Pickers.html",
-          "hash": "G+qwZc1azJzx0VzEHJglwQ=="
+          "hash": "ZfLA7TCrtbm+V87cNfcoZg=="
         }
       },
       "is_incremental": false,
@@ -105,7 +105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.RoundedListView.Enums.RoundedListTypeEnum.html",
-          "hash": "4VNZINKSWvr8vCUPERIbPA=="
+          "hash": "OKCSeTGOqvqNx/ZR28OAJw=="
         }
       },
       "is_incremental": false,
@@ -117,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.RoundedListView.Enums.html",
-          "hash": "BmAn/vc2sBBCCy0CzjuIsg=="
+          "hash": "+07dO3PpkuUA7jwfOiUSwg=="
         }
       },
       "is_incremental": false,
@@ -129,7 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.IRoundedListType.html",
-          "hash": "wbDOQjWuyl1dG5fDqyUrcQ=="
+          "hash": "+5YKBliNWz8lBbEIIt9+0Q=="
         }
       },
       "is_incremental": false,
@@ -141,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.html",
-          "hash": "O0sZT+n1R0HCuv3jW6uCxw=="
+          "hash": "KV1/eIwiJS4w1eRja8JAJg=="
         }
       },
       "is_incremental": false,
@@ -153,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.RoundedListView.RoundedListView.html",
-          "hash": "p8kbOV3b3aJ7SKRKjaws7A=="
+          "hash": "1MR4s8xmAZAihy3JZfqysg=="
         }
       },
       "is_incremental": false,
@@ -165,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html",
-          "hash": "k6dwHi+WAP6qKYERXNhcYQ=="
+          "hash": "V8yMRFTv4y5gxxqZJIOnmQ=="
         }
       },
       "is_incremental": false,
@@ -177,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.html",
-          "hash": "wtokAZ8GNmT2230ITA31RA=="
+          "hash": "4yYhAvotOZ8a7YTNDK0LhQ=="
         }
       },
       "is_incremental": false,
@@ -189,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.RoundedListView.html",
-          "hash": "AfK2NveQ/CX55Mu2X534RQ=="
+          "hash": "YOD66oB8x2ep1U+AlpSgEA=="
         }
       },
       "is_incremental": false,
@@ -201,7 +201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.SwitchFrame.SwitchFrame.html",
-          "hash": "SNfkEHNpS3y95QEd1ry90w=="
+          "hash": "dt7Tvx2OwaUhrDw5WlUvyQ=="
         }
       },
       "is_incremental": false,
@@ -213,7 +213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Controls.SwitchFrame.html",
-          "hash": "kb5dCIawk52DA7QXr1qOyA=="
+          "hash": "ymvKj1AbttGWiwLe7lQJsA=="
         }
       },
       "is_incremental": false,
@@ -225,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Caching.DataCaching-1.html",
-          "hash": "Yq1gT7hsf2z56XQ6Og/0nw=="
+          "hash": "Lolrcy2AMn83G7eKET9ZkQ=="
         }
       },
       "is_incremental": false,
@@ -237,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Caching.html",
-          "hash": "0OrlDkrVIM3uWVcPnTnFEA=="
+          "hash": "nTjR/9T870kHjmV0/DxdsA=="
         }
       },
       "is_incremental": false,
@@ -249,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.DataAccess-1.html",
-          "hash": "OFhRUUZrHV8cUvXlgZ420w=="
+          "hash": "rz9/Pf9PzhfwvQ2res+joA=="
         }
       },
       "is_incremental": false,
@@ -261,7 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.DataAccess.html",
-          "hash": "GvYd2L20CsW31U7kESqfIg=="
+          "hash": "q5haE7bxmhEoeldlIfVahg=="
         }
       },
       "is_incremental": false,
@@ -273,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Interfaces.IDataAccess.html",
-          "hash": "ZcASu7l2u7/d/CaEy/MPaw=="
+          "hash": "VlXouTdohQHbnzGbYKCM2g=="
         }
       },
       "is_incremental": false,
@@ -285,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Interfaces.html",
-          "hash": "pNC/YNEPSj7KtT6g1nuvrA=="
+          "hash": "xT/HyNEFyIc1NVXu6dV84A=="
         }
       },
       "is_incremental": false,
@@ -297,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Calendar.CalendarModel.html",
-          "hash": "SCFPc0PQTxI8+uKOrzML5w=="
+          "hash": "CQ+WhgA0dJKkbAUAD8TlGA=="
         }
       },
       "is_incremental": false,
@@ -309,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Calendar.CalendarSubjectModel.html",
-          "hash": "y7zej3FVh/y0tfQg/bbwQA=="
+          "hash": "4n5pRvt4w3/kJyt+CHjo9w=="
         }
       },
       "is_incremental": false,
@@ -321,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Calendar.html",
-          "hash": "MwteGIryFeg7y5gNuWtIWQ=="
+          "hash": "w8npOL/Gyd0FBaRieHRsXA=="
         }
       },
       "is_incremental": false,
@@ -333,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Eemc.ConceptModel.html",
-          "hash": "Lr3xIMsy/p8P4u9j/7C0dw=="
+          "hash": "F2pxu/vne7tobsI8aTn3FA=="
         }
       },
       "is_incremental": false,
@@ -345,7 +345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Eemc.RootConceptModel.html",
-          "hash": "5p9GKnb0WDbmF5s48mTjdQ=="
+          "hash": "oUi5pJyI0f8yX9FiOrghsA=="
         }
       },
       "is_incremental": false,
@@ -357,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Eemc.html",
-          "hash": "mZuwPK/42bRQKJ50Vty4CA=="
+          "hash": "JNMp2UwOrtwNGP6gJiVURQ=="
         }
       },
       "is_incremental": false,
@@ -369,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Files.FileDetailsModel.html",
-          "hash": "L0pOEVvLYbs3iZCPc8sYPg=="
+          "hash": "0fnUFeyYDn+kPiXhkXIAhQ=="
         }
       },
       "is_incremental": false,
@@ -381,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Files.FilesModel.html",
-          "hash": "zAbPlsZkPFPj2xeyS8lFRQ=="
+          "hash": "YSPThCRMTg2NcZnDQJ0rLw=="
         }
       },
       "is_incremental": false,
@@ -393,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Files.html",
-          "hash": "kjqqcVFpfcmd4DPJr9R0Xg=="
+          "hash": "ff3ctOppJFyAaq7WgeTynQ=="
         }
       },
       "is_incremental": false,
@@ -405,7 +405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Groups.GroupItemModel.html",
-          "hash": "yVgI+E9g6UxhuofxoMMgPg=="
+          "hash": "DTJjFr9t7dvWit7YLZ99iA=="
         }
       },
       "is_incremental": false,
@@ -417,7 +417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Groups.GroupModel.html",
-          "hash": "TFIm9YshUV0DLJfQsvs5BA=="
+          "hash": "tqk+OvPojzBT9S614yteXw=="
         }
       },
       "is_incremental": false,
@@ -429,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Groups.html",
-          "hash": "KNI0sxhQZ+I44yznSm3F2Q=="
+          "hash": "j8P78xH6BRLHUl1Rn8cUxQ=="
         }
       },
       "is_incremental": false,
@@ -441,7 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Labs.LabDetailsModel.html",
-          "hash": "SRnCA+1eSv6MJcciIKcLdQ=="
+          "hash": "fS0sgcPnOl5abZIv1KFRNQ=="
         }
       },
       "is_incremental": false,
@@ -453,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Labs.LabProtectionModel.html",
-          "hash": "+QI7vLI54gWIqi7QfqvCbg=="
+          "hash": "2XvwpkjnAFoMKDbV450dzg=="
         }
       },
       "is_incremental": false,
@@ -465,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Labs.LabsModel.html",
-          "hash": "g9Yqqux9SnUiaBAqsIhe1Q=="
+          "hash": "0uwlEjiv2Ls+zPIhUAlONA=="
         }
       },
       "is_incremental": false,
@@ -477,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Labs.html",
-          "hash": "ckZQilLlGTnk42EwK8ofYQ=="
+          "hash": "BnBGsgY6r2vI4pK7gUOoXg=="
         }
       },
       "is_incremental": false,
@@ -489,7 +489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Lectures.LecturesDetailsModel.html",
-          "hash": "kpu7tUDjk4Q+NhYeXN8nSg=="
+          "hash": "2KuBCncOuLrw5s14ZSNB9g=="
         }
       },
       "is_incremental": false,
@@ -501,7 +501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Lectures.LecturesGroupsModel.html",
-          "hash": "UAZ/nnBxsBXyBW5DjODIvw=="
+          "hash": "Do+IPY7bjZGf1Mc+tEBwIA=="
         }
       },
       "is_incremental": false,
@@ -513,7 +513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Lectures.LecturesModel.html",
-          "hash": "06jIk/0ABE9jGRfIrCztQw=="
+          "hash": "hT2yU7AgjtpFlRXzJpJLZA=="
         }
       },
       "is_incremental": false,
@@ -525,7 +525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Lectures.LecturesStudentModel.html",
-          "hash": "mUZNowxz/YBRvSdUxVCBhw=="
+          "hash": "SOlTadVLUADJC2PKu8H+Iw=="
         }
       },
       "is_incremental": false,
@@ -537,7 +537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Lectures.html",
-          "hash": "6QEBIsgryscHMPtLSnXNfw=="
+          "hash": "UoiPt24jfq0iniKFmQC5hw=="
         }
       },
       "is_incremental": false,
@@ -549,7 +549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.News.NewsModel.html",
-          "hash": "eGqcwzWoxBRK/9tK0LkZIg=="
+          "hash": "8LDs0dXHedSjwavymbsgcQ=="
         }
       },
       "is_incremental": false,
@@ -561,7 +561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.News.NewsSubjectModel.html",
-          "hash": "MwnHtDigFsZna+Gwd3pstw=="
+          "hash": "sW+TL+xgVw4pzYTiL0hV/A=="
         }
       },
       "is_incremental": false,
@@ -573,7 +573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.News.html",
-          "hash": "Isns7Kdy6gC5vQ/RHCg57g=="
+          "hash": "Xl/LUm4K9yYyPJrWTGExYg=="
         }
       },
       "is_incremental": false,
@@ -585,7 +585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Recommendations.RecommendationModel.html",
-          "hash": "gxfK7ftfRsS7BP6eNKSZ2g=="
+          "hash": "YeZDCvsrsPiCASqxr/zTbQ=="
         }
       },
       "is_incremental": false,
@@ -597,7 +597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Recommendations.html",
-          "hash": "Y27eUdLpOuF/O7iLe5cqpA=="
+          "hash": "c5Pah0+PZT+UEFPfG2MvhA=="
         }
       },
       "is_incremental": false,
@@ -609,7 +609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Statistics.StatsMarkModel.html",
-          "hash": "uh7v3VToeU6qR1VaqFYf3A=="
+          "hash": "YHaPMIgI7yo5CdLLYp04xQ=="
         }
       },
       "is_incremental": false,
@@ -621,7 +621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Statistics.StatsModel.html",
-          "hash": "f3MYmF+eXS3QJl0f41GuUQ=="
+          "hash": "2P61S+u3BNnhn/pyYBuP6Q=="
         }
       },
       "is_incremental": false,
@@ -633,7 +633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Statistics.StatsStudentModel.html",
-          "hash": "NFjKZN4DbSp59EjVKLbqbA=="
+          "hash": "gFOxvtsI2LuBuzHo/X0OzQ=="
         }
       },
       "is_incremental": false,
@@ -645,7 +645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Statistics.StatsVisitingModel.html",
-          "hash": "h7MKiLh+N7J/Yb+9U+GwOA=="
+          "hash": "0SPPYpela2a2n4GbEW0MwA=="
         }
       },
       "is_incremental": false,
@@ -657,7 +657,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Statistics.html",
-          "hash": "ACAWms5Tk4NzPV4y841q6Q=="
+          "hash": "Li4ogALRlFKUd/eISBVDjg=="
         }
       },
       "is_incremental": false,
@@ -669,7 +669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Subjects.SubjectModel.html",
-          "hash": "Es4lt3lq7glKldpAnWbrGg=="
+          "hash": "l9v/DgpxJRGWUSICahlIyw=="
         }
       },
       "is_incremental": false,
@@ -681,7 +681,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Subjects.html",
-          "hash": "FUr5XXHa1O/SlgXRFIQcCQ=="
+          "hash": "p6qWZpDl0pldoV4QFhPPWg=="
         }
       },
       "is_incremental": false,
@@ -693,7 +693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Testing.Base.TestModel.html",
-          "hash": "2CACsz9PrFiWdLmmGRI6MA=="
+          "hash": "UyQG7YjOM58Es7RmM/MnHg=="
         }
       },
       "is_incremental": false,
@@ -705,7 +705,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Testing.Base.html",
-          "hash": "1TSGNo7cU/k+h7G+V6XX9g=="
+          "hash": "lGXSdbx55FZ5q/UXxEBB2Q=="
         }
       },
       "is_incremental": false,
@@ -717,7 +717,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Testing.Passing.TestAnswerModel.html",
-          "hash": "chADibnNoxnbJqGHxvGAYg=="
+          "hash": "BPnO0kp3M1NpWVv+3fGrQQ=="
         }
       },
       "is_incremental": false,
@@ -729,7 +729,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Testing.Passing.TestDetailsModel.html",
-          "hash": "u6qi3OErWHnJXyzVQbdnyA=="
+          "hash": "3T8Bqoa7YlLdKv++wcWaDQ=="
         }
       },
       "is_incremental": false,
@@ -741,7 +741,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Testing.Passing.TestQuestionDetailsModel.html",
-          "hash": "UN7uNUDFBJxUD8AHYT8yoQ=="
+          "hash": "9fzKc7gjws+6TjqFEA/SjQ=="
         }
       },
       "is_incremental": false,
@@ -753,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Testing.Passing.TestQuestionModel.html",
-          "hash": "+7BKxIaRjqe7qH2Rj9JOYw=="
+          "hash": "vhBm96ILA1VzCTDzPizI8w=="
         }
       },
       "is_incremental": false,
@@ -765,7 +765,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Testing.Passing.html",
-          "hash": "eoET6emS1aawV545mEhY0Q=="
+          "hash": "ya1+xZ0LmlJ86V3c8rPQRg=="
         }
       },
       "is_incremental": false,
@@ -777,7 +777,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Testing.Results.TestResultsModel.html",
-          "hash": "CRN1lUlZR8NsLfuy5/m0oA=="
+          "hash": "+mVXG7STerqwdfc6nrmL9w=="
         }
       },
       "is_incremental": false,
@@ -789,7 +789,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Testing.Results.html",
-          "hash": "SLtlfS+8eyRGY9zWq4/CIA=="
+          "hash": "MA4AgtQD2u+5L1RCg16r1g=="
         }
       },
       "is_incremental": false,
@@ -801,7 +801,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.User.UserLoginModel.html",
-          "hash": "KhhpQ+6wslZ7gJULps9dBg=="
+          "hash": "aAmdDebTP/n8t1S/LFMAVw=="
         }
       },
       "is_incremental": false,
@@ -813,7 +813,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.User.UserModel.html",
-          "hash": "KIWjfpGsN75wTE5JrqomQw=="
+          "hash": "jX1rodfp/AbRG3DefE8YAw=="
         }
       },
       "is_incremental": false,
@@ -825,7 +825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.User.UserProfileModel.html",
-          "hash": "yx51lpc4n0eDBtD7rX7RjQ=="
+          "hash": "aDeaXCw4LJyswr2epeObpA=="
         }
       },
       "is_incremental": false,
@@ -837,7 +837,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.User.html",
-          "hash": "81GWRAxb9GSR9Kvg1ZEvzA=="
+          "hash": "w648h0OorYPmCl7IrvK15g=="
         }
       },
       "is_incremental": false,
@@ -849,7 +849,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.User.AppUserData.html",
-          "hash": "J/7fmn3dgAn734UF7Zr8wg=="
+          "hash": "QTX2xnRFP4QiUE2HCPOWiQ=="
         }
       },
       "is_incremental": false,
@@ -861,7 +861,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.User.UserTypeEnum.html",
-          "hash": "LcUHD6k98sKE5jl1OHGiSQ=="
+          "hash": "5GnE2aZ2b4bp9eQwwfaCEg=="
         }
       },
       "is_incremental": false,
@@ -873,7 +873,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.User.html",
-          "hash": "IcJj1csVinn+XYPeSGhzBg=="
+          "hash": "k2SEgMk5pOLiQNiQW7z93A=="
         }
       },
       "is_incremental": false,
@@ -885,7 +885,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.html",
-          "hash": "ActbSeQzp6GtzRbBwWmR6g=="
+          "hash": "OjY4Ex1w6f+NNeFt1IQmSw=="
         }
       },
       "is_incremental": false,
@@ -897,7 +897,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.DependencyServices.ThemeNative.html",
-          "hash": "Lhz+3jTNVtvdQ71+KBN1ow=="
+          "hash": "nW46RyB9ZsUv8sI8qElCRw=="
         }
       },
       "is_incremental": false,
@@ -909,7 +909,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.DependencyServices.html",
-          "hash": "WdhgP/rYH7Kh5s6V5vN3UA=="
+          "hash": "EwBZGFJtGwTsXkWIpnuT8w=="
         }
       },
       "is_incremental": false,
@@ -921,7 +921,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Effects.DisabledShiftEffect.html",
-          "hash": "AVJ2xO/KiMs1P+KlnGYbkA=="
+          "hash": "qpEtryZndAmbjeeK7jTBWA=="
         }
       },
       "is_incremental": false,
@@ -933,7 +933,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Effects.html",
-          "hash": "+a+EYfNLmm3HoIATppYnpg=="
+          "hash": "fw1ErrpJbCdXo5cprR+hDg=="
         }
       },
       "is_incremental": false,
@@ -945,7 +945,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.MainActivity.html",
-          "hash": "BnsXSscO44PNH4Cn6qImXg=="
+          "hash": "M7NCBMosnDJNVN7fxQo77A=="
         }
       },
       "is_incremental": false,
@@ -957,7 +957,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Animation.html",
-          "hash": "4zCfNJpRS7OD0ts0OmSDaA=="
+          "hash": "X3WF+EE7E4RBihdJhRZHYg=="
         }
       },
       "is_incremental": false,
@@ -969,7 +969,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Animator.html",
-          "hash": "IViBotJ6l9YDJ38T+6wglw=="
+          "hash": "BdJDtih08kw12xxYICDc9g=="
         }
       },
       "is_incremental": false,
@@ -981,7 +981,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Attribute.html",
-          "hash": "XO+O3Clk3eio+3ANCx47JA=="
+          "hash": "QPhzVbZvSZF5479/wTh7qg=="
         }
       },
       "is_incremental": false,
@@ -993,7 +993,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Boolean.html",
-          "hash": "xGNA/SOrjzUYVFMZjb/r+w=="
+          "hash": "oKR2m9MP+BJWLo7jFbGxKA=="
         }
       },
       "is_incremental": false,
@@ -1005,7 +1005,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Color.html",
-          "hash": "yo6/pvZ5BkaDYJxKlcpojQ=="
+          "hash": "nuOGSr66oWMB/JP39fLJ5g=="
         }
       },
       "is_incremental": false,
@@ -1017,7 +1017,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Dimension.html",
-          "hash": "HupctpeFS+++aemnkR+8qw=="
+          "hash": "rxEbv/8P2OOOL9FA7d8asg=="
         }
       },
       "is_incremental": false,
@@ -1029,7 +1029,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Drawable.html",
-          "hash": "u5KJl9DlG4evzGERax2rSg=="
+          "hash": "y3msPA7FUoe9EsI9mygOUg=="
         }
       },
       "is_incremental": false,
@@ -1041,7 +1041,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Id.html",
-          "hash": "gNOb+lkzkc7zIFO23vQqMQ=="
+          "hash": "ZWIcS5X57OZIaXNHIaMtcg=="
         }
       },
       "is_incremental": false,
@@ -1053,7 +1053,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Integer.html",
-          "hash": "dEfD4L3jxQGHZ80Dt4C5sA=="
+          "hash": "2vWrlTIySUI+cBBeezhZOA=="
         }
       },
       "is_incremental": false,
@@ -1065,7 +1065,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Interpolator.html",
-          "hash": "5lowX0b/4c6ptWacGyXGOA=="
+          "hash": "8YYxEHSqvhlrYDDGAo38Ng=="
         }
       },
       "is_incremental": false,
@@ -1077,7 +1077,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Layout.html",
-          "hash": "iBZLkauuH5g86/xtJ03zcw=="
+          "hash": "tXOP6qep5OBS2OCkp/6ehA=="
         }
       },
       "is_incremental": false,
@@ -1089,7 +1089,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Mipmap.html",
-          "hash": "xeSB3d65OP+RJCLyEqi+1w=="
+          "hash": "AXD3Fi1XCVilzEiN+Mjshw=="
         }
       },
       "is_incremental": false,
@@ -1101,7 +1101,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.String.html",
-          "hash": "79WURGVWeKoqbG6NrLt+WQ=="
+          "hash": "1OZBPVtoQEUwZWrRqCcDIA=="
         }
       },
       "is_incremental": false,
@@ -1113,7 +1113,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Style.html",
-          "hash": "IJGaR0VD/nh6vItFCRS60Q=="
+          "hash": "qO7MfpYVg9PlMb9E9lcnGw=="
         }
       },
       "is_incremental": false,
@@ -1125,7 +1125,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Styleable.html",
-          "hash": "XDVnoS/ZPejpGgfphfaleQ=="
+          "hash": "QcAW5WSZRFsamZs5P+Ed/A=="
         }
       },
       "is_incremental": false,
@@ -1137,7 +1137,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.Xml.html",
-          "hash": "XKQHeoD75jRRkTLzGOg6FA=="
+          "hash": "BwXuUXO83yykgkeGUVcxCQ=="
         }
       },
       "is_incremental": false,
@@ -1149,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.Resource.html",
-          "hash": "R8AzEpxkYxaczw5t7OTqBw=="
+          "hash": "svkKes9l68jZBZXurGxp+w=="
         }
       },
       "is_incremental": false,
@@ -1161,7 +1161,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Droid.html",
-          "hash": "7Tx5ZBfPD3EW0iaBBurnLQ=="
+          "hash": "CMBooutXPfpbh3S3qXVPAQ=="
         }
       },
       "is_incremental": false,
@@ -1173,7 +1173,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Converters.Base64ToImageSourceConverter.html",
-          "hash": "4Z8XSO92uLrWjtf/vzlL6A=="
+          "hash": "KO5jPpNarHHj9bYn5tV5fg=="
         }
       },
       "is_incremental": false,
@@ -1185,7 +1185,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Converters.DoubleListToRadarChartConverter.html",
-          "hash": "ztrLNWpjLqp4xPQLa/rsBQ=="
+          "hash": "UfpmVhRRit8Q8+xAHC5qKw=="
         }
       },
       "is_incremental": false,
@@ -1197,7 +1197,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Converters.StringToColorConverter.html",
-          "hash": "Su+regLeMNOPiSZMiFZNRg=="
+          "hash": "iE2DSG2rB01nh5+RJFnvKQ=="
         }
       },
       "is_incremental": false,
@@ -1209,7 +1209,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Converters.StringToImageSourceConverter.html",
-          "hash": "d2wi9P8Jt5nkqiESwpEiZQ=="
+          "hash": "6zucusrZEOIYsQodNhOMvA=="
         }
       },
       "is_incremental": false,
@@ -1221,7 +1221,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Converters.html",
-          "hash": "6dysGpccqxEwHTzMf5JH0w=="
+          "hash": "IYjMbg+Ny95Pw89Lv1ryFA=="
         }
       },
       "is_incremental": false,
@@ -1233,7 +1233,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Date.DateHelper.html",
-          "hash": "dETnySYWv7QyKN2/huPAjQ=="
+          "hash": "rdMDK8ItQTIkSIRqFYbFyA=="
         }
       },
       "is_incremental": false,
@@ -1245,7 +1245,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Date.Enums.WeekEnum.html",
-          "hash": "gZ01l51IvPj8OIxivCx3+g=="
+          "hash": "GLfVnTBYE4NcOspFOmy+aw=="
         }
       },
       "is_incremental": false,
@@ -1257,7 +1257,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Date.Enums.html",
-          "hash": "iJEiMW7DRdHF7udnCOeY6A=="
+          "hash": "g4M8D8lhKg9CNx1JXEjXZQ=="
         }
       },
       "is_incremental": false,
@@ -1269,7 +1269,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Date.Extensions.DateTimeExtensions.html",
-          "hash": "jwsvBmZNiTQlSNAkQx0x7Q=="
+          "hash": "b64K2zHjO8tCLrDtbyz5QA=="
         }
       },
       "is_incremental": false,
@@ -1281,7 +1281,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Date.Extensions.html",
-          "hash": "9ZRYmiyKg+RsjEPN8WK6/g=="
+          "hash": "YebC9Q+3ezNPeGFqmJSqhg=="
         }
       },
       "is_incremental": false,
@@ -1293,7 +1293,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Date.html",
-          "hash": "63Y5RwsPP+MVlxXjCgSNTg=="
+          "hash": "kKuxlqpl3kaugvpPQUlaIA=="
         }
       },
       "is_incremental": false,
@@ -1305,7 +1305,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Devices.AppDevice.html",
-          "hash": "Jg6VwEXcBaOH125wyyCnIw=="
+          "hash": "9T43MqPXBL0mf/Usjgpgrg=="
         }
       },
       "is_incremental": false,
@@ -1317,7 +1317,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Devices.Interfaces.IDevice.html",
-          "hash": "/vl5oMzxQY8r+MGWU2jmKg=="
+          "hash": "LGf5UzDDKiALCOmOZzLlig=="
         }
       },
       "is_incremental": false,
@@ -1329,7 +1329,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Devices.Interfaces.html",
-          "hash": "I8rtDA5vuEA6GevdCnUYPQ=="
+          "hash": "VUsI+jwwLQsr133wtgKk7g=="
         }
       },
       "is_incremental": false,
@@ -1341,7 +1341,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Devices.html",
-          "hash": "TFmCcRZZTg5lTwOLlqUYEQ=="
+          "hash": "iElsfL2hukCR56ZjPgzVZw=="
         }
       },
       "is_incremental": false,
@@ -1353,7 +1353,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Dialogs.AppDialogs.html",
-          "hash": "UcYndDsKof7wSMVMWD38Kg=="
+          "hash": "PwjR2L8n/x+Ava6fo4aNGA=="
         }
       },
       "is_incremental": false,
@@ -1365,7 +1365,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Dialogs.Interfaces.IDialogs.html",
-          "hash": "qFmxARI9eHcqdBA+pNxXhA=="
+          "hash": "9u/lnfKps15h2GTZW7wIag=="
         }
       },
       "is_incremental": false,
@@ -1377,7 +1377,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Dialogs.Interfaces.html",
-          "hash": "u4vugizkHvbKU5Irfv/zQA=="
+          "hash": "gm9f19n7ycRY3X46Ukg8TQ=="
         }
       },
       "is_incremental": false,
@@ -1389,7 +1389,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Dialogs.html",
-          "hash": "PifvOjRQ8w0TuFEk1MryNA=="
+          "hash": "Y5l9fy6U/8vE9vU3RKI9xw=="
         }
       },
       "is_incremental": false,
@@ -1401,7 +1401,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Effects.DisabledShiftEffect.html",
-          "hash": "Q5V/98BrtA3KFHyrWVcfOg=="
+          "hash": "Jix4bVfT8ul44egDj5sS2g=="
         }
       },
       "is_incremental": false,
@@ -1413,7 +1413,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Effects.html",
-          "hash": "qF5afLJZqYChuF+INvRFQA=="
+          "hash": "oX8ojHO+pLp6/u6wBq1GqQ=="
         }
       },
       "is_incremental": false,
@@ -1425,7 +1425,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Extensions.ListExtensions.html",
-          "hash": "7bl/v4Nujw3NsdgTYcleFA=="
+          "hash": "0Jp1VVAx1EV6DIDentzlKA=="
         }
       },
       "is_incremental": false,
@@ -1437,7 +1437,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Extensions.StringExtensions.html",
-          "hash": "tU3QraDbfP3amYYuZ5E8sQ=="
+          "hash": "ZiZojlpFYdTonlgMmJv1Bw=="
         }
       },
       "is_incremental": false,
@@ -1449,7 +1449,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Extensions.html",
-          "hash": "VIEQSSqhDnMBgyTp64vhAw=="
+          "hash": "0y+O2ZZIcpQT4bRG1qjbqA=="
         }
       },
       "is_incremental": false,
@@ -1461,7 +1461,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Json.JsonController-1.html",
-          "hash": "xqcV3AaNz4noyMaS0urDXA=="
+          "hash": "OwnoKyhaZ4+HW238K0LRNQ=="
         }
       },
       "is_incremental": false,
@@ -1473,7 +1473,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Json.JsonController.html",
-          "hash": "gxmcLRREfrTjbaD/I7LJcQ=="
+          "hash": "7MyyAYTHaS+xAagUjRtZ2Q=="
         }
       },
       "is_incremental": false,
@@ -1485,7 +1485,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Json.html",
-          "hash": "2tqWATnBGOYZqFILJudNKA=="
+          "hash": "7mp2vuhPQQsroCxlYEq4Sg=="
         }
       },
       "is_incremental": false,
@@ -1497,7 +1497,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Pages.AppPages.html",
-          "hash": "U23FiQ4dwzxQNOnPK8UFJQ=="
+          "hash": "zMcgiiBfleLQGKy4Iq6gbQ=="
         }
       },
       "is_incremental": false,
@@ -1509,7 +1509,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Pages.Interfaces.IPages.html",
-          "hash": "Fdd/1rjEUPqPFei1kcrAeA=="
+          "hash": "c19Q2m5xSgpdgBqiOsgm2Q=="
         }
       },
       "is_incremental": false,
@@ -1521,7 +1521,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Pages.Interfaces.html",
-          "hash": "NTmIQ7I5uupLJ956UjA6TA=="
+          "hash": "LT93BDhP7UqpRgYfQ3kiIQ=="
         }
       },
       "is_incremental": false,
@@ -1533,7 +1533,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Pages.html",
-          "hash": "yBxWyc04ZFub1xHvczP5PQ=="
+          "hash": "51vj0agpN+GD6ydeMk/+EQ=="
         }
       },
       "is_incremental": false,
@@ -1545,7 +1545,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Settings.AppPrefs.html",
-          "hash": "KUbJYoP5/w8JDoWNChr6pQ=="
+          "hash": "K/8mvQVHrvoW1Ha8/tkb+w=="
         }
       },
       "is_incremental": false,
@@ -1557,7 +1557,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Settings.html",
-          "hash": "cm4/J4tLNGNQbLTbrr8gTw=="
+          "hash": "rmajyd1jV40BWaQDLazC4g=="
         }
       },
       "is_incremental": false,
@@ -1569,7 +1569,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.AppServices.AppServices.html",
-          "hash": "9/Pij8rREbbeAJUcvofdrA=="
+          "hash": "EXWzoshNCe7CfJk6M6SMtw=="
         }
       },
       "is_incremental": false,
@@ -1581,7 +1581,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.AppServices.AppServicesController.html",
-          "hash": "MJUWldf6yj/JJO5EDIm10Q=="
+          "hash": "sOzueC9D0RjRRBKR8FZkig=="
         }
       },
       "is_incremental": false,
@@ -1593,7 +1593,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.AppServices.AppWebServiceController.html",
-          "hash": "kFduhghI0qGtGarDwK6CCQ=="
+          "hash": "WxsQwkUeQGSKWQlVUJoDTg=="
         }
       },
       "is_incremental": false,
@@ -1605,7 +1605,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.AppServices.html",
-          "hash": "QnqvVBLv9T2isuErLOcr8A=="
+          "hash": "CXO4qglLX7LqEJeiCSbsSA=="
         }
       },
       "is_incremental": false,
@@ -1617,7 +1617,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Connection.html",
-          "hash": "+K0rBGVqwDn6qFcuYCJIvg=="
+          "hash": "3Hy4ALmgU4l89n6b03WMBA=="
         }
       },
       "is_incremental": false,
@@ -1629,7 +1629,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Links.html",
-          "hash": "1HBmhuHOaAs/fwXld8h3Tw=="
+          "hash": "pnYbMqBb6S3joYYKerBywA=="
         }
       },
       "is_incremental": false,
@@ -1641,7 +1641,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Models.Eemc.RootConceptsPostModel.html",
-          "hash": "udqXMZuV5yUA5rE69qNrgw=="
+          "hash": "x6XA8KwD24+ejXNE/K4oWA=="
         }
       },
       "is_incremental": false,
@@ -1653,7 +1653,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Models.Eemc.html",
-          "hash": "sWXIDGmt9INY6idSyvUcHQ=="
+          "hash": "sOMITitWru6pzetsf1UG9w=="
         }
       },
       "is_incremental": false,
@@ -1665,7 +1665,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Models.Login.UserCredentials.html",
-          "hash": "wgPrNxwB0klivNe5RZaWVQ=="
+          "hash": "nPXyNB5rmrE01dc9J37UHA=="
         }
       },
       "is_incremental": false,
@@ -1677,7 +1677,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Models.Login.html",
-          "hash": "AKQmGMJ4UsWc+Go/5khsFA=="
+          "hash": "tG+AVwFE5vndR1kWdguNnw=="
         }
       },
       "is_incremental": false,
@@ -1689,7 +1689,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel.html",
-          "hash": "qa3GLE9TJVmqTwKPf4QXEQ=="
+          "hash": "of90C/mFnrdl/EbvJc/4rA=="
         }
       },
       "is_incremental": false,
@@ -1701,7 +1701,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerPostModel.html",
-          "hash": "Js+kPTu+D3DE7DMWOc4mZQ=="
+          "hash": "A97QFsA0AnAMz3+kzAO2tA=="
         }
       },
       "is_incremental": false,
@@ -1713,7 +1713,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Models.Testing.html",
-          "hash": "fQkFFPfjgLGALHAHgEugqw=="
+          "hash": "GSxcgf39Qze+1pXtNIRW4g=="
         }
       },
       "is_incremental": false,
@@ -1725,7 +1725,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.RequestController.html",
-          "hash": "vjWGvobg1WkkP4DWNMXWsw=="
+          "hash": "cNaWRdQAoTw1kY6IvtmKng=="
         }
       },
       "is_incremental": false,
@@ -1737,7 +1737,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.Servers.html",
-          "hash": "u65PTl01fMJvwh5LI8Wlkw=="
+          "hash": "gs8dcFz/S8H+tIoL7Uas9A=="
         }
       },
       "is_incremental": false,
@@ -1749,7 +1749,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Networking.html",
-          "hash": "xkLF3ioMSrZ6u0OCqA7TkQ=="
+          "hash": "CdXaFSCKNfI+4ylhPfIsEQ=="
         }
       },
       "is_incremental": false,
@@ -1761,7 +1761,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.html",
-          "hash": "0oVaFMnl0jLz3ToY/i4XiQ=="
+          "hash": "3g3F2pIij4aT9pypides8g=="
         }
       },
       "is_incremental": false,
@@ -1773,7 +1773,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Eemc.ViewModels.html",
-          "hash": "/KeXMVdnJtz9wKdUWpRfdA=="
+          "hash": "y6Xx5T6M1i9KjQacNWp39g=="
         }
       },
       "is_incremental": false,
@@ -1785,7 +1785,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Eemc.Views.EemcPageView.html",
-          "hash": "ftfj+8zG2i5/nUknUnV6Mg=="
+          "hash": "p4KhHB6+bQaLglvJjH6+Ow=="
         }
       },
       "is_incremental": false,
@@ -1797,7 +1797,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.EemcPageViewCell.html",
-          "hash": "EyVEksSX76LigUiss5cabw=="
+          "hash": "nx+SecOdddwUPNfPBFtPfg=="
         }
       },
       "is_incremental": false,
@@ -1809,7 +1809,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.html",
-          "hash": "Oa33TlZ6jMsO0YAjwcrNqA=="
+          "hash": "nagTX+ilXhwifTfheVXHRw=="
         }
       },
       "is_incremental": false,
@@ -1821,7 +1821,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Eemc.Views.html",
-          "hash": "MdopA/NHZWWzfJoSR67b/Q=="
+          "hash": "H9HvsVbfdY6FB4lw4EXb+w=="
         }
       },
       "is_incremental": false,
@@ -1833,7 +1833,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.Models.FilesPageModel.html",
-          "hash": "i6nLzD1YuMJN798yvO0oiQ=="
+          "hash": "D+1DbmfTbpHNYIT9M0uhtQ=="
         }
       },
       "is_incremental": false,
@@ -1845,7 +1845,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.Models.html",
-          "hash": "unEctTf0pyJ/K1qAsZcOkg=="
+          "hash": "V04A9L3wsBvwIzasZqK1jg=="
         }
       },
       "is_incremental": false,
@@ -1857,7 +1857,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html",
-          "hash": "BqMIQTXe3w5jEQ1XdVK4pg=="
+          "hash": "1ccwE32c5DjAjd6Qmb/Vyw=="
         }
       },
       "is_incremental": false,
@@ -1869,7 +1869,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.ViewModels.html",
-          "hash": "bByHUAUNN7xRoLBgP6XGYg=="
+          "hash": "oH3Rv+gUFb9aFSzRqcG/fg=="
         }
       },
       "is_incremental": false,
@@ -1881,7 +1881,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.Views.FilesPageView.html",
-          "hash": "tVP/j9SM5QNFJMJ0SzkUXQ=="
+          "hash": "GfENvJOlmculJBK8H9eevg=="
         }
       },
       "is_incremental": false,
@@ -1893,7 +1893,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.FilesPageViewCell.html",
-          "hash": "LylTE9MFaeLJc5Ywv2n7JQ=="
+          "hash": "Xd56DZxIPEdycOTnVF5vOw=="
         }
       },
       "is_incremental": false,
@@ -1905,7 +1905,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.html",
-          "hash": "Wn+exQ/z6wOf8JUkCPIGxg=="
+          "hash": "tCGPwSa+LF61wFs9J+3ZGA=="
         }
       },
       "is_incremental": false,
@@ -1917,7 +1917,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.Views.html",
-          "hash": "psltcxv+l1NMkJUD+Geu4g=="
+          "hash": "FaegmoHROt0owO1PdwTomQ=="
         }
       },
       "is_incremental": false,
@@ -1929,7 +1929,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Learning.Models.LearningPageModel.html",
-          "hash": "31fV57diVCaKHcIAzh0JEg=="
+          "hash": "YccdxU4oHmSceTZ9a0p69A=="
         }
       },
       "is_incremental": false,
@@ -1941,7 +1941,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Learning.Models.html",
-          "hash": "lWsj9FB+pzs099DKc7jtcg=="
+          "hash": "kDCkM1yCALKlGd1JxSS9XA=="
         }
       },
       "is_incremental": false,
@@ -1953,7 +1953,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Learning.ViewModels.LearningPageViewModel.html",
-          "hash": "DcEPFBRFIjdXh1Tp2VI5oA=="
+          "hash": "UPpcWR/8jHDr6FMedUD11g=="
         }
       },
       "is_incremental": false,
@@ -1965,7 +1965,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Learning.ViewModels.html",
-          "hash": "cTDvtsPlFmr9BZ1tIgWZeA=="
+          "hash": "bo2aJb8BipsoI9PF3uVhAw=="
         }
       },
       "is_incremental": false,
@@ -1977,7 +1977,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Learning.Views.LearningPageView.html",
-          "hash": "fqFwzrN3zxiAR3fn7FmnEw=="
+          "hash": "5JwVTr3IjwYAEmrpCc+Q8g=="
         }
       },
       "is_incremental": false,
@@ -1989,7 +1989,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.LearningPageViewCell.html",
-          "hash": "s56d02MnqfGRuO2otm2ARw=="
+          "hash": "BBtLgbRkM1OYnNpSbBwO/A=="
         }
       },
       "is_incremental": false,
@@ -2001,7 +2001,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.html",
-          "hash": "folxfail4jjLtVp4rWdrdg=="
+          "hash": "y/zo61YLH4dlrkdTAUi1og=="
         }
       },
       "is_incremental": false,
@@ -2013,7 +2013,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Learning.Views.html",
-          "hash": "DVBm4zg9csBZ2AmSFXsPtA=="
+          "hash": "8nmTJYe0vSO92iQYPRhpug=="
         }
       },
       "is_incremental": false,
@@ -2025,7 +2025,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Login.ViewModels.LoginPageViewModel.html",
-          "hash": "Kn0gfCn1LCLpmiusNb6l8A=="
+          "hash": "lTVoh9Dn69pKZ3BomIWejQ=="
         }
       },
       "is_incremental": false,
@@ -2037,7 +2037,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Login.ViewModels.html",
-          "hash": "ssse2MYOnqD9wuFODnrqEQ=="
+          "hash": "pR9JJpgcOVNxTyxY0QzIag=="
         }
       },
       "is_incremental": false,
@@ -2049,7 +2049,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Login.Views.LoginPageView.html",
-          "hash": "7cgq4mJhAUBPwKSjLyUsqQ=="
+          "hash": "VL7c0gcpF79K9/Zt5lYVLA=="
         }
       },
       "is_incremental": false,
@@ -2061,7 +2061,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Login.Views.html",
-          "hash": "dlwrwZWihkwur0Fi1CpTjw=="
+          "hash": "pzvue88+kc42JgCZ51ar6g=="
         }
       },
       "is_incremental": false,
@@ -2073,7 +2073,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Main.MainPageView.html",
-          "hash": "pWVoJpYurmLNN8X2V/GoHA=="
+          "hash": "QucPegoNik4Wql87Wjhb/w=="
         }
       },
       "is_incremental": false,
@@ -2085,7 +2085,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Main.html",
-          "hash": "Q56obIb/GblhfWk9o6P8mQ=="
+          "hash": "hQvngAcCTGiKIIT+opIFSA=="
         }
       },
       "is_incremental": false,
@@ -2097,7 +2097,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.GroupEventHandler.html",
-          "hash": "6D2M4rVUbRlYFl7gDedfEg=="
+          "hash": "ZPniTNylvuwLyTW7ipdxIg=="
         }
       },
       "is_incremental": false,
@@ -2109,7 +2109,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.html",
-          "hash": "3ObvFLBLXRClwKYRZkifXA=="
+          "hash": "6Bf/og8FT0DrkVRCYpppTg=="
         }
       },
       "is_incremental": false,
@@ -2121,7 +2121,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.SubjectEventHandler.html",
-          "hash": "hIWz7Pt3Ap2eyk5aC80bJQ=="
+          "hash": "5FwFlN7vNrjxXofMgo1UJA=="
         }
       },
       "is_incremental": false,
@@ -2133,7 +2133,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.html",
-          "hash": "dXd7UmgdO7pKug5FwNI3rg=="
+          "hash": "LuddQxZmnSZVWTbJFsDj2w=="
         }
       },
       "is_incremental": false,
@@ -2145,7 +2145,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Pickers.html",
-          "hash": "r5V0MFkku5F/tsGydKjv4w=="
+          "hash": "1KWSQO+GipPEHB/53GNYLA=="
         }
       },
       "is_incremental": false,
@@ -2157,7 +2157,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.Models.RecommendationsPageModel.html",
-          "hash": "nJpOvGDnJagN2fuTEpH9dw=="
+          "hash": "kC3RURN6DHYVhMveWnM7tw=="
         }
       },
       "is_incremental": false,
@@ -2169,7 +2169,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.Models.html",
-          "hash": "Pqi/7T9x0B/sIHLP5AyNbw=="
+          "hash": "NLF6GmRJlIv1Chm4aKs1eA=="
         }
       },
       "is_incremental": false,
@@ -2181,7 +2181,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.html",
-          "hash": "Osz/fk7i37rBSMoCRMRgWA=="
+          "hash": "kcFtynepMIaV4KkLF1UroQ=="
         }
       },
       "is_incremental": false,
@@ -2193,7 +2193,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.html",
-          "hash": "U+3X3wMQhY7ubJgXOGkrww=="
+          "hash": "YuU4pi2Pu19iVIloqhSiMg=="
         }
       },
       "is_incremental": false,
@@ -2205,7 +2205,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.html",
-          "hash": "DKU43QRjMPwAFFCSsWYn/Q=="
+          "hash": "wb9JGP0Yw9YpH3tWxdedGg=="
         }
       },
       "is_incremental": false,
@@ -2217,7 +2217,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.RecommendationsPageViewCell.html",
-          "hash": "pvgIJHBO4H3rbild83/dJQ=="
+          "hash": "E9slhKUGfn9w8qcRcEmztw=="
         }
       },
       "is_incremental": false,
@@ -2229,7 +2229,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.html",
-          "hash": "0XNS/R71CHdLctTTdSTBXQ=="
+          "hash": "l/7pdvo9hagGGJRTp9zTfw=="
         }
       },
       "is_incremental": false,
@@ -2241,7 +2241,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.Views.html",
-          "hash": "KxjVJs3LBnJi0efUzOQX1A=="
+          "hash": "cZ0LgfZV3Z2UdIwsWnmYMg=="
         }
       },
       "is_incremental": false,
@@ -2253,7 +2253,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Base.Models.SettingsPageModel.html",
-          "hash": "divjFlb8O1dhn2FdL8xBIQ=="
+          "hash": "g7sJGGXWWV97eeSTgbSozw=="
         }
       },
       "is_incremental": false,
@@ -2265,7 +2265,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Base.Models.html",
-          "hash": "NjBjUmSZIzFxtJM5DDT9HA=="
+          "hash": "RajKnTPc6W5R7pROy08F6w=="
         }
       },
       "is_incremental": false,
@@ -2277,7 +2277,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.SettingsPageViewModel.html",
-          "hash": "28WM9AH8rT8jnxPANtAEGg=="
+          "hash": "k1sgpTajOSxrcMcMaAVB+w=="
         }
       },
       "is_incremental": false,
@@ -2289,7 +2289,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.html",
-          "hash": "YM8686RhXY3DNnw0PJke3g=="
+          "hash": "OMVQOyrZ+OE+kinkoCJydQ=="
         }
       },
       "is_incremental": false,
@@ -2301,7 +2301,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Base.Views.SettingsPageView.html",
-          "hash": "g6o+bmHz5afi89rguNHtEg=="
+          "hash": "Aw1pATNp3/nHQlrw1SJmSQ=="
         }
       },
       "is_incremental": false,
@@ -2313,7 +2313,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Base.Views.html",
-          "hash": "kwPXEdnarya5+Q8laN+afA=="
+          "hash": "jGy8NnrKsg+T/PktxZLXTA=="
         }
       },
       "is_incremental": false,
@@ -2325,7 +2325,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Language.Models.LanguagePageModel.html",
-          "hash": "LmvXEQAybQgDCvjMpSODvQ=="
+          "hash": "AbZaMZQPeZ/Hx/WCdAVWgA=="
         }
       },
       "is_incremental": false,
@@ -2337,7 +2337,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Language.Models.html",
-          "hash": "0jb32qKGQv77K7uNMo54Uw=="
+          "hash": "tkKCIFGags4L/d3N79bS4Q=="
         }
       },
       "is_incremental": false,
@@ -2349,7 +2349,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.LanguagePageViewModel.html",
-          "hash": "x0clz0eCYD1tbZj5trIRxw=="
+          "hash": "B4cz14BcRQeQHEOeaJiGaA=="
         }
       },
       "is_incremental": false,
@@ -2361,7 +2361,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.html",
-          "hash": "mn2BmKR7j5LCcEtDnQEFUA=="
+          "hash": "BZGb5MaIvKmW3NARCZtuoQ=="
         }
       },
       "is_incremental": false,
@@ -2373,7 +2373,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.html",
-          "hash": "0gITR7UXBOyp9aaSeN8Juw=="
+          "hash": "m67PZZR2b1ULrT9dZV+F4g=="
         }
       },
       "is_incremental": false,
@@ -2385,7 +2385,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Language.Views.html",
-          "hash": "Y4zll27PUcU485kedcOcag=="
+          "hash": "09dxRaqp/cLEKEWf5I1bDQ=="
         }
       },
       "is_incremental": false,
@@ -2397,7 +2397,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Server.Models.ServerPageModel.html",
-          "hash": "nZfLo9A104K+P7Rlu9z56w=="
+          "hash": "9jtHWayvPZfhLTM7Bhlp/Q=="
         }
       },
       "is_incremental": false,
@@ -2409,7 +2409,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Server.Models.html",
-          "hash": "zd3je9tNgjeYJenzUWRFow=="
+          "hash": "ULc9kM8hKLPbKtqeZ2jtVg=="
         }
       },
       "is_incremental": false,
@@ -2421,7 +2421,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.ServerPageViewModel.html",
-          "hash": "J3BBsdHVRgaCvIajJ/2flw=="
+          "hash": "otjJMTbUngVNFJSoUgBRGw=="
         }
       },
       "is_incremental": false,
@@ -2433,7 +2433,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.html",
-          "hash": "n00kH0AFp5Y6usEde7Awcw=="
+          "hash": "8wseSgmAIPDYfhIWwmZmwQ=="
         }
       },
       "is_incremental": false,
@@ -2445,7 +2445,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Server.Views.ServerPageView.html",
-          "hash": "/HlLGMzZnsW0N6duoBf1Kg=="
+          "hash": "4iTkhT3T6JA0Jbd3ApP9NQ=="
         }
       },
       "is_incremental": false,
@@ -2457,7 +2457,79 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Server.Views.html",
-          "hash": "rLYrwtuw9eirf3DRc7F33w=="
+          "hash": "O1og+fOcxixzyMXnmk1emA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html",
+          "hash": "DOBLb04pboLWB67ZJdg2DQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Models.html",
+          "hash": "ib3I0fCcYuMPNuPMOKVDtQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html",
+          "hash": "Y/LalxTTbpeKYptw0Ns5EA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.html",
+          "hash": "9AKW4+KU1l0lW35ehv4cQA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html",
+          "hash": "DA+3kheYSmz59pVuAaeVtg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Views.html",
+          "hash": "/ro4mSRykvnyHTEwZ/IEuQ=="
         }
       },
       "is_incremental": false,
@@ -2469,7 +2541,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html",
-          "hash": "e17XadNf+Y68T9vboG6jtQ=="
+          "hash": "pzeRwOZBP9q017gc8cimRw=="
         }
       },
       "is_incremental": false,
@@ -2481,7 +2553,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.SettingsPageViewCell.html",
-          "hash": "0wt1M3PzNZttJWoaJedi7g=="
+          "hash": "zVPh13x06W/7hc2ioMh8qA=="
         }
       },
       "is_incremental": false,
@@ -2493,7 +2565,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.html",
-          "hash": "FDBmOrTMcbc3czEatc+EGA=="
+          "hash": "Brr6k9eUnay68IrSO37UTg=="
         }
       },
       "is_incremental": false,
@@ -2505,7 +2577,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsPageModel.html",
-          "hash": "Rf+oep++QKWm+2aKD/pDLA=="
+          "hash": "yfL4KLTgoMmDlNe7Hha4wg=="
         }
       },
       "is_incremental": false,
@@ -2517,7 +2589,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Base.Models.html",
-          "hash": "5PtwsJYh/NLwb1uCuvsGvQ=="
+          "hash": "eGtoZubm8XfMTInI0Vx17g=="
         }
       },
       "is_incremental": false,
@@ -2529,7 +2601,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html",
-          "hash": "t2brDPO3tWhnryHN5CZlPA=="
+          "hash": "ydJ+aE2prGSc0vRoRw/rTw=="
         }
       },
       "is_incremental": false,
@@ -2541,7 +2613,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.html",
-          "hash": "+8bwyKvCwA2i7T8eFQk9fQ=="
+          "hash": "lxiH4YYS88maIgHJ6LIY8w=="
         }
       },
       "is_incremental": false,
@@ -2553,7 +2625,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.html",
-          "hash": "MsuN0CYid2Bfq1EuHaH6wA=="
+          "hash": "ZxTHQsBDBilbgzPNKTI8Dg=="
         }
       },
       "is_incremental": false,
@@ -2565,7 +2637,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.StatsPageViewCell.html",
-          "hash": "Kfkh2+a6mtEs/22Yia5l5A=="
+          "hash": "BRog80V+MoKXzuMqFnOaHQ=="
         }
       },
       "is_incremental": false,
@@ -2577,7 +2649,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.html",
-          "hash": "zXQNFGYVxCh5qZEvuHItSA=="
+          "hash": "6YtZhEWKelS9h0kYRvNbrQ=="
         }
       },
       "is_incremental": false,
@@ -2589,7 +2661,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.html",
-          "hash": "FuETSOHAenGNODyx1W5rmA=="
+          "hash": "pI7pf3HGxKgemuabEo5kEg=="
         }
       },
       "is_incremental": false,
@@ -2601,7 +2673,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Enums.StatsPageEnum.html",
-          "hash": "vj4WECwmfTfYR/tEKnXRkg=="
+          "hash": "gkRs64s6e1+5GRZwZ6Ruqw=="
         }
       },
       "is_incremental": false,
@@ -2613,7 +2685,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Enums.html",
-          "hash": "7xDQ/nCaSZJ34/VLth+YGQ=="
+          "hash": "L+DLVnrDZZxLEsbZhwKnIg=="
         }
       },
       "is_incremental": false,
@@ -2625,7 +2697,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsRatingModel.html",
-          "hash": "LtQQKii9SP/CwTwLrzyRLA=="
+          "hash": "1xdy0t4IMDFn/XiULyjOwQ=="
         }
       },
       "is_incremental": false,
@@ -2637,7 +2709,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsVisitingModel.html",
-          "hash": "rncKaEBPvP59wB1xWkbcug=="
+          "hash": "GaGEpG4HpL8RSDxMFJbH8w=="
         }
       },
       "is_incremental": false,
@@ -2649,7 +2721,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsResultsPageModel.html",
-          "hash": "+M+YjSYbzg9FSDcte9ievA=="
+          "hash": "AVrZb3NlBYdPeHkFGQ1DGw=="
         }
       },
       "is_incremental": false,
@@ -2661,7 +2733,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.html",
-          "hash": "w0C9vpAleOQe57FlmYnNgQ=="
+          "hash": "U4kAYDGacPsl2bAGjTZ/2g=="
         }
       },
       "is_incremental": false,
@@ -2673,7 +2745,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html",
-          "hash": "QLl4g8mJd7ggDq7Mfx7O/g=="
+          "hash": "nYWDLUKCrJNAUGrmzoixSA=="
         }
       },
       "is_incremental": false,
@@ -2685,7 +2757,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.html",
-          "hash": "ZldGWnCeh2XICmNJBV4ftA=="
+          "hash": "N0IEXxBgUPUstXLQkmka/A=="
         }
       },
       "is_incremental": false,
@@ -2697,7 +2769,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.html",
-          "hash": "YIdSUF2e8YELoC5Xz0jruQ=="
+          "hash": "cvJ5eY2a43Afy4AYTzIDEg=="
         }
       },
       "is_incremental": false,
@@ -2709,7 +2781,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell.html",
-          "hash": "DHiZgs7Pz0/w53Ziwr0bLA=="
+          "hash": "RbpR5A1lr2i7qsdTtEenlg=="
         }
       },
       "is_incremental": false,
@@ -2721,7 +2793,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.html",
-          "hash": "8up93h86IJymCUL9bqkfXQ=="
+          "hash": "ZUzupB/+PpblaVRr4/RsAA=="
         }
       },
       "is_incremental": false,
@@ -2733,7 +2805,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.html",
-          "hash": "P+F+YpRqDxrvMgh1XiqHfA=="
+          "hash": "EFUOFJJmttvlGEMfxIwP9w=="
         }
       },
       "is_incremental": false,
@@ -2745,7 +2817,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Students.Models.StudentsPageModel.html",
-          "hash": "3bHGeG1GS4cx6nKqty23kA=="
+          "hash": "kAX9FwU/ehRucUn3i3YV0Q=="
         }
       },
       "is_incremental": false,
@@ -2757,7 +2829,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Students.Models.html",
-          "hash": "dzpEF/7Ur/h3F3oVJ8HBtQ=="
+          "hash": "LV1JAttb7ovkKOozbXN2zg=="
         }
       },
       "is_incremental": false,
@@ -2769,7 +2841,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html",
-          "hash": "O4jcMU7vIom+ijZvK+ROMQ=="
+          "hash": "0EInsgFJT5rpnmBhfPrCBg=="
         }
       },
       "is_incremental": false,
@@ -2781,7 +2853,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.html",
-          "hash": "FfAVNJN/nrYOxqGniM3bsA=="
+          "hash": "pdqB0NjLR03chJhb/rtWmQ=="
         }
       },
       "is_incremental": false,
@@ -2793,7 +2865,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.StudentsPageView.html",
-          "hash": "xoHB2kkWgrKoBGXvKqvX3w=="
+          "hash": "oN7HJbjQ3AInJdWCb48l4A=="
         }
       },
       "is_incremental": false,
@@ -2805,7 +2877,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.StudentsPageViewCell.html",
-          "hash": "ShM+mu4TO9imi6Oat9SIKA=="
+          "hash": "qjKkZuNfyp0Cl8V+FARMxg=="
         }
       },
       "is_incremental": false,
@@ -2817,7 +2889,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.html",
-          "hash": "fhXetLT799fQ2UzVrp6sfA=="
+          "hash": "2XXj1nGVS38EO3TGWT4Mfg=="
         }
       },
       "is_incremental": false,
@@ -2829,7 +2901,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.html",
-          "hash": "BqmpfEPN0Vi9n7urjZxNnw=="
+          "hash": "icJtp68edT0GAq7U4J7A9Q=="
         }
       },
       "is_incremental": false,
@@ -2841,7 +2913,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html",
-          "hash": "ZNCV6Fzg8FzvkBc02c8jSA=="
+          "hash": "1KVqzbkMHmAIial0V5R3hg=="
         }
       },
       "is_incremental": false,
@@ -2853,7 +2925,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.Models.html",
-          "hash": "mcCspOkJURNSX7cBkz/mqQ=="
+          "hash": "SucAZiE8sHUVL4ly3P6mPQ=="
         }
       },
       "is_incremental": false,
@@ -2865,7 +2937,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html",
-          "hash": "ZUDoo1ihLImZwdZiEdUD+w=="
+          "hash": "dHGkvQO7ZGi9J5QV6Bs2yQ=="
         }
       },
       "is_incremental": false,
@@ -2877,7 +2949,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.html",
-          "hash": "dkvITCtZmDy0Ukqt5vi+5Q=="
+          "hash": "lyYpy93VsuS3bv5HxMlttw=="
         }
       },
       "is_incremental": false,
@@ -2889,7 +2961,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.Views.TestingPageView.html",
-          "hash": "SVHB21G1JCEMVDMNsWLeJQ=="
+          "hash": "Uxk2yET4j1rXaHWg/z1osA=="
         }
       },
       "is_incremental": false,
@@ -2901,7 +2973,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell.html",
-          "hash": "It0lF0/F412qdZP3fWjv6A=="
+          "hash": "jFVtldsJNeE4DKX5UhQCfg=="
         }
       },
       "is_incremental": false,
@@ -2913,7 +2985,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingPageViewCell.html",
-          "hash": "E2S7EMGO0ESekbQwkpJ7Cg=="
+          "hash": "IZ6Hl/gPzfo50cr1qeFBNw=="
         }
       },
       "is_incremental": false,
@@ -2925,7 +2997,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.html",
-          "hash": "nzgwToN+J0eDTgfikPzCFg=="
+          "hash": "Ae3mbcHrWOkrsFNJ/aPC2A=="
         }
       },
       "is_incremental": false,
@@ -2937,7 +3009,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.Views.html",
-          "hash": "N7o9rF3B0+h7uSZRDF0yyQ=="
+          "hash": "0zEMQo1raaCz5FAofGWQIQ=="
         }
       },
       "is_incremental": false,
@@ -2949,7 +3021,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingAnswerModel.html",
-          "hash": "uVaUhSGekR/A7qlRrDrIIg=="
+          "hash": "ndBg6He76pqLHfvTyjLIIg=="
         }
       },
       "is_incremental": false,
@@ -2961,7 +3033,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingPageModel.html",
-          "hash": "ZperHv8nVAbjc42uBsCLsw=="
+          "hash": "kevAOnUiMfYM4LbmNIn28g=="
         }
       },
       "is_incremental": false,
@@ -2973,7 +3045,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Models.html",
-          "hash": "LrM5ThrkuXGnzvRFbCWtag=="
+          "hash": "shCEGhYn50VAJn1akcd2dQ=="
         }
       },
       "is_incremental": false,
@@ -2985,7 +3057,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.html",
-          "hash": "YXIuq+LUEeI4vYuNADzRNQ=="
+          "hash": "imRft4q3SSWwtQo8ACLhFQ=="
         }
       },
       "is_incremental": false,
@@ -2997,7 +3069,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.html",
-          "hash": "O+VIdj8TydIL4IDDEBap/g=="
+          "hash": "aZsfJeoEEW4ES1lON3BmRQ=="
         }
       },
       "is_incremental": false,
@@ -3009,7 +3081,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.TestPassingPageView.html",
-          "hash": "ViswiBAHJMA2IVScaQjVXQ=="
+          "hash": "C5DtlD2KtuiUANmwDt4NMA=="
         }
       },
       "is_incremental": false,
@@ -3021,7 +3093,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.html",
-          "hash": "XhUWWN+srK583IcVOD7SJQ=="
+          "hash": "EDcICOpzg8N/B9nXoZK+5A=="
         }
       },
       "is_incremental": false,
@@ -3033,7 +3105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestEditableAnswerViewCell.html",
-          "hash": "OT7HqRnWeB0l+ohpVgKlow=="
+          "hash": "9O4PI3TYwnxXz4wQB3I2eg=="
         }
       },
       "is_incremental": false,
@@ -3045,7 +3117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMovableAnswerViewCell.html",
-          "hash": "N0iBtqG8xdVlWQuMom4C2Q=="
+          "hash": "g9dwltAdhARtmFsYP0EXjA=="
         }
       },
       "is_incremental": false,
@@ -3057,7 +3129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMultipleAnswerViewCell.html",
-          "hash": "MiyKqdCCD+Y9l3Tve+pwrQ=="
+          "hash": "foM8eNYoD4qEUpxmqk9srg=="
         }
       },
       "is_incremental": false,
@@ -3069,7 +3141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestSingleAnswerViewCell.html",
-          "hash": "GaPfvusiaB3nfUiV+tQgXA=="
+          "hash": "2a2OKCHYpEzvsNLoNpJToQ=="
         }
       },
       "is_incremental": false,
@@ -3081,7 +3153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.html",
-          "hash": "GevQ8B0Rq5VIMEg1LmGzfQ=="
+          "hash": "vtqrDm9fakLbMCoaxJ8sBA=="
         }
       },
       "is_incremental": false,
@@ -3093,7 +3165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.html",
-          "hash": "5iWGJ8oDCdqXREIFJiCIBA=="
+          "hash": "SXdw8M/jss7sTtPIKVdpqQ=="
         }
       },
       "is_incremental": false,
@@ -3105,7 +3177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.TestingResultsPageViewModel.html",
-          "hash": "5svlzwN2hPU3bwvTttesiw=="
+          "hash": "XTslaq6CfdPyGw8tffuySQ=="
         }
       },
       "is_incremental": false,
@@ -3117,7 +3189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.html",
-          "hash": "H7ulQZ2jE+8RR+bmLElDAA=="
+          "hash": "naDclY4NTLtcz4H7LoXzFw=="
         }
       },
       "is_incremental": false,
@@ -3129,7 +3201,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Results.Views.TestingResultsPageView.html",
-          "hash": "LAwWGuWPg392CNrI+qjxPQ=="
+          "hash": "0Cby9UMgUs28ZFUPOhJq+Q=="
         }
       },
       "is_incremental": false,
@@ -3141,7 +3213,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.TestingResultsViewCell.html",
-          "hash": "uHDxpuCEOGrI0Wm28wVRiw=="
+          "hash": "piEM8IJ+gWH1dDT0a9UjNg=="
         }
       },
       "is_incremental": false,
@@ -3153,7 +3225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.html",
-          "hash": "oEpmeb7O3bjxtDKW4iPOng=="
+          "hash": "g6D83fvGZg/l9DnJMMn+zQ=="
         }
       },
       "is_incremental": false,
@@ -3165,7 +3237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Results.Views.html",
-          "hash": "AEwSeVTmKzLxNoe5yy2ScQ=="
+          "hash": "WAe3eXISKv8wDVyyxJ80Kg=="
         }
       },
       "is_incremental": false,
@@ -3177,7 +3249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarSubjectsModel.html",
-          "hash": "HDtF3+OYP3avnRsr5LWqkg=="
+          "hash": "f1EcvDdTK6/SgheDhqfWCA=="
         }
       },
       "is_incremental": false,
@@ -3189,7 +3261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarViewDayModel.html",
-          "hash": "FYDJxFSe6+bTS5VsvQoWGg=="
+          "hash": "qizBEdcVcB1pwfPiRwgTXw=="
         }
       },
       "is_incremental": false,
@@ -3201,7 +3273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Models.NewsPageModel.html",
-          "hash": "ACFE/jZulifxOf0g096aYw=="
+          "hash": "VVRUHVwax7Ih6PTRrsM3Mg=="
         }
       },
       "is_incremental": false,
@@ -3213,7 +3285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Models.html",
-          "hash": "Wmco5BRz4pTSxOM/2sdsJQ=="
+          "hash": "iG13ecGddMZH7AxY8tStmA=="
         }
       },
       "is_incremental": false,
@@ -3225,7 +3297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.CalendarViewModel.html",
-          "hash": "OWthkGKDk2E7FgZf9COa1w=="
+          "hash": "ZvC0cPfL9WoHCYrp0voCkg=="
         }
       },
       "is_incremental": false,
@@ -3237,7 +3309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html",
-          "hash": "Wh/zmX7NAkYpWVWsO0MPBQ=="
+          "hash": "w0Ek19DncSJrh74umDUv1Q=="
         }
       },
       "is_incremental": false,
@@ -3249,7 +3321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.html",
-          "hash": "VgHuHNdUSQ1gyxjdSXv7hw=="
+          "hash": "xrjccMCLKkMm00nyF5SBmA=="
         }
       },
       "is_incremental": false,
@@ -3261,7 +3333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Views.TodayPageView.html",
-          "hash": "y2TuF705ksxXpfjsfUZt+g=="
+          "hash": "FvnNetVE6YKhC/m3zu9fXQ=="
         }
       },
       "is_incremental": false,
@@ -3273,7 +3345,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCarouselViewCell.html",
-          "hash": "GEX5rRqY4ZGtMVf/VzJEAQ=="
+          "hash": "20Fv4y8p+Kl9b1u5z9JI0g=="
         }
       },
       "is_incremental": false,
@@ -3285,7 +3357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCollectionViewCell.html",
-          "hash": "dHry3lkTm9p8zCtF5z56/A=="
+          "hash": "HwsUZVJRwIRGDvn2y8cbKw=="
         }
       },
       "is_incremental": false,
@@ -3297,7 +3369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarSubjectsViewCell.html",
-          "hash": "R0LYGZf7nCvnzIA8OqcrgQ=="
+          "hash": "TYWi5cCs8tBwSKWb0qil3w=="
         }
       },
       "is_incremental": false,
@@ -3309,7 +3381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.NewsPageViewCell.html",
-          "hash": "5YQzscegfQ1TIY/2xKe26w=="
+          "hash": "AT5KBCCDQOjj24zfITWXIg=="
         }
       },
       "is_incremental": false,
@@ -3321,7 +3393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.html",
-          "hash": "cRKvklQeSqnBix1IG4y8jQ=="
+          "hash": "LKJM5qNE34Y+8BpS4hHVRg=="
         }
       },
       "is_incremental": false,
@@ -3333,7 +3405,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Views.html",
-          "hash": "n2gABDM1jZh/0vWnRGhb6g=="
+          "hash": "xwMHiRcUV5yEeKj5B0mIOQ=="
         }
       },
       "is_incremental": false,
@@ -3345,7 +3417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.html",
-          "hash": "xC0Bw5Pp3VMdV3cWLGcBhQ=="
+          "hash": "HyLNxXxCl1EeGHIcCNSNSA=="
         }
       },
       "is_incremental": false,
@@ -3357,7 +3429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.html",
-          "hash": "gLIOYErQ8FCWNSTbu4C4vQ=="
+          "hash": "WwAQsWbCpP+OQcMC8v4zZA=="
         }
       },
       "is_incremental": false,
@@ -3369,7 +3441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView.html",
-          "hash": "PQC7+8ieWSpsxl3yT4szVA=="
+          "hash": "chXrH9nWWoVfMaMMqDNKJg=="
         }
       },
       "is_incremental": false,
@@ -3381,7 +3453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.html",
-          "hash": "B1MRc708l3DWx1sZz+S7EQ=="
+          "hash": "Ka2GcK2E0UExIAz0B3aR5A=="
         }
       },
       "is_incremental": false,
@@ -3393,7 +3465,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.ViewModel.html",
-          "hash": "s/zRioii7cw1ioqkiA+NQg=="
+          "hash": "WjCw3/WOMedsudtCFo2dqQ=="
         }
       },
       "is_incremental": false,
@@ -3405,7 +3477,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.html",
-          "hash": "2s1zp2Cu8ZBBccoS1gZ6yw=="
+          "hash": "lYxw64/AdkLi/PuCFiaVbw=="
         }
       },
       "is_incremental": false,
@@ -3417,7 +3489,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.AppTheme.html",
-          "hash": "MIHgdOcJoi6O6sHfYfEZvw=="
+          "hash": "W4p7WaKUfetxNFiP32WK/g=="
         }
       },
       "is_incremental": false,
@@ -3429,7 +3501,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.IThemeNative.html",
-          "hash": "XPm7fPkqAW9RLvvvraYcIg=="
+          "hash": "Saqiw3lJOT6IbHvz5rYdVw=="
         }
       },
       "is_incremental": false,
@@ -3441,7 +3513,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.html",
-          "hash": "E7d2UZXW6QRPjvOX5WGILA=="
+          "hash": "j2+9hWck6/Jgli+MsrQLcw=="
         }
       },
       "is_incremental": false,
@@ -3453,7 +3525,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.DependencyServices.ThemePlatformSpecific.html",
-          "hash": "VkfMw8JAgfCb4vcrTmfTpw=="
+          "hash": "vlLBzY9q3ji7mHVMumdnVQ=="
         }
       },
       "is_incremental": false,
@@ -3465,7 +3537,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.DependencyServices.html",
-          "hash": "Bi3++7kv639Yee0YkjAnlg=="
+          "hash": "saoHFyjM92/DpNXUZTivBw=="
         }
       },
       "is_incremental": false,
@@ -3477,7 +3549,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.Interfaces.ITheme.html",
-          "hash": "fCajNPCeDKoc+uS9cJdOOQ=="
+          "hash": "eqgmvRWqv/+NH+kNlkGTiw=="
         }
       },
       "is_incremental": false,
@@ -3489,7 +3561,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.Interfaces.html",
-          "hash": "S528icEn7qinkQhhe8TADg=="
+          "hash": "iQsmoCseeO/c+itcKQnaPw=="
         }
       },
       "is_incremental": false,
@@ -3501,7 +3573,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.Templates.DarkTheme.html",
-          "hash": "fu2dCkkRwCxuyA0o6I57OA=="
+          "hash": "YIKop5837OGOCd/xljc1rw=="
         }
       },
       "is_incremental": false,
@@ -3513,7 +3585,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.Templates.DefaultTheme.html",
-          "hash": "KC4GuCqZOzBpAnYgL+0+NA=="
+          "hash": "eQjFc2vhV/zTwTO3VHBlxQ=="
         }
       },
       "is_incremental": false,
@@ -3525,7 +3597,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.Templates.html",
-          "hash": "5cyLeyIoUKp3EXqesEqL8Q=="
+          "hash": "C8QAamOoTzAlVUn6iwUQNA=="
         }
       },
       "is_incremental": false,
@@ -3537,7 +3609,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.Theme.html",
-          "hash": "TprYHKi3xkz0l1ZJboTVFA=="
+          "hash": "gthkB3ljrvYwD3Dm+vk13A=="
         }
       },
       "is_incremental": false,
@@ -3549,7 +3621,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.html",
-          "hash": "UoVD1JBUbbNv2QdZYUpxvw=="
+          "hash": "roFbXbxCtwfJQvTPmnJvcQ=="
         }
       },
       "is_incremental": false,
@@ -3561,7 +3633,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.iOS.AppDelegate.html",
-          "hash": "PonlVdcpxqRev7+MWYVdzA=="
+          "hash": "jbjBaf6oelSmhigQ7Kg0AQ=="
         }
       },
       "is_incremental": false,
@@ -3573,7 +3645,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.iOS.Application.html",
-          "hash": "eggx/03Ndp58bUS3SgmYKw=="
+          "hash": "pk+R7nWYyVhkPuqykeeNJQ=="
         }
       },
       "is_incremental": false,
@@ -3585,7 +3657,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.iOS.DependencyServices.ThemeNative.html",
-          "hash": "DV6CVfaHCrYrLq5x13SycA=="
+          "hash": "KubD5Grlkr6g+nBPTMOZvw=="
         }
       },
       "is_incremental": false,
@@ -3597,7 +3669,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.iOS.DependencyServices.html",
-          "hash": "j2Ja2mT5yeNfwP/P0KPDOw=="
+          "hash": "F05KhZ3WiHnAHS/0ETwS6A=="
         }
       },
       "is_incremental": false,
@@ -3609,7 +3681,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.iOS.html",
-          "hash": "VA1xSFSbbyybvUie2D6AGQ=="
+          "hash": "lPJJQod3KHI5OVAzx9jjaw=="
         }
       },
       "is_incremental": false,
@@ -3621,7 +3693,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.html",
-          "hash": "lnAEeyuaMqqJ7n8SPdU3LQ=="
+          "hash": "dGoUBdlFigZeWSO7pGK61g=="
         }
       },
       "is_incremental": false,
@@ -3718,7 +3790,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 302,
+          "total_file_count": 308,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

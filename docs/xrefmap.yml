@@ -10251,6 +10251,18 @@ references:
   commentId: F:EduCATS.Droid.Resource.Drawable.icon_settings_themes
   fullName: EduCATS.Droid.Resource.Drawable.icon_settings_themes
   nameWithType: Resource.Drawable.icon_settings_themes
+- uid: EduCATS.Droid.Resource.Drawable.icon_show_password
+  name: icon_show_password
+  href: api/EduCATS.Droid.Resource.Drawable.html#EduCATS_Droid_Resource_Drawable_icon_show_password
+  commentId: F:EduCATS.Droid.Resource.Drawable.icon_show_password
+  fullName: EduCATS.Droid.Resource.Drawable.icon_show_password
+  nameWithType: Resource.Drawable.icon_show_password
+- uid: EduCATS.Droid.Resource.Drawable.icon_show_password_dark
+  name: icon_show_password_dark
+  href: api/EduCATS.Droid.Resource.Drawable.html#EduCATS_Droid_Resource_Drawable_icon_show_password_dark
+  commentId: F:EduCATS.Droid.Resource.Drawable.icon_show_password_dark
+  fullName: EduCATS.Droid.Resource.Drawable.icon_show_password_dark
+  nameWithType: Resource.Drawable.icon_show_password_dark
 - uid: EduCATS.Droid.Resource.Drawable.icon_stats
   name: icon_stats
   href: api/EduCATS.Droid.Resource.Drawable.html#EduCATS_Droid_Resource_Drawable_icon_stats
@@ -10269,18 +10281,36 @@ references:
   commentId: F:EduCATS.Droid.Resource.Drawable.image_background_1
   fullName: EduCATS.Droid.Resource.Drawable.image_background_1
   nameWithType: Resource.Drawable.image_background_1
+- uid: EduCATS.Droid.Resource.Drawable.image_background_1_dark
+  name: image_background_1_dark
+  href: api/EduCATS.Droid.Resource.Drawable.html#EduCATS_Droid_Resource_Drawable_image_background_1_dark
+  commentId: F:EduCATS.Droid.Resource.Drawable.image_background_1_dark
+  fullName: EduCATS.Droid.Resource.Drawable.image_background_1_dark
+  nameWithType: Resource.Drawable.image_background_1_dark
 - uid: EduCATS.Droid.Resource.Drawable.image_background_2
   name: image_background_2
   href: api/EduCATS.Droid.Resource.Drawable.html#EduCATS_Droid_Resource_Drawable_image_background_2
   commentId: F:EduCATS.Droid.Resource.Drawable.image_background_2
   fullName: EduCATS.Droid.Resource.Drawable.image_background_2
   nameWithType: Resource.Drawable.image_background_2
+- uid: EduCATS.Droid.Resource.Drawable.image_background_2_dark
+  name: image_background_2_dark
+  href: api/EduCATS.Droid.Resource.Drawable.html#EduCATS_Droid_Resource_Drawable_image_background_2_dark
+  commentId: F:EduCATS.Droid.Resource.Drawable.image_background_2_dark
+  fullName: EduCATS.Droid.Resource.Drawable.image_background_2_dark
+  nameWithType: Resource.Drawable.image_background_2_dark
 - uid: EduCATS.Droid.Resource.Drawable.image_background_3
   name: image_background_3
   href: api/EduCATS.Droid.Resource.Drawable.html#EduCATS_Droid_Resource_Drawable_image_background_3
   commentId: F:EduCATS.Droid.Resource.Drawable.image_background_3
   fullName: EduCATS.Droid.Resource.Drawable.image_background_3
   nameWithType: Resource.Drawable.image_background_3
+- uid: EduCATS.Droid.Resource.Drawable.image_background_3_dark
+  name: image_background_3_dark
+  href: api/EduCATS.Droid.Resource.Drawable.html#EduCATS_Droid_Resource_Drawable_image_background_3_dark
+  commentId: F:EduCATS.Droid.Resource.Drawable.image_background_3_dark
+  fullName: EduCATS.Droid.Resource.Drawable.image_background_3_dark
+  nameWithType: Resource.Drawable.image_background_3_dark
 - uid: EduCATS.Droid.Resource.Drawable.image_book_rectangle
   name: image_book_rectangle
   href: api/EduCATS.Droid.Resource.Drawable.html#EduCATS_Droid_Resource_Drawable_image_book_rectangle
@@ -21784,6 +21814,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Pages.AppPages.OpenSettingsServer
   nameWithType: AppPages.OpenSettingsServer
+- uid: EduCATS.Helpers.Pages.AppPages.OpenSettingsTheme(System.String)
+  name: OpenSettingsTheme(String)
+  href: api/EduCATS.Helpers.Pages.AppPages.html#EduCATS_Helpers_Pages_AppPages_OpenSettingsTheme_System_String_
+  commentId: M:EduCATS.Helpers.Pages.AppPages.OpenSettingsTheme(System.String)
+  fullName: EduCATS.Helpers.Pages.AppPages.OpenSettingsTheme(System.String)
+  nameWithType: AppPages.OpenSettingsTheme(String)
+- uid: EduCATS.Helpers.Pages.AppPages.OpenSettingsTheme*
+  name: OpenSettingsTheme
+  href: api/EduCATS.Helpers.Pages.AppPages.html#EduCATS_Helpers_Pages_AppPages_OpenSettingsTheme_
+  commentId: Overload:EduCATS.Helpers.Pages.AppPages.OpenSettingsTheme
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Pages.AppPages.OpenSettingsTheme
+  nameWithType: AppPages.OpenSettingsTheme
 - uid: EduCATS.Helpers.Pages.AppPages.OpenStudentsListStats(System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.Statistics.StatsStudentModel},System.String)
   name: OpenStudentsListStats(Int32, Int32, List<StatsStudentModel>, String)
   href: api/EduCATS.Helpers.Pages.AppPages.html#EduCATS_Helpers_Pages_AppPages_OpenStudentsListStats_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_Statistics_StatsStudentModel__System_String_
@@ -22020,6 +22063,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsServer
   nameWithType: IPages.OpenSettingsServer
+- uid: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsTheme(System.String)
+  name: OpenSettingsTheme(String)
+  href: api/EduCATS.Helpers.Pages.Interfaces.IPages.html#EduCATS_Helpers_Pages_Interfaces_IPages_OpenSettingsTheme_System_String_
+  commentId: M:EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsTheme(System.String)
+  fullName: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsTheme(System.String)
+  nameWithType: IPages.OpenSettingsTheme(String)
+- uid: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsTheme*
+  name: OpenSettingsTheme
+  href: api/EduCATS.Helpers.Pages.Interfaces.IPages.html#EduCATS_Helpers_Pages_Interfaces_IPages_OpenSettingsTheme_
+  commentId: Overload:EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsTheme
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsTheme
+  nameWithType: IPages.OpenSettingsTheme
 - uid: EduCATS.Helpers.Pages.Interfaces.IPages.OpenStudentsListStats(System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.Statistics.StatsStudentModel},System.String)
   name: OpenStudentsListStats(Int32, Int32, List<StatsStudentModel>, String)
   href: api/EduCATS.Helpers.Pages.Interfaces.IPages.html#EduCATS_Helpers_Pages_Interfaces_IPages_OpenStudentsListStats_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_Statistics_StatsStudentModel__System_String_
@@ -25186,6 +25242,12 @@ references:
   commentId: F:EduCATS.Pages.Login.Views.LoginPageView._showPasswordIconMargin
   fullName: EduCATS.Pages.Login.Views.LoginPageView._showPasswordIconMargin
   nameWithType: LoginPageView._showPasswordIconMargin
+- uid: EduCATS.Pages.Login.Views.LoginPageView._showPasswordIconSize
+  name: _showPasswordIconSize
+  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView__showPasswordIconSize
+  commentId: F:EduCATS.Pages.Login.Views.LoginPageView._showPasswordIconSize
+  fullName: EduCATS.Pages.Login.Views.LoginPageView._showPasswordIconSize
+  nameWithType: LoginPageView._showPasswordIconSize
 - uid: EduCATS.Pages.Login.Views.LoginPageView.createActivityIndicator
   name: createActivityIndicator()
   href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createActivityIndicator
@@ -27472,6 +27534,305 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Server.Views.ServerPageView.createViews
   nameWithType: ServerPageView.createViews
+- uid: EduCATS.Pages.Settings.Themes.Models
+  name: EduCATS.Pages.Settings.Themes.Models
+  href: api/EduCATS.Pages.Settings.Themes.Models.html
+  commentId: N:EduCATS.Pages.Settings.Themes.Models
+  fullName: EduCATS.Pages.Settings.Themes.Models
+  nameWithType: EduCATS.Pages.Settings.Themes.Models
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel
+  name: ThemePageModel
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html
+  commentId: T:EduCATS.Pages.Settings.Themes.Models.ThemePageModel
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel
+  nameWithType: ThemePageModel
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Description
+  name: Description
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_Description
+  commentId: P:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Description
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Description
+  nameWithType: ThemePageModel.Description
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Description*
+  name: Description
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_Description_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Description
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Description
+  nameWithType: ThemePageModel.Description
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.GetListType
+  name: GetListType()
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_GetListType
+  commentId: M:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.GetListType
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.GetListType()
+  nameWithType: ThemePageModel.GetListType()
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.GetListType*
+  name: GetListType
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_GetListType_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.GetListType
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.GetListType
+  nameWithType: ThemePageModel.GetListType
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.IsChecked
+  name: IsChecked
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_IsChecked
+  commentId: P:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.IsChecked
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.IsChecked
+  nameWithType: ThemePageModel.IsChecked
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.IsChecked*
+  name: IsChecked
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_IsChecked_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.IsChecked
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.IsChecked
+  nameWithType: ThemePageModel.IsChecked
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Theme
+  name: Theme
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_Theme
+  commentId: P:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Theme
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Theme
+  nameWithType: ThemePageModel.Theme
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Theme*
+  name: Theme
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_Theme_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Theme
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Theme
+  nameWithType: ThemePageModel.Theme
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Title
+  name: Title
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_Title
+  commentId: P:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Title
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Title
+  nameWithType: ThemePageModel.Title
+- uid: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Title*
+  name: Title
+  href: api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html#EduCATS_Pages_Settings_Themes_Models_ThemePageModel_Title_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Title
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.Models.ThemePageModel.Title
+  nameWithType: ThemePageModel.Title
+- uid: EduCATS.Pages.Settings.Themes.ViewModels
+  name: EduCATS.Pages.Settings.Themes.ViewModels
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.html
+  commentId: N:EduCATS.Pages.Settings.Themes.ViewModels
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels
+  nameWithType: EduCATS.Pages.Settings.Themes.ViewModels
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel
+  name: ThemePageViewModel
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html
+  commentId: T:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel
+  nameWithType: ThemePageViewModel
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.#ctor(EduCATS.Helpers.Dialogs.Interfaces.IDialogs,EduCATS.Helpers.Devices.Interfaces.IDevice,EduCATS.Helpers.Pages.Interfaces.IPages)
+  name: ThemePageViewModel(IDialogs, IDevice, IPages)
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel__ctor_EduCATS_Helpers_Dialogs_Interfaces_IDialogs_EduCATS_Helpers_Devices_Interfaces_IDevice_EduCATS_Helpers_Pages_Interfaces_IPages_
+  commentId: M:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.#ctor(EduCATS.Helpers.Dialogs.Interfaces.IDialogs,EduCATS.Helpers.Devices.Interfaces.IDevice,EduCATS.Helpers.Pages.Interfaces.IPages)
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.ThemePageViewModel(EduCATS.Helpers.Dialogs.Interfaces.IDialogs, EduCATS.Helpers.Devices.Interfaces.IDevice, EduCATS.Helpers.Pages.Interfaces.IPages)
+  nameWithType: ThemePageViewModel.ThemePageViewModel(IDialogs, IDevice, IPages)
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.#ctor*
+  name: ThemePageViewModel
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel__ctor_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.#ctor
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.ThemePageViewModel
+  nameWithType: ThemePageViewModel.ThemePageViewModel
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._device
+  name: _device
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel__device
+  commentId: F:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._device
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._device
+  nameWithType: ThemePageViewModel._device
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._dialogs
+  name: _dialogs
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel__dialogs
+  commentId: F:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._dialogs
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._dialogs
+  nameWithType: ThemePageViewModel._dialogs
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._pages
+  name: _pages
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel__pages
+  commentId: F:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._pages
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._pages
+  nameWithType: ThemePageViewModel._pages
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._selectedItem
+  name: _selectedItem
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel__selectedItem
+  commentId: F:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._selectedItem
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._selectedItem
+  nameWithType: ThemePageViewModel._selectedItem
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._themeList
+  name: _themeList
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel__themeList
+  commentId: F:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._themeList
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel._themeList
+  nameWithType: ThemePageViewModel._themeList
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.changeTheme(EduCATS.Pages.Settings.Themes.Models.ThemePageModel)
+  name: changeTheme(ThemePageModel)
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_changeTheme_EduCATS_Pages_Settings_Themes_Models_ThemePageModel_
+  commentId: M:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.changeTheme(EduCATS.Pages.Settings.Themes.Models.ThemePageModel)
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.changeTheme(EduCATS.Pages.Settings.Themes.Models.ThemePageModel)
+  nameWithType: ThemePageViewModel.changeTheme(ThemePageModel)
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.changeTheme*
+  name: changeTheme
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_changeTheme_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.changeTheme
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.changeTheme
+  nameWithType: ThemePageViewModel.changeTheme
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.getThemeDetails(System.String)
+  name: getThemeDetails(String)
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_getThemeDetails_System_String_
+  commentId: M:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.getThemeDetails(System.String)
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.getThemeDetails(System.String)
+  nameWithType: ThemePageViewModel.getThemeDetails(String)
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.getThemeDetails*
+  name: getThemeDetails
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_getThemeDetails_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.getThemeDetails
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.getThemeDetails
+  nameWithType: ThemePageViewModel.getThemeDetails
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.SelectedItem
+  name: SelectedItem
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_SelectedItem
+  commentId: P:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.SelectedItem
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.SelectedItem
+  nameWithType: ThemePageViewModel.SelectedItem
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.SelectedItem*
+  name: SelectedItem
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_SelectedItem_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.SelectedItem
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.SelectedItem
+  nameWithType: ThemePageViewModel.SelectedItem
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.selectTheme(System.Object)
+  name: selectTheme(Object)
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_selectTheme_System_Object_
+  commentId: M:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.selectTheme(System.Object)
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.selectTheme(System.Object)
+  nameWithType: ThemePageViewModel.selectTheme(Object)
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.selectTheme*
+  name: selectTheme
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_selectTheme_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.selectTheme
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.selectTheme
+  nameWithType: ThemePageViewModel.selectTheme
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.setThemes
+  name: setThemes()
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_setThemes
+  commentId: M:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.setThemes
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.setThemes()
+  nameWithType: ThemePageViewModel.setThemes()
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.setThemes*
+  name: setThemes
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_setThemes_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.setThemes
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.setThemes
+  nameWithType: ThemePageViewModel.setThemes
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.switchPage
+  name: switchPage()
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_switchPage
+  commentId: M:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.switchPage
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.switchPage()
+  nameWithType: ThemePageViewModel.switchPage()
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.switchPage*
+  name: switchPage
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_switchPage_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.switchPage
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.switchPage
+  nameWithType: ThemePageViewModel.switchPage
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.ThemeList
+  name: ThemeList
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_ThemeList
+  commentId: P:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.ThemeList
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.ThemeList
+  nameWithType: ThemePageViewModel.ThemeList
+- uid: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.ThemeList*
+  name: ThemeList
+  href: api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html#EduCATS_Pages_Settings_Themes_ViewModels_ThemePageViewModel_ThemeList_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.ThemeList
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.ThemeList
+  nameWithType: ThemePageViewModel.ThemeList
+- uid: EduCATS.Pages.Settings.Themes.Views
+  name: EduCATS.Pages.Settings.Themes.Views
+  href: api/EduCATS.Pages.Settings.Themes.Views.html
+  commentId: N:EduCATS.Pages.Settings.Themes.Views
+  fullName: EduCATS.Pages.Settings.Themes.Views
+  nameWithType: EduCATS.Pages.Settings.Themes.Views
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView
+  name: ThemePageView
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html
+  commentId: T:EduCATS.Pages.Settings.Themes.Views.ThemePageView
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView
+  nameWithType: ThemePageView
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.#ctor
+  name: ThemePageView()
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView__ctor
+  commentId: M:EduCATS.Pages.Settings.Themes.Views.ThemePageView.#ctor
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.ThemePageView()
+  nameWithType: ThemePageView.ThemePageView()
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.#ctor*
+  name: ThemePageView
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView__ctor_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.Views.ThemePageView.#ctor
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.ThemePageView
+  nameWithType: ThemePageView.ThemePageView
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView._chooseLabelMargin
+  name: _chooseLabelMargin
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView__chooseLabelMargin
+  commentId: F:EduCATS.Pages.Settings.Themes.Views.ThemePageView._chooseLabelMargin
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView._chooseLabelMargin
+  nameWithType: ThemePageView._chooseLabelMargin
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView._listMargin
+  name: _listMargin
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView__listMargin
+  commentId: F:EduCATS.Pages.Settings.Themes.Views.ThemePageView._listMargin
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView._listMargin
+  nameWithType: ThemePageView._listMargin
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createChooseLabel
+  name: createChooseLabel()
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView_createChooseLabel
+  commentId: M:EduCATS.Pages.Settings.Themes.Views.ThemePageView.createChooseLabel
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createChooseLabel()
+  nameWithType: ThemePageView.createChooseLabel()
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createChooseLabel*
+  name: createChooseLabel
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView_createChooseLabel_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.Views.ThemePageView.createChooseLabel
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createChooseLabel
+  nameWithType: ThemePageView.createChooseLabel
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList(View)
+  name: createList(View)
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView_createList_View_
+  commentId: M:EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList(View)
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList(View)
+  nameWithType: ThemePageView.createList(View)
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList*
+  name: createList
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView_createList_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList
+  nameWithType: ThemePageView.createList
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createViews
+  name: createViews()
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView_createViews
+  commentId: M:EduCATS.Pages.Settings.Themes.Views.ThemePageView.createViews
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createViews()
+  nameWithType: ThemePageView.createViews()
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createViews*
+  name: createViews
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView_createViews_
+  commentId: Overload:EduCATS.Pages.Settings.Themes.Views.ThemePageView.createViews
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createViews
+  nameWithType: ThemePageView.createViews
 - uid: EduCATS.Pages.Settings.Views.Base.ViewCells
   name: EduCATS.Pages.Settings.Views.Base.ViewCells
   href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.html
@@ -33204,12 +33565,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.AppTheme.SetCurrentTheme
   nameWithType: AppTheme.SetCurrentTheme
-- uid: EduCATS.Themes.AppTheme.SetTheme(System.String)
-  name: SetTheme(String)
-  href: api/EduCATS.Themes.AppTheme.html#EduCATS_Themes_AppTheme_SetTheme_System_String_
-  commentId: M:EduCATS.Themes.AppTheme.SetTheme(System.String)
-  fullName: EduCATS.Themes.AppTheme.SetTheme(System.String)
-  nameWithType: AppTheme.SetTheme(String)
+- uid: EduCATS.Themes.AppTheme.SetTheme(System.String,System.Boolean)
+  name: SetTheme(String, Boolean)
+  href: api/EduCATS.Themes.AppTheme.html#EduCATS_Themes_AppTheme_SetTheme_System_String_System_Boolean_
+  commentId: M:EduCATS.Themes.AppTheme.SetTheme(System.String,System.Boolean)
+  fullName: EduCATS.Themes.AppTheme.SetTheme(System.String, System.Boolean)
+  nameWithType: AppTheme.SetTheme(String, Boolean)
 - uid: EduCATS.Themes.AppTheme.SetTheme*
   name: SetTheme
   href: api/EduCATS.Themes.AppTheme.html#EduCATS_Themes_AppTheme_SetTheme_
@@ -33330,6 +33691,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.AppStatusBarBackgroundColor
   nameWithType: ITheme.AppStatusBarBackgroundColor
+- uid: EduCATS.Themes.Interfaces.ITheme.BaseActivityIndicatorColor
+  name: BaseActivityIndicatorColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_BaseActivityIndicatorColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.BaseActivityIndicatorColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.BaseActivityIndicatorColor
+  nameWithType: ITheme.BaseActivityIndicatorColor
+- uid: EduCATS.Themes.Interfaces.ITheme.BaseActivityIndicatorColor*
+  name: BaseActivityIndicatorColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_BaseActivityIndicatorColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.BaseActivityIndicatorColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.BaseActivityIndicatorColor
+  nameWithType: ITheme.BaseActivityIndicatorColor
 - uid: EduCATS.Themes.Interfaces.ITheme.BaseAppColor
   name: BaseAppColor
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_BaseAppColor
@@ -33382,6 +33756,32 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.BaseCloseIcon
   nameWithType: ITheme.BaseCloseIcon
+- uid: EduCATS.Themes.Interfaces.ITheme.BasePickerTextColor
+  name: BasePickerTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_BasePickerTextColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.BasePickerTextColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.BasePickerTextColor
+  nameWithType: ITheme.BasePickerTextColor
+- uid: EduCATS.Themes.Interfaces.ITheme.BasePickerTextColor*
+  name: BasePickerTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_BasePickerTextColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.BasePickerTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.BasePickerTextColor
+  nameWithType: ITheme.BasePickerTextColor
+- uid: EduCATS.Themes.Interfaces.ITheme.BaseSectionTextColor
+  name: BaseSectionTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_BaseSectionTextColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.BaseSectionTextColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.BaseSectionTextColor
+  nameWithType: ITheme.BaseSectionTextColor
+- uid: EduCATS.Themes.Interfaces.ITheme.BaseSectionTextColor*
+  name: BaseSectionTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_BaseSectionTextColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.BaseSectionTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.BaseSectionTextColor
+  nameWithType: ITheme.BaseSectionTextColor
 - uid: EduCATS.Themes.Interfaces.ITheme.CheckboxDescriptionColor
   name: CheckboxDescriptionColor
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_CheckboxDescriptionColor
@@ -33525,6 +33925,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.EemcHeaderImage
   nameWithType: ITheme.EemcHeaderImage
+- uid: EduCATS.Themes.Interfaces.ITheme.EemcItemTitleColor
+  name: EemcItemTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_EemcItemTitleColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.EemcItemTitleColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.EemcItemTitleColor
+  nameWithType: ITheme.EemcItemTitleColor
+- uid: EduCATS.Themes.Interfaces.ITheme.EemcItemTitleColor*
+  name: EemcItemTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_EemcItemTitleColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.EemcItemTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.EemcItemTitleColor
+  nameWithType: ITheme.EemcItemTitleColor
 - uid: EduCATS.Themes.Interfaces.ITheme.FilesHeaderImage
   name: FilesHeaderImage
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_FilesHeaderImage
@@ -33538,6 +33951,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.FilesHeaderImage
   nameWithType: ITheme.FilesHeaderImage
+- uid: EduCATS.Themes.Interfaces.ITheme.FilesTitleColor
+  name: FilesTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_FilesTitleColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.FilesTitleColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.FilesTitleColor
+  nameWithType: ITheme.FilesTitleColor
+- uid: EduCATS.Themes.Interfaces.ITheme.FilesTitleColor*
+  name: FilesTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_FilesTitleColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.FilesTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.FilesTitleColor
+  nameWithType: ITheme.FilesTitleColor
 - uid: EduCATS.Themes.Interfaces.ITheme.LearningCardAdaptiveImage
   name: LearningCardAdaptiveImage
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_LearningCardAdaptiveImage
@@ -33824,6 +34250,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.RecommendationsHeaderImage
   nameWithType: ITheme.RecommendationsHeaderImage
+- uid: EduCATS.Themes.Interfaces.ITheme.RecommendationsTitleColor
+  name: RecommendationsTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_RecommendationsTitleColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.RecommendationsTitleColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.RecommendationsTitleColor
+  nameWithType: ITheme.RecommendationsTitleColor
+- uid: EduCATS.Themes.Interfaces.ITheme.RecommendationsTitleColor*
+  name: RecommendationsTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_RecommendationsTitleColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.RecommendationsTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.RecommendationsTitleColor
+  nameWithType: ITheme.RecommendationsTitleColor
 - uid: EduCATS.Themes.Interfaces.ITheme.RoundedListViewBackgroundColor
   name: RoundedListViewBackgroundColor
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_RoundedListViewBackgroundColor
@@ -33850,6 +34289,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.SettingsFontIcon
   nameWithType: ITheme.SettingsFontIcon
+- uid: EduCATS.Themes.Interfaces.ITheme.SettingsGroupUserColor
+  name: SettingsGroupUserColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_SettingsGroupUserColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.SettingsGroupUserColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.SettingsGroupUserColor
+  nameWithType: ITheme.SettingsGroupUserColor
+- uid: EduCATS.Themes.Interfaces.ITheme.SettingsGroupUserColor*
+  name: SettingsGroupUserColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_SettingsGroupUserColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.SettingsGroupUserColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.SettingsGroupUserColor
+  nameWithType: ITheme.SettingsGroupUserColor
 - uid: EduCATS.Themes.Interfaces.ITheme.SettingsLanguageIcon
   name: SettingsLanguageIcon
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_SettingsLanguageIcon
@@ -33902,19 +34354,45 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.SettingsThemeIcon
   nameWithType: ITheme.SettingsThemeIcon
-- uid: EduCATS.Themes.Interfaces.ITheme.SettingsUserColor
-  name: SettingsUserColor
-  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_SettingsUserColor
-  commentId: P:EduCATS.Themes.Interfaces.ITheme.SettingsUserColor
-  fullName: EduCATS.Themes.Interfaces.ITheme.SettingsUserColor
-  nameWithType: ITheme.SettingsUserColor
-- uid: EduCATS.Themes.Interfaces.ITheme.SettingsUserColor*
-  name: SettingsUserColor
-  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_SettingsUserColor_
-  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.SettingsUserColor
+- uid: EduCATS.Themes.Interfaces.ITheme.SettingsTitleColor
+  name: SettingsTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_SettingsTitleColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.SettingsTitleColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.SettingsTitleColor
+  nameWithType: ITheme.SettingsTitleColor
+- uid: EduCATS.Themes.Interfaces.ITheme.SettingsTitleColor*
+  name: SettingsTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_SettingsTitleColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.SettingsTitleColor
   isSpec: "True"
-  fullName: EduCATS.Themes.Interfaces.ITheme.SettingsUserColor
-  nameWithType: ITheme.SettingsUserColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.SettingsTitleColor
+  nameWithType: ITheme.SettingsTitleColor
+- uid: EduCATS.Themes.Interfaces.ITheme.StatisticsBaseRatingTextColor
+  name: StatisticsBaseRatingTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsBaseRatingTextColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.StatisticsBaseRatingTextColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsBaseRatingTextColor
+  nameWithType: ITheme.StatisticsBaseRatingTextColor
+- uid: EduCATS.Themes.Interfaces.ITheme.StatisticsBaseRatingTextColor*
+  name: StatisticsBaseRatingTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsBaseRatingTextColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.StatisticsBaseRatingTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsBaseRatingTextColor
+  nameWithType: ITheme.StatisticsBaseRatingTextColor
+- uid: EduCATS.Themes.Interfaces.ITheme.StatisticsBaseTitleColor
+  name: StatisticsBaseTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsBaseTitleColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.StatisticsBaseTitleColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsBaseTitleColor
+  nameWithType: ITheme.StatisticsBaseTitleColor
+- uid: EduCATS.Themes.Interfaces.ITheme.StatisticsBaseTitleColor*
+  name: StatisticsBaseTitleColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsBaseTitleColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.StatisticsBaseTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsBaseTitleColor
+  nameWithType: ITheme.StatisticsBaseTitleColor
 - uid: EduCATS.Themes.Interfaces.ITheme.StatisticsBoxTextColor
   name: StatisticsBoxTextColor
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsBoxTextColor
@@ -34110,6 +34588,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.SwitchFrameDescriptionColor
   nameWithType: ITheme.SwitchFrameDescriptionColor
+- uid: EduCATS.Themes.Interfaces.ITheme.SwitchFrameTextColor
+  name: SwitchFrameTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_SwitchFrameTextColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.SwitchFrameTextColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.SwitchFrameTextColor
+  nameWithType: ITheme.SwitchFrameTextColor
+- uid: EduCATS.Themes.Interfaces.ITheme.SwitchFrameTextColor*
+  name: SwitchFrameTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_SwitchFrameTextColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.SwitchFrameTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.SwitchFrameTextColor
+  nameWithType: ITheme.SwitchFrameTextColor
 - uid: EduCATS.Themes.Interfaces.ITheme.TestingDescriptionColor
   name: TestingDescriptionColor
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestingDescriptionColor
@@ -34214,6 +34705,45 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.TestPassingEntryColor
   nameWithType: ITheme.TestPassingEntryColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TestPassingQuestionColor
+  name: TestPassingQuestionColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestPassingQuestionColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.TestPassingQuestionColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.TestPassingQuestionColor
+  nameWithType: ITheme.TestPassingQuestionColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TestPassingQuestionColor*
+  name: TestPassingQuestionColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestPassingQuestionColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.TestPassingQuestionColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.TestPassingQuestionColor
+  nameWithType: ITheme.TestPassingQuestionColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TestPassingSelectionColor
+  name: TestPassingSelectionColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestPassingSelectionColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.TestPassingSelectionColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.TestPassingSelectionColor
+  nameWithType: ITheme.TestPassingSelectionColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TestPassingSelectionColor*
+  name: TestPassingSelectionColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestPassingSelectionColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.TestPassingSelectionColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.TestPassingSelectionColor
+  nameWithType: ITheme.TestPassingSelectionColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TestPassingUnselectedColor
+  name: TestPassingUnselectedColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestPassingUnselectedColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.TestPassingUnselectedColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.TestPassingUnselectedColor
+  nameWithType: ITheme.TestPassingUnselectedColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TestPassingUnselectedColor*
+  name: TestPassingUnselectedColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestPassingUnselectedColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.TestPassingUnselectedColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.TestPassingUnselectedColor
+  nameWithType: ITheme.TestPassingUnselectedColor
 - uid: EduCATS.Themes.Interfaces.ITheme.TestResultsAnswerTextColor
   name: TestResultsAnswerTextColor
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestResultsAnswerTextColor
@@ -34253,6 +34783,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.TestResultsNotCorrectAnswerColor
   nameWithType: ITheme.TestResultsNotCorrectAnswerColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TestResultsRatingColor
+  name: TestResultsRatingColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestResultsRatingColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.TestResultsRatingColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.TestResultsRatingColor
+  nameWithType: ITheme.TestResultsRatingColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TestResultsRatingColor*
+  name: TestResultsRatingColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TestResultsRatingColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.TestResultsRatingColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.TestResultsRatingColor
+  nameWithType: ITheme.TestResultsRatingColor
 - uid: EduCATS.Themes.Interfaces.ITheme.TodayCalendarBackgroundColor
   name: TodayCalendarBackgroundColor
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TodayCalendarBackgroundColor
@@ -34266,6 +34809,32 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.TodayCalendarBackgroundColor
   nameWithType: ITheme.TodayCalendarBackgroundColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TodayCalendarBaseTextColor
+  name: TodayCalendarBaseTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TodayCalendarBaseTextColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.TodayCalendarBaseTextColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.TodayCalendarBaseTextColor
+  nameWithType: ITheme.TodayCalendarBaseTextColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TodayCalendarBaseTextColor*
+  name: TodayCalendarBaseTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TodayCalendarBaseTextColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.TodayCalendarBaseTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.TodayCalendarBaseTextColor
+  nameWithType: ITheme.TodayCalendarBaseTextColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TodayCalendarSubjectTextColor
+  name: TodayCalendarSubjectTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TodayCalendarSubjectTextColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.TodayCalendarSubjectTextColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.TodayCalendarSubjectTextColor
+  nameWithType: ITheme.TodayCalendarSubjectTextColor
+- uid: EduCATS.Themes.Interfaces.ITheme.TodayCalendarSubjectTextColor*
+  name: TodayCalendarSubjectTextColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TodayCalendarSubjectTextColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.TodayCalendarSubjectTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.TodayCalendarSubjectTextColor
+  nameWithType: ITheme.TodayCalendarSubjectTextColor
 - uid: EduCATS.Themes.Interfaces.ITheme.TodayNewsDateColor
   name: TodayNewsDateColor
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_TodayNewsDateColor
@@ -34447,6 +35016,56 @@ references:
   commentId: T:EduCATS.Themes.Templates.DarkTheme
   fullName: EduCATS.Themes.Templates.DarkTheme
   nameWithType: DarkTheme
+- uid: EduCATS.Themes.Templates.DarkTheme._baseDarkColor
+  name: _baseDarkColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme__baseDarkColor
+  commentId: F:EduCATS.Themes.Templates.DarkTheme._baseDarkColor
+  fullName: EduCATS.Themes.Templates.DarkTheme._baseDarkColor
+  nameWithType: DarkTheme._baseDarkColor
+- uid: EduCATS.Themes.Templates.DarkTheme._blackColor
+  name: _blackColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme__blackColor
+  commentId: F:EduCATS.Themes.Templates.DarkTheme._blackColor
+  fullName: EduCATS.Themes.Templates.DarkTheme._blackColor
+  nameWithType: DarkTheme._blackColor
+- uid: EduCATS.Themes.Templates.DarkTheme._greyColor
+  name: _greyColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme__greyColor
+  commentId: F:EduCATS.Themes.Templates.DarkTheme._greyColor
+  fullName: EduCATS.Themes.Templates.DarkTheme._greyColor
+  nameWithType: DarkTheme._greyColor
+- uid: EduCATS.Themes.Templates.DarkTheme._whiteColor
+  name: _whiteColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme__whiteColor
+  commentId: F:EduCATS.Themes.Templates.DarkTheme._whiteColor
+  fullName: EduCATS.Themes.Templates.DarkTheme._whiteColor
+  nameWithType: DarkTheme._whiteColor
+- uid: EduCATS.Themes.Templates.DarkTheme.AppBackgroundColor
+  name: AppBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_AppBackgroundColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.AppBackgroundColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.AppBackgroundColor
+  nameWithType: DarkTheme.AppBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.AppBackgroundColor*
+  name: AppBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_AppBackgroundColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.AppBackgroundColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.AppBackgroundColor
+  nameWithType: DarkTheme.AppBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.AppNavigationBarBackgroundColor
+  name: AppNavigationBarBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_AppNavigationBarBackgroundColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.AppNavigationBarBackgroundColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.AppNavigationBarBackgroundColor
+  nameWithType: DarkTheme.AppNavigationBarBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.AppNavigationBarBackgroundColor*
+  name: AppNavigationBarBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_AppNavigationBarBackgroundColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.AppNavigationBarBackgroundColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.AppNavigationBarBackgroundColor
+  nameWithType: DarkTheme.AppNavigationBarBackgroundColor
 - uid: EduCATS.Themes.Templates.DarkTheme.AppStatusBarBackgroundColor
   name: AppStatusBarBackgroundColor
   href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_AppStatusBarBackgroundColor
@@ -34460,6 +35079,617 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DarkTheme.AppStatusBarBackgroundColor
   nameWithType: DarkTheme.AppStatusBarBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BaseActivityIndicatorColor
+  name: BaseActivityIndicatorColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BaseActivityIndicatorColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.BaseActivityIndicatorColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.BaseActivityIndicatorColor
+  nameWithType: DarkTheme.BaseActivityIndicatorColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BaseActivityIndicatorColor*
+  name: BaseActivityIndicatorColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BaseActivityIndicatorColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.BaseActivityIndicatorColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.BaseActivityIndicatorColor
+  nameWithType: DarkTheme.BaseActivityIndicatorColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BaseAppColor
+  name: BaseAppColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BaseAppColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.BaseAppColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.BaseAppColor
+  nameWithType: DarkTheme.BaseAppColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BaseAppColor*
+  name: BaseAppColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BaseAppColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.BaseAppColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.BaseAppColor
+  nameWithType: DarkTheme.BaseAppColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BaseBlockColor
+  name: BaseBlockColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BaseBlockColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.BaseBlockColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.BaseBlockColor
+  nameWithType: DarkTheme.BaseBlockColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BaseBlockColor*
+  name: BaseBlockColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BaseBlockColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.BaseBlockColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.BaseBlockColor
+  nameWithType: DarkTheme.BaseBlockColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BasePickerTextColor
+  name: BasePickerTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BasePickerTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.BasePickerTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.BasePickerTextColor
+  nameWithType: DarkTheme.BasePickerTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BasePickerTextColor*
+  name: BasePickerTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BasePickerTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.BasePickerTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.BasePickerTextColor
+  nameWithType: DarkTheme.BasePickerTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BaseSectionTextColor
+  name: BaseSectionTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BaseSectionTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.BaseSectionTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.BaseSectionTextColor
+  nameWithType: DarkTheme.BaseSectionTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.BaseSectionTextColor*
+  name: BaseSectionTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_BaseSectionTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.BaseSectionTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.BaseSectionTextColor
+  nameWithType: DarkTheme.BaseSectionTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.EemcBackButtonColor
+  name: EemcBackButtonColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_EemcBackButtonColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.EemcBackButtonColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.EemcBackButtonColor
+  nameWithType: DarkTheme.EemcBackButtonColor
+- uid: EduCATS.Themes.Templates.DarkTheme.EemcBackButtonColor*
+  name: EemcBackButtonColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_EemcBackButtonColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.EemcBackButtonColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.EemcBackButtonColor
+  nameWithType: DarkTheme.EemcBackButtonColor
+- uid: EduCATS.Themes.Templates.DarkTheme.EemcBackButtonTextColor
+  name: EemcBackButtonTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_EemcBackButtonTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.EemcBackButtonTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.EemcBackButtonTextColor
+  nameWithType: DarkTheme.EemcBackButtonTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.EemcBackButtonTextColor*
+  name: EemcBackButtonTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_EemcBackButtonTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.EemcBackButtonTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.EemcBackButtonTextColor
+  nameWithType: DarkTheme.EemcBackButtonTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.EemcItemTitleColor
+  name: EemcItemTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_EemcItemTitleColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.EemcItemTitleColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.EemcItemTitleColor
+  nameWithType: DarkTheme.EemcItemTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.EemcItemTitleColor*
+  name: EemcItemTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_EemcItemTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.EemcItemTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.EemcItemTitleColor
+  nameWithType: DarkTheme.EemcItemTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.FilesTitleColor
+  name: FilesTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_FilesTitleColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.FilesTitleColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.FilesTitleColor
+  nameWithType: DarkTheme.FilesTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.FilesTitleColor*
+  name: FilesTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_FilesTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.FilesTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.FilesTitleColor
+  nameWithType: DarkTheme.FilesTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginBackground1Image
+  name: LoginBackground1Image
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginBackground1Image
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.LoginBackground1Image
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginBackground1Image
+  nameWithType: DarkTheme.LoginBackground1Image
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginBackground1Image*
+  name: LoginBackground1Image
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginBackground1Image_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.LoginBackground1Image
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginBackground1Image
+  nameWithType: DarkTheme.LoginBackground1Image
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginBackground2Image
+  name: LoginBackground2Image
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginBackground2Image
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.LoginBackground2Image
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginBackground2Image
+  nameWithType: DarkTheme.LoginBackground2Image
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginBackground2Image*
+  name: LoginBackground2Image
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginBackground2Image_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.LoginBackground2Image
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginBackground2Image
+  nameWithType: DarkTheme.LoginBackground2Image
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginBackground3Image
+  name: LoginBackground3Image
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginBackground3Image
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.LoginBackground3Image
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginBackground3Image
+  nameWithType: DarkTheme.LoginBackground3Image
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginBackground3Image*
+  name: LoginBackground3Image
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginBackground3Image_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.LoginBackground3Image
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginBackground3Image
+  nameWithType: DarkTheme.LoginBackground3Image
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginButtonBackgroundColor
+  name: LoginButtonBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginButtonBackgroundColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.LoginButtonBackgroundColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginButtonBackgroundColor
+  nameWithType: DarkTheme.LoginButtonBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginButtonBackgroundColor*
+  name: LoginButtonBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginButtonBackgroundColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.LoginButtonBackgroundColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginButtonBackgroundColor
+  nameWithType: DarkTheme.LoginButtonBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginShowPasswordImage
+  name: LoginShowPasswordImage
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginShowPasswordImage
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.LoginShowPasswordImage
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginShowPasswordImage
+  nameWithType: DarkTheme.LoginShowPasswordImage
+- uid: EduCATS.Themes.Templates.DarkTheme.LoginShowPasswordImage*
+  name: LoginShowPasswordImage
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_LoginShowPasswordImage_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.LoginShowPasswordImage
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.LoginShowPasswordImage
+  nameWithType: DarkTheme.LoginShowPasswordImage
+- uid: EduCATS.Themes.Templates.DarkTheme.MainSelectedTabColor
+  name: MainSelectedTabColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_MainSelectedTabColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.MainSelectedTabColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.MainSelectedTabColor
+  nameWithType: DarkTheme.MainSelectedTabColor
+- uid: EduCATS.Themes.Templates.DarkTheme.MainSelectedTabColor*
+  name: MainSelectedTabColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_MainSelectedTabColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.MainSelectedTabColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.MainSelectedTabColor
+  nameWithType: DarkTheme.MainSelectedTabColor
+- uid: EduCATS.Themes.Templates.DarkTheme.MainUnselectedTabColor
+  name: MainUnselectedTabColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_MainUnselectedTabColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.MainUnselectedTabColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.MainUnselectedTabColor
+  nameWithType: DarkTheme.MainUnselectedTabColor
+- uid: EduCATS.Themes.Templates.DarkTheme.MainUnselectedTabColor*
+  name: MainUnselectedTabColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_MainUnselectedTabColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.MainUnselectedTabColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.MainUnselectedTabColor
+  nameWithType: DarkTheme.MainUnselectedTabColor
+- uid: EduCATS.Themes.Templates.DarkTheme.NewsTextColor
+  name: NewsTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_NewsTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.NewsTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.NewsTextColor
+  nameWithType: DarkTheme.NewsTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.NewsTextColor*
+  name: NewsTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_NewsTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.NewsTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.NewsTextColor
+  nameWithType: DarkTheme.NewsTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.RecommendationsTitleColor
+  name: RecommendationsTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_RecommendationsTitleColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.RecommendationsTitleColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.RecommendationsTitleColor
+  nameWithType: DarkTheme.RecommendationsTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.RecommendationsTitleColor*
+  name: RecommendationsTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_RecommendationsTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.RecommendationsTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.RecommendationsTitleColor
+  nameWithType: DarkTheme.RecommendationsTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.RoundedListViewBackgroundColor
+  name: RoundedListViewBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_RoundedListViewBackgroundColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.RoundedListViewBackgroundColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.RoundedListViewBackgroundColor
+  nameWithType: DarkTheme.RoundedListViewBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.RoundedListViewBackgroundColor*
+  name: RoundedListViewBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_RoundedListViewBackgroundColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.RoundedListViewBackgroundColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.RoundedListViewBackgroundColor
+  nameWithType: DarkTheme.RoundedListViewBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.SettingsTitleColor
+  name: SettingsTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_SettingsTitleColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.SettingsTitleColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.SettingsTitleColor
+  nameWithType: DarkTheme.SettingsTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.SettingsTitleColor*
+  name: SettingsTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_SettingsTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.SettingsTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.SettingsTitleColor
+  nameWithType: DarkTheme.SettingsTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsBaseRatingTextColor
+  name: StatisticsBaseRatingTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsBaseRatingTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.StatisticsBaseRatingTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsBaseRatingTextColor
+  nameWithType: DarkTheme.StatisticsBaseRatingTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsBaseRatingTextColor*
+  name: StatisticsBaseRatingTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsBaseRatingTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.StatisticsBaseRatingTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsBaseRatingTextColor
+  nameWithType: DarkTheme.StatisticsBaseRatingTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsBaseTitleColor
+  name: StatisticsBaseTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsBaseTitleColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.StatisticsBaseTitleColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsBaseTitleColor
+  nameWithType: DarkTheme.StatisticsBaseTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsBaseTitleColor*
+  name: StatisticsBaseTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsBaseTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.StatisticsBaseTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsBaseTitleColor
+  nameWithType: DarkTheme.StatisticsBaseTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsNameColor
+  name: StatisticsDetailsNameColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsDetailsNameColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsNameColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsNameColor
+  nameWithType: DarkTheme.StatisticsDetailsNameColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsNameColor*
+  name: StatisticsDetailsNameColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsDetailsNameColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsNameColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsNameColor
+  nameWithType: DarkTheme.StatisticsDetailsNameColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsSeparatorColor
+  name: StatisticsDetailsSeparatorColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsDetailsSeparatorColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsSeparatorColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsSeparatorColor
+  nameWithType: DarkTheme.StatisticsDetailsSeparatorColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsSeparatorColor*
+  name: StatisticsDetailsSeparatorColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsDetailsSeparatorColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsSeparatorColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsSeparatorColor
+  nameWithType: DarkTheme.StatisticsDetailsSeparatorColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsTitleColor
+  name: StatisticsDetailsTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsDetailsTitleColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsTitleColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsTitleColor
+  nameWithType: DarkTheme.StatisticsDetailsTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsTitleColor*
+  name: StatisticsDetailsTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsDetailsTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsDetailsTitleColor
+  nameWithType: DarkTheme.StatisticsDetailsTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsExpandableTextColor
+  name: StatisticsExpandableTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsExpandableTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.StatisticsExpandableTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsExpandableTextColor
+  nameWithType: DarkTheme.StatisticsExpandableTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.StatisticsExpandableTextColor*
+  name: StatisticsExpandableTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_StatisticsExpandableTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.StatisticsExpandableTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.StatisticsExpandableTextColor
+  nameWithType: DarkTheme.StatisticsExpandableTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.SwitchFrameTextColor
+  name: SwitchFrameTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_SwitchFrameTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.SwitchFrameTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.SwitchFrameTextColor
+  nameWithType: DarkTheme.SwitchFrameTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.SwitchFrameTextColor*
+  name: SwitchFrameTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_SwitchFrameTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.SwitchFrameTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.SwitchFrameTextColor
+  nameWithType: DarkTheme.SwitchFrameTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestingDescriptionColor
+  name: TestingDescriptionColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestingDescriptionColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TestingDescriptionColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestingDescriptionColor
+  nameWithType: DarkTheme.TestingDescriptionColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestingDescriptionColor*
+  name: TestingDescriptionColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestingDescriptionColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TestingDescriptionColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestingDescriptionColor
+  nameWithType: DarkTheme.TestingDescriptionColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestingTitleColor
+  name: TestingTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestingTitleColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TestingTitleColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestingTitleColor
+  nameWithType: DarkTheme.TestingTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestingTitleColor*
+  name: TestingTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestingTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TestingTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestingTitleColor
+  nameWithType: DarkTheme.TestingTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingAnswerColor
+  name: TestPassingAnswerColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingAnswerColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TestPassingAnswerColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingAnswerColor
+  nameWithType: DarkTheme.TestPassingAnswerColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingAnswerColor*
+  name: TestPassingAnswerColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingAnswerColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TestPassingAnswerColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingAnswerColor
+  nameWithType: DarkTheme.TestPassingAnswerColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingButtonTextColor
+  name: TestPassingButtonTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingButtonTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TestPassingButtonTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingButtonTextColor
+  nameWithType: DarkTheme.TestPassingButtonTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingButtonTextColor*
+  name: TestPassingButtonTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingButtonTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TestPassingButtonTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingButtonTextColor
+  nameWithType: DarkTheme.TestPassingButtonTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingEntryColor
+  name: TestPassingEntryColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingEntryColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TestPassingEntryColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingEntryColor
+  nameWithType: DarkTheme.TestPassingEntryColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingEntryColor*
+  name: TestPassingEntryColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingEntryColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TestPassingEntryColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingEntryColor
+  nameWithType: DarkTheme.TestPassingEntryColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingQuestionColor
+  name: TestPassingQuestionColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingQuestionColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TestPassingQuestionColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingQuestionColor
+  nameWithType: DarkTheme.TestPassingQuestionColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingQuestionColor*
+  name: TestPassingQuestionColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingQuestionColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TestPassingQuestionColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingQuestionColor
+  nameWithType: DarkTheme.TestPassingQuestionColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingUnselectedColor
+  name: TestPassingUnselectedColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingUnselectedColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TestPassingUnselectedColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingUnselectedColor
+  nameWithType: DarkTheme.TestPassingUnselectedColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestPassingUnselectedColor*
+  name: TestPassingUnselectedColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestPassingUnselectedColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TestPassingUnselectedColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestPassingUnselectedColor
+  nameWithType: DarkTheme.TestPassingUnselectedColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestResultsAnswerTextColor
+  name: TestResultsAnswerTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestResultsAnswerTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TestResultsAnswerTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestResultsAnswerTextColor
+  nameWithType: DarkTheme.TestResultsAnswerTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestResultsAnswerTextColor*
+  name: TestResultsAnswerTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestResultsAnswerTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TestResultsAnswerTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestResultsAnswerTextColor
+  nameWithType: DarkTheme.TestResultsAnswerTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestResultsRatingColor
+  name: TestResultsRatingColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestResultsRatingColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TestResultsRatingColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestResultsRatingColor
+  nameWithType: DarkTheme.TestResultsRatingColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TestResultsRatingColor*
+  name: TestResultsRatingColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TestResultsRatingColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TestResultsRatingColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TestResultsRatingColor
+  nameWithType: DarkTheme.TestResultsRatingColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayCalendarBackgroundColor
+  name: TodayCalendarBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayCalendarBackgroundColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayCalendarBackgroundColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayCalendarBackgroundColor
+  nameWithType: DarkTheme.TodayCalendarBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayCalendarBackgroundColor*
+  name: TodayCalendarBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayCalendarBackgroundColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayCalendarBackgroundColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayCalendarBackgroundColor
+  nameWithType: DarkTheme.TodayCalendarBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayCalendarBaseTextColor
+  name: TodayCalendarBaseTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayCalendarBaseTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayCalendarBaseTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayCalendarBaseTextColor
+  nameWithType: DarkTheme.TodayCalendarBaseTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayCalendarBaseTextColor*
+  name: TodayCalendarBaseTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayCalendarBaseTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayCalendarBaseTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayCalendarBaseTextColor
+  nameWithType: DarkTheme.TodayCalendarBaseTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayCalendarSubjectTextColor
+  name: TodayCalendarSubjectTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayCalendarSubjectTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayCalendarSubjectTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayCalendarSubjectTextColor
+  nameWithType: DarkTheme.TodayCalendarSubjectTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayCalendarSubjectTextColor*
+  name: TodayCalendarSubjectTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayCalendarSubjectTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayCalendarSubjectTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayCalendarSubjectTextColor
+  nameWithType: DarkTheme.TodayCalendarSubjectTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsDateColor
+  name: TodayNewsDateColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsDateColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayNewsDateColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsDateColor
+  nameWithType: DarkTheme.TodayNewsDateColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsDateColor*
+  name: TodayNewsDateColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsDateColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayNewsDateColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsDateColor
+  nameWithType: DarkTheme.TodayNewsDateColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsDateIconColor
+  name: TodayNewsDateIconColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsDateIconColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayNewsDateIconColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsDateIconColor
+  nameWithType: DarkTheme.TodayNewsDateIconColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsDateIconColor*
+  name: TodayNewsDateIconColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsDateIconColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayNewsDateIconColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsDateIconColor
+  nameWithType: DarkTheme.TodayNewsDateIconColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsItemBackgroundColor
+  name: TodayNewsItemBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsItemBackgroundColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayNewsItemBackgroundColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsItemBackgroundColor
+  nameWithType: DarkTheme.TodayNewsItemBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsItemBackgroundColor*
+  name: TodayNewsItemBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsItemBackgroundColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayNewsItemBackgroundColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsItemBackgroundColor
+  nameWithType: DarkTheme.TodayNewsItemBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsListBackgroundColor
+  name: TodayNewsListBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsListBackgroundColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayNewsListBackgroundColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsListBackgroundColor
+  nameWithType: DarkTheme.TodayNewsListBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsListBackgroundColor*
+  name: TodayNewsListBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsListBackgroundColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayNewsListBackgroundColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsListBackgroundColor
+  nameWithType: DarkTheme.TodayNewsListBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsSubjectColor
+  name: TodayNewsSubjectColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsSubjectColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayNewsSubjectColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsSubjectColor
+  nameWithType: DarkTheme.TodayNewsSubjectColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsSubjectColor*
+  name: TodayNewsSubjectColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsSubjectColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayNewsSubjectColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsSubjectColor
+  nameWithType: DarkTheme.TodayNewsSubjectColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsTitleColor
+  name: TodayNewsTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsTitleColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayNewsTitleColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsTitleColor
+  nameWithType: DarkTheme.TodayNewsTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNewsTitleColor*
+  name: TodayNewsTitleColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNewsTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayNewsTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNewsTitleColor
+  nameWithType: DarkTheme.TodayNewsTitleColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNotSelectedDateTextColor
+  name: TodayNotSelectedDateTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNotSelectedDateTextColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodayNotSelectedDateTextColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNotSelectedDateTextColor
+  nameWithType: DarkTheme.TodayNotSelectedDateTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodayNotSelectedDateTextColor*
+  name: TodayNotSelectedDateTextColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodayNotSelectedDateTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodayNotSelectedDateTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodayNotSelectedDateTextColor
+  nameWithType: DarkTheme.TodayNotSelectedDateTextColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodaySubjectBackgroundColor
+  name: TodaySubjectBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodaySubjectBackgroundColor
+  commentId: P:EduCATS.Themes.Templates.DarkTheme.TodaySubjectBackgroundColor
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodaySubjectBackgroundColor
+  nameWithType: DarkTheme.TodaySubjectBackgroundColor
+- uid: EduCATS.Themes.Templates.DarkTheme.TodaySubjectBackgroundColor*
+  name: TodaySubjectBackgroundColor
+  href: api/EduCATS.Themes.Templates.DarkTheme.html#EduCATS_Themes_Templates_DarkTheme_TodaySubjectBackgroundColor_
+  commentId: Overload:EduCATS.Themes.Templates.DarkTheme.TodaySubjectBackgroundColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DarkTheme.TodaySubjectBackgroundColor
+  nameWithType: DarkTheme.TodaySubjectBackgroundColor
 - uid: EduCATS.Themes.Templates.DefaultTheme
   name: DefaultTheme
   href: api/EduCATS.Themes.Templates.DefaultTheme.html
@@ -34535,6 +35765,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.AppStatusBarBackgroundColor
   nameWithType: DefaultTheme.AppStatusBarBackgroundColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.BaseActivityIndicatorColor
+  name: BaseActivityIndicatorColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_BaseActivityIndicatorColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.BaseActivityIndicatorColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.BaseActivityIndicatorColor
+  nameWithType: DefaultTheme.BaseActivityIndicatorColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.BaseActivityIndicatorColor*
+  name: BaseActivityIndicatorColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_BaseActivityIndicatorColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.BaseActivityIndicatorColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.BaseActivityIndicatorColor
+  nameWithType: DefaultTheme.BaseActivityIndicatorColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.BaseAppColor
   name: BaseAppColor
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_BaseAppColor
@@ -34587,6 +35830,32 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.BaseCloseIcon
   nameWithType: DefaultTheme.BaseCloseIcon
+- uid: EduCATS.Themes.Templates.DefaultTheme.BasePickerTextColor
+  name: BasePickerTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_BasePickerTextColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.BasePickerTextColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.BasePickerTextColor
+  nameWithType: DefaultTheme.BasePickerTextColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.BasePickerTextColor*
+  name: BasePickerTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_BasePickerTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.BasePickerTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.BasePickerTextColor
+  nameWithType: DefaultTheme.BasePickerTextColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.BaseSectionTextColor
+  name: BaseSectionTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_BaseSectionTextColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.BaseSectionTextColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.BaseSectionTextColor
+  nameWithType: DefaultTheme.BaseSectionTextColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.BaseSectionTextColor*
+  name: BaseSectionTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_BaseSectionTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.BaseSectionTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.BaseSectionTextColor
+  nameWithType: DefaultTheme.BaseSectionTextColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.CheckboxDescriptionColor
   name: CheckboxDescriptionColor
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_CheckboxDescriptionColor
@@ -34730,6 +35999,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.EemcHeaderImage
   nameWithType: DefaultTheme.EemcHeaderImage
+- uid: EduCATS.Themes.Templates.DefaultTheme.EemcItemTitleColor
+  name: EemcItemTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_EemcItemTitleColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.EemcItemTitleColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.EemcItemTitleColor
+  nameWithType: DefaultTheme.EemcItemTitleColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.EemcItemTitleColor*
+  name: EemcItemTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_EemcItemTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.EemcItemTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.EemcItemTitleColor
+  nameWithType: DefaultTheme.EemcItemTitleColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.FilesHeaderImage
   name: FilesHeaderImage
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_FilesHeaderImage
@@ -34743,6 +36025,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.FilesHeaderImage
   nameWithType: DefaultTheme.FilesHeaderImage
+- uid: EduCATS.Themes.Templates.DefaultTheme.FilesTitleColor
+  name: FilesTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_FilesTitleColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.FilesTitleColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.FilesTitleColor
+  nameWithType: DefaultTheme.FilesTitleColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.FilesTitleColor*
+  name: FilesTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_FilesTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.FilesTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.FilesTitleColor
+  nameWithType: DefaultTheme.FilesTitleColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.LearningCardAdaptiveImage
   name: LearningCardAdaptiveImage
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_LearningCardAdaptiveImage
@@ -35029,6 +36324,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.RecommendationsHeaderImage
   nameWithType: DefaultTheme.RecommendationsHeaderImage
+- uid: EduCATS.Themes.Templates.DefaultTheme.RecommendationsTitleColor
+  name: RecommendationsTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_RecommendationsTitleColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.RecommendationsTitleColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.RecommendationsTitleColor
+  nameWithType: DefaultTheme.RecommendationsTitleColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.RecommendationsTitleColor*
+  name: RecommendationsTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_RecommendationsTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.RecommendationsTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.RecommendationsTitleColor
+  nameWithType: DefaultTheme.RecommendationsTitleColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.RoundedListViewBackgroundColor
   name: RoundedListViewBackgroundColor
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_RoundedListViewBackgroundColor
@@ -35055,6 +36363,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.SettingsFontIcon
   nameWithType: DefaultTheme.SettingsFontIcon
+- uid: EduCATS.Themes.Templates.DefaultTheme.SettingsGroupUserColor
+  name: SettingsGroupUserColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_SettingsGroupUserColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.SettingsGroupUserColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.SettingsGroupUserColor
+  nameWithType: DefaultTheme.SettingsGroupUserColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.SettingsGroupUserColor*
+  name: SettingsGroupUserColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_SettingsGroupUserColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.SettingsGroupUserColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.SettingsGroupUserColor
+  nameWithType: DefaultTheme.SettingsGroupUserColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.SettingsLanguageIcon
   name: SettingsLanguageIcon
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_SettingsLanguageIcon
@@ -35107,19 +36428,45 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.SettingsThemeIcon
   nameWithType: DefaultTheme.SettingsThemeIcon
-- uid: EduCATS.Themes.Templates.DefaultTheme.SettingsUserColor
-  name: SettingsUserColor
-  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_SettingsUserColor
-  commentId: P:EduCATS.Themes.Templates.DefaultTheme.SettingsUserColor
-  fullName: EduCATS.Themes.Templates.DefaultTheme.SettingsUserColor
-  nameWithType: DefaultTheme.SettingsUserColor
-- uid: EduCATS.Themes.Templates.DefaultTheme.SettingsUserColor*
-  name: SettingsUserColor
-  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_SettingsUserColor_
-  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.SettingsUserColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.SettingsTitleColor
+  name: SettingsTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_SettingsTitleColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.SettingsTitleColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.SettingsTitleColor
+  nameWithType: DefaultTheme.SettingsTitleColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.SettingsTitleColor*
+  name: SettingsTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_SettingsTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.SettingsTitleColor
   isSpec: "True"
-  fullName: EduCATS.Themes.Templates.DefaultTheme.SettingsUserColor
-  nameWithType: DefaultTheme.SettingsUserColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.SettingsTitleColor
+  nameWithType: DefaultTheme.SettingsTitleColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseRatingTextColor
+  name: StatisticsBaseRatingTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsBaseRatingTextColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseRatingTextColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseRatingTextColor
+  nameWithType: DefaultTheme.StatisticsBaseRatingTextColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseRatingTextColor*
+  name: StatisticsBaseRatingTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsBaseRatingTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseRatingTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseRatingTextColor
+  nameWithType: DefaultTheme.StatisticsBaseRatingTextColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseTitleColor
+  name: StatisticsBaseTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsBaseTitleColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseTitleColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseTitleColor
+  nameWithType: DefaultTheme.StatisticsBaseTitleColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseTitleColor*
+  name: StatisticsBaseTitleColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsBaseTitleColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseTitleColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsBaseTitleColor
+  nameWithType: DefaultTheme.StatisticsBaseTitleColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsBoxTextColor
   name: StatisticsBoxTextColor
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsBoxTextColor
@@ -35315,6 +36662,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.SwitchFrameDescriptionColor
   nameWithType: DefaultTheme.SwitchFrameDescriptionColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.SwitchFrameTextColor
+  name: SwitchFrameTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_SwitchFrameTextColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.SwitchFrameTextColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.SwitchFrameTextColor
+  nameWithType: DefaultTheme.SwitchFrameTextColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.SwitchFrameTextColor*
+  name: SwitchFrameTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_SwitchFrameTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.SwitchFrameTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.SwitchFrameTextColor
+  nameWithType: DefaultTheme.SwitchFrameTextColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.TestingDescriptionColor
   name: TestingDescriptionColor
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestingDescriptionColor
@@ -35419,6 +36779,45 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.TestPassingEntryColor
   nameWithType: DefaultTheme.TestPassingEntryColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TestPassingQuestionColor
+  name: TestPassingQuestionColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestPassingQuestionColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.TestPassingQuestionColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TestPassingQuestionColor
+  nameWithType: DefaultTheme.TestPassingQuestionColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TestPassingQuestionColor*
+  name: TestPassingQuestionColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestPassingQuestionColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.TestPassingQuestionColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TestPassingQuestionColor
+  nameWithType: DefaultTheme.TestPassingQuestionColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TestPassingSelectionColor
+  name: TestPassingSelectionColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestPassingSelectionColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.TestPassingSelectionColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TestPassingSelectionColor
+  nameWithType: DefaultTheme.TestPassingSelectionColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TestPassingSelectionColor*
+  name: TestPassingSelectionColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestPassingSelectionColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.TestPassingSelectionColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TestPassingSelectionColor
+  nameWithType: DefaultTheme.TestPassingSelectionColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TestPassingUnselectedColor
+  name: TestPassingUnselectedColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestPassingUnselectedColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.TestPassingUnselectedColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TestPassingUnselectedColor
+  nameWithType: DefaultTheme.TestPassingUnselectedColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TestPassingUnselectedColor*
+  name: TestPassingUnselectedColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestPassingUnselectedColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.TestPassingUnselectedColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TestPassingUnselectedColor
+  nameWithType: DefaultTheme.TestPassingUnselectedColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.TestResultsAnswerTextColor
   name: TestResultsAnswerTextColor
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestResultsAnswerTextColor
@@ -35458,6 +36857,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.TestResultsNotCorrectAnswerColor
   nameWithType: DefaultTheme.TestResultsNotCorrectAnswerColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TestResultsRatingColor
+  name: TestResultsRatingColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestResultsRatingColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.TestResultsRatingColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TestResultsRatingColor
+  nameWithType: DefaultTheme.TestResultsRatingColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TestResultsRatingColor*
+  name: TestResultsRatingColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TestResultsRatingColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.TestResultsRatingColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TestResultsRatingColor
+  nameWithType: DefaultTheme.TestResultsRatingColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarBackgroundColor
   name: TodayCalendarBackgroundColor
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TodayCalendarBackgroundColor
@@ -35471,6 +36883,32 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarBackgroundColor
   nameWithType: DefaultTheme.TodayCalendarBackgroundColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarBaseTextColor
+  name: TodayCalendarBaseTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TodayCalendarBaseTextColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.TodayCalendarBaseTextColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarBaseTextColor
+  nameWithType: DefaultTheme.TodayCalendarBaseTextColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarBaseTextColor*
+  name: TodayCalendarBaseTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TodayCalendarBaseTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.TodayCalendarBaseTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarBaseTextColor
+  nameWithType: DefaultTheme.TodayCalendarBaseTextColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarSubjectTextColor
+  name: TodayCalendarSubjectTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TodayCalendarSubjectTextColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.TodayCalendarSubjectTextColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarSubjectTextColor
+  nameWithType: DefaultTheme.TodayCalendarSubjectTextColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarSubjectTextColor*
+  name: TodayCalendarSubjectTextColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TodayCalendarSubjectTextColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.TodayCalendarSubjectTextColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.TodayCalendarSubjectTextColor
+  nameWithType: DefaultTheme.TodayCalendarSubjectTextColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.TodayNewsDateColor
   name: TodayNewsDateColor
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_TodayNewsDateColor
