@@ -1,5 +1,5 @@
-- name: Articles
+- name: About project
   href: articles/
-- name: Project Documentation
+- name: Code documentation
   href: api/
   homepage: api/EduCATS.yml
