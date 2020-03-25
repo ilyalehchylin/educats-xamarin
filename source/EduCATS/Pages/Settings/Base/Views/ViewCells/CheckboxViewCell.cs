@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Xamarin.Forms;
 
@@ -24,15 +25,24 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 		/// </summary>
 		public CheckboxViewCell()
 		{
-			createViews();
+			createViews(false);
+		}
+
+		/// <summary>
+		/// Constructor.
+		/// </summary>
+		/// <param name="isCustomFont">Is using custom font.</param>
+		public CheckboxViewCell(bool isCustomFont)
+		{
+			createViews(isCustomFont);
 		}
 
 		/// <summary>
 		/// Create views.
 		/// </summary>
-		void createViews()
+		void createViews(bool isCustomFont)
 		{
-			var titleLayout = createTitleLayout();
+			var titleLayout = createTitleLayout(isCustomFont);
 			var checkbox = createCheckbox();
 
 			View = new StackLayout {
@@ -67,9 +77,9 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 		/// Create title layout.
 		/// </summary>
 		/// <returns>Title layout.</returns>
-		StackLayout createTitleLayout()
+		StackLayout createTitleLayout(bool isCustomFont)
 		{
-			var title = createTitle();
+			var title = createTitle(isCustomFont);
 			var description = createDescription();
 
 			return new StackLayout {
@@ -84,14 +94,19 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 		/// Create title label.
 		/// </summary>
 		/// <returns>Title label.</returns>
-		Label createTitle()
+		Label createTitle(bool isCustomFont)
 		{
 			var title = new Label {
-				TextColor = Color.FromHex(Theme.Current.SettingsTitleColor)
+				TextColor = Color.FromHex(Theme.Current.SettingsTitleColor),
+				Style = AppStyles.GetLabelStyle()
 			};
-
-			title.SetBinding(Label.FontFamilyProperty, "Font");
+			
 			title.SetBinding(Label.TextProperty, "Title");
+
+			if (isCustomFont) {
+				title.SetBinding(Label.FontFamilyProperty, "Font");
+			}
+
 			return title;
 		}
 
@@ -102,8 +117,8 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 		Label createDescription()
 		{
 			var description = new Label {
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-				TextColor = Color.FromHex(Theme.Current.CheckboxDescriptionColor)
+				TextColor = Color.FromHex(Theme.Current.CheckboxDescriptionColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Small)
 			};
 
 			description.SetBinding(Label.TextProperty, "Description");

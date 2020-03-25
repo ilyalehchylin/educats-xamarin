@@ -1,4 +1,5 @@
 ﻿using EduCATS.Helpers.Converters;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
@@ -17,10 +18,10 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 			};
 
 			var contentLabel = new Label {
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				TextColor = Color.FromHex(Theme.Current.TodayCalendarBaseTextColor)
+				TextColor = Color.FromHex(Theme.Current.TodayCalendarBaseTextColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Small)
 			};
 
 			if (selectionEnabled) {

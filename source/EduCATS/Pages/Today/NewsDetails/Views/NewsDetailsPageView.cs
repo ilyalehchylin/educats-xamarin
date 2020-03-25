@@ -1,4 +1,6 @@
-﻿using EduCATS.Helpers.Pages;
+﻿using EduCATS.Fonts;
+using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Today.NewsDetails.ViewModels;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -9,13 +11,15 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 	public class NewsDetailsPageView : ContentPage
 	{
 		const double _spacing = 20;
+		const double _bodyFontSize = 5;
 
 		static Thickness _newsTitlePadding = new Thickness(10);
 
 		public NewsDetailsPageView(string title, string body)
 		{
 			Title = CrossLocalization.Translate("news_details_title");
-			BindingContext = new NewsDetailsPageViewModel(title, body, new AppPages());
+			var dynSize = FontSizeController.GetDynamicSize(_bodyFontSize);
+			BindingContext = new NewsDetailsPageViewModel(dynSize, title, body, new AppPages());
 			setToolbar();
 			createViews();
 		}
@@ -52,7 +56,7 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 				TextColor = Color.FromHex(Theme.Current.NewsTextColor),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalTextAlignment = TextAlignment.Center,
-				FontSize = Device.GetNamedSize(NamedSize.Title, typeof(Label))
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 
 			newsTitleLabel.SetBinding(Label.TextProperty, "NewsTitle");

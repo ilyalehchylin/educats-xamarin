@@ -4,6 +4,7 @@ using EduCATS.Controls.SwitchFrame;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Settings.Language.ViewModels;
 using EduCATS.Pages.Settings.Views.Base.ViewCells;
 using EduCATS.Themes;
@@ -66,9 +67,9 @@ namespace EduCATS.Pages.Settings.Language.Views
 			var chooseLabel = new Label {
 				Margin = _chooseLabelMargin,
 				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
-				Text = CrossLocalization.Translate("settings_language_choose")
+				Text = CrossLocalization.Translate("settings_language_choose"),
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 
 			return chooseLabel;

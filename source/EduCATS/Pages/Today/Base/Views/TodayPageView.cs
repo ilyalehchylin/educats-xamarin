@@ -3,6 +3,8 @@ using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Today.Base.ViewModels;
 using EduCATS.Pages.Today.Base.Views.ViewCells;
 using EduCATS.Themes;
@@ -14,8 +16,10 @@ namespace EduCATS.Pages.Today.Base.Views
 	public class TodayPageView : ContentPage
 	{
 		const double _spacing = 0;
+		const double _subjectRowHeight = 50;
 		const int _calendarItemsQuantity = 7;
 		const double _calendarCarouselHeight = 100;
+		const double _calendarCarouselHeightLarge = 120;
 		const double _calendarDaysOfWeekCollectionHeight = 50;
 		const string _calendarCollectionDataBinding = ".";
 
@@ -28,7 +32,10 @@ namespace EduCATS.Pages.Today.Base.Views
 		public TodayPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
-			BindingContext = new TodayPageViewModel(new AppDialogs(), new AppPages(), new AppDevice());
+			var subjectListHeaderHeight = RoundedListView.HeaderHeight;
+			BindingContext = new TodayPageViewModel(
+				_subjectRowHeight, subjectListHeaderHeight,
+				new AppDialogs(), new AppPages(), new AppDevice());
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			createViews();
 		}
@@ -84,7 +91,7 @@ namespace EduCATS.Pages.Today.Base.Views
 			var calendarCarouselView = new CarouselView {
 				BackgroundColor = Color.FromHex(Theme.Current.TodayCalendarBackgroundColor),
 				HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
-				HeightRequest = _calendarCarouselHeight,
+				HeightRequest = AppPrefs.IsLargeFont ? _calendarCarouselHeightLarge : _calendarCarouselHeight,
 				ItemTemplate = new DataTemplate(typeof(CalendarCarouselViewCell))
 			};
 
@@ -136,8 +143,8 @@ namespace EduCATS.Pages.Today.Base.Views
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				Padding = _newsLabelMagin,
 				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-				Text = CrossLocalization.Translate("today_news")
+				Text = CrossLocalization.Translate("today_news"),
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 		}
 
@@ -150,6 +157,7 @@ namespace EduCATS.Pages.Today.Base.Views
 			};
 
 			var subjectsListView = new RoundedListView(templateSelector, subjectsLabel) {
+				RowHeight = (int)_subjectRowHeight,
 				IsEnabled = false,
 				Margin = _subjectsMargin
 			};
@@ -166,8 +174,8 @@ namespace EduCATS.Pages.Today.Base.Views
 				Padding = _subjectsLabelMargin,
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-				Text = CrossLocalization.Translate("today_subjects")
+				Text = CrossLocalization.Translate("today_subjects"),
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 		}
 	}

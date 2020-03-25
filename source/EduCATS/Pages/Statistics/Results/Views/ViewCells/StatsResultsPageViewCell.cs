@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using FFImageLoading.Transformations;
@@ -10,7 +11,6 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 	{
 		const double _iconSize = 20;
 		const double _infoSpacing = 10;
-		const double _separatorHeight = 1;
 
 		static Thickness _gridPadding = new Thickness(15);
 
@@ -18,7 +18,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 		{
 			var titleLabel = new Label {
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor)
+				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			titleLabel.SetBinding(Label.TextProperty, "Title");
@@ -38,9 +39,9 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			};
 
 			var dateLabel = new Label {
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsColor)
+				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Small)
 			};
 
 			dateLabel.SetBinding(Label.TextProperty, "Date");
@@ -71,8 +72,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 			var commentLabel = new Label {
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsColor)
+				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Small)
 			};
 
 			commentLabel.SetBinding(Label.TextProperty, "Comment");
@@ -102,7 +103,7 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsResultsColor),
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 
 			resultLabel.SetBinding(Label.TextProperty, "Result");
@@ -122,12 +123,7 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			View = new StackLayout {
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Children = {
-					gridLayout,
-					//new BoxView {
-					//	Color = Color.FromHex(Theme.Current.StatisticsDetailsSeparatorColor),
-					//	HeightRequest = _separatorHeight,
-					//	HorizontalOptions = LayoutOptions.FillAndExpand
-					//}
+					gridLayout
 				}
 			};
 		}

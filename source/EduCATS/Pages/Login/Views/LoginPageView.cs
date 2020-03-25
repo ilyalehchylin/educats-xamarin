@@ -8,7 +8,7 @@ using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
 using FFImageLoading.Transformations;
 using System.Collections.Generic;
-using EduCATS.Fonts;
+using EduCATS.Helpers.Styles;
 
 namespace EduCATS.Pages.Login.Views
 {
@@ -60,8 +60,9 @@ namespace EduCATS.Pages.Login.Views
 		StackLayout createLoginForm()
 		{
 			var mascotImage = createMascotImage();
-			var usernameEntry = createUsernameEntry();
-			var passwordEntryGrid = createPasswordGrid();
+			var entryStyle = getEntryStyle();
+			var usernameEntry = createUsernameEntry(entryStyle);
+			var passwordEntryGrid = createPasswordGrid(entryStyle);
 			var loginButton = createLoginButton();
 			var activityIndicator = createActivityIndicator();
 
@@ -122,10 +123,10 @@ namespace EduCATS.Pages.Login.Views
 			};
 		}
 
-		Entry createUsernameEntry()
+		Entry createUsernameEntry(Style style)
 		{
 			var username = new Entry {
-				Style = getEntryStyle(),
+				Style = style,
 				ReturnType = ReturnType.Next,
 				Placeholder = CrossLocalization.Translate("login_username")
 			};
@@ -134,9 +135,9 @@ namespace EduCATS.Pages.Login.Views
 			return username;
 		}
 
-		Grid createPasswordGrid()
+		Grid createPasswordGrid(Style style)
 		{
-			var passwordEntry = createPasswordEntry();
+			var passwordEntry = createPasswordEntry(style);
 			var showPasswordImage = createShowPasswordImage();
 
 			return new Grid {
@@ -147,10 +148,10 @@ namespace EduCATS.Pages.Login.Views
 			};
 		}
 
-		Entry createPasswordEntry()
+		Entry createPasswordEntry(Style style)
 		{
 			var password = new Entry {
-				Style = getEntryStyle(),
+				Style = style,
 				IsPassword = true,
 				ReturnType = ReturnType.Done,
 				Margin = _baseSpacing,
@@ -171,8 +172,7 @@ namespace EduCATS.Pages.Login.Views
 				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
 				Margin = _baseSpacing,
 				HeightRequest = _controlHeight,
-				FontFamily = FontsController.GetCurrentFont(),
-				FontSize = FontSizeController.GetSize(NamedSize.Medium, typeof(Button))
+				Style = AppStyles.GetButtonStyle()
 			};
 
 			loginButton.SetBinding(Button.CommandProperty, "LoginCommand");
@@ -211,19 +211,19 @@ namespace EduCATS.Pages.Login.Views
 
 		Style getEntryStyle()
 		{
-			return new Style(typeof(Entry)) {
-				Setters = {
-					new Setter {
-						Property = HeightRequestProperty,
-						Value = _controlHeight
-					},
+			var style = AppStyles.GetEntryStyle();
 
-					new Setter {
-						Property = BackgroundColorProperty,
-						Value = Theme.Current.LoginEntryBackgroundColor
-					}
-				}
-			};
+			style.Setters.Add(new Setter {
+				Property = HeightRequestProperty,
+				Value = _controlHeight
+			});
+
+			style.Setters.Add(new Setter {
+				Property = BackgroundColorProperty,
+				Value = Theme.Current.LoginEntryBackgroundColor
+			});
+
+			return style;
 		}
 
 		string getRandomBackgroundImage()

@@ -164,6 +164,7 @@
         <Folder Include="Pages\Settings\Fonts\Views\" />
         <Folder Include="Pages\Settings\Fonts\ViewModels\" />
         <Folder Include="Pages\Settings\Fonts\Models\" />
+        <Folder Include="Helpers\Styles\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />

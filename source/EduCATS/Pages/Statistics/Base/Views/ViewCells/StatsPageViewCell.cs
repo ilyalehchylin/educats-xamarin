@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Statistics.Base.Views.ViewCells
@@ -10,7 +11,8 @@ namespace EduCATS.Pages.Statistics.Base.Views.ViewCells
 		public StatsPageViewCell()
 		{
 			var menuLabel = new Label {
-				TextColor = Color.FromHex(Theme.Current.StatisticsBaseTitleColor)
+				TextColor = Color.FromHex(Theme.Current.StatisticsBaseTitleColor),
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			menuLabel.SetBinding(Label.TextProperty, "Title");

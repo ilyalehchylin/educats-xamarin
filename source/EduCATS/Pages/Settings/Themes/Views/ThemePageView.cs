@@ -3,6 +3,7 @@ using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Settings.Themes.ViewModels;
 using EduCATS.Pages.Settings.Views.Base.ViewCells;
 using EduCATS.Themes;
@@ -36,9 +37,9 @@ namespace EduCATS.Pages.Settings.Themes.Views
 			return new Label {
 				Margin = _chooseLabelMargin,
 				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
-				Text = CrossLocalization.Translate("settings_theme_choose")
+				Text = CrossLocalization.Translate("settings_theme_choose"),
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 		}
 

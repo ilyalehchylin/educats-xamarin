@@ -2,6 +2,7 @@
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Eemc.ViewModels;
 using EduCATS.Pages.Eemc.Views.ViewCell;
 using EduCATS.Themes;
@@ -90,7 +91,8 @@ namespace EduCATS.Pages.Eemc.Views
 				Margin = _backButtonMargin,
 				TextColor = Color.FromHex(Theme.Current.EemcBackButtonTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.EemcBackButtonColor),
-				Text = CrossLocalization.Translate("eemc_back_text")
+				Text = CrossLocalization.Translate("eemc_back_text"),
+				Style = AppStyles.GetButtonStyle()
 			};
 
 			backButton.SetBinding(Button.CommandProperty, "BackCommand");

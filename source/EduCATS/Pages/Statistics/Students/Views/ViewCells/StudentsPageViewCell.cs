@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Statistics.Students.Views.ViewCells
@@ -10,7 +11,8 @@ namespace EduCATS.Pages.Statistics.Students.Views.ViewCells
 		public StudentsPageViewCell()
 		{
 			var nameLabel = new Label {
-				TextColor = Color.FromHex(Theme.Current.StatisticsBaseTitleColor)
+				TextColor = Color.FromHex(Theme.Current.StatisticsBaseTitleColor),
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			nameLabel.SetBinding(Label.TextProperty, "Name");

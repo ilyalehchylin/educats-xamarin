@@ -4,6 +4,7 @@ using EduCATS.Controls.SwitchFrame;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Settings.Fonts.ViewModels;
 using EduCATS.Pages.Settings.Views.Base.ViewCells;
 using EduCATS.Themes;
@@ -36,7 +37,7 @@ namespace EduCATS.Pages.Settings.Fonts.Views
 		RoundedListView createList(View header)
 		{
 			var templateSelector = new RoundedListTemplateSelector {
-				CheckboxTemplate = new DataTemplate(typeof(CheckboxViewCell))
+				CheckboxTemplate = new DataTemplate(() => new CheckboxViewCell(true))
 			};
 
 			var listView = new RoundedListView(templateSelector, header) {
@@ -66,9 +67,9 @@ namespace EduCATS.Pages.Settings.Fonts.Views
 			var chooseLabel = new Label {
 				Margin = _chooseLabelMargin,
 				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
-				Text = CrossLocalization.Translate("settings_font_choose")
+				Text = CrossLocalization.Translate("settings_font_choose"),
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 
 			return chooseLabel;

@@ -30,19 +30,27 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		/// </summary>
 		readonly IPages _pages;
 
+		/// <summary>
+		/// Device service.
+		/// </summary>
 		readonly IDevice _device;
+
+		readonly double _subjectHeight;
+		readonly double _subjectsHeaderHeight;
 
 		const int _minimumCalendarPosition = 0;
 		const int _maximumCalendarPosition = 2;
-		const double _subjectsHeightByCount = 60;
-		const double _subjectsAdditionalHeight = 50;
+		const double _subjectsHeightToAdd = 55;
 
 		bool _isManualSelectedCalendarDay;
 		DateTime _manualSelectedCalendarDay;
 		List<CalendarSubjectsModel> _calendarSubjectsBackup;
 
-		public TodayPageViewModel(IDialogs dialogs, IPages pages, IDevice device)
+		public TodayPageViewModel(double subjectHeight, double subjectsHeaderHeight,
+			IDialogs dialogs, IPages pages, IDevice device)
 		{
+			_subjectHeight = subjectHeight;
+			_subjectsHeaderHeight = subjectsHeaderHeight;
 			_device = device;
 			_dialogs = dialogs;
 			_pages = pages;
@@ -385,11 +393,14 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		void setupSubjectsHeight()
 		{
-			CalendarSubjectsHeight = _subjectsHeightByCount * CalendarSubjects.Count;
-
-			if (CalendarSubjectsHeight != 0) {
-				CalendarSubjectsHeight += _subjectsAdditionalHeight;
+			if (CalendarSubjects.Count == 0) {
+				CalendarSubjectsHeight = 0;
+				return;
 			}
+
+			CalendarSubjectsHeight =
+				(_subjectHeight * CalendarSubjects.Count) +
+				(_subjectsHeaderHeight * 2) + _subjectsHeightToAdd;
 		}
 	}
 }

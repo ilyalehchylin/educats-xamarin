@@ -1,4 +1,5 @@
 ﻿using EduCATS.Data.Models.Eemc;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Xamarin.Forms;
@@ -26,7 +27,8 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 			var title = new Label {
 				TextColor = Color.FromHex(Theme.Current.EemcItemTitleColor),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				HorizontalTextAlignment = TextAlignment.Center
+				HorizontalTextAlignment = TextAlignment.Center,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			title.SetBinding(Label.TextProperty, "Name");

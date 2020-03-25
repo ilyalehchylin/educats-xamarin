@@ -4,6 +4,7 @@ using EduCATS.Helpers.Converters;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Settings.Base.ViewModels;
 using EduCATS.Pages.Settings.Views.Base.ViewCells;
 using EduCATS.Themes;
@@ -98,7 +99,8 @@ namespace EduCATS.Pages.Settings.Base.Views
 		{
 			var userLabel = new Label {
 				TextColor = Color.FromHex(Theme.Current.SettingsTitleColor),
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			userLabel.SetBinding(Label.TextProperty, "Username");
@@ -108,7 +110,8 @@ namespace EduCATS.Pages.Settings.Base.Views
 		Label createGroupLabel()
 		{
 			var userGroupLabel = new Label {
-				TextColor = Color.FromHex(Theme.Current.SettingsGroupUserColor)
+				TextColor = Color.FromHex(Theme.Current.SettingsGroupUserColor),
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			userGroupLabel.SetBinding(Label.TextProperty, "Group");

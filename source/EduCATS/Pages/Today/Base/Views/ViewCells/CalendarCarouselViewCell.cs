@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.Base.Views.ViewCells
@@ -28,7 +29,8 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 			var monthYearLabel = new Label {
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				TextColor = Color.FromHex(Theme.Current.TodayCalendarBaseTextColor)
+				TextColor = Color.FromHex(Theme.Current.TodayCalendarBaseTextColor),
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			monthYearLabel.SetBinding(Label.TextProperty, "MonthYear");

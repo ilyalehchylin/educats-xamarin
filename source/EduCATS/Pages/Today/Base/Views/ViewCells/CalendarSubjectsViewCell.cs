@@ -1,4 +1,5 @@
 ﻿using EduCATS.Helpers.Converters;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
@@ -25,7 +26,8 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 
 			var subject = new Label {
 				TextColor = Color.FromHex(Theme.Current.TodayCalendarSubjectTextColor),
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			subject.SetBinding(Label.TextProperty, "Subject");

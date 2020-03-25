@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
@@ -15,7 +16,8 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				BackgroundColor = Color.FromHex(Theme.Current.TestPassingEntryColor),
 				TextColor = Color.FromHex(Theme.Current.TestPassingAnswerColor),
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetEntryStyle()
 			};
 
 			answerEntry.SetBinding(Entry.TextProperty, "ContentToAnswer");

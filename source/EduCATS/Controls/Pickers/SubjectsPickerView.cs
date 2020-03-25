@@ -1,4 +1,5 @@
 ﻿using EduCATS.Helpers.Converters;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
@@ -111,7 +112,8 @@ namespace EduCATS.Controls.Pickers
 			var subject = new Label {
 				TextColor = Color.FromHex(Theme.Current.BasePickerTextColor),
 				HorizontalTextAlignment = TextAlignment.Center,
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			subject.SetBinding(Label.TextProperty, ChosenSubjectProperty);

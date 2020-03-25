@@ -3,6 +3,7 @@ using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Files.ViewModels;
 using EduCATS.Pages.Files.Views.ViewCells;
 using EduCATS.Themes;
@@ -65,8 +66,8 @@ namespace EduCATS.Pages.Files.Views
 				FontAttributes = FontAttributes.Bold,
 				Text = CrossLocalization.Translate("learning_card_files"),
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor)
+				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 		}
 

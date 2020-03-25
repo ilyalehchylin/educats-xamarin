@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Controls.SwitchFrame
@@ -84,7 +85,8 @@ namespace EduCATS.Controls.SwitchFrame
 		{
 			return new Label {
 				TextColor = Color.FromHex(Theme.Current.SwitchFrameTextColor),
-				Text = title
+				Text = title,
+				Style = AppStyles.GetLabelStyle()
 			};
 		}
 
@@ -97,8 +99,8 @@ namespace EduCATS.Controls.SwitchFrame
 		{
 			return new Label {
 				Text = description,
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-				TextColor = Color.FromHex(Theme.Current.SwitchFrameDescriptionColor)
+				TextColor = Color.FromHex(Theme.Current.SwitchFrameDescriptionColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Small)
 			};
 		}
 	}

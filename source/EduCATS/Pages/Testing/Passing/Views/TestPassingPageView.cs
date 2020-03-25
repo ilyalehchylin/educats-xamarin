@@ -1,6 +1,7 @@
 ﻿using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Testing.Passing.ViewModels;
 using EduCATS.Pages.Testing.Passing.Views.ViewCells;
 using EduCATS.Themes;
@@ -89,6 +90,7 @@ namespace EduCATS.Pages.Testing.Passing.Views
 				CornerRadius = (int)_buttonHeight / 2,
 				BackgroundColor = Color.FromHex(Theme.Current.AppStatusBarBackgroundColor),
 				TextColor = Color.FromHex(Theme.Current.TestPassingButtonTextColor),
+				Style = AppStyles.GetButtonStyle(),
 				Text = text
 			};
 
@@ -137,7 +139,7 @@ namespace EduCATS.Pages.Testing.Passing.Views
 		{
 			var questionLabel = new Label {
 				TextColor = Color.FromHex(Theme.Current.TestPassingQuestionColor),
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 
 			questionLabel.SetBinding(Label.TextProperty, "Question");
@@ -147,7 +149,9 @@ namespace EduCATS.Pages.Testing.Passing.Views
 		Label createDescriptionLabel()
 		{
 			var descriptionLabel = new Label {
-				TextType = TextType.Html
+				TextColor = Color.FromHex(Theme.Current.TestPassingQuestionColor),
+				TextType = TextType.Html,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			descriptionLabel.SetBinding(Label.TextProperty, "Description");

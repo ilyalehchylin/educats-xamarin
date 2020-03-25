@@ -3,9 +3,11 @@ using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Data.Models.Statistics;
+using EduCATS.Fonts;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Statistics.Students.ViewModels;
 using EduCATS.Pages.Statistics.Students.Views.ViewCells;
 using EduCATS.Themes;
@@ -58,7 +60,9 @@ namespace EduCATS.Pages.Statistics.Students.Views
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				CancelButtonColor = Color.FromHex(Theme.Current.BaseAppColor),
 				TextColor = Color.FromHex(Theme.Current.StatisticsBaseTitleColor),
-				Placeholder = CrossLocalization.Translate("stats_students_search_text")
+				Placeholder = CrossLocalization.Translate("stats_students_search_text"),
+				FontFamily = FontsController.GetCurrentFont(),
+				FontSize = FontSizeController.GetSize(NamedSize.Medium, typeof(SearchBar))
 			};
 
 			searchBar.SetBinding(SearchBar.TextProperty, "SearchText");

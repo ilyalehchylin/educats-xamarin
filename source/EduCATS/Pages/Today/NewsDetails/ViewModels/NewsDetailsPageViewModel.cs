@@ -8,11 +8,10 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 	{
 		readonly IPages navigationService;
 
-		const int _fontSize = 5;
 		const int _fontPadding = 10;
 		const string _fontFamily = "Arial";
 
-		public NewsDetailsPageViewModel(string title, string body, IPages pages)
+		public NewsDetailsPageViewModel(double fontSize, string title, string body, IPages pages)
 		{
 			navigationService = pages;
 			NewsTitle = title;
@@ -21,7 +20,7 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 					$"font-family:{_fontFamily};" +
 					$"padding:{_fontPadding}px;" +
 					$"color:{Theme.Current.NewsTextColor};" +
-					$"font-size: {_fontSize}vw;" +
+					$"font-size: {fontSize}vw;" +
 					$"background-color:{Theme.Current.AppBackgroundColor};'>" +
 						$"{body}" +
 				$"</body>";

@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Recommendations.Views.ViewCells
@@ -10,7 +11,8 @@ namespace EduCATS.Pages.Recommendations.Views.ViewCells
 		public RecommendationsPageViewCell()
 		{
 			var title = new Label {
-				TextColor = Color.FromHex(Theme.Current.RecommendationsTitleColor)
+				TextColor = Color.FromHex(Theme.Current.RecommendationsTitleColor),
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			title.SetBinding(Label.TextProperty, "Text");

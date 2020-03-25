@@ -22,7 +22,7 @@ namespace EduCATS.Controls.RoundedListView
 		/// <summary>
 		/// Rounded header height.
 		/// </summary>
-		const double _roundedHeaderHeight = 14;
+		public const double HeaderHeight = 14;
 
 		/// <summary>
 		/// Corner radius & sharp layout height.
@@ -44,7 +44,7 @@ namespace EduCATS.Controls.RoundedListView
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColor);
 
-			_capHeight = _roundedHeaderHeight / 2;
+			_capHeight = HeaderHeight / 2;
 
 			Footer = createFooterCap();
 			Header = createHeader(header);
@@ -91,7 +91,7 @@ namespace EduCATS.Controls.RoundedListView
 			};
 
 			return new Grid {
-				HeightRequest = _roundedHeaderHeight,
+				HeightRequest = HeaderHeight,
 				Children = {
 					stackLayout,
 					frame
@@ -118,7 +118,7 @@ namespace EduCATS.Controls.RoundedListView
 			};
 
 			return new Grid {
-				HeightRequest = _roundedHeaderHeight,
+				HeightRequest = HeaderHeight,
 				Children = {
 					stackLayout,
 					frame

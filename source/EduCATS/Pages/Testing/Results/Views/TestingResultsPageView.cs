@@ -1,5 +1,6 @@
 ﻿using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Testing.Results.ViewModels;
 using EduCATS.Pages.Testing.Results.Views.ViewCells;
 using EduCATS.Themes;
@@ -67,7 +68,8 @@ namespace EduCATS.Pages.Testing.Results.Views
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				Text = CrossLocalization.Translate("test_results_label")
+				Text = CrossLocalization.Translate("test_results_label"),
+				Style = AppStyles.GetLabelStyle()
 			};
 		}
 
@@ -78,7 +80,7 @@ namespace EduCATS.Pages.Testing.Results.Views
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.TestResultsRatingColor),
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 
 			mark.SetBinding(Label.TextProperty, "Mark");

@@ -1,4 +1,5 @@
 ﻿using EduCATS.Data.Models.Testing.Results;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
@@ -21,7 +22,8 @@ namespace EduCATS.Pages.Testing.Results.Views.ViewCells
 		{
 			_answer = new Label {
 				TextColor = Color.FromHex(Theme.Current.TestResultsAnswerTextColor),
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			_boxView = new BoxView {

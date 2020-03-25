@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Files.Views.ViewCells
@@ -10,7 +11,8 @@ namespace EduCATS.Pages.Files.Views.ViewCells
 		public FilesPageViewCell()
 		{
 			var title = new Label {
-				TextColor = Color.FromHex(Theme.Current.FilesTitleColor)
+				TextColor = Color.FromHex(Theme.Current.FilesTitleColor),
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			title.SetBinding(Label.TextProperty, "Name");

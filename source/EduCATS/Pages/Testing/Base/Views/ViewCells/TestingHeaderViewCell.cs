@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Base.Views.ViewCells
@@ -7,17 +8,13 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 	{
 		static Thickness _padding = new Thickness(10);
 
-		const double _height = 40;
-
 		public TestingHeaderViewCell()
 		{
-			Height = _height;
-
 			var sectionLabel = new Label {
 				FontAttributes = FontAttributes.Bold,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label))
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 
 			sectionLabel.SetBinding(Label.TextProperty, "SectionName");

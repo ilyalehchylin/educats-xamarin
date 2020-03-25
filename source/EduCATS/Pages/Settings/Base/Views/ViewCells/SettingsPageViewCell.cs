@@ -1,4 +1,5 @@
 ﻿using EduCATS.Helpers.Converters;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Xamarin.Forms;
@@ -27,7 +28,7 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 				Margin = _settingsTitleMargin,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.SettingsTitleColor),
-				FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label))
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			settingsTitle.SetBinding(Label.TextProperty, "Title");

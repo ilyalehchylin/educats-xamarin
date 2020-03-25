@@ -6,6 +6,7 @@ using EduCATS.Helpers.Converters;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Statistics.Base.ViewModels;
 using EduCATS.Pages.Statistics.Base.Views.ViewCells;
 using EduCATS.Themes;
@@ -190,7 +191,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		{
 			var statsLabel = new Label {
 				TextColor = Color.FromHex(Theme.Current.StatisticsBaseRatingTextColor),
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+				Style = AppStyles.GetLabelStyle(NamedSize.Small),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Text = text
 			};
@@ -237,7 +238,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			return new Label {
 				Text = expandTextString,
 				HorizontalTextAlignment = TextAlignment.Center,
-				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
+				Style = AppStyles.GetLabelStyle(NamedSize.Small),
 				TextColor = Color.FromHex(Theme.Current.StatisticsExpandableTextColor)
 			};
 		}

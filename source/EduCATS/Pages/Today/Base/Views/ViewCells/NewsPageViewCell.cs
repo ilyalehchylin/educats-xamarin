@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using EduCATS.Helpers.Converters;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using FFImageLoading.Transformations;
@@ -21,8 +22,8 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 		public NewsPageViewCell()
 		{
 			var title = new Label {
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-				TextColor = Color.FromHex(Theme.Current.TodayNewsTitleColor)
+				TextColor = Color.FromHex(Theme.Current.TodayNewsTitleColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 
 			title.SetBinding(Label.TextProperty, "Title");
@@ -50,8 +51,8 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 
 			var subject = new Label {
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
-				TextColor = Color.FromHex(Theme.Current.TodayNewsSubjectColor)
+				TextColor = Color.FromHex(Theme.Current.TodayNewsSubjectColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Micro)
 			};
 
 			subject.SetBinding(Label.TextProperty, "SubjectName");
@@ -79,8 +80,8 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 
 			var date = new Label {
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label)),
-				TextColor = Color.FromHex(Theme.Current.TodayNewsDateColor)
+				TextColor = Color.FromHex(Theme.Current.TodayNewsDateColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Micro)
 			};
 
 			date.SetBinding(Label.TextProperty, "Date");

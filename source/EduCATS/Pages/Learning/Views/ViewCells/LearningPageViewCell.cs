@@ -1,4 +1,6 @@
-﻿using EduCATS.Helpers.Converters;
+﻿using EduCATS.Fonts;
+using EduCATS.Helpers.Converters;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Xamarin.Forms;
@@ -29,7 +31,8 @@ namespace EduCATS.Pages.Learning.Views.ViewCells
 			var title = new Label {
 				TextColor = Color.FromHex(Theme.Current.LearningCardTextColor),
 				FontAttributes = FontAttributes.Bold,
-				Margin = _titleMargin
+				Margin = _titleMargin,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			title.SetBinding(Label.TextProperty, "Title");

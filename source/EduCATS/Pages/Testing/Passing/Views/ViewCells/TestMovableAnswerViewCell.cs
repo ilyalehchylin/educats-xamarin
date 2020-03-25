@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Xamarin.Forms;
 
@@ -36,7 +37,8 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 		{
 			var answer = new Label {
 				TextColor = Color.FromHex(Theme.Current.TestPassingAnswerColor),
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			answer.SetBinding(Label.TextProperty, "Content");

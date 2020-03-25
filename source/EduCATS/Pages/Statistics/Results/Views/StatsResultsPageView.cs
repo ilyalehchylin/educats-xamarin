@@ -2,6 +2,7 @@
 using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.ViewModels;
 using EduCATS.Pages.Statistics.Results.Views.ViewCells;
@@ -53,9 +54,9 @@ namespace EduCATS.Pages.Statistics.Results.Views
 				Text = name,
 				Margin = _studentNameMargin,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsNameColor),
-				FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				HorizontalTextAlignment = TextAlignment.Center,
+				Style = AppStyles.GetLabelStyle(NamedSize.Large)
 			};
 		}
 	}

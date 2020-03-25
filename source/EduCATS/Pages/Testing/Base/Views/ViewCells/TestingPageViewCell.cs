@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Xamarin.Forms;
 
@@ -27,7 +28,8 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 
 			var titleLabel = new Label {
 				TextColor = Color.FromHex(Theme.Current.TestingTitleColor),
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			titleLabel.SetBinding(Label.TextProperty, "Title");
@@ -44,7 +46,7 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 
 			var descriptionLabel = new Label {
 				TextColor = Color.FromHex(Theme.Current.TestingDescriptionColor),
-				FontSize = Device.GetNamedSize(NamedSize.Micro, typeof(Label))
+				Style = AppStyles.GetLabelStyle(NamedSize.Micro)
 			};
 
 			descriptionLabel.SetBinding(Label.TextProperty, "Description");

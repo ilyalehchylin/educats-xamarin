@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes;
+﻿using EduCATS.Helpers.Styles;
+using EduCATS.Themes;
 using Xamarin.Forms;
 
 namespace EduCATS.Controls.Pickers
@@ -70,7 +71,8 @@ namespace EduCATS.Controls.Pickers
 			var group = new Label {
 				TextColor = Color.FromHex(Theme.Current.BasePickerTextColor),
 				HorizontalTextAlignment = TextAlignment.Center,
-				VerticalOptions = LayoutOptions.CenterAndExpand
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetLabelStyle()
 			};
 
 			group.SetBinding(Label.TextProperty, ChosenGroupProperty);
