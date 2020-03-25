@@ -80,7 +80,7 @@ namespace EduCATS.Pages.Testing.Results.Views
 				HorizontalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.TestResultsRatingColor),
-				Style = AppStyles.GetLabelStyle(NamedSize.Large)
+				Style = AppStyles.GetLabelStyle(NamedSize.Large, true)
 			};
 
 			mark.SetBinding(Label.TextProperty, "Mark");

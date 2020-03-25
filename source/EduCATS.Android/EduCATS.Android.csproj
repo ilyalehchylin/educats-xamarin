@@ -378,6 +378,15 @@
       <AndroidAsset Include="Assets\OpenSans-Regular.ttf" />
       <AndroidAsset Include="Assets\PTSerif-Regular.ttf" />
       <AndroidAsset Include="Assets\PTSans-Regular.ttf" />
+      <AndroidAsset Include="Assets\CormorantGaramond-Bold.ttf" />
+      <AndroidAsset Include="Assets\Montserrat-Bold.ttf" />
+      <AndroidAsset Include="Assets\OpenSans-Bold.ttf" />
+      <AndroidAsset Include="Assets\Oswald-Bold.ttf" />
+      <AndroidAsset Include="Assets\Pacifico-Bold.ttf" />
+      <AndroidAsset Include="Assets\PTSans-Bold.ttf" />
+      <AndroidAsset Include="Assets\PTSerif-Bold.ttf" />
+      <AndroidAsset Include="Assets\Roboto-Bold.ttf" />
+      <AndroidAsset Include="Assets\RobotoCondensed-Bold.ttf" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

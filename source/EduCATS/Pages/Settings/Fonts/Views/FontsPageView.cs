@@ -69,7 +69,7 @@ namespace EduCATS.Pages.Settings.Fonts.Views
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				Text = CrossLocalization.Translate("settings_font_choose"),
-				Style = AppStyles.GetLabelStyle(NamedSize.Large)
+				Style = AppStyles.GetLabelStyle(NamedSize.Large, true)
 			};
 
 			return chooseLabel;

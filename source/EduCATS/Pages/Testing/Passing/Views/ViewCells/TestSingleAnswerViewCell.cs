@@ -1,4 +1,5 @@
-﻿using EduCATS.Helpers.Styles;
+﻿using EduCATS.Fonts;
+using EduCATS.Helpers.Styles;
 using EduCATS.Pages.Testing.Passing.Models;
 using EduCATS.Themes;
 using Xamarin.Forms;
@@ -62,6 +63,7 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 			_boxView.Color = Color.FromHex(Theme.Current.TestPassingSelectionColor);
 			_answer.TextColor = Color.FromHex(Theme.Current.TestPassingSelectionColor);
 			_answer.FontAttributes = FontAttributes.Bold;
+			_answer.FontFamily = FontsController.GetCurrentFont(true);
 		}
 	}
 }

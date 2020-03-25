@@ -172,7 +172,7 @@ namespace EduCATS.Pages.Login.Views
 				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
 				Margin = _baseSpacing,
 				HeightRequest = _controlHeight,
-				Style = AppStyles.GetButtonStyle()
+				Style = AppStyles.GetButtonStyle(bold: true)
 			};
 
 			loginButton.SetBinding(Button.CommandProperty, "LoginCommand");

@@ -67,7 +67,7 @@ namespace EduCATS.Pages.Files.Views
 				Text = CrossLocalization.Translate("learning_card_files"),
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
-				Style = AppStyles.GetLabelStyle(NamedSize.Large)
+				Style = AppStyles.GetLabelStyle(NamedSize.Large, true)
 			};
 		}
 

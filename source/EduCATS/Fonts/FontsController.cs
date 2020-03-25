@@ -32,6 +32,11 @@ namespace EduCATS.Fonts
 		const string _regularAlias = "-Regular";
 
 		/// <summary>
+		/// Bold font alias.
+		/// </summary>
+		const string _boldAlias = "-Bold";
+
+		/// <summary>
 		/// Initialize fonts.
 		/// </summary>
 		/// <remarks>Call this on app start.</remarks>
@@ -76,17 +81,21 @@ namespace EduCATS.Fonts
 		/// Get current font.
 		/// </summary>
 		/// <returns>Font family.</returns>
-		public static string GetCurrentFont() => GetFont(AppPrefs.Font);
+		public static string GetCurrentFont(bool bold = false) => GetFont(AppPrefs.Font, bold);
 
 		/// <summary>
 		/// Get font by family.
 		/// </summary>
 		/// <param name="font">Font family.</param>
 		/// <returns>Font family.</returns>
-		public static string GetFont(string font)
+		public static string GetFont(string font, bool bold)
 		{
 			if (font.Equals(DefaultFont)) {
 				return null;
+			}
+
+			if (bold && !FontExclude.CheckNameExcluded(font)) {
+				font = getBoldFont(font);
 			}
 
 			return _runtimePlatform == GlobalConsts.AndroidPlatform ?
@@ -109,6 +118,20 @@ namespace EduCATS.Fonts
 			}
 
 			return fontFamily;
+		}
+
+		/// <summary>
+		/// Get bold font from regular.
+		/// </summary>
+		/// <param name="font">Regular font name.</param>
+		/// <returns>Bold font.</returns>
+		static string getBoldFont(string font)
+		{
+			if (string.IsNullOrEmpty(font)) {
+				return font;
+			}
+
+			return font.Replace(_regularAlias, _boldAlias);
 		}
 
 		/// <summary>

@@ -14,7 +14,7 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 				FontAttributes = FontAttributes.Bold,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
-				Style = AppStyles.GetLabelStyle(NamedSize.Large)
+				Style = AppStyles.GetLabelStyle(NamedSize.Large, true)
 			};
 
 			sectionLabel.SetBinding(Label.TextProperty, "SectionName");

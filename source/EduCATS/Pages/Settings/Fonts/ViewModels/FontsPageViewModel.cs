@@ -73,7 +73,7 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 			var fonts = fontList.Select(f => new FontsPageModel {
 				Font = f,
 				Title = FontsController.GetFontName(f),
-				FontFamily = FontsController.GetFont(f),
+				FontFamily = FontsController.GetFont(f, false),
 				IsChecked = f.Equals(AppPrefs.Font)
 			});
 

@@ -32,7 +32,7 @@ namespace EduCATS.Pages.Learning.Views.ViewCells
 				TextColor = Color.FromHex(Theme.Current.LearningCardTextColor),
 				FontAttributes = FontAttributes.Bold,
 				Margin = _titleMargin,
-				Style = AppStyles.GetLabelStyle()
+				Style = AppStyles.GetLabelStyle(bold: true)
 			};
 
 			title.SetBinding(Label.TextProperty, "Title");

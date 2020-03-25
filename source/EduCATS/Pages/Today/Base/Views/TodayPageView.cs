@@ -144,7 +144,7 @@ namespace EduCATS.Pages.Today.Base.Views
 				Padding = _newsLabelMagin,
 				FontAttributes = FontAttributes.Bold,
 				Text = CrossLocalization.Translate("today_news"),
-				Style = AppStyles.GetLabelStyle(NamedSize.Large)
+				Style = AppStyles.GetLabelStyle(NamedSize.Large, true)
 			};
 		}
 
@@ -175,7 +175,7 @@ namespace EduCATS.Pages.Today.Base.Views
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				Text = CrossLocalization.Translate("today_subjects"),
-				Style = AppStyles.GetLabelStyle(NamedSize.Large)
+				Style = AppStyles.GetLabelStyle(NamedSize.Large, true)
 			};
 		}
 	}

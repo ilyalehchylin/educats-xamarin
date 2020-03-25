@@ -5,7 +5,7 @@ namespace EduCATS.Helpers.Styles
 {
 	public static class AppStyles
 	{
-		public static Style GetEntryStyle(NamedSize size = NamedSize.Medium)
+		public static Style GetEntryStyle(NamedSize size = NamedSize.Medium, bool bold = false)
 		{
 			return new Style(typeof(Entry)) {
 				Setters = {
@@ -16,13 +16,13 @@ namespace EduCATS.Helpers.Styles
 
 					new Setter {
 						Property = Entry.FontFamilyProperty,
-						Value = FontsController.GetCurrentFont()
+						Value = FontsController.GetCurrentFont(bold)
 					}
 				}
 			};
 		}
 
-		public static Style GetButtonStyle(NamedSize size = NamedSize.Medium)
+		public static Style GetButtonStyle(NamedSize size = NamedSize.Medium, bool bold = false)
 		{
 			return new Style(typeof(Button)) {
 				Setters = {
@@ -33,13 +33,13 @@ namespace EduCATS.Helpers.Styles
 
 					new Setter {
 						Property = Button.FontFamilyProperty,
-						Value = FontsController.GetCurrentFont()
+						Value = FontsController.GetCurrentFont(bold)
 					}
 				}
 			};
 		}
 
-		public static Style GetLabelStyle(NamedSize size = NamedSize.Medium)
+		public static Style GetLabelStyle(NamedSize size = NamedSize.Medium, bool bold = false)
 		{
 			return new Style(typeof(Label)) {
 				Setters = {
@@ -50,7 +50,7 @@ namespace EduCATS.Helpers.Styles
 
 					new Setter {
 						Property = Label.FontFamilyProperty,
-						Value = FontsController.GetCurrentFont()
+						Value = FontsController.GetCurrentFont(bold)
 					}
 				}
 			};

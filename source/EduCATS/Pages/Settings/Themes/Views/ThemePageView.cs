@@ -39,7 +39,7 @@ namespace EduCATS.Pages.Settings.Themes.Views
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				Text = CrossLocalization.Translate("settings_theme_choose"),
-				Style = AppStyles.GetLabelStyle(NamedSize.Large)
+				Style = AppStyles.GetLabelStyle(NamedSize.Large, true)
 			};
 		}
 
