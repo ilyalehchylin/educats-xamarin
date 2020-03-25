@@ -370,6 +370,14 @@
           <SubType></SubType>
           <Generator></Generator>
         </AndroidResource>
+        <AndroidResource Include="Resources\drawable\icon_headphones_blue.png">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\icon_headphones_light.png">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Resources\drawable\" />

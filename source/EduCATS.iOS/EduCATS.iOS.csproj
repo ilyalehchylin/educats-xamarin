@@ -240,5 +240,11 @@
         <BundleResource Include="Resources\icon_settings_about%403x.png" />
         <BundleResource Include="Resources\image_github_logo_dark.png" />
         <BundleResource Include="Resources\image_github_logo_light.png" />
+        <BundleResource Include="Resources\icon_headphones_blue%401x.png" />
+        <BundleResource Include="Resources\icon_headphones_blue%402x.png" />
+        <BundleResource Include="Resources\icon_headphones_blue%403x.png" />
+        <BundleResource Include="Resources\icon_headphones_light%401x.png" />
+        <BundleResource Include="Resources\icon_headphones_light%402x.png" />
+        <BundleResource Include="Resources\icon_headphones_light%403x.png" />
     </ItemGroup>
 </Project>

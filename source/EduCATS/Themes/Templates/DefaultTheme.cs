@@ -24,6 +24,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string BaseArrowForwardIcon => "icon_forward";
 		virtual public string BaseCloseIcon => "icon_close";
 		virtual public string BaseLogoImage => "image_logo_rounded";
+		virtual public string BaseHeadphonesIcon => "icon_headphones_blue";
 
 		virtual public string AppBackgroundColor => _lightGreyColor;
 		virtual public string AppStatusBarBackgroundColor => _baseBlueColor;

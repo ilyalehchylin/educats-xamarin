@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using EduCATS.Helpers.Devices.Interfaces;
+using EduCATS.Helpers.Speech;
 using EduCATS.Themes;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -73,5 +75,36 @@ namespace EduCATS.Helpers.Devices
 		/// </summary>
 		/// <returns>Application build.</returns>
 		public string GetBuild() => AppInfo.BuildString;
+
+		/// <summary>
+		/// Speech cancellation token source.
+		/// </summary>
+		CancellationTokenSource _speechCancellationSource;
+
+		/// <summary>
+		/// Text-to-speech.
+		/// </summary>
+		/// <param name="text">Text.</param>
+		/// <returns>Task.</returns>
+		public async Task Speak(string text)
+		{
+			_speechCancellationSource = new CancellationTokenSource();
+			var options = await SpeechController.GetSettings();
+			await TextToSpeech.SpeakAsync(text, options, _speechCancellationSource.Token);
+		}
+
+		/// <summary>
+		/// Cancel speech.
+		/// </summary>
+		public void CancelSpeech()
+		{
+			if (_speechCancellationSource?.IsCancellationRequested ?? true) {
+				return;
+			}
+
+			_speechCancellationSource.Cancel();
+			_speechCancellationSource.Dispose();
+
+		}
 	}
 }

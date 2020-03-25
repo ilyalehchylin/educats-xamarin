@@ -14,6 +14,7 @@ using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Helpers.Settings;
 using EduCATS.Pages.Today.Base.Models;
 using EduCATS.Themes;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.Base.ViewModels
@@ -244,7 +245,10 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		void openDetailsPage(object obj)
 		{
 			var newsPageModel = (NewsPageModel)obj;
-			_pages.OpenNewsDetails(newsPageModel.Title, newsPageModel.Body);
+			_pages.OpenNewsDetails(
+				CrossLocalization.Translate("news_details_title"),
+				newsPageModel.Title,
+				newsPageModel.Body);
 		}
 
 		CalendarViewModel getCalendarViewModel(DateTime date, WeekEnum week)

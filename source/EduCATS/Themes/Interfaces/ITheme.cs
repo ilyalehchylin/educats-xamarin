@@ -17,6 +17,7 @@
 		string BaseActivityIndicatorColor { get; }
 		string BasePickerTextColor { get; }
 		string BaseLogoImage { get; }
+		string BaseHeadphonesIcon { get; }
 
 		string AppStatusBarBackgroundColor { get; }
 		string AppBackgroundColor { get; }

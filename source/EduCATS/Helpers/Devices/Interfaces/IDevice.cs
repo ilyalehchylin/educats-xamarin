@@ -54,5 +54,17 @@ namespace EduCATS.Helpers.Devices.Interfaces
 		/// </summary>
 		/// <returns>Application build.</returns>
 		string GetBuild();
+
+		/// <summary>
+		/// Text-to-speech
+		/// </summary>
+		/// <param name="text">Text.</param>
+		/// <returns>Task.</returns>
+		Task Speak(string text);
+
+		/// <summary>
+		/// Cancel speech.
+		/// </summary>
+		void CancelSpeech();
 	}
 }

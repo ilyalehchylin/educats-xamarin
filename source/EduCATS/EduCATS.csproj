@@ -167,6 +167,7 @@
         <Folder Include="Helpers\Styles\" />
         <Folder Include="Pages\Settings\About\" />
         <Folder Include="Pages\Settings\About\ViewModels\" />
+        <Folder Include="Helpers\Speech\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />

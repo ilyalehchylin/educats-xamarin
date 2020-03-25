@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace EduCATS.Helpers.Extensions
 {
@@ -28,6 +29,16 @@ namespace EduCATS.Helpers.Extensions
         {
 			return string.IsNullOrEmpty(input) ?
 				input : input.First().ToString().ToUpper() + input.Substring(1);
+		}
+
+		/// <summary>
+		/// Remove HTML tags from string.
+		/// </summary>
+		/// <param name="input">Input string.</param>
+		/// <returns>String without HTML tags.</returns>
+		public static string RemoveHTMLTags(this string input)
+		{
+			return Regex.Replace(input, "<.*?>|&#34;", string.Empty);
 		}
 	}
 }

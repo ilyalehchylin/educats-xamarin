@@ -30,6 +30,11 @@
 		public const string GitHubLink = "https://github.com/IlyaLehchylin/educats-xamarin";
 
 		/// <summary>
+		/// Language used on web-version of LMS.
+		/// </summary>
+		public const string LMSCoreLanguage = "ru";
+
+		/// <summary>
 		/// Localization path (directory inside the project
 		/// where localization JSON files are stored).
 		/// </summary>
