@@ -25,3 +25,4 @@ A cross-platform client for the [Leaning Management System EduCATS](https://gith
 | **[Xamarin.Essentials](https://docs.microsoft.com/xamarin/essentials/)**  | Helper tools for Xamarin.Forms                       |
 | **[FFImageLoading](https://github.com/luberda-molinet/FFImageLoading)**   | Library for extended image loading & handling         |
 | **[DocFX](https://github.com/dotnet/docfx)**  						  	| Project's documentation tools	  		               |
+| **[Google Fonts](https://fonts.google.com/)**  						  	| Open-source fonts				  		               |
