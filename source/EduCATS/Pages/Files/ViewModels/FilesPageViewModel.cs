@@ -26,6 +26,8 @@ namespace EduCATS.Pages.Files.ViewModels
 
 		object _progressDialog;
 
+		WebClient _client;
+
 		/// <summary>
 		/// Constructor.
 		/// </summary>
@@ -34,6 +36,7 @@ namespace EduCATS.Pages.Files.ViewModels
 		public FilesPageViewModel(IDialogs dialogs, IDevice device) : base(dialogs, device)
 		{
 			Task.Run(async () => await update());
+			SubjectChanged += async (s, e) => await update();
 		}
 
 		List<FilesPageModel> fileList;
@@ -136,12 +139,12 @@ namespace EduCATS.Pages.Files.ViewModels
 			var fileUri = new Uri($"{Links.GetFile}?fileName={file.PathName}/{file.FileName}");
 
 			try {
-				var client = new WebClient();
-				client.DownloadProgressChanged += downloadProgressChanged;
-				client.DownloadFileCompleted += downloadCompleted;
-				client.QueryString.Add(_filenameKey, file.Name);
-				client.QueryString.Add(_filepathKey, storageFilePath);
-				client.DownloadFileAsync(fileUri, storageFilePath);
+				_client = new WebClient();
+				_client.DownloadProgressChanged += downloadProgressChanged;
+				_client.DownloadFileCompleted += downloadCompleted;
+				_client.QueryString.Add(_filenameKey, file.Name);
+				_client.QueryString.Add(_filepathKey, storageFilePath);
+				_client.DownloadFileAsync(fileUri, storageFilePath);
 			} catch (Exception) {
 				hideDownloading();
 				DeviceService.MainThread(
@@ -164,7 +167,12 @@ namespace EduCATS.Pages.Files.ViewModels
 			var client = sender as WebClient;
 			var fileName = client.QueryString[_filenameKey];
 			var pathForFile = client.QueryString[_filepathKey];
-			completeDownload(fileName, pathForFile);
+
+			if (e.Cancelled) {
+				File.Delete(pathForFile);
+			} else {
+				completeDownload(fileName, pathForFile);
+			}
 		}
 
 		/// <summary>
@@ -213,11 +221,25 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// </summary>
 		void setDownloading()
 		{
-			DeviceService.MainThread(
-				() => _progressDialog = DialogService.ShowProgress(
+			DeviceService.MainThread(() => {
+				_progressDialog = DialogService.ShowProgress(
 					CrossLocalization.Translate("files_downloading"),
 					CrossLocalization.Translate("base_cancel"),
-					() => DialogService.HideProgress(_progressDialog)));
+					() => abortDownload());
+			});
+		}
+
+		/// <summary>
+		/// Abort downloading process.
+		/// </summary>
+		void abortDownload()
+		{
+			if (_client == null || !_client.IsBusy) {
+				return;
+			}
+
+			_client.CancelAsync();
+			DialogService.HideProgress(_progressDialog);
 		}
 	}
 }
