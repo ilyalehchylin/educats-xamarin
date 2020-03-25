@@ -103,6 +103,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Configuration.AppConfig.setupCaching
   nameWithType: AppConfig.setupCaching
+- uid: EduCATS.Configuration.AppConfig.setupFonts
+  name: setupFonts()
+  href: api/EduCATS.Configuration.AppConfig.html#EduCATS_Configuration_AppConfig_setupFonts
+  commentId: M:EduCATS.Configuration.AppConfig.setupFonts
+  fullName: EduCATS.Configuration.AppConfig.setupFonts()
+  nameWithType: AppConfig.setupFonts()
+- uid: EduCATS.Configuration.AppConfig.setupFonts*
+  name: setupFonts
+  href: api/EduCATS.Configuration.AppConfig.html#EduCATS_Configuration_AppConfig_setupFonts_
+  commentId: Overload:EduCATS.Configuration.AppConfig.setupFonts
+  isSpec: "True"
+  fullName: EduCATS.Configuration.AppConfig.setupFonts
+  nameWithType: AppConfig.setupFonts
 - uid: EduCATS.Configuration.AppConfig.setupLocalization
   name: setupLocalization()
   href: api/EduCATS.Configuration.AppConfig.html#EduCATS_Configuration_AppConfig_setupLocalization
@@ -154,6 +167,12 @@ references:
   commentId: T:EduCATS.Constants.GlobalConsts
   fullName: EduCATS.Constants.GlobalConsts
   nameWithType: GlobalConsts
+- uid: EduCATS.Constants.GlobalConsts.AndroidPlatform
+  name: AndroidPlatform
+  href: api/EduCATS.Constants.GlobalConsts.html#EduCATS_Constants_GlobalConsts_AndroidPlatform
+  commentId: F:EduCATS.Constants.GlobalConsts.AndroidPlatform
+  fullName: EduCATS.Constants.GlobalConsts.AndroidPlatform
+  nameWithType: GlobalConsts.AndroidPlatform
 - uid: EduCATS.Constants.GlobalConsts.AppId
   name: AppId
   href: api/EduCATS.Constants.GlobalConsts.html#EduCATS_Constants_GlobalConsts_AppId
@@ -597,12 +616,6 @@ references:
   commentId: F:EduCATS.Controls.RoundedListView.RoundedListView._padding
   fullName: EduCATS.Controls.RoundedListView.RoundedListView._padding
   nameWithType: RoundedListView._padding
-- uid: EduCATS.Controls.RoundedListView.RoundedListView._roundedHeaderHeight
-  name: _roundedHeaderHeight
-  href: api/EduCATS.Controls.RoundedListView.RoundedListView.html#EduCATS_Controls_RoundedListView_RoundedListView__roundedHeaderHeight
-  commentId: F:EduCATS.Controls.RoundedListView.RoundedListView._roundedHeaderHeight
-  fullName: EduCATS.Controls.RoundedListView.RoundedListView._roundedHeaderHeight
-  nameWithType: RoundedListView._roundedHeaderHeight
 - uid: EduCATS.Controls.RoundedListView.RoundedListView._spacing
   name: _spacing
   href: api/EduCATS.Controls.RoundedListView.RoundedListView.html#EduCATS_Controls_RoundedListView_RoundedListView__spacing
@@ -648,6 +661,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Controls.RoundedListView.RoundedListView.createHeaderCap
   nameWithType: RoundedListView.createHeaderCap
+- uid: EduCATS.Controls.RoundedListView.RoundedListView.HeaderHeight
+  name: HeaderHeight
+  href: api/EduCATS.Controls.RoundedListView.RoundedListView.html#EduCATS_Controls_RoundedListView_RoundedListView_HeaderHeight
+  commentId: F:EduCATS.Controls.RoundedListView.RoundedListView.HeaderHeight
+  fullName: EduCATS.Controls.RoundedListView.RoundedListView.HeaderHeight
+  nameWithType: RoundedListView.HeaderHeight
 - uid: EduCATS.Controls.RoundedListView.Selectors
   name: EduCATS.Controls.RoundedListView.Selectors
   href: api/EduCATS.Controls.RoundedListView.Selectors.html
@@ -3953,11 +3972,11 @@ references:
   commentId: T:EduCATS.Droid.MainActivity
   fullName: EduCATS.Droid.MainActivity
   nameWithType: MainActivity
-- uid: EduCATS.Droid.MainActivity.initPackages(Android.OS.Bundle)
+- uid: EduCATS.Droid.MainActivity.initPackages(Bundle)
   name: initPackages(Bundle)
-  href: api/EduCATS.Droid.MainActivity.html#EduCATS_Droid_MainActivity_initPackages_Android_OS_Bundle_
-  commentId: M:EduCATS.Droid.MainActivity.initPackages(Android.OS.Bundle)
-  fullName: EduCATS.Droid.MainActivity.initPackages(Android.OS.Bundle)
+  href: api/EduCATS.Droid.MainActivity.html#EduCATS_Droid_MainActivity_initPackages_Bundle_
+  commentId: M:EduCATS.Droid.MainActivity.initPackages(Bundle)
+  fullName: EduCATS.Droid.MainActivity.initPackages(Bundle)
   nameWithType: MainActivity.initPackages(Bundle)
 - uid: EduCATS.Droid.MainActivity.initPackages*
   name: initPackages
@@ -3979,11 +3998,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Droid.MainActivity.Instance
   nameWithType: MainActivity.Instance
-- uid: EduCATS.Droid.MainActivity.OnCreate(Android.OS.Bundle)
+- uid: EduCATS.Droid.MainActivity.OnCreate(Bundle)
   name: OnCreate(Bundle)
-  href: api/EduCATS.Droid.MainActivity.html#EduCATS_Droid_MainActivity_OnCreate_Android_OS_Bundle_
-  commentId: M:EduCATS.Droid.MainActivity.OnCreate(Android.OS.Bundle)
-  fullName: EduCATS.Droid.MainActivity.OnCreate(Android.OS.Bundle)
+  href: api/EduCATS.Droid.MainActivity.html#EduCATS_Droid_MainActivity_OnCreate_Bundle_
+  commentId: M:EduCATS.Droid.MainActivity.OnCreate(Bundle)
+  fullName: EduCATS.Droid.MainActivity.OnCreate(Bundle)
   nameWithType: MainActivity.OnCreate(Bundle)
 - uid: EduCATS.Droid.MainActivity.OnCreate*
   name: OnCreate
@@ -3992,13 +4011,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Droid.MainActivity.OnCreate
   nameWithType: MainActivity.OnCreate
-- uid: EduCATS.Droid.MainActivity.OnRequestPermissionsResult(System.Int32,System.String[],Android.Content.PM.Permission[])
+- uid: EduCATS.Droid.MainActivity.OnRequestPermissionsResult(System.Int32,System.String[],Permission[])
   name: OnRequestPermissionsResult(Int32, String[], Permission[])
-  href: api/EduCATS.Droid.MainActivity.html#EduCATS_Droid_MainActivity_OnRequestPermissionsResult_System_Int32_System_String___Android_Content_PM_Permission___
-  commentId: M:EduCATS.Droid.MainActivity.OnRequestPermissionsResult(System.Int32,System.String[],Android.Content.PM.Permission[])
+  href: api/EduCATS.Droid.MainActivity.html#EduCATS_Droid_MainActivity_OnRequestPermissionsResult_System_Int32_System_String___Permission___
+  commentId: M:EduCATS.Droid.MainActivity.OnRequestPermissionsResult(System.Int32,System.String[],Permission[])
   name.vb: OnRequestPermissionsResult(Int32, String(), Permission())
-  fullName: EduCATS.Droid.MainActivity.OnRequestPermissionsResult(System.Int32, System.String[], Android.Content.PM.Permission[])
-  fullName.vb: EduCATS.Droid.MainActivity.OnRequestPermissionsResult(System.Int32, System.String(), Android.Content.PM.Permission())
+  fullName: EduCATS.Droid.MainActivity.OnRequestPermissionsResult(System.Int32, System.String[], Permission[])
+  fullName.vb: EduCATS.Droid.MainActivity.OnRequestPermissionsResult(System.Int32, System.String(), Permission())
   nameWithType: MainActivity.OnRequestPermissionsResult(Int32, String[], Permission[])
   nameWithType.vb: MainActivity.OnRequestPermissionsResult(Int32, String(), Permission())
 - uid: EduCATS.Droid.MainActivity.OnRequestPermissionsResult*
@@ -20578,6 +20597,203 @@ references:
   commentId: F:EduCATS.Droid.Resource.Xml.xamarin_essentials_fileprovider_file_paths
   fullName: EduCATS.Droid.Resource.Xml.xamarin_essentials_fileprovider_file_paths
   nameWithType: Resource.Xml.xamarin_essentials_fileprovider_file_paths
+- uid: EduCATS.Fonts
+  name: EduCATS.Fonts
+  href: api/EduCATS.Fonts.html
+  commentId: N:EduCATS.Fonts
+  fullName: EduCATS.Fonts
+  nameWithType: EduCATS.Fonts
+- uid: EduCATS.Fonts.FontsController
+  name: FontsController
+  href: api/EduCATS.Fonts.FontsController.html
+  commentId: T:EduCATS.Fonts.FontsController
+  fullName: EduCATS.Fonts.FontsController
+  nameWithType: FontsController
+- uid: EduCATS.Fonts.FontsController._fonts
+  name: _fonts
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController__fonts
+  commentId: F:EduCATS.Fonts.FontsController._fonts
+  fullName: EduCATS.Fonts.FontsController._fonts
+  nameWithType: FontsController._fonts
+- uid: EduCATS.Fonts.FontsController._regularAlias
+  name: _regularAlias
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController__regularAlias
+  commentId: F:EduCATS.Fonts.FontsController._regularAlias
+  fullName: EduCATS.Fonts.FontsController._regularAlias
+  nameWithType: FontsController._regularAlias
+- uid: EduCATS.Fonts.FontsController._runtimePlatform
+  name: _runtimePlatform
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController__runtimePlatform
+  commentId: F:EduCATS.Fonts.FontsController._runtimePlatform
+  fullName: EduCATS.Fonts.FontsController._runtimePlatform
+  nameWithType: FontsController._runtimePlatform
+- uid: EduCATS.Fonts.FontsController.DefaultFont
+  name: DefaultFont
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_DefaultFont
+  commentId: F:EduCATS.Fonts.FontsController.DefaultFont
+  fullName: EduCATS.Fonts.FontsController.DefaultFont
+  nameWithType: FontsController.DefaultFont
+- uid: EduCATS.Fonts.FontsController.GetCurrentFont
+  name: GetCurrentFont()
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_GetCurrentFont
+  commentId: M:EduCATS.Fonts.FontsController.GetCurrentFont
+  fullName: EduCATS.Fonts.FontsController.GetCurrentFont()
+  nameWithType: FontsController.GetCurrentFont()
+- uid: EduCATS.Fonts.FontsController.GetCurrentFont*
+  name: GetCurrentFont
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_GetCurrentFont_
+  commentId: Overload:EduCATS.Fonts.FontsController.GetCurrentFont
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontsController.GetCurrentFont
+  nameWithType: FontsController.GetCurrentFont
+- uid: EduCATS.Fonts.FontsController.GetFont(System.String)
+  name: GetFont(String)
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_GetFont_System_String_
+  commentId: M:EduCATS.Fonts.FontsController.GetFont(System.String)
+  fullName: EduCATS.Fonts.FontsController.GetFont(System.String)
+  nameWithType: FontsController.GetFont(String)
+- uid: EduCATS.Fonts.FontsController.GetFont*
+  name: GetFont
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_GetFont_
+  commentId: Overload:EduCATS.Fonts.FontsController.GetFont
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontsController.GetFont
+  nameWithType: FontsController.GetFont
+- uid: EduCATS.Fonts.FontsController.GetFontName(System.String)
+  name: GetFontName(String)
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_GetFontName_System_String_
+  commentId: M:EduCATS.Fonts.FontsController.GetFontName(System.String)
+  fullName: EduCATS.Fonts.FontsController.GetFontName(System.String)
+  nameWithType: FontsController.GetFontName(String)
+- uid: EduCATS.Fonts.FontsController.GetFontName*
+  name: GetFontName
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_GetFontName_
+  commentId: Overload:EduCATS.Fonts.FontsController.GetFontName
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontsController.GetFontName
+  nameWithType: FontsController.GetFontName
+- uid: EduCATS.Fonts.FontsController.GetFonts
+  name: GetFonts()
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_GetFonts
+  commentId: M:EduCATS.Fonts.FontsController.GetFonts
+  fullName: EduCATS.Fonts.FontsController.GetFonts()
+  nameWithType: FontsController.GetFonts()
+- uid: EduCATS.Fonts.FontsController.GetFonts*
+  name: GetFonts
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_GetFonts_
+  commentId: Overload:EduCATS.Fonts.FontsController.GetFonts
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontsController.GetFonts
+  nameWithType: FontsController.GetFonts
+- uid: EduCATS.Fonts.FontsController.initFonts
+  name: initFonts()
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_initFonts
+  commentId: M:EduCATS.Fonts.FontsController.initFonts
+  fullName: EduCATS.Fonts.FontsController.initFonts()
+  nameWithType: FontsController.initFonts()
+- uid: EduCATS.Fonts.FontsController.initFonts*
+  name: initFonts
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_initFonts_
+  commentId: Overload:EduCATS.Fonts.FontsController.initFonts
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontsController.initFonts
+  nameWithType: FontsController.initFonts
+- uid: EduCATS.Fonts.FontsController.Initialize(System.String)
+  name: Initialize(String)
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_Initialize_System_String_
+  commentId: M:EduCATS.Fonts.FontsController.Initialize(System.String)
+  fullName: EduCATS.Fonts.FontsController.Initialize(System.String)
+  nameWithType: FontsController.Initialize(String)
+- uid: EduCATS.Fonts.FontsController.Initialize*
+  name: Initialize
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_Initialize_
+  commentId: Overload:EduCATS.Fonts.FontsController.Initialize
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontsController.Initialize
+  nameWithType: FontsController.Initialize
+- uid: EduCATS.Fonts.FontsController.SetCurrentFont
+  name: SetCurrentFont()
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_SetCurrentFont
+  commentId: M:EduCATS.Fonts.FontsController.SetCurrentFont
+  fullName: EduCATS.Fonts.FontsController.SetCurrentFont()
+  nameWithType: FontsController.SetCurrentFont()
+- uid: EduCATS.Fonts.FontsController.SetCurrentFont*
+  name: SetCurrentFont
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_SetCurrentFont_
+  commentId: Overload:EduCATS.Fonts.FontsController.SetCurrentFont
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontsController.SetCurrentFont
+  nameWithType: FontsController.SetCurrentFont
+- uid: EduCATS.Fonts.FontsController.SetFont(System.String)
+  name: SetFont(String)
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_SetFont_System_String_
+  commentId: M:EduCATS.Fonts.FontsController.SetFont(System.String)
+  fullName: EduCATS.Fonts.FontsController.SetFont(System.String)
+  nameWithType: FontsController.SetFont(String)
+- uid: EduCATS.Fonts.FontsController.SetFont*
+  name: SetFont
+  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController_SetFont_
+  commentId: Overload:EduCATS.Fonts.FontsController.SetFont
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontsController.SetFont
+  nameWithType: FontsController.SetFont
+- uid: EduCATS.Fonts.FontSizeController
+  name: FontSizeController
+  href: api/EduCATS.Fonts.FontSizeController.html
+  commentId: T:EduCATS.Fonts.FontSizeController
+  fullName: EduCATS.Fonts.FontSizeController
+  nameWithType: FontSizeController
+- uid: EduCATS.Fonts.FontSizeController._isLargePrefs
+  name: _isLargePrefs
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController__isLargePrefs
+  commentId: P:EduCATS.Fonts.FontSizeController._isLargePrefs
+  fullName: EduCATS.Fonts.FontSizeController._isLargePrefs
+  nameWithType: FontSizeController._isLargePrefs
+- uid: EduCATS.Fonts.FontSizeController._isLargePrefs*
+  name: _isLargePrefs
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController__isLargePrefs_
+  commentId: Overload:EduCATS.Fonts.FontSizeController._isLargePrefs
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontSizeController._isLargePrefs
+  nameWithType: FontSizeController._isLargePrefs
+- uid: EduCATS.Fonts.FontSizeController._largestAddition
+  name: _largestAddition
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController__largestAddition
+  commentId: F:EduCATS.Fonts.FontSizeController._largestAddition
+  fullName: EduCATS.Fonts.FontSizeController._largestAddition
+  nameWithType: FontSizeController._largestAddition
+- uid: EduCATS.Fonts.FontSizeController._vwAddition
+  name: _vwAddition
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController__vwAddition
+  commentId: F:EduCATS.Fonts.FontSizeController._vwAddition
+  fullName: EduCATS.Fonts.FontSizeController._vwAddition
+  nameWithType: FontSizeController._vwAddition
+- uid: EduCATS.Fonts.FontSizeController.GetDynamicSize(System.Double)
+  name: GetDynamicSize(Double)
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController_GetDynamicSize_System_Double_
+  commentId: M:EduCATS.Fonts.FontSizeController.GetDynamicSize(System.Double)
+  fullName: EduCATS.Fonts.FontSizeController.GetDynamicSize(System.Double)
+  nameWithType: FontSizeController.GetDynamicSize(Double)
+- uid: EduCATS.Fonts.FontSizeController.GetDynamicSize*
+  name: GetDynamicSize
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController_GetDynamicSize_
+  commentId: Overload:EduCATS.Fonts.FontSizeController.GetDynamicSize
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontSizeController.GetDynamicSize
+  nameWithType: FontSizeController.GetDynamicSize
+- uid: EduCATS.Fonts.FontSizeController.GetSize(NamedSize,System.Type)
+  name: GetSize(NamedSize, Type)
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController_GetSize_NamedSize_System_Type_
+  commentId: M:EduCATS.Fonts.FontSizeController.GetSize(NamedSize,System.Type)
+  fullName: EduCATS.Fonts.FontSizeController.GetSize(NamedSize, System.Type)
+  nameWithType: FontSizeController.GetSize(NamedSize, Type)
+- uid: EduCATS.Fonts.FontSizeController.GetSize*
+  name: GetSize
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController_GetSize_
+  commentId: Overload:EduCATS.Fonts.FontSizeController.GetSize
+  isSpec: "True"
+  fullName: EduCATS.Fonts.FontSizeController.GetSize
+  nameWithType: FontSizeController.GetSize
 - uid: EduCATS.Helpers.Converters
   name: EduCATS.Helpers.Converters
   href: api/EduCATS.Helpers.Converters.html
@@ -21155,37 +21371,79 @@ references:
 - uid: EduCATS.Helpers.Dialogs.AppDialogs._baseCancel
   name: _baseCancel
   href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseCancel
-  commentId: F:EduCATS.Helpers.Dialogs.AppDialogs._baseCancel
+  commentId: P:EduCATS.Helpers.Dialogs.AppDialogs._baseCancel
+  fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseCancel
+  nameWithType: AppDialogs._baseCancel
+- uid: EduCATS.Helpers.Dialogs.AppDialogs._baseCancel*
+  name: _baseCancel
+  href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseCancel_
+  commentId: Overload:EduCATS.Helpers.Dialogs.AppDialogs._baseCancel
+  isSpec: "True"
   fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseCancel
   nameWithType: AppDialogs._baseCancel
 - uid: EduCATS.Helpers.Dialogs.AppDialogs._baseError
   name: _baseError
   href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseError
-  commentId: F:EduCATS.Helpers.Dialogs.AppDialogs._baseError
+  commentId: P:EduCATS.Helpers.Dialogs.AppDialogs._baseError
+  fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseError
+  nameWithType: AppDialogs._baseError
+- uid: EduCATS.Helpers.Dialogs.AppDialogs._baseError*
+  name: _baseError
+  href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseError_
+  commentId: Overload:EduCATS.Helpers.Dialogs.AppDialogs._baseError
+  isSpec: "True"
   fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseError
   nameWithType: AppDialogs._baseError
 - uid: EduCATS.Helpers.Dialogs.AppDialogs._baseLoading
   name: _baseLoading
   href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseLoading
-  commentId: F:EduCATS.Helpers.Dialogs.AppDialogs._baseLoading
+  commentId: P:EduCATS.Helpers.Dialogs.AppDialogs._baseLoading
+  fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseLoading
+  nameWithType: AppDialogs._baseLoading
+- uid: EduCATS.Helpers.Dialogs.AppDialogs._baseLoading*
+  name: _baseLoading
+  href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseLoading_
+  commentId: Overload:EduCATS.Helpers.Dialogs.AppDialogs._baseLoading
+  isSpec: "True"
   fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseLoading
   nameWithType: AppDialogs._baseLoading
 - uid: EduCATS.Helpers.Dialogs.AppDialogs._baseNo
   name: _baseNo
   href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseNo
-  commentId: F:EduCATS.Helpers.Dialogs.AppDialogs._baseNo
+  commentId: P:EduCATS.Helpers.Dialogs.AppDialogs._baseNo
+  fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseNo
+  nameWithType: AppDialogs._baseNo
+- uid: EduCATS.Helpers.Dialogs.AppDialogs._baseNo*
+  name: _baseNo
+  href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseNo_
+  commentId: Overload:EduCATS.Helpers.Dialogs.AppDialogs._baseNo
+  isSpec: "True"
   fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseNo
   nameWithType: AppDialogs._baseNo
 - uid: EduCATS.Helpers.Dialogs.AppDialogs._baseOK
   name: _baseOK
   href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseOK
-  commentId: F:EduCATS.Helpers.Dialogs.AppDialogs._baseOK
+  commentId: P:EduCATS.Helpers.Dialogs.AppDialogs._baseOK
+  fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseOK
+  nameWithType: AppDialogs._baseOK
+- uid: EduCATS.Helpers.Dialogs.AppDialogs._baseOK*
+  name: _baseOK
+  href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseOK_
+  commentId: Overload:EduCATS.Helpers.Dialogs.AppDialogs._baseOK
+  isSpec: "True"
   fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseOK
   nameWithType: AppDialogs._baseOK
 - uid: EduCATS.Helpers.Dialogs.AppDialogs._baseYes
   name: _baseYes
   href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseYes
-  commentId: F:EduCATS.Helpers.Dialogs.AppDialogs._baseYes
+  commentId: P:EduCATS.Helpers.Dialogs.AppDialogs._baseYes
+  fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseYes
+  nameWithType: AppDialogs._baseYes
+- uid: EduCATS.Helpers.Dialogs.AppDialogs._baseYes*
+  name: _baseYes
+  href: api/EduCATS.Helpers.Dialogs.AppDialogs.html#EduCATS_Helpers_Dialogs_AppDialogs__baseYes_
+  commentId: Overload:EduCATS.Helpers.Dialogs.AppDialogs._baseYes
+  isSpec: "True"
   fullName: EduCATS.Helpers.Dialogs.AppDialogs._baseYes
   nameWithType: AppDialogs._baseYes
 - uid: EduCATS.Helpers.Dialogs.AppDialogs.getProgressDialog(System.Object)
@@ -21788,6 +22046,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Pages.AppPages.OpenSettings
   nameWithType: AppPages.OpenSettings
+- uid: EduCATS.Helpers.Pages.AppPages.OpenSettingsFont(System.String)
+  name: OpenSettingsFont(String)
+  href: api/EduCATS.Helpers.Pages.AppPages.html#EduCATS_Helpers_Pages_AppPages_OpenSettingsFont_System_String_
+  commentId: M:EduCATS.Helpers.Pages.AppPages.OpenSettingsFont(System.String)
+  fullName: EduCATS.Helpers.Pages.AppPages.OpenSettingsFont(System.String)
+  nameWithType: AppPages.OpenSettingsFont(String)
+- uid: EduCATS.Helpers.Pages.AppPages.OpenSettingsFont*
+  name: OpenSettingsFont
+  href: api/EduCATS.Helpers.Pages.AppPages.html#EduCATS_Helpers_Pages_AppPages_OpenSettingsFont_
+  commentId: Overload:EduCATS.Helpers.Pages.AppPages.OpenSettingsFont
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Pages.AppPages.OpenSettingsFont
+  nameWithType: AppPages.OpenSettingsFont
 - uid: EduCATS.Helpers.Pages.AppPages.OpenSettingsLanguage(System.String)
   name: OpenSettingsLanguage(String)
   href: api/EduCATS.Helpers.Pages.AppPages.html#EduCATS_Helpers_Pages_AppPages_OpenSettingsLanguage_System_String_
@@ -22037,6 +22308,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettings
   nameWithType: IPages.OpenSettings
+- uid: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsFont(System.String)
+  name: OpenSettingsFont(String)
+  href: api/EduCATS.Helpers.Pages.Interfaces.IPages.html#EduCATS_Helpers_Pages_Interfaces_IPages_OpenSettingsFont_System_String_
+  commentId: M:EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsFont(System.String)
+  fullName: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsFont(System.String)
+  nameWithType: IPages.OpenSettingsFont(String)
+- uid: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsFont*
+  name: OpenSettingsFont
+  href: api/EduCATS.Helpers.Pages.Interfaces.IPages.html#EduCATS_Helpers_Pages_Interfaces_IPages_OpenSettingsFont_
+  commentId: Overload:EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsFont
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsFont
+  nameWithType: IPages.OpenSettingsFont
 - uid: EduCATS.Helpers.Pages.Interfaces.IPages.OpenSettingsLanguage(System.String)
   name: OpenSettingsLanguage(String)
   href: api/EduCATS.Helpers.Pages.Interfaces.IPages.html#EduCATS_Helpers_Pages_Interfaces_IPages_OpenSettingsLanguage_System_String_
@@ -22179,6 +22463,18 @@ references:
   commentId: F:EduCATS.Helpers.Settings.AppPrefs._chosenSubjectIdKey
   fullName: EduCATS.Helpers.Settings.AppPrefs._chosenSubjectIdKey
   nameWithType: AppPrefs._chosenSubjectIdKey
+- uid: EduCATS.Helpers.Settings.AppPrefs._fontDefault
+  name: _fontDefault
+  href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs__fontDefault
+  commentId: F:EduCATS.Helpers.Settings.AppPrefs._fontDefault
+  fullName: EduCATS.Helpers.Settings.AppPrefs._fontDefault
+  nameWithType: AppPrefs._fontDefault
+- uid: EduCATS.Helpers.Settings.AppPrefs._fontKey
+  name: _fontKey
+  href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs__fontKey
+  commentId: F:EduCATS.Helpers.Settings.AppPrefs._fontKey
+  fullName: EduCATS.Helpers.Settings.AppPrefs._fontKey
+  nameWithType: AppPrefs._fontKey
 - uid: EduCATS.Helpers.Settings.AppPrefs._groupIdDefault
   name: _groupIdDefault
   href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs__groupIdDefault
@@ -22203,6 +22499,18 @@ references:
   commentId: F:EduCATS.Helpers.Settings.AppPrefs._groupNameKey
   fullName: EduCATS.Helpers.Settings.AppPrefs._groupNameKey
   nameWithType: AppPrefs._groupNameKey
+- uid: EduCATS.Helpers.Settings.AppPrefs._isLargeFontDefault
+  name: _isLargeFontDefault
+  href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs__isLargeFontDefault
+  commentId: F:EduCATS.Helpers.Settings.AppPrefs._isLargeFontDefault
+  fullName: EduCATS.Helpers.Settings.AppPrefs._isLargeFontDefault
+  nameWithType: AppPrefs._isLargeFontDefault
+- uid: EduCATS.Helpers.Settings.AppPrefs._isLargeFontKey
+  name: _isLargeFontKey
+  href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs__isLargeFontKey
+  commentId: F:EduCATS.Helpers.Settings.AppPrefs._isLargeFontKey
+  fullName: EduCATS.Helpers.Settings.AppPrefs._isLargeFontKey
+  nameWithType: AppPrefs._isLargeFontKey
 - uid: EduCATS.Helpers.Settings.AppPrefs._isLoggedInDefault
   name: _isLoggedInDefault
   href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs__isLoggedInDefault
@@ -22314,6 +22622,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Settings.AppPrefs.ChosenSubjectId
   nameWithType: AppPrefs.ChosenSubjectId
+- uid: EduCATS.Helpers.Settings.AppPrefs.Font
+  name: Font
+  href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs_Font
+  commentId: P:EduCATS.Helpers.Settings.AppPrefs.Font
+  fullName: EduCATS.Helpers.Settings.AppPrefs.Font
+  nameWithType: AppPrefs.Font
+- uid: EduCATS.Helpers.Settings.AppPrefs.Font*
+  name: Font
+  href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs_Font_
+  commentId: Overload:EduCATS.Helpers.Settings.AppPrefs.Font
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Settings.AppPrefs.Font
+  nameWithType: AppPrefs.Font
 - uid: EduCATS.Helpers.Settings.AppPrefs.GroupId
   name: GroupId
   href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs_GroupId
@@ -22340,6 +22661,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Settings.AppPrefs.GroupName
   nameWithType: AppPrefs.GroupName
+- uid: EduCATS.Helpers.Settings.AppPrefs.IsLargeFont
+  name: IsLargeFont
+  href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs_IsLargeFont
+  commentId: P:EduCATS.Helpers.Settings.AppPrefs.IsLargeFont
+  fullName: EduCATS.Helpers.Settings.AppPrefs.IsLargeFont
+  nameWithType: AppPrefs.IsLargeFont
+- uid: EduCATS.Helpers.Settings.AppPrefs.IsLargeFont*
+  name: IsLargeFont
+  href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs_IsLargeFont_
+  commentId: Overload:EduCATS.Helpers.Settings.AppPrefs.IsLargeFont
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Settings.AppPrefs.IsLargeFont
+  nameWithType: AppPrefs.IsLargeFont
 - uid: EduCATS.Helpers.Settings.AppPrefs.IsLoggedIn
   name: IsLoggedIn
   href: api/EduCATS.Helpers.Settings.AppPrefs.html#EduCATS_Helpers_Settings_AppPrefs_IsLoggedIn
@@ -22431,6 +22765,57 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Settings.AppPrefs.UserLogin
   nameWithType: AppPrefs.UserLogin
+- uid: EduCATS.Helpers.Styles
+  name: EduCATS.Helpers.Styles
+  href: api/EduCATS.Helpers.Styles.html
+  commentId: N:EduCATS.Helpers.Styles
+  fullName: EduCATS.Helpers.Styles
+  nameWithType: EduCATS.Helpers.Styles
+- uid: EduCATS.Helpers.Styles.AppStyles
+  name: AppStyles
+  href: api/EduCATS.Helpers.Styles.AppStyles.html
+  commentId: T:EduCATS.Helpers.Styles.AppStyles
+  fullName: EduCATS.Helpers.Styles.AppStyles
+  nameWithType: AppStyles
+- uid: EduCATS.Helpers.Styles.AppStyles.GetButtonStyle(NamedSize)
+  name: GetButtonStyle(NamedSize)
+  href: api/EduCATS.Helpers.Styles.AppStyles.html#EduCATS_Helpers_Styles_AppStyles_GetButtonStyle_NamedSize_
+  commentId: M:EduCATS.Helpers.Styles.AppStyles.GetButtonStyle(NamedSize)
+  fullName: EduCATS.Helpers.Styles.AppStyles.GetButtonStyle(NamedSize)
+  nameWithType: AppStyles.GetButtonStyle(NamedSize)
+- uid: EduCATS.Helpers.Styles.AppStyles.GetButtonStyle*
+  name: GetButtonStyle
+  href: api/EduCATS.Helpers.Styles.AppStyles.html#EduCATS_Helpers_Styles_AppStyles_GetButtonStyle_
+  commentId: Overload:EduCATS.Helpers.Styles.AppStyles.GetButtonStyle
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Styles.AppStyles.GetButtonStyle
+  nameWithType: AppStyles.GetButtonStyle
+- uid: EduCATS.Helpers.Styles.AppStyles.GetEntryStyle(NamedSize)
+  name: GetEntryStyle(NamedSize)
+  href: api/EduCATS.Helpers.Styles.AppStyles.html#EduCATS_Helpers_Styles_AppStyles_GetEntryStyle_NamedSize_
+  commentId: M:EduCATS.Helpers.Styles.AppStyles.GetEntryStyle(NamedSize)
+  fullName: EduCATS.Helpers.Styles.AppStyles.GetEntryStyle(NamedSize)
+  nameWithType: AppStyles.GetEntryStyle(NamedSize)
+- uid: EduCATS.Helpers.Styles.AppStyles.GetEntryStyle*
+  name: GetEntryStyle
+  href: api/EduCATS.Helpers.Styles.AppStyles.html#EduCATS_Helpers_Styles_AppStyles_GetEntryStyle_
+  commentId: Overload:EduCATS.Helpers.Styles.AppStyles.GetEntryStyle
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Styles.AppStyles.GetEntryStyle
+  nameWithType: AppStyles.GetEntryStyle
+- uid: EduCATS.Helpers.Styles.AppStyles.GetLabelStyle(NamedSize)
+  name: GetLabelStyle(NamedSize)
+  href: api/EduCATS.Helpers.Styles.AppStyles.html#EduCATS_Helpers_Styles_AppStyles_GetLabelStyle_NamedSize_
+  commentId: M:EduCATS.Helpers.Styles.AppStyles.GetLabelStyle(NamedSize)
+  fullName: EduCATS.Helpers.Styles.AppStyles.GetLabelStyle(NamedSize)
+  nameWithType: AppStyles.GetLabelStyle(NamedSize)
+- uid: EduCATS.Helpers.Styles.AppStyles.GetLabelStyle*
+  name: GetLabelStyle
+  href: api/EduCATS.Helpers.Styles.AppStyles.html#EduCATS_Helpers_Styles_AppStyles_GetLabelStyle_
+  commentId: Overload:EduCATS.Helpers.Styles.AppStyles.GetLabelStyle
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Styles.AppStyles.GetLabelStyle
+  nameWithType: AppStyles.GetLabelStyle
 - uid: EduCATS.iOS
   name: EduCATS.iOS
   href: api/EduCATS.iOS.html
@@ -22443,11 +22828,11 @@ references:
   commentId: T:EduCATS.iOS.AppDelegate
   fullName: EduCATS.iOS.AppDelegate
   nameWithType: AppDelegate
-- uid: EduCATS.iOS.AppDelegate.FinishedLaunching(UIKit.UIApplication,Foundation.NSDictionary)
+- uid: EduCATS.iOS.AppDelegate.FinishedLaunching(UIApplication,NSDictionary)
   name: FinishedLaunching(UIApplication, NSDictionary)
-  href: api/EduCATS.iOS.AppDelegate.html#EduCATS_iOS_AppDelegate_FinishedLaunching_UIKit_UIApplication_Foundation_NSDictionary_
-  commentId: M:EduCATS.iOS.AppDelegate.FinishedLaunching(UIKit.UIApplication,Foundation.NSDictionary)
-  fullName: EduCATS.iOS.AppDelegate.FinishedLaunching(UIKit.UIApplication, Foundation.NSDictionary)
+  href: api/EduCATS.iOS.AppDelegate.html#EduCATS_iOS_AppDelegate_FinishedLaunching_UIApplication_NSDictionary_
+  commentId: M:EduCATS.iOS.AppDelegate.FinishedLaunching(UIApplication,NSDictionary)
+  fullName: EduCATS.iOS.AppDelegate.FinishedLaunching(UIApplication, NSDictionary)
   nameWithType: AppDelegate.FinishedLaunching(UIApplication, NSDictionary)
 - uid: EduCATS.iOS.AppDelegate.FinishedLaunching*
   name: FinishedLaunching
@@ -25313,12 +25698,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Login.Views.LoginPageView.createMascotImage
   nameWithType: LoginPageView.createMascotImage
-- uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry
-  name: createPasswordEntry()
-  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordEntry
-  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry
-  fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry()
-  nameWithType: LoginPageView.createPasswordEntry()
+- uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry(Style)
+  name: createPasswordEntry(Style)
+  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordEntry_Style_
+  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry(Style)
+  fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry(Style)
+  nameWithType: LoginPageView.createPasswordEntry(Style)
 - uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry*
   name: createPasswordEntry
   href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordEntry_
@@ -25326,12 +25711,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry
   nameWithType: LoginPageView.createPasswordEntry
-- uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid
-  name: createPasswordGrid()
-  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordGrid
-  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid
-  fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid()
-  nameWithType: LoginPageView.createPasswordGrid()
+- uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid(Style)
+  name: createPasswordGrid(Style)
+  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordGrid_Style_
+  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid(Style)
+  fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid(Style)
+  nameWithType: LoginPageView.createPasswordGrid(Style)
 - uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid*
   name: createPasswordGrid
   href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordGrid_
@@ -25365,12 +25750,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Login.Views.LoginPageView.createShowPasswordImage
   nameWithType: LoginPageView.createShowPasswordImage
-- uid: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry
-  name: createUsernameEntry()
-  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createUsernameEntry
-  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry
-  fullName: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry()
-  nameWithType: LoginPageView.createUsernameEntry()
+- uid: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry(Style)
+  name: createUsernameEntry(Style)
+  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createUsernameEntry_Style_
+  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry(Style)
+  fullName: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry(Style)
+  nameWithType: LoginPageView.createUsernameEntry(Style)
 - uid: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry*
   name: createUsernameEntry
   href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createUsernameEntry_
@@ -26790,6 +27175,362 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Base.Views.SettingsPageView.createViews
   nameWithType: SettingsPageView.createViews
+- uid: EduCATS.Pages.Settings.Fonts.Models
+  name: EduCATS.Pages.Settings.Fonts.Models
+  href: api/EduCATS.Pages.Settings.Fonts.Models.html
+  commentId: N:EduCATS.Pages.Settings.Fonts.Models
+  fullName: EduCATS.Pages.Settings.Fonts.Models
+  nameWithType: EduCATS.Pages.Settings.Fonts.Models
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel
+  name: FontsPageModel
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html
+  commentId: T:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel
+  nameWithType: FontsPageModel
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Font
+  name: Font
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_Font
+  commentId: P:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Font
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Font
+  nameWithType: FontsPageModel.Font
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Font*
+  name: Font
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_Font_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Font
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Font
+  nameWithType: FontsPageModel.Font
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.FontFamily
+  name: FontFamily
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_FontFamily
+  commentId: P:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.FontFamily
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.FontFamily
+  nameWithType: FontsPageModel.FontFamily
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.FontFamily*
+  name: FontFamily
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_FontFamily_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.FontFamily
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.FontFamily
+  nameWithType: FontsPageModel.FontFamily
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.GetListType
+  name: GetListType()
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_GetListType
+  commentId: M:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.GetListType
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.GetListType()
+  nameWithType: FontsPageModel.GetListType()
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.GetListType*
+  name: GetListType
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_GetListType_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.GetListType
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.GetListType
+  nameWithType: FontsPageModel.GetListType
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.IsChecked
+  name: IsChecked
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_IsChecked
+  commentId: P:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.IsChecked
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.IsChecked
+  nameWithType: FontsPageModel.IsChecked
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.IsChecked*
+  name: IsChecked
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_IsChecked_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.IsChecked
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.IsChecked
+  nameWithType: FontsPageModel.IsChecked
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Title
+  name: Title
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_Title
+  commentId: P:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Title
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Title
+  nameWithType: FontsPageModel.Title
+- uid: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Title*
+  name: Title
+  href: api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html#EduCATS_Pages_Settings_Fonts_Models_FontsPageModel_Title_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Title
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.Title
+  nameWithType: FontsPageModel.Title
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels
+  name: EduCATS.Pages.Settings.Fonts.ViewModels
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.html
+  commentId: N:EduCATS.Pages.Settings.Fonts.ViewModels
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels
+  nameWithType: EduCATS.Pages.Settings.Fonts.ViewModels
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel
+  name: FontsPageViewModel
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html
+  commentId: T:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel
+  nameWithType: FontsPageViewModel
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.#ctor(EduCATS.Helpers.Dialogs.Interfaces.IDialogs,EduCATS.Helpers.Devices.Interfaces.IDevice,EduCATS.Helpers.Pages.Interfaces.IPages)
+  name: FontsPageViewModel(IDialogs, IDevice, IPages)
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__ctor_EduCATS_Helpers_Dialogs_Interfaces_IDialogs_EduCATS_Helpers_Devices_Interfaces_IDevice_EduCATS_Helpers_Pages_Interfaces_IPages_
+  commentId: M:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.#ctor(EduCATS.Helpers.Dialogs.Interfaces.IDialogs,EduCATS.Helpers.Devices.Interfaces.IDevice,EduCATS.Helpers.Pages.Interfaces.IPages)
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.FontsPageViewModel(EduCATS.Helpers.Dialogs.Interfaces.IDialogs, EduCATS.Helpers.Devices.Interfaces.IDevice, EduCATS.Helpers.Pages.Interfaces.IPages)
+  nameWithType: FontsPageViewModel.FontsPageViewModel(IDialogs, IDevice, IPages)
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.#ctor*
+  name: FontsPageViewModel
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__ctor_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.#ctor
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.FontsPageViewModel
+  nameWithType: FontsPageViewModel.FontsPageViewModel
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._device
+  name: _device
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__device
+  commentId: F:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._device
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._device
+  nameWithType: FontsPageViewModel._device
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._dialogs
+  name: _dialogs
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__dialogs
+  commentId: F:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._dialogs
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._dialogs
+  nameWithType: FontsPageViewModel._dialogs
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._fontList
+  name: _fontList
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__fontList
+  commentId: F:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._fontList
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._fontList
+  nameWithType: FontsPageViewModel._fontList
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._isInit
+  name: _isInit
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__isInit
+  commentId: F:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._isInit
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._isInit
+  nameWithType: FontsPageViewModel._isInit
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._isLargeFont
+  name: _isLargeFont
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__isLargeFont
+  commentId: F:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._isLargeFont
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._isLargeFont
+  nameWithType: FontsPageViewModel._isLargeFont
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._isLargeFontToggleActive
+  name: _isLargeFontToggleActive
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__isLargeFontToggleActive
+  commentId: F:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._isLargeFontToggleActive
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._isLargeFontToggleActive
+  nameWithType: FontsPageViewModel._isLargeFontToggleActive
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._pages
+  name: _pages
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__pages
+  commentId: F:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._pages
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._pages
+  nameWithType: FontsPageViewModel._pages
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._selectedItem
+  name: _selectedItem
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel__selectedItem
+  commentId: F:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._selectedItem
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel._selectedItem
+  nameWithType: FontsPageViewModel._selectedItem
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.changeFontConfirmation
+  name: changeFontConfirmation()
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_changeFontConfirmation
+  commentId: M:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.changeFontConfirmation
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.changeFontConfirmation()
+  nameWithType: FontsPageViewModel.changeFontConfirmation()
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.changeFontConfirmation*
+  name: changeFontConfirmation
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_changeFontConfirmation_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.changeFontConfirmation
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.changeFontConfirmation
+  nameWithType: FontsPageViewModel.changeFontConfirmation
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.FontList
+  name: FontList
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_FontList
+  commentId: P:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.FontList
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.FontList
+  nameWithType: FontsPageViewModel.FontList
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.FontList*
+  name: FontList
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_FontList_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.FontList
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.FontList
+  nameWithType: FontsPageViewModel.FontList
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.IsLargeFont
+  name: IsLargeFont
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_IsLargeFont
+  commentId: P:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.IsLargeFont
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.IsLargeFont
+  nameWithType: FontsPageViewModel.IsLargeFont
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.IsLargeFont*
+  name: IsLargeFont
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_IsLargeFont_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.IsLargeFont
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.IsLargeFont
+  nameWithType: FontsPageViewModel.IsLargeFont
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.SelectedItem
+  name: SelectedItem
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_SelectedItem
+  commentId: P:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.SelectedItem
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.SelectedItem
+  nameWithType: FontsPageViewModel.SelectedItem
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.SelectedItem*
+  name: SelectedItem
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_SelectedItem_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.SelectedItem
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.SelectedItem
+  nameWithType: FontsPageViewModel.SelectedItem
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.selectFont(System.Object)
+  name: selectFont(Object)
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_selectFont_System_Object_
+  commentId: M:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.selectFont(System.Object)
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.selectFont(System.Object)
+  nameWithType: FontsPageViewModel.selectFont(Object)
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.selectFont*
+  name: selectFont
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_selectFont_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.selectFont
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.selectFont
+  nameWithType: FontsPageViewModel.selectFont
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setFonts
+  name: setFonts()
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_setFonts
+  commentId: M:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setFonts
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setFonts()
+  nameWithType: FontsPageViewModel.setFonts()
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setFonts*
+  name: setFonts
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_setFonts_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setFonts
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setFonts
+  nameWithType: FontsPageViewModel.setFonts
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setLargeFont(System.Boolean)
+  name: setLargeFont(Boolean)
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_setLargeFont_System_Boolean_
+  commentId: M:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setLargeFont(System.Boolean)
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setLargeFont(System.Boolean)
+  nameWithType: FontsPageViewModel.setLargeFont(Boolean)
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setLargeFont*
+  name: setLargeFont
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_setLargeFont_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setLargeFont
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.setLargeFont
+  nameWithType: FontsPageViewModel.setLargeFont
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.switchPage
+  name: switchPage()
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_switchPage
+  commentId: M:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.switchPage
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.switchPage()
+  nameWithType: FontsPageViewModel.switchPage()
+- uid: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.switchPage*
+  name: switchPage
+  href: api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html#EduCATS_Pages_Settings_Fonts_ViewModels_FontsPageViewModel_switchPage_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.switchPage
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.switchPage
+  nameWithType: FontsPageViewModel.switchPage
+- uid: EduCATS.Pages.Settings.Fonts.Views
+  name: EduCATS.Pages.Settings.Fonts.Views
+  href: api/EduCATS.Pages.Settings.Fonts.Views.html
+  commentId: N:EduCATS.Pages.Settings.Fonts.Views
+  fullName: EduCATS.Pages.Settings.Fonts.Views
+  nameWithType: EduCATS.Pages.Settings.Fonts.Views
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView
+  name: FontsPageView
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html
+  commentId: T:EduCATS.Pages.Settings.Fonts.Views.FontsPageView
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView
+  nameWithType: FontsPageView
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.#ctor
+  name: FontsPageView()
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView__ctor
+  commentId: M:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.#ctor
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.FontsPageView()
+  nameWithType: FontsPageView.FontsPageView()
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.#ctor*
+  name: FontsPageView
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView__ctor_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.#ctor
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.FontsPageView
+  nameWithType: FontsPageView.FontsPageView
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView._chooseLabelMargin
+  name: _chooseLabelMargin
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView__chooseLabelMargin
+  commentId: F:EduCATS.Pages.Settings.Fonts.Views.FontsPageView._chooseLabelMargin
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView._chooseLabelMargin
+  nameWithType: FontsPageView._chooseLabelMargin
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView._listMargin
+  name: _listMargin
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView__listMargin
+  commentId: F:EduCATS.Pages.Settings.Fonts.Views.FontsPageView._listMargin
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView._listMargin
+  nameWithType: FontsPageView._listMargin
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createChooseLabel
+  name: createChooseLabel()
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createChooseLabel
+  commentId: M:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createChooseLabel
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createChooseLabel()
+  nameWithType: FontsPageView.createChooseLabel()
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createChooseLabel*
+  name: createChooseLabel
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createChooseLabel_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createChooseLabel
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createChooseLabel
+  nameWithType: FontsPageView.createChooseLabel
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createHeader
+  name: createHeader()
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createHeader
+  commentId: M:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createHeader
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createHeader()
+  nameWithType: FontsPageView.createHeader()
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createHeader*
+  name: createHeader
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createHeader_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createHeader
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createHeader
+  nameWithType: FontsPageView.createHeader
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList(View)
+  name: createList(View)
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createList_View_
+  commentId: M:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList(View)
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList(View)
+  nameWithType: FontsPageView.createList(View)
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList*
+  name: createList
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createList_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList
+  nameWithType: FontsPageView.createList
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createSwitchFrame
+  name: createSwitchFrame()
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createSwitchFrame
+  commentId: M:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createSwitchFrame
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createSwitchFrame()
+  nameWithType: FontsPageView.createSwitchFrame()
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createSwitchFrame*
+  name: createSwitchFrame
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createSwitchFrame_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createSwitchFrame
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createSwitchFrame
+  nameWithType: FontsPageView.createSwitchFrame
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createViews
+  name: createViews()
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createViews
+  commentId: M:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createViews
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createViews()
+  nameWithType: FontsPageView.createViews()
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createViews*
+  name: createViews
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createViews_
+  commentId: Overload:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createViews
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createViews
+  nameWithType: FontsPageView.createViews
 - uid: EduCATS.Pages.Settings.Language.Models
   name: EduCATS.Pages.Settings.Language.Models
   href: api/EduCATS.Pages.Settings.Language.Models.html
@@ -27851,6 +28592,12 @@ references:
   commentId: M:EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.#ctor
   fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.CheckboxViewCell()
   nameWithType: CheckboxViewCell.CheckboxViewCell()
+- uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.#ctor(System.Boolean)
+  name: CheckboxViewCell(Boolean)
+  href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell__ctor_System_Boolean_
+  commentId: M:EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.#ctor(System.Boolean)
+  fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.CheckboxViewCell(System.Boolean)
+  nameWithType: CheckboxViewCell.CheckboxViewCell(Boolean)
 - uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.#ctor*
   name: CheckboxViewCell
   href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell__ctor_
@@ -27896,12 +28643,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createDescription
   nameWithType: CheckboxViewCell.createDescription
-- uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitle
-  name: createTitle()
-  href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell_createTitle
-  commentId: M:EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitle
-  fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitle()
-  nameWithType: CheckboxViewCell.createTitle()
+- uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitle(System.Boolean)
+  name: createTitle(Boolean)
+  href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell_createTitle_System_Boolean_
+  commentId: M:EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitle(System.Boolean)
+  fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitle(System.Boolean)
+  nameWithType: CheckboxViewCell.createTitle(Boolean)
 - uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitle*
   name: createTitle
   href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell_createTitle_
@@ -27909,12 +28656,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitle
   nameWithType: CheckboxViewCell.createTitle
-- uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitleLayout
-  name: createTitleLayout()
-  href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell_createTitleLayout
-  commentId: M:EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitleLayout
-  fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitleLayout()
-  nameWithType: CheckboxViewCell.createTitleLayout()
+- uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitleLayout(System.Boolean)
+  name: createTitleLayout(Boolean)
+  href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell_createTitleLayout_System_Boolean_
+  commentId: M:EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitleLayout(System.Boolean)
+  fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitleLayout(System.Boolean)
+  nameWithType: CheckboxViewCell.createTitleLayout(Boolean)
 - uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitleLayout*
   name: createTitleLayout
   href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell_createTitleLayout_
@@ -27922,12 +28669,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createTitleLayout
   nameWithType: CheckboxViewCell.createTitleLayout
-- uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createViews
-  name: createViews()
-  href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell_createViews
-  commentId: M:EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createViews
-  fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createViews()
-  nameWithType: CheckboxViewCell.createViews()
+- uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createViews(System.Boolean)
+  name: createViews(Boolean)
+  href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell_createViews_System_Boolean_
+  commentId: M:EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createViews(System.Boolean)
+  fullName: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createViews(System.Boolean)
+  nameWithType: CheckboxViewCell.createViews(Boolean)
 - uid: EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.createViews*
   name: createViews
   href: api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html#EduCATS_Pages_Settings_Views_Base_ViewCells_CheckboxViewCell_createViews_
@@ -29375,12 +30122,6 @@ references:
   commentId: F:EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell._infoSpacing
   fullName: EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell._infoSpacing
   nameWithType: StatsResultsPageViewCell._infoSpacing
-- uid: EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell._separatorHeight
-  name: _separatorHeight
-  href: api/EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell.html#EduCATS_Pages_Statistics_Results_Views_ViewCells_StatsResultsPageViewCell__separatorHeight
-  commentId: F:EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell._separatorHeight
-  fullName: EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell._separatorHeight
-  nameWithType: StatsResultsPageViewCell._separatorHeight
 - uid: EduCATS.Pages.Statistics.Students.Models
   name: EduCATS.Pages.Statistics.Students.Models
   href: api/EduCATS.Pages.Statistics.Students.Models.html
@@ -30203,12 +30944,6 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell.TestingHeaderViewCell
   nameWithType: TestingHeaderViewCell.TestingHeaderViewCell
-- uid: EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell._height
-  name: _height
-  href: api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell.html#EduCATS_Pages_Testing_Base_Views_ViewCells_TestingHeaderViewCell__height
-  commentId: F:EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell._height
-  fullName: EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell._height
-  nameWithType: TestingHeaderViewCell._height
 - uid: EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell._padding
   name: _padding
   href: api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell.html#EduCATS_Pages_Testing_Base_Views_ViewCells_TestingHeaderViewCell__padding
@@ -32385,12 +33120,12 @@ references:
   commentId: T:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel
   fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel
   nameWithType: TodayPageViewModel
-- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.#ctor(EduCATS.Helpers.Dialogs.Interfaces.IDialogs,EduCATS.Helpers.Pages.Interfaces.IPages,EduCATS.Helpers.Devices.Interfaces.IDevice)
-  name: TodayPageViewModel(IDialogs, IPages, IDevice)
-  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__ctor_EduCATS_Helpers_Dialogs_Interfaces_IDialogs_EduCATS_Helpers_Pages_Interfaces_IPages_EduCATS_Helpers_Devices_Interfaces_IDevice_
-  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.#ctor(EduCATS.Helpers.Dialogs.Interfaces.IDialogs,EduCATS.Helpers.Pages.Interfaces.IPages,EduCATS.Helpers.Devices.Interfaces.IDevice)
-  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.TodayPageViewModel(EduCATS.Helpers.Dialogs.Interfaces.IDialogs, EduCATS.Helpers.Pages.Interfaces.IPages, EduCATS.Helpers.Devices.Interfaces.IDevice)
-  nameWithType: TodayPageViewModel.TodayPageViewModel(IDialogs, IPages, IDevice)
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.#ctor(System.Double,System.Double,EduCATS.Helpers.Dialogs.Interfaces.IDialogs,EduCATS.Helpers.Pages.Interfaces.IPages,EduCATS.Helpers.Devices.Interfaces.IDevice)
+  name: TodayPageViewModel(Double, Double, IDialogs, IPages, IDevice)
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__ctor_System_Double_System_Double_EduCATS_Helpers_Dialogs_Interfaces_IDialogs_EduCATS_Helpers_Pages_Interfaces_IPages_EduCATS_Helpers_Devices_Interfaces_IDevice_
+  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.#ctor(System.Double,System.Double,EduCATS.Helpers.Dialogs.Interfaces.IDialogs,EduCATS.Helpers.Pages.Interfaces.IPages,EduCATS.Helpers.Devices.Interfaces.IDevice)
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.TodayPageViewModel(System.Double, System.Double, EduCATS.Helpers.Dialogs.Interfaces.IDialogs, EduCATS.Helpers.Pages.Interfaces.IPages, EduCATS.Helpers.Devices.Interfaces.IDevice)
+  nameWithType: TodayPageViewModel.TodayPageViewModel(Double, Double, IDialogs, IPages, IDevice)
 - uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.#ctor*
   name: TodayPageViewModel
   href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__ctor_
@@ -32518,18 +33253,24 @@ references:
   commentId: F:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._selectedNewsItem
   fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._selectedNewsItem
   nameWithType: TodayPageViewModel._selectedNewsItem
-- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsAdditionalHeight
-  name: _subjectsAdditionalHeight
-  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__subjectsAdditionalHeight
-  commentId: F:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsAdditionalHeight
-  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsAdditionalHeight
-  nameWithType: TodayPageViewModel._subjectsAdditionalHeight
-- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsHeightByCount
-  name: _subjectsHeightByCount
-  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__subjectsHeightByCount
-  commentId: F:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsHeightByCount
-  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsHeightByCount
-  nameWithType: TodayPageViewModel._subjectsHeightByCount
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectHeight
+  name: _subjectHeight
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__subjectHeight
+  commentId: F:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectHeight
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectHeight
+  nameWithType: TodayPageViewModel._subjectHeight
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsHeaderHeight
+  name: _subjectsHeaderHeight
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__subjectsHeaderHeight
+  commentId: F:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsHeaderHeight
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsHeaderHeight
+  nameWithType: TodayPageViewModel._subjectsHeaderHeight
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsHeightToAdd
+  name: _subjectsHeightToAdd
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__subjectsHeightToAdd
+  commentId: F:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsHeightToAdd
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._subjectsHeightToAdd
+  nameWithType: TodayPageViewModel._subjectsHeightToAdd
 - uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.CalendarDaysOfWeekList
   name: CalendarDaysOfWeekList
   href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_CalendarDaysOfWeekList
@@ -32967,6 +33708,12 @@ references:
   commentId: F:EduCATS.Pages.Today.Base.Views.TodayPageView._calendarCarouselHeight
   fullName: EduCATS.Pages.Today.Base.Views.TodayPageView._calendarCarouselHeight
   nameWithType: TodayPageView._calendarCarouselHeight
+- uid: EduCATS.Pages.Today.Base.Views.TodayPageView._calendarCarouselHeightLarge
+  name: _calendarCarouselHeightLarge
+  href: api/EduCATS.Pages.Today.Base.Views.TodayPageView.html#EduCATS_Pages_Today_Base_Views_TodayPageView__calendarCarouselHeightLarge
+  commentId: F:EduCATS.Pages.Today.Base.Views.TodayPageView._calendarCarouselHeightLarge
+  fullName: EduCATS.Pages.Today.Base.Views.TodayPageView._calendarCarouselHeightLarge
+  nameWithType: TodayPageView._calendarCarouselHeightLarge
 - uid: EduCATS.Pages.Today.Base.Views.TodayPageView._calendarCollectionDataBinding
   name: _calendarCollectionDataBinding
   href: api/EduCATS.Pages.Today.Base.Views.TodayPageView.html#EduCATS_Pages_Today_Base_Views_TodayPageView__calendarCollectionDataBinding
@@ -33009,6 +33756,12 @@ references:
   commentId: F:EduCATS.Pages.Today.Base.Views.TodayPageView._spacing
   fullName: EduCATS.Pages.Today.Base.Views.TodayPageView._spacing
   nameWithType: TodayPageView._spacing
+- uid: EduCATS.Pages.Today.Base.Views.TodayPageView._subjectRowHeight
+  name: _subjectRowHeight
+  href: api/EduCATS.Pages.Today.Base.Views.TodayPageView.html#EduCATS_Pages_Today_Base_Views_TodayPageView__subjectRowHeight
+  commentId: F:EduCATS.Pages.Today.Base.Views.TodayPageView._subjectRowHeight
+  fullName: EduCATS.Pages.Today.Base.Views.TodayPageView._subjectRowHeight
+  nameWithType: TodayPageView._subjectRowHeight
 - uid: EduCATS.Pages.Today.Base.Views.TodayPageView._subjectsLabelMargin
   name: _subjectsLabelMargin
   href: api/EduCATS.Pages.Today.Base.Views.TodayPageView.html#EduCATS_Pages_Today_Base_Views_TodayPageView__subjectsLabelMargin
@@ -33310,12 +34063,12 @@ references:
   commentId: T:EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel
   fullName: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel
   nameWithType: NewsDetailsPageViewModel
-- uid: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.#ctor(System.String,System.String,EduCATS.Helpers.Pages.Interfaces.IPages)
-  name: NewsDetailsPageViewModel(String, String, IPages)
-  href: api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.html#EduCATS_Pages_Today_NewsDetails_ViewModels_NewsDetailsPageViewModel__ctor_System_String_System_String_EduCATS_Helpers_Pages_Interfaces_IPages_
-  commentId: M:EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.#ctor(System.String,System.String,EduCATS.Helpers.Pages.Interfaces.IPages)
-  fullName: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.NewsDetailsPageViewModel(System.String, System.String, EduCATS.Helpers.Pages.Interfaces.IPages)
-  nameWithType: NewsDetailsPageViewModel.NewsDetailsPageViewModel(String, String, IPages)
+- uid: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.#ctor(System.Double,System.String,System.String,EduCATS.Helpers.Pages.Interfaces.IPages)
+  name: NewsDetailsPageViewModel(Double, String, String, IPages)
+  href: api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.html#EduCATS_Pages_Today_NewsDetails_ViewModels_NewsDetailsPageViewModel__ctor_System_Double_System_String_System_String_EduCATS_Helpers_Pages_Interfaces_IPages_
+  commentId: M:EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.#ctor(System.Double,System.String,System.String,EduCATS.Helpers.Pages.Interfaces.IPages)
+  fullName: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.NewsDetailsPageViewModel(System.Double, System.String, System.String, EduCATS.Helpers.Pages.Interfaces.IPages)
+  nameWithType: NewsDetailsPageViewModel.NewsDetailsPageViewModel(Double, String, String, IPages)
 - uid: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.#ctor*
   name: NewsDetailsPageViewModel
   href: api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.html#EduCATS_Pages_Today_NewsDetails_ViewModels_NewsDetailsPageViewModel__ctor_
@@ -33341,12 +34094,6 @@ references:
   commentId: F:EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel._fontPadding
   fullName: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel._fontPadding
   nameWithType: NewsDetailsPageViewModel._fontPadding
-- uid: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel._fontSize
-  name: _fontSize
-  href: api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.html#EduCATS_Pages_Today_NewsDetails_ViewModels_NewsDetailsPageViewModel__fontSize
-  commentId: F:EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel._fontSize
-  fullName: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel._fontSize
-  nameWithType: NewsDetailsPageViewModel._fontSize
 - uid: EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel._newsBody
   name: _newsBody
   href: api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.html#EduCATS_Pages_Today_NewsDetails_ViewModels_NewsDetailsPageViewModel__newsBody
@@ -33429,6 +34176,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView.NewsDetailsPageView
   nameWithType: NewsDetailsPageView.NewsDetailsPageView
+- uid: EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView._bodyFontSize
+  name: _bodyFontSize
+  href: api/EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView.html#EduCATS_Pages_Today_NewsDetails_Views_NewsDetailsPageView__bodyFontSize
+  commentId: F:EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView._bodyFontSize
+  fullName: EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView._bodyFontSize
+  nameWithType: NewsDetailsPageView._bodyFontSize
 - uid: EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView._newsTitlePadding
   name: _newsTitlePadding
   href: api/EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView.html#EduCATS_Pages_Today_NewsDetails_Views_NewsDetailsPageView__newsTitlePadding
