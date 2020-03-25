@@ -185,3 +185,5 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 .vscode/settings.json
+
+mono_crash*
