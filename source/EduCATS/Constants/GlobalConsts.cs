@@ -10,14 +10,24 @@
 		 */
 
 		/// <summary>
-		/// App namespace (current project's name).
+		/// Application name.
 		/// </summary>
-		public const string RunNamespace = "EduCATS";
+		public const string AppName = "EduCATS";
 
 		/// <summary>
-		/// App bundle id.
+		/// Application namespace (current project's name).
+		/// </summary>
+		public const string RunNamespace = AppName;
+
+		/// <summary>
+		/// Application bundle id.
 		/// </summary>
 		public const string AppId = "by.bntu.educats";
+
+		/// <summary>
+		/// GitHub repository.
+		/// </summary>
+		public const string GitHubLink = "https://github.com/IlyaLehchylin/educats-xamarin";
 
 		/// <summary>
 		/// Localization path (directory inside the project

@@ -74,5 +74,10 @@
 		override public string EemcItemTitleColor => _whiteColor;
 
 		override public string SwitchFrameTextColor => _whiteColor;
+
+		override public string AboutTextColor => _whiteColor;
+		override public string AboutGithubLogoImage => "image_github_logo_light";
+		override public string AboutButtonTextColor => _whiteColor;
+		override public string AboutButtonBackgroundColor => _baseDarkColor;
 	}
 }

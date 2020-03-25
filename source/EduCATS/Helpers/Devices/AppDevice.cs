@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using EduCATS.Helpers.Devices.Interfaces;
+using EduCATS.Themes;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -15,8 +16,16 @@ namespace EduCATS.Helpers.Devices
 		/// Open url.
 		/// </summary>
 		/// <param name="url">Url to open.</param>
-		public void OpenUri(string url) =>
-			Launcher.OpenAsync(url);
+		/// <returns>Task.</returns>
+		public async Task OpenUri(string url)
+		{
+			await Browser.OpenAsync(url, new BrowserLaunchOptions {
+				LaunchMode = BrowserLaunchMode.SystemPreferred,
+				TitleMode = BrowserTitleMode.Show,
+				PreferredToolbarColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
+				PreferredControlColor = Color.FromHex(Theme.Current.BaseAppColor)
+			});
+		}
 
 		/// <summary>
 		/// Get app data directory path.
@@ -52,5 +61,17 @@ namespace EduCATS.Helpers.Devices
 				Title = title,
 				File = new ShareFile(filePath)
 			});
+
+		/// <summary>
+		/// Get application version.
+		/// </summary>
+		/// <returns>Application version.</returns>
+		public string GetVersion() => AppInfo.VersionString;
+
+		/// <summary>
+		/// Get application build.
+		/// </summary>
+		/// <returns>Application build.</returns>
+		public string GetBuild() => AppInfo.BuildString;
 	}
 }

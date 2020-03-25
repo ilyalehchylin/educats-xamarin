@@ -285,7 +285,8 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <param name="filePath">File path.</param>
 		void openFile(string filePath)
 		{
-			DeviceService.MainThread(() => DeviceService.OpenUri($"{Servers.Current}/{filePath}"));
+			DeviceService.MainThread(
+				async () => await DeviceService.OpenUri($"{Servers.Current}/{filePath}"));
 		}
 
 		/// <summary>

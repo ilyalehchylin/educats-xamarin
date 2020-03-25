@@ -134,5 +134,12 @@ namespace EduCATS.Helpers.Pages.Interfaces
 		/// <param name="title">Title.</param>
 		/// <returns>Task.</returns>
 		Task OpenSettingsFont(string title);
+
+		/// <summary>
+		/// Open Settings About application page.
+		/// </summary>
+		/// <param name="title">Title.</param>
+		/// <returns>Task.</returns>
+		Task OpenSettingsAbout(string title);
 	}
 }

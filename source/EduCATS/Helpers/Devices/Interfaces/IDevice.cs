@@ -12,7 +12,8 @@ namespace EduCATS.Helpers.Devices.Interfaces
 		/// Open url.
 		/// </summary>
 		/// <param name="url">Url to open.</param>
-		void OpenUri(string url);
+		/// <returns>Task.</returns>
+		Task OpenUri(string url);
 
 		/// <summary>
 		/// Get app data directory path.
@@ -41,5 +42,17 @@ namespace EduCATS.Helpers.Devices.Interfaces
 		/// <param name="interval">Interval.</param>
 		/// <param name="callback">Callback.</param>
 		void SetTimer(TimeSpan interval, Func<bool> callback);
+
+		/// <summary>
+		/// Get application version.
+		/// </summary>
+		/// <returns>Application version.</returns>
+		string GetVersion();
+
+		/// <summary>
+		/// Get application build.
+		/// </summary>
+		/// <returns>Application build.</returns>
+		string GetBuild();
 	}
 }

@@ -234,5 +234,11 @@
         <BundleResource Include="Resources\icon_show_password%401x.png" />
         <BundleResource Include="Resources\icon_show_password%402x.png" />
         <BundleResource Include="Resources\icon_show_password%403x.png" />
+        <BundleResource Include="Resources\image_logo_rounded.png" />
+        <BundleResource Include="Resources\icon_settings_about%401x.png" />
+        <BundleResource Include="Resources\icon_settings_about%402x.png" />
+        <BundleResource Include="Resources\icon_settings_about%403x.png" />
+        <BundleResource Include="Resources\image_github_logo_dark.png" />
+        <BundleResource Include="Resources\image_github_logo_light.png" />
     </ItemGroup>
 </Project>

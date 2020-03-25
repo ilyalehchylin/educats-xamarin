@@ -101,6 +101,7 @@
     "settings_language": "Язык",
     "settings_theme": "Тема",
     "settings_font": "Текст & Шрифт",
+    "settings_about": "О приложении",
     "settings_logout": "Выйти",
     "settings_logout_message": "Вы действительно хотите выйти?",
     "settings_user_without_group": "Нет группы",
@@ -119,5 +120,10 @@
     "settings_font_choose": "Выбор шрифта",
     "settings_font_change_message": "Вы действительно хотите изменить шрифт? Это действие перезагрузит приложение.",
     "settings_font_large": "Большой шрифт",
-    "settings_font_large_description": "Сделать шрифт в приложении больше."
+    "settings_font_large_description": "Сделать шрифт в приложении больше.",
+
+    "settings_about_app_version": "Версия",
+    "settings_about_app_build": "Сборка",
+    "settings_about_open_source": "Open-Source",
+    "settings_about_open_web_version": "Открыть веб-версию"
 }

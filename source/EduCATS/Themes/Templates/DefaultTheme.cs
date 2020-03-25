@@ -18,11 +18,12 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string BaseAppColor => _baseBlueColor;
 		virtual public string BaseBlockColor => _whiteColor;
-		virtual public string BaseArrowForwardIcon => "icon_forward";
-		virtual public string BaseCloseIcon => "icon_close";
 		virtual public string BaseSectionTextColor => _blackColor;
 		virtual public string BaseActivityIndicatorColor => _blackColor;
 		virtual public string BasePickerTextColor => _blackColor;
+		virtual public string BaseArrowForwardIcon => "icon_forward";
+		virtual public string BaseCloseIcon => "icon_close";
+		virtual public string BaseLogoImage => "image_logo_rounded";
 
 		virtual public string AppBackgroundColor => _lightGreyColor;
 		virtual public string AppStatusBarBackgroundColor => _baseBlueColor;
@@ -128,6 +129,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string SettingsServerIcon => "icon_settings_server";
 		virtual public string SettingsLanguageIcon => "icon_settings_language";
 		virtual public string SettingsThemeIcon => "icon_settings_themes";
+		virtual public string SettingsAboutIcon => "icon_settings_about";
 		virtual public string SettingsFontIcon => "icon_settings_font";
 		virtual public string SettingsLogoutIcon => "icon_settings_logout";
 		virtual public string SettingsGroupUserColor => _greyColor;
@@ -138,5 +140,10 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string SwitchFrameTextColor => _blackColor;
 		virtual public string SwitchFrameDescriptionColor => _greyColor;
+
+		virtual public string AboutTextColor => _blackColor;
+		virtual public string AboutGithubLogoImage => "image_github_logo_dark";
+		virtual public string AboutButtonTextColor => _whiteColor;
+		virtual public string AboutButtonBackgroundColor => _baseBlueColor;
 	}
 }

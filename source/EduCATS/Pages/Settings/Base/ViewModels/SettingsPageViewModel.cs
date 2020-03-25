@@ -91,7 +91,8 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				createItem(Theme.Current.SettingsServerIcon, "settings_server"),
 				createItem(Theme.Current.SettingsLanguageIcon, "settings_language"),
 				createItem(Theme.Current.SettingsThemeIcon, "settings_theme"),
-				createItem(Theme.Current.SettingsFontIcon, "settings_font")
+				createItem(Theme.Current.SettingsFontIcon, "settings_font"),
+				createItem(Theme.Current.SettingsAboutIcon, "settings_about")
 			};
 
 			if (IsLoggedIn) {
@@ -124,6 +125,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			var languageTitle = CrossLocalization.Translate("settings_language");
 			var themeTitle = CrossLocalization.Translate("settings_theme");
 			var fontTitle = CrossLocalization.Translate("settings_font");
+			var aboutTitle = CrossLocalization.Translate("settings_about");
 			var logoutTitle = CrossLocalization.Translate("settings_logout");
 
 			if (title.Equals(serverTitle)) {
@@ -134,6 +136,8 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				await _navigation.OpenSettingsTheme(themeTitle);
 			} else if (title.Equals(fontTitle)) {
 				await _navigation.OpenSettingsFont(fontTitle);
+			} else if (title.Equals(aboutTitle)) {
+				await _navigation.OpenSettingsAbout(aboutTitle);
 			} else if (title.Equals(logoutTitle)) {
 				await logout();
 			}

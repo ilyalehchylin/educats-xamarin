@@ -16,6 +16,7 @@
 		string BaseSectionTextColor { get; }
 		string BaseActivityIndicatorColor { get; }
 		string BasePickerTextColor { get; }
+		string BaseLogoImage { get; }
 
 		string AppStatusBarBackgroundColor { get; }
 		string AppBackgroundColor { get; }
@@ -120,6 +121,7 @@
 		string SettingsServerIcon { get; }
 		string SettingsLanguageIcon { get; }
 		string SettingsThemeIcon { get; }
+		string SettingsAboutIcon { get; }
 		string SettingsFontIcon { get; }
 		string SettingsLogoutIcon { get; }
 		string SettingsGroupUserColor { get; }
@@ -130,5 +132,10 @@
 
 		string SwitchFrameTextColor { get; }
 		string SwitchFrameDescriptionColor { get; }
+
+		string AboutTextColor { get; }
+		string AboutGithubLogoImage { get; }
+		string AboutButtonTextColor { get; }
+		string AboutButtonBackgroundColor { get; }
 	}
 }
