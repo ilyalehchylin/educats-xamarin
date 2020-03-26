@@ -246,5 +246,6 @@
         <BundleResource Include="Resources\icon_headphones_light%401x.png" />
         <BundleResource Include="Resources\icon_headphones_light%402x.png" />
         <BundleResource Include="Resources\icon_headphones_light%403x.png" />
+        <BundleResource Include="Resources\image_splash_logo.png" />
     </ItemGroup>
 </Project>

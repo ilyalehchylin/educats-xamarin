@@ -47,12 +47,21 @@ namespace EduCATS.Pages.Login.Views
 			var settingsIcon = createSettingsIcon();
 			var mainLayout = createLoginForm();
 
+			var scrollView = new ScrollView {
+				VerticalOptions = LayoutOptions.FillAndExpand,
+				Content = new StackLayout {
+					Children = {
+						mainLayout
+					}
+				}
+			};
+
 			Content = new Grid {
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				Children = {
 					backgroundImage,
 					settingsIcon,
-					mainLayout
+					scrollView
 				}
 			};
 		}

@@ -11,7 +11,7 @@ namespace EduCATS.Droid
 	/// <summary>
 	/// Main activity.
 	/// </summary>
-	[Activity(Label = "EduCATS", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity(Label = "EduCATS", Icon = "@mipmap/icon", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
 	public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		/// <summary>

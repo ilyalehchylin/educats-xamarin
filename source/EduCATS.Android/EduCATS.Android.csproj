@@ -86,6 +86,7 @@
         <Compile Include="Properties\AssemblyInfo.cs" />
         <Compile Include="DependencyServices\ThemeNative.cs" />
         <Compile Include="Effects\DisabledShiftEffect.cs" />
+        <Compile Include="SplashActivity.cs" />
     </ItemGroup>
     <ItemGroup>
         <None Include="Resources\AboutResources.txt" />
@@ -375,6 +376,30 @@
           <Generator></Generator>
         </AndroidResource>
         <AndroidResource Include="Resources\drawable\icon_headphones_light.png">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\drawable\splash_screen.xml">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\mipmap-xxxhdpi\image_splash_logo.png">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\mipmap-xxhdpi\image_splash_logo.png">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\mipmap-xhdpi\image_splash_logo.png">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\mipmap-mdpi\image_splash_logo.png">
+          <SubType></SubType>
+          <Generator></Generator>
+        </AndroidResource>
+        <AndroidResource Include="Resources\mipmap-hdpi\image_splash_logo.png">
           <SubType></SubType>
           <Generator></Generator>
         </AndroidResource>
