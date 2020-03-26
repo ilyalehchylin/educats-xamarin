@@ -69,12 +69,17 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 		void setFonts()
 		{
 			var fontList = FontsController.GetFonts();
+			string savedFont = AppPrefs.Font;
+
+			if (savedFont.Equals(FontsController.DefaultFont)) {
+				savedFont = CrossLocalization.Translate(savedFont);
+			}
 
 			var fonts = fontList.Select(f => new FontsPageModel {
 				Font = f,
 				Title = FontsController.GetFontName(f),
 				FontFamily = FontsController.GetFont(f, false),
-				IsChecked = f.Equals(AppPrefs.Font)
+				IsChecked = f.Equals(savedFont)
 			});
 
 			FontList = new List<FontsPageModel>(fonts);

@@ -104,7 +104,7 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 			title.SetBinding(Label.TextProperty, "Title");
 
 			if (isCustomFont) {
-				title.SetBinding(Label.FontFamilyProperty, "Font");
+				title.SetBinding(Label.FontFamilyProperty, "FontFamily");
 			}
 
 			return title;

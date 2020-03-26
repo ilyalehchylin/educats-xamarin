@@ -60,8 +60,8 @@ namespace EduCATS.Pages.Login.Views
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				Children = {
 					backgroundImage,
-					settingsIcon,
-					scrollView
+					scrollView,
+					settingsIcon
 				}
 			};
 		}

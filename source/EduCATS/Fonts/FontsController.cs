@@ -90,7 +90,7 @@ namespace EduCATS.Fonts
 		/// <returns>Font family.</returns>
 		public static string GetFont(string font, bool bold)
 		{
-			if (font.Equals(DefaultFont)) {
+			if (font.Equals(DefaultFont) || font.Equals(CrossLocalization.Translate(DefaultFont))) {
 				return null;
 			}
 
@@ -152,7 +152,7 @@ namespace EduCATS.Fonts
 			};
 
 			_fonts.Sort((x, y) => string.Compare(x, y));
-			_fonts.Insert(0, CrossLocalization.Translate(DefaultFont.ToLower()));
+			_fonts.Insert(0, CrossLocalization.Translate(DefaultFont));
 		}
 	}
 }
