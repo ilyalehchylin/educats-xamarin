@@ -42,6 +42,7 @@
         <WarningLevel>4</WarningLevel>
         <AndroidManagedSymbols>true</AndroidManagedSymbols>
         <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+        <AndroidPackageFormat>aab</AndroidPackageFormat>
     </PropertyGroup>
     <ItemGroup>
         <Reference Include="Mono.Android" />
