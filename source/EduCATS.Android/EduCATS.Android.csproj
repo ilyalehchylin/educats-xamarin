@@ -414,7 +414,7 @@
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\EduCATS\EduCATS.csproj">
-            <Project>{F6F0F12E-FEDC-4663-A475-F97DDB9FE69E}</Project>
+            <Project>{BC00D9AB-7AAE-42D1-86BA-C37F0D711920}</Project>
             <Name>EduCATS</Name>
         </ProjectReference>
     </ItemGroup>
