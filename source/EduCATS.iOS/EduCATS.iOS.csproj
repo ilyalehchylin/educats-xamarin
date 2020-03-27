@@ -275,7 +275,7 @@
             <Version>2.4.11.982</Version>
         </PackageReference>
         <PackageReference Include="Acr.UserDialogs">
-            <Version>7.1.0.440</Version>
+            <Version>7.1.0.442</Version>
         </PackageReference>
         <PackageReference Include="Microcharts">
             <Version>0.7.1</Version>
