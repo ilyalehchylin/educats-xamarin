@@ -77,6 +77,12 @@ Examples:
 [FEATURE] New app settings
 ```
 
+#### Commit pattern for docs update:
+
+`git commit -m "[ADD] Documentation source" --author="nocontribute <>"`
+
+In this case GitHub will ignore `docs/` directory contribution (500,000+ lines) and won't spoil your statistics.
+
 ### Pull requests
 
 Before submitting pull request you should choose the reviewer.  
