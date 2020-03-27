@@ -1,6 +1,6 @@
 # Project structure
 
-[EduCATS](https://github.com/IlyaLehchylin/educats-xamarin/tree/develop/source/EduCATS) project has the following structure:
+[EduCATS](./source/EduCATS) project has the following structure:
 
 - **Configuration**  
 Contains configuration files like [AppConfig](https://ilyalehchylin.github.io/educats-xamarin/api/EduCATS.Configuration.AppConfig.html) (which is used to configure packages, helpers and tools on application start).
@@ -15,13 +15,13 @@ Contains views & controls used in the application.
 Retrieves, handles, caches and gives access to API data with the help of [DataAccess](https://ilyalehchylin.github.io/educats-xamarin/api/EduCATS.Data.DataAccess.html).
 
 - **Fonts**  
-Provides fonts and font controllers. More details here.
+Provides fonts and font controllers. More details [here](./pages/articles/resources.md#fonts).
 
 - **Helpers**  
 Provides helpers and tools for the application (for both UI and logic).
 
 - **Localization**  
-Contains `JSON` localization files. More details here.
+Contains `JSON` localization files. More details [here](./pages/articles/resources.md#localization).
 
 - **Networking**  
 Provides wrapper for the network services and contains API methods (used only by [DataAccess](https://ilyalehchylin.github.io/educats-xamarin/api/EduCATS.Data.DataAccess.html)).
@@ -36,7 +36,7 @@ Contains application pages with `Model-View-ViewModel (MVVM)` pattern.
   Page views (UI).
 
 - **Properties**  
-Project's `AssemblyInfo` (used basically for fonts, more details here).
+Project's `AssemblyInfo` (used basically for fonts, more details [here](./pages/articles/resources.md#fonts)).
 
 - **Themes**  
 Used to store application themes and provides manager for this purpose. More details here.

@@ -1,6 +1,8 @@
-- name: Table of Contents
-  href: table-of-contents.md
 - name: Project structure
   href: project-structure.md
 - name: Resources
   href: resources.md
+- name: Services
+  href: services.md
+- name: Continious integration
+  href: continuous-integration.md

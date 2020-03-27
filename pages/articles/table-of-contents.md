@@ -1,3 +1,0 @@
-# Table of Contents
-
-Coming soon...
