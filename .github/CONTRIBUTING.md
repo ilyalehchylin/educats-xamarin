@@ -90,3 +90,15 @@ The following checks should pass:
 
 - Bitrise ci check (more details [here](../pages/articles/continuous-integration.md))
 - Reviewer check
+
+Name conventions for pull request commits:
+
+```
+[PR] [#PULL_REQUEST_NUMBER] Description
+```
+
+Examples:
+
+```
+[PR] [#123] Fixed app settings crash
+```
