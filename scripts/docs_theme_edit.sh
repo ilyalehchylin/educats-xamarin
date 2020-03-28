@@ -24,4 +24,8 @@ sed -i '.backup' -e 's/#f9f2f4/#F0F8FF/g' docs/styles/docfx.vendor.css
 # Change code block text color
 sed -i '.backup' -e 's/#c7254e/#27AEE1/g' docs/styles/docfx.vendor.css
 
+# Fixing logo hover: https://github.com/npgsql/doc/issues/8
+sed -i '.backup' -e 's/svg:hover path/svg:hover/g' docs/styles/docfx.css
+sed -i '.backup' -e 's/fill: #ffffff/filter: grayscale(80%)/g' docs/styles/docfx.css
+
 echo "Changing theme process completed."

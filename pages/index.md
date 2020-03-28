@@ -1,4 +1,4 @@
-# EduCATS Xamarin Documentation
+# Introduction
 
 ## Table of Contents
 
