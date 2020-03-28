@@ -30,4 +30,4 @@ A cross-platform client for the [Leaning Management System EduCATS](https://gith
 
 ### Contributing
 
-Check [CONTRIBUTING.md](.github/CONTRIBUTING.md) to know how to help with the project.
+Check [CONTRIBUTING](.github/CONTRIBUTING.md) to know how to help with the project. Also check out our [Code of Conduct](./.github/CODE_OF_CONDUCT.md)
