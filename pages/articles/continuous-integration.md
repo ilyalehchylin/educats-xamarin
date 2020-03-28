@@ -10,7 +10,9 @@ There are two main workflows: **[build](#build-steps)** and **[release](#release
 - Clone git repository;
 - Install certificates and profiles;
 - Restore NuGet packages;
-- Build and archive iOS and Android projects.
+- Build and archive iOS and Android projects;
+- Run Unit Tests;
+- Upload code coverage to Codecov.
 
 ## release steps
 
@@ -18,6 +20,8 @@ There are two main workflows: **[build](#build-steps)** and **[release](#release
 - Clone git repository;
 - Install certificates and profiles;
 - Restore NuGet packages;
+- Run Unit Tests;
+- Upload code coverage to Codecov;
 - Set version and build numbers for iOS;
 - Set version and build numbers for Android;
 - Build and archive iOS and Android projects;
