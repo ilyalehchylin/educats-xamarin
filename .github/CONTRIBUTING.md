@@ -11,7 +11,7 @@ You can help us with the following:
 - Unit tests
 - UI tests
 - Documentation improvements
-- Bug issues
+- Bug reports
 - Feature requests
 
 To start you can check [open issues](https://github.com/IlyaLehchylin/educats-xamarin/issues) and 
