@@ -53,7 +53,7 @@ namespace EduCATS.Configuration
 		/// <summary>
 		/// Configure localization package.
 		/// </summary>
-		static void setupLocalization()
+		private static void setupLocalization()
 		{
 			var assembly = typeof(App).GetTypeInfo().Assembly;
 
