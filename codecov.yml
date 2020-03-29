@@ -1,4 +1,4 @@
 ignore:
   - "source/EduCATS/Controls"
   - "source/EduCATS/Pages"
-  
+  - "source/EduCATS/Themes/Templates"
