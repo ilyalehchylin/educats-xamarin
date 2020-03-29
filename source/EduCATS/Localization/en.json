@@ -8,6 +8,7 @@
 	"base_loading": "Loading...",
 	"base_unexpected_error": "Unexpected error occurred. Please try again or contact support.",
 	"base_connection_error": "No internet connection. Check your network settings and try again.",
+	"base_no_data": "No data to display",
 
 	"server_test": "Test server",
 	"server_local": "Local server",

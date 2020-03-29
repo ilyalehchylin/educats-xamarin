@@ -16,6 +16,7 @@
 		override public string BaseActivityIndicatorColor => _whiteColor;
 		override public string BasePickerTextColor => _whiteColor;
 		override public string BaseHeadphonesIcon => "icon_headphones_light";
+		override public string BaseNoDataTextColor => _whiteColor;
 
 		override public string AppBackgroundColor => _blackColor;
 		override public string AppStatusBarBackgroundColor => _blackColor;

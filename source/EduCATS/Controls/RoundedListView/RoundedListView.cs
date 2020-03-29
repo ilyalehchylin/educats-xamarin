@@ -1,5 +1,10 @@
-﻿using EduCATS.Controls.RoundedListView.Selectors;
+﻿using System;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using EduCATS.Controls.RoundedListView.Selectors;
+using EduCATS.Helpers.Styles;
 using EduCATS.Themes;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Controls.RoundedListView
@@ -20,14 +25,19 @@ namespace EduCATS.Controls.RoundedListView
 		const double _padding = 0;
 
 		/// <summary>
-		/// Rounded header height.
-		/// </summary>
-		public const double HeaderHeight = 14;
-
-		/// <summary>
 		/// Corner radius & sharp layout height.
 		/// </summary>
 		readonly double _capHeight;
+
+		/// <summary>
+		/// Empty view.
+		/// </summary>
+		readonly StackLayout _emptyView;
+
+		/// <summary>
+		/// Rounded header height.
+		/// </summary>
+		public const double HeaderHeight = 14;
 
 		/// <summary>
 		/// Constructor.
@@ -45,6 +55,7 @@ namespace EduCATS.Controls.RoundedListView
 			RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColor);
 
 			_capHeight = HeaderHeight / 2;
+			_emptyView = createEmptyView();
 
 			Footer = createFooterCap();
 			Header = createHeader(header);
@@ -69,6 +80,7 @@ namespace EduCATS.Controls.RoundedListView
 			}
 
 			header.Children.Add(cap);
+			header.Children.Add(_emptyView);
 			return header;
 		}
 
@@ -124,6 +136,49 @@ namespace EduCATS.Controls.RoundedListView
 					frame
 				}
 			};
+		}
+
+		/// <summary>
+		/// Create empty view.
+		/// </summary>
+		/// <returns>Empty view layout.</returns>
+		StackLayout createEmptyView()
+		{
+			return new StackLayout {
+				Spacing = _spacing,
+				BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor),
+				Children = {
+					new Label {
+						Style = AppStyles.GetLabelStyle(),
+						HorizontalTextAlignment = TextAlignment.Center,
+						HorizontalOptions = LayoutOptions.CenterAndExpand,
+						Text = CrossLocalization.Translate("base_no_data"),
+						TextColor = Color.FromHex(Theme.Current.BaseNoDataTextColor)
+					}
+				}
+			};
+		}
+
+		/// <summary>
+		/// On <c>ItemsSource</c> property changed.
+		/// </summary>
+		/// <param name="propertyName">Property name.</param>
+		protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			base.OnPropertyChanged(propertyName);
+
+			if (!propertyName.Equals("ItemsSource")) {
+				return;
+			}
+
+			try {
+				if (ItemsSource == null || ItemsSource.Cast<object>().Count() == 0) {
+					_emptyView.IsVisible = true;
+					return;
+				}
+			} catch (Exception) { }
+
+			_emptyView.IsVisible = false;
 		}
 	}
 }
