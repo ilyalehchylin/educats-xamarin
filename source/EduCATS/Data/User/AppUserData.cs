@@ -57,6 +57,11 @@ namespace EduCATS.Data.User
 		public static UserTypeEnum UserType { get; set; }
 
 		/// <summary>
+		/// Is <see cref="SetProfileData(UserProfileModel)"/> was called.
+		/// </summary>
+		public static bool IsProfileLoaded { get; set; }
+
+		/// <summary>
 		/// Set login data.
 		/// </summary>
 		/// <param name="userId">User ID.</param>
@@ -80,6 +85,7 @@ namespace EduCATS.Data.User
 				return;
 			}
 
+			IsProfileLoaded = true;
 			GroupId = profile.GroupId;
 			GroupName = profile.GroupName;
 			Avatar = profile.Avatar;

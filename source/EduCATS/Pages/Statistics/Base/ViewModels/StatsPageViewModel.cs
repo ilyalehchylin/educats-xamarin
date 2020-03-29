@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models.Statistics;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Converters;
 using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Extensions;
@@ -32,6 +31,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			_navigationService = navigationService;
 			setPagesList();
 			setCollapsedDetails();
+
 			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
 
 			Task.Run(async () => {
@@ -192,6 +192,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		async Task<List<StatsStudentModel>> getStatistics()
 		{
+			if (!AppUserData.IsProfileLoaded) {
+				await getProfile();
+			}
+
 			var groupId = AppPrefs.GroupId;
 
 			if (CurrentSubject == null || groupId == -1) {
@@ -205,6 +209,17 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 
 			return statisticsModel.Students?.ToList();
+		}
+
+		/// <summary>
+		/// Get profile if <see cref="App.getProfileInfo" didn't have time to load./>
+		/// </summary>
+		/// <returns>Task.</returns>
+		async Task getProfile()
+		{
+			var profile = await DataAccess.GetProfileInfo(AppPrefs.UserLogin);
+			AppUserData.SetProfileData(profile);
+			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
 		}
 
 		void setPagesList()
