@@ -1,3 +1,6 @@
+# Remove previous version of documentation
+rm -r docs/
+
 # Copy all files & directories inside pages to the root
 cp -r pages/* ./
 

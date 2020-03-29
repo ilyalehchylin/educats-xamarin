@@ -4,7 +4,7 @@
       "src": [
         {
           "files": [
-            "source/EduCATS.sln"
+            "source/EduCATS/EduCATS.csproj"
           ]
         }
       ],
