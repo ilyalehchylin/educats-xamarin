@@ -11,15 +11,15 @@ Summary:
 ### Platforms affected
 
 <!-- Replace [ ] with [x] if true -->
-- [ ] All platforms (iOS, Android)
-- [ ] Android
-- [ ] iOS
+- All platforms (iOS, Android)
+- Android
+- iOS
 
 ### Kind of changes
 
 <!-- Replace [ ] with [x] if true -->
-- [ ] Behavioral (Logic)
-- [ ] Visual (UI)
+- Behavioral (Logic)
+- Visual (UI)
 
 ### Screenshots
 
