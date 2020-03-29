@@ -25,16 +25,25 @@ or [graphics](../graphics) directory.
 
 Ask repository owner to add you to contributors list.
 
-## Main code rules
+## Code rules
 
 - EduCATS project uses [MVVM](https://wikipedia.org/wiki/Model–view–viewmodel) as the base architectural pattern pattern.
+
 - Don't forget to make [documentation comments](https://docs.microsoft.com/dotnet/csharp/language-reference/language-specification/documentation-comments) on your code.
-- Private global variables should start with underscore (e.g. `const float _frameRadius = 10`).
+
+- Private variables and properties should start with underscore (e.g. `const float _frameRadius = 10`).
+
+- Private methods should start with lowercase letter.
+
+- Public methods, properties and variables should start with uppercase letter.
+
 - All constants should be placed at the top of the class (if they are used only inside that class), 
 in the `Constants/GlobalConsts.cs` class (if they are used across the project), 
 in `Themes` (if they represent colors or images, more details [here](../pages/articles/resources.md#themes) 
 or in `Localization` (if they represent localized key, more details [here](../pages/articles/resources.md#localization).
+
 - API services should be wrapped inside `DataAccess.cs` (more details [here](../pages/articles/services.md)).
+
 - Data managers and other helpers should be placed inside `Helpers`.
 
 ## Repository
