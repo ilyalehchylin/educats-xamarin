@@ -1,3 +1,6 @@
+# Install DocFX
+brew install docfx
+
 # Remove previous version of documentation
 rm -r docs/
 
