@@ -1,2 +1,3 @@
 docs/** linguist-generated
 **/Contents.json linguist-generated
+**/*.sh linguist-generated
