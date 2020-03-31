@@ -47,7 +47,7 @@
                 
                 <ul class="nav level1 navbar-nav">
                       <li>
-                          <a href="../articles/table-of-contents.html" title="About project">About project</a>
+                          <a href="../articles/project-structure.html" title="About project">About project</a>
                       </li>
                       <li>
                           <a href="../api/EduCATS.html" title="Code documentation">Code documentation</a>
@@ -71,14 +71,17 @@
                 <div class="toc" id="toc">
                   
                   <ul class="nav level1">
-                    <li class="">
-                      <a href="table-of-contents.html" title="Table of Contents" class="">Table of Contents</a>
-                    </li>
                     <li class="active">
                       <a href="project-structure.html" title="Project structure" class="active">Project structure</a>
                     </li>
                     <li class="">
                       <a href="resources.html" title="Resources" class="">Resources</a>
+                    </li>
+                    <li class="">
+                      <a href="services.html" title="Services" class="">Services</a>
+                    </li>
+                    <li class="">
+                      <a href="continuous-integration.html" title="Continious integration" class="">Continious integration</a>
                     </li>
                   </ul>        </div>
               </div>
@@ -90,7 +93,57 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="project-structure">Project structure</h1>
 
-<p>Coming soon...</p>
+<p><a href="./source/EduCATS">EduCATS</a> project has the following structure:</p>
+<ul>
+<li><p><strong>Configuration</strong><br>
+Contains configuration files like <a href="https://ilyalehchylin.github.io/educats-xamarin/api/EduCATS.Configuration.AppConfig.html">AppConfig</a> (which is used to configure packages, helpers and tools on application start).</p>
+</li>
+<li><p><strong>Constants</strong><br>
+Contains static classes with global constants.</p>
+</li>
+<li><p><strong>Controls</strong><br>
+Contains views &amp; controls used in the application.</p>
+</li>
+<li><p><strong>Data</strong><br>
+Retrieves, handles, caches and gives access to API data with the help of <a href="https://ilyalehchylin.github.io/educats-xamarin/api/EduCATS.Data.DataAccess.html">DataAccess</a>.</p>
+</li>
+<li><p><strong>Fonts</strong><br>
+Provides fonts and font controllers. More details <a href="./pages/articles/resources.md#fonts">here</a>.</p>
+</li>
+<li><p><strong>Helpers</strong><br>
+Provides helpers and tools for the application (for both UI and logic).</p>
+</li>
+<li><p><strong>Localization</strong><br>
+Contains <code>JSON</code> localization files. More details <a href="./pages/articles/resources.md#localization">here</a>.</p>
+</li>
+<li><p><strong>Networking</strong><br>
+Provides wrapper for the network services and contains API methods (used only by <a href="https://ilyalehchylin.github.io/educats-xamarin/api/EduCATS.Data.DataAccess.html">DataAccess</a>).</p>
+</li>
+<li><p><strong>Pages</strong><br>
+Contains application pages with <code>Model-View-ViewModel (MVVM)</code> pattern.</p>
+<ul>
+<li><strong>Models</strong><br>
+Page models.</li>
+<li><strong>ViewModels</strong><br>
+Page view models (logic).</li>
+<li><strong>Views</strong><br>
+Page views (UI).</li>
+</ul>
+</li>
+<li><p><strong>Properties</strong><br>
+Project's <code>AssemblyInfo</code> (used basically for fonts, more details <a href="./pages/articles/resources.md#fonts">here</a>).</p>
+</li>
+<li><p><strong>Themes</strong><br>
+Used to store application themes and provides manager for this purpose. More details here.</p>
+</li>
+</ul>
+<h3 id="additional-information">Additional information</h3>
+<ul>
+<li>Interfaces are stored in separate directories in places where they are implemented (e.g. <code>Themes/DependencyServices/Interfaces</code>, <code>Data/Interfaces</code>, etc.).</li>
+<li>API models are stored in <code>Data/Models</code>.</li>
+<li>Networking models (for <code>POST</code> requests) are stored in <code>Networking/Models</code>.</li>
+<li><code>Data</code> also contains <code>User</code> directory used for managing user's account.</li>
+</ul>
 </article>
           </div>
           
