@@ -34,15 +34,18 @@
         <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <MtouchLink>None</MtouchLink>
-        <MtouchArch>x86_64</MtouchArch>
+        <MtouchLink>SdkOnly</MtouchLink>
+        <MtouchArch>i386, x86_64</MtouchArch>
         <CodesignKey>iPhone Distribution</CodesignKey>
         <CodesignProvision>Automatic:AppStore</CodesignProvision>
+        <MtouchUseLlvm>true</MtouchUseLlvm>
+        <MtouchFloat32>true</MtouchFloat32>
+        <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
+        <Optimize>true</Optimize>
         <OutputPath>bin\iPhone\Debug</OutputPath>
         <DefineConstants>DEBUG</DefineConstants>
         <ErrorReport>prompt</ErrorReport>
@@ -60,11 +63,14 @@
         <OutputPath>bin\iPhone\Release</OutputPath>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <MtouchArch>ARM64</MtouchArch>
+        <MtouchArch>ARMv7, ARM64</MtouchArch>
         <CodesignKey>iPhone Distribution</CodesignKey>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
         <CodesignProvision>Automatic:AppStore</CodesignProvision>
+<MtouchUseLlvm>true</MtouchUseLlvm>
+<MtouchFloat32>true</MtouchFloat32>
+<MtouchEnableSGenConc>false</MtouchEnableSGenConc>
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Main.cs" />
