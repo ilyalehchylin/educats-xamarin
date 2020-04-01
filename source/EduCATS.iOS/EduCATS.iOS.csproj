@@ -67,9 +67,9 @@
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
         <CodesignProvision>Automatic:AppStore</CodesignProvision>
-<MtouchUseLlvm>true</MtouchUseLlvm>
-<MtouchFloat32>true</MtouchFloat32>
-<MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+		<MtouchUseLlvm>true</MtouchUseLlvm>
+		<MtouchFloat32>true</MtouchFloat32>
+		<MtouchEnableSGenConc>false</MtouchEnableSGenConc>
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Main.cs" />
