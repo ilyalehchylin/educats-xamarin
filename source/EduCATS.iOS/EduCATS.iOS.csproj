@@ -60,9 +60,10 @@
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
         <MtouchArch>ARM64</MtouchArch>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>iPhone Distribution</CodesignKey>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
+        <CodesignProvision>Automatic:AppStore</CodesignProvision>
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Main.cs" />
