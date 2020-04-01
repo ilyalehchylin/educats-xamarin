@@ -36,7 +36,8 @@
         <WarningLevel>4</WarningLevel>
         <MtouchLink>None</MtouchLink>
         <MtouchArch>x86_64</MtouchArch>
-        <CodesignKey>iPhone Developer</CodesignKey>
+        <CodesignKey>iPhone Distribution</CodesignKey>
+        <CodesignProvision>Automatic:AppStore</CodesignProvision>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
