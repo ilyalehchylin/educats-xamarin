@@ -7,7 +7,7 @@ A cross-platform client for the [Leaning Management System EduCATS](https://gith
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
 [![codecov](https://codecov.io/gh/IlyaLehchylin/educats-xamarin/branch/develop/graph/badge.svg)](https://codecov.io/gh/IlyaLehchylin/educats-xamarin)
 [![Maintainability](https://api.codeclimate.com/v1/badges/dc4c2525ada1acbb08b9/maintainability)](https://codeclimate.com/github/IlyaLehchylin/educats-xamarin/maintainability)
-[![Build Status](https://app.bitrise.io/app/40deffc8ec9f68cb/status.svg?token=lad_Hoh-bh7sdRhCkidZjQ&branch=develop)](https://app.bitrise.io/app/40deffc8ec9f68cb)
+[![Build Status](https://app.bitrise.io/app/40deffc8ec9f68cb/status.svg?token=lad_Hoh-bh7sdRhCkidZjQ)](https://app.bitrise.io/app/40deffc8ec9f68cb)
 
 ## Tables of Contents
 
