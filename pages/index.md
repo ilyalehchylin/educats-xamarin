@@ -8,6 +8,7 @@
 
 ### Articles
 
-- [Project structure](./project-structure.md)
-- [Resources](./resources.md)
-- [Continious integration](./continuous-integration.md)
+- [Project structure](https://ilyalehchylin.github.io/educats-xamarin/articles/project-structure.html)
+- [Resources](https://ilyalehchylin.github.io/educats-xamarin/articles/resources.html)
+- [Services](https://ilyalehchylin.github.io/educats-xamarin/articles/services.html)
+- [Continious integration](https://ilyalehchylin.github.io/educats-xamarin/articles/continuous-integration.html)
