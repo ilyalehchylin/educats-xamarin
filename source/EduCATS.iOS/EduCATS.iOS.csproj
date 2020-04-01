@@ -63,7 +63,7 @@
         <OutputPath>bin\iPhone\Release</OutputPath>
         <ErrorReport>prompt</ErrorReport>
         <WarningLevel>4</WarningLevel>
-        <MtouchArch>ARM64</MtouchArch>
+        <MtouchArch>ARMv7, ARM64</MtouchArch>
         <CodesignKey>iPhone Distribution</CodesignKey>
         <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
         <MtouchExtraArgs>--optimize=experimental-xforms-product-type</MtouchExtraArgs>
