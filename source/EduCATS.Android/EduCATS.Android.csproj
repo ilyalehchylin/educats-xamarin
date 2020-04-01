@@ -34,8 +34,6 @@
         <AndroidLinkMode>None</AndroidLinkMode>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>portable</DebugType>
         <Optimize>true</Optimize>
         <OutputPath>bin\Release</OutputPath>
         <ErrorReport>prompt</ErrorReport>
