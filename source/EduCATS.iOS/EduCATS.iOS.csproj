@@ -38,7 +38,6 @@
         <MtouchArch>i386, x86_64</MtouchArch>
         <CodesignKey>iPhone Distribution</CodesignKey>
         <CodesignProvision>Automatic:AppStore</CodesignProvision>
-        <MtouchUseLlvm>true</MtouchUseLlvm>
         <MtouchFloat32>true</MtouchFloat32>
         <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
     </PropertyGroup>
