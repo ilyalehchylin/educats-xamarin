@@ -91,7 +91,6 @@
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76-1.png" />
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152-1.png" />
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167-1.png" />
-        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_icon.png" />
         <ImageAsset Include="Resources\Light.xcassets\Contents.json" />
         <ImageAsset Include="Resources\Dark.xcassets\Contents.json" />
         <ImageAsset Include="Resources\Light.xcassets\icon_arrow_down.imageset\Contents.json" />
@@ -250,6 +249,7 @@
         <ImageAsset Include="Resources\Light.xcassets\image_mascot.imageset\image_mascot.png" />
         <ImageAsset Include="Resources\Light.xcassets\image_splash_logo.imageset\Contents.json" />
         <ImageAsset Include="Resources\Light.xcassets\image_splash_logo.imageset\image_splash_logo.png" />
+        <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\itunes_icon.png" />
     </ItemGroup>
     <ItemGroup>
         <Reference Include="System" />
