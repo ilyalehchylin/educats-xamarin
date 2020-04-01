@@ -25,11 +25,11 @@ There are two main workflows: **[build](#build-steps)** and **[release](#release
 - Set version and build numbers for iOS;
 - Set version and build numbers for Android;
 - Build and archive iOS and Android projects;
-- Sign output .aab;
-- Download keystore;
-- Export universal .apk from .aab;
-- Deploy to iTunes Connect;
+- Sign output *.aab;
 - Deploy to Google Play beta;
-- Generate and push docs to the current branch with skipping build for this commit;
-- Get changelog by GitHub tags differences;
-- Create GitHub release with .apk.
+- Deploy to iTunes Connect;
+- Download keystore;
+- Export universal *.apk from *.aab;
+- Deploy *.apk to Bitrise artifacts;
+- Create GitHub release with *.apk;
+- Generate and push docs to the current branch with skipping build for this commit.
