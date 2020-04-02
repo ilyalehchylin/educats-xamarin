@@ -12,8 +12,18 @@ A cross-platform client for the [Leaning Management System EduCATS](https://gith
 ## Tables of Contents
 
 * [Documentation](https://ilyalehchylin.github.io/educats-xamarin/)
-* [Dependencies](#dependencies)
+* [Beta Testing](#beta-testing)
 * [Contributing](#contributing)
+* [Dependencies](#dependencies)
+
+### Beta Testing
+
+- [iOS TestFlight Open Beta](https://testflight.apple.com/join/WQdDNznJ)
+- [Android Google Play Open Beta](https://play.google.com/apps/testing/by.bntu.educats)
+
+### Contributing
+
+Check [CONTRIBUTING](.github/CONTRIBUTING.md) to know how to help with the project. Also check out our [Code of Conduct](./.github/CODE_OF_CONDUCT.md).
 
 ### Dependencies
 
@@ -28,7 +38,3 @@ A cross-platform client for the [Leaning Management System EduCATS](https://gith
 | **[FFImageLoading](https://github.com/luberda-molinet/FFImageLoading)**   | Library for extended image loading & handling         |
 | **[DocFX](https://github.com/dotnet/docfx)**  						  	| Project's documentation tools	  		               |
 | **[Google Fonts](https://fonts.google.com/)**  						  	| Open-source fonts				  		               |
-
-### Contributing
-
-Check [CONTRIBUTING](.github/CONTRIBUTING.md) to know how to help with the project. Also check out our [Code of Conduct](./.github/CODE_OF_CONDUCT.md).
