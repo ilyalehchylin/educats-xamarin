@@ -5,6 +5,18 @@
 Images should be imported as described [here](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/images?tabs=windows#local-images):
 
 - iOS images should be placed in `Asset` catalogs according to an application theme (`Light.xcassets` is used as default).
+	
+	- Before pushing:
+	
+		- Open changed `Asset` catalogs;
+		- Fix all image sets with exclamation points (choose image set, select items with exclamation points and delete them);
+		- Open `Attributes Inspector` (`View` - `Inspectors` - `Show Attributes Inspector`);
+		- Select all new image sets;
+		- Set `Appearances` to `None`;
+		- Uncheck all `Devices` except `Universal` (if you are using only universal icons and images).
+		
+	- Push resources with "no contribute" commit in order not to spoil repository contribution statistics ([details here](https://github.com/ilyalehchylin/educats-xamarin/blob/master/.github/CONTRIBUTING.md#commit-pattern-for-docs-update)).
+	
 - Android image should be placed in `drawable` directory.
 
 ## Fonts
