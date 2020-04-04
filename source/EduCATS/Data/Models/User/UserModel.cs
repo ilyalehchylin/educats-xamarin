@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.User
+namespace EduCATS.Data.Models
 {
 	public class UserModel
 	{

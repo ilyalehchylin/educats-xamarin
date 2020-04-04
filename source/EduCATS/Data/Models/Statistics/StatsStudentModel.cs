@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Statistics
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Student statistics model.

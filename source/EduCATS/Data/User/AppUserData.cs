@@ -1,4 +1,4 @@
-﻿using EduCATS.Data.Models.User;
+﻿using EduCATS.Data.Models;
 using EduCATS.Helpers.Settings;
 
 namespace EduCATS.Data.User

@@ -1,4 +1,4 @@
-﻿using EduCATS.Data.Models.News;
+﻿using EduCATS.Data.Models;
 using EduCATS.Helpers.Date;
 
 namespace EduCATS.Pages.Today.Base.Models

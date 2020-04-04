@@ -1,7 +1,7 @@
 ﻿using System;
 using EduCATS.Controls.RoundedListView.Enums;
 using EduCATS.Controls.RoundedListView.Interfaces;
-using EduCATS.Data.Models.Calendar;
+using EduCATS.Data.Models;
 using EduCATS.Helpers.Date;
 
 namespace EduCATS.Pages.Today.Base.Models

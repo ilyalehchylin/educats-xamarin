@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using EduCATS.Data.Models.Testing.Base;
+using EduCATS.Data.Models;
 
 namespace EduCATS.Pages.Testing.Base.Models
 {

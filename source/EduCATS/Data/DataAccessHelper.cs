@@ -13,7 +13,7 @@ namespace EduCATS.Data
 	/// Data Access helper.
 	/// </summary>
 	/// <typeparam name="T">Type for data.</typeparam>
-	public partial class DataAccess<T> : IDataAccess where T : new()
+	public partial class DataAccess<T> : IDataAccess<T> where T : new()
 	{
 		/// <summary>
 		/// Success string response.

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Labs
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Laboratory work protection model.

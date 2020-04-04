@@ -1,5 +1,5 @@
 ﻿using System.Windows.Input;
-using EduCATS.Data.Models.Testing.Passing;
+using EduCATS.Data.Models;
 
 namespace EduCATS.Pages.Testing.Passing.Models
 {

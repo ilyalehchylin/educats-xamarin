@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Testing.Passing
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Test question details model.

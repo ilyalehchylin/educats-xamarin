@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Files
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// File details model.

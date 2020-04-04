@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Recommendations
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Adaptive learning (recommendations) model.
