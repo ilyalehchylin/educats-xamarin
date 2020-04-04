@@ -189,18 +189,21 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				return;
 			}
 
-			var calendarSubjectsList = calendar.Labs?.Select(
-				c => new CalendarSubjectsModel {
-					Color = c.Color,
-					Subject = c.Title,
-					Date = DateTime.Parse(c.Start ?? DateHelper.DefaultDateTime)
-				});
+			var calendarList = new List<CalendarSubjectsModel>();
+			var calendarLabsList = calendar.Labs?.Select(c => new CalendarSubjectsModel(c));
+			var calendarLectsList = calendar.Lectures?.Select(c => new CalendarSubjectsModel(c));
 
-			if (calendarSubjectsList == null) {
+			if (calendarLabsList == null && calendarLectsList == null) {
 				return;
+			} else if (calendarLabsList == null && calendarLectsList != null) {
+				calendarList = new List<CalendarSubjectsModel>(calendarLectsList);
+			} else if (calendarLabsList != null && calendarLectsList == null) {
+				calendarList = new List<CalendarSubjectsModel>(calendarLabsList);
+			} else {
+				calendarList = calendarLabsList.Concat(calendarLectsList).ToList();
 			}
 
-			_calendarSubjectsBackup = new List<CalendarSubjectsModel>(calendarSubjectsList);
+			_calendarSubjectsBackup = new List<CalendarSubjectsModel>(calendarList);
 			setFilteredSubjectsList();
 		}
 
