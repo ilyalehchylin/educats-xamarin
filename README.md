@@ -5,7 +5,7 @@
 A cross-platform client for the [Leaning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
 
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
-[![codecov](https://codecov.io/gh/IlyaLehchylin/educats-xamarin/branch/develop/graph/badge.svg)](https://codecov.io/gh/IlyaLehchylin/educats-xamarin)
+[![codecov](https://codecov.io/gh/ilyalehchylin/educats-xamarin/branch/develop/graph/badge.svg)](https://codecov.io/gh/ilyalehchylin/educats-xamarin)
 [![Maintainability](https://api.codeclimate.com/v1/badges/24658fe85e2b75648f6d/maintainability)](https://codeclimate.com/github/ilyalehchylin/educats-xamarin/maintainability)
 [![Build Status](https://app.bitrise.io/app/40deffc8ec9f68cb/status.svg?token=lad_Hoh-bh7sdRhCkidZjQ)](https://app.bitrise.io/app/40deffc8ec9f68cb)
 
