@@ -1,5 +1,4 @@
 ﻿using EduCATS.Helpers.Json;
-using Moq;
 using NUnit.Framework;
 
 namespace EduCATS.UnitTests
