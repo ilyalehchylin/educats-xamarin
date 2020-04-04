@@ -36,10 +36,8 @@ Steps to reproduce the behavior:
 
 <!-- Device name [e.g. iPhone X] -->
 - Name: 
-
 <!-- Device OS [e.g. iOS 13.2 / Android 10.0] -->
 - OS: 
-
 <!-- Device version & build [e.g. 2.0.50] -->
 - Version and build: 
 
