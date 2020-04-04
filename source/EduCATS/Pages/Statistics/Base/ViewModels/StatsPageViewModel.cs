@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.Statistics;
+using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Dialogs.Interfaces;

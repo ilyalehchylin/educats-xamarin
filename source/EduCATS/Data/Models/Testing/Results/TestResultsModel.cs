@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Testing.Results
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Test results model.

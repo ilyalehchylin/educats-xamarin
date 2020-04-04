@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Eemc
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Electronic Educational Methodological Complexes

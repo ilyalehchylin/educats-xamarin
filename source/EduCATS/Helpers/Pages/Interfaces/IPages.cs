@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EduCATS.Data.Models.Statistics;
+using EduCATS.Data.Models;
 
 namespace EduCATS.Helpers.Pages.Interfaces
 {

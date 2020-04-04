@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using EduCATS.Data.Models.User;
+using EduCATS.Data.Models;
 using EduCATS.Helpers.Json;
 using EduCATS.Networking.Models.Eemc;
 using EduCATS.Networking.Models.Login;

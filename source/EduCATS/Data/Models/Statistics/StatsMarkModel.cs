@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Statistics
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Rating mark statistics model.

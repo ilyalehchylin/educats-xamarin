@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.User;
+using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Pages.Interfaces;

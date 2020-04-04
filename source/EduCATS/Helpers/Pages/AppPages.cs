@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EduCATS.Data.Models.Statistics;
+using EduCATS.Data.Models;
 using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Eemc.Views;
 using EduCATS.Pages.Files.Views;

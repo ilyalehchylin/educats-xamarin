@@ -3,20 +3,7 @@ using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data.Caching;
 using EduCATS.Data.Interfaces;
-using EduCATS.Data.Models.Calendar;
-using EduCATS.Data.Models.Eemc;
-using EduCATS.Data.Models.Files;
-using EduCATS.Data.Models.Groups;
-using EduCATS.Data.Models.Labs;
-using EduCATS.Data.Models.Lectures;
-using EduCATS.Data.Models.News;
-using EduCATS.Data.Models.Recommendations;
-using EduCATS.Data.Models.Statistics;
-using EduCATS.Data.Models.Subjects;
-using EduCATS.Data.Models.Testing.Base;
-using EduCATS.Data.Models.Testing.Passing;
-using EduCATS.Data.Models.Testing.Results;
-using EduCATS.Data.Models.User;
+using EduCATS.Data.Models;
 using EduCATS.Networking.Models.Testing;
 using Nyxbull.Plugins.CrossLocalization;
 
@@ -59,9 +46,8 @@ namespace EduCATS.Data
 		/// <returns>User data.</returns>
 		public async static Task<UserModel> Login(string username, string password)
 		{
-			var dataAccess = new DataAccess<UserModel>(
-				"login_error", loginCallback(username, password));
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as UserModel;
+			var dataAccess = new DataAccess<UserModel>("login_error", loginCallback(username, password));
+			return await getDataObject(dataAccess, false) as UserModel;
 		}
 
 		/// <summary>
@@ -72,9 +58,8 @@ namespace EduCATS.Data
 		public async static Task<UserProfileModel> GetProfileInfo(string username)
 		{
 			var dataAccess = new DataAccess<UserProfileModel>(
-				"login_user_profile_error", getProfileCallback(username),
-				GlobalConsts.DataProfileKey);
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as UserProfileModel;
+				"login_user_profile_error", getProfileCallback(username), GlobalConsts.DataProfileKey);
+			return await getDataObject(dataAccess, false) as UserProfileModel;
 		}
 
 		/// <summary>
@@ -85,9 +70,8 @@ namespace EduCATS.Data
 		public async static Task<List<NewsModel>> GetNews(string username)
 		{
 			var dataAccess = new DataAccess<NewsModel>(
-				"today_news_load_error", getNewsCallback(username),
-				GlobalConsts.DataGetNewsKey);
-			return getDataObject(dataAccess, await dataAccess.GetList()) as List<NewsModel>;
+				"today_news_load_error", getNewsCallback(username), GlobalConsts.DataGetNewsKey);
+			return await getDataObject(dataAccess, true) as List<NewsModel>;
 		}
 
 		/// <summary>
@@ -98,9 +82,8 @@ namespace EduCATS.Data
 		public async static Task<List<SubjectModel>> GetProfileInfoSubjects(string username)
 		{
 			var dataAccess = new DataAccess<SubjectModel>(
-				"today_subjects_error", getSubjectsCallback(username),
-				GlobalConsts.DataGetSubjectsKey);
-			return getDataObject(dataAccess, await dataAccess.GetList()) as List<SubjectModel>;
+				"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
+			return await getDataObject(dataAccess, true) as List<SubjectModel>;
 		}
 
 		/// <summary>
@@ -111,9 +94,8 @@ namespace EduCATS.Data
 		public async static Task<CalendarModel> GetProfileInfoCalendar(string username)
 		{
 			var dataAccess = new DataAccess<CalendarModel>(
-				"today_calendar_error", getCalendarCallback(username),
-				GlobalConsts.DataGetCalendarKey);
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as CalendarModel;
+				"today_calendar_error", getCalendarCallback(username), GlobalConsts.DataGetCalendarKey);
+			return await getDataObject(dataAccess, false) as CalendarModel;
 		}
 
 		/// <summary>
@@ -124,10 +106,10 @@ namespace EduCATS.Data
 		/// <returns>Statistics data.</returns>
 		public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
 		{
+			var marksKey = $"{GlobalConsts.DataGetMarksKey}/{subjectId}/{groupId}";
 			var dataAccess = new DataAccess<StatsModel>(
-				"stats_marks_error", getStatsCallback(subjectId, groupId),
-				$"{GlobalConsts.DataGetMarksKey}/{subjectId}/{groupId}");
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as StatsModel;
+				"stats_marks_error", getStatsCallback(subjectId, groupId), marksKey);
+			return await getDataObject(dataAccess, false) as StatsModel;
 		}
 
 		/// <summary>
@@ -137,10 +119,10 @@ namespace EduCATS.Data
 		/// <returns>Group data.</returns>
 		public async static Task<GroupModel> GetOnlyGroups(int subjectId)
 		{
+			var groupsKey = $"{GlobalConsts.DataGetGroupsKey}/{subjectId}";
 			var dataAccess = new DataAccess<GroupModel>(
-				"groups_fetch_error", getGroupsCallback(subjectId),
-				$"{GlobalConsts.DataGetGroupsKey}/{subjectId}");
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as GroupModel;
+				"groups_fetch_error", getGroupsCallback(subjectId), groupsKey);
+			return await getDataObject(dataAccess, false) as GroupModel;
 		}
 
 		/// <summary>
@@ -151,10 +133,10 @@ namespace EduCATS.Data
 		/// <returns>Laboratory works data.</returns>
 		public async static Task<LabsModel> GetLabs(int subjectId, int groupId)
 		{
+			var labsKey = $"{GlobalConsts.DataGetLabsKey}/{subjectId}/{groupId}";
 			var dataAccess = new DataAccess<LabsModel>(
-				"labs_fetch_error", getLabsCallback(subjectId, groupId),
-				$"{GlobalConsts.DataGetLabsKey}/{subjectId}/{groupId}");
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as LabsModel;
+				"labs_fetch_error", getLabsCallback(subjectId, groupId), labsKey);
+			return await getDataObject(dataAccess, false) as LabsModel;
 		}
 
 		/// <summary>
@@ -165,10 +147,10 @@ namespace EduCATS.Data
 		/// <returns>Lectures data.</returns>
 		public async static Task<LecturesModel> GetLectures(int subjectId, int groupId)
 		{
+			var lecturesKey = $"{GlobalConsts.DataGetLecturesKey}/{subjectId}/{groupId}";
 			var dataAccess = new DataAccess<LecturesModel>(
-				"lectures_fetch_error", getLecturesCallback(subjectId, groupId),
-				$"{GlobalConsts.DataGetLecturesKey}/{subjectId}/{groupId}");
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as LecturesModel;
+				"lectures_fetch_error", getLecturesCallback(subjectId, groupId), lecturesKey);
+			return await getDataObject(dataAccess, false) as LecturesModel;
 		}
 
 		/// <summary>
@@ -179,10 +161,10 @@ namespace EduCATS.Data
 		/// <returns>List of test data.</returns>
 		public async static Task<List<TestModel>> GetAvailableTests(int subjectId, int userId)
 		{
+			var testsKey = $"{GlobalConsts.DataGetTestsKey}/{subjectId}/{userId}";
 			var dataAccess = new DataAccess<TestModel>(
-				"testingGlobalConsts.Get_tests_error", getTestsCallback(subjectId, userId),
-				$"{GlobalConsts.DataGetTestsKey}/{subjectId}/{userId}");
-			return getDataObject(dataAccess, await dataAccess.GetList()) as List<TestModel>;
+				"testing_get_tests_error", getTestsCallback(subjectId, userId), testsKey);
+			return await getDataObject(dataAccess, true) as List<TestModel>;
 		}
 
 		/// <summary>
@@ -192,9 +174,8 @@ namespace EduCATS.Data
 		/// <returns>Test details data.</returns>
 		public async static Task<TestDetailsModel> GetTest(int testId)
 		{
-			var dataAccess = new DataAccess<TestDetailsModel>(
-				"get_test_error", getTestCallback(testId));
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as TestDetailsModel;
+			var dataAccess = new DataAccess<TestDetailsModel>("get_test_error", getTestCallback(testId));
+			return await getDataObject(dataAccess, false) as TestDetailsModel;
 		}
 
 		/// <summary>
@@ -208,7 +189,7 @@ namespace EduCATS.Data
 		{
 			var dataAccess = new DataAccess<TestQuestionModel>(
 				"get_test_question_error", getNextQuestionCallback(testId, questionNumber, userId));
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as TestQuestionModel;
+			return await getDataObject(dataAccess, false) as TestQuestionModel;
 		}
 
 		/// <summary>
@@ -218,9 +199,8 @@ namespace EduCATS.Data
 		/// <returns>String. <c>"Ok"</c>, for example.</returns>
 		public async static Task<object> AnswerQuestionAndGetNext(TestAnswerPostModel answer)
 		{
-			var dataAccess = new DataAccess<object>(
-				"answer_question_error", answerQuestionCallback(answer));
-			return getDataObject(dataAccess, await dataAccess.GetSingle());
+			var dataAccess = new DataAccess<object>("answer_question_error", answerQuestionCallback(answer));
+			return await getDataObject(dataAccess, false);
 		}
 
 		/// <summary>
@@ -231,10 +211,10 @@ namespace EduCATS.Data
 		/// <returns>List of results data.</returns>
 		public async static Task<List<TestResultsModel>> GetUserAnswers(int userId, int testId)
 		{
+			var testAnswersKey = $"{GlobalConsts.DataGetTestAnswersKey}/{userId}/{testId}";
 			var dataAccess = new DataAccess<TestResultsModel>(
-				"test_results_error", getTestAnswersCallback(userId, testId),
-				$"{GlobalConsts.DataGetTestAnswersKey}/{userId}/{testId}");
-			return getDataObject(dataAccess, await dataAccess.GetList()) as List<TestResultsModel>;
+				"test_results_error", getTestAnswersCallback(userId, testId), testAnswersKey);
+			return await getDataObject(dataAccess, true) as List<TestResultsModel>;
 		}
 
 		/// <summary>
@@ -246,11 +226,10 @@ namespace EduCATS.Data
 		/// <returns>Root concept data.</returns>
 		public async static Task<RootConceptModel> GetRootConcepts(string userId, string subjectId)
 		{
+			var rootConceptKey = $"{GlobalConsts.DataGetRootConceptKey}/{userId}/{subjectId}";
 			var dataAccess = new DataAccess<RootConceptModel>(
-				"eemc_root_concepts_error",
-				getRootConceptsCallback(userId, subjectId),
-				$"{GlobalConsts.DataGetRootConceptKey}/{userId}/{subjectId}");
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as RootConceptModel;
+				"eemc_root_concepts_error", getRootConceptsCallback(userId, subjectId), rootConceptKey);
+			return await getDataObject(dataAccess, false) as RootConceptModel;
 		}
 
 		/// <summary>
@@ -261,10 +240,10 @@ namespace EduCATS.Data
 		/// <returns>Concept data.</returns>
 		public async static Task<ConceptModel> GetConceptTree(int elementId)
 		{
+			var conceptTreeKey = $"{GlobalConsts.DataGetConceptTreeKey}/{elementId}";
 			var dataAccess = new DataAccess<ConceptModel>(
-				"eemc_concept_tree_error", getConceptTreeCallback(elementId),
-				$"{GlobalConsts.DataGetConceptTreeKey}/{elementId}");
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as ConceptModel;
+				"eemc_concept_tree_error", getConceptTreeCallback(elementId), conceptTreeKey);
+			return await getDataObject(dataAccess, false) as ConceptModel;
 		}
 
 		/// <summary>
@@ -275,9 +254,8 @@ namespace EduCATS.Data
 		public async static Task<FilesModel> GetFiles(int subjectId)
 		{
 			var dataAccess = new DataAccess<FilesModel>(
-				"files_fetch_error", getFilesCallback(subjectId),
-				$"{GlobalConsts.DataGetFilesKey}/{subjectId}");
-			return getDataObject(dataAccess, await dataAccess.GetSingle()) as FilesModel;
+				"files_fetch_error", getFilesCallback(subjectId), $"{GlobalConsts.DataGetFilesKey}/{subjectId}");
+			return await getDataObject(dataAccess, false) as FilesModel;
 		}
 
 		/// <summary>
@@ -288,20 +266,29 @@ namespace EduCATS.Data
 		/// <returns>List of recommendations data.</returns>
 		public async static Task<List<RecommendationModel>> GetRecommendations(int subjectId, int userId)
 		{
+			var recommendationKey = $"{GlobalConsts.DataGetRecommendationsKey}/{subjectId}/{userId}";
 			var dataAccess = new DataAccess<RecommendationModel>(
-				"recommendations_fetch_error", getRecommendationsCallback(subjectId, userId),
-				$"{GlobalConsts.DataGetRecommendationsKey}/{subjectId}/{userId}");
-			return getDataObject(dataAccess, await dataAccess.GetList()) as List<RecommendationModel>;
+				"recommendations_fetch_error", getRecommendationsCallback(subjectId, userId), recommendationKey);
+			return await getDataObject(dataAccess, true) as List<RecommendationModel>;
 		}
 
 		/// <summary>
-		/// Get data object & set error details.
+		/// Get data object and set error details.
 		/// </summary>
+		/// <typeparam name="T">Object type.</typeparam>
 		/// <param name="dataAccess">Data Access instance.</param>
-		/// <param name="objectToGet">Object to get.</param>
-		/// <returns>Object to get.</returns>
-		static object getDataObject(IDataAccess dataAccess, object objectToGet)
+		/// <param name="isList">Is object a list or a single object.</param>
+		/// <returns>Object.</returns>
+		async static Task<object> getDataObject<T>(IDataAccess<T> dataAccess, bool isList)
 		{
+			object objectToGet;
+
+			if (isList) {
+				objectToGet = await dataAccess.GetList();
+			} else {
+				objectToGet = await dataAccess.GetSingle();
+			}
+
 			setError(dataAccess.ErrorMessageKey, dataAccess.IsConnectionError);
 			return objectToGet;
 		}

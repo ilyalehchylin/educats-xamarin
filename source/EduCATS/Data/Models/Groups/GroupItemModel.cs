@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Groups
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Group details model.
