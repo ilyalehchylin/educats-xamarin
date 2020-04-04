@@ -8,34 +8,34 @@ namespace EduCATS.UnitTests
 	[TestFixture]
 	public class JsonControllerTests
 	{
-		const string emptyJson = "{}";
-		const string nonValidJson = "Not JSON";
-		const string validJson = "{ \"data\": 25 }";
-		const string validJsonArray = "[ { \"data\": 25 }, { \"data\": 50 } ]";
+		const string _emptyJson = "{}";
+		const string _nonValidJson = "Not JSON";
+		const string _validJson = "{ \"data\": 25 }";
+		const string _validJsonArray = "[ { \"data\": 25 }, { \"data\": 50 } ]";
 
-		const string username = "admin";
-		const string password = "123";
+		const string _username = "admin";
+		const string _password = "123";
 
-		static string userJson = $"{{ \"username\": \"{username}\", \"password\": \"{password}\" }}";
+		static string _userJson = $"{{ \"username\": \"{_username}\", \"password\": \"{_password}\" }}";
 
 		[Test]
 		public void IsSingleJsonValidTest()
 		{
-			var actual = JsonController.IsJsonValid(validJson);
+			var actual = JsonController.IsJsonValid(_validJson);
 			Assert.AreEqual(true, actual);
 		}
 
 		[Test]
 		public void IsArrayJsonValidTest()
 		{
-			var actual = JsonController.IsJsonValid(validJsonArray);
+			var actual = JsonController.IsJsonValid(_validJsonArray);
 			Assert.AreEqual(true, actual);
 		}
 
 		[Test]
 		public void IsNonJsonValidTest()
 		{
-			var actual = JsonController.IsJsonValid(nonValidJson);
+			var actual = JsonController.IsJsonValid(_nonValidJson);
 			Assert.AreEqual(false, actual);
 		}
 
@@ -51,7 +51,7 @@ namespace EduCATS.UnitTests
 		{
 			var incorrectObject = new object();
 			var actual = JsonController.ConvertObjectToJson(incorrectObject);
-			Assert.AreEqual(emptyJson, actual);
+			Assert.AreEqual(_emptyJson, actual);
 		}
 
 		[Test]
@@ -67,7 +67,7 @@ namespace EduCATS.UnitTests
 			var user = Mock.Of<UserCredentials>(
 				u => u.Username == "admin" && u.Password == "123");
 
-			var actual = JsonController<UserCredentials>.ConvertJsonToObject(userJson);
+			var actual = JsonController<UserCredentials>.ConvertJsonToObject(_userJson);
 			Assert.AreEqual(user.Username, actual.Username);
 			Assert.AreEqual(user.Password, actual.Password);
 		}
