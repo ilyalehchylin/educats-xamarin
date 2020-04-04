@@ -5,8 +5,8 @@ Summary:
 
 ### Issues resolved
 
-<!-- List all related issues here -->
-- Fixes #ISSUE_NUMBER
+<!-- List all related issue numbers here -->
+- Fixes #
 
 ### Platforms affected
 
