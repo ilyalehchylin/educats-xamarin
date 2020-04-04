@@ -14,8 +14,8 @@ namespace EduCATS.UnitTests
 		[Test]
 		public async Task GetSingleTest()
 		{
-			Dataa<<object>.IsCheckConnectionDisabled = true;
-			var mock = new Mock<Dataa<<object>>(_message, null, _key);
+			DataAccess<object>.IsCheckConnectionDisabled = true;
+			var mock = new Mock<DataAccess<object>>(_message, null, _key);
 			var actual = await mock.Object.GetSingle();
 			Assert.IsNotNull(actual);
 		}
