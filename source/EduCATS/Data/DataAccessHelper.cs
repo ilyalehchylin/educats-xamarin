@@ -41,6 +41,12 @@ namespace EduCATS.Data
 		static Func<Task<KeyValuePair<string, HttpStatusCode>>> _callback;
 
 		/// <summary>
+		/// Specifies if class should check for connection.
+		/// </summary>
+		/// <remarks>Used for Unit tests.</remarks>
+		public static bool IsCheckConnectionDisabled { get; set; }
+
+		/// <summary>
 		/// Is error occurred.
 		/// </summary>
 		public bool IsError { get; set; }
@@ -264,6 +270,10 @@ namespace EduCATS.Data
 		static void setCallback(Task<object> callback)
 		{
 			if (callback == null) {
+				_callback = async () => {
+					await Task.Run(() => { });
+					return new KeyValuePair<string, HttpStatusCode>();
+				};
 				return;
 			}
 
@@ -279,6 +289,10 @@ namespace EduCATS.Data
 		/// <returns><c>True</c> if established.</returns>
 		static bool checkConnectionEstablished()
 		{
+			if (IsCheckConnectionDisabled) {
+				return true;
+			}
+
 			return Connectivity.NetworkAccess == NetworkAccess.Internet;
 		}
 	}
