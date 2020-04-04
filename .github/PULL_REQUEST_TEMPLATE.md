@@ -1,12 +1,3 @@
----
-name: Pull request
-about: Create a pull request
-title: '[PR] [#IssueFixed] '
-labels: ''
-assignees: ''
-
----
-
 ### Description of change
 
 <!-- Please provide summary of the changes -->
