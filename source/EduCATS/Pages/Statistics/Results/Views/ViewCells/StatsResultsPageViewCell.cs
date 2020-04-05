@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using FFImageLoading.Transformations;

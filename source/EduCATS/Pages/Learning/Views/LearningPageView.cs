@@ -1,4 +1,4 @@
-﻿using EduCATS.Helpers.Pages;
+﻿using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Learning.ViewModels;
 using EduCATS.Pages.Learning.Views.ViewCells;
 using EduCATS.Themes;
@@ -15,7 +15,7 @@ namespace EduCATS.Pages.Learning.Views
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new LearningPageViewModel(new AppPages());
+			BindingContext = new LearningPageViewModel(new PlatformServices());
 			createViews();
 		}
 

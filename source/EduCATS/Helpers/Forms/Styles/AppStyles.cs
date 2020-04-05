@@ -1,7 +1,7 @@
 ﻿using EduCATS.Fonts;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Styles
+namespace EduCATS.Helpers.Forms.Styles
 {
 	public static class AppStyles
 	{

@@ -16,7 +16,7 @@ namespace EduCATS.UnitTests
 		const string _username = "admin";
 		const string _password = "123";
 
-		static string _userJson = $"{{ \"username\": \"{_username}\", \"password\": \"{_password}\" }}";
+		static readonly string _userJson = $"{{ \"username\": \"{_username}\", \"password\": \"{_password}\" }}";
 
 		[Test]
 		public void IsSingleJsonValidTest()

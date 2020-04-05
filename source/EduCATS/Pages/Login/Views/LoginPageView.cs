@@ -4,11 +4,10 @@ using EduCATS.Pages.Login.ViewModels;
 using FFImageLoading.Forms;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
 using FFImageLoading.Transformations;
 using System.Collections.Generic;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 
 namespace EduCATS.Pages.Login.Views
 {
@@ -35,9 +34,7 @@ namespace EduCATS.Pages.Login.Views
 		public LoginPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
-			var dialogService = new AppDialogs();
-			var navigationService = new AppPages();
-			BindingContext = new LoginPageViewModel(dialogService, navigationService);
+			BindingContext = new LoginPageViewModel(new PlatformServices());
 			createViews();
 		}
 

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace EduCATS.Helpers.Devices.Interfaces
+namespace EduCATS.Helpers.Forms.Devices
 {
 	/// <summary>
 	/// Framework specific interface.
@@ -66,5 +66,11 @@ namespace EduCATS.Helpers.Devices.Interfaces
 		/// Cancel speech.
 		/// </summary>
 		void CancelSpeech();
+
+		/// <summary>
+		/// Check Internet or local network connection.
+		/// </summary>
+		/// <returns>Is connection established.</returns>
+		bool CheckConnectivity();
 	}
 }

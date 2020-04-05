@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
 using EduCATS.Controls.RoundedListView.Selectors;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;

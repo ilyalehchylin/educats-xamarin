@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using EduCATS.Helpers.Devices.Interfaces;
 using EduCATS.Helpers.Extensions;
+using EduCATS.Helpers.Forms;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
@@ -8,16 +8,16 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 {
 	public class NewsDetailsPageViewModel : ViewModel
 	{
-		readonly IDevice _device;
+		readonly IPlatformServices _services;
 
 		const int _fontPadding = 10;
 		const string _fontFamily = "Arial";
 
 		bool _isBusySpeech;
 
-		public NewsDetailsPageViewModel(double fontSize, string title, string body, IDevice device)
+		public NewsDetailsPageViewModel(double fontSize, string title, string body, IPlatformServices services)
 		{
-			_device = device;
+			_services = services;
 
 			NewsTitle = title;
 			NewsBody = $"" +
@@ -58,12 +58,12 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 
 			if (_isBusySpeech) {
 				_isBusySpeech = false;
-				_device.CancelSpeech();
+				_services.Device.CancelSpeech();
 				return;
 			}
 
 			_isBusySpeech = true;
-			await _device.Speak(NewsTitle);
+			await _services.Device.Speak(NewsTitle);
 
 			if (!_isBusySpeech) {
 				return;
@@ -76,7 +76,7 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 				return;
 			}
 
-			await _device.Speak(editedNewsBody);
+			await _services.Device.Speak(editedNewsBody);
 			_isBusySpeech = false;
 		}
 	}

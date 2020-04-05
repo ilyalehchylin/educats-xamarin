@@ -1,5 +1,5 @@
 ﻿using System;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
 using Xamarin.Forms;
 
 namespace EduCATS.Fonts
@@ -22,7 +22,16 @@ namespace EduCATS.Fonts
 		/// <summary>
 		/// Are large preferences active.
 		/// </summary>
-		static bool _isLargePrefs => AppPrefs.IsLargeFont;
+		static bool _isLargePrefs => _services.Preferences.IsLargeFont;
+
+		static IPlatformServices _services;
+
+		static FontSizeController()
+		{
+			if (_services == null) {
+				_services = new PlatformServices();
+			}
+		}
 
 		/// <summary>
 		/// Get font size.

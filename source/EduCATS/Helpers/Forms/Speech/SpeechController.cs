@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using EduCATS.Constants;
 using Xamarin.Essentials;
 
-namespace EduCATS.Helpers.Speech
+namespace EduCATS.Helpers.Forms.Speech
 {
 	/// <summary>
 	/// Speech-to-text helper.

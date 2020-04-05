@@ -1,6 +1,5 @@
-﻿using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Styles;
+﻿using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Testing.Results.ViewModels;
 using EduCATS.Pages.Testing.Results.Views.ViewCells;
 using EduCATS.Themes;
@@ -18,7 +17,7 @@ namespace EduCATS.Pages.Testing.Results.Views
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Title = CrossLocalization.Translate("test_results_title");
 			BindingContext = new TestingResultsPageViewModel(
-				testId, fromComplexLearning, new AppDialogs(), new AppPages());
+				testId, fromComplexLearning, new PlatformServices());
 			createToolbar();
 			createViews();
 		}

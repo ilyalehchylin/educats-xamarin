@@ -1,6 +1,5 @@
-﻿using EduCATS.Fonts;
-using EduCATS.Helpers.Converters;
-using EduCATS.Helpers.Styles;
+﻿using EduCATS.Helpers.Forms.Converters;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Xamarin.Forms;

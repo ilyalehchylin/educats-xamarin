@@ -1,9 +1,6 @@
 ﻿using EduCATS.Controls.RoundedListView;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Settings;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Today.Base.ViewModels;
 using EduCATS.Pages.Today.Base.Views.ViewCells;
 using EduCATS.Themes;
@@ -28,13 +25,14 @@ namespace EduCATS.Pages.Today.Base.Views
 		static Thickness _listMargin = new Thickness(0, 10, 0, 0);
 		static Thickness _subjectsLabelMargin = new Thickness(0, 10, 10, 10);
 
+		readonly IPlatformServices _services;
+
 		public TodayPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			var subjectListHeaderHeight = RoundedListView.HeaderHeight;
-			BindingContext = new TodayPageViewModel(
-				_subjectRowHeight, subjectListHeaderHeight,
-				new AppDialogs(), new AppPages(), new AppDevice());
+			_services = new PlatformServices();
+			BindingContext = new TodayPageViewModel(_subjectRowHeight, subjectListHeaderHeight, _services);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			createViews();
 		}
@@ -87,10 +85,13 @@ namespace EduCATS.Pages.Today.Base.Views
 
 		CarouselView createCalendarCarousel()
 		{
+			var heightReqest = _services.Preferences.IsLargeFont
+				? _calendarCarouselHeightLarge : _calendarCarouselHeight;
+
 			var calendarCarouselView = new CarouselView {
 				BackgroundColor = Color.FromHex(Theme.Current.TodayCalendarBackgroundColor),
 				HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
-				HeightRequest = AppPrefs.IsLargeFont ? _calendarCarouselHeightLarge : _calendarCarouselHeight,
+				HeightRequest = heightReqest,
 				ItemTemplate = new DataTemplate(typeof(CalendarCarouselViewCell))
 			};
 

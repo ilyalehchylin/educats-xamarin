@@ -1,4 +1,4 @@
-﻿using EduCATS.Helpers.Settings;
+﻿using EduCATS.Helpers.Forms;
 using EduCATS.Themes.Interfaces;
 using EduCATS.Themes.Templates;
 
@@ -20,14 +20,26 @@ namespace EduCATS.Themes
 		public const string ThemeDefault = "THEME_DEFAULT";
 
 		/// <summary>
+		/// Platform services.
+		/// </summary>
+		static readonly IPlatformServices _services;
+
+		/// <summary>
 		/// Current theme.
 		/// </summary>
 		static ITheme _currentTheme = new DefaultTheme();
 
+		static AppTheme()
+		{
+			if (_services == null) {
+				_services = new PlatformServices();
+			}
+		}
+
 		/// <summary>
 		/// Set current theme with application <see cref="AppPrefs"/>.
 		/// </summary>
-		public static void SetCurrentTheme() => SetTheme(AppPrefs.Theme, true);
+		public static void SetCurrentTheme() => SetTheme(_services.Preferences.Theme, true);
 
 		/// <summary>
 		/// Set theme with theme key.
@@ -44,7 +56,7 @@ namespace EduCATS.Themes
 			Theme.Set(_currentTheme);
 
 			if (!fromPrefs) {
-				AppPrefs.Theme = theme;
+				_services.Preferences.Theme = theme;
 			}
 		}
 	}

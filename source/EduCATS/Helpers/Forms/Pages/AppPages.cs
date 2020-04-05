@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data.Models;
-using EduCATS.Helpers.Pages.Interfaces;
 using EduCATS.Pages.Eemc.Views;
 using EduCATS.Pages.Files.Views;
 using EduCATS.Pages.Login.Views;
@@ -23,7 +22,7 @@ using EduCATS.Pages.Today.NewsDetails.Views;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Pages
+namespace EduCATS.Helpers.Forms.Pages
 {
 	/// <summary>
 	/// Application's navigation helper.

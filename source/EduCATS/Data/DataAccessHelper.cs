@@ -4,8 +4,8 @@ using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data.Caching;
 using EduCATS.Data.Interfaces;
+using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Json;
-using Xamarin.Essentials;
 
 namespace EduCATS.Data
 {
@@ -41,12 +41,6 @@ namespace EduCATS.Data
 		static Func<Task<KeyValuePair<string, HttpStatusCode>>> _callback;
 
 		/// <summary>
-		/// Specifies if class should check for connection.
-		/// </summary>
-		/// <remarks>Used for Unit tests.</remarks>
-		public static bool IsCheckConnectionDisabled { get; set; }
-
-		/// <summary>
 		/// Is error occurred.
 		/// </summary>
 		public bool IsError { get; set; }
@@ -62,6 +56,11 @@ namespace EduCATS.Data
 		public string ErrorMessageKey { get; set; }
 
 		/// <summary>
+		/// Platform services.
+		/// </summary>
+		readonly IPlatformServices _services;
+
+		/// <summary>
 		/// Constructor.
 		/// </summary>
 		/// <param name="messageForError">Error message.</param>
@@ -73,8 +72,9 @@ namespace EduCATS.Data
 			string key = null)
 		{
 			_key = key;
-			_isCaching = !string.IsNullOrEmpty(_key);
 			_messageForError = messageForError;
+			_services = new PlatformServices();
+			_isCaching = !string.IsNullOrEmpty(_key);
 			setCallback(callback);
 		}
 
@@ -131,7 +131,7 @@ namespace EduCATS.Data
 		/// <returns>Data object.</returns>
 		T checkSingleObjectReadyForResponse()
 		{
-			if (checkConnectionEstablished()) {
+			if (CheckConnectionEstablished()) {
 				return default;
 			}
 
@@ -146,7 +146,7 @@ namespace EduCATS.Data
 		/// <returns>List of data.</returns>
 		List<T> checkListReadyForResponse()
 		{
-			if (checkConnectionEstablished()) {
+			if (CheckConnectionEstablished()) {
 				return null;
 			}
 
@@ -287,13 +287,9 @@ namespace EduCATS.Data
 		/// Check network connection.
 		/// </summary>
 		/// <returns><c>True</c> if established.</returns>
-		static bool checkConnectionEstablished()
+		public virtual bool CheckConnectionEstablished()
 		{
-			if (IsCheckConnectionDisabled) {
-				return true;
-			}
-
-			return Connectivity.NetworkAccess == NetworkAccess.Internet;
+			return _services.Device.CheckConnectivity();
 		}
 	}
 }

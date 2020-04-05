@@ -3,9 +3,7 @@ using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
 using EduCATS.Data.Models;
 using EduCATS.Fonts;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Statistics.Students.ViewModels;
 using EduCATS.Pages.Statistics.Students.Views.ViewCells;
 using EduCATS.Themes;
@@ -25,8 +23,7 @@ namespace EduCATS.Pages.Statistics.Students.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
-			BindingContext = new StudentsPageViewModel(
-				new AppPages(), new AppDialogs(), new AppDevice(), subjectId, students, pageIndex);
+			BindingContext = new StudentsPageViewModel(new PlatformServices(), subjectId, students, pageIndex);
 			createViews();
 		}
 

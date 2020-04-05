@@ -28,7 +28,6 @@
     <ItemGroup>
         <Folder Include="Configuration\" />
         <Folder Include="Helpers\" />
-        <Folder Include="Helpers\Settings\" />
         <Folder Include="Pages\" />
         <Folder Include="Helpers\Json\" />
         <Folder Include="Pages\Login\" />
@@ -42,12 +41,7 @@
         <Folder Include="Data\Models\" />
         <Folder Include="Data\Models\User\" />
         <Folder Include="Data\User\" />
-        <Folder Include="Helpers\Dialogs\" />
-        <Folder Include="Helpers\Dialogs\Interfaces\" />
-        <Folder Include="Helpers\Pages\" />
-        <Folder Include="Helpers\Pages\Interfaces\" />
         <Folder Include="Pages\Main\" />
-        <Folder Include="Helpers\Effects\" />
         <Folder Include="Pages\Today\" />
         <Folder Include="Pages\Today\Base\" />
         <Folder Include="Pages\Today\Base\Views\" />
@@ -91,7 +85,6 @@
         <Folder Include="Pages\Statistics\Results\Models\" />
         <Folder Include="Pages\Statistics\Results\Views\ViewCells\" />
         <Folder Include="Constants\" />
-        <Folder Include="Helpers\Converters\" />
         <Folder Include="Pages\Learning\" />
         <Folder Include="Pages\Learning\Models\" />
         <Folder Include="Pages\Learning\ViewModels\" />
@@ -111,8 +104,6 @@
         <Folder Include="Data\Models\Testing\Passing\" />
         <Folder Include="Networking\Models\Testing\" />
         <Folder Include="Pages\Testing\Passing\Views\ViewCells\" />
-        <Folder Include="Helpers\Devices\" />
-        <Folder Include="Helpers\Devices\Interfaces\" />
         <Folder Include="Data\Models\Testing\Results\" />
         <Folder Include="Pages\Testing\Results\" />
         <Folder Include="Pages\Testing\Results\Views\" />
@@ -164,10 +155,19 @@
         <Folder Include="Pages\Settings\Fonts\Views\" />
         <Folder Include="Pages\Settings\Fonts\ViewModels\" />
         <Folder Include="Pages\Settings\Fonts\Models\" />
-        <Folder Include="Helpers\Styles\" />
         <Folder Include="Pages\Settings\About\" />
         <Folder Include="Pages\Settings\About\ViewModels\" />
-        <Folder Include="Helpers\Speech\" />
+        <Folder Include="Helpers\Forms\" />
+        <Folder Include="Helpers\Forms\Speech\" />
+        <Folder Include="Helpers\Forms\Styles\" />
+        <Folder Include="Helpers\Forms\Settings\" />
+        <Folder Include="Helpers\Forms\Effects\" />
+        <Folder Include="Helpers\Forms\Dialogs\" />
+        <Folder Include="Helpers\Forms\Devices\" />
+        <Folder Include="Helpers\Forms\Converters\" />
+        <Folder Include="Helpers\Forms\Pages\" />
+        <Folder Include="Helpers\Forms\PlatformServices\" />
+        <Folder Include="Helpers\Forms\PlatformServices\Interfaces\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />

@@ -1,5 +1,5 @@
 ﻿using EduCATS.Data.Models;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Xamarin.Forms;

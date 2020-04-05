@@ -3,9 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Recommendations.Models;
 using Nyxbull.Plugins.CrossLocalization;
@@ -15,12 +13,8 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 {
 	public class RecommendationsPageViewModel : SubjectsViewModel
 	{
-		readonly IPages _navigation;
-
-		public RecommendationsPageViewModel(
-			IDialogs dialogs, IDevice device, IPages navigation) : base(dialogs, device)
+		public RecommendationsPageViewModel(IPlatformServices services) : base(services)
 		{
-			_navigation = navigation;
 			update();
 		}
 
@@ -58,7 +52,7 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 
 		void update()
 		{
-			DeviceService.MainThread(async () => {
+			PlatformServices.Device.MainThread(async () => {
 				IsLoading = true;
 				await SetupSubjects();
 				await getRecList();
@@ -71,7 +65,7 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 			var recsList = await DataAccess.GetRecommendations(CurrentSubject.Id, AppUserData.UserId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			var recommendations = recsList?.Select(r => new RecommendationsPageModel(r));
@@ -90,9 +84,9 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 			var recommedation = selectedObject as RecommendationsPageModel;
 
 			if (recommedation.IsTest) {
-				_navigation.OpenTestPassing(recommedation.Id, true);
+				PlatformServices.Navigation.OpenTestPassing(recommedation.Id, true);
 			} else {
-				_navigation.OpenEemc(
+				PlatformServices.Navigation.OpenEemc(
 					CrossLocalization.Translate("learning_card_eemc"),
 					recommedation.Id);
 			}

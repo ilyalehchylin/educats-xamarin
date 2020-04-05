@@ -3,12 +3,12 @@ using EduCATS.Networking;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Essentials;
 
-namespace EduCATS.Helpers.Settings
+namespace EduCATS.Helpers.Forms.Settings
 {
 	/// <summary>
 	/// Application preferences (settings/saved variables).
 	/// </summary>
-	public static class AppPrefs
+	public class AppPrefs : IPreferences
 	{
 		/// <summary>
 		/// Language code key.
@@ -18,12 +18,12 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Default language code.
 		/// </summary>
-		static readonly string _languageCodeDefault = Languages.SYSTEM.LangCode;
+		readonly string _languageCodeDefault = Languages.SYSTEM.LangCode;
 
 		/// <summary>
 		/// Language code.
 		/// </summary>
-		public static string LanguageCode {
+		public string LanguageCode {
 			get => Preferences.Get(_languageCodeKey, _languageCodeDefault);
 			set => Preferences.Set(_languageCodeKey, value);
 		}
@@ -41,7 +41,7 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Theme.
 		/// </summary>
-		public static string Theme {
+		public string Theme {
 			get => Preferences.Get(_themeKey, _themeDefault);
 			set => Preferences.Set(_themeKey, value);
 		}
@@ -59,7 +59,7 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Current server.
 		/// </summary>
-		public static string Server {
+		public string Server {
 			get => Preferences.Get(_serverKey, _serverDefault);
 			set => Preferences.Set(_serverKey, value);
 		}
@@ -77,7 +77,7 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Is authorized.
 		/// </summary>
-		public static bool IsLoggedIn {
+		public bool IsLoggedIn {
 			get => Preferences.Get(_isLoggedInKey, _isLoggedInDefault);
 			set => Preferences.Set(_isLoggedInKey, value);
 		}
@@ -95,7 +95,7 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Username.
 		/// </summary>
-		public static string UserLogin {
+		public string UserLogin {
 			get => Preferences.Get(_userLoginKey, _userLoginDefault);
 			set => Preferences.Set(_userLoginKey, value);
 		}
@@ -113,7 +113,7 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// User ID.
 		/// </summary>
-		public static int UserId {
+		public int UserId {
 			get => Preferences.Get(_userIdKey, _userIdDefault);
 			set => Preferences.Set(_userIdKey, value);
 		}
@@ -126,12 +126,12 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Default chosen ID.
 		/// </summary>
-		static readonly int _chosenSubjectIdDefault = 0;
+		readonly int _chosenSubjectIdDefault = 0;
 
 		/// <summary>
 		/// Chosen subject ID.
 		/// </summary>
-		public static int ChosenSubjectId {
+		public int ChosenSubjectId {
 			get => Preferences.Get(_chosenSubjectIdKey, _chosenSubjectIdDefault);
 			set => Preferences.Set(_chosenSubjectIdKey, value);
 		}
@@ -144,12 +144,12 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Default group ID.
 		/// </summary>
-		static readonly int _groupIdDefault = -1;
+		readonly int _groupIdDefault = -1;
 
 		/// <summary>
 		/// Group ID.
 		/// </summary>
-		public static int GroupId {
+		public int GroupId {
 			get => Preferences.Get(_groupIdKey, _groupIdDefault);
 			set => Preferences.Set(_groupIdKey, value);
 		}
@@ -162,12 +162,12 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Default group name.
 		/// </summary>
-		static readonly string _groupNameDefault = "";
+		readonly string _groupNameDefault = "";
 
 		/// <summary>
 		/// Group name.
 		/// </summary>
-		public static string GroupName {
+		public string GroupName {
 			get => Preferences.Get(_groupNameKey, _groupNameDefault);
 			set => Preferences.Set(_groupNameKey, value);
 		}
@@ -180,12 +180,12 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Default avatar string.
 		/// </summary>
-		static readonly string _avatarDefault = "";
+		readonly string _avatarDefault = "";
 
 		/// <summary>
 		/// Avatar.
 		/// </summary>
-		public static string Avatar {
+		public string Avatar {
 			get => Preferences.Get(_avatarKey, _avatarDefault);
 			set => Preferences.Set(_avatarKey, value);
 		}
@@ -198,12 +198,12 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Default chosen group ID.
 		/// </summary>
-		static readonly int _chosenGroupIdDefault = 0;
+		readonly int _chosenGroupIdDefault = 0;
 
 		/// <summary>
 		/// Chosen group ID.
 		/// </summary>
-		public static int ChosenGroupId {
+		public int ChosenGroupId {
 			get => Preferences.Get(_chosenGroupIdKey, _chosenGroupIdDefault);
 			set => Preferences.Set(_chosenGroupIdKey, value);
 		}
@@ -216,12 +216,12 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Default font.
 		/// </summary>
-		static readonly string _fontDefault = FontsController.DefaultFont;
+		readonly string _fontDefault = FontsController.DefaultFont;
 
 		/// <summary>
 		/// Font.
 		/// </summary>
-		public static string Font {
+		public string Font {
 			get => Preferences.Get(_fontKey, _fontDefault);
 			set => Preferences.Set(_fontKey, value);
 		}
@@ -234,12 +234,12 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Is large font default.
 		/// </summary>
-		static readonly bool _isLargeFontDefault = false;
+		readonly bool _isLargeFontDefault = false;
 
 		/// <summary>
 		/// Is large font.
 		/// </summary>
-		public static bool IsLargeFont {
+		public bool IsLargeFont {
 			get => Preferences.Get(_isLargeFontKey, _isLargeFontDefault);
 			set => Preferences.Set(_isLargeFontKey, value);
 		}
@@ -247,7 +247,7 @@ namespace EduCATS.Helpers.Settings
 		/// <summary>
 		/// Delete all preferences.
 		/// </summary>
-		public static void ResetPrefs()
+		public void ResetPrefs()
 		{
 			Preferences.Clear();
 		}

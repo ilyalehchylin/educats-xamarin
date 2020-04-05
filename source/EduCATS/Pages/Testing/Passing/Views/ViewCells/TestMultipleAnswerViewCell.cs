@@ -1,5 +1,5 @@
 ﻿using EduCATS.Fonts;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Testing.Passing.Models;
 using EduCATS.Themes;
 using Xamarin.Forms;

@@ -82,49 +82,26 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			if (_timeForCompletion == 0)
 				return;
 
-			if (_isTimeForEntireTest) {
-				setTimerForEntireTest();
-			} else {
-				setTimerForQuestion();
-			}
+			setTimer(_isTimeForEntireTest);
 		}
 
-		void setTimerForEntireTest()
+		void setTimer(bool forTest)
 		{
-			_testStarted = DateTime.Now;
+			_started = DateTime.Now;
 
-			_device.SetTimer(TimeSpan.FromSeconds(1), () => {
+			_services.Device.SetTimer(TimeSpan.FromSeconds(1), () => {
 				if (checkTimerCancellation()) {
 					return false;
 				}
 
-				var timePassed = DateHelper.CheckDatesDifference(_testStarted, DateTime.Now);
+				var timePassed = DateHelper.CheckDatesDifference(_started, DateTime.Now);
 				var timeLeft = new TimeSpan(0, _timeForCompletion, 0).Subtract(timePassed);
 				setTitle(timeLeft);
 
-				if (timePassed.TotalMinutes >= _timeForCompletion) {
+				if (forTest && timePassed.TotalMinutes >= _timeForCompletion) {
 					completeTest();
 					return false;
-				}
-
-				return true;
-			});
-		}
-
-		void setTimerForQuestion()
-		{
-			_questionStarted = DateTime.Now;
-
-			_device.SetTimer(TimeSpan.FromSeconds(1), () => {
-				if (checkTimerCancellation()) {
-					return false;
-				}
-
-				var timePassed = DateHelper.CheckDatesDifference(_questionStarted, DateTime.Now);
-				var timeLeft = new TimeSpan(0, _timeForCompletion, 0).Subtract(timePassed);
-				setTitle(timeLeft);
-
-				if (timePassed.TotalSeconds >= _timeForCompletion) {
+				} else if (!forTest && timePassed.TotalSeconds >= _timeForCompletion) {
 					completeQuestion();
 					return false;
 				}

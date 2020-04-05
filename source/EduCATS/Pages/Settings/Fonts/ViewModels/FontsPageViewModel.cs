@@ -2,10 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Fonts;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Settings.Fonts.Models;
 using Nyxbull.Plugins.CrossLocalization;
 
@@ -13,24 +10,20 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 {
 	public class FontsPageViewModel : ViewModel
 	{
-		readonly IDialogs _dialogs;
-		readonly IPages _pages;
-		readonly IDevice _device;
+		readonly IPlatformServices _services;
 
 		bool _isInit;
 		bool _isLargeFontToggleActive;
 
-		public FontsPageViewModel(IDialogs dialogs, IDevice device, IPages pages)
+		public FontsPageViewModel(IPlatformServices services)
 		{
 			_isInit = true;
 			_isLargeFontToggleActive = true;
-			_dialogs = dialogs;
-			_pages = pages;
-			_device = device;
+			_services = services;
 
 			setFonts();
 
-			IsLargeFont = AppPrefs.IsLargeFont;
+			IsLargeFont = _services.Preferences.IsLargeFont;
 		}
 
 		List<FontsPageModel> _fontList;
@@ -43,7 +36,7 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 		public bool IsLargeFont {
 			get { return _isLargeFont; }
 			set {
-				_device.MainThread(async () => {
+				_services.Device.MainThread(async () => {
 					if (_isInit) {
 						_isInit = false;
 					} else {
@@ -60,7 +53,7 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 			get { return _selectedItem; }
 			set {
 				SetProperty(ref _selectedItem, value);
-				_device.MainThread(async () => {
+				_services.Device.MainThread(async () => {
 					await selectFont(_selectedItem);
 				});
 			}
@@ -69,7 +62,7 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 		void setFonts()
 		{
 			var fontList = FontsController.GetFonts();
-			string savedFont = AppPrefs.Font;
+			string savedFont = _services.Preferences.Font;
 
 			if (savedFont.Equals(FontsController.DefaultFont)) {
 				savedFont = CrossLocalization.Translate(savedFont);
@@ -102,7 +95,7 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 
 		async Task setLargeFont(bool isToggled)
 		{
-			if (!_isLargeFontToggleActive || isToggled == AppPrefs.IsLargeFont) {
+			if (!_isLargeFontToggleActive || isToggled == _services.Preferences.IsLargeFont) {
 				_isLargeFontToggleActive = true;
 				return;
 			}
@@ -112,22 +105,22 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 				return;
 			}
 
-			AppPrefs.IsLargeFont = isToggled;
+			_services.Preferences.IsLargeFont = isToggled;
 			switchPage();
 		}
 
 		void switchPage()
 		{
-			if (AppPrefs.IsLoggedIn) {
-				_device.MainThread(() => _pages.OpenMain());
+			if (_services.Preferences.IsLoggedIn) {
+				_services.Device.MainThread(() => _services.Navigation.OpenMain());
 			} else {
-				_device.MainThread(() => _pages.OpenLogin());
+				_services.Device.MainThread(() => _services.Navigation.OpenLogin());
 			}
 		}
 
 		async Task<bool> changeFontConfirmation()
 		{
-			return await _dialogs.ShowConfirmationMessage(
+			return await _services.Dialogs.ShowConfirmationMessage(
 				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("settings_font_change_message"));
 		}

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using EduCATS.Data.Models;
 
-namespace EduCATS.Helpers.Pages.Interfaces
+namespace EduCATS.Helpers.Forms.Pages
 {
 	/// <summary>
 	/// App pages interface.

@@ -1,9 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Settings.Themes.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -12,16 +9,11 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 {
 	public class ThemePageViewModel : ViewModel
 	{
-		readonly IDialogs _dialogs;
-		readonly IDevice _device;
-		readonly IPages _pages;
+		readonly IPlatformServices _services;
 
-		public ThemePageViewModel(IDialogs dialogs, IDevice device, IPages pages)
+		public ThemePageViewModel(IPlatformServices services)
 		{
-			_pages = pages;
-			_device = device;
-			_dialogs = dialogs;
-
+			_services = services;
 			setThemes();
 		}
 
@@ -37,7 +29,7 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 			set {
 				SetProperty(ref _selectedItem, value);
 				if (_selectedItem != null) {
-					_device.MainThread(async () => await selectTheme(_selectedItem));
+					_services.Device.MainThread(async () => await selectTheme(_selectedItem));
 				}
 			}
 		}
@@ -60,7 +52,7 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 
 			var theme = selectedObject as ThemePageModel;
 
-			var result = await _dialogs.ShowConfirmationMessage(
+			var result = await _services.Dialogs.ShowConfirmationMessage(
 				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("settings_theme_change_message"));
 
@@ -74,11 +66,11 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 
 		void switchPage()
 		{
-			_device.MainThread(() => {
-				if (AppPrefs.IsLoggedIn) {
-					_pages.OpenMain();
+			_services.Device.MainThread(() => {
+				if (_services.Preferences.IsLoggedIn) {
+					_services.Navigation.OpenMain();
 				} else {
-					_pages.OpenLogin();
+					_services.Navigation.OpenLogin();
 				}
 			});
 		}
@@ -93,7 +85,7 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 			return new ThemePageModel {
 				Theme = theme,
 				Title = CrossLocalization.Translate(theme?.ToLower()),
-				IsChecked = AppPrefs.Theme == theme
+				IsChecked = _services.Preferences.Theme == theme
 			};
 		}
 	}

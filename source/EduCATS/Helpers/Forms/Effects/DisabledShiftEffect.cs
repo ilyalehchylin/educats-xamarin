@@ -1,7 +1,7 @@
 ﻿using EduCATS.Constants;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Effects
+namespace EduCATS.Helpers.Forms.Effects
 {
 	/// <summary>
 	/// Effect for disabling <c>TabbedPage</c> shift effect.

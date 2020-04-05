@@ -4,11 +4,8 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Extensions;
-using EduCATS.Helpers.Pages.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Statistics.Base.Models;
 using EduCATS.Pages.Statistics.Enums;
@@ -21,14 +18,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 	{
 		const string _doubleStringFormat = "0.0";
 
-		readonly IPages _navigationService;
-
 		List<StatsStudentModel> _students;
 
-		public StatsPageViewModel(
-			IDialogs dialogService, IDevice device, IPages navigationService) : base(dialogService, device)
+		public StatsPageViewModel(IPlatformServices services) : base(services)
 		{
-			_navigationService = navigationService;
 			setPagesList();
 			setCollapsedDetails();
 
@@ -162,7 +155,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				setChartData(null);
 			} else {
 				var currentStudentStatistics = studentsStatistics.SingleOrDefault(
-					s => s.StudentId == AppPrefs.UserId);
+					s => s.StudentId == PlatformServices.Preferences.UserId);
 				setChartData(currentStudentStatistics);
 				_students = studentsStatistics;
 			}
@@ -196,16 +189,17 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				await getProfile();
 			}
 
-			var groupId = AppPrefs.GroupId;
+			var groupId = PlatformServices.Preferences.GroupId;
 
 			if (CurrentSubject == null || groupId == -1) {
 				return null;
 			}
 
-			var statisticsModel = await DataAccess.GetStatistics(CurrentSubject.Id, AppPrefs.GroupId);
+			var statisticsModel = await DataAccess.GetStatistics(
+				CurrentSubject.Id, PlatformServices.Preferences.GroupId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			return statisticsModel.Students?.ToList();
@@ -217,8 +211,8 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		/// <returns>Task.</returns>
 		async Task getProfile()
 		{
-			var profile = await DataAccess.GetProfileInfo(AppPrefs.UserLogin);
-			AppUserData.SetProfileData(profile);
+			var profile = await DataAccess.GetProfileInfo(PlatformServices.Preferences.UserLogin);
+			AppUserData.SetProfileData(PlatformServices, profile);
 			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
 		}
 
@@ -260,19 +254,19 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			var pageType = getPageToOpen(page.Title);
 
 			if (AppUserData.UserType == UserTypeEnum.Professor) {
-				_navigationService.OpenStudentsListStats(
+				PlatformServices.Navigation.OpenStudentsListStats(
 					(int)pageType, CurrentSubject.Id, _students, page.Title);
 				return;
 			}
 
-			var user = _students.SingleOrDefault(s => s.StudentId == AppPrefs.UserId);
+			var user = _students.SingleOrDefault(s => s.StudentId == PlatformServices.Preferences.UserId);
 
 			if (user == null) {
 				return;
 			}
 
-			_navigationService.OpenDetailedStatistics(
-				user.Login, CurrentSubject.Id, AppPrefs.GroupId, (int)pageType, page.Title);
+			PlatformServices.Navigation.OpenDetailedStatistics(
+				user.Login, CurrentSubject.Id, PlatformServices.Preferences.GroupId, (int)pageType, page.Title);
 		}
 
 		StatsPageEnum getPageToOpen(string pageString)

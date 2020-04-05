@@ -1,9 +1,8 @@
 ﻿using EduCATS.Fonts;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Today.NewsDetails.ViewModels;
 using EduCATS.Themes;
-using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.NewsDetails.Views
@@ -19,7 +18,7 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			var dynSize = FontSizeController.GetDynamicSize(_bodyFontSize);
-			BindingContext = new NewsDetailsPageViewModel(dynSize, title, body, new AppDevice());
+			BindingContext = new NewsDetailsPageViewModel(dynSize, title, body, new PlatformServices());
 			setToolbar();
 			createViews();
 		}
