@@ -1,5 +1,4 @@
 ﻿using EduCATS.Controls.RoundedListView;
-using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
@@ -151,12 +150,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		ListView createSubjectsList()
 		{
 			var subjectsLabel = createSubjectsLabel();
-
-			var templateSelector = new RoundedListTemplateSelector {
-				NavigationTemplate = new DataTemplate(typeof(CalendarSubjectsViewCell))
-			};
-
-			var subjectsListView = new RoundedListView(templateSelector, subjectsLabel) {
+			var subjectsListView = new RoundedListView(typeof(CalendarSubjectsViewCell), header: subjectsLabel) {
 				RowHeight = (int)_subjectRowHeight,
 				IsEnabled = false,
 				Margin = _subjectsMargin

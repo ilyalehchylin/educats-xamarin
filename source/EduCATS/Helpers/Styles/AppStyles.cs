@@ -9,15 +9,8 @@ namespace EduCATS.Helpers.Styles
 		{
 			return new Style(typeof(Entry)) {
 				Setters = {
-					new Setter {
-						Property = Entry.FontSizeProperty,
-						Value = FontSizeController.GetSize(size, typeof(Entry))
-					},
-
-					new Setter {
-						Property = Entry.FontFamilyProperty,
-						Value = FontsController.GetCurrentFont(bold)
-					}
+					getSetter(Entry.FontSizeProperty, FontSizeController.GetSize(size, typeof(Entry))),
+					getSetter(Entry.FontFamilyProperty, FontsController.GetCurrentFont(bold))
 				}
 			};
 		}
@@ -26,15 +19,8 @@ namespace EduCATS.Helpers.Styles
 		{
 			return new Style(typeof(Button)) {
 				Setters = {
-					new Setter {
-						Property = Button.FontSizeProperty,
-						Value = FontSizeController.GetSize(size, typeof(Button))
-					},
-
-					new Setter {
-						Property = Button.FontFamilyProperty,
-						Value = FontsController.GetCurrentFont(bold)
-					}
+					getSetter(Button.FontSizeProperty, FontSizeController.GetSize(size, typeof(Button))),
+					getSetter(Button.FontFamilyProperty, FontsController.GetCurrentFont(bold))
 				}
 			};
 		}
@@ -43,16 +29,17 @@ namespace EduCATS.Helpers.Styles
 		{
 			return new Style(typeof(Label)) {
 				Setters = {
-					new Setter {
-						Property = Label.FontSizeProperty,
-						Value = FontSizeController.GetSize(size, typeof(Label))
-					},
-
-					new Setter {
-						Property = Label.FontFamilyProperty,
-						Value = FontsController.GetCurrentFont(bold)
-					}
+					getSetter(Label.FontSizeProperty, FontSizeController.GetSize(size, typeof(Label))),
+					getSetter(Label.FontFamilyProperty, FontsController.GetCurrentFont(bold))
 				}
+			};
+		}
+
+		static Setter getSetter(BindableProperty property, object value)
+		{
+			return new Setter {
+				Property = property,
+				Value = value
 			};
 		}
 	}

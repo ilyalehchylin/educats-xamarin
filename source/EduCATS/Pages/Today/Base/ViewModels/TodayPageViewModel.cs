@@ -138,7 +138,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			get {
 				return _calendarPositionChangedCommand ?? (
 					_calendarPositionChangedCommand = new Command(
-						executeCalendarPositionChangedEvent));
+						calendarPositionChangedEvent));
 			}
 		}
 
@@ -340,7 +340,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			} catch (ObjectDisposedException) { }
 		}
 
-		protected void executeCalendarPositionChangedEvent()
+		protected void calendarPositionChangedEvent()
 		{
 			try {
 				selectTodayDateWithoutSelectedFlag();
@@ -354,18 +354,10 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 				switch (CalendarPosition) {
 					case _minimumCalendarPosition:
-						var dateForPreviousWeek = CalendarList[_minimumCalendarPosition].Date;
-						var previosWeekViewModel = getCalendarViewModel(dateForPreviousWeek, WeekEnum.Previous);
-						CalendarList.RemoveAt(_maximumCalendarPosition);
-						CalendarList.Insert(_minimumCalendarPosition, previosWeekViewModel);
-						CalendarPosition = _minimumCalendarPosition + 1;
+						CalendarPosition = getCalendarPosition(_minimumCalendarPosition, WeekEnum.Previous);
 						break;
 					case _maximumCalendarPosition:
-						var dateForNextWeek = CalendarList[_maximumCalendarPosition].Date;
-						var nextWeekViewModel = getCalendarViewModel(dateForNextWeek, WeekEnum.Next);
-						CalendarList.RemoveAt(_minimumCalendarPosition);
-						CalendarList.Insert(_maximumCalendarPosition, nextWeekViewModel);
-						CalendarPosition = _maximumCalendarPosition - 1;
+						CalendarPosition = getCalendarPosition(_maximumCalendarPosition, WeekEnum.Next);
 						break;
 				}
 			} catch (Exception) { }
@@ -379,6 +371,26 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			_isManualSelectedCalendarDay = true;
 			selectCalendarDay(date);
 			setFilteredSubjectsList();
+		}
+
+		int getCalendarPosition(int boundaryPosition, WeekEnum week)
+		{
+			int removePosition;
+			int calculatedPosition;
+
+			if (boundaryPosition == _maximumCalendarPosition) {
+				removePosition = _minimumCalendarPosition;
+				calculatedPosition = _maximumCalendarPosition - 1;
+			} else {
+				removePosition = _maximumCalendarPosition;
+				calculatedPosition = _minimumCalendarPosition + 1;
+			}
+
+			var date = CalendarList[boundaryPosition].Date;
+			var weekViewModel = getCalendarViewModel(date, week);
+			CalendarList.RemoveAt(removePosition);
+			CalendarList.Insert(boundaryPosition, weekViewModel);
+			return calculatedPosition;
 		}
 
 		void setFilteredSubjectsList()

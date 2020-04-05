@@ -80,11 +80,7 @@ namespace EduCATS.Pages.Files.Views
 
 		RoundedListView createList(View header)
 		{
-			var templateSelector = new RoundedListTemplateSelector {
-				NavigationTemplate = new DataTemplate(typeof(FilesPageViewCell))
-			};
-
-			var filesListView = new RoundedListView(templateSelector, header) {
+			var filesListView = new RoundedListView(typeof(FilesPageViewCell), header: header) {
 				IsPullToRefreshEnabled = true,
 				Margin = _filesListMargin
 			};

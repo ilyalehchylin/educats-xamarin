@@ -1,5 +1,4 @@
 ﻿using EduCATS.Controls.RoundedListView;
-using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Styles;
@@ -29,13 +28,9 @@ namespace EduCATS.Pages.Statistics.Results.Views
 
 		void createViews(string name)
 		{
-			var templateSelector = new RoundedListTemplateSelector {
-				NavigationTemplate = new DataTemplate(typeof(StatsResultsPageViewCell))
-			};
-
 			var resultsListView = new RoundedListView(
-				templateSelector,
-				name == null ? null : createStudentNameLabel(name)) {
+				typeof(StatsResultsPageViewCell),
+				header: name == null ? null : createStudentNameLabel(name)) {
 				IsPullToRefreshEnabled = true
 			};
 

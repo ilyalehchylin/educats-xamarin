@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
-using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Converters;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
@@ -48,11 +47,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 		RoundedListView createRoundedList(View header)
 		{
-			var templateSelector = new RoundedListTemplateSelector {
-				NavigationTemplate = new DataTemplate(typeof(StatsPageViewCell))
-			};
-
-			var roundedListView = new RoundedListView(templateSelector, header) {
+			var roundedListView = new RoundedListView(typeof(StatsPageViewCell), header: header) {
 				IsPullToRefreshEnabled = true
 			};
 
