@@ -1,4 +1,5 @@
-﻿using EduCATS.Controls.RoundedListView.Enums;
+﻿using System;
+using EduCATS.Controls.RoundedListView.Enums;
 using EduCATS.Controls.RoundedListView.Interfaces;
 using Xamarin.Forms;
 
@@ -20,6 +21,28 @@ namespace EduCATS.Controls.RoundedListView.Selectors
 		public DataTemplate NavigationTemplate;
 
 		/// <summary>
+		/// Get template selector.
+		/// </summary>
+		/// <param name="type">View cell type.</param>
+		/// <param name="checkbox">Is template checkbox.</param>
+		public RoundedListTemplateSelector(Type type, bool checkbox)
+		{
+			var dataTemplate = new DataTemplate(type);
+			setTemplate(dataTemplate, checkbox);
+		}
+
+		/// <summary>
+		/// Get template selector.
+		/// </summary>
+		/// <param name="func">Func.</param>
+		/// <param name="checkbox">Is template checkbox.</param>
+		public RoundedListTemplateSelector(Func<object> func, bool checkbox)
+		{
+			var dataTemplate = new DataTemplate(func);
+			setTemplate(dataTemplate, checkbox);
+		}
+
+		/// <summary>
 		/// Template selection overriding.
 		/// </summary>
 		/// <param name="item">Selected object.</param>
@@ -35,6 +58,20 @@ namespace EduCATS.Controls.RoundedListView.Selectors
 				RoundedListTypeEnum.Navigation => NavigationTemplate,
 				_ => null,
 			};
+		}
+
+		/// <summary>
+		/// Set template.
+		/// </summary>
+		/// <param name="dataTemplate">Data template.</param>
+		/// <param name="checkbox">Is template checkbox.</param>
+		void setTemplate(DataTemplate dataTemplate, bool checkbox)
+		{
+			if (checkbox) {
+				CheckboxTemplate = dataTemplate;
+			} else {
+				NavigationTemplate = dataTemplate;
+			}
 		}
 	}
 }

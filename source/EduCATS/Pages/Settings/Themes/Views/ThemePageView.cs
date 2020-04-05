@@ -1,5 +1,4 @@
 ﻿using EduCATS.Controls.RoundedListView;
-using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Devices;
 using EduCATS.Helpers.Dialogs;
 using EduCATS.Helpers.Pages;
@@ -45,11 +44,7 @@ namespace EduCATS.Pages.Settings.Themes.Views
 
 		RoundedListView createList(View header)
 		{
-			var templateSelector = new RoundedListTemplateSelector {
-				CheckboxTemplate = new DataTemplate(typeof(CheckboxViewCell))
-			};
-
-			var listView = new RoundedListView(templateSelector, header) {
+			var listView = new RoundedListView(typeof(CheckboxViewCell), true, header) {
 				Margin = _listMargin
 			};
 

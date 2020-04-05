@@ -106,9 +106,9 @@ namespace EduCATS.Data
 		/// <returns>Statistics data.</returns>
 		public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
 		{
-			var marksKey = $"{GlobalConsts.DataGetMarksKey}/{subjectId}/{groupId}";
 			var dataAccess = new DataAccess<StatsModel>(
-				"stats_marks_error", getStatsCallback(subjectId, groupId), marksKey);
+				"stats_marks_error", getStatsCallback(subjectId, groupId),
+				getKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
 			return await getDataObject(dataAccess, false) as StatsModel;
 		}
 
@@ -119,9 +119,9 @@ namespace EduCATS.Data
 		/// <returns>Group data.</returns>
 		public async static Task<GroupModel> GetOnlyGroups(int subjectId)
 		{
-			var groupsKey = $"{GlobalConsts.DataGetGroupsKey}/{subjectId}";
 			var dataAccess = new DataAccess<GroupModel>(
-				"groups_fetch_error", getGroupsCallback(subjectId), groupsKey);
+				"groups_fetch_error", getGroupsCallback(subjectId),
+				getKey(GlobalConsts.DataGetGroupsKey, subjectId));
 			return await getDataObject(dataAccess, false) as GroupModel;
 		}
 
@@ -133,9 +133,9 @@ namespace EduCATS.Data
 		/// <returns>Laboratory works data.</returns>
 		public async static Task<LabsModel> GetLabs(int subjectId, int groupId)
 		{
-			var labsKey = $"{GlobalConsts.DataGetLabsKey}/{subjectId}/{groupId}";
 			var dataAccess = new DataAccess<LabsModel>(
-				"labs_fetch_error", getLabsCallback(subjectId, groupId), labsKey);
+				"labs_fetch_error", getLabsCallback(subjectId, groupId),
+				getKey(GlobalConsts.DataGetLabsKey, subjectId, groupId));
 			return await getDataObject(dataAccess, false) as LabsModel;
 		}
 
@@ -147,9 +147,9 @@ namespace EduCATS.Data
 		/// <returns>Lectures data.</returns>
 		public async static Task<LecturesModel> GetLectures(int subjectId, int groupId)
 		{
-			var lecturesKey = $"{GlobalConsts.DataGetLecturesKey}/{subjectId}/{groupId}";
 			var dataAccess = new DataAccess<LecturesModel>(
-				"lectures_fetch_error", getLecturesCallback(subjectId, groupId), lecturesKey);
+				"lectures_fetch_error", getLecturesCallback(subjectId, groupId),
+				getKey(GlobalConsts.DataGetLecturesKey, subjectId, groupId));
 			return await getDataObject(dataAccess, false) as LecturesModel;
 		}
 
@@ -161,9 +161,9 @@ namespace EduCATS.Data
 		/// <returns>List of test data.</returns>
 		public async static Task<List<TestModel>> GetAvailableTests(int subjectId, int userId)
 		{
-			var testsKey = $"{GlobalConsts.DataGetTestsKey}/{subjectId}/{userId}";
 			var dataAccess = new DataAccess<TestModel>(
-				"testing_get_tests_error", getTestsCallback(subjectId, userId), testsKey);
+				"testing_get_tests_error", getTestsCallback(subjectId, userId),
+				getKey(GlobalConsts.DataGetTestsKey, subjectId, userId));
 			return await getDataObject(dataAccess, true) as List<TestModel>;
 		}
 
@@ -211,9 +211,9 @@ namespace EduCATS.Data
 		/// <returns>List of results data.</returns>
 		public async static Task<List<TestResultsModel>> GetUserAnswers(int userId, int testId)
 		{
-			var testAnswersKey = $"{GlobalConsts.DataGetTestAnswersKey}/{userId}/{testId}";
 			var dataAccess = new DataAccess<TestResultsModel>(
-				"test_results_error", getTestAnswersCallback(userId, testId), testAnswersKey);
+				"test_results_error", getTestAnswersCallback(userId, testId),
+				getKey(GlobalConsts.DataGetTestAnswersKey, userId, testId));
 			return await getDataObject(dataAccess, true) as List<TestResultsModel>;
 		}
 
@@ -226,9 +226,9 @@ namespace EduCATS.Data
 		/// <returns>Root concept data.</returns>
 		public async static Task<RootConceptModel> GetRootConcepts(string userId, string subjectId)
 		{
-			var rootConceptKey = $"{GlobalConsts.DataGetRootConceptKey}/{userId}/{subjectId}";
 			var dataAccess = new DataAccess<RootConceptModel>(
-				"eemc_root_concepts_error", getRootConceptsCallback(userId, subjectId), rootConceptKey);
+				"eemc_root_concepts_error", getRootConceptsCallback(userId, subjectId),
+				getKey(GlobalConsts.DataGetRootConceptKey, userId, subjectId));
 			return await getDataObject(dataAccess, false) as RootConceptModel;
 		}
 
@@ -240,9 +240,9 @@ namespace EduCATS.Data
 		/// <returns>Concept data.</returns>
 		public async static Task<ConceptModel> GetConceptTree(int elementId)
 		{
-			var conceptTreeKey = $"{GlobalConsts.DataGetConceptTreeKey}/{elementId}";
 			var dataAccess = new DataAccess<ConceptModel>(
-				"eemc_concept_tree_error", getConceptTreeCallback(elementId), conceptTreeKey);
+				"eemc_concept_tree_error", getConceptTreeCallback(elementId),
+				getKey(GlobalConsts.DataGetConceptTreeKey, elementId));
 			return await getDataObject(dataAccess, false) as ConceptModel;
 		}
 
@@ -254,7 +254,8 @@ namespace EduCATS.Data
 		public async static Task<FilesModel> GetFiles(int subjectId)
 		{
 			var dataAccess = new DataAccess<FilesModel>(
-				"files_fetch_error", getFilesCallback(subjectId), $"{GlobalConsts.DataGetFilesKey}/{subjectId}");
+				"files_fetch_error", getFilesCallback(subjectId),
+				getKey(GlobalConsts.DataGetFilesKey, subjectId));
 			return await getDataObject(dataAccess, false) as FilesModel;
 		}
 
@@ -266,9 +267,9 @@ namespace EduCATS.Data
 		/// <returns>List of recommendations data.</returns>
 		public async static Task<List<RecommendationModel>> GetRecommendations(int subjectId, int userId)
 		{
-			var recommendationKey = $"{GlobalConsts.DataGetRecommendationsKey}/{subjectId}/{userId}";
 			var dataAccess = new DataAccess<RecommendationModel>(
-				"recommendations_fetch_error", getRecommendationsCallback(subjectId, userId), recommendationKey);
+				"recommendations_fetch_error", getRecommendationsCallback(subjectId, userId),
+				getKey(GlobalConsts.DataGetRecommendationsKey, subjectId, userId));
 			return await getDataObject(dataAccess, true) as List<RecommendationModel>;
 		}
 
@@ -312,6 +313,29 @@ namespace EduCATS.Data
 			IsError = true;
 			IsConnectionError = isConnectionError;
 			ErrorMessage = CrossLocalization.Translate(message);
+		}
+
+		/// <summary>
+		/// Get complex key with identifiers.
+		/// </summary>
+		/// <param name="key">Basic key.</param>
+		/// <param name="firstId">First ID.</param>
+		/// <param name="secondId">Second ID.</param>
+		/// <returns></returns>
+		static string getKey(string key, object firstId, object secondId)
+		{
+			return $"{getKey(key, firstId)}/{secondId}";
+		}
+
+		/// <summary>
+		/// Get complex key with identifier.
+		/// </summary>
+		/// <param name="key">Basic key.</param>
+		/// <param name="id"><ID./param>
+		/// <returns></returns>
+		static string getKey(string key, object id)
+		{
+			return $"{key}/{id}";
 		}
 	}
 }

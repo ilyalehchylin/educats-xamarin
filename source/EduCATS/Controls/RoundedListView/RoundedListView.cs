@@ -42,12 +42,16 @@ namespace EduCATS.Controls.RoundedListView
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		/// <param name="templateSelector">Template selector.</param>
+		/// <param name="type">View cell type.</param>
+		/// <param name="checkbox">Is template checkbox.</param>
 		/// <param name="header">Header view.</param>
-		public RoundedListView(RoundedListTemplateSelector templateSelector, View header = null)
+		public RoundedListView(Type type, bool checkbox = false, View header = null, Func<object> func = null)
 		{
 			HasUnevenRows = true;
-			ItemTemplate = templateSelector;
+			ItemTemplate = func == null ?
+				new RoundedListTemplateSelector(type, checkbox) :
+				new RoundedListTemplateSelector(func, checkbox);
+
 			SeparatorVisibility = SeparatorVisibility.None;
 			VerticalScrollBarVisibility = ScrollBarVisibility.Never;
 			HorizontalScrollBarVisibility = ScrollBarVisibility.Never;
