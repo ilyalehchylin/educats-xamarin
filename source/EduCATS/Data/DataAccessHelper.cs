@@ -131,7 +131,7 @@ namespace EduCATS.Data
 		/// <returns>Data object.</returns>
 		T checkSingleObjectReadyForResponse()
 		{
-			if (checkConnectionEstablished()) {
+			if (CheckConnectionEstablished()) {
 				return default;
 			}
 
@@ -146,7 +146,7 @@ namespace EduCATS.Data
 		/// <returns>List of data.</returns>
 		List<T> checkListReadyForResponse()
 		{
-			if (checkConnectionEstablished()) {
+			if (CheckConnectionEstablished()) {
 				return null;
 			}
 
@@ -287,7 +287,7 @@ namespace EduCATS.Data
 		/// Check network connection.
 		/// </summary>
 		/// <returns><c>True</c> if established.</returns>
-		public virtual bool checkConnectionEstablished()
+		public virtual bool CheckConnectionEstablished()
 		{
 			return _services.Device.CheckConnectivity();
 		}
