@@ -145,7 +145,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		void initSetup()
 		{
 			_manualSelectedCalendarDay = new DateTime();
-			CalendarPosition = 1;
+			_device.MainThread(() => CalendarPosition = 1);
 			CalendarSubjects = new List<CalendarSubjectsModel>();
 			CalendarDaysOfWeekList = new ObservableCollection<string>(DateHelper.GetDaysWithFirstLetters());
 			setInitialCalendarState();
