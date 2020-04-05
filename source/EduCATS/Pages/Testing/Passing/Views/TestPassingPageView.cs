@@ -1,7 +1,5 @@
-﻿using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Styles;
+﻿using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Testing.Passing.ViewModels;
 using EduCATS.Pages.Testing.Passing.Views.ViewCells;
 using EduCATS.Themes;
@@ -21,9 +19,7 @@ namespace EduCATS.Pages.Testing.Passing.Views
 		public TestPassingPageView(int testId, bool forSelfStudy)
 		{
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new TestPassingPageViewModel(
-				new AppDialogs(), new AppPages(), new AppDevice(),
-				testId, forSelfStudy);
+			BindingContext = new TestPassingPageViewModel(new PlatformServices(), testId, forSelfStudy);
 			this.SetBinding(TitleProperty, "Title");
 			setToolbar();
 			createViews();

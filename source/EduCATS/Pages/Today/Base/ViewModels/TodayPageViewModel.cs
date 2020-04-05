@@ -7,10 +7,7 @@ using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Date.Enums;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Today.Base.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -20,20 +17,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 {
 	public class TodayPageViewModel : ViewModel
 	{
-		/// <summary>
-		/// Dialog service.
-		/// </summary>
-		readonly IDialogs _dialogs;
-
-		/// <summary>
-		/// Navigation service.
-		/// </summary>
-		readonly IPages _pages;
-
-		/// <summary>
-		/// Device service.
-		/// </summary>
-		readonly IDevice _device;
+		readonly IPlatformServices _services;
 
 		readonly double _subjectHeight;
 		readonly double _subjectsHeaderHeight;
@@ -46,14 +30,11 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		DateTime _manualSelectedCalendarDay;
 		List<CalendarSubjectsModel> _calendarSubjectsBackup;
 
-		public TodayPageViewModel(double subjectHeight, double subjectsHeaderHeight,
-			IDialogs dialogs, IPages pages, IDevice device)
+		public TodayPageViewModel(double subjectHeight, double subjectsHeaderHeight, IPlatformServices services)
 		{
 			_subjectHeight = subjectHeight;
 			_subjectsHeaderHeight = subjectsHeaderHeight;
-			_device = device;
-			_dialogs = dialogs;
-			_pages = pages;
+			_services = services;
 
 			initSetup();
 			update();
@@ -145,7 +126,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		void initSetup()
 		{
 			_manualSelectedCalendarDay = new DateTime();
-			_device.MainThread(() => CalendarPosition = 1);
+			_services.Device.MainThread(() => CalendarPosition = 1);
 			CalendarSubjects = new List<CalendarSubjectsModel>();
 			CalendarDaysOfWeekList = new ObservableCollection<string>(DateHelper.GetDaysWithFirstLetters());
 			setInitialCalendarState();
@@ -172,7 +153,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		void update()
 		{
-			_device.MainThread(async () => {
+			_services.Device.MainThread(async () => {
 				IsNewsRefreshing = true;
 				await getAndSetNews();
 				await getAndSetCalendarNotes();
@@ -182,7 +163,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		async Task getAndSetCalendarNotes()
 		{
-			var calendar = await DataAccess.GetProfileInfoCalendar(AppPrefs.UserLogin);
+			var calendar = await DataAccess.GetProfileInfoCalendar(_services.Preferences.UserLogin);
 
 			if (calendar == null) {
 				return;
@@ -217,10 +198,10 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		async Task<List<NewsPageModel>> getNews()
 		{
-			var news = await DataAccess.GetNews(AppPrefs.UserLogin);
+			var news = await DataAccess.GetNews(_services.Preferences.UserLogin);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				_dialogs.ShowError(DataAccess.ErrorMessage);
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			var subjectList = await getSubjects();
@@ -229,7 +210,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		async Task<IList<SubjectModel>> getSubjects()
 		{
-			return await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin);
+			return await DataAccess.GetProfileInfoSubjects(_services.Preferences.UserLogin);
 		}
 
 		List<NewsPageModel> composeNewsWithSubjects(IList<NewsModel> news, IList<SubjectModel> subjects)
@@ -247,7 +228,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		void openDetailsPage(object obj)
 		{
 			var newsPageModel = (NewsPageModel)obj;
-			_pages.OpenNewsDetails(
+			_services.Navigation.OpenNewsDetails(
 				CrossLocalization.Translate("news_details_title"),
 				newsPageModel.Title,
 				newsPageModel.Body);

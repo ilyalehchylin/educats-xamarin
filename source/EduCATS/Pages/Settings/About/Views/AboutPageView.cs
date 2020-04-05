@@ -1,6 +1,6 @@
 ﻿using EduCATS.Constants;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Settings.About.ViewModels;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
@@ -21,7 +21,7 @@ namespace EduCATS.Pages.Settings.About.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			Padding = _padding;
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new AboutPageViewModel(new AppDevice());
+			BindingContext = new AboutPageViewModel(new PlatformServices());
 			createViews();
 		}
 

@@ -4,8 +4,7 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Models;
 using Xamarin.Forms;
@@ -18,8 +17,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		readonly int _currentGroupId;
 		readonly string _currentUserLogin;
 		readonly StatsPageEnum _statisticsPage;
-		readonly IDialogs _dialogs;
-		readonly IDevice _device;
+		readonly IPlatformServices _services;
 
 		List<StatsPageLabsVisitingModel> _currentLabsVisitingList;
 		List<StatsPageLabsRatingModel> _currentLabsMarksList;
@@ -27,11 +25,10 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		const string _emptyRatingString = "-";
 
 		public StatsResultsPageViewModel(
-			IDialogs dialogs, IDevice device, string userLogin,
+			IPlatformServices services, string userLogin,
 			int subjectId, int groupId, StatsPageEnum statisticsPage)
 		{
-			_dialogs = dialogs;
-			_device = device;
+			_services = services;
 			_currentUserLogin = userLogin;
 			_currentSubjectId = subjectId;
 			_currentGroupId = groupId;
@@ -83,8 +80,8 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 
 			if (DataAccess.IsError) {
-				_device.MainThread(
-					() => _dialogs.ShowError(DataAccess.ErrorMessage));
+				_services.Device.MainThread(
+					() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
 			}
 
 			IsLoading = false;

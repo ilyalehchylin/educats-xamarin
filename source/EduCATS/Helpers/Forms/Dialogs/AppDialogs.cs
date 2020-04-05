@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
-using EduCATS.Helpers.Dialogs.Interfaces;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Dialogs
+namespace EduCATS.Helpers.Forms.Dialogs
 {
 	/// <summary>
 	/// <see cref="IDialogs"/> implementation.

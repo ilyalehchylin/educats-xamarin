@@ -3,9 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Students.Models;
@@ -16,19 +14,15 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 {
 	public class StudentsPageViewModel : GroupsViewModel
 	{
-		readonly IPages _pages;
 		readonly int _pageIndex;
 
 		List<StudentsPageModel> _backupStudents;
 
 		public StudentsPageViewModel(
-			IPages navigationService, IDialogs dialogService, IDevice device, int subjectId,
-			List<StatsStudentModel> studentsList, int pageIndex)
-			: base(dialogService, device, subjectId)
+			IPlatformServices services, int subjectId,
+			List<StatsStudentModel> studentsList, int pageIndex) : base(services, subjectId)
 		{
-			_pages = navigationService;
 			_pageIndex = pageIndex;
-
 			setStudents(studentsList);
 
 			Task.Run(async () => {
@@ -123,7 +117,7 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			var statisticsModel = await DataAccess.GetStatistics(SubjectId, CurrentGroup.GroupId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			return statisticsModel?.Students?.ToList();
@@ -157,7 +151,7 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 				return;
 			}
 
-			_pages.OpenDetailedStatistics(
+			PlatformServices.Navigation.OpenDetailedStatistics(
 				student.Username, SubjectId, CurrentGroup.GroupId, _pageIndex, title, student.Name);
 		}
 

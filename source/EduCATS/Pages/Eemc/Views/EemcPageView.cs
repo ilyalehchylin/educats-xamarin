@@ -1,8 +1,6 @@
 ﻿using EduCATS.Controls.Pickers;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Eemc.ViewModels;
 using EduCATS.Pages.Eemc.Views.ViewCell;
 using EduCATS.Themes;
@@ -22,8 +20,7 @@ namespace EduCATS.Pages.Eemc.Views
 		public EemcPageView(int searchId)
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
-			BindingContext = new EemcPageViewModel(
-				new AppDialogs(), new AppDevice(), new AppPages(), searchId);
+			BindingContext = new EemcPageViewModel(new PlatformServices(), searchId);
 			createViews();
 		}
 

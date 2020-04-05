@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using EduCATS.Constants;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
 using Nyxbull.Plugins.CrossLocalization;
 
 namespace EduCATS.Fonts
@@ -20,6 +20,11 @@ namespace EduCATS.Fonts
 		/// Runtime platform (Android / iOS).
 		/// </summary>
 		static string _runtimePlatform;
+
+		/// <summary>
+		/// Platform services.
+		/// </summary>
+		static IPlatformServices _services;
 
 		/// <summary>
 		/// Default font key.
@@ -41,10 +46,10 @@ namespace EduCATS.Fonts
 		/// </summary>
 		/// <remarks>Call this on app start.</remarks>
 		/// <param name="platform">Runtime platform (e.g. Android).</param>
-		public static void Initialize(string platform)
+		public static void Initialize(IPlatformServices platformServices, string platform)
 		{
+			_services = platformServices;
 			_runtimePlatform = platform;
-
 			initFonts();
 		}
 
@@ -57,7 +62,7 @@ namespace EduCATS.Fonts
 		/// <summary>
 		/// Set current font.
 		/// </summary>
-		public static void SetCurrentFont() => SetFont(AppPrefs.Font);
+		public static void SetCurrentFont() => SetFont(_services.Preferences.Font);
 
 		/// <summary>
 		/// Set font.
@@ -66,14 +71,14 @@ namespace EduCATS.Fonts
 		public static void SetFont(string fontName)
 		{
 			if (fontName.Equals(CrossLocalization.Translate(DefaultFont))) {
-				AppPrefs.Font = DefaultFont;
+				_services.Preferences.Font = DefaultFont;
 				return;
 			}
 
 			var font = _fonts.SingleOrDefault(f => f.Equals(fontName));
 
 			if (font != null) {
-				AppPrefs.Font = font;
+				_services.Preferences.Font = font;
 			}
 		}
 
@@ -81,7 +86,7 @@ namespace EduCATS.Fonts
 		/// Get current font.
 		/// </summary>
 		/// <returns>Font family.</returns>
-		public static string GetCurrentFont(bool bold = false) => GetFont(AppPrefs.Font, bold);
+		public static string GetCurrentFont(bool bold = false) => GetFont(_services.Preferences.Font, bold);
 
 		/// <summary>
 		/// Get font by family.

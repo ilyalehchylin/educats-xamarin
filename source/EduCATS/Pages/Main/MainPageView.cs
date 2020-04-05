@@ -1,5 +1,5 @@
 ﻿using System;
-using EduCATS.Helpers.Effects;
+using EduCATS.Helpers.Forms.Effects;
 using EduCATS.Pages.Learning.Views;
 using EduCATS.Pages.Settings.Base.Views;
 using EduCATS.Pages.Statistics.Base.Views;

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.IO;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Converters
+namespace EduCATS.Helpers.Forms.Converters
 {
 	/// <summary>
 	/// Base64 image to <see cref="ImageSource"/> converter.

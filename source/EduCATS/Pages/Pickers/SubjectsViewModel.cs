@@ -4,9 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -18,8 +16,10 @@ namespace EduCATS.Pages.Pickers
 	/// <remarks>Used for Subjects picker.</remarks>
 	public class SubjectsViewModel : ViewModel
 	{
-		public readonly IDialogs DialogService;
-		public readonly IDevice DeviceService;
+		/// <summary>
+		/// Platform services.
+		/// </summary>
+		public readonly IPlatformServices PlatformServices;
 
 		public List<SubjectModel> CurrentSubjects { get; set; }
 		public SubjectModel CurrentSubject { get; set; }
@@ -27,10 +27,9 @@ namespace EduCATS.Pages.Pickers
 		public delegate void SubjectEventHandler(int id, string name);
 		public event SubjectEventHandler SubjectChanged;
 
-		public SubjectsViewModel(IDialogs dialogService, IDevice deviceService)
+		public SubjectsViewModel(IPlatformServices platformServices)
 		{
-			DialogService = dialogService;
-			DeviceService = deviceService;
+			PlatformServices = platformServices;
 		}
 
 		string _chosenSubject;
@@ -61,7 +60,8 @@ namespace EduCATS.Pages.Pickers
 			}
 
 			var buttons = CurrentSubjects.Select(s => s.Name).ToList();
-			var name = await DialogService.ShowSheet(CrossLocalization.Translate("subjects_choose"), buttons);
+			var name = await PlatformServices.Dialogs.ShowSheet(
+				CrossLocalization.Translate("subjects_choose"), buttons);
 
 			if (string.IsNullOrEmpty(name) ||
 				string.Compare(name, CrossLocalization.Translate("base_cancel")) == 0) {
@@ -71,7 +71,7 @@ namespace EduCATS.Pages.Pickers
 			var isChosen = setChosenSubject(name);
 
 			if (isChosen) {
-				SubjectChanged?.Invoke(AppPrefs.ChosenSubjectId, name);
+				SubjectChanged?.Invoke(PlatformServices.Preferences.ChosenSubjectId, name);
 			}
 		}
 
@@ -97,11 +97,11 @@ namespace EduCATS.Pages.Pickers
 		/// <returns>List of subjects.</returns>
 		async Task<IList<SubjectModel>> getSubjects()
 		{
-			var subjects = await DataAccess.GetProfileInfoSubjects(AppPrefs.UserLogin);
+			var subjects = await DataAccess.GetProfileInfoSubjects(PlatformServices.Preferences.UserLogin);
 
 			if (DataAccess.IsError) {
-				DeviceService.MainThread(
-					() => DialogService.ShowError(DataAccess.ErrorMessage));
+				PlatformServices.Device.MainThread(
+					() => PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage));
 			}
 
 			return subjects;
@@ -118,7 +118,7 @@ namespace EduCATS.Pages.Pickers
 			}
 
 			if (string.IsNullOrEmpty(subjectName)) {
-				var savedSubjectId = AppPrefs.ChosenSubjectId;
+				var savedSubjectId = PlatformServices.Preferences.ChosenSubjectId;
 				var success = setChosenSubject(savedSubjectId);
 
 				if (!success) {
@@ -146,7 +146,7 @@ namespace EduCATS.Pages.Pickers
 							s => string.Compare(s.Name, subjectName) == 0);
 				return setChosenSubject(subject);
 			} catch (InvalidOperationException) {
-				DialogService.ShowError(CrossLocalization.Translate("subjects_identical_error"));
+				PlatformServices.Dialogs.ShowError(CrossLocalization.Translate("subjects_identical_error"));
 				return false;
 			} catch (Exception) {
 				return false;
@@ -159,7 +159,7 @@ namespace EduCATS.Pages.Pickers
 				CurrentSubject = subject;
 				ChosenSubject = subject.Name;
 				ChosenSubjectColor = subject.Color;
-				AppPrefs.ChosenSubjectId = subject.Id;
+				PlatformServices.Preferences.ChosenSubjectId = subject.Id;
 				return true;
 			}
 

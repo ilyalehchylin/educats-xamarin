@@ -7,7 +7,7 @@ using Microcharts;
 using SkiaSharp;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Converters
+namespace EduCATS.Helpers.Forms.Converters
 {
 	/// <summary>
 	/// List of double to <see cref="RadarChart"/> converter.

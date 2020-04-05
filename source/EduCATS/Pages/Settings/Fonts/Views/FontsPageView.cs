@@ -1,9 +1,7 @@
 ﻿using EduCATS.Controls.RoundedListView;
 using EduCATS.Controls.SwitchFrame;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Settings.Fonts.ViewModels;
 using EduCATS.Pages.Settings.Views.Base.ViewCells;
 using EduCATS.Themes;
@@ -21,8 +19,7 @@ namespace EduCATS.Pages.Settings.Fonts.Views
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new FontsPageViewModel(
-				new AppDialogs(), new AppDevice(), new AppPages());
+			BindingContext = new FontsPageViewModel(new PlatformServices());
 			createViews();
 		}
 

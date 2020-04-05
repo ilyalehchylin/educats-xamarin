@@ -1,9 +1,7 @@
 ﻿using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
-using EduCATS.Controls.RoundedListView.Selectors;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Files.ViewModels;
 using EduCATS.Pages.Files.Views.ViewCells;
 using EduCATS.Themes;
@@ -22,7 +20,7 @@ namespace EduCATS.Pages.Files.Views
 		public FilesPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
-			BindingContext = new FilesPageViewModel(new AppDialogs(), new AppDevice());
+			BindingContext = new FilesPageViewModel(new PlatformServices());
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			createViews();
 		}

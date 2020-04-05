@@ -4,8 +4,7 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Helpers.Forms;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Results.ViewModels
@@ -14,16 +13,13 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 	{
 		const int _maximumRating = 10;
 
-		readonly IDialogs _dialogs;
-		readonly IPages _navigation;
+		readonly IPlatformServices _services;
 		readonly int _testId;
 		readonly bool _fromComplexLearning;
 
-		public TestingResultsPageViewModel(
-			int testId, bool fromComplexLearning, IDialogs dialogs, IPages navigation)
+		public TestingResultsPageViewModel(int testId, bool fromComplexLearning, IPlatformServices services)
 		{
-			_dialogs = dialogs;
-			_navigation = navigation;
+			_services = services;
 			_testId = testId;
 			_fromComplexLearning = fromComplexLearning;
 
@@ -57,7 +53,7 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 			var resultList = await DataAccess.GetUserAnswers(AppUserData.UserId, _testId);
 
 			if (DataAccess.IsError) {
-				_dialogs.ShowError(DataAccess.ErrorMessage);
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 				return;
 			}
 
@@ -69,8 +65,8 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 			if (_fromComplexLearning) {
 
 			} else {
-				_navigation.ClosePage(true);
-				_navigation.ClosePage(true);
+				_services.Navigation.ClosePage(true);
+				_services.Navigation.ClosePage(true);
 			}
 		}
 

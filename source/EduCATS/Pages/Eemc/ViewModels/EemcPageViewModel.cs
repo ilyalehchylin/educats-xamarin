@@ -4,9 +4,7 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Helpers.Forms;
 using EduCATS.Networking;
 using EduCATS.Pages.Pickers;
 using Xamarin.Forms;
@@ -27,11 +25,6 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// Search ID.
 		/// </summary>
 		readonly int _searchId;
-
-		/// <summary>
-		/// Pages navigation.
-		/// </summary>
-		readonly IPages _navigation;
 
 		/// <summary>
 		/// Previous concepts.
@@ -60,11 +53,9 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <param name="device">App device.</param>
 		/// <param name="navigation">Pages navigation.</param>
 		/// <param name="searchId">Search ID.</param>
-		public EemcPageViewModel(
-			IDialogs dialogs, IDevice device, IPages navigation, int searchId) : base(dialogs, device)
+		public EemcPageViewModel(IPlatformServices services, int searchId) : base(services)
 		{
 			IsRoot = true;
-			_navigation = navigation;
 			_searchId = searchId;
 			_previousConcepts = new Stack<ConceptModel>();
 
@@ -155,7 +146,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			var root = await DataAccess.GetRootConcepts(userId, subjectId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			var rootConcepts = root?.Concepts;
@@ -238,7 +229,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			var conceptTree = await DataAccess.GetConceptTree(id);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			var concepts = conceptTree?.Children;
@@ -285,8 +276,8 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <param name="filePath">File path.</param>
 		void openFile(string filePath)
 		{
-			DeviceService.MainThread(
-				async () => await DeviceService.OpenUri($"{Servers.Current}/{filePath}"));
+			PlatformServices.Device.MainThread(
+				async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/{filePath}"));
 		}
 
 		/// <summary>
@@ -295,8 +286,8 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <param name="id">Test ID.</param>
 		void openTest(int id)
 		{
-			DeviceService.MainThread(
-				async () => await _navigation.OpenTestPassing(id, true));
+			PlatformServices.Device.MainThread(
+				async () => await PlatformServices.Navigation.OpenTestPassing(id, true));
 		}
 
 		/// <summary>

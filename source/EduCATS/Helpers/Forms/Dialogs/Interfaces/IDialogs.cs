@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EduCATS.Helpers.Dialogs.Interfaces
+namespace EduCATS.Helpers.Forms.Dialogs
 {
 	/// <summary>
 	/// App dialogs interface.

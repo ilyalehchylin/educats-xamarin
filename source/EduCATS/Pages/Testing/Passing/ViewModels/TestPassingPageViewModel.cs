@@ -5,9 +5,7 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Helpers.Forms;
 using EduCATS.Networking.Models.Testing;
 using EduCATS.Pages.Testing.Passing.Models;
 using Nyxbull.Plugins.CrossLocalization;
@@ -17,9 +15,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 {
 	public partial class TestPassingPageViewModel : ViewModel
 	{
-		readonly IDialogs _dialogs;
-		readonly IPages _pages;
-		readonly IDevice _device;
+		readonly IPlatformServices _services;
 		readonly int _testId;
 
 		bool _timerCancellation;
@@ -38,15 +34,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		string _testIdString;
 		int _questionNumber;
 		int _questionType;
-		DateTime _testStarted;
-		DateTime _questionStarted;
+		DateTime _started;
 
-		public TestPassingPageViewModel(
-			IDialogs dialogs, IPages navigation, IDevice device, int testId, bool forSelfStudy)
+		public TestPassingPageViewModel(IPlatformServices services, int testId, bool forSelfStudy)
 		{
-			_dialogs = dialogs;
-			_pages = navigation;
-			_device = device;
+			_services = services;
 			_testId = testId;
 			_testIdString = testId.ToString();
 			IsTestForSelfStudy = forSelfStudy;
@@ -127,7 +119,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		void getData(int number)
 		{
-			_device.MainThread(async () => {
+			_services.Device.MainThread(async () => {
 				setLoading(true);
 				await getAndSetTest();
 				await getAndSetQuestion(number);
@@ -147,7 +139,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			var test = await DataAccess.GetTest(_testId);
 
 			if (DataAccess.IsError) {
-				_dialogs.ShowError(DataAccess.ErrorMessage);
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 				return new TestDetailsModel();
 			}
 
@@ -171,7 +163,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				_testId, number, AppUserData.UserId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				_dialogs.ShowError(DataAccess.ErrorMessage);
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 				return new TestQuestionModel();
 			}
 
@@ -181,14 +173,14 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		async Task answerQuestion(TestAnswerPostModel answerModel)
 		{
 			if (answerModel == null || answerModel.Answers == null || answerModel.Answers.Count == 0) {
-				_dialogs.ShowError(CrossLocalization.Translate("answer_question_not_selected_error"));
+				_services.Dialogs.ShowError(CrossLocalization.Translate("answer_question_not_selected_error"));
 				return;
 			}
 
 			await DataAccess.AnswerQuestionAndGetNext(answerModel);
 
 			if (DataAccess.IsError) {
-				_dialogs.ShowError(DataAccess.ErrorMessage);
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 				return;
 			}
 
@@ -233,7 +225,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		void completeTest()
 		{
 			_timerCancellation = true;
-			_pages.OpenTestResults(_testId);
+			_services.Navigation.OpenTestResults(_testId);
 		}
 
 		void completeQuestion()
@@ -287,21 +279,21 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		protected async Task ExecuteCloseCommand()
 		{
-			var result = await _dialogs.ShowConfirmationMessage(
+			var result = await _services.Dialogs.ShowConfirmationMessage(
 				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("test_passing_cancel_message"));
 
 			if (result) {
-				await _pages.ClosePage(true);
+				await _services.Navigation.ClosePage(true);
 			}
 		}
 
 		void setLoading(bool loading)
 		{
 			if (loading) {
-				_dialogs.ShowLoading();
+				_services.Dialogs.ShowLoading();
 			} else {
-				_dialogs.HideLoading();
+				_services.Dialogs.HideLoading();
 			}
 
 			IsNotLoading = !loading;

@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Converters
+namespace EduCATS.Helpers.Forms.Converters
 {
 	/// <summary>
 	/// String to <see cref="ImageSource"/> converter.

@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using EduCATS.Constants;
 using EduCATS.Fonts;
+using EduCATS.Helpers.Forms;
 using NUnit.Framework;
 using Nyxbull.Plugins.CrossLocalization;
 
@@ -14,9 +15,12 @@ namespace EduCATS.UnitTests
 		const string _androidRuntimePlatform = "Android";
 		const string _iosRuntimePlatform = "iOS";
 
+		IPlatformServices _services;
+
 		[SetUp]
 		public void SetUp()
 		{
+			_services = new PlatformServices();
 			var assembly = typeof(App).GetTypeInfo().Assembly;
 			CrossLocalization.Initialize(
 				assembly,
@@ -31,7 +35,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetRegularFontAndroidTest()
 		{
-			FontsController.Initialize(_androidRuntimePlatform);
+			FontsController.Initialize(_services, _androidRuntimePlatform);
 			var expected = $"{_testRegularFont}.ttf#{_testRegularFont}";
 			var actual = FontsController.GetFont(_testRegularFont, false);
 			Assert.AreEqual(expected, actual);
@@ -40,7 +44,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetRegularFontIOSTest()
 		{
-			FontsController.Initialize(_iosRuntimePlatform);
+			FontsController.Initialize(_services, _iosRuntimePlatform);
 			var actual = FontsController.GetFont(_testRegularFont, false);
 			Assert.AreEqual(_testRegularFont, actual);
 		}
@@ -48,7 +52,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetBoldFontAndroidTest()
 		{
-			FontsController.Initialize(_androidRuntimePlatform);
+			FontsController.Initialize(_services, _androidRuntimePlatform);
 			var expected = $"{_testBoldFont}.ttf#{_testBoldFont}";
 			var actual = FontsController.GetFont(_testRegularFont, true);
 			Assert.AreEqual(expected, actual);
@@ -57,7 +61,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetBoldFontIOSTest()
 		{
-			FontsController.Initialize(_iosRuntimePlatform);
+			FontsController.Initialize(_services, _iosRuntimePlatform);
 			var actual = FontsController.GetFont(_testRegularFont, true);
 			Assert.AreEqual(_testBoldFont, actual);
 		}

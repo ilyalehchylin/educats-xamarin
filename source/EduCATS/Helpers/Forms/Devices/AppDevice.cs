@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Speech;
+using EduCATS.Helpers.Forms.Speech;
 using EduCATS.Themes;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace EduCATS.Helpers.Devices
+namespace EduCATS.Helpers.Forms.Devices
 {
 	/// <summary>
 	/// <see cref="IDevice"/> implementation.
@@ -105,6 +104,15 @@ namespace EduCATS.Helpers.Devices
 			_speechCancellationSource.Cancel();
 			_speechCancellationSource.Dispose();
 
+		}
+
+		/// <summary>
+		/// Check Internet or local network connection.
+		/// </summary>
+		/// <returns>Is connection established.</returns>
+		public bool CheckConnectivity()
+		{
+			return Connectivity.NetworkAccess == NetworkAccess.Internet;
 		}
 	}
 }
