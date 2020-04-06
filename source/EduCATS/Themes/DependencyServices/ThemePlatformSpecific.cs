@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes.DependencyServices.Interfaces;
+﻿using EduCATS.Helpers.Forms;
+using EduCATS.Themes.DependencyServices.Interfaces;
 using Xamarin.Forms;
 
 namespace EduCATS.Themes.DependencyServices
@@ -12,7 +13,7 @@ namespace EduCATS.Themes.DependencyServices
 		/// Set status & navigation bar colors.
 		/// </summary>
 		/// <param name="colorHex">Hex color.</param>
-		public static void SetColors(string colorHex) =>
-			DependencyService.Get<IThemeNative>().SetColors(colorHex);
+		public static void SetColors(IPlatformServices services, string colorHex) =>
+			services.Device.SetNativeTheme(colorHex);
 	}
 }

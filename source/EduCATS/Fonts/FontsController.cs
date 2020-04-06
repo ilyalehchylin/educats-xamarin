@@ -45,11 +45,11 @@ namespace EduCATS.Fonts
 		/// Initialize fonts.
 		/// </summary>
 		/// <remarks>Call this on app start.</remarks>
-		/// <param name="platform">Runtime platform (e.g. Android).</param>
-		public static void Initialize(IPlatformServices platformServices, string platform)
+		/// <param name="platformServices">Platform services.</param>
+		public static void Initialize(IPlatformServices platformServices)
 		{
 			_services = platformServices;
-			_runtimePlatform = platform;
+			_runtimePlatform = platformServices.Device.GetRuntimePlatform();
 			initFonts();
 		}
 

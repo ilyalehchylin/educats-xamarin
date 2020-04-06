@@ -152,7 +152,8 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			_services.Preferences.ResetPrefs();
 			AppUserData.Clear();
 			DataAccess.ResetData();
-			AppTheme.SetTheme(AppTheme.ThemeDefault);
+			var theme = new AppTheme(_services);
+			theme.SetTheme(AppTheme.ThemeDefault);
 			_services.Navigation.OpenLogin();
 		}
 

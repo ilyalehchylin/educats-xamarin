@@ -3,6 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EduCATS.Helpers.Forms.Speech;
 using EduCATS.Themes;
+using EduCATS.Themes.DependencyServices.Interfaces;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -113,6 +114,25 @@ namespace EduCATS.Helpers.Forms.Devices
 		public bool CheckConnectivity()
 		{
 			return Connectivity.NetworkAccess == NetworkAccess.Internet;
+		}
+
+		/// <summary>
+		/// Get runtime platform.
+		/// </summary>
+		/// <returns>Runtime platform.</returns>
+		public string GetRuntimePlatform()
+		{
+			return Device.RuntimePlatform;
+		}
+
+		/// <summary>
+		/// Sets theme for native platform.
+		/// </summary>
+		/// <param name="hexColor">Hex color.</param>
+		public bool SetNativeTheme(string hexColor)
+		{
+			DependencyService.Get<IThemeNative>().SetColors(hexColor);
+			return true;
 		}
 	}
 }

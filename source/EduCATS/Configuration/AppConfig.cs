@@ -5,7 +5,6 @@ using EduCATS.Helpers.Forms;
 using EduCATS.Themes;
 using MonkeyCache.FileStore;
 using Nyxbull.Plugins.CrossLocalization;
-using Xamarin.Forms;
 
 namespace EduCATS.Configuration
 {
@@ -44,7 +43,8 @@ namespace EduCATS.Configuration
 		/// </summary>
 		static void setupTheme()
 		{
-			AppTheme.SetCurrentTheme();
+			var theme = new AppTheme(_services);
+			theme.SetCurrentTheme();
 		}
 
 		/// <summary>
@@ -52,7 +52,7 @@ namespace EduCATS.Configuration
 		/// </summary>
 		static void setupFonts()
 		{
-			FontsController.Initialize(_services, Device.RuntimePlatform);
+			FontsController.Initialize(_services);
 			FontsController.SetCurrentFont();
 		}
 

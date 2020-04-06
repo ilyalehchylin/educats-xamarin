@@ -72,5 +72,17 @@ namespace EduCATS.Helpers.Forms.Devices
 		/// </summary>
 		/// <returns>Is connection established.</returns>
 		bool CheckConnectivity();
+
+		/// <summary>
+		/// Get runtime platform.
+		/// </summary>
+		/// <returns>Runtime platform.</returns>
+		public string GetRuntimePlatform();
+
+		/// <summary>
+		/// Sets theme for native platform.
+		/// </summary>
+		/// <param name="hexColor">Hex color.</param>
+		public bool SetNativeTheme(string hexColor);
 	}
 }
