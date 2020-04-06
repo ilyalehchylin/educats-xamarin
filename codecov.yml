@@ -4,6 +4,7 @@ ignore:
   - "source/EduCATS/Pages"
   - "source/EduCATS/Themes/Templates"
   - "**/Models/**/*"
+  - "source/EduCATS/Helpers/Forms"
 comment:
   layout: "reach, diff"
   behavior: new
