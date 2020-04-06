@@ -127,7 +127,7 @@ namespace EduCATS.Helpers.Date
 		/// </summary>
 		/// <param name="dayOfWeek">Day of week number.</param>
 		/// <returns>Day of week name.</returns>
-		public static string GetDayOfWeekName(int dayOfWeek)
+		static string getDayOfWeekName(int dayOfWeek)
 		{
 			var cultureInfo = CrossLocalization.GetCurrentCultureInfo();
 			return cultureInfo.DateTimeFormat.GetDayName(getDayOfWeek(dayOfWeek));
@@ -143,7 +143,7 @@ namespace EduCATS.Helpers.Date
 
 
 			for (int dayOfWeek = 1; dayOfWeek < 8; dayOfWeek++) {
-				var dayOfWeekName = GetDayOfWeekName(dayOfWeek);
+				var dayOfWeekName = getDayOfWeekName(dayOfWeek);
 				daysOfWeek.Add(dayOfWeekName[0].ToString().ToUpper());
 			}
 
