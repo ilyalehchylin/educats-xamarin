@@ -3,3 +3,6 @@ ignore:
   - "source/EduCATS/Pages"
   - "source/EduCATS/Themes/Templates"
   - "**/Models/**/*"
+comment:
+  layout: "reach, diff"
+  behavior: new
