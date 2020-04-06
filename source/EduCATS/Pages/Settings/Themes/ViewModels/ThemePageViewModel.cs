@@ -77,7 +77,8 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 
 		void changeTheme(ThemePageModel theme)
 		{
-			AppTheme.SetTheme(theme.Theme);
+			var appTheme = new AppTheme(_services);
+			appTheme.SetTheme(theme.Theme);
 		}
 
 		ThemePageModel getThemeDetails(string theme)

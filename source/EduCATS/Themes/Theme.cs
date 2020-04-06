@@ -1,4 +1,5 @@
-﻿using EduCATS.Themes.DependencyServices;
+﻿using EduCATS.Helpers.Forms;
+using EduCATS.Themes.DependencyServices;
 using EduCATS.Themes.Interfaces;
 using EduCATS.Themes.Templates;
 
@@ -26,11 +27,12 @@ namespace EduCATS.Themes
 		/// <summary>
 		/// Set theme with interface implementation.
 		/// </summary>
+		/// <param name="services">Platform services.</param>
 		/// <param name="iTheme"><see cref="ITheme"/> interface implementation.</param>
-		public static void Set(ITheme iTheme)
+		public static void Set(IPlatformServices services, ITheme iTheme)
 		{
 			Current = iTheme;
-			ThemePlatformSpecific.SetColors(Current.AppStatusBarBackgroundColor);
+			ThemePlatformSpecific.SetColors(services, Current.AppStatusBarBackgroundColor);
 		}
 	}
 }
