@@ -12,8 +12,9 @@ namespace EduCATS.UnitTests
 		const int _userId = 1;
 		const int _groupId = 1;
 		const string _name = "Name";
-		const string _userType = "1";
 		const string _avatar = "Avatar";
+		const string _userTypeStudent = "2";
+		const string _userTypeProfessor = "1";
 		const string _groupName = "Group name";
 		const string _username = "TestUsername";
 
@@ -30,7 +31,7 @@ namespace EduCATS.UnitTests
 				Avatar = _avatar,
 				GroupId = _groupId,
 				GroupName = _groupName,
-				UserType = _userType
+				UserType = _userTypeProfessor
 			};
 
 			_mocked = Mock.Of<IPlatformServices>(ps =>
@@ -56,15 +57,29 @@ namespace EduCATS.UnitTests
 		}
 
 		[Test]
-		public void SetProfileData()
+		public void SetProfileProfessorData()
 		{
 			AppUserData.SetProfileData(_mocked, _profile);
-			Assert.AreEqual(true, AppUserData.IsProfileLoaded);
 			Assert.AreEqual(_name, AppUserData.Name);
 			Assert.AreEqual(_avatar, AppUserData.Avatar);
 			Assert.AreEqual(_groupId, AppUserData.GroupId);
 			Assert.AreEqual(_groupName, AppUserData.GroupName);
+			Assert.AreEqual(true, AppUserData.IsProfileLoaded);
 			Assert.AreEqual(UserTypeEnum.Professor, AppUserData.UserType);
+		}
+
+		[Test]
+		public void SetProfileStudentData()
+		{
+			var profile = _profile;
+			profile.UserType = _userTypeStudent;
+			AppUserData.SetProfileData(_mocked, profile);
+			Assert.AreEqual(_name, AppUserData.Name);
+			Assert.AreEqual(_avatar, AppUserData.Avatar);
+			Assert.AreEqual(_groupId, AppUserData.GroupId);
+			Assert.AreEqual(_groupName, AppUserData.GroupName);
+			Assert.AreEqual(true, AppUserData.IsProfileLoaded);
+			Assert.AreEqual(UserTypeEnum.Student, AppUserData.UserType);
 		}
 
 		[Test]
@@ -72,14 +87,14 @@ namespace EduCATS.UnitTests
 		{
 			AppUserData.SetProfileData(_mocked, _profile);
 			AppUserData.Clear();
-			Assert.AreEqual(true, AppUserData.IsProfileLoaded);
-			Assert.AreEqual(null, AppUserData.Name);
-			Assert.AreEqual(null, AppUserData.Avatar);
-			Assert.AreEqual(0, AppUserData.GroupId);
-			Assert.AreEqual(null, AppUserData.GroupName);
-			Assert.AreEqual(UserTypeEnum.Student, AppUserData.UserType);
 			Assert.AreEqual(0, AppUserData.UserId);
+			Assert.AreEqual(null, AppUserData.Name);
+			Assert.AreEqual(0, AppUserData.GroupId);
+			Assert.AreEqual(null, AppUserData.Avatar);
 			Assert.AreEqual(null, AppUserData.Username);
+			Assert.AreEqual(null, AppUserData.GroupName);
+			Assert.AreEqual(true, AppUserData.IsProfileLoaded);
+			Assert.AreEqual(UserTypeEnum.Student, AppUserData.UserType);
 		}
 	}
 }
