@@ -1,10 +1,3 @@
-ignore:
-  - "source/EduCATS/App.cs"
-  - "source/EduCATS/Controls"
-  - "source/EduCATS/Pages"
-  - "source/EduCATS/Themes/Templates"
-  - "**/Models/**/*"
-  - "source/EduCATS/Helpers/Forms"
 comment:
   layout: "reach, diff"
   behavior: new
@@ -14,3 +7,10 @@ comment:
   branches:
     - "master"
     - "develop"
+ignore:
+  - "source/EduCATS/App.cs"
+  - "source/EduCATS/Controls"
+  - "source/EduCATS/Pages"
+  - "source/EduCATS/Helpers/Forms"
+  - "source/EduCATS/Themes/Templates"
+  - "**/Models/**/*"
