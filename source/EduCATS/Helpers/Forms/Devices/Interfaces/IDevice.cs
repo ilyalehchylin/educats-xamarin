@@ -77,12 +77,20 @@ namespace EduCATS.Helpers.Forms.Devices
 		/// Get runtime platform.
 		/// </summary>
 		/// <returns>Runtime platform.</returns>
-		public string GetRuntimePlatform();
+		string GetRuntimePlatform();
 
 		/// <summary>
 		/// Sets theme for native platform.
 		/// </summary>
 		/// <param name="hexColor">Hex color.</param>
-		public bool SetNativeTheme(string hexColor);
+		bool SetNativeTheme(string hexColor);
+
+		/// <summary>
+		/// Get named size.
+		/// </summary>
+		/// <param name="namedSize">Named size enum.</param>
+		/// <param name="type">Type for size.</param>
+		/// <returns>Size.</returns>
+		double GetNamedSize(int namedSize, Type type);
 	}
 }
