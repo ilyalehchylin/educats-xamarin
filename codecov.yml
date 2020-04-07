@@ -1,0 +1,16 @@
+comment:
+  layout: "reach, diff"
+  behavior: new
+  require_changes: false
+  require_base: no
+  require_head: no
+  branches:
+    - "master"
+    - "develop"
+ignore:
+  - "source/EduCATS/App.cs"
+  - "source/EduCATS/Controls"
+  - "source/EduCATS/Pages"
+  - "source/EduCATS/Helpers/Forms"
+  - "source/EduCATS/Themes/Templates"
+  - "**/Models/**/*"
