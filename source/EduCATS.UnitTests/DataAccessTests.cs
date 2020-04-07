@@ -3,6 +3,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data;
+using MonkeyCache.FileStore;
 using Moq;
 using NUnit.Framework;
 using Nyxbull.Plugins.CrossLocalization;
@@ -32,6 +33,8 @@ namespace EduCATS.UnitTests
 			CrossLocalization.AddLanguageSupport(Languages.EN);
 			CrossLocalization.SetDefaultLanguage(Languages.EN.LangCode);
 			CrossLocalization.SetLanguage(Languages.EN.LangCode);
+
+			Barrel.ApplicationId = GlobalConsts.AppId;
 		}
 
 		[Test]
@@ -53,6 +56,22 @@ namespace EduCATS.UnitTests
 		{
 			var actual = _mock.Object.CheckConnectionEstablished();
 			Assert.AreEqual(true, actual);
+		}
+
+		[Test]
+		public async Task GetSingleNoConnectionTest()
+		{
+			_mock.Setup(m => m.CheckConnectionEstablished()).Returns(false);
+			var actual = await _mock.Object.GetSingle();
+			Assert.IsNotNull(actual);
+		}
+
+		[Test]
+		public async Task GetListNoConnectionTest()
+		{
+			_mock.Setup(m => m.CheckConnectionEstablished()).Returns(false);
+			var actual = await _mock.Object.GetList();
+			Assert.IsNotNull(actual);
 		}
 
 		[Test]
