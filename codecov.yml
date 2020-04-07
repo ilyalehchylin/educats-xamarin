@@ -11,4 +11,6 @@ comment:
   require_changes: true
   require_base: yes
   require_head: yes
-  
+coverage:
+  range: 40..90
+  round: nearest
