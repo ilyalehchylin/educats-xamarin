@@ -4,6 +4,8 @@ ignore:
   - "source/EduCATS/Pages"
   - "source/EduCATS/Helpers/Forms"
   - "source/EduCATS/Themes/Templates"
+  - "source/EduCATS/Data/DataAccess.cs"
+  - "source/EduCATS/Data/DataAccessCallbacks.cs"
   - "**/Models/**/*"
 comment:
   layout: "reach, diff"
