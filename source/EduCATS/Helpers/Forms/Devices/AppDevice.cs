@@ -134,5 +134,16 @@ namespace EduCATS.Helpers.Forms.Devices
 			DependencyService.Get<IThemeNative>().SetColors(hexColor);
 			return true;
 		}
+
+		/// <summary>
+		/// Get named size.
+		/// </summary>
+		/// <param name="namedSize">Named size enum.</param>
+		/// <param name="type">Type for size.</param>
+		/// <returns>Size.</returns>
+		public double GetNamedSize(int namedSize, Type type)
+		{
+			return Device.GetNamedSize((NamedSize)namedSize, type);
+		}
 	}
 }

@@ -95,7 +95,8 @@ namespace EduCATS.Fonts
 		/// <returns>Font family.</returns>
 		public static string GetFont(string font, bool bold)
 		{
-			if (font.Equals(DefaultFont) || font.Equals(CrossLocalization.Translate(DefaultFont))) {
+			if (string.IsNullOrEmpty(font) || font.Equals(DefaultFont) ||
+				font.Equals(CrossLocalization.Translate(DefaultFont))) {
 				return null;
 			}
 
@@ -132,10 +133,6 @@ namespace EduCATS.Fonts
 		/// <returns>Bold font.</returns>
 		static string getBoldFont(string font)
 		{
-			if (string.IsNullOrEmpty(font)) {
-				return font;
-			}
-
 			return font.Replace(_regularAlias, _boldAlias);
 		}
 
