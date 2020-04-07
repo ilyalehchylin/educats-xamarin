@@ -40,24 +40,26 @@ namespace EduCATS.Networking
 		/// <summary>
 		/// Platform services.
 		/// </summary>
-		static readonly IPlatformServices _services;
+		public static IPlatformServices PlatformServices;
 
 		static Servers()
 		{
-			_services = new PlatformServices();
+			if (PlatformServices == null) {
+				PlatformServices = new PlatformServices();
+			}
 		}
 
 		/// <summary>
 		/// Current server.
 		/// </summary>
-		public static string Current => _services.Preferences.Server;
+		public static string Current => PlatformServices.Preferences.Server;
 
 		/// <summary>
 		/// Set current server.
 		/// </summary>
 		/// <param name="server">Server to set.</param>
 		public static void SetCurrent(string server) =>
-			_services.Preferences.Server = server;
+			PlatformServices.Preferences.Server = server;
 
 		/// <summary>
 		/// Get server name string by address.
