@@ -16,8 +16,7 @@ namespace EduCATS.Helpers.Extensions
 		/// <returns>Double value.</returns>
 		public static double StringToDouble(this string stringToConvert)
 		{
-			return string.IsNullOrEmpty(stringToConvert) ?
-				0 : double.Parse(stringToConvert, CultureInfo.InvariantCulture);
+			return string.IsNullOrEmpty(stringToConvert) ? 0 : parseDouble(stringToConvert);
 		}
 
 		/// <summary>
@@ -38,7 +37,22 @@ namespace EduCATS.Helpers.Extensions
 		/// <returns>String without HTML tags.</returns>
 		public static string RemoveHTMLTags(this string input)
 		{
+			if (string.IsNullOrEmpty(input)) {
+				return input;
+			}
+
 			return Regex.Replace(input, "<.*?>|&#34;", string.Empty);
+		}
+
+		/// <summary>
+		/// Try to parse <c>double</c> string.
+		/// </summary>
+		/// <param name="doubleString"><c>double</c> string value.</param>
+		/// <returns><c>double</c> value.</returns>
+		static double parseDouble(string doubleString)
+		{
+			double.TryParse(doubleString, out double value);
+			return value;
 		}
 	}
 }
