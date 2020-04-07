@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EduCATS.Data;
 using Moq;
 using NUnit.Framework;
@@ -39,6 +40,17 @@ namespace EduCATS.UnitTests
 		{
 			var actual = _mock.Object.CheckConnectionEstablished();
 			Assert.AreEqual(true, actual);
+		}
+
+		[Test]
+		public void ResetDataTest()
+		{
+			try {
+				DataAccess.ResetData();
+				return;
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
 		}
 	}
 }
