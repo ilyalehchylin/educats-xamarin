@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using EduCATS.Helpers.Files;
 
 namespace EduCATS.Helpers.Logs
@@ -61,8 +62,8 @@ namespace EduCATS.Helpers.Logs
 			}
 
 			var throwDate = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
-			var targetSiteName = ex.TargetSite?.Name;
-			var message = $"[{throwDate}] Exception: {ex.Message}; target method: {targetSiteName}\n";
+			var targetMethod = ex.TargetSite.ReflectedType.FullName;
+			var message = $"[{throwDate}] Exception: {ex.Message}; target method: {targetMethod}\n";
 			FileManager.Append(LogsFilePath, message);
 		}
 

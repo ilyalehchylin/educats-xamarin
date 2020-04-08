@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Settings.Themes.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -36,32 +38,40 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 
 		void setThemes()
 		{
-			ThemeList = new List<ThemePageModel> {
-				getThemeDetails(AppTheme.ThemeDefault),
-				getThemeDetails(AppTheme.ThemeDark)
-			};
+			try {
+				ThemeList = new List<ThemePageModel> {
+					getThemeDetails(AppTheme.ThemeDefault),
+					getThemeDetails(AppTheme.ThemeDark)
+				};
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		async Task selectTheme(object selectedObject)
 		{
-			SelectedItem = null;
+			try {
+				SelectedItem = null;
 
-			if (selectedObject == null || !(selectedObject is ThemePageModel)) {
-				return;
+				if (selectedObject == null || !(selectedObject is ThemePageModel)) {
+					return;
+				}
+
+				var theme = selectedObject as ThemePageModel;
+
+				var result = await _services.Dialogs.ShowConfirmationMessage(
+					CrossLocalization.Translate("base_warning"),
+					CrossLocalization.Translate("settings_theme_change_message"));
+
+				if (!result) {
+					return;
+				}
+
+				changeTheme(theme);
+				switchPage();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var theme = selectedObject as ThemePageModel;
-
-			var result = await _services.Dialogs.ShowConfirmationMessage(
-				CrossLocalization.Translate("base_warning"),
-				CrossLocalization.Translate("settings_theme_change_message"));
-
-			if (!result) {
-				return;
-			}
-
-			changeTheme(theme);
-			switchPage();
 		}
 
 		void switchPage()

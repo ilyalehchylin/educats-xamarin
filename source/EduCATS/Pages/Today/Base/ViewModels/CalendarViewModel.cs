@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using EduCATS.Helpers.Date;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Today.Base.Models;
 using Xamarin.Forms;
 
@@ -16,8 +17,12 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		public CalendarViewModel(object bindingContext)
 		{
-			if (bindingContext != null && bindingContext is TodayPageViewModel) {
-				_todayPageViewModel = (TodayPageViewModel)bindingContext;
+			try {
+				if (bindingContext != null && bindingContext is TodayPageViewModel) {
+					_todayPageViewModel = (TodayPageViewModel)bindingContext;
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
@@ -56,10 +61,14 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		protected void ExecuteCalendarSelectionChangedEvent()
 		{
-			if (CalendarSelectedItem != null && CalendarSelectedItem.GetType() == typeof(CalendarViewDayModel)) {
-				var calendarViewDayModel = (CalendarViewDayModel)CalendarSelectedItem;
-				_todayPageViewModel.ExecuteCalendarSelectionChangedEvent(calendarViewDayModel.Date);
-				CalendarSelectedItem = null;
+			try {
+				if (CalendarSelectedItem != null && CalendarSelectedItem.GetType() == typeof(CalendarViewDayModel)) {
+					var calendarViewDayModel = (CalendarViewDayModel)CalendarSelectedItem;
+					_todayPageViewModel.ExecuteCalendarSelectionChangedEvent(calendarViewDayModel.Date);
+					CalendarSelectedItem = null;
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 	}

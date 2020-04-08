@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Testing.Base.Models;
 using Nyxbull.Plugins.CrossLocalization;
@@ -54,8 +56,14 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 
 		async Task update()
 		{
-			await SetupSubjects();
-			await getAndSetTests();
+			try {
+				IsRefreshing = true;
+				await SetupSubjects();
+				await getAndSetTests();
+				IsRefreshing = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		async Task getAndSetTests()
@@ -105,13 +113,17 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 
 		void openTest(object testObject)
 		{
-			if (testObject == null || testObject.GetType() != typeof(TestModel)) {
-				return;
-			}
+			try {
+				if (testObject == null || testObject.GetType() != typeof(TestModel)) {
+					return;
+				}
 
-			var test = testObject as TestModel;
-			PlatformServices.Device.MainThread(
-				async () => await showStartTestDialog(test.Id, test.ForSelfStudy));
+				var test = testObject as TestModel;
+				PlatformServices.Device.MainThread(
+					async () => await showStartTestDialog(test.Id, test.ForSelfStudy));
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		async Task showStartTestDialog(int testId, bool forSelfStudy)
@@ -127,9 +139,13 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 
 		protected async Task refresh()
 		{
-			IsRefreshing = true;
-			await getAndSetTests();
-			IsRefreshing = false;
+			try {
+				IsRefreshing = true;
+				await getAndSetTests();
+				IsRefreshing = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 	}
 }

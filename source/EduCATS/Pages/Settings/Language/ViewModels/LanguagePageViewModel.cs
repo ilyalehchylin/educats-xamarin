@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Settings.Language.Models;
 using Nyxbull.Plugins.CrossLocalization;
 
@@ -84,30 +86,38 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 
 		void setLanguages()
 		{
-			var supportedLanguages = CrossLocalization.GetSupportedLanguages();
+			try {
+				var supportedLanguages = CrossLocalization.GetSupportedLanguages();
 
-			var languages = supportedLanguages.Select(l => new LanguagePageModel {
-				Title = l.LanguageLocal,
-				Description = l.LanguageEnglish,
-				LanguageCode = l.LangCode,
-				IsChecked = l.LangCode == _services.Preferences.LanguageCode
-			});
+				var languages = supportedLanguages.Select(l => new LanguagePageModel {
+					Title = l.LanguageLocal,
+					Description = l.LanguageEnglish,
+					LanguageCode = l.LangCode,
+					IsChecked = l.LangCode == _services.Preferences.LanguageCode
+				});
 
-			LanguageList = new List<LanguagePageModel>(languages);
+				LanguageList = new List<LanguagePageModel>(languages);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		async Task selectLanguage(object selectedObject)
 		{
-			if (selectedObject == null && !(selectedObject is LanguagePageModel)) {
-				return;
-			}
+			try {
+				if (selectedObject == null && !(selectedObject is LanguagePageModel)) {
+					return;
+				}
 
-			SelectedItem = null;
-			var language = selectedObject as LanguagePageModel;
+				SelectedItem = null;
+				var language = selectedObject as LanguagePageModel;
 
-			if (await changeLanguageConfirmation()) {
-				CrossLocalization.SetLanguage(language.LanguageCode);
-				toggleLanguage(language);
+				if (await changeLanguageConfirmation()) {
+					CrossLocalization.SetLanguage(language.LanguageCode);
+					toggleLanguage(language);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
@@ -120,23 +130,27 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 
 		async Task setSystemOrDefaultLanguage(bool isToggled)
 		{
-			if (!_isSystemToggleActive || isToggled == (
-				_services.Preferences.LanguageCode == Languages.SYSTEM.LangCode)) {
-				_isSystemToggleActive = true;
-				return;
-			}
+			try {
+				if (!_isSystemToggleActive || isToggled == (
+					_services.Preferences.LanguageCode == Languages.SYSTEM.LangCode)) {
+					_isSystemToggleActive = true;
+					return;
+				}
 
-			if (!await changeLanguageConfirmation()) {
-				IsSystemLanguage = !isToggled;
-				return;
-			}
+				if (!await changeLanguageConfirmation()) {
+					IsSystemLanguage = !isToggled;
+					return;
+				}
 
-			if (isToggled) {
-				CrossLocalization.SetLanguage(Languages.SYSTEM.LangCode);
-				toggleLanguages(Languages.SYSTEM.LangCode);
-			} else {
-				CrossLocalization.SetLanguage(Languages.EN.LangCode);
-				toggleLanguages(Languages.EN.LangCode);
+				if (isToggled) {
+					CrossLocalization.SetLanguage(Languages.SYSTEM.LangCode);
+					toggleLanguages(Languages.SYSTEM.LangCode);
+				} else {
+					CrossLocalization.SetLanguage(Languages.EN.LangCode);
+					toggleLanguages(Languages.EN.LangCode);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 

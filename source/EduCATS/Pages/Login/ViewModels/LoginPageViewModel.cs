@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -118,12 +120,16 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns>Task.</returns>
 		protected async Task startLogin()
 		{
-			if (checkCredentials()) {
-				setLoading(true, CrossLocalization.Translate("login_loading"));
-				var user = await loginRequest();
-				await loginCompleted(user);
-			} else {
-				_services.Dialogs.ShowError(CrossLocalization.Translate("login_empty_credentials_error"));
+			try {
+				if (checkCredentials()) {
+					setLoading(true, CrossLocalization.Translate("login_loading"));
+					var user = await loginRequest();
+					await loginCompleted(user);
+				} else {
+					_services.Dialogs.ShowError(CrossLocalization.Translate("login_empty_credentials_error"));
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
@@ -174,8 +180,12 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openSettings()
 		{
-			await _services.Navigation.OpenSettings(
-				CrossLocalization.Translate("main_settings"));
+			try {
+				await _services.Navigation.OpenSettings(
+					CrossLocalization.Translate("main_settings"));
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		/// <summary>

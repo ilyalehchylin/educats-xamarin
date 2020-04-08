@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Settings.Base.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -16,9 +18,13 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		public SettingsPageViewModel(IPlatformServices services)
 		{
-			_services = services;
-			setInitData();
-			setSettings();
+			try {
+				_services = services;
+				setInitData();
+				setSettings();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		string _avatar;
@@ -104,35 +110,43 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		void openSettings(object selectedObject)
 		{
-			if (selectedObject == null || !(selectedObject is SettingsPageModel)) {
-				return;
-			}
+			try {
+				if (selectedObject == null || !(selectedObject is SettingsPageModel)) {
+					return;
+				}
 
-			var settings = selectedObject as SettingsPageModel;
-			_services.Device.MainThread(async () => await openPage(settings.Title));
+				var settings = selectedObject as SettingsPageModel;
+				_services.Device.MainThread(async () => await openPage(settings.Title));
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		async Task openPage(string title)
 		{
-			var serverTitle = CrossLocalization.Translate("settings_server");
-			var languageTitle = CrossLocalization.Translate("settings_language");
-			var themeTitle = CrossLocalization.Translate("settings_theme");
-			var fontTitle = CrossLocalization.Translate("settings_font");
-			var aboutTitle = CrossLocalization.Translate("settings_about");
-			var logoutTitle = CrossLocalization.Translate("settings_logout");
+			try {
+				var serverTitle = CrossLocalization.Translate("settings_server");
+				var languageTitle = CrossLocalization.Translate("settings_language");
+				var themeTitle = CrossLocalization.Translate("settings_theme");
+				var fontTitle = CrossLocalization.Translate("settings_font");
+				var aboutTitle = CrossLocalization.Translate("settings_about");
+				var logoutTitle = CrossLocalization.Translate("settings_logout");
 
-			if (title.Equals(serverTitle)) {
-				await _services.Navigation.OpenSettingsServer(serverTitle);
-			} else if (title.Equals(languageTitle)) {
-				await _services.Navigation.OpenSettingsLanguage(languageTitle);
-			} else if (title.Equals(themeTitle)) {
-				await _services.Navigation.OpenSettingsTheme(themeTitle);
-			} else if (title.Equals(fontTitle)) {
-				await _services.Navigation.OpenSettingsFont(fontTitle);
-			} else if (title.Equals(aboutTitle)) {
-				await _services.Navigation.OpenSettingsAbout(aboutTitle);
-			} else if (title.Equals(logoutTitle)) {
-				await logout();
+				if (title.Equals(serverTitle)) {
+					await _services.Navigation.OpenSettingsServer(serverTitle);
+				} else if (title.Equals(languageTitle)) {
+					await _services.Navigation.OpenSettingsLanguage(languageTitle);
+				} else if (title.Equals(themeTitle)) {
+					await _services.Navigation.OpenSettingsTheme(themeTitle);
+				} else if (title.Equals(fontTitle)) {
+					await _services.Navigation.OpenSettingsFont(fontTitle);
+				} else if (title.Equals(aboutTitle)) {
+					await _services.Navigation.OpenSettingsAbout(aboutTitle);
+				} else if (title.Equals(logoutTitle)) {
+					await logout();
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 

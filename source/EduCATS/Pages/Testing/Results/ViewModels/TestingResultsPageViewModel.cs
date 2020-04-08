@@ -5,6 +5,7 @@ using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Results.ViewModels
@@ -24,8 +25,12 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 			_fromComplexLearning = fromComplexLearning;
 
 			Task.Run(async () => {
-				await getResults();
-				estimateRating();
+				try {
+					await getResults();
+					estimateRating();
+				} catch (Exception ex) {
+					AppLogs.Log(ex);
+				}
 			});
 		}
 
@@ -62,11 +67,13 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 
 		protected void closeCommand()
 		{
-			if (_fromComplexLearning) {
-
-			} else {
-				_services.Navigation.ClosePage(true);
-				_services.Navigation.ClosePage(true);
+			try {
+				if (!_fromComplexLearning) {
+					_services.Navigation.ClosePage(true);
+					_services.Navigation.ClosePage(true);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 

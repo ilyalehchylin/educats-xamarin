@@ -65,7 +65,7 @@ namespace EduCATS.Helpers.Files
 		{
 			try {
 				var bytes = new FileInfo(path).Length;
-				return (bytes / 1024f) / 1024f;
+				return bytes / 1024f / 1024f;
 			} catch {
 				return 0;
 			}
