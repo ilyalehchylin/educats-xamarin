@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data;
+using EduCATS.Helpers.Forms;
 using MonkeyCache.FileStore;
 using Moq;
 using NUnit.Framework;
@@ -15,14 +18,16 @@ namespace EduCATS.UnitTests
 	{
 		const string _key = "key";
 		const string _message = "error";
+		const string _nonJsonSuccessResponse = "\"Ok\"";
 
-		Mock<DataAccess<object>> _mock;
+		IPlatformServices _mockedOffline;
+		IPlatformServices _mockedConnected;
 
 		[SetUp]
 		public void SetUp()
 		{
-			_mock = new Mock<DataAccess<object>>(_message, null, _key);
-			_mock.Setup(m => m.CheckConnectionEstablished()).Returns(true);
+			_mockedOffline = Mock.Of<IPlatformServices>(ps => ps.Device.CheckConnectivity() == false);
+			_mockedConnected = Mock.Of<IPlatformServices>(ps => ps.Device.CheckConnectivity() == true);
 
 			var assembly = typeof(App).GetTypeInfo().Assembly;
 			CrossLocalization.Initialize(
@@ -40,37 +45,41 @@ namespace EduCATS.UnitTests
 		[Test]
 		public async Task GetSingleTest()
 		{
-			var actual = await _mock.Object.GetSingle();
+			var mockedConnected = Mock.Of<IPlatformServices>(ps => ps.Device.CheckConnectivity() == true);
+			var dataAccess = new DataAccess<object>(_message, null, "1", mockedConnected);
+			var actual = await dataAccess.GetSingle();
 			Assert.IsNotNull(actual);
 		}
 
 		[Test]
 		public async Task GetListTest()
 		{
-			var actual = await _mock.Object.GetList();
+			var dataAccess = new DataAccess<object>(_message, null, "2", _mockedConnected);
+			var actual = await dataAccess.GetList();
 			Assert.IsNotNull(actual);
 		}
 
 		[Test]
 		public void CheckConnectionTest()
 		{
-			var actual = _mock.Object.CheckConnectionEstablished();
+			var dataAccess = new DataAccess<object>(_message, null, "3", _mockedConnected);
+			var actual = dataAccess.CheckConnectionEstablished();
 			Assert.AreEqual(true, actual);
 		}
 
 		[Test]
 		public async Task GetSingleNoConnectionTest()
 		{
-			_mock.Setup(m => m.CheckConnectionEstablished()).Returns(false);
-			var actual = await _mock.Object.GetSingle();
+			var dataAccess = new DataAccess<object>(_message, null, "4", _mockedOffline);
+			var actual = await dataAccess.GetSingle();
 			Assert.IsNotNull(actual);
 		}
 
 		[Test]
 		public async Task GetListNoConnectionTest()
 		{
-			_mock.Setup(m => m.CheckConnectionEstablished()).Returns(false);
-			var actual = await _mock.Object.GetList();
+			var dataAccess = new DataAccess<object>(_message, null, "5", _mockedOffline);
+			var actual = await dataAccess.GetList();
 			Assert.IsNotNull(actual);
 		}
 
@@ -88,14 +97,16 @@ namespace EduCATS.UnitTests
 		[Test]
 		public async Task GetDataSingleObjectTest()
 		{
-			var data = await DataAccess.GetDataObject(_mock.Object, false);
+			var dataAccess = new DataAccess<object>(_message, null, "6", _mockedConnected);
+			var data = await DataAccess.GetDataObject(dataAccess, false);
 			Assert.NotNull(data);
 		}
 
 		[Test]
 		public async Task GetDataListObjectTest()
 		{
-			var data = await DataAccess.GetDataObject(_mock.Object, true);
+			var dataAccess = new DataAccess<object>(_message, null, "7", _mockedConnected);
+			var data = await DataAccess.GetDataObject(dataAccess, true);
 			Assert.NotNull(data);
 		}
 
@@ -138,6 +149,60 @@ namespace EduCATS.UnitTests
 
 			DataAccess.SetError(message, false);
 			Assert.AreEqual(false, DataAccess.IsConnectionError);
+		}
+
+		[Test]
+		public void GetListAccessValidJsonTest()
+		{
+			var dataAccess = new DataAccess<object>(_message, null, "8", _mockedConnected);
+			var kvp = new KeyValuePair<string, HttpStatusCode>("[ { \"data\": \"test\" } ]", HttpStatusCode.OK);
+			var actual = dataAccess.GetListAccess(kvp);
+			Assert.NotNull(actual);
+		}
+
+		[Test]
+		public void GetListAccessNonValidJsonTest()
+		{
+			var dataAccess = new DataAccess<object>(_message, null, "9", _mockedConnected);
+			var kvp = new KeyValuePair<string, HttpStatusCode>("response", HttpStatusCode.OK);
+			var actual = dataAccess.GetListAccess(kvp);
+			Assert.AreEqual(null, actual);
+		}
+
+		[Test]
+		public void GetListAccessSuccessJsonTest()
+		{
+			var dataAccess = new DataAccess<object>(_message, null, "10", _mockedConnected);
+			var kvp = new KeyValuePair<string, HttpStatusCode>(_nonJsonSuccessResponse, HttpStatusCode.OK);
+			var actual = dataAccess.GetListAccess(kvp);
+			Assert.AreEqual(string.Empty, actual);
+		}
+
+		[Test]
+		public void GetSingleAccessValidJsonTest()
+		{
+			var dataAccess = new DataAccess<object>(_message, null, "11", _mockedConnected);
+			var kvp = new KeyValuePair<string, HttpStatusCode>("{ \"data\": \"test\" }", HttpStatusCode.OK);
+			var actual = dataAccess.GetAccess(kvp);
+			Assert.NotNull(actual);
+		}
+
+		[Test]
+		public void GetSingleAccessNonValidJsonTest()
+		{
+			var dataAccess = new DataAccess<object>(_message, null, "12", _mockedConnected);
+			var kvp = new KeyValuePair<string, HttpStatusCode>("response", HttpStatusCode.OK);
+			var actual = dataAccess.GetAccess(kvp);
+			Assert.AreEqual(null, actual);
+		}
+
+		[Test]
+		public void GetSingleAccessSuccessJsonTest()
+		{
+			var dataAccess = new DataAccess<object>(_message, null, "13", _mockedConnected);
+			var kvp = new KeyValuePair<string, HttpStatusCode>(_nonJsonSuccessResponse, HttpStatusCode.OK);
+			var actual = dataAccess.GetAccess(kvp);
+			Assert.NotNull(actual);
 		}
 	}
 }

@@ -69,11 +69,12 @@ namespace EduCATS.Data
 		public DataAccess(
 			string messageForError,
 			Task<object> callback,
-			string key = null)
+			string key = null,
+			IPlatformServices services = null)
 		{
 			_key = key;
 			_messageForError = messageForError;
-			_services = new PlatformServices();
+			_services = services ?? new PlatformServices();
 			_isCaching = !string.IsNullOrEmpty(_key);
 			setCallback(callback);
 		}
@@ -91,7 +92,7 @@ namespace EduCATS.Data
 			}
 
 			var response = await _callback();
-			singleObject = getAccess(response);
+			singleObject = GetAccess(response);
 
 			if (singleObject == null) {
 				setError(_messageForError);
@@ -114,7 +115,7 @@ namespace EduCATS.Data
 			}
 
 			var response = await _callback();
-			list = getListAccess(response);
+			list = GetListAccess(response);
 
 			if (list == null) {
 				setError(_messageForError);
@@ -170,7 +171,7 @@ namespace EduCATS.Data
 		/// </summary>
 		/// <param name="response">Response.</param>
 		/// <returns>List of objects.</returns>
-		List<T> getListAccess(KeyValuePair<string, HttpStatusCode> response)
+		public List<T> GetListAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
 			switch (response.Value) {
 				case HttpStatusCode.OK:
@@ -195,7 +196,7 @@ namespace EduCATS.Data
 		/// </summary>
 		/// <param name="response">Response.</param>
 		/// <returns>Object.</returns>
-		T getAccess(KeyValuePair<string, HttpStatusCode> response)
+		public T GetAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
 			switch (response.Value) {
 				case HttpStatusCode.OK:
@@ -236,15 +237,7 @@ namespace EduCATS.Data
 		/// <returns>Json string.</returns>
 		string parseResponse(object responseObject, string key = null, bool isCaching = true)
 		{
-			if (responseObject == null) {
-				return null;
-			}
-
 			var response = (KeyValuePair<string, HttpStatusCode>)responseObject;
-
-			if (response.Value != HttpStatusCode.OK && response.Key == null) {
-				return null;
-			}
 
 			if (isCaching && !string.IsNullOrEmpty(key)) {
 				DataCaching<string>.Save(key, response.Key);
