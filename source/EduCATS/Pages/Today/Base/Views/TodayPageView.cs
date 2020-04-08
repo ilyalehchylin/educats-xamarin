@@ -124,7 +124,7 @@ namespace EduCATS.Pages.Today.Base.Views
 				BackgroundColor = Color.FromHex(Theme.Current.TodayNewsListBackgroundColor),
 				HasUnevenRows = true,
 				SeparatorVisibility = SeparatorVisibility.None,
-				RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColor),
+				RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColorIOS),
 				ItemTemplate = new DataTemplate(typeof(NewsPageViewCell))
 			};
 

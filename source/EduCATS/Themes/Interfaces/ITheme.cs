@@ -14,7 +14,8 @@
 		string BaseArrowForwardIcon { get; }
 		string BaseCloseIcon { get; }
 		string BaseSectionTextColor { get; }
-		string BaseActivityIndicatorColor { get; }
+		string BaseActivityIndicatorColorIOS { get; }
+		string BaseActivityIndicatorColorAndroid { get; }
 		string BasePickerTextColor { get; }
 		string BaseLogoImage { get; }
 		string BaseHeadphonesIcon { get; }
