@@ -362,14 +362,6 @@
           <SubType></SubType>
           <Generator></Generator>
         </AndroidResource>
-        <AndroidResource Include="Resources\drawable\image_github_logo_dark.png">
-          <SubType></SubType>
-          <Generator></Generator>
-        </AndroidResource>
-        <AndroidResource Include="Resources\drawable\image_github_logo_light.png">
-          <SubType></SubType>
-          <Generator></Generator>
-        </AndroidResource>
         <AndroidResource Include="Resources\drawable\icon_headphones_blue.png">
           <SubType></SubType>
           <Generator></Generator>
