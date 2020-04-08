@@ -1,9 +1,12 @@
-﻿namespace EduCATS.Data.Interfaces
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace EduCATS.Data.Interfaces
 {
 	/// <summary>
 	/// Data access interface.
 	/// </summary>
-	public interface IDataAccess
+	public interface IDataAccess<T>
 	{
 		/// <summary>
 		/// Is error occurred during API call.
@@ -19,5 +22,9 @@
 		/// Error message localization key.
 		/// </summary>
 		string ErrorMessageKey { get; set; }
+
+		Task<T> GetSingle();
+
+		Task<List<T>> GetList();
 	}
 }

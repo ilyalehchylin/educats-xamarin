@@ -5,23 +5,28 @@ Summary:
 
 ### Issues resolved
 
-<!-- List all related issues here -->
-- Fixes # (issue)
+<!-- List all related issue numbers here -->
+- Fixes #
 
 ### Platforms affected
 
-<!-- Replace [ ] with [x] if true -->
+<!-- Remove unnecessary items -->
 - All platforms (iOS, Android)
 - Android
 - iOS
 
 ### Kind of changes
 
-<!-- Replace [ ] with [x] if true -->
+<!-- Remove unnecessary items -->
 - Behavioral (Logic)
 - Visual (UI)
 
 ### Screenshots
 
 <!-- If there are visual changes, please add screenshots -->
-Not applicable
+<details>
+ <summary>Open screenshots</summary>
+ 
+ <!-- Screenshots here -->
+ 
+</details>

@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Settings.Themes.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -12,16 +11,11 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 {
 	public class ThemePageViewModel : ViewModel
 	{
-		readonly IDialogs _dialogs;
-		readonly IDevice _device;
-		readonly IPages _pages;
+		readonly IPlatformServices _services;
 
-		public ThemePageViewModel(IDialogs dialogs, IDevice device, IPages pages)
+		public ThemePageViewModel(IPlatformServices services)
 		{
-			_pages = pages;
-			_device = device;
-			_dialogs = dialogs;
-
+			_services = services;
 			setThemes();
 		}
 
@@ -37,55 +31,64 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 			set {
 				SetProperty(ref _selectedItem, value);
 				if (_selectedItem != null) {
-					_device.MainThread(async () => await selectTheme(_selectedItem));
+					_services.Device.MainThread(async () => await selectTheme(_selectedItem));
 				}
 			}
 		}
 
 		void setThemes()
 		{
-			ThemeList = new List<ThemePageModel> {
-				getThemeDetails(AppTheme.ThemeDefault),
-				getThemeDetails(AppTheme.ThemeDark)
-			};
+			try {
+				ThemeList = new List<ThemePageModel> {
+					getThemeDetails(AppTheme.ThemeDefault),
+					getThemeDetails(AppTheme.ThemeDark)
+				};
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		async Task selectTheme(object selectedObject)
 		{
-			SelectedItem = null;
+			try {
+				SelectedItem = null;
 
-			if (selectedObject == null || !(selectedObject is ThemePageModel)) {
-				return;
+				if (selectedObject == null || !(selectedObject is ThemePageModel)) {
+					return;
+				}
+
+				var theme = selectedObject as ThemePageModel;
+
+				var result = await _services.Dialogs.ShowConfirmationMessage(
+					CrossLocalization.Translate("base_warning"),
+					CrossLocalization.Translate("settings_theme_change_message"));
+
+				if (!result) {
+					return;
+				}
+
+				changeTheme(theme);
+				switchPage();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var theme = selectedObject as ThemePageModel;
-
-			var result = await _dialogs.ShowConfirmationMessage(
-				CrossLocalization.Translate("base_warning"),
-				CrossLocalization.Translate("settings_theme_change_message"));
-
-			if (!result) {
-				return;
-			}
-
-			changeTheme(theme);
-			switchPage();
 		}
 
 		void switchPage()
 		{
-			_device.MainThread(() => {
-				if (AppPrefs.IsLoggedIn) {
-					_pages.OpenMain();
+			_services.Device.MainThread(() => {
+				if (_services.Preferences.IsLoggedIn) {
+					_services.Navigation.OpenMain();
 				} else {
-					_pages.OpenLogin();
+					_services.Navigation.OpenLogin();
 				}
 			});
 		}
 
 		void changeTheme(ThemePageModel theme)
 		{
-			AppTheme.SetTheme(theme.Theme);
+			var appTheme = new AppTheme(_services);
+			appTheme.SetTheme(theme.Theme);
 		}
 
 		ThemePageModel getThemeDetails(string theme)
@@ -93,7 +96,7 @@ namespace EduCATS.Pages.Settings.Themes.ViewModels
 			return new ThemePageModel {
 				Theme = theme,
 				Title = CrossLocalization.Translate(theme?.ToLower()),
-				IsChecked = AppPrefs.Theme == theme
+				IsChecked = _services.Preferences.Theme == theme
 			};
 		}
 	}

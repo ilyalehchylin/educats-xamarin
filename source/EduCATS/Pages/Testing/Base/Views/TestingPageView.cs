@@ -1,7 +1,5 @@
 ﻿using EduCATS.Controls.Pickers;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Testing.Base.ViewModels;
 using EduCATS.Pages.Testing.Base.Views.ViewCells;
 using EduCATS.Themes;
@@ -18,7 +16,7 @@ namespace EduCATS.Pages.Testing.Base.Views
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new TestingPageViewModel(new AppDialogs(), new AppPages(), new AppDevice());
+			BindingContext = new TestingPageViewModel(new PlatformServices());
 			createViews();
 		}
 
@@ -56,7 +54,7 @@ namespace EduCATS.Pages.Testing.Base.Views
 				ItemTemplate = new DataTemplate(typeof(TestingPageViewCell)),
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				GroupHeaderTemplate = new DataTemplate(typeof(TestingHeaderViewCell)),
-				RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColor),
+				RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColorIOS),
 				Header = new StackLayout {
 					BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 					Padding = _headerPadding,

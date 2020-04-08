@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.Groups;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Data.Models;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -18,8 +18,11 @@ namespace EduCATS.Pages.Pickers
 	public class GroupsViewModel : ViewModel
 	{
 		public readonly int SubjectId;
-		public readonly IDialogs DialogService;
-		public readonly IDevice DeviceService;
+
+		/// <summary>
+		/// Platform services.
+		/// </summary>
+		public readonly IPlatformServices PlatformServices;
 
 		public List<GroupItemModel> CurrentGroups { get; set; }
 		public GroupItemModel CurrentGroup { get; set; }
@@ -27,11 +30,10 @@ namespace EduCATS.Pages.Pickers
 		public delegate void GroupEventHandler(int id, string name);
 		public event GroupEventHandler GroupChanged;
 
-		public GroupsViewModel(IDialogs dialogService, IDevice deviceService, int subjectId)
+		public GroupsViewModel(IPlatformServices platformServices, int subjectId)
 		{
 			SubjectId = subjectId;
-			DialogService = dialogService;
-			DeviceService = deviceService;
+			PlatformServices = platformServices;
 		}
 
 		string _chosenGroup;
@@ -55,14 +57,18 @@ namespace EduCATS.Pages.Pickers
 		/// <returns>Task.</returns>
 		public async Task SetupGroups()
 		{
-			var groups = await getGroups();
+			try {
+				var groups = await getGroups();
 
-			if (groups == null) {
-				return;
+				if (groups == null) {
+					return;
+				}
+
+				setCurrentGroupsList(groups.ToList());
+				setupGroup();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			setCurrentGroupsList(groups.ToList());
-			setupGroup();
 		}
 
 		/// <summary>
@@ -74,8 +80,8 @@ namespace EduCATS.Pages.Pickers
 			var groups = await DataAccess.GetOnlyGroups(SubjectId);
 
 			if (DataAccess.IsError) {
-				DeviceService.MainThread(
-					() => DialogService.ShowError(DataAccess.ErrorMessage));
+				PlatformServices.Device.MainThread(
+					() => PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage));
 			}
 
 			return groups.GroupsList;
@@ -92,7 +98,7 @@ namespace EduCATS.Pages.Pickers
 			}
 
 			if (string.IsNullOrEmpty(groupName)) {
-				var savedSubjectId = AppPrefs.ChosenGroupId;
+				var savedSubjectId = PlatformServices.Preferences.ChosenGroupId;
 				var success = setChosenGroup(savedSubjectId);
 
 				if (!success) {
@@ -107,23 +113,27 @@ namespace EduCATS.Pages.Pickers
 
 		protected async Task executeChooseGroupCommand()
 		{
-			if (CurrentGroups == null) {
-				return;
-			}
+			try {
+				if (CurrentGroups == null) {
+					return;
+				}
 
-			var buttons = CurrentGroups.Select(g => g.GroupName).ToList();
-			var name = await DialogService.ShowSheet(
-				CrossLocalization.Translate("subjects_choose"), buttons);
+				var buttons = CurrentGroups.Select(g => g.GroupName).ToList();
+				var name = await PlatformServices.Dialogs.ShowSheet(
+					CrossLocalization.Translate("subjects_choose"), buttons);
 
-			if (string.IsNullOrEmpty(name) ||
-				string.Compare(name, CrossLocalization.Translate("base_cancel")) == 0) {
-				return;
-			}
+				if (string.IsNullOrEmpty(name) ||
+					string.Compare(name, CrossLocalization.Translate("base_cancel")) == 0) {
+					return;
+				}
 
-			var isChosen = setChosenGroup(name);
+				var isChosen = setChosenGroup(name);
 
-			if (isChosen) {
-				GroupChanged?.Invoke(AppPrefs.GroupId, name);
+				if (isChosen) {
+					GroupChanged?.Invoke(PlatformServices.Preferences.GroupId, name);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
@@ -146,7 +156,7 @@ namespace EduCATS.Pages.Pickers
 			if (group != null) {
 				CurrentGroup = group;
 				ChosenGroup = group.GroupName;
-				AppPrefs.ChosenGroupId = group.GroupId;
+				PlatformServices.Preferences.ChosenGroupId = group.GroupId;
 				return true;
 			}
 

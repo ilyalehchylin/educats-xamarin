@@ -1,5 +1,5 @@
-﻿using EduCATS.Data.Models.User;
-using EduCATS.Helpers.Settings;
+﻿using EduCATS.Data.Models;
+using EduCATS.Helpers.Forms;
 
 namespace EduCATS.Data.User
 {
@@ -64,13 +64,13 @@ namespace EduCATS.Data.User
 		/// <summary>
 		/// Set login data.
 		/// </summary>
+		/// <param name="services">Platfrom services.</param>
 		/// <param name="userId">User ID.</param>
 		/// <param name="username">Username.</param>
-		public static void SetLoginData(int userId, string username)
+		public static void SetLoginData(IPlatformServices services, int userId, string username)
 		{
-			AppPrefs.UserId = userId;
-			AppPrefs.UserLogin = username;
-
+			services.Preferences.UserId = userId;
+			services.Preferences.UserLogin = username;
 			UserId = userId;
 			Username = username;
 		}
@@ -78,8 +78,9 @@ namespace EduCATS.Data.User
 		/// <summary>
 		/// Set profile data.
 		/// </summary>
+		/// <param name="services">Platfrom services.</param>
 		/// <param name="profile">Profile model.</param>
-		public static void SetProfileData(UserProfileModel profile)
+		public static void SetProfileData(IPlatformServices services, UserProfileModel profile)
 		{
 			if (profile == null) {
 				return;
@@ -91,8 +92,8 @@ namespace EduCATS.Data.User
 			Avatar = profile.Avatar;
 			Name = profile.Name;
 
-			AppPrefs.Avatar = Avatar;
-			AppPrefs.GroupName = GroupName;
+			services.Preferences.Avatar = Avatar;
+			services.Preferences.GroupName = GroupName;
 
 			switch (profile.UserType) {
 				case _professorType:

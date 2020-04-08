@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Lectures
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Lectures visiting details model.

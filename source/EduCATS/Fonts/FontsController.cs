@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using EduCATS.Constants;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
 using Nyxbull.Plugins.CrossLocalization;
 
 namespace EduCATS.Fonts
@@ -22,6 +22,11 @@ namespace EduCATS.Fonts
 		static string _runtimePlatform;
 
 		/// <summary>
+		/// Platform services.
+		/// </summary>
+		static IPlatformServices _services;
+
+		/// <summary>
 		/// Default font key.
 		/// </summary>
 		public const string DefaultFont = "font_default";
@@ -40,11 +45,11 @@ namespace EduCATS.Fonts
 		/// Initialize fonts.
 		/// </summary>
 		/// <remarks>Call this on app start.</remarks>
-		/// <param name="platform">Runtime platform (e.g. Android).</param>
-		public static void Initialize(string platform)
+		/// <param name="platformServices">Platform services.</param>
+		public static void Initialize(IPlatformServices platformServices)
 		{
-			_runtimePlatform = platform;
-
+			_services = platformServices;
+			_runtimePlatform = platformServices.Device.GetRuntimePlatform();
 			initFonts();
 		}
 
@@ -57,7 +62,7 @@ namespace EduCATS.Fonts
 		/// <summary>
 		/// Set current font.
 		/// </summary>
-		public static void SetCurrentFont() => SetFont(AppPrefs.Font);
+		public static void SetCurrentFont() => SetFont(_services.Preferences.Font);
 
 		/// <summary>
 		/// Set font.
@@ -66,14 +71,14 @@ namespace EduCATS.Fonts
 		public static void SetFont(string fontName)
 		{
 			if (fontName.Equals(CrossLocalization.Translate(DefaultFont))) {
-				AppPrefs.Font = DefaultFont;
+				_services.Preferences.Font = DefaultFont;
 				return;
 			}
 
 			var font = _fonts.SingleOrDefault(f => f.Equals(fontName));
 
 			if (font != null) {
-				AppPrefs.Font = font;
+				_services.Preferences.Font = font;
 			}
 		}
 
@@ -81,7 +86,7 @@ namespace EduCATS.Fonts
 		/// Get current font.
 		/// </summary>
 		/// <returns>Font family.</returns>
-		public static string GetCurrentFont(bool bold = false) => GetFont(AppPrefs.Font, bold);
+		public static string GetCurrentFont(bool bold = false) => GetFont(_services.Preferences.Font, bold);
 
 		/// <summary>
 		/// Get font by family.
@@ -90,7 +95,8 @@ namespace EduCATS.Fonts
 		/// <returns>Font family.</returns>
 		public static string GetFont(string font, bool bold)
 		{
-			if (font.Equals(DefaultFont) || font.Equals(CrossLocalization.Translate(DefaultFont))) {
+			if (string.IsNullOrEmpty(font) || font.Equals(DefaultFont) ||
+				font.Equals(CrossLocalization.Translate(DefaultFont))) {
 				return null;
 			}
 
@@ -127,10 +133,6 @@ namespace EduCATS.Fonts
 		/// <returns>Bold font.</returns>
 		static string getBoldFont(string font)
 		{
-			if (string.IsNullOrEmpty(font)) {
-				return font;
-			}
-
 			return font.Replace(_regularAlias, _boldAlias);
 		}
 

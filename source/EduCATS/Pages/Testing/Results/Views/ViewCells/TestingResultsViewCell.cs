@@ -1,5 +1,5 @@
-﻿using EduCATS.Data.Models.Testing.Results;
-using EduCATS.Helpers.Styles;
+﻿using EduCATS.Data.Models;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Themes;
 using Xamarin.Forms;
 

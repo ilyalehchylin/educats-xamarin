@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EduCATS.Configuration;
 using EduCATS.Data;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using Xamarin.Forms;
 
 namespace EduCATS
@@ -14,12 +15,22 @@ namespace EduCATS
 	public partial class App : Application
 	{
 		/// <summary>
+		/// Platform services.
+		/// </summary>
+		readonly IPlatformServices _services;
+
+		/// <summary>
 		/// Application.
 		/// </summary>
 		public App()
 		{
-			AppConfig.InitialSetup();
-			setMainPage();
+			try {
+				_services = new PlatformServices();
+				AppConfig.InitialSetup(_services);
+				setMainPage();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		/// <summary>
@@ -30,12 +41,10 @@ namespace EduCATS
 		/// </remarks>
 		void setMainPage()
 		{
-			var pages = new AppPages();
-
-			if (AppPrefs.IsLoggedIn) {
-				pages.OpenMain();
+			if (_services.Preferences.IsLoggedIn) {
+				_services.Navigation.OpenMain();
 			} else {
-				pages.OpenLogin();
+				_services.Navigation.OpenLogin();
 			}
 		}
 
@@ -54,21 +63,25 @@ namespace EduCATS
 		/// <returns>Task.</returns>
 		async Task getProfileInfo()
 		{
-			if (!AppPrefs.IsLoggedIn) {
-				return;
+			try {
+				if (!_services.Preferences.IsLoggedIn) {
+					return;
+				}
+
+				var username = _services.Preferences.UserLogin;
+
+				if (string.IsNullOrEmpty(username)) {
+					return;
+				}
+
+				var profile = await DataAccess.GetProfileInfo(username);
+				AppUserData.SetLoginData(_services, _services.Preferences.UserId, username);
+				AppUserData.SetProfileData(_services, profile);
+				_services.Preferences.GroupName = profile?.GroupName;
+				_services.Preferences.Avatar = profile?.Avatar;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var username = AppPrefs.UserLogin;
-
-			if (string.IsNullOrEmpty(username)) {
-				return;
-			}
-
-			var profile = await DataAccess.GetProfileInfo(username);
-			AppUserData.SetLoginData(AppPrefs.UserId, username);
-			AppUserData.SetProfileData(profile);
-			AppPrefs.GroupName = profile?.GroupName;
-			AppPrefs.Avatar = profile?.Avatar;
 		}
 	}
 }

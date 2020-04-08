@@ -6,8 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Pages.Files.Models;
 using EduCATS.Pages.Pickers;
@@ -33,7 +33,7 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// </summary>
 		/// <param name="dialogs">App dialogs.</param>
 		/// <param name="device">App device.</param>
-		public FilesPageViewModel(IDialogs dialogs, IDevice device) : base(dialogs, device)
+		public FilesPageViewModel(IPlatformServices services) : base(services)
 		{
 			Task.Run(async () => await update());
 			SubjectChanged += async (s, e) => await update();
@@ -90,10 +90,14 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// <returns>Task.</returns>
 		async Task update()
 		{
-			IsLoading = true;
-			await SetupSubjects();
-			await getFiles();
-			IsLoading = false;
+			try {
+				IsLoading = true;
+				await SetupSubjects();
+				await getFiles();
+				IsLoading = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		/// <summary>
@@ -105,7 +109,7 @@ namespace EduCATS.Pages.Files.ViewModels
 			var filesModel = await DataAccess.GetFiles(CurrentSubject.Id);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			var files = filesModel.Lectures?.Select(f => new FilesPageModel(f));
@@ -121,34 +125,36 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// <param name="selectedObject">Selected object.</param>
 		void openFile(object selectedObject)
 		{
-			if (selectedObject == null || !(selectedObject is FilesPageModel)) {
-				return;
-			}
-
-			setDownloading();
-			SelectedItem = null;
-
-			var file = selectedObject as FilesPageModel;
-			var storageFilePath = Path.Combine(DeviceService.GetAppDataDirectory(), file.Name);
-
-			if (File.Exists(storageFilePath)) {
-				completeDownload(file.Name, storageFilePath);
-				return;
-			}
-
-			var fileUri = new Uri($"{Links.GetFile}?fileName={file.PathName}/{file.FileName}");
-
 			try {
+				if (selectedObject == null || !(selectedObject is FilesPageModel)) {
+					return;
+				}
+
+				setDownloading();
+				SelectedItem = null;
+
+				var file = selectedObject as FilesPageModel;
+				var storageFilePath = Path.Combine(PlatformServices.Device.GetAppDataDirectory(), file.Name);
+
+				if (File.Exists(storageFilePath)) {
+					completeDownload(file.Name, storageFilePath);
+					return;
+				}
+
+				var fileUri = new Uri($"{Links.GetFile}?fileName={file.PathName}/{file.FileName}");
+
 				_client = new WebClient();
 				_client.DownloadProgressChanged += downloadProgressChanged;
 				_client.DownloadFileCompleted += downloadCompleted;
 				_client.QueryString.Add(_filenameKey, file.Name);
 				_client.QueryString.Add(_filepathKey, storageFilePath);
 				_client.DownloadFileAsync(fileUri, storageFilePath);
-			} catch (Exception) {
+
 				hideDownloading();
-				DeviceService.MainThread(
-					() => DialogService.ShowError(
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+				PlatformServices.Device.MainThread(
+					() => PlatformServices.Dialogs.ShowError(
 						CrossLocalization.Translate("files_downloading_error")));
 			}
 		}
@@ -183,7 +189,8 @@ namespace EduCATS.Pages.Files.ViewModels
 		void completeDownload(string fileName, string pathForFile)
 		{
 			hideDownloading();
-			DeviceService.MainThread(() => DeviceService.ShareFile(fileName, pathForFile));
+			PlatformServices.Device.MainThread(
+				() => PlatformServices.Device.ShareFile(fileName, pathForFile));
 		}
 
 		/// <summary>
@@ -204,7 +211,7 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// </summary>
 		void hideDownloading()
 		{
-			DeviceService.MainThread(() => DialogService.HideProgress(_progressDialog));
+			PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideProgress(_progressDialog));
 		}
 
 		/// <summary>
@@ -213,7 +220,8 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// <param name="percentage">Percentage.</param>
 		void updateDownloadingProgress(double percentage)
 		{
-			DeviceService.MainThread(() => DialogService.UpdateProgress(_progressDialog, (int)percentage));
+			PlatformServices.Device.MainThread(
+				() => PlatformServices.Dialogs.UpdateProgress(_progressDialog, (int)percentage));
 		}
 
 		/// <summary>
@@ -221,8 +229,8 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// </summary>
 		void setDownloading()
 		{
-			DeviceService.MainThread(() => {
-				_progressDialog = DialogService.ShowProgress(
+			PlatformServices.Device.MainThread(() => {
+				_progressDialog = PlatformServices.Dialogs.ShowProgress(
 					CrossLocalization.Translate("files_downloading"),
 					CrossLocalization.Translate("base_cancel"),
 					() => abortDownload());
@@ -239,7 +247,7 @@ namespace EduCATS.Pages.Files.ViewModels
 			}
 
 			_client.CancelAsync();
-			DialogService.HideProgress(_progressDialog);
+			PlatformServices.Dialogs.HideProgress(_progressDialog);
 		}
 	}
 }

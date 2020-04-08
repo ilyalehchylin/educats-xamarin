@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.Statistics;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Data.Models;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Students.Models;
@@ -16,19 +16,15 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 {
 	public class StudentsPageViewModel : GroupsViewModel
 	{
-		readonly IPages _pages;
 		readonly int _pageIndex;
 
 		List<StudentsPageModel> _backupStudents;
 
 		public StudentsPageViewModel(
-			IPages navigationService, IDialogs dialogService, IDevice device, int subjectId,
-			List<StatsStudentModel> studentsList, int pageIndex)
-			: base(dialogService, device, subjectId)
+			IPlatformServices services, int subjectId,
+			List<StatsStudentModel> studentsList, int pageIndex) : base(services, subjectId)
 		{
-			_pages = navigationService;
 			_pageIndex = pageIndex;
-
 			setStudents(studentsList);
 
 			Task.Run(async () => {
@@ -85,13 +81,17 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		async Task update(bool groupsOnly = false)
 		{
-			await SetupGroups();
+			try {
+				await SetupGroups();
 
-			if (groupsOnly) {
-				return;
+				if (groupsOnly) {
+					return;
+				}
+
+				await getAndSetStudents();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			await getAndSetStudents();
 		}
 
 		async Task getAndSetStudents()
@@ -104,14 +104,18 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		void setStudents(List<StatsStudentModel> studentsStatistics)
 		{
-			var students = studentsStatistics?.Select(s => new StudentsPageModel(s.Login, s.Name));
+			try {
+				var students = studentsStatistics?.Select(s => new StudentsPageModel(s.Login, s.Name));
 
-			if (students == null) {
-				return;
+				if (students == null) {
+					return;
+				}
+
+				Students = new List<StudentsPageModel>(students);
+				_backupStudents = new List<StudentsPageModel>(students);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			Students = new List<StudentsPageModel>(students);
-			_backupStudents = new List<StudentsPageModel>(students);
 		}
 
 		async Task<List<StatsStudentModel>> getStatistics()
@@ -123,7 +127,7 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			var statisticsModel = await DataAccess.GetStatistics(SubjectId, CurrentGroup.GroupId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			return statisticsModel?.Students?.ToList();
@@ -131,34 +135,42 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		void search(string text)
 		{
-			if (string.IsNullOrEmpty(text)) {
-				Students = new List<StudentsPageModel>(_backupStudents);
-				return;
+			try {
+				if (string.IsNullOrEmpty(text)) {
+					Students = new List<StudentsPageModel>(_backupStudents);
+					return;
+				}
+
+				text = text.ToLower();
+
+				var foundStudents = _backupStudents.Where(
+					s => string.IsNullOrEmpty(s.Name) ? false : s.Name.ToLower().Contains(text));
+
+				Students = new List<StudentsPageModel>(foundStudents);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			text = text.ToLower();
-
-			var foundStudents = _backupStudents.Where(
-				s => string.IsNullOrEmpty(s.Name) ? false : s.Name.ToLower().Contains(text));
-
-			Students = new List<StudentsPageModel>(foundStudents);
 		}
 
 		void openPage(object selectedObject)
 		{
-			if (selectedObject == null || selectedObject.GetType() != typeof(StudentsPageModel)) {
-				return;
+			try {
+				if (selectedObject == null || selectedObject.GetType() != typeof(StudentsPageModel)) {
+					return;
+				}
+
+				var student = selectedObject as StudentsPageModel;
+				var title = getTitle((StatsPageEnum)_pageIndex);
+
+				if (CurrentGroup == null) {
+					return;
+				}
+
+				PlatformServices.Navigation.OpenDetailedStatistics(
+					student.Username, SubjectId, CurrentGroup.GroupId, _pageIndex, title, student.Name);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var student = selectedObject as StudentsPageModel;
-			var title = getTitle((StatsPageEnum)_pageIndex);
-
-			if (CurrentGroup == null) {
-				return;
-			}
-
-			_pages.OpenDetailedStatistics(
-				student.Username, SubjectId, CurrentGroup.GroupId, _pageIndex, title, student.Name);
 		}
 
 		string getTitle(StatsPageEnum pageType)

@@ -1,4 +1,4 @@
-﻿using EduCATS.Helpers.Settings;
+﻿using EduCATS.Helpers.Forms;
 
 namespace EduCATS.Networking
 {
@@ -38,16 +38,28 @@ namespace EduCATS.Networking
 		const string _educatsBntuString = "educats.bntu.by";
 
 		/// <summary>
+		/// Platform services.
+		/// </summary>
+		public static IPlatformServices PlatformServices;
+
+		static Servers()
+		{
+			if (PlatformServices == null) {
+				PlatformServices = new PlatformServices();
+			}
+		}
+
+		/// <summary>
 		/// Current server.
 		/// </summary>
-		public static string Current => AppPrefs.Server;
+		public static string Current => PlatformServices.Preferences.Server;
 
 		/// <summary>
 		/// Set current server.
 		/// </summary>
 		/// <param name="server">Server to set.</param>
 		public static void SetCurrent(string server) =>
-			AppPrefs.Server = server;
+			PlatformServices.Preferences.Server = server;
 
 		/// <summary>
 		/// Get server name string by address.

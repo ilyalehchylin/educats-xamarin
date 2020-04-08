@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.User;
+using EduCATS.Data.Models;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -16,24 +16,18 @@ namespace EduCATS.Pages.Login.ViewModels
 	public class LoginPageViewModel : ViewModel
 	{
 		/// <summary>
-		/// Dialog service.
+		/// Platform services.
 		/// </summary>
-		readonly IDialogs _dialog;
-
-		/// <summary>
-		/// Navigation service.
-		/// </summary>
-		readonly IPages _pages;
+		readonly IPlatformServices _services;
 
 		/// <summary>
 		/// Login page ViewModel constructor.
 		/// </summary>
-		public LoginPageViewModel(IDialogs dialogs, IPages pages)
+		public LoginPageViewModel(IPlatformServices services)
 		{
+			_services = services;
 			IsLoadingCompleted = true;
 			IsPasswordHidden = true;
-			_dialog = dialogs;
-			_pages = pages;
 		}
 
 		bool _isLoading;
@@ -126,12 +120,16 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns>Task.</returns>
 		protected async Task startLogin()
 		{
-			if (checkCredentials()) {
-				setLoading(true, CrossLocalization.Translate("login_loading"));
-				var user = await loginRequest();
-				await loginCompleted(user);
-			} else {
-				_dialog.ShowError(CrossLocalization.Translate("login_empty_credentials_error"));
+			try {
+				if (checkCredentials()) {
+					setLoading(true, CrossLocalization.Translate("login_loading"));
+					var user = await loginRequest();
+					await loginCompleted(user);
+				} else {
+					_services.Dialogs.ShowError(CrossLocalization.Translate("login_empty_credentials_error"));
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
@@ -149,9 +147,9 @@ namespace EduCATS.Pages.Login.ViewModels
 				setLoading(false);
 				profileRetrieved(profile);
 			} else if (user != null && DataAccess.IsError) {
-				_dialog.ShowError(DataAccess.ErrorMessage);
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 			} else {
-				_dialog.ShowError(CrossLocalization.Translate("login_error"));
+				_services.Dialogs.ShowError(CrossLocalization.Translate("login_error"));
 			}
 		}
 
@@ -162,13 +160,13 @@ namespace EduCATS.Pages.Login.ViewModels
 		void profileRetrieved(UserProfileModel profile)
 		{
 			if (profile != null && !DataAccess.IsError) {
-				AppPrefs.GroupId = profile.GroupId;
-				AppPrefs.IsLoggedIn = true;
-				_pages.OpenMain();
+				_services.Preferences.GroupId = profile.GroupId;
+				_services.Preferences.IsLoggedIn = true;
+				_services.Navigation.OpenMain();
 			} else if (profile != null && DataAccess.IsError) {
-				_dialog.ShowError(DataAccess.ErrorMessage);
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 			} else {
-				_dialog.ShowError(CrossLocalization.Translate("login_user_profile_error"));
+				_services.Dialogs.ShowError(CrossLocalization.Translate("login_user_profile_error"));
 			}
 		}
 
@@ -182,8 +180,12 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openSettings()
 		{
-			await _pages.OpenSettings(
-				CrossLocalization.Translate("main_settings"));
+			try {
+				await _services.Navigation.OpenSettings(
+					CrossLocalization.Translate("main_settings"));
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		/// <summary>
@@ -195,7 +197,7 @@ namespace EduCATS.Pages.Login.ViewModels
 			var userLogin = await DataAccess.Login(Username, Password);
 
 			if (userLogin != null) {
-				AppUserData.SetLoginData(userLogin.UserId, userLogin.Username);
+				AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
 			}
 
 			return userLogin;
@@ -209,7 +211,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		async Task<UserProfileModel> getProfileData(string username)
 		{
 			var userProfile = await DataAccess.GetProfileInfo(username);
-			AppUserData.SetProfileData(userProfile);
+			AppUserData.SetProfileData(_services, userProfile);
 			return userProfile;
 		}
 
@@ -235,9 +237,9 @@ namespace EduCATS.Pages.Login.ViewModels
 		void setLoading(bool isLoading, string message = null)
 		{
 			if (isLoading) {
-				_dialog.ShowLoading(message);
+				_services.Dialogs.ShowLoading(message);
 			} else {
-				_dialog.HideLoading();
+				_services.Dialogs.HideLoading();
 			}
 		}
 	}

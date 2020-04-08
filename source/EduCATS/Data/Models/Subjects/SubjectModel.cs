@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Subjects
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Subject ID.

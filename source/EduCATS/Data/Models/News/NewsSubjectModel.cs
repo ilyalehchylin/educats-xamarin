@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.News
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// News subject details model.

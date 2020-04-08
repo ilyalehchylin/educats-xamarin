@@ -1,10 +1,6 @@
 ﻿using EduCATS.Controls.RoundedListView;
-using EduCATS.Controls.RoundedListView.Selectors;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Settings;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Today.Base.ViewModels;
 using EduCATS.Pages.Today.Base.Views.ViewCells;
 using EduCATS.Themes;
@@ -29,13 +25,14 @@ namespace EduCATS.Pages.Today.Base.Views
 		static Thickness _listMargin = new Thickness(0, 10, 0, 0);
 		static Thickness _subjectsLabelMargin = new Thickness(0, 10, 10, 10);
 
+		readonly IPlatformServices _services;
+
 		public TodayPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			var subjectListHeaderHeight = RoundedListView.HeaderHeight;
-			BindingContext = new TodayPageViewModel(
-				_subjectRowHeight, subjectListHeaderHeight,
-				new AppDialogs(), new AppPages(), new AppDevice());
+			_services = new PlatformServices();
+			BindingContext = new TodayPageViewModel(_subjectRowHeight, subjectListHeaderHeight, _services);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			createViews();
 		}
@@ -88,10 +85,13 @@ namespace EduCATS.Pages.Today.Base.Views
 
 		CarouselView createCalendarCarousel()
 		{
+			var heightReqest = _services.Preferences.IsLargeFont
+				? _calendarCarouselHeightLarge : _calendarCarouselHeight;
+
 			var calendarCarouselView = new CarouselView {
 				BackgroundColor = Color.FromHex(Theme.Current.TodayCalendarBackgroundColor),
 				HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
-				HeightRequest = AppPrefs.IsLargeFont ? _calendarCarouselHeightLarge : _calendarCarouselHeight,
+				HeightRequest = heightReqest,
 				ItemTemplate = new DataTemplate(typeof(CalendarCarouselViewCell))
 			};
 
@@ -124,7 +124,7 @@ namespace EduCATS.Pages.Today.Base.Views
 				BackgroundColor = Color.FromHex(Theme.Current.TodayNewsListBackgroundColor),
 				HasUnevenRows = true,
 				SeparatorVisibility = SeparatorVisibility.None,
-				RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColor),
+				RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColorIOS),
 				ItemTemplate = new DataTemplate(typeof(NewsPageViewCell))
 			};
 
@@ -151,12 +151,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		ListView createSubjectsList()
 		{
 			var subjectsLabel = createSubjectsLabel();
-
-			var templateSelector = new RoundedListTemplateSelector {
-				NavigationTemplate = new DataTemplate(typeof(CalendarSubjectsViewCell))
-			};
-
-			var subjectsListView = new RoundedListView(templateSelector, subjectsLabel) {
+			var subjectsListView = new RoundedListView(typeof(CalendarSubjectsViewCell), header: subjectsLabel) {
 				RowHeight = (int)_subjectRowHeight,
 				IsEnabled = false,
 				Margin = _subjectsMargin

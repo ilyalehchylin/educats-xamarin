@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.Eemc;
+using EduCATS.Data.Models;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Pages.Pickers;
 using Xamarin.Forms;
@@ -27,11 +27,6 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// Search ID.
 		/// </summary>
 		readonly int _searchId;
-
-		/// <summary>
-		/// Pages navigation.
-		/// </summary>
-		readonly IPages _navigation;
 
 		/// <summary>
 		/// Previous concepts.
@@ -60,11 +55,9 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <param name="device">App device.</param>
 		/// <param name="navigation">Pages navigation.</param>
 		/// <param name="searchId">Search ID.</param>
-		public EemcPageViewModel(
-			IDialogs dialogs, IDevice device, IPages navigation, int searchId) : base(dialogs, device)
+		public EemcPageViewModel(IPlatformServices services, int searchId) : base(services)
 		{
 			IsRoot = true;
-			_navigation = navigation;
 			_searchId = searchId;
 			_previousConcepts = new Stack<ConceptModel>();
 
@@ -132,16 +125,24 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <returns>Task.</returns>
 		async Task update()
 		{
-			await SetupSubjects();
-			await setRootConcepts();
+			try {
+				PlatformServices.Dialogs.ShowLoading();
+				await SetupSubjects();
+				await setRootConcepts();
+				throw new Exception("asd");
+				if (_searchId == -1 || _backupRootConceptsWithoutChildren == null) {
+					PlatformServices.Dialogs.HideLoading();
+					return;
+				}
 
-			if (_searchId == -1 || _backupRootConceptsWithoutChildren == null) {
-				return;
+				await setConceptsFromRoot(_backupRootConceptsWithoutChildren[0].Id);
+				searchForBook(_searchId);
+				IsBackActionPossible = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 
-			await setConceptsFromRoot(_backupRootConceptsWithoutChildren[0].Id);
-			searchForBook(_searchId);
-			IsBackActionPossible = false;
+			PlatformServices.Dialogs.HideLoading();
 		}
 
 		/// <summary>
@@ -155,7 +156,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			var root = await DataAccess.GetRootConcepts(userId, subjectId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			var rootConcepts = root?.Concepts;
@@ -173,19 +174,23 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <returns>Task.</returns>
 		async Task openConcepts(object selectedObject)
 		{
-			if (selectedObject == null || !(selectedObject is ConceptModel)) {
-				return;
-			}
+			try {
+				if (selectedObject == null || !(selectedObject is ConceptModel)) {
+					return;
+				}
 
-			SelectedItem = null;
-			var concept = selectedObject as ConceptModel;
-			var id = concept.Id;
+				SelectedItem = null;
+				var concept = selectedObject as ConceptModel;
+				var id = concept.Id;
 
-			if (IsRoot) {
-				_rootId = id;
-				await setConceptsFromRoot(id);
-			} else {
-				setOrOpenConcept(concept, id);
+				if (IsRoot) {
+					_rootId = id;
+					await setConceptsFromRoot(id);
+				} else {
+					setOrOpenConcept(concept, id);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
@@ -238,7 +243,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			var conceptTree = await DataAccess.GetConceptTree(id);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
 			var concepts = conceptTree?.Children;
@@ -285,8 +290,8 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <param name="filePath">File path.</param>
 		void openFile(string filePath)
 		{
-			DeviceService.MainThread(
-				async () => await DeviceService.OpenUri($"{Servers.Current}/{filePath}"));
+			PlatformServices.Device.MainThread(
+				async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/{filePath}"));
 		}
 
 		/// <summary>
@@ -295,8 +300,8 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <param name="id">Test ID.</param>
 		void openTest(int id)
 		{
-			DeviceService.MainThread(
-				async () => await _navigation.OpenTestPassing(id, true));
+			PlatformServices.Device.MainThread(
+				async () => await PlatformServices.Navigation.OpenTestPassing(id, true));
 		}
 
 		/// <summary>
@@ -319,26 +324,30 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// </summary>
 		void goBack()
 		{
-			if (_previousConcepts.Count == 0) {
-				return;
-			}
+			try {
+				if (_previousConcepts.Count == 0) {
+					return;
+				}
 
-			var previousConcept = _previousConcepts.Pop();
+				var previousConcept = _previousConcepts.Pop();
 
-			if (previousConcept.Id == _rootId &&
-				_backupRootConceptsWithoutChildren != null &&
-				_backupRootConceptsWithoutChildren.Count > 0) {
-				IsRoot = true;
-				IsBackActionPossible = false;
-				Concepts = new List<ConceptModel>(_backupRootConceptsWithoutChildren);
-				return;
-			}
+				if (previousConcept.Id == _rootId &&
+					_backupRootConceptsWithoutChildren != null &&
+					_backupRootConceptsWithoutChildren.Count > 0) {
+					IsRoot = true;
+					IsBackActionPossible = false;
+					Concepts = new List<ConceptModel>(_backupRootConceptsWithoutChildren);
+					return;
+				}
 
-			if (_previousConcepts.Count > 0) {
-				var earlierConcept = _previousConcepts.Peek();
-				Concepts = new List<ConceptModel>(earlierConcept.Children);
-			} else {
-				Concepts = new List<ConceptModel>(_backupRootConceptsWithChildren.Children);
+				if (_previousConcepts.Count > 0) {
+					var earlierConcept = _previousConcepts.Peek();
+					Concepts = new List<ConceptModel>(earlierConcept.Children);
+				} else {
+					Concepts = new List<ConceptModel>(_backupRootConceptsWithChildren.Children);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 	}

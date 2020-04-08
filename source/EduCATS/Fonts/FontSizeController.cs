@@ -1,5 +1,5 @@
 ﻿using System;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
 using Xamarin.Forms;
 
 namespace EduCATS.Fonts
@@ -12,7 +12,7 @@ namespace EduCATS.Fonts
 		/// <summary>
 		/// Number to add to the largest size.
 		/// </summary>
-		const double _largestAddition = 5;
+		const double _addition = 5;
 
 		/// <summary>
 		/// Number to add to vw font size.
@@ -22,7 +22,16 @@ namespace EduCATS.Fonts
 		/// <summary>
 		/// Are large preferences active.
 		/// </summary>
-		static bool _isLargePrefs => AppPrefs.IsLargeFont;
+		static bool _isLargePrefs => PlatformServices.Preferences.IsLargeFont;
+
+		public static IPlatformServices PlatformServices;
+
+		static FontSizeController()
+		{
+			if (PlatformServices == null) {
+				PlatformServices = new PlatformServices();
+			}
+		}
 
 		/// <summary>
 		/// Get font size.
@@ -32,18 +41,20 @@ namespace EduCATS.Fonts
 		/// <returns></returns>
 		public static double GetSize(NamedSize namedSize, Type type)
 		{
+			var namedSizeNumber = (int)namedSize;
+
 			if (!_isLargePrefs) {
-				return Device.GetNamedSize(namedSize, type);
+				return PlatformServices.Device.GetNamedSize(namedSizeNumber, type);
 			}
 
-			return namedSize switch
+			return namedSizeNumber switch
 			{
-				NamedSize.Micro => Device.GetNamedSize(NamedSize.Small, type),
-				NamedSize.Small => Device.GetNamedSize(NamedSize.Medium, type),
-				NamedSize.Default => Device.GetNamedSize(NamedSize.Medium, type),
-				NamedSize.Medium => Device.GetNamedSize(NamedSize.Large, type),
-				NamedSize.Large => Device.GetNamedSize(NamedSize.Large, type) + _largestAddition,
-				_ => Device.GetNamedSize(namedSize, type),
+				(int)NamedSize.Micro => PlatformServices.Device.GetNamedSize(2, type),
+				(int)NamedSize.Small => PlatformServices.Device.GetNamedSize(3, type),
+				(int)NamedSize.Default => PlatformServices.Device.GetNamedSize(3, type),
+				(int)NamedSize.Medium => PlatformServices.Device.GetNamedSize(4, type),
+				(int)NamedSize.Large => PlatformServices.Device.GetNamedSize(4, type) + _addition,
+				_ => PlatformServices.Device.GetNamedSize((int)namedSize, type),
 			};
 		}
 

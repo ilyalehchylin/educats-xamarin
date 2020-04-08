@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.Statistics;
+using EduCATS.Data.Models;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
 using EduCATS.Helpers.Extensions;
-using EduCATS.Helpers.Pages.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Statistics.Base.Models;
 using EduCATS.Pages.Statistics.Enums;
@@ -21,14 +20,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 	{
 		const string _doubleStringFormat = "0.0";
 
-		readonly IPages _navigationService;
-
 		List<StatsStudentModel> _students;
 
-		public StatsPageViewModel(
-			IDialogs dialogService, IDevice device, IPages navigationService) : base(dialogService, device)
+		public StatsPageViewModel(IPlatformServices services) : base(services)
 		{
-			_navigationService = navigationService;
 			setPagesList();
 			setCollapsedDetails();
 
@@ -139,76 +134,98 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		protected async Task executeRefreshCommand()
 		{
-			IsLoading = true;
-			await SetupSubjects();
-			await getAndSetStatistics();
-			IsLoading = false;
+			try {
+				IsLoading = true;
+				await SetupSubjects();
+				await getAndSetStatistics();
+				IsLoading = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		protected void executeExpandCommand()
 		{
-			if (IsCollapsedStatistics) {
-				setCollapsedDetails(false);
-			} else {
-				setCollapsedDetails();
+			try {
+				if (IsCollapsedStatistics) {
+					setCollapsedDetails(false);
+				} else {
+					setCollapsedDetails();
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
 		async Task getAndSetStatistics()
 		{
-			var studentsStatistics = await getStatistics();
+			try {
+				var studentsStatistics = await getStatistics();
 
-			if (studentsStatistics == null) {
-				setChartData(null);
-			} else {
-				var currentStudentStatistics = studentsStatistics.SingleOrDefault(
-					s => s.StudentId == AppPrefs.UserId);
-				setChartData(currentStudentStatistics);
-				_students = studentsStatistics;
+				if (studentsStatistics == null) {
+					setChartData(null);
+				} else {
+					var currentStudentStatistics = studentsStatistics.SingleOrDefault(
+						s => s.StudentId == PlatformServices.Preferences.UserId);
+					setChartData(currentStudentStatistics);
+					_students = studentsStatistics;
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
 		void setChartData(StatsStudentModel stats)
 		{
-			if (stats == null) {
-				stats = new StatsStudentModel();
+			try {
+				if (stats == null) {
+					stats = new StatsStudentModel();
+				}
+
+				var avgLabs = stats.AverageLabsMark.StringToDouble();
+				AverageLabs = avgLabs.ToString(_doubleStringFormat);
+
+				var avgTests = stats.AverageTestMark.StringToDouble();
+				AverageTests = avgTests.ToString(_doubleStringFormat);
+
+				var rating = (avgLabs + avgTests) / 2;
+				Rating = rating.ToString(_doubleStringFormat);
+
+				setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
+
+				ChartEntries = new List<double> {
+					avgLabs, avgTests, rating
+				};
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var avgLabs = stats.AverageLabsMark.StringToDouble();
-			AverageLabs = avgLabs.ToString(_doubleStringFormat);
-
-			var avgTests = stats.AverageTestMark.StringToDouble();
-			AverageTests = avgTests.ToString(_doubleStringFormat);
-
-			var rating = (avgLabs + avgTests) / 2;
-			Rating = rating.ToString(_doubleStringFormat);
-
-			setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
-
-			ChartEntries = new List<double> {
-				avgLabs, avgTests, rating
-			};
 		}
 
 		async Task<List<StatsStudentModel>> getStatistics()
 		{
-			if (!AppUserData.IsProfileLoaded) {
-				await getProfile();
-			}
+			try {
+				if (!AppUserData.IsProfileLoaded) {
+					await getProfile();
+				}
 
-			var groupId = AppPrefs.GroupId;
+				var groupId = PlatformServices.Preferences.GroupId;
 
-			if (CurrentSubject == null || groupId == -1) {
+				if (CurrentSubject == null || groupId == -1) {
+					return null;
+				}
+
+				var statisticsModel = await DataAccess.GetStatistics(
+					CurrentSubject.Id, PlatformServices.Preferences.GroupId);
+
+				if (DataAccess.IsError && !DataAccess.IsConnectionError) {
+					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
+				}
+
+				return statisticsModel.Students?.ToList();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 				return null;
 			}
-
-			var statisticsModel = await DataAccess.GetStatistics(CurrentSubject.Id, AppPrefs.GroupId);
-
-			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				DialogService.ShowError(DataAccess.ErrorMessage);
-			}
-
-			return statisticsModel.Students?.ToList();
 		}
 
 		/// <summary>
@@ -217,8 +234,8 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		/// <returns>Task.</returns>
 		async Task getProfile()
 		{
-			var profile = await DataAccess.GetProfileInfo(AppPrefs.UserLogin);
-			AppUserData.SetProfileData(profile);
+			var profile = await DataAccess.GetProfileInfo(PlatformServices.Preferences.UserLogin);
+			AppUserData.SetProfileData(PlatformServices, profile);
 			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
 		}
 
@@ -252,27 +269,31 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		void openPage(object selectedObject)
 		{
-			if (selectedObject == null || selectedObject.GetType() != typeof(StatsPageModel)) {
-				return;
+			try {
+				if (selectedObject == null || selectedObject.GetType() != typeof(StatsPageModel)) {
+					return;
+				}
+
+				var page = selectedObject as StatsPageModel;
+				var pageType = getPageToOpen(page.Title);
+
+				if (AppUserData.UserType == UserTypeEnum.Professor) {
+					PlatformServices.Navigation.OpenStudentsListStats(
+						(int)pageType, CurrentSubject.Id, _students, page.Title);
+					return;
+				}
+
+				var user = _students.SingleOrDefault(s => s.StudentId == PlatformServices.Preferences.UserId);
+
+				if (user == null) {
+					return;
+				}
+
+				PlatformServices.Navigation.OpenDetailedStatistics(
+					user.Login, CurrentSubject.Id, PlatformServices.Preferences.GroupId, (int)pageType, page.Title);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var page = selectedObject as StatsPageModel;
-			var pageType = getPageToOpen(page.Title);
-
-			if (AppUserData.UserType == UserTypeEnum.Professor) {
-				_navigationService.OpenStudentsListStats(
-					(int)pageType, CurrentSubject.Id, _students, page.Title);
-				return;
-			}
-
-			var user = _students.SingleOrDefault(s => s.StudentId == AppPrefs.UserId);
-
-			if (user == null) {
-				return;
-			}
-
-			_navigationService.OpenDetailedStatistics(
-				user.Login, CurrentSubject.Id, AppPrefs.GroupId, (int)pageType, page.Title);
 		}
 
 		StatsPageEnum getPageToOpen(string pageString)

@@ -1,6 +1,6 @@
 ﻿using EduCATS.Controls.RoundedListView.Enums;
 using EduCATS.Controls.RoundedListView.Interfaces;
-using EduCATS.Data.Models.Files;
+using EduCATS.Data.Models;
 
 namespace EduCATS.Pages.Files.Models
 {

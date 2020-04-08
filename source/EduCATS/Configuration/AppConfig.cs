@@ -1,11 +1,11 @@
 ﻿using System.Reflection;
 using EduCATS.Constants;
 using EduCATS.Fonts;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Themes;
 using MonkeyCache.FileStore;
 using Nyxbull.Plugins.CrossLocalization;
-using Xamarin.Forms;
 
 namespace EduCATS.Configuration
 {
@@ -15,13 +15,28 @@ namespace EduCATS.Configuration
 	public static class AppConfig
 	{
 		/// <summary>
+		/// Platform services.
+		/// </summary>
+		static IPlatformServices _services;
+
+		/// <summary>
 		/// Configure packages, app helpers and tools.
 		/// </summary>
-		public static void InitialSetup()
+		public static void InitialSetup(IPlatformServices platformServices)
 		{
+			_services = platformServices;
+			setupLogs();
 			setupPackages();
 			setupTheme();
 			setupFonts();
+		}
+
+		/// <summary>
+		/// Configure application logs.
+		/// </summary>
+		static void setupLogs()
+		{
+			AppLogs.Initialize(_services.Device.GetAppDataDirectory());
 		}
 
 		/// <summary>
@@ -38,7 +53,8 @@ namespace EduCATS.Configuration
 		/// </summary>
 		static void setupTheme()
 		{
-			AppTheme.SetCurrentTheme();
+			var theme = new AppTheme(_services);
+			theme.SetCurrentTheme();
 		}
 
 		/// <summary>
@@ -46,7 +62,7 @@ namespace EduCATS.Configuration
 		/// </summary>
 		static void setupFonts()
 		{
-			FontsController.Initialize(Device.RuntimePlatform);
+			FontsController.Initialize(_services);
 			FontsController.SetCurrentFont();
 		}
 
@@ -65,7 +81,7 @@ namespace EduCATS.Configuration
 			CrossLocalization.AddLanguageSupport(Languages.EN);
 			CrossLocalization.AddLanguageSupport(Languages.RU);
 			CrossLocalization.SetDefaultLanguage(Languages.EN.LangCode);
-			CrossLocalization.SetLanguage(AppPrefs.LanguageCode);
+			CrossLocalization.SetLanguage(_services.Preferences.LanguageCode);
 		}
 
 

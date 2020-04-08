@@ -1,10 +1,7 @@
 ﻿using EduCATS.Controls.RoundedListView;
-using EduCATS.Controls.RoundedListView.Selectors;
-using EduCATS.Helpers.Converters;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Converters;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Settings.Base.ViewModels;
 using EduCATS.Pages.Settings.Views.Base.ViewCells;
 using EduCATS.Themes;
@@ -26,8 +23,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new SettingsPageViewModel(
-				new AppDialogs(), new AppPages(), new AppDevice());
+			BindingContext = new SettingsPageViewModel(new PlatformServices());
 
 			createViews();
 		}
@@ -120,11 +116,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 
 		RoundedListView createList(View header)
 		{
-			var templateSelector = new RoundedListTemplateSelector {
-				NavigationTemplate = new DataTemplate(typeof(SettingsPageViewCell))
-			};
-
-			var settingsListView = new RoundedListView(templateSelector, header) {
+			var settingsListView = new RoundedListView(typeof(SettingsPageViewCell), header: header) {
 				Margin = _listMargin
 			};
 

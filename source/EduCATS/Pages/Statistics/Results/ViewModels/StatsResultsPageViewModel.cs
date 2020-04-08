@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
-using EduCATS.Data.Models.Labs;
-using EduCATS.Data.Models.Statistics;
+using EduCATS.Data.Models;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Models;
 using Xamarin.Forms;
@@ -19,8 +19,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		readonly int _currentGroupId;
 		readonly string _currentUserLogin;
 		readonly StatsPageEnum _statisticsPage;
-		readonly IDialogs _dialogs;
-		readonly IDevice _device;
+		readonly IPlatformServices _services;
 
 		List<StatsPageLabsVisitingModel> _currentLabsVisitingList;
 		List<StatsPageLabsRatingModel> _currentLabsMarksList;
@@ -28,11 +27,10 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		const string _emptyRatingString = "-";
 
 		public StatsResultsPageViewModel(
-			IDialogs dialogs, IDevice device, string userLogin,
+			IPlatformServices services, string userLogin,
 			int subjectId, int groupId, StatsPageEnum statisticsPage)
 		{
-			_dialogs = dialogs;
-			_device = device;
+			_services = services;
 			_currentUserLogin = userLogin;
 			_currentSubjectId = subjectId;
 			_currentGroupId = groupId;
@@ -67,28 +65,32 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getData()
 		{
-			IsLoading = true;
+			try {
+				IsLoading = true;
 
-			switch (_statisticsPage) {
-				case StatsPageEnum.LabsRating:
-					await getLabs(false);
-					await getLabsMarksAndVisiting();
-					break;
-				case StatsPageEnum.LabsVisiting:
-					await getLabs(true);
-					await getLabsMarksAndVisiting();
-					break;
-				case StatsPageEnum.LecturesVisiting:
-					await getLecturesVisiting();
-					break;
+				switch (_statisticsPage) {
+					case StatsPageEnum.LabsRating:
+						await getLabs(false);
+						await getLabsMarksAndVisiting();
+						break;
+					case StatsPageEnum.LabsVisiting:
+						await getLabs(true);
+						await getLabsMarksAndVisiting();
+						break;
+					case StatsPageEnum.LecturesVisiting:
+						await getLecturesVisiting();
+						break;
+				}
+
+				if (DataAccess.IsError) {
+					_services.Device.MainThread(
+						() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
+				}
+
+				IsLoading = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			if (DataAccess.IsError) {
-				_device.MainThread(
-					() => _dialogs.ShowError(DataAccess.ErrorMessage));
-			}
-
-			IsLoading = false;
 		}
 
 		async Task getLabs(bool isVisiting)

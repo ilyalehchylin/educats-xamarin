@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.User;
-using EduCATS.Helpers.Devices.Interfaces;
-using EduCATS.Helpers.Dialogs.Interfaces;
-using EduCATS.Helpers.Pages.Interfaces;
-using EduCATS.Helpers.Settings;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Settings.Base.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -15,17 +14,17 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 {
 	public class SettingsPageViewModel : ViewModel
 	{
-		readonly IDialogs _dialogs;
-		readonly IPages _navigation;
-		readonly IDevice _device;
+		readonly IPlatformServices _services;
 
-		public SettingsPageViewModel(IDialogs dialogs, IPages navigation, IDevice device)
+		public SettingsPageViewModel(IPlatformServices services)
 		{
-			_device = device;
-			_dialogs = dialogs;
-			_navigation = navigation;
-			setInitData();
-			setSettings();
+			try {
+				_services = services;
+				setInitData();
+				setSettings();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		string _avatar;
@@ -77,12 +76,12 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		void setInitData()
 		{
-			Username = AppPrefs.UserLogin;
-			IsLoggedIn = AppPrefs.IsLoggedIn;
-			Avatar = AppPrefs.Avatar;
-			Group = string.IsNullOrEmpty(AppPrefs.GroupName) ?
+			Username = _services.Preferences.UserLogin;
+			IsLoggedIn = _services.Preferences.IsLoggedIn;
+			Avatar = _services.Preferences.Avatar;
+			Group = string.IsNullOrEmpty(_services.Preferences.GroupName) ?
 				CrossLocalization.Translate("settings_user_without_group") :
-				AppPrefs.GroupName;
+				_services.Preferences.GroupName;
 		}
 
 		void setSettings()
@@ -111,41 +110,49 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		void openSettings(object selectedObject)
 		{
-			if (selectedObject == null || !(selectedObject is SettingsPageModel)) {
-				return;
-			}
+			try {
+				if (selectedObject == null || !(selectedObject is SettingsPageModel)) {
+					return;
+				}
 
-			var settings = selectedObject as SettingsPageModel;
-			_device.MainThread(async () => await openPage(settings.Title));
+				var settings = selectedObject as SettingsPageModel;
+				_services.Device.MainThread(async () => await openPage(settings.Title));
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		async Task openPage(string title)
 		{
-			var serverTitle = CrossLocalization.Translate("settings_server");
-			var languageTitle = CrossLocalization.Translate("settings_language");
-			var themeTitle = CrossLocalization.Translate("settings_theme");
-			var fontTitle = CrossLocalization.Translate("settings_font");
-			var aboutTitle = CrossLocalization.Translate("settings_about");
-			var logoutTitle = CrossLocalization.Translate("settings_logout");
+			try {
+				var serverTitle = CrossLocalization.Translate("settings_server");
+				var languageTitle = CrossLocalization.Translate("settings_language");
+				var themeTitle = CrossLocalization.Translate("settings_theme");
+				var fontTitle = CrossLocalization.Translate("settings_font");
+				var aboutTitle = CrossLocalization.Translate("settings_about");
+				var logoutTitle = CrossLocalization.Translate("settings_logout");
 
-			if (title.Equals(serverTitle)) {
-				await _navigation.OpenSettingsServer(serverTitle);
-			} else if (title.Equals(languageTitle)) {
-				await _navigation.OpenSettingsLanguage(languageTitle);
-			} else if (title.Equals(themeTitle)) {
-				await _navigation.OpenSettingsTheme(themeTitle);
-			} else if (title.Equals(fontTitle)) {
-				await _navigation.OpenSettingsFont(fontTitle);
-			} else if (title.Equals(aboutTitle)) {
-				await _navigation.OpenSettingsAbout(aboutTitle);
-			} else if (title.Equals(logoutTitle)) {
-				await logout();
+				if (title.Equals(serverTitle)) {
+					await _services.Navigation.OpenSettingsServer(serverTitle);
+				} else if (title.Equals(languageTitle)) {
+					await _services.Navigation.OpenSettingsLanguage(languageTitle);
+				} else if (title.Equals(themeTitle)) {
+					await _services.Navigation.OpenSettingsTheme(themeTitle);
+				} else if (title.Equals(fontTitle)) {
+					await _services.Navigation.OpenSettingsFont(fontTitle);
+				} else if (title.Equals(aboutTitle)) {
+					await _services.Navigation.OpenSettingsAbout(aboutTitle);
+				} else if (title.Equals(logoutTitle)) {
+					await logout();
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
 		async Task logout()
 		{
-			var result = await _dialogs.ShowConfirmationMessage(
+			var result = await _services.Dialogs.ShowConfirmationMessage(
 				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("settings_logout_message"));
 
@@ -156,16 +163,17 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		void resetData()
 		{
-			AppPrefs.ResetPrefs();
+			_services.Preferences.ResetPrefs();
 			AppUserData.Clear();
 			DataAccess.ResetData();
-			AppTheme.SetTheme(AppTheme.ThemeDefault);
-			_navigation.OpenLogin();
+			var theme = new AppTheme(_services);
+			theme.SetTheme(AppTheme.ThemeDefault);
+			_services.Navigation.OpenLogin();
 		}
 
 		protected void closePage()
 		{
-			_navigation.ClosePage(true);
+			_services.Navigation.ClosePage(true);
 		}
 	}
 }

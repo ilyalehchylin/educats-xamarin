@@ -1,6 +1,6 @@
 ﻿using EduCATS.Constants;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Settings.About.ViewModels;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
@@ -12,6 +12,7 @@ namespace EduCATS.Pages.Settings.About.Views
 	public class AboutPageView : ContentPage
 	{
 		static Thickness _padding = new Thickness(20);
+		static Thickness _buttonsPadding = new Thickness(0, 0, 0, 10);
 
 		const double _spacing = 20;
 		const double _buttonHeight = 50;
@@ -21,24 +22,38 @@ namespace EduCATS.Pages.Settings.About.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			Padding = _padding;
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new AboutPageViewModel(new AppDevice());
+			BindingContext = new AboutPageViewModel(new PlatformServices());
 			createViews();
 		}
 
 		void createViews()
 		{
 			var header = createHeader();
-			var githubLogo = createGithubLogo();
 
-			var openSiteButton = createButton(
+			var sendLogsButton = createButton(
+				CrossLocalization.Translate("settings_about_send_logs"),
+				"SendLogsCommand");
+
+			var openGithubButton = createButton(
+				CrossLocalization.Translate("settings_about_open_source"),
+				"OpenSourceCommand");
+
+			var openWebPageButton = createButton(
 				CrossLocalization.Translate("settings_about_open_web_version"),
 				"OpenSiteCommand");
 
 			Content = new StackLayout {
+				Spacing = _spacing,
+				Padding = _buttonsPadding,
 				Children = {
 					header,
-					openSiteButton,
-					githubLogo
+					new StackLayout {
+						Children = {
+							sendLogsButton,
+							openGithubButton,
+							openWebPageButton
+						}
+					}
 				}
 			};
 		}
@@ -137,46 +152,6 @@ namespace EduCATS.Pages.Settings.About.Views
 
 			button.SetBinding(Button.CommandProperty, commandProperty);
 			return button;
-		}
-
-		Grid createGithubLogo()
-		{
-			var grid = new Grid {
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				VerticalOptions = LayoutOptions.EndAndExpand,
-				RowDefinitions = {
-					new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
-					new RowDefinition { Height = new GridLength(40) }
-				},
-				ColumnDefinitions = {
-					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-					new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) },
-					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
-				}
-			};
-
-			var image = new CachedImage {
-				Aspect = Aspect.AspectFit,
-				Source = ImageSource.FromFile(Theme.Current.AboutGithubLogoImage)
-			};
-
-			grid.Children.Add(image, 1, 0);
-
-			var label = new Label {
-				Style = AppStyles.GetLabelStyle(),
-				HorizontalTextAlignment = TextAlignment.Center,
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				TextColor = Color.FromHex(Theme.Current.AboutTextColor),
-				Text = CrossLocalization.Translate("settings_about_open_source")
-			};
-
-			grid.Children.Add(label, 1, 1);
-
-			var tapGestureRecognizer = new TapGestureRecognizer();
-			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "OpenSourceCommand");
-			grid.GestureRecognizers.Add(tapGestureRecognizer);
-
-			return grid;
 		}
 	}
 }

@@ -1,4 +1,21 @@
 ignore:
+  - "source/EduCATS/App.cs"
   - "source/EduCATS/Controls"
   - "source/EduCATS/Pages"
+  - "source/EduCATS/Helpers/Files"
+  - "source/EduCATS/Helpers/Forms"
   - "source/EduCATS/Themes/Templates"
+  - "source/EduCATS/Data/DataAccess.cs"
+  - "source/EduCATS/Data/DataAccessCallbacks.cs"
+  - "source/EduCATS/Networking/Links.cs"
+  - "source/EduCATS/Networking/AppServices/AppServices.cs"
+  - "**/Models/**/*"
+comment:
+  layout: "reach, diff"
+  behavior: default
+  require_changes: true
+  require_base: yes
+  require_head: yes
+coverage:
+  range: 40..90
+  round: nearest

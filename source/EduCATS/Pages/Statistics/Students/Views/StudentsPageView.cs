@@ -1,13 +1,9 @@
 ﻿using System.Collections.Generic;
 using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
-using EduCATS.Controls.RoundedListView.Selectors;
-using EduCATS.Data.Models.Statistics;
+using EduCATS.Data.Models;
 using EduCATS.Fonts;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
-using EduCATS.Helpers.Styles;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Statistics.Students.ViewModels;
 using EduCATS.Pages.Statistics.Students.Views.ViewCells;
 using EduCATS.Themes;
@@ -27,8 +23,7 @@ namespace EduCATS.Pages.Statistics.Students.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
-			BindingContext = new StudentsPageViewModel(
-				new AppPages(), new AppDialogs(), new AppDevice(), subjectId, students, pageIndex);
+			BindingContext = new StudentsPageViewModel(new PlatformServices(), subjectId, students, pageIndex);
 			createViews();
 		}
 
@@ -71,11 +66,7 @@ namespace EduCATS.Pages.Statistics.Students.Views
 
 		RoundedListView createRoundedListView(View header)
 		{
-			var templateSelector = new RoundedListTemplateSelector {
-				NavigationTemplate = new DataTemplate(typeof(StudentsPageViewCell))
-			};
-
-			var roundedListView = new RoundedListView(templateSelector, header) {
+			var roundedListView = new RoundedListView(typeof(StudentsPageViewCell), header: header) {
 				IsPullToRefreshEnabled = true
 			};
 

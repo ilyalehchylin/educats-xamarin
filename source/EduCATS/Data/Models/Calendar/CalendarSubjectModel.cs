@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EduCATS.Data.Models.Calendar
+namespace EduCATS.Data.Models
 {
 	/// <summary>
 	/// Calendar subject details model.

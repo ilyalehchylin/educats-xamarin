@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using EduCATS.Helpers.Forms;
 
 namespace EduCATS.Networking.AppServices
 {
@@ -34,11 +35,18 @@ namespace EduCATS.Networking.AppServices
 		/// </summary>
 		public HttpStatusCode StatusCode { get; set; }
 
+		IPlatformServices _services;
+
+		public AppWebServiceController(IPlatformServices services = null)
+		{
+			_services = services ?? new PlatformServices();
+		}
+
 		public async Task SendRequest(HttpMethod httpMethod, string url, string content = null)
 		{
 			setUpController(url, content);
 
-			if (Connection.IsConnected) {
+			if (_services.Device.CheckConnectivity()) {
 				var response = await _restController.SendRequest(httpMethod);
 				setStatusCode(response.StatusCode);
 				Json = await response.Content.ReadAsStringAsync();

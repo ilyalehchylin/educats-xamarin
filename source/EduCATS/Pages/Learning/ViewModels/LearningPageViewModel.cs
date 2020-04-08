@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
-using EduCATS.Helpers.Pages.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Learning.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -11,11 +13,11 @@ namespace EduCATS.Pages.Learning.ViewModels
 	/// </summary>
 	public class LearningPageViewModel : ViewModel
 	{
-		readonly IPages _navigationService;
+		readonly IPlatformServices _services;
 
-		public LearningPageViewModel(IPages navigationService)
+		public LearningPageViewModel(IPlatformServices services)
 		{
-			_navigationService = navigationService;
+			_services = services;
 			setCardList();
 		}
 
@@ -46,23 +48,27 @@ namespace EduCATS.Pages.Learning.ViewModels
 		/// </summary>
 		void setCardList()
 		{
-			CardsList = new List<LearningPageModel> {
-				getCard(
-					CrossLocalization.Translate("learning_card_tests"),
-					Theme.Current.LearningCardTestsImage, 0),
+			try {
+				CardsList = new List<LearningPageModel> {
+					getCard(
+						CrossLocalization.Translate("learning_card_tests"),
+						Theme.Current.LearningCardTestsImage, 0),
 
-				getCard(
-					CrossLocalization.Translate("learning_card_eemc"),
-					Theme.Current.LearningCardEemcImage, 1),
+					getCard(
+						CrossLocalization.Translate("learning_card_eemc"),
+						Theme.Current.LearningCardEemcImage, 1),
 
-				getCard(
-					CrossLocalization.Translate("learning_card_files"),
-					Theme.Current.LearningCardFilesImage, 2),
+					getCard(
+						CrossLocalization.Translate("learning_card_files"),
+						Theme.Current.LearningCardFilesImage, 2),
 
-				getCard(
-					CrossLocalization.Translate("learning_card_adaptive"),
-					Theme.Current.LearningCardAdaptiveImage, 3),
-			};
+					getCard(
+						CrossLocalization.Translate("learning_card_adaptive"),
+						Theme.Current.LearningCardAdaptiveImage, 3),
+				};
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		/// <summary>
@@ -87,13 +93,17 @@ namespace EduCATS.Pages.Learning.ViewModels
 		/// <param name="selectedObject">Selected object.</param>
 		void openPage(object selectedObject)
 		{
-			if (selectedObject == null || !selectedObject.GetType().Equals(typeof(LearningPageModel))) {
-				return;
-			}
+			try {
+				if (selectedObject == null || !selectedObject.GetType().Equals(typeof(LearningPageModel))) {
+					return;
+				}
 
-			var page = selectedObject as LearningPageModel;
-			SelectedItem = null;
-			openPageById(page.Id);
+				var page = selectedObject as LearningPageModel;
+				SelectedItem = null;
+				openPageById(page.Id);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		/// <summary>
@@ -104,19 +114,19 @@ namespace EduCATS.Pages.Learning.ViewModels
 		{
 			switch (id) {
 				case 0:
-					_navigationService.OpenTesting(
+					_services.Navigation.OpenTesting(
 						CrossLocalization.Translate("learning_card_tests"));
 					break;
 				case 1:
-					_navigationService.OpenEemc(
+					_services.Navigation.OpenEemc(
 						CrossLocalization.Translate("learning_card_eemc"));
 					break;
 				case 2:
-					_navigationService.OpenFiles(
+					_services.Navigation.OpenFiles(
 						CrossLocalization.Translate("learning_card_files"));
 					break;
 				case 3:
-					_navigationService.OpenRecommendations(
+					_services.Navigation.OpenRecommendations(
 						CrossLocalization.Translate("learning_card_adaptive"));
 					break;
 			}

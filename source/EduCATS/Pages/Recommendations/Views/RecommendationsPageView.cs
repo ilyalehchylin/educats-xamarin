@@ -1,9 +1,6 @@
 ﻿using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
-using EduCATS.Controls.RoundedListView.Selectors;
-using EduCATS.Helpers.Devices;
-using EduCATS.Helpers.Dialogs;
-using EduCATS.Helpers.Pages;
+using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Recommendations.ViewModels;
 using EduCATS.Pages.Recommendations.Views.ViewCells;
 using EduCATS.Themes;
@@ -21,8 +18,7 @@ namespace EduCATS.Pages.Recommendations.Views
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new RecommendationsPageViewModel(
-				new AppDialogs(), new AppDevice(), new AppPages());
+			BindingContext = new RecommendationsPageViewModel(new PlatformServices());
 			createViews();
 		}
 
@@ -60,11 +56,7 @@ namespace EduCATS.Pages.Recommendations.Views
 
 		RoundedListView createList(View header)
 		{
-			var templateSelector = new RoundedListTemplateSelector {
-				NavigationTemplate = new DataTemplate(typeof(RecommendationsPageViewCell))
-			};
-
-			var listView = new RoundedListView(templateSelector, header) {
+			var listView = new RoundedListView(typeof(RecommendationsPageViewCell), header: header) {
 				Margin = _listMargin,
 				IsPullToRefreshEnabled = true
 			};
