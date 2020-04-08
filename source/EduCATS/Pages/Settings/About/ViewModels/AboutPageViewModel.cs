@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using Xamarin.Forms;
 
@@ -12,9 +14,13 @@ namespace EduCATS.Pages.Settings.About.ViewModels
 
 		public AboutPageViewModel(IPlatformServices services)
 		{
-			_services = services;
-			Build = _services.Device.GetBuild();
-			Version = _services.Device.GetVersion();
+			try {
+				_services = services;
+				Build = _services.Device.GetBuild();
+				Version = _services.Device.GetVersion();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		string _version;
@@ -45,8 +51,22 @@ namespace EduCATS.Pages.Settings.About.ViewModels
 			}
 		}
 
-		protected async Task openSourceSite() => await _services.Device.OpenUri(GlobalConsts.GitHubLink);
+		protected async Task openSourceSite()
+		{
+			try {
+				await _services.Device.OpenUri(GlobalConsts.GitHubLink);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
+		}
 
-		protected async Task openSite() => await _services.Device.OpenUri(Servers.Current);
+		protected async Task openSite()
+		{
+			try {
+				await _services.Device.OpenUri(Servers.Current);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
+		}
 	}
 }

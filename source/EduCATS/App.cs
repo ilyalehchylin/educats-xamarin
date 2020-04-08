@@ -1,8 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using EduCATS.Configuration;
 using EduCATS.Data;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using Xamarin.Forms;
 
 namespace EduCATS
@@ -22,9 +24,13 @@ namespace EduCATS
 		/// </summary>
 		public App()
 		{
-			_services = new PlatformServices();
-			AppConfig.InitialSetup(_services);
-			setMainPage();
+			try {
+				_services = new PlatformServices();
+				AppConfig.InitialSetup(_services);
+				setMainPage();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		/// <summary>
@@ -57,21 +63,25 @@ namespace EduCATS
 		/// <returns>Task.</returns>
 		async Task getProfileInfo()
 		{
-			if (!_services.Preferences.IsLoggedIn) {
-				return;
+			try {
+				if (!_services.Preferences.IsLoggedIn) {
+					return;
+				}
+
+				var username = _services.Preferences.UserLogin;
+
+				if (string.IsNullOrEmpty(username)) {
+					return;
+				}
+
+				var profile = await DataAccess.GetProfileInfo(username);
+				AppUserData.SetLoginData(_services, _services.Preferences.UserId, username);
+				AppUserData.SetProfileData(_services, profile);
+				_services.Preferences.GroupName = profile?.GroupName;
+				_services.Preferences.Avatar = profile?.Avatar;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var username = _services.Preferences.UserLogin;
-
-			if (string.IsNullOrEmpty(username)) {
-				return;
-			}
-
-			var profile = await DataAccess.GetProfileInfo(username);
-			AppUserData.SetLoginData(_services, _services.Preferences.UserId, username);
-			AppUserData.SetProfileData(_services, profile);
-			_services.Preferences.GroupName = profile?.GroupName;
-			_services.Preferences.Avatar = profile?.Avatar;
 		}
 	}
 }

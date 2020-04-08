@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Pages.Pickers;
 using Xamarin.Forms;
@@ -123,16 +125,24 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <returns>Task.</returns>
 		async Task update()
 		{
-			await SetupSubjects();
-			await setRootConcepts();
+			try {
+				PlatformServices.Dialogs.ShowLoading();
+				await SetupSubjects();
+				await setRootConcepts();
+				throw new Exception("asd");
+				if (_searchId == -1 || _backupRootConceptsWithoutChildren == null) {
+					PlatformServices.Dialogs.HideLoading();
+					return;
+				}
 
-			if (_searchId == -1 || _backupRootConceptsWithoutChildren == null) {
-				return;
+				await setConceptsFromRoot(_backupRootConceptsWithoutChildren[0].Id);
+				searchForBook(_searchId);
+				IsBackActionPossible = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 
-			await setConceptsFromRoot(_backupRootConceptsWithoutChildren[0].Id);
-			searchForBook(_searchId);
-			IsBackActionPossible = false;
+			PlatformServices.Dialogs.HideLoading();
 		}
 
 		/// <summary>
@@ -164,19 +174,23 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <returns>Task.</returns>
 		async Task openConcepts(object selectedObject)
 		{
-			if (selectedObject == null || !(selectedObject is ConceptModel)) {
-				return;
-			}
+			try {
+				if (selectedObject == null || !(selectedObject is ConceptModel)) {
+					return;
+				}
 
-			SelectedItem = null;
-			var concept = selectedObject as ConceptModel;
-			var id = concept.Id;
+				SelectedItem = null;
+				var concept = selectedObject as ConceptModel;
+				var id = concept.Id;
 
-			if (IsRoot) {
-				_rootId = id;
-				await setConceptsFromRoot(id);
-			} else {
-				setOrOpenConcept(concept, id);
+				if (IsRoot) {
+					_rootId = id;
+					await setConceptsFromRoot(id);
+				} else {
+					setOrOpenConcept(concept, id);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
@@ -310,26 +324,30 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// </summary>
 		void goBack()
 		{
-			if (_previousConcepts.Count == 0) {
-				return;
-			}
+			try {
+				if (_previousConcepts.Count == 0) {
+					return;
+				}
 
-			var previousConcept = _previousConcepts.Pop();
+				var previousConcept = _previousConcepts.Pop();
 
-			if (previousConcept.Id == _rootId &&
-				_backupRootConceptsWithoutChildren != null &&
-				_backupRootConceptsWithoutChildren.Count > 0) {
-				IsRoot = true;
-				IsBackActionPossible = false;
-				Concepts = new List<ConceptModel>(_backupRootConceptsWithoutChildren);
-				return;
-			}
+				if (previousConcept.Id == _rootId &&
+					_backupRootConceptsWithoutChildren != null &&
+					_backupRootConceptsWithoutChildren.Count > 0) {
+					IsRoot = true;
+					IsBackActionPossible = false;
+					Concepts = new List<ConceptModel>(_backupRootConceptsWithoutChildren);
+					return;
+				}
 
-			if (_previousConcepts.Count > 0) {
-				var earlierConcept = _previousConcepts.Peek();
-				Concepts = new List<ConceptModel>(earlierConcept.Children);
-			} else {
-				Concepts = new List<ConceptModel>(_backupRootConceptsWithChildren.Children);
+				if (_previousConcepts.Count > 0) {
+					var earlierConcept = _previousConcepts.Peek();
+					Concepts = new List<ConceptModel>(earlierConcept.Children);
+				} else {
+					Concepts = new List<ConceptModel>(_backupRootConceptsWithChildren.Children);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 	}

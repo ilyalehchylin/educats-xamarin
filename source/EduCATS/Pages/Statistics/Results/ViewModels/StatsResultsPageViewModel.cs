@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Models;
 using Xamarin.Forms;
@@ -63,28 +65,32 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getData()
 		{
-			IsLoading = true;
+			try {
+				IsLoading = true;
 
-			switch (_statisticsPage) {
-				case StatsPageEnum.LabsRating:
-					await getLabs(false);
-					await getLabsMarksAndVisiting();
-					break;
-				case StatsPageEnum.LabsVisiting:
-					await getLabs(true);
-					await getLabsMarksAndVisiting();
-					break;
-				case StatsPageEnum.LecturesVisiting:
-					await getLecturesVisiting();
-					break;
+				switch (_statisticsPage) {
+					case StatsPageEnum.LabsRating:
+						await getLabs(false);
+						await getLabsMarksAndVisiting();
+						break;
+					case StatsPageEnum.LabsVisiting:
+						await getLabs(true);
+						await getLabsMarksAndVisiting();
+						break;
+					case StatsPageEnum.LecturesVisiting:
+						await getLecturesVisiting();
+						break;
+				}
+
+				if (DataAccess.IsError) {
+					_services.Device.MainThread(
+						() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
+				}
+
+				IsLoading = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			if (DataAccess.IsError) {
-				_services.Device.MainThread(
-					() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
-			}
-
-			IsLoading = false;
 		}
 
 		async Task getLabs(bool isVisiting)

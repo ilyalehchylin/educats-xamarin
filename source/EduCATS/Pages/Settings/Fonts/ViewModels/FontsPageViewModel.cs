@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Settings.Fonts.Models;
 using Nyxbull.Plugins.CrossLocalization;
 
@@ -61,52 +63,64 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 
 		void setFonts()
 		{
-			var fontList = FontsController.GetFonts();
-			string savedFont = _services.Preferences.Font;
+			try {
+				var fontList = FontsController.GetFonts();
+				string savedFont = _services.Preferences.Font;
 
-			if (savedFont.Equals(FontsController.DefaultFont)) {
-				savedFont = CrossLocalization.Translate(savedFont);
+				if (savedFont.Equals(FontsController.DefaultFont)) {
+					savedFont = CrossLocalization.Translate(savedFont);
+				}
+
+				var fonts = fontList.Select(f => new FontsPageModel {
+					Font = f,
+					Title = FontsController.GetFontName(f),
+					FontFamily = FontsController.GetFont(f, false),
+					IsChecked = f.Equals(savedFont)
+				});
+
+				FontList = new List<FontsPageModel>(fonts);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var fonts = fontList.Select(f => new FontsPageModel {
-				Font = f,
-				Title = FontsController.GetFontName(f),
-				FontFamily = FontsController.GetFont(f, false),
-				IsChecked = f.Equals(savedFont)
-			});
-
-			FontList = new List<FontsPageModel>(fonts);
 		}
 
 		async Task selectFont(object selectedObject)
 		{
-			if (selectedObject == null && !(selectedObject is FontsPageModel)) {
-				return;
-			}
+			try {
+				if (selectedObject == null && !(selectedObject is FontsPageModel)) {
+					return;
+				}
 
-			SelectedItem = null;
-			var font = selectedObject as FontsPageModel;
+				SelectedItem = null;
+				var font = selectedObject as FontsPageModel;
 
-			if (await changeFontConfirmation()) {
-				FontsController.SetFont(font.Font);
-				switchPage();
+				if (await changeFontConfirmation()) {
+					FontsController.SetFont(font.Font);
+					switchPage();
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
 		async Task setLargeFont(bool isToggled)
 		{
-			if (!_isLargeFontToggleActive || isToggled == _services.Preferences.IsLargeFont) {
-				_isLargeFontToggleActive = true;
-				return;
-			}
+			try {
+				if (!_isLargeFontToggleActive || isToggled == _services.Preferences.IsLargeFont) {
+					_isLargeFontToggleActive = true;
+					return;
+				}
 
-			if (!await changeFontConfirmation()) {
-				IsLargeFont = !isToggled;
-				return;
-			}
+				if (!await changeFontConfirmation()) {
+					IsLargeFont = !isToggled;
+					return;
+				}
 
-			_services.Preferences.IsLargeFont = isToggled;
-			switchPage();
+				_services.Preferences.IsLargeFont = isToggled;
+				switchPage();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		void switchPage()

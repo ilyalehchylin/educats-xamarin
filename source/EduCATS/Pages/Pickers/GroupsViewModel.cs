@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -55,14 +57,18 @@ namespace EduCATS.Pages.Pickers
 		/// <returns>Task.</returns>
 		public async Task SetupGroups()
 		{
-			var groups = await getGroups();
+			try {
+				var groups = await getGroups();
 
-			if (groups == null) {
-				return;
+				if (groups == null) {
+					return;
+				}
+
+				setCurrentGroupsList(groups.ToList());
+				setupGroup();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			setCurrentGroupsList(groups.ToList());
-			setupGroup();
 		}
 
 		/// <summary>
@@ -107,23 +113,27 @@ namespace EduCATS.Pages.Pickers
 
 		protected async Task executeChooseGroupCommand()
 		{
-			if (CurrentGroups == null) {
-				return;
-			}
+			try {
+				if (CurrentGroups == null) {
+					return;
+				}
 
-			var buttons = CurrentGroups.Select(g => g.GroupName).ToList();
-			var name = await PlatformServices.Dialogs.ShowSheet(
-				CrossLocalization.Translate("subjects_choose"), buttons);
+				var buttons = CurrentGroups.Select(g => g.GroupName).ToList();
+				var name = await PlatformServices.Dialogs.ShowSheet(
+					CrossLocalization.Translate("subjects_choose"), buttons);
 
-			if (string.IsNullOrEmpty(name) ||
-				string.Compare(name, CrossLocalization.Translate("base_cancel")) == 0) {
-				return;
-			}
+				if (string.IsNullOrEmpty(name) ||
+					string.Compare(name, CrossLocalization.Translate("base_cancel")) == 0) {
+					return;
+				}
 
-			var isChosen = setChosenGroup(name);
+				var isChosen = setChosenGroup(name);
 
-			if (isChosen) {
-				GroupChanged?.Invoke(PlatformServices.Preferences.GroupId, name);
+				if (isChosen) {
+					GroupChanged?.Invoke(PlatformServices.Preferences.GroupId, name);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 

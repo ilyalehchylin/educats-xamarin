@@ -24,6 +24,7 @@
         <PackageReference Include="Acr.UserDialogs" Version="7.1.0.442" />
         <PackageReference Include="Microcharts" Version="0.7.1" />
         <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
+        <PackageReference Include="Serilog" Version="2.9.0" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Configuration\" />
@@ -168,6 +169,9 @@
         <Folder Include="Helpers\Forms\Pages\" />
         <Folder Include="Helpers\Forms\PlatformServices\" />
         <Folder Include="Helpers\Forms\PlatformServices\Interfaces\" />
+        <Folder Include="Helpers\Logs\" />
+        <Folder Include="Helpers\Files\" />
+        <Folder Include="Helpers\Files\Interfaces\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />

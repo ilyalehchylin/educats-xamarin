@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Pages.Settings.Server.Models;
 using Nyxbull.Plugins.CrossLocalization;
@@ -37,37 +39,45 @@ namespace EduCATS.Pages.Settings.Server.ViewModels
 
 		void setServers()
 		{
-			ServerList = new List<ServerPageModel> {
-				getServerDetails(Servers.EduCatsBntuAddress, "server_stable"),
-				getServerDetails(Servers.EduCatsAddress, "server_test"),
-				getServerDetails(Servers.LocalAddress, "server_local")
-			};
+			try {
+				ServerList = new List<ServerPageModel> {
+					getServerDetails(Servers.EduCatsBntuAddress, "server_stable"),
+					getServerDetails(Servers.EduCatsAddress, "server_test"),
+					getServerDetails(Servers.LocalAddress, "server_local")
+				};
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		async Task selectServer(object selectedObject)
 		{
-			if (selectedObject == null || !(selectedObject is ServerPageModel)) {
-				return;
-			}
+			try {
+				if (selectedObject == null || !(selectedObject is ServerPageModel)) {
+					return;
+				}
 
-			var server = (ServerPageModel)selectedObject;
+				var server = (ServerPageModel)selectedObject;
 
-			if (!_services.Preferences.IsLoggedIn) {
+				if (!_services.Preferences.IsLoggedIn) {
+					changeServer(server);
+					return;
+				}
+
+				var result = await _services.Dialogs.ShowConfirmationMessage(
+					CrossLocalization.Translate("base_warning"),
+					CrossLocalization.Translate("settings_server_change_message"));
+
+				if (!result) {
+					SelectedItem = null;
+					return;
+				}
+
 				changeServer(server);
-				return;
+				_services.Device.MainThread(() => _services.Navigation.OpenLogin());
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var result = await _services.Dialogs.ShowConfirmationMessage(
-				CrossLocalization.Translate("base_warning"),
-				CrossLocalization.Translate("settings_server_change_message"));
-
-			if (!result) {
-				SelectedItem = null;
-				return;
-			}
-
-			changeServer(server);
-			_services.Device.MainThread(() => _services.Navigation.OpenLogin());
 		}
 
 		void changeServer(ServerPageModel server)

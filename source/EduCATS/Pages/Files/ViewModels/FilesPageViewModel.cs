@@ -7,6 +7,7 @@ using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Pages.Files.Models;
 using EduCATS.Pages.Pickers;
@@ -89,10 +90,14 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// <returns>Task.</returns>
 		async Task update()
 		{
-			IsLoading = true;
-			await SetupSubjects();
-			await getFiles();
-			IsLoading = false;
+			try {
+				IsLoading = true;
+				await SetupSubjects();
+				await getFiles();
+				IsLoading = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		/// <summary>
@@ -120,32 +125,34 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// <param name="selectedObject">Selected object.</param>
 		void openFile(object selectedObject)
 		{
-			if (selectedObject == null || !(selectedObject is FilesPageModel)) {
-				return;
-			}
-
-			setDownloading();
-			SelectedItem = null;
-
-			var file = selectedObject as FilesPageModel;
-			var storageFilePath = Path.Combine(PlatformServices.Device.GetAppDataDirectory(), file.Name);
-
-			if (File.Exists(storageFilePath)) {
-				completeDownload(file.Name, storageFilePath);
-				return;
-			}
-
-			var fileUri = new Uri($"{Links.GetFile}?fileName={file.PathName}/{file.FileName}");
-
 			try {
+				if (selectedObject == null || !(selectedObject is FilesPageModel)) {
+					return;
+				}
+
+				setDownloading();
+				SelectedItem = null;
+
+				var file = selectedObject as FilesPageModel;
+				var storageFilePath = Path.Combine(PlatformServices.Device.GetAppDataDirectory(), file.Name);
+
+				if (File.Exists(storageFilePath)) {
+					completeDownload(file.Name, storageFilePath);
+					return;
+				}
+
+				var fileUri = new Uri($"{Links.GetFile}?fileName={file.PathName}/{file.FileName}");
+
 				_client = new WebClient();
 				_client.DownloadProgressChanged += downloadProgressChanged;
 				_client.DownloadFileCompleted += downloadCompleted;
 				_client.QueryString.Add(_filenameKey, file.Name);
 				_client.QueryString.Add(_filepathKey, storageFilePath);
 				_client.DownloadFileAsync(fileUri, storageFilePath);
-			} catch (Exception) {
+
 				hideDownloading();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 				PlatformServices.Device.MainThread(
 					() => PlatformServices.Dialogs.ShowError(
 						CrossLocalization.Translate("files_downloading_error")));

@@ -6,6 +6,7 @@ using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Networking.Models.Testing;
 using EduCATS.Pages.Testing.Passing.Models;
 using Nyxbull.Plugins.CrossLocalization;
@@ -120,11 +121,15 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		void getData(int number)
 		{
 			_services.Device.MainThread(async () => {
-				setLoading(true);
-				await getAndSetTest();
-				await getAndSetQuestion(number);
-				setTimer();
-				setLoading(false);
+				try {
+					setLoading(true);
+					await getAndSetTest();
+					await getAndSetQuestion(number);
+					setTimer();
+					setLoading(false);
+				} catch (Exception ex) {
+					AppLogs.Log(ex);
+				}
 			});
 		}
 
@@ -172,23 +177,27 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		async Task answerQuestion(TestAnswerPostModel answerModel)
 		{
-			if (answerModel == null || answerModel.Answers == null || answerModel.Answers.Count == 0) {
-				_services.Dialogs.ShowError(CrossLocalization.Translate("answer_question_not_selected_error"));
-				return;
+			try {
+				if (answerModel == null || answerModel.Answers == null || answerModel.Answers.Count == 0) {
+					_services.Dialogs.ShowError(CrossLocalization.Translate("answer_question_not_selected_error"));
+					return;
+				}
+
+				await DataAccess.AnswerQuestionAndGetNext(answerModel);
+
+				if (DataAccess.IsError) {
+					_services.Dialogs.ShowError(DataAccess.ErrorMessage);
+					return;
+				}
+
+				if (!_isTimeForEntireTest) {
+					_timerCancellation = true;
+				}
+
+				await getAndSetQuestion(getNextQuestion());
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			await DataAccess.AnswerQuestionAndGetNext(answerModel);
-
-			if (DataAccess.IsError) {
-				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
-				return;
-			}
-
-			if (!_isTimeForEntireTest) {
-				_timerCancellation = true;
-			}
-
-			await getAndSetQuestion(getNextQuestion());
 		}
 
 		void setQuestionData(TestQuestionModel testQuestionCommonModel)
@@ -235,24 +244,28 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		void selectItem(object item)
 		{
-			if (item == null || item.GetType() != typeof(TestPassingAnswerModel)) {
-				return;
+			try {
+				if (item == null || item.GetType() != typeof(TestPassingAnswerModel)) {
+					return;
+				}
+
+				var answer = item as TestPassingAnswerModel;
+				var answers = new List<TestPassingAnswerModel>(Answers);
+
+				switch (_questionType) {
+					case 0:
+						answers.ForEach(a => a.IsSelected = a == answer ? true : false);
+						break;
+					case 1:
+						var index = answers.IndexOf(answer);
+						answers[index].IsSelected = !answers[index].IsSelected;
+						break;
+				}
+
+				Answers = new List<TestPassingAnswerModel>(answers);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			var answer = item as TestPassingAnswerModel;
-			var answers = new List<TestPassingAnswerModel>(Answers);
-
-			switch (_questionType) {
-				case 0:
-					answers.ForEach(a => a.IsSelected = a == answer ? true : false);
-					break;
-				case 1:
-					var index = answers.IndexOf(answer);
-					answers[index].IsSelected = !answers[index].IsSelected;
-					break;
-			}
-
-			Answers = new List<TestPassingAnswerModel>(answers);
 		}
 
 		protected async Task ExecuteAnswerCommand()
@@ -272,31 +285,41 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		protected async Task ExecuteSkipCommand()
 		{
-			setLoading(true);
-			await getAndSetQuestion(getNextQuestion());
-			setLoading(false);
+			try {
+				setLoading(true);
+				await getAndSetQuestion(getNextQuestion());
+				setLoading(false);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		protected async Task ExecuteCloseCommand()
 		{
-			var result = await _services.Dialogs.ShowConfirmationMessage(
-				CrossLocalization.Translate("base_warning"),
-				CrossLocalization.Translate("test_passing_cancel_message"));
+			try {
+				var result = await _services.Dialogs.ShowConfirmationMessage(
+					CrossLocalization.Translate("base_warning"),
+					CrossLocalization.Translate("test_passing_cancel_message"));
 
-			if (result) {
-				await _services.Navigation.ClosePage(true);
+				if (result) {
+					await _services.Navigation.ClosePage(true);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
 		void setLoading(bool loading)
 		{
-			if (loading) {
-				_services.Dialogs.ShowLoading();
-			} else {
-				_services.Dialogs.HideLoading();
-			}
+			_services.Device.MainThread(() => {
+				if (loading) {
+					_services.Dialogs.ShowLoading();
+				} else {
+					_services.Dialogs.HideLoading();
+				}
 
-			IsNotLoading = !loading;
+				IsNotLoading = !loading;
+			});
 		}
 	}
 }

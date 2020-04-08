@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Recommendations.Models;
 using Nyxbull.Plugins.CrossLocalization;
@@ -53,10 +55,14 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 		void update()
 		{
 			PlatformServices.Device.MainThread(async () => {
-				IsLoading = true;
-				await SetupSubjects();
-				await getRecList();
-				IsLoading = false;
+				try {
+					IsLoading = true;
+					await SetupSubjects();
+					await getRecList();
+					IsLoading = false;
+				} catch (Exception ex) {
+					AppLogs.Log(ex);
+				}
 			});
 		}
 

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -55,23 +56,27 @@ namespace EduCATS.Pages.Pickers
 
 		protected async Task executeChooseSubjectCommand()
 		{
-			if (CurrentSubjects == null) {
-				return;
-			}
+			try {
+				if (CurrentSubjects == null) {
+					return;
+				}
 
-			var buttons = CurrentSubjects.Select(s => s.Name).ToList();
-			var name = await PlatformServices.Dialogs.ShowSheet(
-				CrossLocalization.Translate("subjects_choose"), buttons);
+				var buttons = CurrentSubjects.Select(s => s.Name).ToList();
+				var name = await PlatformServices.Dialogs.ShowSheet(
+					CrossLocalization.Translate("subjects_choose"), buttons);
 
-			if (string.IsNullOrEmpty(name) ||
-				string.Compare(name, CrossLocalization.Translate("base_cancel")) == 0) {
-				return;
-			}
+				if (string.IsNullOrEmpty(name) ||
+					string.Compare(name, CrossLocalization.Translate("base_cancel")) == 0) {
+					return;
+				}
 
-			var isChosen = setChosenSubject(name);
+				var isChosen = setChosenSubject(name);
 
-			if (isChosen) {
-				SubjectChanged?.Invoke(PlatformServices.Preferences.ChosenSubjectId, name);
+				if (isChosen) {
+					SubjectChanged?.Invoke(PlatformServices.Preferences.ChosenSubjectId, name);
+				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
@@ -81,14 +86,18 @@ namespace EduCATS.Pages.Pickers
 		/// <returns>Task.</returns>
 		public async Task SetupSubjects()
 		{
-			var subjects = await getSubjects();
+			try {
+				var subjects = await getSubjects();
 
-			if (subjects == null) {
-				return;
+				if (subjects == null) {
+					return;
+				}
+
+				setCurrentSubjectsList(subjects.ToList());
+				setupSubject();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			setCurrentSubjectsList(subjects.ToList());
-			setupSubject();
 		}
 
 		/// <summary>
