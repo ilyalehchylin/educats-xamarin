@@ -56,7 +56,10 @@ namespace EduCATS.Controls.RoundedListView
 			VerticalScrollBarVisibility = ScrollBarVisibility.Never;
 			HorizontalScrollBarVisibility = ScrollBarVisibility.Never;
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColor);
+			RefreshControlColor = Color.FromHex(
+				Device.RuntimePlatform == Device.Android ?
+					Theme.Current.BaseActivityIndicatorColorAndroid :
+					Theme.Current.BaseActivityIndicatorColorIOS);
 
 			_capHeight = HeaderHeight / 2;
 			_emptyView = createEmptyView();

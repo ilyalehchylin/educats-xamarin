@@ -25,6 +25,11 @@
 		public const string AppId = "by.bntu.educats";
 
 		/// <summary>
+		/// Support address.
+		/// </summary>
+		public const string SupportAddress = "support@educats.by";
+
+		/// <summary>
 		/// GitHub repository.
 		/// </summary>
 		public const string GitHubLink = "https://github.com/IlyaLehchylin/educats-xamarin";

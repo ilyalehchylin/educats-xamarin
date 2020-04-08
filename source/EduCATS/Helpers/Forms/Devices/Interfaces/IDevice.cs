@@ -92,5 +92,15 @@ namespace EduCATS.Helpers.Forms.Devices
 		/// <param name="type">Type for size.</param>
 		/// <returns>Size.</returns>
 		double GetNamedSize(int namedSize, Type type);
+
+		/// <summary>
+		/// Send email.
+		/// </summary>
+		/// <param name="to">Email address to send to.</param>
+		/// <param name="title">Title.</param>
+		/// <param name="message">Email message.</param>
+		/// <param name="attachmentPath">Attachment file path.</param>
+		/// <returns>Status (sent or not).</returns>
+		Task<bool> SendEmail(string to, string title, string message, string attachmentPath);
 	}
 }

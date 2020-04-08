@@ -13,7 +13,8 @@
 		override public string BaseAppColor => _whiteColor;
 		override public string BaseBlockColor => _baseDarkColor;
 		override public string BaseSectionTextColor => _whiteColor;
-		override public string BaseActivityIndicatorColor => _whiteColor;
+		override public string BaseActivityIndicatorColorIOS => _whiteColor;
+		override public string BaseActivityIndicatorColorAndroid => _blackColor;
 		override public string BasePickerTextColor => _whiteColor;
 		override public string BaseHeadphonesIcon => "icon_headphones_light";
 		override public string BaseNoDataTextColor => _whiteColor;
@@ -78,7 +79,6 @@
 		override public string SwitchFrameTextColor => _whiteColor;
 
 		override public string AboutTextColor => _whiteColor;
-		override public string AboutGithubLogoImage => "image_github_logo_light";
 		override public string AboutButtonTextColor => _whiteColor;
 		override public string AboutButtonBackgroundColor => _baseDarkColor;
 	}

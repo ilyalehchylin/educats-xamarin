@@ -54,7 +54,7 @@ namespace EduCATS.Pages.Testing.Base.Views
 				ItemTemplate = new DataTemplate(typeof(TestingPageViewCell)),
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				GroupHeaderTemplate = new DataTemplate(typeof(TestingHeaderViewCell)),
-				RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColor),
+				RefreshControlColor = Color.FromHex(Theme.Current.BaseActivityIndicatorColorIOS),
 				Header = new StackLayout {
 					BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 					Padding = _headerPadding,

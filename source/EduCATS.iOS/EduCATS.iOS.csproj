@@ -232,8 +232,6 @@
         <ImageAsset Include="Resources\Dark.xcassets\image_background_1_dark.imageset\image_background_1_dark.jpg" />
         <ImageAsset Include="Resources\Dark.xcassets\image_background_2_dark.imageset\image_background_2_dark.jpg" />
         <ImageAsset Include="Resources\Dark.xcassets\image_background_3_dark.imageset\image_background_3_dark.jpg" />
-        <ImageAsset Include="Resources\Dark.xcassets\image_github_logo_light.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Dark.xcassets\image_github_logo_light.imageset\image_github_logo_light.png" />
         <ImageAsset Include="Resources\Light.xcassets\image_book_rectangle.imageset\Contents.json" />
         <ImageAsset Include="Resources\Light.xcassets\image_book_rectangle.imageset\image_book_rectangle.jpg" />
         <ImageAsset Include="Resources\Light.xcassets\image_book_square.imageset\Contents.json" />
@@ -250,8 +248,6 @@
         <ImageAsset Include="Resources\Light.xcassets\image_test_square.imageset\Contents.json" />
         <ImageAsset Include="Resources\Light.xcassets\image_test_rectangle.imageset\image_test_rectangle.jpg" />
         <ImageAsset Include="Resources\Light.xcassets\image_test_square.imageset\image_test_square.jpg" />
-        <ImageAsset Include="Resources\Light.xcassets\image_github_logo_dark.imageset\Contents.json" />
-        <ImageAsset Include="Resources\Light.xcassets\image_github_logo_dark.imageset\image_github_logo_dark.png" />
         <ImageAsset Include="Resources\Light.xcassets\image_logo_rounded.imageset\Contents.json" />
         <ImageAsset Include="Resources\Light.xcassets\image_logo_rounded.imageset\image_logo_rounded.png" />
         <ImageAsset Include="Resources\Light.xcassets\image_mascot.imageset\Contents.json" />
