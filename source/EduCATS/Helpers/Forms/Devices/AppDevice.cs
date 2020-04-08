@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using EduCATS.Helpers.Forms.Speech;
+using EduCATS.Helpers.Logs;
 using EduCATS.Themes;
 using EduCATS.Themes.DependencyServices.Interfaces;
 using Xamarin.Essentials;
@@ -144,6 +146,34 @@ namespace EduCATS.Helpers.Forms.Devices
 		public double GetNamedSize(int namedSize, Type type)
 		{
 			return Device.GetNamedSize((NamedSize)namedSize, type);
+		}
+
+		/// <summary>
+		/// Send email.
+		/// </summary>
+		/// <param name="to">Email address to send to.</param>
+		/// <param name="title">Title.</param>
+		/// <param name="message">Email message.</param>
+		/// <param name="attachmentPath">Attachment file path.</param>
+		/// <returns>Status (sent or not).</returns>
+		public async Task<bool> SendEmail(string to, string title, string message, string attachmentPath)
+		{
+			try {
+				var emailMessage = new EmailMessage {
+					Subject = title,
+					Body = message,
+					To = new List<string> { to },
+					Attachments = {
+						new EmailAttachment(attachmentPath)
+					}
+				};
+
+				await Email.ComposeAsync(emailMessage);
+				return true;
+			} catch (FeatureNotSupportedException fnsEx) {
+				AppLogs.Log(fnsEx);
+				return false;
+			}
 		}
 	}
 }

@@ -30,6 +30,10 @@ namespace EduCATS.Pages.Settings.About.Views
 		{
 			var header = createHeader();
 
+			var sendLogsButton = createButton(
+				CrossLocalization.Translate("settings_about_send_logs"),
+				"SendLogsCommand");
+
 			var openGithubButton = createButton(
 				CrossLocalization.Translate("settings_about_open_source"),
 				"OpenSourceCommand");
@@ -45,6 +49,7 @@ namespace EduCATS.Pages.Settings.About.Views
 					header,
 					new StackLayout {
 						Children = {
+							sendLogsButton,
 							openGithubButton,
 							openWebPageButton
 						}
