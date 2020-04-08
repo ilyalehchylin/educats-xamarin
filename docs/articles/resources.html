@@ -96,8 +96,24 @@
 <h2 id="images">Images</h2>
 <p>Images should be imported as described <a href="https://docs.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/images?tabs=windows#local-images">here</a>:</p>
 <ul>
-<li>iOS images should be placed in <code>Asset</code> catalogs according to an application theme (<code>Light.xcassets</code> is used as default).</li>
-<li>Android image should be placed in <code>drawable</code> directory.</li>
+<li><p>iOS images should be placed in <code>Asset</code> catalogs according to an application theme (<code>Light.xcassets</code> is used as default).</p>
+<ul>
+<li><p>Before pushing:</p>
+<ul>
+<li>Open changed <code>Asset</code> catalogs;</li>
+<li>Fix all image sets with exclamation points (choose image set, select items with exclamation points and delete them);</li>
+<li>Open <code>Attributes Inspector</code> (<code>View</code> - <code>Inspectors</code> - <code>Show Attributes Inspector</code>);</li>
+<li>Select all new image sets;</li>
+<li>Set <code>Appearances</code> to <code>None</code>;</li>
+<li>Uncheck all <code>Devices</code> except <code>Universal</code> (if you are using only universal icons and images).</li>
+</ul>
+</li>
+<li><p>Push resources with &quot;no contribute&quot; commit in order not to spoil repository contribution statistics (<a href="https://github.com/ilyalehchylin/educats-xamarin/blob/master/.github/CONTRIBUTING.md#commit-pattern-for-docs-update">details here</a>).</p>
+</li>
+</ul>
+</li>
+<li><p>Android image should be placed in <code>drawable</code> directory.</p>
+</li>
 </ul>
 <h2 id="fonts">Fonts</h2>
 <p>To add new font (<code>.ttf</code> supported only) please follow the next steps:</p>
