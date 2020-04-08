@@ -144,7 +144,6 @@ namespace EduCATS.Themes.Templates
 		virtual public string SwitchFrameDescriptionColor => _greyColor;
 
 		virtual public string AboutTextColor => _blackColor;
-		virtual public string AboutGithubLogoImage => "image_github_logo_dark";
 		virtual public string AboutButtonTextColor => _whiteColor;
 		virtual public string AboutButtonBackgroundColor => _baseBlueColor;
 	}

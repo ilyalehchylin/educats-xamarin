@@ -125,6 +125,6 @@
 
 	"settings_about_app_version": "Version",
 	"settings_about_app_build": "Build",
-	"settings_about_open_source": "Open-Source",
+	"settings_about_open_source": "Open on GitHub (Open-Source)",
 	"settings_about_open_web_version": "Open web-version"
 }

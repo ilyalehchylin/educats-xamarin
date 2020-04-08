@@ -136,7 +136,6 @@
 		string SwitchFrameDescriptionColor { get; }
 
 		string AboutTextColor { get; }
-		string AboutGithubLogoImage { get; }
 		string AboutButtonTextColor { get; }
 		string AboutButtonBackgroundColor { get; }
 	}
