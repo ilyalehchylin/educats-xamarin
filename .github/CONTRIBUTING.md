@@ -103,11 +103,11 @@ The following checks should pass:
 Name conventions for pull request commits:
 
 ```
-[PR] [#PULL_REQUEST_NUMBER] Description
+[PR] [GH-Associated_issue_number] Description
 ```
 
 Examples:
 
 ```
-[PR] [#123] Fixed app settings crash
+[PR] [GH-123] Fixed app settings crash
 ```
