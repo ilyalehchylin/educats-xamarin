@@ -1,7 +1,10 @@
-﻿using EduCATS.Configuration;
+﻿using System;
+using EduCATS.Configuration;
 using EduCATS.Constants;
 using EduCATS.Fonts;
+using EduCATS.Helpers.Files;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Themes;
 using EduCATS.Themes.Templates;
 using MonkeyCache.FileStore;
@@ -23,15 +26,34 @@ namespace EduCATS.UnitTests
 		[SetUp]
 		public void SetUp()
 		{
+			var filePath = "file.txt";
+			var fileMock = new Mock<IFileManager>();
+			fileMock.Setup(m => m.Create(filePath)).Verifiable();
+			fileMock.Setup(m => m.Delete(filePath)).Verifiable();
+			fileMock.Setup(m => m.GetFileSize(filePath)).Verifiable();
+			AppLogs.FileManager = fileMock.Object;
+
 			var mocked = Mock.Of<IPlatformServices>(ps =>
 				ps.Preferences.Font == _defaultFont &&
 				ps.Preferences.Theme == _defaultTheme &&
-				ps.Preferences.LanguageCode == _defaultLanguageCode);
+				ps.Preferences.LanguageCode == _defaultLanguageCode &&
+				ps.Device.GetAppDataDirectory() == "");
 
 			var mock = Mock.Get(mocked);
 			mock.Setup(a => a.Device.SetNativeTheme(_hexColor)).Verifiable();
 
 			AppConfig.InitialSetup(mock.Object);
+		}
+
+		[Test]
+		public void SetupLogsTest()
+		{
+			try {
+				var actual = AppLogs.ReadLog();
+				Assert.IsNull(actual);
+			} catch (Exception ex) {
+				Assert.Fail(ex.Message);
+			}
 		}
 
 		[Test]

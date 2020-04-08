@@ -2,6 +2,7 @@
 using EduCATS.Constants;
 using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 using EduCATS.Themes;
 using MonkeyCache.FileStore;
 using Nyxbull.Plugins.CrossLocalization;
@@ -24,9 +25,18 @@ namespace EduCATS.Configuration
 		public static void InitialSetup(IPlatformServices platformServices)
 		{
 			_services = platformServices;
+			setupLogs();
 			setupPackages();
 			setupTheme();
 			setupFonts();
+		}
+
+		/// <summary>
+		/// Configure application logs.
+		/// </summary>
+		static void setupLogs()
+		{
+			AppLogs.Initialize(_services.Device.GetAppDataDirectory());
 		}
 
 		/// <summary>
