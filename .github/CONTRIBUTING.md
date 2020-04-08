@@ -46,6 +46,8 @@ or in `Localization` (if they represent localized key, more details [here](../pa
 
 - Data managers and other helpers should be placed inside `Helpers`.
 
+- Cover new features with Unit-tests.
+
 ## Repository
 
 ### Branches
