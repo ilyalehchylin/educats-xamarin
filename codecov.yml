@@ -2,6 +2,7 @@ ignore:
   - "source/EduCATS/App.cs"
   - "source/EduCATS/Controls"
   - "source/EduCATS/Pages"
+  - "source/EduCATS/Helpers/Files"
   - "source/EduCATS/Helpers/Forms"
   - "source/EduCATS/Themes/Templates"
   - "source/EduCATS/Data/DataAccess.cs"
