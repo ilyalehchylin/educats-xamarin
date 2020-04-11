@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using EduCATS.Constants;
 using EduCATS.Helpers.Forms;
 using Nyxbull.Plugins.CrossLocalization;
 
@@ -15,11 +14,6 @@ namespace EduCATS.Fonts
 		/// Font list.
 		/// </summary>
 		static List<string> _fonts;
-
-		/// <summary>
-		/// Runtime platform (Android / iOS).
-		/// </summary>
-		static string _runtimePlatform;
 
 		/// <summary>
 		/// Platform services.
@@ -49,7 +43,6 @@ namespace EduCATS.Fonts
 		public static void Initialize(IPlatformServices platformServices)
 		{
 			_services = platformServices;
-			_runtimePlatform = platformServices.Device.GetRuntimePlatform();
 			initFonts();
 		}
 
@@ -101,11 +94,10 @@ namespace EduCATS.Fonts
 			}
 
 			if (bold && !FontExclude.CheckNameExcluded(font)) {
-				font = getBoldFont(font);
+				return getBoldFont(font);
 			}
 
-			return _runtimePlatform == GlobalConsts.AndroidPlatform ?
-				$"{font}.ttf#{font}" : font;
+			return font;
 		}
 
 		/// <summary>
