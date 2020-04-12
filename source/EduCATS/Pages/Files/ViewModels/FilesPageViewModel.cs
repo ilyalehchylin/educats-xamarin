@@ -149,10 +149,9 @@ namespace EduCATS.Pages.Files.ViewModels
 				_client.QueryString.Add(_filenameKey, file.Name);
 				_client.QueryString.Add(_filepathKey, storageFilePath);
 				_client.DownloadFileAsync(fileUri, storageFilePath);
-
-				hideDownloading();
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
+				hideDownloading();
 				PlatformServices.Device.MainThread(
 					() => PlatformServices.Dialogs.ShowError(
 						CrossLocalization.Translate("files_downloading_error")));
