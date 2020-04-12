@@ -25,16 +25,14 @@ To add new font (`.ttf` supported only) please follow the next steps:
 
 1. Add new font files (Font-Regular and Font-Bold) to `EduCATS/Fonts/Resources` directory and set build action to `EmbeddedResource`.
 
-2. Add these fonts to `EduCATS.Android/Assets` and set build action to `AndroidAsset` (should be done by default).
-
-3. Add the following lines to the `EduCATS/Properties/AssemblyInfo.cs` file:
+2. Add the following lines to the `EduCATS/Properties/AssemblyInfo.cs` file:
 
 ```csharp
 [assembly: ExportFont("Font-Regular.ttf")]
 [assembly: ExportFont("Font-Bold.ttf")]
 ```
 
-4. If there is no bold version of font, please follow additional steps:
+3. If there is no bold version of font, please follow additional steps:
 
 - Open `EduCATS/Fonts/FontExclude.cs` file.
 - Add font name to the `_excludeList`:
@@ -46,7 +44,7 @@ static readonly List<string> _excludeList = new List<string> {
 };
 ```
 
-5. Usage in controls:
+4. Usage in controls:
 
 ```csharp
 var entry = new Entry {
@@ -55,23 +53,13 @@ var entry = new Entry {
 };
 ```
 
-6. If you use base control (like label, entry or button), you can use `AppStyles` in `EduCATS/Heplers/Styles/AppStyles.cs`:
+5. If you use base control (like label, entry or button), you can use `AppStyles` in `EduCATS/Heplers/Styles/AppStyles.cs`:
 
 ```csharp
 var entry = new Entry {
 	Style = AppStyles.GetEntryStyle(size: NamedSize.Large, bold: true)
 };
 ```
-
-7. Note that for Android fonts are used in old style as a workaround (see details below):
-
-```csharp
-var label = new Label {
-	FontFamily = "Font-Regular.ttf#Font-Regular"
-};
-```
-
-**Note**: All actions made for Android (like importing fonts to the `Assets` directory) are just a workaround for [this issue](https://github.com/xamarin/Xamarin.Forms/issues/9190) and should be removed after fix.
 
 ## Localization
 
