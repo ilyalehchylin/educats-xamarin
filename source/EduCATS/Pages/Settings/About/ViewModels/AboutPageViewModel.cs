@@ -36,6 +36,14 @@ namespace EduCATS.Pages.Settings.About.ViewModels
 			set { SetProperty(ref _build, value); }
 		}
 
+		Command _releaseNotesCommand;
+		public Command ReleaseNotesCommand {
+			get {
+				return _releaseNotesCommand ?? (
+					_releaseNotesCommand = new Command(async () => await openReleaseNotes()));
+			}
+		}
+
 		Command _sendLogsCommand;
 		public Command SendLogsCommand {
 			get {
@@ -52,11 +60,20 @@ namespace EduCATS.Pages.Settings.About.ViewModels
 			}
 		}
 
-		Command _openSiteCommand;
-		public Command OpenSiteCommand {
+		Command _openWebSiteCommand;
+		public Command OpenWebSiteCommand {
 			get {
-				return _openSiteCommand ?? (
-					_openSiteCommand = new Command(async () => await openSite()));
+				return _openWebSiteCommand ?? (
+					_openWebSiteCommand = new Command(async () => await openWebSite()));
+			}
+		}
+
+		protected async Task openReleaseNotes()
+		{
+			try {
+				await _services.Device.OpenUri(GlobalConsts.ReleaseNotesLink);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
 		}
 
@@ -69,7 +86,7 @@ namespace EduCATS.Pages.Settings.About.ViewModels
 			}
 		}
 
-		protected async Task openSite()
+		protected async Task openWebSite()
 		{
 			try {
 				await _services.Device.OpenUri(Servers.Current);

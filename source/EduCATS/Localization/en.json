@@ -125,9 +125,10 @@
 
 	"settings_about_app_version": "Version",
 	"settings_about_app_build": "Build",
+	"settings_about_release_notes": "Release notes",
 	"settings_about_open_source": "Open on GitHub (Open-Source)",
 	"settings_about_open_web_version": "Open web-version",
-	"settings_about_send_logs": "Send error logs to developer",
+	"settings_about_send_logs": "Send logs to developer",
 	"settings_about_send_logs_not_supported": "This feature is not supported by your device.",
 	"settings_about_send_logs_error": "Error occurred during sending logs. Please try again or contact support."
 }

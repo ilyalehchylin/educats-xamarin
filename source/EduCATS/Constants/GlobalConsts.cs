@@ -30,6 +30,11 @@
 		public const string SupportAddress = "support@educats.by";
 
 		/// <summary>
+		/// Release notes link.
+		/// </summary>
+		public const string ReleaseNotesLink = "https://github.com/ilyalehchylin/educats-xamarin/releases";
+
+		/// <summary>
 		/// GitHub repository.
 		/// </summary>
 		public const string GitHubLink = "https://github.com/IlyaLehchylin/educats-xamarin";
