@@ -245,11 +245,19 @@ namespace EduCATS.Helpers.Forms.Settings
 		}
 
 		/// <summary>
-		/// Delete all preferences.
+		/// Delete all preferences except Font and Theme.
 		/// </summary>
 		public void ResetPrefs()
 		{
+			var fontPrefs = Font;
+			var themePrefs = Theme;
+			var isLargeFont = IsLargeFont;
+
 			Preferences.Clear();
+
+			Font = fontPrefs;
+			Theme = themePrefs;
+			IsLargeFont = isLargeFont;
 		}
 	}
 }
