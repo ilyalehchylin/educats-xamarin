@@ -60,7 +60,7 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 				return;
 			}
 
-			if (!concept.Container.Equals(_testString)) {
+			if (concept.Container != null && !concept.Container.Equals(_testString)) {
 				setIcon(
 					Theme.Current.EemcDocumentActiveIcon,
 					Theme.Current.EemcDocumentInactiveIcon);
