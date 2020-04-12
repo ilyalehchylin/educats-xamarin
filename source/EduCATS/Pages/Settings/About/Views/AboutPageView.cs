@@ -30,6 +30,10 @@ namespace EduCATS.Pages.Settings.About.Views
 		{
 			var header = createHeader();
 
+			var releaseNotesButton = createButton(
+				CrossLocalization.Translate("settings_about_release_notes"),
+				"ReleaseNotesCommand");
+
 			var sendLogsButton = createButton(
 				CrossLocalization.Translate("settings_about_send_logs"),
 				"SendLogsCommand");
@@ -40,7 +44,7 @@ namespace EduCATS.Pages.Settings.About.Views
 
 			var openWebPageButton = createButton(
 				CrossLocalization.Translate("settings_about_open_web_version"),
-				"OpenSiteCommand");
+				"OpenWebSiteCommand");
 
 			Content = new StackLayout {
 				Spacing = _spacing,
@@ -49,6 +53,7 @@ namespace EduCATS.Pages.Settings.About.Views
 					header,
 					new StackLayout {
 						Children = {
+							releaseNotesButton,
 							sendLogsButton,
 							openGithubButton,
 							openWebPageButton
@@ -58,27 +63,22 @@ namespace EduCATS.Pages.Settings.About.Views
 			};
 		}
 
-		Grid createHeader()
+		StackLayout createHeader()
 		{
 			var logo = createLogo();
 			var rightLayout = createRightLayout();
 
-			var grid = new Grid {
-				ColumnSpacing = _spacing,
-				ColumnDefinitions = {
-					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-					new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) }
-				}
+			return new StackLayout {
+				Spacing = _spacing,
+				Orientation = StackOrientation.Horizontal,
+				Children = { logo, rightLayout }
 			};
-
-			grid.Children.Add(logo, 0, 0);
-			grid.Children.Add(rightLayout, 1, 0);
-			return grid;
 		}
 
 		CachedImage createLogo()
 		{
 			return new CachedImage {
+				HeightRequest = 100,
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Source = Theme.Current.BaseLogoImage
 			};

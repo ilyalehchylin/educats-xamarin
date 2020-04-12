@@ -125,6 +125,7 @@
 
     "settings_about_app_version": "Версия",
     "settings_about_app_build": "Сборка",
+    "settings_about_release_notes": "Информация о сборке",
     "settings_about_open_source": "Открыть на GitHub (Open-Source)",
     "settings_about_open_web_version": "Открыть веб-версию",
     "settings_about_send_logs": "Отправить логи разработчику",
