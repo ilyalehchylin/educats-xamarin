@@ -24,7 +24,6 @@
         <PackageReference Include="Acr.UserDialogs" Version="7.1.0.442" />
         <PackageReference Include="Microcharts" Version="0.7.1" />
         <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
-        <PackageReference Include="Serilog" Version="2.9.0" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Configuration\" />
