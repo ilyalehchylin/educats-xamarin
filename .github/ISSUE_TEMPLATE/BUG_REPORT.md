@@ -1,7 +1,7 @@
 ---
-name: Bug report
+name: Bug report (All platforms)
 about: Create a report to help us improve
-title: '[Bug] [iOS/Android] '
+title: '[Bug] '
 labels: 'bug'
 assignees: ''
 
