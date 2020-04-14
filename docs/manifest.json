@@ -45,7 +45,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Constants.GlobalConsts.html",
-          "hash": "2uQ610K3g3ZzqA4ifKW7DQ=="
+          "hash": "xIZRstGfRI5pE78La4a1Cg=="
         }
       },
       "is_incremental": false,
@@ -765,7 +765,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Fonts.FontsController.html",
-          "hash": "3rNAfWnekRLGvoKMQg1auA=="
+          "hash": "Wn51JhZFn69S05YU4QW+Nw=="
         }
       },
       "is_incremental": false,
@@ -1149,7 +1149,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Forms.Settings.AppPrefs.html",
-          "hash": "dooWYLAJ6AFuat8D/+cTGQ=="
+          "hash": "uPeDIiJ7n580dm6PNIkFZA=="
         }
       },
       "is_incremental": false,
@@ -1977,7 +1977,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html",
-          "hash": "zYuqoFndMontdu06tvQf/A=="
+          "hash": "Kr6ZO7GV9p+rfCvsYG5Rdw=="
         }
       },
       "is_incremental": false,
@@ -2001,7 +2001,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.About.Views.AboutPageView.html",
-          "hash": "a6SQKHcyOM+QoPCXQ68yCA=="
+          "hash": "lk10xv4SRA+/1R+A6VpuNg=="
         }
       },
       "is_incremental": false,
@@ -3153,7 +3153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html",
-          "hash": "FLfJAjiAjsiWOdObT3qN8A=="
+          "hash": "ZJEPXqhiq/rGD5P6D+xs6A=="
         }
       },
       "is_incremental": false,
@@ -3516,7 +3516,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/resources.html",
-          "hash": "haVIdt6ghrtqXT3XEhQG7A=="
+          "hash": "xqznp5Uk/pijOAMAR7zYrA=="
         }
       },
       "is_incremental": false,
