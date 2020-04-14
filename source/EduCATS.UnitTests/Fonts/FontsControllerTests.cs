@@ -13,24 +13,13 @@ namespace EduCATS.UnitTests
 	{
 		const string _testRegularFont = "TestFont-Regular";
 		const string _testBoldFont = "TestFont-Bold";
-		const string _androidRuntimePlatform = "Android";
-		const string _iosRuntimePlatform = "iOS";
 		const string _defaultFont = "font_default";
 		const string _robotoFont = "Roboto";
 		const string _robotoFontRegular = "Roboto-Regular";
 
-		IPlatformServices _mockedAndroidServices;
-		IPlatformServices _mockedIOSServices;
-
 		[SetUp]
 		public void SetUp()
 		{
-			_mockedAndroidServices = Mock.Of<IPlatformServices>(m =>
-				m.Device.GetRuntimePlatform() == _androidRuntimePlatform);
-
-			_mockedIOSServices = Mock.Of<IPlatformServices>(m =>
-				m.Device.GetRuntimePlatform() == _iosRuntimePlatform);
-
 			var assembly = typeof(App).GetTypeInfo().Assembly;
 			CrossLocalization.Initialize(
 				assembly,
@@ -45,19 +34,6 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetRegularFontAndroidTest()
 		{
-			FontsController.Initialize(_mockedAndroidServices);
-			var expected = $"{_testRegularFont}.ttf#{_testRegularFont}";
-			var actual = FontsController.GetFont(_testRegularFont, false);
-			Assert.AreEqual(expected, actual);
-		}
-
-		[Test]
-		public void GetRegularFontIOSTest()
-		{
-			var mockedServices = Mock.Of<IPlatformServices>(m =>
-				m.Device.GetRuntimePlatform() == _iosRuntimePlatform);
-
-			FontsController.Initialize(_mockedIOSServices);
 			var actual = FontsController.GetFont(_testRegularFont, false);
 			Assert.AreEqual(_testRegularFont, actual);
 		}
@@ -65,16 +41,6 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetBoldFontAndroidTest()
 		{
-			FontsController.Initialize(_mockedAndroidServices);
-			var expected = $"{_testBoldFont}.ttf#{_testBoldFont}";
-			var actual = FontsController.GetFont(_testRegularFont, true);
-			Assert.AreEqual(expected, actual);
-		}
-
-		[Test]
-		public void GetBoldFontIOSTest()
-		{
-			FontsController.Initialize(_mockedIOSServices);
 			var actual = FontsController.GetFont(_testRegularFont, true);
 			Assert.AreEqual(_testBoldFont, actual);
 		}
@@ -82,7 +48,6 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetFontsTest()
 		{
-			FontsController.Initialize(_mockedIOSServices);
 			var actual = FontsController.GetFonts();
 			Assert.IsNotEmpty(actual);
 		}
@@ -90,7 +55,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void SetDefaultFontTest()
 		{
-			var mock = Mock.Get(_mockedIOSServices);
+			var mock = new Mock<IPlatformServices>();
 			mock.Setup(ps => ps.Preferences.Font).Returns(_defaultFont);
 			FontsController.Initialize(mock.Object);
 			FontsController.SetFont(_defaultFont);
@@ -101,7 +66,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void SetFontTest()
 		{
-			var mock = Mock.Get(_mockedIOSServices);
+			var mock = new Mock<IPlatformServices>();
 			mock.Setup(ps => ps.Preferences.Font).Returns(_robotoFontRegular);
 			FontsController.Initialize(mock.Object);
 			FontsController.SetFont(_robotoFontRegular);
@@ -112,7 +77,6 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetFontNameTest()
 		{
-			FontsController.Initialize(_mockedIOSServices);
 			var actual = FontsController.GetFontName(_robotoFontRegular);
 			Assert.AreEqual(_robotoFont, actual);
 		}
@@ -120,7 +84,6 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetNullFontNameTest()
 		{
-			FontsController.Initialize(_mockedIOSServices);
 			var actual = FontsController.GetFontName(null);
 			Assert.IsNull(actual);
 		}
@@ -128,7 +91,6 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetFontWithoutAliasNameTest()
 		{
-			FontsController.Initialize(_mockedIOSServices);
 			var actual = FontsController.GetFontName(_robotoFont);
 			Assert.AreEqual(_robotoFont, actual);
 		}
@@ -136,7 +98,6 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetNullBoldFontAndroidTest()
 		{
-			FontsController.Initialize(_mockedAndroidServices);
 			var actual = FontsController.GetFont(null, true);
 			Assert.IsNull(actual);
 		}
@@ -144,7 +105,6 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetNullBoldFontIOSTest()
 		{
-			FontsController.Initialize(_mockedIOSServices);
 			var actual = FontsController.GetFont(null, true);
 			Assert.IsNull(actual);
 		}

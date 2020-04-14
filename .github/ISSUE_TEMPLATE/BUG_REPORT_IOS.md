@@ -1,8 +1,8 @@
 ---
-name: Bug report (All platforms)
-about: Create a report to help us improve
+name: Bug report (iOS)
+about: Create a bug report for iOS to help us improve
 title: "[Bug] "
-labels: bug
+labels: bug, ios
 assignees: ''
 
 ---
@@ -38,10 +38,9 @@ Steps to reproduce the behavior:
 **Device:**
 
 - Name: <!-- Device name [e.g. iPhone X] -->
-- OS: <!-- Device OS [e.g. iOS 13.2 / Android 10.0] -->
+- OS: <!-- Device OS [e.g. iOS 13.2] -->
 - Version and build: <!-- Device version & build [e.g. 2.0.50] -->
 
 **Additional context**
 
 <!-- Add any other context about the problem here -->
-

@@ -29,4 +29,13 @@ Summary:
  
  <!-- Screenshots here -->
  
+ 
 </details>
+
+### Checks
+
+- [ ] Targets the correct branch
+- [ ] Documentation for added code
+- [ ] Unit tests for added code
+- [ ] Works on Android
+- [ ] Works on iOS

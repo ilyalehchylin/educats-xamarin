@@ -1,8 +1,8 @@
 ---
-name: Bug report (All platforms)
-about: Create a report to help us improve
+name: Bug report (Android)
+about: Create a bug report for Android to help us improve
 title: "[Bug] "
-labels: bug
+labels: bug, android
 assignees: ''
 
 ---
@@ -37,8 +37,8 @@ Steps to reproduce the behavior:
 
 **Device:**
 
-- Name: <!-- Device name [e.g. iPhone X] -->
-- OS: <!-- Device OS [e.g. iOS 13.2 / Android 10.0] -->
+- Name: <!-- Device name [e.g. Lenovo P70-A] -->
+- OS: <!-- Device OS [e.g. Android 5.1] -->
 - Version and build: <!-- Device version & build [e.g. 2.0.50] -->
 
 **Additional context**

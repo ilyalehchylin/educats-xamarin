@@ -52,7 +52,7 @@
         <Reference Include="System.Numerics.Vectors" />
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
+        <PackageReference Include="Xamarin.Forms" Version="4.5.0.617" />
         <PackageReference Include="Xamarin.Essentials" Version="1.5.2" />
         <PackageReference Include="MonkeyCache.FileStore">
             <Version>1.3.0</Version>
@@ -407,26 +407,6 @@
             <Project>{BC00D9AB-7AAE-42D1-86BA-C37F0D711920}</Project>
             <Name>EduCATS</Name>
         </ProjectReference>
-    </ItemGroup>
-    <ItemGroup>
-      <AndroidAsset Include="Assets\Pacifico-Regular.ttf" />
-      <AndroidAsset Include="Assets\CormorantGaramond-Regular.ttf" />
-      <AndroidAsset Include="Assets\Roboto-Regular.ttf" />
-      <AndroidAsset Include="Assets\Oswald-Regular.ttf" />
-      <AndroidAsset Include="Assets\RobotoCondensed-Regular.ttf" />
-      <AndroidAsset Include="Assets\Montserrat-Regular.ttf" />
-      <AndroidAsset Include="Assets\OpenSans-Regular.ttf" />
-      <AndroidAsset Include="Assets\PTSerif-Regular.ttf" />
-      <AndroidAsset Include="Assets\PTSans-Regular.ttf" />
-      <AndroidAsset Include="Assets\CormorantGaramond-Bold.ttf" />
-      <AndroidAsset Include="Assets\Montserrat-Bold.ttf" />
-      <AndroidAsset Include="Assets\OpenSans-Bold.ttf" />
-      <AndroidAsset Include="Assets\Oswald-Bold.ttf" />
-      <AndroidAsset Include="Assets\Pacifico-Bold.ttf" />
-      <AndroidAsset Include="Assets\PTSans-Bold.ttf" />
-      <AndroidAsset Include="Assets\PTSerif-Bold.ttf" />
-      <AndroidAsset Include="Assets\Roboto-Bold.ttf" />
-      <AndroidAsset Include="Assets\RobotoCondensed-Bold.ttf" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
@@ -26,6 +27,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		const int _minimumCalendarPosition = 0;
 		const int _maximumCalendarPosition = 2;
 		const double _subjectsHeightToAdd = 55;
+		const double _emptySubjectsHeight = 110;
 
 		bool _isManualSelectedCalendarDay;
 		DateTime _manualSelectedCalendarDay;
@@ -128,7 +130,6 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		{
 			try {
 				_manualSelectedCalendarDay = new DateTime();
-				_services.Device.MainThread(() => CalendarPosition = 1);
 				CalendarSubjects = new List<CalendarSubjectsModel>();
 				CalendarDaysOfWeekList = new ObservableCollection<string>(DateHelper.GetDaysWithFirstLetters());
 				setInitialCalendarState();
@@ -154,6 +155,16 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			};
 
 			selectCalendarDay(todayDateTime);
+			setInitialCalendarPosition();
+		}
+
+		// FIXME: Workaround for initial calendar position setup.
+		void setInitialCalendarPosition()
+		{
+			Task.Run(() => {
+				Thread.Sleep(1000);
+				_services.Device.MainThread(() => CalendarPosition = 1);
+			});
 		}
 
 		void update()
@@ -416,7 +427,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		{
 			try {
 				if (CalendarSubjects.Count == 0) {
-					CalendarSubjectsHeight = 0;
+					CalendarSubjectsHeight = _emptySubjectsHeight;
 					return;
 				}
 

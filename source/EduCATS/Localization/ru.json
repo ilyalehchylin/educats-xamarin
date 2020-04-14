@@ -125,9 +125,10 @@
 
     "settings_about_app_version": "Версия",
     "settings_about_app_build": "Сборка",
+    "settings_about_release_notes": "Информация о сборке",
     "settings_about_open_source": "Открыть на GitHub (Open-Source)",
     "settings_about_open_web_version": "Открыть веб-версию",
-    "settings_about_send_logs": "Отправить логи ошибок разработчику",
+    "settings_about_send_logs": "Отправить логи разработчику",
     "settings_about_send_logs_not_supported": "Эта функция не поддерживается вашим устройством.",
     "settings_about_send_logs_error": "Произошла ошибка во время отправки логов. Пожалуйста, попробуйте снова или обратитесь в службу поддержки."
 }
