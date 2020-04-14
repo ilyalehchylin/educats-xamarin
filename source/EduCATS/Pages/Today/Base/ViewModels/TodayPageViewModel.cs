@@ -26,6 +26,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		const int _minimumCalendarPosition = 0;
 		const int _maximumCalendarPosition = 2;
 		const double _subjectsHeightToAdd = 55;
+		const double _emptySubjectsHeight = 110;
 
 		bool _isManualSelectedCalendarDay;
 		DateTime _manualSelectedCalendarDay;
@@ -416,7 +417,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		{
 			try {
 				if (CalendarSubjects.Count == 0) {
-					CalendarSubjectsHeight = 0;
+					CalendarSubjectsHeight = _emptySubjectsHeight;
 					return;
 				}
 
