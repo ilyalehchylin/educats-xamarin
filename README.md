@@ -12,9 +12,16 @@ A cross-platform client for the [Leaning Management System EduCATS](https://gith
 ## Tables of Contents
 
 * [Documentation](https://ilyalehchylin.github.io/educats-xamarin/)
+* [Downloads](#downloads)
 * [Beta Testing](#beta-testing)
 * [Contributing](#contributing)
 * [Dependencies](#dependencies)
+
+### Downloads
+
+- [AppStore](https://apps.apple.com/by/app/educats/id1505738731)
+- [Google Play](https://play.google.com/store/apps/details?id=by.bntu.educats)
+- [Download .apk](https://github.com/ilyalehchylin/educats-xamarin/releases)
 
 ### Beta Testing
 
