@@ -35,8 +35,8 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// <param name="device">App device.</param>
 		public FilesPageViewModel(IPlatformServices services) : base(services)
 		{
-			Task.Run(async () => await update());
-			SubjectChanged += async (s, e) => await update();
+			Task.Run(async () => await update(true));
+			SubjectChanged += async (s, e) => await update(true);
 		}
 
 		List<FilesPageModel> fileList;
@@ -80,7 +80,29 @@ namespace EduCATS.Pages.Files.ViewModels
 		public Command RefreshCommand {
 			get {
 				return _refreshCommand ?? (_refreshCommand = new Command(
-					async () => await update()));
+					async () => await update(false)));
+			}
+		}
+
+		/// <summary>
+		/// Update with dialog or pull-to-refresh.
+		/// </summary>
+		/// <param name="dialog">Is dialog.</param>
+		/// <returns>Task.</returns>
+		async Task update(bool dialog)
+		{
+			if (dialog) {
+				PlatformServices.Dialogs.ShowLoading();
+			} else {
+				IsLoading = true;
+			}
+
+			await update();
+
+			if (dialog) {
+				PlatformServices.Dialogs.HideLoading();
+			} else {
+				IsLoading = false;
 			}
 		}
 
@@ -91,10 +113,8 @@ namespace EduCATS.Pages.Files.ViewModels
 		async Task update()
 		{
 			try {
-				IsLoading = true;
 				await SetupSubjects();
 				await getFiles();
-				IsLoading = false;
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}

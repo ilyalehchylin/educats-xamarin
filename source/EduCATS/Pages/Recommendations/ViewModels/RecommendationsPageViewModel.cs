@@ -17,8 +17,8 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 	{
 		public RecommendationsPageViewModel(IPlatformServices services) : base(services)
 		{
-			SubjectChanged += (id, name) => update();
-			update();
+			SubjectChanged += async (id, name) => await update(true);
+			Task.Run(async () => await update(true));
 		}
 
 		List<RecommendationsPageModel> _recommendations;
@@ -49,22 +49,40 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 		public Command RefreshCommand {
 			get {
 				return _refreshCommand ?? (
-					_refreshCommand = new Command(update));
+					_refreshCommand = new Command(async () => await update(false)));
 			}
 		}
 
-		void update()
+		/// <summary>
+		/// Update with dialog or pull-to-refresh.
+		/// </summary>
+		/// <param name="dialog">Is dialog.</param>
+		/// <returns>Task.</returns>
+		async Task update(bool dialog)
 		{
-			PlatformServices.Device.MainThread(async () => {
-				try {
-					IsLoading = true;
-					await SetupSubjects();
-					await getRecList();
-					IsLoading = false;
-				} catch (Exception ex) {
-					AppLogs.Log(ex);
-				}
-			});
+			if (dialog) {
+				PlatformServices.Dialogs.ShowLoading();
+			} else {
+				IsLoading = true;
+			}
+
+			await update();
+
+			if (dialog) {
+				PlatformServices.Dialogs.HideLoading();
+			} else {
+				IsLoading = false;
+			}
+		}
+
+		async Task update()
+		{
+			try {
+				await SetupSubjects();
+				await getRecList();
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
 		}
 
 		async Task getRecList()
@@ -72,7 +90,8 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 			var recsList = await DataAccess.GetRecommendations(CurrentSubject.Id, AppUserData.UserId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
+				PlatformServices.Device.MainThread(
+					() => PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage));
 			}
 
 			var recommendations = recsList?.Select(r => new RecommendationsPageModel(r));
