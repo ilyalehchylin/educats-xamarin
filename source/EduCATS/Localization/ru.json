@@ -54,6 +54,8 @@
     "stats_page_labs_rating": "Оценки по лабораторным работам",
     "stats_page_labs_visiting": "Пропуски лабораторных работ",
     "stats_page_lectures_visiting": "Пропуски лекций",
+    "stats_summary_rating": "Средняя оценка",
+	"stats_summary_visiting": "Всего пропущено часов",
 
     "groups_fetch_error": "Произошла ошибка во время получения списка групп. Пожалуйста, обновите страницу или обратитесь в службу поддержки.",
 

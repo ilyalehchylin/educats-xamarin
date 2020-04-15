@@ -54,6 +54,8 @@
 	"stats_page_labs_rating": "Laboratory works rating",
 	"stats_page_labs_visiting": "Laboratory works visiting",
 	"stats_page_lectures_visiting": "Lectures visiting",
+	"stats_summary_rating": "Average rating",
+	"stats_summary_visiting": "Total hours skipped",
 
 	"groups_fetch_error": "Error occurred during retrieving groups. Please try to refresh page or contact support.",
 
