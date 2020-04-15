@@ -79,9 +79,10 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			Username = _services.Preferences.UserLogin;
 			IsLoggedIn = _services.Preferences.IsLoggedIn;
 			Avatar = _services.Preferences.Avatar;
+
 			Group = string.IsNullOrEmpty(_services.Preferences.GroupName) ?
-				CrossLocalization.Translate("settings_user_without_group") :
-				_services.Preferences.GroupName;
+				CrossLocalization.Translate("role_professor") :
+				$"{_services.Preferences.GroupName} ({CrossLocalization.Translate("role_student")})";
 		}
 
 		void setSettings()
