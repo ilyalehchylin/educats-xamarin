@@ -70,6 +70,7 @@
 		<MtouchUseLlvm>true</MtouchUseLlvm>
 		<MtouchFloat32>true</MtouchFloat32>
 		<MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+		<MtouchLink>Full</MtouchLink>
     </PropertyGroup>
     <ItemGroup>
         <Compile Include="Main.cs" />
