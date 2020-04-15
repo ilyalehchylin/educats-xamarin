@@ -13,9 +13,11 @@ namespace EduCATS.Pages.Files.Views
 {
 	public class FilesPageView : ContentPage
 	{
+		const double _spacing = 1;
+
 		static Thickness _headerPadding = new Thickness(10);
 		static Thickness _subjectsMargin = new Thickness(0, 0, 0, 10);
-		static Thickness _filesListMargin = new Thickness(10, 20);
+		static Thickness _filesListMargin = new Thickness(10, 0, 10, 20);
 
 		public FilesPageView()
 		{
@@ -32,6 +34,7 @@ namespace EduCATS.Pages.Files.Views
 			var subjectPickerView = createSubjectsPicker();
 
 			var filesListView = createList(new StackLayout {
+				Spacing = _spacing,
 				Children = {
 					headerLabel,
 					subjectPickerView

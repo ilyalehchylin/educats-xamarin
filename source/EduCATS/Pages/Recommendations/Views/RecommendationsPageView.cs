@@ -11,8 +11,10 @@ namespace EduCATS.Pages.Recommendations.Views
 {
 	public class RecommendationsPageView : ContentPage
 	{
-		static Thickness _listMargin = new Thickness(10, 10, 10, 15);
-		static Thickness _subjectsMargin = new Thickness(0, 0, 0, 10);
+		const double _spacing = 1;
+
+		static Thickness _listMargin = new Thickness(10, 1, 10, 20);
+		static Thickness _subjectsMargin = new Thickness(0, 10);
 
 		public RecommendationsPageView()
 		{
@@ -29,6 +31,7 @@ namespace EduCATS.Pages.Recommendations.Views
 			var listView = createList(subjectsPickerView);
 
 			Content = new StackLayout {
+				Spacing = _spacing,
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				Children = {
 					headerImage,

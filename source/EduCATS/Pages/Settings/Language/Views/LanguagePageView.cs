@@ -12,8 +12,9 @@ namespace EduCATS.Pages.Settings.Language.Views
 {
 	public class LanguagePageView : ContentPage
 	{
-		static Thickness _listMargin = new Thickness(10);
+		static Thickness _listMargin = new Thickness(10, 1, 10, 20);
 		static Thickness _chooseLabelMargin = new Thickness(0, 10);
+		static Thickness _frameMargin = new Thickness(0, 10, 0, 0);
 
 		public LanguagePageView()
 		{
@@ -71,7 +72,10 @@ namespace EduCATS.Pages.Settings.Language.Views
 		{
 			var frame = new SwitchFrame(
 				CrossLocalization.Translate("settings_language_system"),
-				CrossLocalization.Translate("settings_language_system_description"));
+				CrossLocalization.Translate("settings_language_system_description")) {
+				Margin = _frameMargin
+			};
+
 			frame.Switch.SetBinding(Switch.IsToggledProperty, "IsSystemLanguage");
 			return frame;
 		}

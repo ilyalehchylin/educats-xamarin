@@ -10,6 +10,8 @@ namespace EduCATS.Pages.Testing.Base.Views
 {
 	public class TestingPageView : ContentPage
 	{
+		const double _spacing = 1;
+
 		static Thickness _headerPadding = new Thickness(10);
 
 		public TestingPageView()
@@ -27,6 +29,7 @@ namespace EduCATS.Pages.Testing.Base.Views
 			var testListView = createTestList(subjectsView);
 
 			Content = new StackLayout {
+				Spacing = _spacing,
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				Children = {
 					headerImage, testListView
