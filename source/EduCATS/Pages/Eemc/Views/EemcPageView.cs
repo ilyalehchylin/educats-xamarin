@@ -15,6 +15,7 @@ namespace EduCATS.Pages.Eemc.Views
 		const int _rowsCount = 2;
 		const double _buttonHeight = 50;
 		static Thickness _subjectPadding = new Thickness(10);
+		static Thickness _emptyViewMargin = new Thickness(10, 0);
 		static Thickness _backButtonMargin = new Thickness(30, 0, 30, 15);
 
 		public EemcPageView(int searchId)
@@ -57,12 +58,32 @@ namespace EduCATS.Pages.Eemc.Views
 			var documentsCollectionView = new CollectionView {
 				SelectionMode = SelectionMode.Single,
 				ItemTemplate = new DataTemplate(typeof(EemcPageViewCell)),
-				ItemsLayout = new GridItemsLayout(_rowsCount, ItemsLayoutOrientation.Vertical)
+				ItemsLayout = new GridItemsLayout(_rowsCount, ItemsLayoutOrientation.Vertical),
+				EmptyView = new StackLayout {
+					BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
+					Children = { createEmptyView() }
+				}
 			};
 
 			documentsCollectionView.SetBinding(SelectableItemsView.SelectedItemProperty, "SelectedItem");
 			documentsCollectionView.SetBinding(ItemsView.ItemsSourceProperty, "Concepts");
 			return documentsCollectionView;
+		}
+
+		Frame createEmptyView()
+		{
+			return new Frame {
+				HasShadow = false,
+				Margin = _emptyViewMargin,
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
+				Content = new Label {
+					Style = AppStyles.GetLabelStyle(),
+					HorizontalTextAlignment = TextAlignment.Center,
+					HorizontalOptions = LayoutOptions.CenterAndExpand,
+					Text = CrossLocalization.Translate("base_no_data"),
+					TextColor = Color.FromHex(Theme.Current.BaseNoDataTextColor)
+				}
+			};
 		}
 
 		StackLayout createSubjectsPicker()
