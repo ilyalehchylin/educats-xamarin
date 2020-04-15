@@ -185,12 +185,15 @@ namespace EduCATS.Pages.Eemc.ViewModels
 
 				if (IsRoot) {
 					_rootId = id;
+					PlatformServices.Dialogs.ShowLoading();
 					await setConceptsFromRoot(id);
+					PlatformServices.Dialogs.HideLoading();
 				} else {
 					setOrOpenConcept(concept, id);
 				}
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
+				PlatformServices.Dialogs.HideLoading();
 			}
 		}
 
