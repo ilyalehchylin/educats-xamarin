@@ -10,6 +10,9 @@
     "base_connection_error": "Нет соединения с интернетом. Проверьте настройки сети и попробуйте снова.",
     "base_no_data": "Нет данных для отображения",
 
+    "role_student": "Студент",
+    "role_professor": "Преподаватель",
+
     "server_test": "Тестовый сервер",
     "server_local": "Локальный сервер",
     "server_stable": "Стабильный сервер",
@@ -55,7 +58,7 @@
     "stats_page_labs_visiting": "Пропуски лабораторных работ",
     "stats_page_lectures_visiting": "Пропуски лекций",
     "stats_summary_rating": "Средняя оценка",
-	"stats_summary_visiting": "Всего пропущено часов",
+    "stats_summary_visiting": "Всего пропущено часов",
 
     "groups_fetch_error": "Произошла ошибка во время получения списка групп. Пожалуйста, обновите страницу или обратитесь в службу поддержки.",
 
@@ -107,7 +110,6 @@
     "settings_about": "О приложении",
     "settings_logout": "Выйти",
     "settings_logout_message": "Вы действительно хотите выйти?",
-    "settings_user_without_group": "Нет группы",
 
     "settings_language_system": "Системный язык",
     "settings_language_system_description": "Использовать системный язык в качестве основного",

@@ -10,6 +10,9 @@
 	"base_connection_error": "No internet connection. Check your network settings and try again.",
 	"base_no_data": "No data to display",
 
+	"role_student": "Student",
+	"role_professor": "Professor",
+
 	"server_test": "Test server",
 	"server_local": "Local server",
 	"server_stable": "Stable server",
@@ -107,7 +110,6 @@
 	"settings_about": "About application",
 	"settings_logout": "Logout",
 	"settings_logout_message": "Are you sure you want to logout?",
-	"settings_user_without_group": "No group",
 
 	"settings_language_system": "System language",
 	"settings_language_system_description": "Use system language as default",
