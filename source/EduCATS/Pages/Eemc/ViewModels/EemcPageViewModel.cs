@@ -161,7 +161,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 
 			var rootConcepts = root?.Concepts;
 
-			if (rootConcepts != null && rootConcepts.Count > 0) {
+			if (rootConcepts != null) {
 				_backupRootConceptsWithoutChildren = new List<ConceptModel>(rootConcepts);
 				Concepts = new List<ConceptModel>(rootConcepts);
 			}
