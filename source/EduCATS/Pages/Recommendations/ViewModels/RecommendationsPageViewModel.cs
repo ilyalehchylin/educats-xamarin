@@ -17,6 +17,7 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 	{
 		public RecommendationsPageViewModel(IPlatformServices services) : base(services)
 		{
+			SubjectChanged += (id, name) => update();
 			update();
 		}
 
