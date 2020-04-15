@@ -318,6 +318,12 @@ references:
   commentId: F:EduCATS.Constants.GlobalConsts.LocalizationDirectory
   fullName: EduCATS.Constants.GlobalConsts.LocalizationDirectory
   nameWithType: GlobalConsts.LocalizationDirectory
+- uid: EduCATS.Constants.GlobalConsts.ReleaseNotesLink
+  name: ReleaseNotesLink
+  href: api/EduCATS.Constants.GlobalConsts.html#EduCATS_Constants_GlobalConsts_ReleaseNotesLink
+  commentId: F:EduCATS.Constants.GlobalConsts.ReleaseNotesLink
+  fullName: EduCATS.Constants.GlobalConsts.ReleaseNotesLink
+  nameWithType: GlobalConsts.ReleaseNotesLink
 - uid: EduCATS.Constants.GlobalConsts.RunNamespace
   name: RunNamespace
   href: api/EduCATS.Constants.GlobalConsts.html#EduCATS_Constants_GlobalConsts_RunNamespace
@@ -4085,12 +4091,6 @@ references:
   commentId: F:EduCATS.Fonts.FontsController._regularAlias
   fullName: EduCATS.Fonts.FontsController._regularAlias
   nameWithType: FontsController._regularAlias
-- uid: EduCATS.Fonts.FontsController._runtimePlatform
-  name: _runtimePlatform
-  href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController__runtimePlatform
-  commentId: F:EduCATS.Fonts.FontsController._runtimePlatform
-  fullName: EduCATS.Fonts.FontsController._runtimePlatform
-  nameWithType: FontsController._runtimePlatform
 - uid: EduCATS.Fonts.FontsController._services
   name: _services
   href: api/EduCATS.Fonts.FontsController.html#EduCATS_Fonts_FontsController__services
@@ -11116,18 +11116,24 @@ references:
   commentId: F:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._build
   fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._build
   nameWithType: AboutPageViewModel._build
-- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._openSiteCommand
-  name: _openSiteCommand
-  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel__openSiteCommand
-  commentId: F:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._openSiteCommand
-  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._openSiteCommand
-  nameWithType: AboutPageViewModel._openSiteCommand
 - uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._openSourceCommand
   name: _openSourceCommand
   href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel__openSourceCommand
   commentId: F:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._openSourceCommand
   fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._openSourceCommand
   nameWithType: AboutPageViewModel._openSourceCommand
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._openWebSiteCommand
+  name: _openWebSiteCommand
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel__openWebSiteCommand
+  commentId: F:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._openWebSiteCommand
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._openWebSiteCommand
+  nameWithType: AboutPageViewModel._openWebSiteCommand
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._releaseNotesCommand
+  name: _releaseNotesCommand
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel__releaseNotesCommand
+  commentId: F:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._releaseNotesCommand
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._releaseNotesCommand
+  nameWithType: AboutPageViewModel._releaseNotesCommand
 - uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel._sendLogsCommand
   name: _sendLogsCommand
   href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel__sendLogsCommand
@@ -11159,32 +11165,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.Build
   nameWithType: AboutPageViewModel.Build
-- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openSite
-  name: openSite()
-  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_openSite
-  commentId: M:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openSite
-  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openSite()
-  nameWithType: AboutPageViewModel.openSite()
-- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openSite*
-  name: openSite
-  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_openSite_
-  commentId: Overload:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openSite
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openReleaseNotes
+  name: openReleaseNotes()
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_openReleaseNotes
+  commentId: M:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openReleaseNotes
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openReleaseNotes()
+  nameWithType: AboutPageViewModel.openReleaseNotes()
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openReleaseNotes*
+  name: openReleaseNotes
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_openReleaseNotes_
+  commentId: Overload:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openReleaseNotes
   isSpec: "True"
-  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openSite
-  nameWithType: AboutPageViewModel.openSite
-- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenSiteCommand
-  name: OpenSiteCommand
-  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_OpenSiteCommand
-  commentId: P:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenSiteCommand
-  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenSiteCommand
-  nameWithType: AboutPageViewModel.OpenSiteCommand
-- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenSiteCommand*
-  name: OpenSiteCommand
-  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_OpenSiteCommand_
-  commentId: Overload:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenSiteCommand
-  isSpec: "True"
-  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenSiteCommand
-  nameWithType: AboutPageViewModel.OpenSiteCommand
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openReleaseNotes
+  nameWithType: AboutPageViewModel.openReleaseNotes
 - uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenSourceCommand
   name: OpenSourceCommand
   href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_OpenSourceCommand
@@ -11211,6 +11204,45 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openSourceSite
   nameWithType: AboutPageViewModel.openSourceSite
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openWebSite
+  name: openWebSite()
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_openWebSite
+  commentId: M:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openWebSite
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openWebSite()
+  nameWithType: AboutPageViewModel.openWebSite()
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openWebSite*
+  name: openWebSite
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_openWebSite_
+  commentId: Overload:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openWebSite
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.openWebSite
+  nameWithType: AboutPageViewModel.openWebSite
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenWebSiteCommand
+  name: OpenWebSiteCommand
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_OpenWebSiteCommand
+  commentId: P:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenWebSiteCommand
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenWebSiteCommand
+  nameWithType: AboutPageViewModel.OpenWebSiteCommand
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenWebSiteCommand*
+  name: OpenWebSiteCommand
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_OpenWebSiteCommand_
+  commentId: Overload:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenWebSiteCommand
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.OpenWebSiteCommand
+  nameWithType: AboutPageViewModel.OpenWebSiteCommand
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.ReleaseNotesCommand
+  name: ReleaseNotesCommand
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_ReleaseNotesCommand
+  commentId: P:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.ReleaseNotesCommand
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.ReleaseNotesCommand
+  nameWithType: AboutPageViewModel.ReleaseNotesCommand
+- uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.ReleaseNotesCommand*
+  name: ReleaseNotesCommand
+  href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_ReleaseNotesCommand_
+  commentId: Overload:EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.ReleaseNotesCommand
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.ReleaseNotesCommand
+  nameWithType: AboutPageViewModel.ReleaseNotesCommand
 - uid: EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.sendLogs
   name: sendLogs()
   href: api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html#EduCATS_Pages_Settings_About_ViewModels_AboutPageViewModel_sendLogs
@@ -17727,6 +17759,12 @@ references:
   commentId: F:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._calendarSubjectsHeight
   fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._calendarSubjectsHeight
   nameWithType: TodayPageViewModel._calendarSubjectsHeight
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._emptySubjectsHeight
+  name: _emptySubjectsHeight
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__emptySubjectsHeight
+  commentId: F:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._emptySubjectsHeight
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._emptySubjectsHeight
+  nameWithType: TodayPageViewModel._emptySubjectsHeight
 - uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel._isManualSelectedCalendarDay
   name: _isManualSelectedCalendarDay
   href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel__isManualSelectedCalendarDay
@@ -18191,6 +18229,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.setFilteredSubjectsList
   nameWithType: TodayPageViewModel.setFilteredSubjectsList
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.setInitialCalendarPosition
+  name: setInitialCalendarPosition()
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_setInitialCalendarPosition
+  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.setInitialCalendarPosition
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.setInitialCalendarPosition()
+  nameWithType: TodayPageViewModel.setInitialCalendarPosition()
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.setInitialCalendarPosition*
+  name: setInitialCalendarPosition
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_setInitialCalendarPosition_
+  commentId: Overload:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.setInitialCalendarPosition
+  isSpec: "True"
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.setInitialCalendarPosition
+  nameWithType: TodayPageViewModel.setInitialCalendarPosition
 - uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.setInitialCalendarState
   name: setInitialCalendarState()
   href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_setInitialCalendarState
