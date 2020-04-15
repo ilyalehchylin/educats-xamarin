@@ -40,6 +40,7 @@
         <CodesignProvision>Automatic:AppStore</CodesignProvision>
         <MtouchFloat32>true</MtouchFloat32>
         <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+        <MtouchUseLlvm>true</MtouchUseLlvm>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
         <DebugSymbols>true</DebugSymbols>
