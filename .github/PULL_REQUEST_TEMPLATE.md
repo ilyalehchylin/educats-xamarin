@@ -35,6 +35,7 @@ Summary:
 ### Checks
 
 - [ ] Targets the correct branch
+- [ ] Fully localized
 - [ ] Documentation for added code
 - [ ] Unit tests for added code
 - [ ] Works on Android
