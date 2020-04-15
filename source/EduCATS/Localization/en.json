@@ -10,6 +10,12 @@
 	"base_connection_error": "No internet connection. Check your network settings and try again.",
 	"base_no_data": "No data to display",
 
+	"contributor_ilya_lehchylin": "Ilya Lehchylin",
+	"contributor_julia_popova": "Julia Popova",
+
+	"role_student": "Student",
+	"role_professor": "Professor",
+
 	"server_test": "Test server",
 	"server_local": "Local server",
 	"server_stable": "Stable server",
@@ -54,6 +60,8 @@
 	"stats_page_labs_rating": "Laboratory works rating",
 	"stats_page_labs_visiting": "Laboratory works visiting",
 	"stats_page_lectures_visiting": "Lectures visiting",
+	"stats_summary_rating": "Average rating",
+	"stats_summary_visiting": "Total hours skipped",
 
 	"groups_fetch_error": "Error occurred during retrieving groups. Please try to refresh page or contact support.",
 
@@ -105,7 +113,6 @@
 	"settings_about": "About application",
 	"settings_logout": "Logout",
 	"settings_logout_message": "Are you sure you want to logout?",
-	"settings_user_without_group": "No group",
 
 	"settings_language_system": "System language",
 	"settings_language_system_description": "Use system language as default",
@@ -130,5 +137,6 @@
 	"settings_about_open_web_version": "Open web-version",
 	"settings_about_send_logs": "Send logs to developer",
 	"settings_about_send_logs_not_supported": "This feature is not supported by your device.",
-	"settings_about_send_logs_error": "Error occurred during sending logs. Please try again or contact support."
+	"settings_about_send_logs_error": "Error occurred during sending logs. Please try again or contact support.",
+	"settings_about_contributors": "Contributors"
 }

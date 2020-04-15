@@ -120,7 +120,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string EemcDocumentActiveIcon => "icon_document_pdf_active";
 		virtual public string EemcDocumentInactiveIcon => "icon_document_pdf_inactive";
 		virtual public string EemcDocumentTestActiveIcon => "icon_document_test_active";
-		virtual public string EemcDocumentTestInactiveIcon => "icon_document_test_active";
+		virtual public string EemcDocumentTestInactiveIcon => "icon_document_test_inactive";
 		virtual public string EemcItemTitleColor => _blackColor;
 
 		virtual public string FilesHeaderImage => "image_file_rectangle";

@@ -10,7 +10,8 @@ namespace EduCATS.Helpers.Forms.Styles
 			return new Style(typeof(Entry)) {
 				Setters = {
 					getSetter(Entry.FontSizeProperty, FontSizeController.GetSize(size, typeof(Entry))),
-					getSetter(Entry.FontFamilyProperty, FontsController.GetCurrentFont(bold))
+					getSetter(Entry.FontFamilyProperty, FontsController.GetCurrentFont(bold)),
+					getSetter(Entry.FontAttributesProperty, bold ? FontAttributes.Bold : FontAttributes.None)
 				}
 			};
 		}
@@ -20,7 +21,8 @@ namespace EduCATS.Helpers.Forms.Styles
 			return new Style(typeof(Button)) {
 				Setters = {
 					getSetter(Button.FontSizeProperty, FontSizeController.GetSize(size, typeof(Button))),
-					getSetter(Button.FontFamilyProperty, FontsController.GetCurrentFont(bold))
+					getSetter(Button.FontFamilyProperty, FontsController.GetCurrentFont(bold)),
+					getSetter(Button.FontAttributesProperty, bold ? FontAttributes.Bold : FontAttributes.None)
 				}
 			};
 		}
@@ -30,7 +32,8 @@ namespace EduCATS.Helpers.Forms.Styles
 			return new Style(typeof(Label)) {
 				Setters = {
 					getSetter(Label.FontSizeProperty, FontSizeController.GetSize(size, typeof(Label))),
-					getSetter(Label.FontFamilyProperty, FontsController.GetCurrentFont(bold))
+					getSetter(Label.FontFamilyProperty, FontsController.GetCurrentFont(bold)),
+					getSetter(Label.FontAttributesProperty, bold ? FontAttributes.Bold : FontAttributes.None)
 				}
 			};
 		}

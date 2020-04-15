@@ -10,6 +10,12 @@
     "base_connection_error": "Нет соединения с интернетом. Проверьте настройки сети и попробуйте снова.",
     "base_no_data": "Нет данных для отображения",
 
+    "contributor_ilya_lehchylin": "Илья Легчилин",
+    "contributor_julia_popova": "Юлия Попова",
+
+    "role_student": "Студент",
+    "role_professor": "Преподаватель",
+
     "server_test": "Тестовый сервер",
     "server_local": "Локальный сервер",
     "server_stable": "Стабильный сервер",
@@ -54,6 +60,8 @@
     "stats_page_labs_rating": "Оценки по лабораторным работам",
     "stats_page_labs_visiting": "Пропуски лабораторных работ",
     "stats_page_lectures_visiting": "Пропуски лекций",
+    "stats_summary_rating": "Средняя оценка",
+    "stats_summary_visiting": "Всего пропущено часов",
 
     "groups_fetch_error": "Произошла ошибка во время получения списка групп. Пожалуйста, обновите страницу или обратитесь в службу поддержки.",
 
@@ -105,7 +113,6 @@
     "settings_about": "О приложении",
     "settings_logout": "Выйти",
     "settings_logout_message": "Вы действительно хотите выйти?",
-    "settings_user_without_group": "Нет группы",
 
     "settings_language_system": "Системный язык",
     "settings_language_system_description": "Использовать системный язык в качестве основного",
@@ -130,5 +137,6 @@
     "settings_about_open_web_version": "Открыть веб-версию",
     "settings_about_send_logs": "Отправить логи разработчику",
     "settings_about_send_logs_not_supported": "Эта функция не поддерживается вашим устройством.",
-    "settings_about_send_logs_error": "Произошла ошибка во время отправки логов. Пожалуйста, попробуйте снова или обратитесь в службу поддержки."
+    "settings_about_send_logs_error": "Произошла ошибка во время отправки логов. Пожалуйста, попробуйте снова или обратитесь в службу поддержки.",
+    "settings_about_contributors": "Авторы"
 }

@@ -1,4 +1,5 @@
 ﻿using EduCATS.Controls.RoundedListView;
+using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Today.Base.ViewModels;
@@ -12,17 +13,18 @@ namespace EduCATS.Pages.Today.Base.Views
 	public class TodayPageView : ContentPage
 	{
 		const double _spacing = 0;
-		const double _subjectRowHeight = 50;
 		const int _calendarItemsQuantity = 7;
 		const double _calendarCarouselHeight = 100;
 		const double _calendarCarouselHeightLarge = 120;
 		const double _calendarDaysOfWeekCollectionHeight = 50;
 		const string _calendarCollectionDataBinding = ".";
 
+		double _subjectRowHeight = 50;
+
 		static Thickness _newsLabelMagin = new Thickness(10);
-		static Thickness _subjectsMargin = new Thickness(10);
-		static Thickness _margin = new Thickness(0, 0, 0, 10);
-		static Thickness _listMargin = new Thickness(0, 10, 0, 0);
+		static Thickness _subjectsMargin = new Thickness(10, 5);
+		static Thickness _margin = new Thickness(0, 0, 0, 1);
+		static Thickness _listMargin = new Thickness(0, 1, 0, 0);
 		static Thickness _subjectsLabelMargin = new Thickness(0, 10, 10, 10);
 
 		readonly IPlatformServices _services;
@@ -32,6 +34,7 @@ namespace EduCATS.Pages.Today.Base.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			var subjectListHeaderHeight = RoundedListView.HeaderHeight;
 			_services = new PlatformServices();
+			setupSubjectsRowHeight();
 			BindingContext = new TodayPageViewModel(_subjectRowHeight, subjectListHeaderHeight, _services);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			createViews();
@@ -50,6 +53,13 @@ namespace EduCATS.Pages.Today.Base.Views
 					newsView
 				}
 			};
+		}
+
+		void setupSubjectsRowHeight()
+		{
+			if (_services.Preferences.IsLargeFont) {
+				_subjectRowHeight += FontSizeController.LargeAddition;
+			}
 		}
 
 		StackLayout createCalendar()

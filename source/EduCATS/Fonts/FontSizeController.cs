@@ -12,7 +12,7 @@ namespace EduCATS.Fonts
 		/// <summary>
 		/// Number to add to the largest size.
 		/// </summary>
-		const double _addition = 5;
+		public const double LargeAddition = 5;
 
 		/// <summary>
 		/// Number to add to vw font size.
@@ -53,7 +53,7 @@ namespace EduCATS.Fonts
 				(int)NamedSize.Small => PlatformServices.Device.GetNamedSize(3, type),
 				(int)NamedSize.Default => PlatformServices.Device.GetNamedSize(3, type),
 				(int)NamedSize.Medium => PlatformServices.Device.GetNamedSize(4, type),
-				(int)NamedSize.Large => PlatformServices.Device.GetNamedSize(4, type) + _addition,
+				(int)NamedSize.Large => PlatformServices.Device.GetNamedSize(4, type) + LargeAddition,
 				_ => PlatformServices.Device.GetNamedSize((int)namedSize, type),
 			};
 		}

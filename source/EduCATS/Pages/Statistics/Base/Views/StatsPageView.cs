@@ -22,8 +22,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		const double _chartHeight = 200;
 		const double _expandIconHeight = 30;
 
-		static Thickness _padding = new Thickness(10);
-		static Thickness _headerPadding = new Thickness(0, 0, 0, 10);
+		static Thickness _padding = new Thickness(10, 1, 10, 1);
+		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
 		static Thickness _hiddenDetailsPadding = new Thickness(0, 10, 0, 0);
 		static Thickness _expandableViewPadding = new Thickness(0, 5, 0, 0);
 

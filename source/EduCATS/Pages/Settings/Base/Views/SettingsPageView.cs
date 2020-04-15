@@ -15,8 +15,8 @@ namespace EduCATS.Pages.Settings.Base.Views
 	{
 		const double _avatarHeight = 60;
 		const double _userLayoutSpacing = 15;
-		static Thickness _listMargin = new Thickness(10);
-		static Thickness _userFrameMargin = new Thickness(0, 0, 0, 10);
+		static Thickness _listMargin = new Thickness(10, 1, 10, 1);
+		static Thickness _userFrameMargin = new Thickness(0, 10, 0, 10);
 		static Thickness _userLayoutMargin = new Thickness(0, 0, 0, 10);
 
 		public SettingsPageView()
@@ -24,7 +24,6 @@ namespace EduCATS.Pages.Settings.Base.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			BindingContext = new SettingsPageViewModel(new PlatformServices());
-
 			createViews();
 		}
 

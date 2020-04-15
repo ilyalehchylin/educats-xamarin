@@ -10,6 +10,7 @@ namespace EduCATS.Pages.Testing.Passing.Views
 {
 	public class TestPassingPageView : ContentPage
 	{
+		const double _spacing = 1;
 		const double _buttonHeight = 50;
 		const double _buttonGridHeight = 100;
 
@@ -41,6 +42,7 @@ namespace EduCATS.Pages.Testing.Passing.Views
 			var buttonLayout = createButtonLayout();
 
 			var mainLayout = new StackLayout {
+				Spacing = _spacing,
 				Children = {
 					listView, buttonLayout
 				}

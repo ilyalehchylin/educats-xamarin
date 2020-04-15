@@ -16,7 +16,6 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 
 		bool _isPublished;
 
-
 		public EemcPageViewCell()
 		{
 			_icon = new CachedImage {
@@ -67,9 +66,16 @@ namespace EduCATS.Pages.Eemc.Views.ViewCell
 				return;
 			}
 
+			if (concept.Container != null && concept.Container.Equals(_testString)) {
+				setIcon(
+					Theme.Current.EemcDocumentTestActiveIcon,
+					Theme.Current.EemcDocumentTestInactiveIcon);
+				return;
+			}
+
 			setIcon(
-				Theme.Current.EemcDocumentTestActiveIcon,
-				Theme.Current.EemcDocumentTestInactiveIcon);
+				Theme.Current.EemcDocumentActiveIcon,
+				Theme.Current.EemcDocumentInactiveIcon);
 		}
 
 		void setIcon(string publishedIcon, string unpublishedIcon)

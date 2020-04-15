@@ -57,10 +57,10 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 		async Task update()
 		{
 			try {
-				IsRefreshing = true;
+				PlatformServices.Dialogs.ShowLoading();
 				await SetupSubjects();
 				await getAndSetTests();
-				IsRefreshing = false;
+				PlatformServices.Dialogs.HideLoading();
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}

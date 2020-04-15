@@ -129,7 +129,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 				PlatformServices.Dialogs.ShowLoading();
 				await SetupSubjects();
 				await setRootConcepts();
-				throw new Exception("asd");
+
 				if (_searchId == -1 || _backupRootConceptsWithoutChildren == null) {
 					PlatformServices.Dialogs.HideLoading();
 					return;
@@ -161,7 +161,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 
 			var rootConcepts = root?.Concepts;
 
-			if (rootConcepts != null && rootConcepts.Count > 0) {
+			if (rootConcepts != null) {
 				_backupRootConceptsWithoutChildren = new List<ConceptModel>(rootConcepts);
 				Concepts = new List<ConceptModel>(rootConcepts);
 			}
@@ -185,12 +185,15 @@ namespace EduCATS.Pages.Eemc.ViewModels
 
 				if (IsRoot) {
 					_rootId = id;
+					PlatformServices.Dialogs.ShowLoading();
 					await setConceptsFromRoot(id);
+					PlatformServices.Dialogs.HideLoading();
 				} else {
 					setOrOpenConcept(concept, id);
 				}
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
+				PlatformServices.Dialogs.HideLoading();
 			}
 		}
 

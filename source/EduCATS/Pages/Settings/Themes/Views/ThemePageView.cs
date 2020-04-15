@@ -11,7 +11,7 @@ namespace EduCATS.Pages.Settings.Themes.Views
 {
 	public class ThemePageView : ContentPage
 	{
-		static Thickness _listMargin = new Thickness(10);
+		static Thickness _listMargin = new Thickness(10, 1, 10, 20);
 		static Thickness _chooseLabelMargin = new Thickness(0, 10);
 
 		public ThemePageView()

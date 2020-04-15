@@ -25,6 +25,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		List<StatsPageLabsRatingModel> _currentLabsMarksList;
 
 		const string _emptyRatingString = "-";
+		const string _doubleStringFormat = "0.0";
 
 		public StatsResultsPageViewModel(
 			IPlatformServices services, string userLogin,
@@ -48,6 +49,12 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		public bool IsLoading {
 			get { return _isLoading; }
 			set { SetProperty(ref _isLoading, value); }
+		}
+
+		string _summary;
+		public string Summary {
+			get { return _summary; }
+			set { SetProperty(ref _summary, value); }
 		}
 
 		Command refreshCommand;
@@ -81,6 +88,8 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 						await getLecturesVisiting();
 						break;
 				}
+
+				calculateSummary();
 
 				if (DataAccess.IsError) {
 					_services.Device.MainThread(
@@ -203,6 +212,39 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			} else {
 				setLabsVisiting(student);
 			}
+		}
+
+		void calculateSummary()
+		{
+			if (Marks == null) {
+				setSummary(_emptyRatingString);
+				return;
+			}
+
+			var resultCount = 0;
+			var resultSummary = 0;
+			foreach (var mark in Marks) {
+				if (!string.IsNullOrEmpty(mark.Result) && !mark.Result.Equals(_emptyRatingString)) {
+					int.TryParse(mark.Result, out int result);
+					resultSummary += result;
+					resultCount++;
+				}
+			}
+
+			if (resultCount == 0) {
+				setSummary(_emptyRatingString);
+				return;
+			}
+
+			var avgSummary = resultSummary / (double)resultCount;
+			setSummary(_statisticsPage == StatsPageEnum.LabsRating ?
+				avgSummary.ToString(_doubleStringFormat) :
+				resultSummary.ToString());
+		}
+
+		void setSummary(string summary)
+		{
+			_services.Device.MainThread(() => Summary = summary);
 		}
 	}
 }

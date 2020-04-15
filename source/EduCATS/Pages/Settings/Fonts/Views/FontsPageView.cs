@@ -12,8 +12,9 @@ namespace EduCATS.Pages.Settings.Fonts.Views
 {
 	public class FontsPageView : ContentPage
 	{
-		static Thickness _listMargin = new Thickness(10);
+		static Thickness _listMargin = new Thickness(10, 1, 10, 20);
 		static Thickness _chooseLabelMargin = new Thickness(0, 10);
+		static Thickness _frameMargin = new Thickness(0, 10, 0, 0);
 
 		public FontsPageView()
 		{
@@ -71,7 +72,10 @@ namespace EduCATS.Pages.Settings.Fonts.Views
 		{
 			var frame = new SwitchFrame(
 				CrossLocalization.Translate("settings_font_large"),
-				CrossLocalization.Translate("settings_font_large_description"));
+				CrossLocalization.Translate("settings_font_large_description")) {
+				Margin = _frameMargin
+			};
+
 			frame.Switch.SetBinding(Switch.IsToggledProperty, "IsLargeFont");
 			return frame;
 		}

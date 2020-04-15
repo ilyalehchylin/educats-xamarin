@@ -28,8 +28,18 @@ namespace EduCATS.Pages.Settings.About.Views
 
 		void createViews()
 		{
-			var header = createHeader();
+			Content = new StackLayout {
+				Spacing = _spacing,
+				Padding = _buttonsPadding,
+				Children = {
+					createHeader(),
+					createBodyLayout()
+				}
+			};
+		}
 
+		StackLayout createBodyLayout()
+		{
 			var releaseNotesButton = createButton(
 				CrossLocalization.Translate("settings_about_release_notes"),
 				"ReleaseNotesCommand");
@@ -46,19 +56,14 @@ namespace EduCATS.Pages.Settings.About.Views
 				CrossLocalization.Translate("settings_about_open_web_version"),
 				"OpenWebSiteCommand");
 
-			Content = new StackLayout {
-				Spacing = _spacing,
-				Padding = _buttonsPadding,
+			return new StackLayout {
+				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {
-					header,
-					new StackLayout {
-						Children = {
-							releaseNotesButton,
-							sendLogsButton,
-							openGithubButton,
-							openWebPageButton
-						}
-					}
+					releaseNotesButton,
+					sendLogsButton,
+					openGithubButton,
+					openWebPageButton,
+					createContributorsBlock()
 				}
 			};
 		}
@@ -139,6 +144,33 @@ namespace EduCATS.Pages.Settings.About.Views
 			};
 		}
 
+		StackLayout createContributorsBlock()
+		{
+			var contributors = createContributorLabel("settings_about_contributors", true);
+			var ilContributor = createContributorLabel("contributor_ilya_lehchylin");
+			var jpContributor = createContributorLabel("contributor_julia_popova");
+
+			return new StackLayout {
+				VerticalOptions = LayoutOptions.EndAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				Children = {
+					contributors,
+					ilContributor,
+					jpContributor
+				}
+			};
+		}
+
+		Label createContributorLabel(string localizedKey, bool bold = false)
+		{
+			return new Label {
+				Style = AppStyles.GetLabelStyle(bold: bold),
+				HorizontalTextAlignment = TextAlignment.Center,
+				Text = CrossLocalization.Translate(localizedKey),
+				TextColor = Color.FromHex(Theme.Current.AboutTextColor)
+			};
+		}
+
 		Button createButton(string text, string commandProperty)
 		{
 			var button = new Button {
@@ -146,7 +178,7 @@ namespace EduCATS.Pages.Settings.About.Views
 				HeightRequest = _buttonHeight,
 				Style = AppStyles.GetButtonStyle(),
 				TextColor = Color.FromHex(Theme.Current.AboutButtonTextColor),
-				VerticalOptions = LayoutOptions.StartAndExpand,
+				VerticalOptions = LayoutOptions.Start,
 				BackgroundColor = Color.FromHex(Theme.Current.AboutButtonBackgroundColor)
 			};
 
