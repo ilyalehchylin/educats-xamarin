@@ -10,6 +10,9 @@
 	"base_connection_error": "No internet connection. Check your network settings and try again.",
 	"base_no_data": "No data to display",
 
+	"contributor_ilya_lehchylin": "Ilya Lehchylin",
+	"contributor_julia_popova": "Julia Popova",
+
 	"role_student": "Student",
 	"role_professor": "Professor",
 
@@ -134,5 +137,6 @@
 	"settings_about_open_web_version": "Open web-version",
 	"settings_about_send_logs": "Send logs to developer",
 	"settings_about_send_logs_not_supported": "This feature is not supported by your device.",
-	"settings_about_send_logs_error": "Error occurred during sending logs. Please try again or contact support."
+	"settings_about_send_logs_error": "Error occurred during sending logs. Please try again or contact support.",
+	"settings_about_contributors": "Contributors"
 }
