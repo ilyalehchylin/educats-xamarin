@@ -753,7 +753,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Fonts.FontSizeController.html",
-          "hash": "fnMKCC17IHVOz6cCiQ517A=="
+          "hash": "8ANryOuTz6/lOcAU+UHX+w=="
         }
       },
       "is_incremental": false,
@@ -1509,7 +1509,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Eemc.Views.EemcPageView.html",
-          "hash": "PcEoqEtcnShsLGtJmAiz5A=="
+          "hash": "j/jDAtYzCWFRZCcmmRhgfw=="
         }
       },
       "is_incremental": false,
@@ -1581,7 +1581,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html",
-          "hash": "NLIPsFJnGc6xQ0NOm8mcRQ=="
+          "hash": "VGCZ/2Hktkzni38wcPYa1w=="
         }
       },
       "is_incremental": false,
@@ -1605,7 +1605,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Files.Views.FilesPageView.html",
-          "hash": "OZpCE8/UYK+75DA58ugauQ=="
+          "hash": "uL9ANJ8zeyg+XRw4WoIvEA=="
         }
       },
       "is_incremental": false,
@@ -1905,7 +1905,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.html",
-          "hash": "FWCxn8DvKhQZAP4R08o/qg=="
+          "hash": "Y19gy/O4D9sm9c/B2tsRiA=="
         }
       },
       "is_incremental": false,
@@ -1929,7 +1929,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.html",
-          "hash": "ZQ0gWnof3ZWAsfugVyIOdg=="
+          "hash": "J7N5yqkJein427F1cVrntg=="
         }
       },
       "is_incremental": false,
@@ -2001,7 +2001,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.About.Views.AboutPageView.html",
-          "hash": "lk10xv4SRA+/1R+A6VpuNg=="
+          "hash": "EyC/vGgwNADanXJdADHIOQ=="
         }
       },
       "is_incremental": false,
@@ -2145,7 +2145,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html",
-          "hash": "XFTU++6J7S3wh+x7MDAaVA=="
+          "hash": "289a9L9f1FThzdrlYirC/A=="
         }
       },
       "is_incremental": false,
@@ -2217,7 +2217,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.html",
-          "hash": "6KXUUkFaKnG7sVSTjNiL/Q=="
+          "hash": "lpqocT/Ap3w0I1aYIPo8NQ=="
         }
       },
       "is_incremental": false,
@@ -2589,7 +2589,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html",
-          "hash": "lGJwW7kHu8Ml+gi6jG4Vgg=="
+          "hash": "RPuz9+FioWfATUTSEQjnFQ=="
         }
       },
       "is_incremental": false,
@@ -2613,7 +2613,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.html",
-          "hash": "CNPw4HzRFDXxVy+dwwPGSg=="
+          "hash": "zcOsy+t68SUpzIQYvTBlCA=="
         }
       },
       "is_incremental": false,
@@ -2805,7 +2805,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Base.Views.TestingPageView.html",
-          "hash": "5gTvKOV16sRJOyYtdAV0PA=="
+          "hash": "12mnKCRZ52+GrjqqMmw0eQ=="
         }
       },
       "is_incremental": false,
@@ -2925,7 +2925,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.TestPassingPageView.html",
-          "hash": "Oin2p5GSC51stN0iaVnanw=="
+          "hash": "ja0w0r1IGMg6fUgghgABgA=="
         }
       },
       "is_incremental": false,
@@ -3177,7 +3177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Pages.Today.Base.Views.TodayPageView.html",
-          "hash": "Y9bUYtRsgCtZNfd+XwytWA=="
+          "hash": "WV/9JRK87+MN1qQA4zPiAQ=="
         }
       },
       "is_incremental": false,

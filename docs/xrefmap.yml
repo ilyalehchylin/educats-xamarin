@@ -4239,12 +4239,6 @@ references:
   isSpec: "True"
   fullName: EduCATS.Fonts.FontSizeController..cctor
   nameWithType: FontSizeController..cctor
-- uid: EduCATS.Fonts.FontSizeController._addition
-  name: _addition
-  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController__addition
-  commentId: F:EduCATS.Fonts.FontSizeController._addition
-  fullName: EduCATS.Fonts.FontSizeController._addition
-  nameWithType: FontSizeController._addition
 - uid: EduCATS.Fonts.FontSizeController._isLargePrefs
   name: _isLargePrefs
   href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController__isLargePrefs
@@ -4290,6 +4284,12 @@ references:
   isSpec: "True"
   fullName: EduCATS.Fonts.FontSizeController.GetSize
   nameWithType: FontSizeController.GetSize
+- uid: EduCATS.Fonts.FontSizeController.LargeAddition
+  name: LargeAddition
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController_LargeAddition
+  commentId: F:EduCATS.Fonts.FontSizeController.LargeAddition
+  fullName: EduCATS.Fonts.FontSizeController.LargeAddition
+  nameWithType: FontSizeController.LargeAddition
 - uid: EduCATS.Fonts.FontSizeController.PlatformServices
   name: PlatformServices
   href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController_PlatformServices
@@ -8721,6 +8721,12 @@ references:
   commentId: F:EduCATS.Pages.Eemc.Views.EemcPageView._buttonHeight
   fullName: EduCATS.Pages.Eemc.Views.EemcPageView._buttonHeight
   nameWithType: EemcPageView._buttonHeight
+- uid: EduCATS.Pages.Eemc.Views.EemcPageView._emptyViewMargin
+  name: _emptyViewMargin
+  href: api/EduCATS.Pages.Eemc.Views.EemcPageView.html#EduCATS_Pages_Eemc_Views_EemcPageView__emptyViewMargin
+  commentId: F:EduCATS.Pages.Eemc.Views.EemcPageView._emptyViewMargin
+  fullName: EduCATS.Pages.Eemc.Views.EemcPageView._emptyViewMargin
+  nameWithType: EemcPageView._emptyViewMargin
 - uid: EduCATS.Pages.Eemc.Views.EemcPageView._rowsCount
   name: _rowsCount
   href: api/EduCATS.Pages.Eemc.Views.EemcPageView.html#EduCATS_Pages_Eemc_Views_EemcPageView__rowsCount
@@ -8759,6 +8765,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Eemc.Views.EemcPageView.createCollection
   nameWithType: EemcPageView.createCollection
+- uid: EduCATS.Pages.Eemc.Views.EemcPageView.createEmptyView
+  name: createEmptyView()
+  href: api/EduCATS.Pages.Eemc.Views.EemcPageView.html#EduCATS_Pages_Eemc_Views_EemcPageView_createEmptyView
+  commentId: M:EduCATS.Pages.Eemc.Views.EemcPageView.createEmptyView
+  fullName: EduCATS.Pages.Eemc.Views.EemcPageView.createEmptyView()
+  nameWithType: EemcPageView.createEmptyView()
+- uid: EduCATS.Pages.Eemc.Views.EemcPageView.createEmptyView*
+  name: createEmptyView
+  href: api/EduCATS.Pages.Eemc.Views.EemcPageView.html#EduCATS_Pages_Eemc_Views_EemcPageView_createEmptyView_
+  commentId: Overload:EduCATS.Pages.Eemc.Views.EemcPageView.createEmptyView
+  isSpec: "True"
+  fullName: EduCATS.Pages.Eemc.Views.EemcPageView.createEmptyView
+  nameWithType: EemcPageView.createEmptyView
 - uid: EduCATS.Pages.Eemc.Views.EemcPageView.createHeaderImage
   name: createHeaderImage()
   href: api/EduCATS.Pages.Eemc.Views.EemcPageView.html#EduCATS_Pages_Eemc_Views_EemcPageView_createHeaderImage
@@ -9204,6 +9223,12 @@ references:
   commentId: M:EduCATS.Pages.Files.ViewModels.FilesPageViewModel.update
   fullName: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.update()
   nameWithType: FilesPageViewModel.update()
+- uid: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.update(System.Boolean)
+  name: update(Boolean)
+  href: api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html#EduCATS_Pages_Files_ViewModels_FilesPageViewModel_update_System_Boolean_
+  commentId: M:EduCATS.Pages.Files.ViewModels.FilesPageViewModel.update(System.Boolean)
+  fullName: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.update(System.Boolean)
+  nameWithType: FilesPageViewModel.update(Boolean)
 - uid: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.update*
   name: update
   href: api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html#EduCATS_Pages_Files_ViewModels_FilesPageViewModel_update_
@@ -9261,6 +9286,12 @@ references:
   commentId: F:EduCATS.Pages.Files.Views.FilesPageView._headerPadding
   fullName: EduCATS.Pages.Files.Views.FilesPageView._headerPadding
   nameWithType: FilesPageView._headerPadding
+- uid: EduCATS.Pages.Files.Views.FilesPageView._spacing
+  name: _spacing
+  href: api/EduCATS.Pages.Files.Views.FilesPageView.html#EduCATS_Pages_Files_Views_FilesPageView__spacing
+  commentId: F:EduCATS.Pages.Files.Views.FilesPageView._spacing
+  fullName: EduCATS.Pages.Files.Views.FilesPageView._spacing
+  nameWithType: FilesPageView._spacing
 - uid: EduCATS.Pages.Files.Views.FilesPageView._subjectsMargin
   name: _subjectsMargin
   href: api/EduCATS.Pages.Files.Views.FilesPageView.html#EduCATS_Pages_Files_Views_FilesPageView__subjectsMargin
@@ -10958,6 +10989,12 @@ references:
   commentId: M:EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.update
   fullName: EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.update()
   nameWithType: RecommendationsPageViewModel.update()
+- uid: EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.update(System.Boolean)
+  name: update(Boolean)
+  href: api/EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.html#EduCATS_Pages_Recommendations_ViewModels_RecommendationsPageViewModel_update_System_Boolean_
+  commentId: M:EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.update(System.Boolean)
+  fullName: EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.update(System.Boolean)
+  nameWithType: RecommendationsPageViewModel.update(Boolean)
 - uid: EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.update*
   name: update
   href: api/EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.html#EduCATS_Pages_Recommendations_ViewModels_RecommendationsPageViewModel_update_
@@ -10996,6 +11033,12 @@ references:
   commentId: F:EduCATS.Pages.Recommendations.Views.RecommendationsPageView._listMargin
   fullName: EduCATS.Pages.Recommendations.Views.RecommendationsPageView._listMargin
   nameWithType: RecommendationsPageView._listMargin
+- uid: EduCATS.Pages.Recommendations.Views.RecommendationsPageView._spacing
+  name: _spacing
+  href: api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.html#EduCATS_Pages_Recommendations_Views_RecommendationsPageView__spacing
+  commentId: F:EduCATS.Pages.Recommendations.Views.RecommendationsPageView._spacing
+  fullName: EduCATS.Pages.Recommendations.Views.RecommendationsPageView._spacing
+  nameWithType: RecommendationsPageView._spacing
 - uid: EduCATS.Pages.Recommendations.Views.RecommendationsPageView._subjectsMargin
   name: _subjectsMargin
   href: api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.html#EduCATS_Pages_Recommendations_Views_RecommendationsPageView__subjectsMargin
@@ -11331,6 +11374,19 @@ references:
   commentId: F:EduCATS.Pages.Settings.About.Views.AboutPageView._spacing
   fullName: EduCATS.Pages.Settings.About.Views.AboutPageView._spacing
   nameWithType: AboutPageView._spacing
+- uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createBodyLayout
+  name: createBodyLayout()
+  href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createBodyLayout
+  commentId: M:EduCATS.Pages.Settings.About.Views.AboutPageView.createBodyLayout
+  fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createBodyLayout()
+  nameWithType: AboutPageView.createBodyLayout()
+- uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createBodyLayout*
+  name: createBodyLayout
+  href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createBodyLayout_
+  commentId: Overload:EduCATS.Pages.Settings.About.Views.AboutPageView.createBodyLayout
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createBodyLayout
+  nameWithType: AboutPageView.createBodyLayout
 - uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createButton(System.String,System.String)
   name: createButton(String, String)
   href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createButton_System_String_System_String_
@@ -11344,6 +11400,32 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createButton
   nameWithType: AboutPageView.createButton
+- uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorLabel(System.String,System.Boolean)
+  name: createContributorLabel(String, Boolean)
+  href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createContributorLabel_System_String_System_Boolean_
+  commentId: M:EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorLabel(System.String,System.Boolean)
+  fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorLabel(System.String, System.Boolean)
+  nameWithType: AboutPageView.createContributorLabel(String, Boolean)
+- uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorLabel*
+  name: createContributorLabel
+  href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createContributorLabel_
+  commentId: Overload:EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorLabel
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorLabel
+  nameWithType: AboutPageView.createContributorLabel
+- uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorsBlock
+  name: createContributorsBlock()
+  href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createContributorsBlock
+  commentId: M:EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorsBlock
+  fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorsBlock()
+  nameWithType: AboutPageView.createContributorsBlock()
+- uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorsBlock*
+  name: createContributorsBlock
+  href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createContributorsBlock_
+  commentId: Overload:EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorsBlock
+  isSpec: "True"
+  fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createContributorsBlock
+  nameWithType: AboutPageView.createContributorsBlock
 - uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createHeader
   name: createHeader()
   href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createHeader
@@ -12134,6 +12216,12 @@ references:
   commentId: F:EduCATS.Pages.Settings.Fonts.Views.FontsPageView._chooseLabelMargin
   fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView._chooseLabelMargin
   nameWithType: FontsPageView._chooseLabelMargin
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView._frameMargin
+  name: _frameMargin
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView__frameMargin
+  commentId: F:EduCATS.Pages.Settings.Fonts.Views.FontsPageView._frameMargin
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView._frameMargin
+  nameWithType: FontsPageView._frameMargin
 - uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView._listMargin
   name: _listMargin
   href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView__listMargin
@@ -12567,6 +12655,12 @@ references:
   commentId: F:EduCATS.Pages.Settings.Language.Views.LanguagePageView._chooseLabelMargin
   fullName: EduCATS.Pages.Settings.Language.Views.LanguagePageView._chooseLabelMargin
   nameWithType: LanguagePageView._chooseLabelMargin
+- uid: EduCATS.Pages.Settings.Language.Views.LanguagePageView._frameMargin
+  name: _frameMargin
+  href: api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.html#EduCATS_Pages_Settings_Language_Views_LanguagePageView__frameMargin
+  commentId: F:EduCATS.Pages.Settings.Language.Views.LanguagePageView._frameMargin
+  fullName: EduCATS.Pages.Settings.Language.Views.LanguagePageView._frameMargin
+  nameWithType: LanguagePageView._frameMargin
 - uid: EduCATS.Pages.Settings.Language.Views.LanguagePageView._listMargin
   name: _listMargin
   href: api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.html#EduCATS_Pages_Settings_Language_Views_LanguagePageView__listMargin
@@ -14463,6 +14557,12 @@ references:
   commentId: F:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._currentUserLogin
   fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._currentUserLogin
   nameWithType: StatsResultsPageViewModel._currentUserLogin
+- uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._doubleStringFormat
+  name: _doubleStringFormat
+  href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel__doubleStringFormat
+  commentId: F:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._doubleStringFormat
+  fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._doubleStringFormat
+  nameWithType: StatsResultsPageViewModel._doubleStringFormat
 - uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._emptyRatingString
   name: _emptyRatingString
   href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel__emptyRatingString
@@ -14493,6 +14593,25 @@ references:
   commentId: F:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._statisticsPage
   fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._statisticsPage
   nameWithType: StatsResultsPageViewModel._statisticsPage
+- uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._summary
+  name: _summary
+  href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel__summary
+  commentId: F:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._summary
+  fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel._summary
+  nameWithType: StatsResultsPageViewModel._summary
+- uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.calculateSummary
+  name: calculateSummary()
+  href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel_calculateSummary
+  commentId: M:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.calculateSummary
+  fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.calculateSummary()
+  nameWithType: StatsResultsPageViewModel.calculateSummary()
+- uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.calculateSummary*
+  name: calculateSummary
+  href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel_calculateSummary_
+  commentId: Overload:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.calculateSummary
+  isSpec: "True"
+  fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.calculateSummary
+  nameWithType: StatsResultsPageViewModel.calculateSummary
 - uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.executeRefreshCommand
   name: executeRefreshCommand()
   href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel_executeRefreshCommand
@@ -14642,6 +14761,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.setRatingLabsStatistics
   nameWithType: StatsResultsPageViewModel.setRatingLabsStatistics
+- uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.setSummary(System.String)
+  name: setSummary(String)
+  href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel_setSummary_System_String_
+  commentId: M:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.setSummary(System.String)
+  fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.setSummary(System.String)
+  nameWithType: StatsResultsPageViewModel.setSummary(String)
+- uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.setSummary*
+  name: setSummary
+  href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel_setSummary_
+  commentId: Overload:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.setSummary
+  isSpec: "True"
+  fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.setSummary
+  nameWithType: StatsResultsPageViewModel.setSummary
 - uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.setVisitingLabsStatistics(EduCATS.Data.Models.LabsModel)
   name: setVisitingLabsStatistics(LabsModel)
   href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel_setVisitingLabsStatistics_EduCATS_Data_Models_LabsModel_
@@ -14655,6 +14787,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.setVisitingLabsStatistics
   nameWithType: StatsResultsPageViewModel.setVisitingLabsStatistics
+- uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.Summary
+  name: Summary
+  href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel_Summary
+  commentId: P:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.Summary
+  fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.Summary
+  nameWithType: StatsResultsPageViewModel.Summary
+- uid: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.Summary*
+  name: Summary
+  href: api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html#EduCATS_Pages_Statistics_Results_ViewModels_StatsResultsPageViewModel_Summary_
+  commentId: Overload:EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.Summary
+  isSpec: "True"
+  fullName: EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.Summary
+  nameWithType: StatsResultsPageViewModel.Summary
 - uid: EduCATS.Pages.Statistics.Results.Views
   name: EduCATS.Pages.Statistics.Results.Views
   href: api/EduCATS.Pages.Statistics.Results.Views.html
@@ -14686,6 +14831,12 @@ references:
   commentId: F:EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView._padding
   fullName: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView._padding
   nameWithType: StatsResultsPageView._padding
+- uid: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView._statsPageEnum
+  name: _statsPageEnum
+  href: api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.html#EduCATS_Pages_Statistics_Results_Views_StatsResultsPageView__statsPageEnum
+  commentId: F:EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView._statsPageEnum
+  fullName: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView._statsPageEnum
+  nameWithType: StatsResultsPageView._statsPageEnum
 - uid: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView._studentNameMargin
   name: _studentNameMargin
   href: api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.html#EduCATS_Pages_Statistics_Results_Views_StatsResultsPageView__studentNameMargin
@@ -14705,6 +14856,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.createStudentNameLabel
   nameWithType: StatsResultsPageView.createStudentNameLabel
+- uid: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.createSummary
+  name: createSummary()
+  href: api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.html#EduCATS_Pages_Statistics_Results_Views_StatsResultsPageView_createSummary
+  commentId: M:EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.createSummary
+  fullName: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.createSummary()
+  nameWithType: StatsResultsPageView.createSummary()
+- uid: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.createSummary*
+  name: createSummary
+  href: api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.html#EduCATS_Pages_Statistics_Results_Views_StatsResultsPageView_createSummary_
+  commentId: Overload:EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.createSummary
+  isSpec: "True"
+  fullName: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.createSummary
+  nameWithType: StatsResultsPageView.createSummary
 - uid: EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.createViews(System.String)
   name: createViews(String)
   href: api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.html#EduCATS_Pages_Statistics_Results_Views_StatsResultsPageView_createViews_System_String_
@@ -15495,6 +15659,12 @@ references:
   commentId: F:EduCATS.Pages.Testing.Base.Views.TestingPageView._headerPadding
   fullName: EduCATS.Pages.Testing.Base.Views.TestingPageView._headerPadding
   nameWithType: TestingPageView._headerPadding
+- uid: EduCATS.Pages.Testing.Base.Views.TestingPageView._spacing
+  name: _spacing
+  href: api/EduCATS.Pages.Testing.Base.Views.TestingPageView.html#EduCATS_Pages_Testing_Base_Views_TestingPageView__spacing
+  commentId: F:EduCATS.Pages.Testing.Base.Views.TestingPageView._spacing
+  fullName: EduCATS.Pages.Testing.Base.Views.TestingPageView._spacing
+  nameWithType: TestingPageView._spacing
 - uid: EduCATS.Pages.Testing.Base.Views.TestingPageView.createHeaderImage
   name: createHeaderImage()
   href: api/EduCATS.Pages.Testing.Base.Views.TestingPageView.html#EduCATS_Pages_Testing_Base_Views_TestingPageView_createHeaderImage
@@ -16496,6 +16666,12 @@ references:
   commentId: F:EduCATS.Pages.Testing.Passing.Views.TestPassingPageView._buttonHeight
   fullName: EduCATS.Pages.Testing.Passing.Views.TestPassingPageView._buttonHeight
   nameWithType: TestPassingPageView._buttonHeight
+- uid: EduCATS.Pages.Testing.Passing.Views.TestPassingPageView._spacing
+  name: _spacing
+  href: api/EduCATS.Pages.Testing.Passing.Views.TestPassingPageView.html#EduCATS_Pages_Testing_Passing_Views_TestPassingPageView__spacing
+  commentId: F:EduCATS.Pages.Testing.Passing.Views.TestPassingPageView._spacing
+  fullName: EduCATS.Pages.Testing.Passing.Views.TestPassingPageView._spacing
+  nameWithType: TestPassingPageView._spacing
 - uid: EduCATS.Pages.Testing.Passing.Views.TestPassingPageView._titleLayoutPadding
   name: _titleLayoutPadding
   href: api/EduCATS.Pages.Testing.Passing.Views.TestPassingPageView.html#EduCATS_Pages_Testing_Passing_Views_TestPassingPageView__titleLayoutPadding
@@ -18488,6 +18664,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Today.Base.Views.TodayPageView.createViews
   nameWithType: TodayPageView.createViews
+- uid: EduCATS.Pages.Today.Base.Views.TodayPageView.setupSubjectsRowHeight
+  name: setupSubjectsRowHeight()
+  href: api/EduCATS.Pages.Today.Base.Views.TodayPageView.html#EduCATS_Pages_Today_Base_Views_TodayPageView_setupSubjectsRowHeight
+  commentId: M:EduCATS.Pages.Today.Base.Views.TodayPageView.setupSubjectsRowHeight
+  fullName: EduCATS.Pages.Today.Base.Views.TodayPageView.setupSubjectsRowHeight()
+  nameWithType: TodayPageView.setupSubjectsRowHeight()
+- uid: EduCATS.Pages.Today.Base.Views.TodayPageView.setupSubjectsRowHeight*
+  name: setupSubjectsRowHeight
+  href: api/EduCATS.Pages.Today.Base.Views.TodayPageView.html#EduCATS_Pages_Today_Base_Views_TodayPageView_setupSubjectsRowHeight_
+  commentId: Overload:EduCATS.Pages.Today.Base.Views.TodayPageView.setupSubjectsRowHeight
+  isSpec: "True"
+  fullName: EduCATS.Pages.Today.Base.Views.TodayPageView.setupSubjectsRowHeight
+  nameWithType: TodayPageView.setupSubjectsRowHeight
 - uid: EduCATS.Pages.Today.Base.Views.ViewCells
   name: EduCATS.Pages.Today.Base.Views.ViewCells
   href: api/EduCATS.Pages.Today.Base.Views.ViewCells.html
