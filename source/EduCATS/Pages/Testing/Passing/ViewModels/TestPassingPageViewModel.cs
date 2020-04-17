@@ -131,7 +131,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		public Command CloseCommand {
 			get {
 				return _closeCommand ?? (_closeCommand = new Command(
-					async () => await ExecuteCloseCommand()));
+					async () => await closePage()));
 			}
 		}
 
@@ -332,6 +332,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				}
 
 				_isBusySpeech = false;
+				HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
@@ -363,7 +364,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
-		protected async Task ExecuteCloseCommand()
+		protected async Task closePage()
 		{
 			try {
 				var result = await _services.Dialogs.ShowConfirmationMessage(

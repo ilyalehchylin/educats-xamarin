@@ -30,11 +30,10 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <summary>
 		/// Open news details page.
 		/// </summary>
-		/// <param name="title">Page title.</param>
 		/// <param name="newsTitle">News title.</param>
 		/// <param name="body">News html body.</param>
 		/// <returns>Task.</returns>
-		Task OpenNewsDetails(string title, string newsTitle, string body);
+		Task OpenNewsDetails(string newsTitle, string body);
 
 		/// <summary>
 		/// Open page with students.
