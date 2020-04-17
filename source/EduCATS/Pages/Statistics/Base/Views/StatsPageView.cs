@@ -112,7 +112,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 			var avgRatingView = createStatisticsView(
 				CrossLocalization.Translate("stats_chart_rating"),
-				Color.FromHex(Theme.Current.StatisticsChartVisitingColor),
+				Color.FromHex(Theme.Current.StatisticsChartRatingColor),
 				"Rating");
 
 

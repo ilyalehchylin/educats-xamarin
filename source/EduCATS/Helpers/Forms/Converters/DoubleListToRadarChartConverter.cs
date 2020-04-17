@@ -54,7 +54,7 @@ namespace EduCATS.Helpers.Forms.Converters
 			if (chartEntries != null && chartEntries.Length == 3) {
 				chartEntries[0].Color = SKColor.Parse(Theme.Current.StatisticsChartLabsColor);
 				chartEntries[1].Color = SKColor.Parse(Theme.Current.StatisticsChartTestsColor);
-				chartEntries[2].Color = SKColor.Parse(Theme.Current.StatisticsChartVisitingColor);
+				chartEntries[2].Color = SKColor.Parse(Theme.Current.StatisticsChartRatingColor);
 			}
 
 			return new RadarChart {

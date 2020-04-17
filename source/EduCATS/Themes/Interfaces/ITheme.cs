@@ -65,7 +65,7 @@
 
 		string StatisticsChartLabsColor { get; }
 		string StatisticsChartTestsColor { get; }
-		string StatisticsChartVisitingColor { get; }
+		string StatisticsChartRatingColor { get; }
 		string StatisticsBoxTextColor { get; }
 		string StatisticsExpandableTextColor { get; }
 		string StatisticsDetailsTitleColor { get; }
