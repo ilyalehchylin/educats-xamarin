@@ -41,13 +41,14 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// Close page.
 		/// </summary>
 		/// <param name="modal">Is page modal.</param>
+		/// <param name="animated">Is close animation.</param>
 		/// <returns>Task.</returns>
-		public async Task ClosePage(bool modal)
+		public async Task ClosePage(bool modal, bool animated = true)
 		{
 			if (modal) {
-				await mainPage.Navigation.PopModalAsync();
+				await mainPage.Navigation.PopModalAsync(animated);
 			} else {
-				await mainPage.Navigation.PopAsync();
+				await mainPage.Navigation.PopAsync(animated);
 			}
 		}
 

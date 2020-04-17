@@ -88,6 +88,7 @@
     "answer_question_not_selected_error": "Вы не выбрали ни одного ответа. Пожалуйста, ответьте на вопрос.",
     "question_title": "Вопрос",
 
+	"test_passing_options": "Варианты ответа",
     "test_passing_skip": "ПРОПУСТИТЬ",
     "test_passing_answer": "ОТВЕТИТЬ",
     "test_passing_cancel_message": "Вы действительно хотите прервать прохождение теста? Все вопросы без ответов станут неправильными.",

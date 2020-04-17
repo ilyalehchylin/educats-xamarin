@@ -13,8 +13,9 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// Close page.
 		/// </summary>
 		/// <param name="modal">Is page modal.</param>
+		/// <param name="animated">Is close animation.</param>
 		/// <returns>Task.</returns>
-		Task ClosePage(bool modal);
+		Task ClosePage(bool modal, bool animated = true);
 
 		/// <summary>
 		/// Open login page.

@@ -88,6 +88,7 @@
 	"answer_question_not_selected_error": "You didn't select any answers. Please answer the question.",
 	"question_title": "Question",
 
+	"test_passing_options": "Answer options",
 	"test_passing_skip": "SKIP",
 	"test_passing_answer": "ANSWER",
 	"test_passing_cancel_message": "Are you sure you want to interrupt the test? Every question without an answer will become incorrect.",

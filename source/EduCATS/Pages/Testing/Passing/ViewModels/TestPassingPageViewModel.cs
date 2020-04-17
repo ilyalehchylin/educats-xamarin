@@ -9,6 +9,7 @@ using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking.Models.Testing;
 using EduCATS.Pages.Testing.Passing.Models;
+using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -21,6 +22,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		bool _timerCancellation;
 		int _timeForCompletion;
+		bool _isBusySpeech;
 
 		/// <summary>
 		/// Time for question/entire test completion.
@@ -43,6 +45,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			_testId = testId;
 			_testIdString = testId.ToString();
 			IsTestForSelfStudy = forSelfStudy;
+			HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 			getData(1);
 		}
 
@@ -88,32 +91,46 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			set { SetProperty(ref _description, value); }
 		}
 
+		string _headphonesIcon;
+		public string HeadphonesIcon {
+			get { return _headphonesIcon; }
+			set { SetProperty(ref _headphonesIcon, value); }
+		}
+
 		List<TestPassingAnswerModel> _answers;
 		public List<TestPassingAnswerModel> Answers {
 			get { return _answers; }
 			set { SetProperty(ref _answers, value); }
 		}
 
-		Command answerCommand;
+		Command _answerCommand;
 		public Command AnswerCommand {
 			get {
-				return answerCommand ?? (answerCommand = new Command(
+				return _answerCommand ?? (_answerCommand = new Command(
 					async () => await ExecuteAnswerCommand()));
 			}
 		}
 
-		Command skipCommand;
+		Command _skipCommand;
 		public Command SkipCommand {
 			get {
-				return skipCommand ?? (skipCommand = new Command(
+				return _skipCommand ?? (_skipCommand = new Command(
 					async () => await ExecuteSkipCommand()));
 			}
 		}
 
-		Command closeCommand;
+		Command _speechCommand;
+		public Command SpeechCommand {
+			get {
+				return _speechCommand ?? (_speechCommand = new Command(
+					async () => await speechToText()));
+			}
+		}
+
+		Command _closeCommand;
 		public Command CloseCommand {
 			get {
-				return closeCommand ?? (closeCommand = new Command(
+				return _closeCommand ?? (_closeCommand = new Command(
 					async () => await ExecuteCloseCommand()));
 			}
 		}
@@ -268,6 +285,58 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
+		protected async Task speechToText()
+		{
+			try {
+				if (Answers == null || string.IsNullOrEmpty(Question)) {
+					return;
+				}
+
+				if (_isBusySpeech) {
+					_isBusySpeech = false;
+					_services.Device.CancelSpeech();
+					HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
+					return;
+				}
+
+				HeadphonesIcon = Theme.Current.BaseHeadphonesCancelIcon;
+				_isBusySpeech = true;
+				await _services.Device.Speak(Question);
+
+				if (!_isBusySpeech) {
+					return;
+				}
+
+				await _services.Device.Speak(CrossLocalization.Translate("test_passing_options"));
+
+				if (!_isBusySpeech) {
+					return;
+				}
+
+				for (var i = 0; i < Answers.Count; i++) {
+					var answer = Answers[i];
+
+					if (!_isBusySpeech) {
+						return;
+					}
+
+					await _services.Device.Speak((i + 1).ToString());
+
+					if (!_isBusySpeech) {
+						return;
+					}
+
+					if (!string.IsNullOrEmpty(answer.Content)) {
+						await _services.Device.Speak(answer.Content);
+					}
+				}
+
+				_isBusySpeech = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
+		}
+
 		protected async Task ExecuteAnswerCommand()
 		{
 			await answerQuestion();
@@ -301,9 +370,16 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 					CrossLocalization.Translate("base_warning"),
 					CrossLocalization.Translate("test_passing_cancel_message"));
 
-				if (result) {
-					await _services.Navigation.ClosePage(true);
+				if (!result) {
+					return;
 				}
+
+				if (_isBusySpeech) {
+					_isBusySpeech = false;
+					_services.Device.CancelSpeech();
+				}
+
+				await _services.Navigation.ClosePage(true, false);
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}

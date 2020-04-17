@@ -100,9 +100,9 @@ namespace EduCATS.Helpers.Forms.Devices
 		/// </summary>
 		public void CancelSpeech()
 		{
-			if (_speechCancellationSource?.IsCancellationRequested ?? true) {
-				return;
-			}
+			//if (_speechCancellationSource?.IsCancellationRequested ?? true) {
+			//	return;
+			//}
 
 			_speechCancellationSource.Cancel();
 			_speechCancellationSource.Dispose();
