@@ -3393,7 +3393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.Interfaces.ITheme.html",
-          "hash": "TrmicjLMJbWe1PbT6vgsww=="
+          "hash": "hSuO8tR65X1cH5wKQnKlbQ=="
         }
       },
       "is_incremental": false,
@@ -3417,7 +3417,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.Templates.DarkTheme.html",
-          "hash": "e+vn2hpu0HmGl/Dr5GfREg=="
+          "hash": "yoaqKbO0qzzDvZTbMZSr6A=="
         }
       },
       "is_incremental": false,
@@ -3429,7 +3429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Themes.Templates.DefaultTheme.html",
-          "hash": "n46faC/c1DZvhcaD+N/3Lw=="
+          "hash": "ih7B5R44DldVs/KyB8gisw=="
         }
       },
       "is_incremental": false,

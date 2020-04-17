@@ -20126,6 +20126,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsChartLabsColor
   nameWithType: ITheme.StatisticsChartLabsColor
+- uid: EduCATS.Themes.Interfaces.ITheme.StatisticsChartRatingColor
+  name: StatisticsChartRatingColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsChartRatingColor
+  commentId: P:EduCATS.Themes.Interfaces.ITheme.StatisticsChartRatingColor
+  fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsChartRatingColor
+  nameWithType: ITheme.StatisticsChartRatingColor
+- uid: EduCATS.Themes.Interfaces.ITheme.StatisticsChartRatingColor*
+  name: StatisticsChartRatingColor
+  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsChartRatingColor_
+  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.StatisticsChartRatingColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsChartRatingColor
+  nameWithType: ITheme.StatisticsChartRatingColor
 - uid: EduCATS.Themes.Interfaces.ITheme.StatisticsChartTestsColor
   name: StatisticsChartTestsColor
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsChartTestsColor
@@ -20139,19 +20152,6 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsChartTestsColor
   nameWithType: ITheme.StatisticsChartTestsColor
-- uid: EduCATS.Themes.Interfaces.ITheme.StatisticsChartVisitingColor
-  name: StatisticsChartVisitingColor
-  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsChartVisitingColor
-  commentId: P:EduCATS.Themes.Interfaces.ITheme.StatisticsChartVisitingColor
-  fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsChartVisitingColor
-  nameWithType: ITheme.StatisticsChartVisitingColor
-- uid: EduCATS.Themes.Interfaces.ITheme.StatisticsChartVisitingColor*
-  name: StatisticsChartVisitingColor
-  href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsChartVisitingColor_
-  commentId: Overload:EduCATS.Themes.Interfaces.ITheme.StatisticsChartVisitingColor
-  isSpec: "True"
-  fullName: EduCATS.Themes.Interfaces.ITheme.StatisticsChartVisitingColor
-  nameWithType: ITheme.StatisticsChartVisitingColor
 - uid: EduCATS.Themes.Interfaces.ITheme.StatisticsCollapseIcon
   name: StatisticsCollapseIcon
   href: api/EduCATS.Themes.Interfaces.ITheme.html#EduCATS_Themes_Interfaces_ITheme_StatisticsCollapseIcon
@@ -22382,6 +22382,19 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartLabsColor
   nameWithType: DefaultTheme.StatisticsChartLabsColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartRatingColor
+  name: StatisticsChartRatingColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsChartRatingColor
+  commentId: P:EduCATS.Themes.Templates.DefaultTheme.StatisticsChartRatingColor
+  fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartRatingColor
+  nameWithType: DefaultTheme.StatisticsChartRatingColor
+- uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartRatingColor*
+  name: StatisticsChartRatingColor
+  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsChartRatingColor_
+  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.StatisticsChartRatingColor
+  isSpec: "True"
+  fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartRatingColor
+  nameWithType: DefaultTheme.StatisticsChartRatingColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartTestsColor
   name: StatisticsChartTestsColor
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsChartTestsColor
@@ -22395,19 +22408,6 @@ references:
   isSpec: "True"
   fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartTestsColor
   nameWithType: DefaultTheme.StatisticsChartTestsColor
-- uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartVisitingColor
-  name: StatisticsChartVisitingColor
-  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsChartVisitingColor
-  commentId: P:EduCATS.Themes.Templates.DefaultTheme.StatisticsChartVisitingColor
-  fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartVisitingColor
-  nameWithType: DefaultTheme.StatisticsChartVisitingColor
-- uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartVisitingColor*
-  name: StatisticsChartVisitingColor
-  href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsChartVisitingColor_
-  commentId: Overload:EduCATS.Themes.Templates.DefaultTheme.StatisticsChartVisitingColor
-  isSpec: "True"
-  fullName: EduCATS.Themes.Templates.DefaultTheme.StatisticsChartVisitingColor
-  nameWithType: DefaultTheme.StatisticsChartVisitingColor
 - uid: EduCATS.Themes.Templates.DefaultTheme.StatisticsCollapseIcon
   name: StatisticsCollapseIcon
   href: api/EduCATS.Themes.Templates.DefaultTheme.html#EduCATS_Themes_Templates_DefaultTheme_StatisticsCollapseIcon
