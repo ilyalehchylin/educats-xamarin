@@ -126,6 +126,7 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string FilesHeaderImage => "image_file_rectangle";
 		virtual public string FilesTitleColor => _blackColor;
+		virtual public string FilesDownloadedIcon => "icon_download";
 
 		virtual public string RecommendationsHeaderImage => "image_circuit_rectangle";
 		virtual public string RecommendationsTitleColor => _blackColor;

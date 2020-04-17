@@ -118,6 +118,7 @@
 
 		string FilesHeaderImage { get; }
 		string FilesTitleColor { get; }
+		string FilesDownloadedIcon { get; }
 
 		string RecommendationsHeaderImage { get; }
 		string RecommendationsTitleColor { get; }
