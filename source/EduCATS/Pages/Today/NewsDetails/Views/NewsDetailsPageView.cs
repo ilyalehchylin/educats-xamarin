@@ -1,5 +1,6 @@
 ﻿using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Converters;
 using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Today.NewsDetails.ViewModels;
 using EduCATS.Themes;
@@ -14,20 +15,26 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 
 		static Thickness _newsTitlePadding = new Thickness(10);
 
+		readonly PlatformServices _services;
+
 		public NewsDetailsPageView(string title, string body)
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			var dynSize = FontSizeController.GetDynamicSize(_bodyFontSize);
-			BindingContext = new NewsDetailsPageViewModel(dynSize, title, body, new PlatformServices());
+			_services = new PlatformServices();
+			BindingContext = new NewsDetailsPageViewModel(dynSize, title, body, _services);
 			setToolbar();
 			createViews();
 		}
 
 		void setToolbar()
 		{
-			var speechToolbar = new ToolbarItem {
-				IconImageSource = ImageSource.FromFile(Theme.Current.BaseHeadphonesIcon)
-			};
+			var speechToolbar = new ToolbarItem();
+
+			speechToolbar.SetBinding(
+				MenuItem.IconImageSourceProperty,
+				"HeadphonesIcon",
+				converter: new StringToImageSourceConverter());
 
 			speechToolbar.SetBinding(MenuItem.CommandProperty, "SpeechCommand");
 			ToolbarItems.Add(speechToolbar);

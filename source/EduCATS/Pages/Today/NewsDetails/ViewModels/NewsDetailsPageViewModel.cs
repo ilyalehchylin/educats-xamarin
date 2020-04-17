@@ -21,6 +21,7 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 		{
 			_services = services;
 
+			HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 			NewsTitle = title;
 			NewsBody = $"" +
 				$"<body style='" +
@@ -45,6 +46,12 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 			set { SetProperty(ref _newsBody, value); }
 		}
 
+		string _headphonesIcon;
+		public string HeadphonesIcon {
+			get { return _headphonesIcon; }
+			set { SetProperty(ref _headphonesIcon, value); }
+		}
+
 		Command _speechCommand;
 		public Command SpeechCommand {
 			get {
@@ -62,9 +69,11 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 				if (_isBusySpeech) {
 					_isBusySpeech = false;
 					_services.Device.CancelSpeech();
+					HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 					return;
 				}
 
+				HeadphonesIcon = Theme.Current.BaseHeadphonesCancelIcon;
 				_isBusySpeech = true;
 				await _services.Device.Speak(NewsTitle);
 

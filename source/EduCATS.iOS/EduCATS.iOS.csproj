@@ -256,6 +256,10 @@
         <ImageAsset Include="Resources\Light.xcassets\image_splash_logo.imageset\Contents.json" />
         <ImageAsset Include="Resources\Light.xcassets\image_splash_logo.imageset\image_splash_logo.png" />
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\itunes_icon.png" />
+        <ImageAsset Include="Resources\Light.xcassets\icon_headphones_cancel_blue.imageset\Contents.json" />
+        <ImageAsset Include="Resources\Light.xcassets\icon_headphones_cancel_blue.imageset\icon_headphones_cancel_blue%401x.png" />
+        <ImageAsset Include="Resources\Light.xcassets\icon_headphones_cancel_blue.imageset\icon_headphones_cancel_blue%402x.png" />
+        <ImageAsset Include="Resources\Light.xcassets\icon_headphones_cancel_blue.imageset\icon_headphones_cancel_blue%403x.png" />
     </ItemGroup>
     <ItemGroup>
         <Reference Include="System" />
@@ -355,5 +359,6 @@
         <Folder Include="Resources\Light.xcassets\image_mascot.imageset\" />
         <Folder Include="Resources\Light.xcassets\image_splash_logo.imageset\" />
         <Folder Include="Renderer\" />
+        <Folder Include="Resources\Light.xcassets\icon_headphones_cancel_blue.imageset\" />
     </ItemGroup>
 </Project>
