@@ -30,12 +30,16 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
 
 			Task.Run(async () => {
+				IsLoading = true;
 				await SetupSubjects();
 				await getAndSetStatistics();
+				IsLoading = false;
 			});
 
 			SubjectChanged += async (id, name) => {
+				PlatformServices.Dialogs.ShowLoading();
 				await getAndSetStatistics();
+				PlatformServices.Dialogs.HideLoading();
 			};
 		}
 
