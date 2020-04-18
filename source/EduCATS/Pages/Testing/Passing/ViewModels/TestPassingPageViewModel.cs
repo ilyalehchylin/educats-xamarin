@@ -276,7 +276,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		void completeQuestion()
 		{
 			_services.Device.MainThread(async () => {
-				await answerQuestion();
+				await answerQuestion(true);
 				_started = DateTime.Now;
 			});
 		}
