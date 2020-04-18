@@ -34,6 +34,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		bool _isTimeForEntireTest;
 
 		int _questionCount;
+		int _questionsLeft;
 		string _testIdString;
 		int _questionNumber;
 		int _questionType;
@@ -143,6 +144,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 					await getAndSetTest();
 					await getAndSetQuestion(number);
 					setTimer();
+					_questionsLeft = _questionCount - _questionNumber + 1;
 					setLoading(false);
 				} catch (Exception ex) {
 					AppLogs.Log(ex);
@@ -192,7 +194,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			return question;
 		}
 
-		async Task answerQuestion(TestAnswerPostModel answerModel)
+		async Task answerQuestion(TestAnswerPostModel answerModel, bool isAuto = false)
 		{
 			try {
 				if (answerModel == null || answerModel.Answers == null || answerModel.Answers.Count == 0) {
@@ -207,8 +209,8 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 					return;
 				}
 
-				if (!_isTimeForEntireTest) {
-					_timerCancellation = true;
+				if (!isAuto) {
+					_questionsLeft--;
 				}
 
 				await getAndSetQuestion(getNextQuestion());
@@ -223,7 +225,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 			if (testQuestionModel != null) {
 				Question = testQuestionModel.Title;
-				Description = $"<head><meta charset=\"utf-8\"><font size=\"5\">{testQuestionModel.Description}</font>";
+				Description = $"<head><meta charset=\"utf-8\">" +
+					$"<font size=\"5\" " +
+					$"color=\"{Theme.Current.TestPassingQuestionColor}\">" +
+					$"{testQuestionModel.Description}" +
+					$"</font>";
 				_questionNumber = testQuestionCommonModel.Number;
 				_questionType = testQuestionModel.QuestionType;
 				setAnswers(testQuestionModel.Answers);
@@ -236,7 +242,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				a => new TestPassingAnswerModel(a, _questionType) {
 					DownMovableAnswerCommand = new Command(ExecuteDownMovableAnswerCommand),
 					UpMovableAnswerCommand = new Command(ExecuteUpMovableAnswerCommand)
-				});
+				}).ToList();
+
+			if (_questionType < 2 && answersList.Count > 0) {
+				answersList[0].IsSelected = true;
+			}
 
 			Answers = new List<TestPassingAnswerModel>(answersList);
 		}
@@ -254,9 +264,21 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			_services.Navigation.OpenTestResults(_testId);
 		}
 
+		void autoAnswerAllQuestions()
+		{
+			_services.Device.MainThread(async () => {
+				for (int i = 0; i < _questionsLeft; i++) {
+					await answerQuestion(true);
+				}
+			});
+		}
+
 		void completeQuestion()
 		{
-			_timerCancellation = true;
+			_services.Device.MainThread(async () => {
+				await answerQuestion();
+				_started = DateTime.Now;
+			});
 		}
 
 		void selectItem(object item)
@@ -341,6 +363,10 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		protected async Task ExecuteAnswerCommand()
 		{
 			await answerQuestion();
+
+			if (!_isTimeForEntireTest) {
+				_started = DateTime.Now;
+			}
 		}
 
 		protected void ExecuteUpMovableAnswerCommand(object obj)
@@ -358,6 +384,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			try {
 				setLoading(true);
 				await getAndSetQuestion(getNextQuestion());
+
+				if (!_isTimeForEntireTest) {
+					_started = DateTime.Now;
+				}
+
 				setLoading(false);
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
@@ -374,6 +405,8 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				if (!result) {
 					return;
 				}
+
+				_timerCancellation = true;
 
 				if (_isBusySpeech) {
 					_isBusySpeech = false;

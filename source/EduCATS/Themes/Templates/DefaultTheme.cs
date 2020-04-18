@@ -101,7 +101,7 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string TestPassingButtonTextColor => _whiteColor;
 		virtual public string TestPassingEntryColor => _whiteColor;
-		virtual public string TestPassingAnswerColor => _greyColor;
+		virtual public string TestPassingAnswerColor => _blackColor;
 		virtual public string TestPassingArrowUpIcon => "icon_arrow_up";
 		virtual public string TestPassingArrowDownIcon => "icon_arrow_down";
 		virtual public string TestPassingQuestionColor => _blackColor;
