@@ -29,7 +29,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
 
-			Task.Run(async () => {
+			services.Device.MainThread(async () => {
 				IsLoading = true;
 				await SetupSubjects();
 				await getAndSetStatistics();
@@ -139,10 +139,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		protected async Task executeRefreshCommand()
 		{
 			try {
-				IsLoading = true;
+				PlatformServices.Device.MainThread(() => IsLoading = true);
 				await SetupSubjects();
 				await getAndSetStatistics();
-				IsLoading = false;
+				PlatformServices.Device.MainThread(() => IsLoading = false);
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
