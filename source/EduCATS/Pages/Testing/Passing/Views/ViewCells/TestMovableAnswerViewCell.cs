@@ -1,6 +1,7 @@
 ﻿using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
+using FFImageLoading.Transformations;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
@@ -22,6 +23,7 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 				HasShadow = false,
 				Margin = _frameMargin,
 				CornerRadius = _frameRadius,
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Content = new StackLayout {
 					Orientation = StackOrientation.Horizontal,
 					Children = {
@@ -70,6 +72,12 @@ namespace EduCATS.Pages.Testing.Passing.Views.ViewCells
 			return new CachedImage {
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Transformations = {
+					new TintTransformation {
+						EnableSolidColor = true,
+						HexColor = Theme.Current.TestPassingAnswerColor
+					}
+				},
 				Source = ImageSource.FromFile(
 					up ?
 					Theme.Current.TestPassingArrowUpIcon :
