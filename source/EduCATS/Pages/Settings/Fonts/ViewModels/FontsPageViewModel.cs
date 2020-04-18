@@ -19,13 +19,17 @@ namespace EduCATS.Pages.Settings.Fonts.ViewModels
 
 		public FontsPageViewModel(IPlatformServices services)
 		{
-			_isInit = true;
-			_isLargeFontToggleActive = true;
-			_services = services;
+			try {
+				_isInit = true;
+				_isLargeFontToggleActive = true;
+				_services = services;
 
-			setFonts();
+				setFonts();
 
-			IsLargeFont = _services.Preferences.IsLargeFont;
+				IsLargeFont = _services.Preferences.IsLargeFont;
+			} catch (Exception ex) {
+				AppLogs.Log(ex, nameof(FontsPageViewModel));
+			}
 		}
 
 		List<FontsPageModel> _fontList;

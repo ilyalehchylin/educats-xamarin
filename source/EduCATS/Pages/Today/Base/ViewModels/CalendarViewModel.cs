@@ -22,7 +22,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					_todayPageViewModel = (TodayPageViewModel)bindingContext;
 				}
 			} catch (Exception ex) {
-				AppLogs.Log(ex);
+				AppLogs.Log(ex, nameof(CalendarViewModel));
 			}
 		}
 
