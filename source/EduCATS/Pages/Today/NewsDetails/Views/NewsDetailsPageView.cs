@@ -4,6 +4,7 @@ using EduCATS.Helpers.Forms.Converters;
 using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Today.NewsDetails.ViewModels;
 using EduCATS.Themes;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.NewsDetails.Views
@@ -19,7 +20,7 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 
 		public NewsDetailsPageView(string title, string body)
 		{
-			NavigationPage.SetHasNavigationBar(this, false);
+			Title = CrossLocalization.Translate("news_details_title");
 			var dynSize = FontSizeController.GetDynamicSize(_bodyFontSize);
 			_services = new PlatformServices();
 			BindingContext = new NewsDetailsPageViewModel(dynSize, title, body, _services);
@@ -38,6 +39,13 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 
 			speechToolbar.SetBinding(MenuItem.CommandProperty, "SpeechCommand");
 			ToolbarItems.Add(speechToolbar);
+
+			var closeToolbarItem = new ToolbarItem {
+				IconImageSource = ImageSource.FromFile(Theme.Current.BaseCloseIcon)
+			};
+
+			closeToolbarItem.SetBinding(MenuItem.CommandProperty, "CloseCommand");
+			ToolbarItems.Add(closeToolbarItem);
 		}
 
 		void createViews()

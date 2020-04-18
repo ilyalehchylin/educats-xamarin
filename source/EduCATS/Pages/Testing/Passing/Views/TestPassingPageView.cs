@@ -39,12 +39,12 @@ namespace EduCATS.Pages.Testing.Passing.Views
 			speechToolbar.SetBinding(MenuItem.CommandProperty, "SpeechCommand");
 			ToolbarItems.Add(speechToolbar);
 
-			var toolbarItem = new ToolbarItem {
+			var closeToolbarItem = new ToolbarItem {
 				IconImageSource = ImageSource.FromFile(Theme.Current.BaseCloseIcon)
 			};
 
-			toolbarItem.SetBinding(MenuItem.CommandProperty, "CloseCommand");
-			ToolbarItems.Add(toolbarItem);
+			closeToolbarItem.SetBinding(MenuItem.CommandProperty, "CloseCommand");
+			ToolbarItems.Add(closeToolbarItem);
 		}
 
 		void createViews()

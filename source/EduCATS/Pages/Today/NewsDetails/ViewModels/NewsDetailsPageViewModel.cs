@@ -4,6 +4,7 @@ using EduCATS.Helpers.Extensions;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Themes;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.NewsDetails.ViewModels
@@ -59,6 +60,14 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 			}
 		}
 
+		Command _closeCommand;
+		public Command CloseCommand {
+			get {
+				return _closeCommand ?? (_closeCommand = new Command(
+					async () => await closePage()));
+			}
+		}
+
 		protected async Task speechToText()
 		{
 			try {
@@ -89,7 +98,22 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 				}
 
 				await _services.Device.Speak(editedNewsBody);
+				HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 				_isBusySpeech = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
+		}
+
+		protected async Task closePage()
+		{
+			try {
+				if (_isBusySpeech) {
+					_isBusySpeech = false;
+					_services.Device.CancelSpeech();
+				}
+
+				await _services.Navigation.ClosePage(true, false);
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}

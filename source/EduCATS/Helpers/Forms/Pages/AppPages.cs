@@ -67,12 +67,11 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <summary>
 		/// Open news details page.
 		/// </summary>
-		/// <param name="title">Page title.</param>
 		/// <param name="newsTitle">News title.</param>
 		/// <param name="body">News html body.</param>
 		/// <returns>Task.</returns>
-		public async Task OpenNewsDetails(string title, string newsTitle, string body) =>
-			await pushPage(new NewsDetailsPageView(newsTitle, body), title);
+		public async Task OpenNewsDetails(string newsTitle, string body) =>
+			await pushPage(new NewsDetailsPageView(newsTitle, body), isModal: true);
 
 		/// <summary>
 		/// Open page with students.
