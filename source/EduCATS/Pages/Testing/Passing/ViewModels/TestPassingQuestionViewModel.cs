@@ -14,6 +14,8 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 {
 	public partial class TestPassingPageViewModel
 	{
+		const string _emptyEditableAnswer = "-";
+
 		async Task answerQuestion(bool isAuto = false)
 		{
 			try {
@@ -24,10 +26,10 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				switch (_questionType) {
 					case 0:
 					case 1:
-						postModel = getSelectedAnswer();
+						postModel = getSelectedAnswer(isAuto);
 						break;
 					case 2:
-						postModel = getEditableAnswer();
+						postModel = getEditableAnswer(isAuto);
 						break;
 					case 3:
 						postModel = getMovableAnswer();
@@ -42,10 +44,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
-		TestAnswerPostModel getSelectedAnswer()
+		TestAnswerPostModel getSelectedAnswer(bool isAuto)
 		{
 			var answersList = Answers?.Select(
-				a => new TestAnswerDetailsPostModel(a.Id, Convert.ToInt32(a.IsSelected)));
+				a => new TestAnswerDetailsPostModel(
+					a.Id, isAuto && _questionType == 2 ? 1 : Convert.ToInt32(a.IsSelected)));
 
 			return composeAnswer(answersList.ToList());
 		}
@@ -57,14 +60,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			return composeAnswer(answersList.ToList());
 		}
 
-		TestAnswerPostModel getEditableAnswer()
+		TestAnswerPostModel getEditableAnswer(bool isAuto)
 		{
 			var answersList = Answers?.Select(
-				a => new TestAnswerDetailsPostModel(Answers[0].Id, Answers[0].ContentToAnswer)).ToList();
-
-			if (_questionType == 2 && answersList.Count > 0 && string.IsNullOrEmpty(answersList[0].Content)) {
-				answersList[0].Content = "-";
-			}
+				a => new TestAnswerDetailsPostModel(
+					Answers[0].Id, isAuto ? _emptyEditableAnswer : Answers[0].ContentToAnswer)).ToList();
 
 			return composeAnswer(answersList);
 		}
