@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using EduCATS.Helpers.Files;
 
 namespace EduCATS.Helpers.Logs
@@ -53,7 +56,8 @@ namespace EduCATS.Helpers.Logs
 		/// Log exception.
 		/// </summary>
 		/// <param name="ex">Exception.</param>
-		public static void Log(Exception ex)
+		/// <param name="caller">Used to get method caller (use <c>nameof</c> to get constructor name).</param>
+		public static void Log(Exception ex, [CallerMemberName] string caller = "")
 		{
 			checkFiles();
 
@@ -62,8 +66,7 @@ namespace EduCATS.Helpers.Logs
 			}
 
 			var throwDate = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
-			var targetMethod = ex.TargetSite?.ReflectedType.FullName;
-			var message = $"[{throwDate}] Exception: {ex.Message}; target method: {targetMethod}\n";
+			var message = $"[{throwDate}] Exception: '{ex.Message}' > target method: {caller}\n";
 			FileManager.Append(LogsFilePath, message);
 		}
 
