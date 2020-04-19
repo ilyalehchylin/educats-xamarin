@@ -18,13 +18,17 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 
 		public LanguagePageViewModel(IPlatformServices services)
 		{
-			_isInit = true;
-			_isSystemToggleActive = true;
-			_services = services;
+			try {
+				_isInit = true;
+				_isSystemToggleActive = true;
+				_services = services;
 
-			setLanguages();
+				setLanguages();
 
-			IsSystemLanguage = _services.Preferences.LanguageCode == Languages.SYSTEM.LangCode;
+				IsSystemLanguage = _services.Preferences.LanguageCode == Languages.SYSTEM.LangCode;
+			} catch (Exception ex) {
+				AppLogs.Log(ex, nameof(LanguagePageViewModel));
+			}
 		}
 
 		List<LanguagePageModel> _languageList;

@@ -13,8 +13,9 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// Close page.
 		/// </summary>
 		/// <param name="modal">Is page modal.</param>
+		/// <param name="animated">Is close animation.</param>
 		/// <returns>Task.</returns>
-		Task ClosePage(bool modal);
+		Task ClosePage(bool modal, bool animated = true);
 
 		/// <summary>
 		/// Open login page.
@@ -29,11 +30,10 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <summary>
 		/// Open news details page.
 		/// </summary>
-		/// <param name="title">Page title.</param>
 		/// <param name="newsTitle">News title.</param>
 		/// <param name="body">News html body.</param>
 		/// <returns>Task.</returns>
-		Task OpenNewsDetails(string title, string newsTitle, string body);
+		Task OpenNewsDetails(string newsTitle, string body);
 
 		/// <summary>
 		/// Open page with students.

@@ -41,13 +41,14 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// Close page.
 		/// </summary>
 		/// <param name="modal">Is page modal.</param>
+		/// <param name="animated">Is close animation.</param>
 		/// <returns>Task.</returns>
-		public async Task ClosePage(bool modal)
+		public async Task ClosePage(bool modal, bool animated = true)
 		{
 			if (modal) {
-				await mainPage.Navigation.PopModalAsync();
+				await mainPage.Navigation.PopModalAsync(animated);
 			} else {
-				await mainPage.Navigation.PopAsync();
+				await mainPage.Navigation.PopAsync(animated);
 			}
 		}
 
@@ -66,12 +67,11 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <summary>
 		/// Open news details page.
 		/// </summary>
-		/// <param name="title">Page title.</param>
 		/// <param name="newsTitle">News title.</param>
 		/// <param name="body">News html body.</param>
 		/// <returns>Task.</returns>
-		public async Task OpenNewsDetails(string title, string newsTitle, string body) =>
-			await pushPage(new NewsDetailsPageView(newsTitle, body), title);
+		public async Task OpenNewsDetails(string newsTitle, string body) =>
+			await pushPage(new NewsDetailsPageView(newsTitle, body), isModal: true);
 
 		/// <summary>
 		/// Open page with students.

@@ -6,7 +6,7 @@ namespace EduCATS.Pages.Files.Models
 {
 	public class FilesPageModel : IRoundedListType
 	{
-		public FilesPageModel(FileDetailsModel file)
+		public FilesPageModel(FileDetailsModel file, bool exists)
 		{
 			if (file == null) {
 				return;
@@ -14,6 +14,7 @@ namespace EduCATS.Pages.Files.Models
 
 			Id = file.Id;
 			Name = file.Name;
+			IsDownloaded = exists;
 			FileName = file.FileName;
 			PathName = file.PathName;
 		}
@@ -22,6 +23,7 @@ namespace EduCATS.Pages.Files.Models
 		public string Name { get; set; }
 		public string FileName { get; set; }
 		public string PathName { get; set; }
+		public bool IsDownloaded { get; set; }
 
 		public RoundedListTypeEnum GetListType()
 		{

@@ -250,7 +250,6 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			try {
 				var newsPageModel = (NewsPageModel)obj;
 				_services.Navigation.OpenNewsDetails(
-					CrossLocalization.Translate("news_details_title"),
 					newsPageModel.Title,
 					newsPageModel.Body);
 			} catch (Exception ex) {

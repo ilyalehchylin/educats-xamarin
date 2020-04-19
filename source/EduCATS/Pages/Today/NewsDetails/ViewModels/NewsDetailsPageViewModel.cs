@@ -4,6 +4,7 @@ using EduCATS.Helpers.Extensions;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Themes;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.NewsDetails.ViewModels
@@ -21,6 +22,7 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 		{
 			_services = services;
 
+			HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 			NewsTitle = title;
 			NewsBody = $"" +
 				$"<body style='" +
@@ -45,10 +47,24 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 			set { SetProperty(ref _newsBody, value); }
 		}
 
+		string _headphonesIcon;
+		public string HeadphonesIcon {
+			get { return _headphonesIcon; }
+			set { SetProperty(ref _headphonesIcon, value); }
+		}
+
 		Command _speechCommand;
 		public Command SpeechCommand {
 			get {
 				return _speechCommand ?? (_speechCommand = new Command(async () => await speechToText()));
+			}
+		}
+
+		Command _closeCommand;
+		public Command CloseCommand {
+			get {
+				return _closeCommand ?? (_closeCommand = new Command(
+					async () => await closePage()));
 			}
 		}
 
@@ -62,9 +78,11 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 				if (_isBusySpeech) {
 					_isBusySpeech = false;
 					_services.Device.CancelSpeech();
+					HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 					return;
 				}
 
+				HeadphonesIcon = Theme.Current.BaseHeadphonesCancelIcon;
 				_isBusySpeech = true;
 				await _services.Device.Speak(NewsTitle);
 
@@ -80,7 +98,22 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 				}
 
 				await _services.Device.Speak(editedNewsBody);
+				HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 				_isBusySpeech = false;
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
+		}
+
+		protected async Task closePage()
+		{
+			try {
+				if (_isBusySpeech) {
+					_isBusySpeech = false;
+					_services.Device.CancelSpeech();
+				}
+
+				await _services.Navigation.ClosePage(true, false);
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}

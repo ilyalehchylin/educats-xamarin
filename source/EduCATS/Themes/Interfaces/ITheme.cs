@@ -19,6 +19,7 @@
 		string BasePickerTextColor { get; }
 		string BaseLogoImage { get; }
 		string BaseHeadphonesIcon { get; }
+		string BaseHeadphonesCancelIcon { get; }
 		string BaseNoDataTextColor { get; }
 
 		string AppStatusBarBackgroundColor { get; }
@@ -117,6 +118,7 @@
 
 		string FilesHeaderImage { get; }
 		string FilesTitleColor { get; }
+		string FilesDownloadedIcon { get; }
 
 		string RecommendationsHeaderImage { get; }
 		string RecommendationsTitleColor { get; }

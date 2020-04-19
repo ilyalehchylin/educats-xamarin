@@ -1,4 +1,5 @@
 ﻿using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Converters;
 using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Testing.Passing.ViewModels;
 using EduCATS.Pages.Testing.Passing.Views.ViewCells;
@@ -28,12 +29,22 @@ namespace EduCATS.Pages.Testing.Passing.Views
 
 		void setToolbar()
 		{
-			var toolbarItem = new ToolbarItem {
+			var speechToolbar = new ToolbarItem();
+
+			speechToolbar.SetBinding(
+				MenuItem.IconImageSourceProperty,
+				"HeadphonesIcon",
+				converter: new StringToImageSourceConverter());
+
+			speechToolbar.SetBinding(MenuItem.CommandProperty, "SpeechCommand");
+			ToolbarItems.Add(speechToolbar);
+
+			var closeToolbarItem = new ToolbarItem {
 				IconImageSource = ImageSource.FromFile(Theme.Current.BaseCloseIcon)
 			};
 
-			toolbarItem.SetBinding(MenuItem.CommandProperty, "CloseCommand");
-			ToolbarItems.Add(toolbarItem);
+			closeToolbarItem.SetBinding(MenuItem.CommandProperty, "CloseCommand");
+			ToolbarItems.Add(closeToolbarItem);
 		}
 
 		void createViews()

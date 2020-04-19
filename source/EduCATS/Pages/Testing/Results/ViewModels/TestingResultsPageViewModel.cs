@@ -69,8 +69,8 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 		{
 			try {
 				if (!_fromComplexLearning) {
-					_services.Navigation.ClosePage(true);
-					_services.Navigation.ClosePage(true);
+					_services.Navigation.ClosePage(true, false);
+					_services.Navigation.ClosePage(true, false);
 				}
 			} catch (Exception ex) {
 				AppLogs.Log(ex);

@@ -52,7 +52,7 @@
 		override public string TestingDescriptionColor => _greyColor;
 
 		override public string TestPassingButtonTextColor => _whiteColor;
-		override public string TestPassingEntryColor => _whiteColor;
+		override public string TestPassingEntryColor => "#5c5c5c";
 		override public string TestPassingAnswerColor => _greyColor;
 		override public string TestPassingQuestionColor => _whiteColor;
 		override public string TestPassingUnselectedColor => _whiteColor;

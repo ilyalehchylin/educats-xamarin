@@ -88,6 +88,7 @@
 	"answer_question_not_selected_error": "You didn't select any answers. Please answer the question.",
 	"question_title": "Question",
 
+	"test_passing_options": "Answer options",
 	"test_passing_skip": "SKIP",
 	"test_passing_answer": "ANSWER",
 	"test_passing_cancel_message": "Are you sure you want to interrupt the test? Every question without an answer will become incorrect.",
@@ -133,9 +134,9 @@
 	"settings_about_app_version": "Version",
 	"settings_about_app_build": "Build",
 	"settings_about_release_notes": "Release notes",
-	"settings_about_open_source": "Open on GitHub (Open-Source)",
+	"settings_about_open_source": "Open on GitHub",
 	"settings_about_open_web_version": "Open web-version",
-	"settings_about_send_logs": "Send logs to developer",
+	"settings_about_send_logs": "Send crash logs",
 	"settings_about_send_logs_not_supported": "This feature is not supported by your device.",
 	"settings_about_send_logs_error": "Error occurred during sending logs. Please try again or contact support.",
 	"settings_about_contributors": "Contributors"

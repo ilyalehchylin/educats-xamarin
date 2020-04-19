@@ -23,7 +23,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				setInitData();
 				setSettings();
 			} catch (Exception ex) {
-				AppLogs.Log(ex);
+				AppLogs.Log(ex, nameof(SettingsPageViewModel));
 			}
 		}
 

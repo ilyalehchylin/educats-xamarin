@@ -25,6 +25,7 @@ namespace EduCATS.Pages.Files.ViewModels
 		const string _filepathKey = "filepath";
 
 		object _progressDialog;
+		object _lastSelectedObject;
 
 		WebClient _client;
 
@@ -132,7 +133,13 @@ namespace EduCATS.Pages.Files.ViewModels
 				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
-			var files = filesModel.Lectures?.Select(f => new FilesPageModel(f));
+			var appDataDirectory = PlatformServices.Device.GetAppDataDirectory();
+
+			var files = filesModel.Lectures?.Select(f => {
+				var file = Path.Combine(appDataDirectory, f.Name);
+				var exists = File.Exists(file);
+				return new FilesPageModel(f, exists);
+			});
 
 			if (files != null) {
 				FileList = new List<FilesPageModel>(files);
@@ -150,6 +157,7 @@ namespace EduCATS.Pages.Files.ViewModels
 					return;
 				}
 
+				_lastSelectedObject = selectedObject;
 				setDownloading();
 				SelectedItem = null;
 
@@ -208,8 +216,29 @@ namespace EduCATS.Pages.Files.ViewModels
 		void completeDownload(string fileName, string pathForFile)
 		{
 			hideDownloading();
+			updateDownloadedList();
 			PlatformServices.Device.MainThread(
 				() => PlatformServices.Device.ShareFile(fileName, pathForFile));
+		}
+
+		/// <summary>
+		/// Update downloaded files in list.
+		/// </summary>
+		void updateDownloadedList()
+		{
+			if (_lastSelectedObject != null && _lastSelectedObject is FilesPageModel) {
+				var fileModel = _lastSelectedObject as FilesPageModel;
+				var fileList = FileList.Select(
+					f => {
+						if (f == fileModel) {
+							f.IsDownloaded = true;
+						}
+
+						return f;
+					}).ToList();
+
+				FileList = new List<FilesPageModel>(fileList);
+			}
 		}
 
 		/// <summary>

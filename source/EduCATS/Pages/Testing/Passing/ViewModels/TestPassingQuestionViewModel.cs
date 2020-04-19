@@ -14,7 +14,9 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 {
 	public partial class TestPassingPageViewModel
 	{
-		async Task answerQuestion()
+		const string _emptyEditableAnswer = "-";
+
+		async Task answerQuestion(bool isAuto = false)
 		{
 			try {
 				setLoading(true);
@@ -24,17 +26,17 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				switch (_questionType) {
 					case 0:
 					case 1:
-						postModel = getSelectedAnswer();
+						postModel = getSelectedAnswer(isAuto);
 						break;
 					case 2:
-						postModel = getEditableAnswer();
+						postModel = getEditableAnswer(isAuto);
 						break;
 					case 3:
 						postModel = getMovableAnswer();
 						break;
 				}
 
-				await answerQuestion(postModel);
+				await answerQuestion(postModel, isAuto);
 
 				setLoading(false);
 			} catch (Exception ex) {
@@ -42,10 +44,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
-		TestAnswerPostModel getSelectedAnswer()
+		TestAnswerPostModel getSelectedAnswer(bool isAuto)
 		{
 			var answersList = Answers?.Select(
-				a => new TestAnswerDetailsPostModel(a.Id, Convert.ToInt32(a.IsSelected)));
+				a => new TestAnswerDetailsPostModel(
+					a.Id, isAuto && _questionType == 2 ? 1 : Convert.ToInt32(a.IsSelected)));
 
 			return composeAnswer(answersList.ToList());
 		}
@@ -57,11 +60,13 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			return composeAnswer(answersList.ToList());
 		}
 
-		TestAnswerPostModel getEditableAnswer()
+		TestAnswerPostModel getEditableAnswer(bool isAuto)
 		{
 			var answersList = Answers?.Select(
-				a => new TestAnswerDetailsPostModel(Answers[0].Id, Answers[0].ContentToAnswer));
-			return composeAnswer(answersList.ToList());
+				a => new TestAnswerDetailsPostModel(
+					Answers[0].Id, isAuto ? _emptyEditableAnswer : Answers[0].ContentToAnswer)).ToList();
+
+			return composeAnswer(answersList);
 		}
 
 		TestAnswerPostModel composeAnswer(List<TestAnswerDetailsPostModel> answersList)
@@ -108,15 +113,17 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				}
 
 				var timePassed = DateHelper.CheckDatesDifference(_started, DateTime.Now);
-				var timeLeft = new TimeSpan(0, _timeForCompletion, 0).Subtract(timePassed);
-				setTitle(timeLeft);
+				var timeLeft = _isTimeForEntireTest ?
+					new TimeSpan(0, _timeForCompletion, 0).Subtract(timePassed) :
+					new TimeSpan(0, 0, _timeForCompletion).Subtract(timePassed);
+
+				_services.Device.MainThread(() => setTitle(timeLeft));
 
 				if (forTest && timePassed.TotalMinutes >= _timeForCompletion) {
-					completeTest();
+					autoAnswerAllQuestions();
 					return false;
 				} else if (!forTest && timePassed.TotalSeconds >= _timeForCompletion) {
 					completeQuestion();
-					return false;
 				}
 
 				return true;

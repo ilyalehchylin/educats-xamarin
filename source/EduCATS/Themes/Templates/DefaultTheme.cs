@@ -26,6 +26,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string BaseCloseIcon => "icon_close";
 		virtual public string BaseLogoImage => "image_logo_rounded";
 		virtual public string BaseHeadphonesIcon => "icon_headphones_blue";
+		virtual public string BaseHeadphonesCancelIcon => "icon_headphones_cancel_blue";
 		virtual public string BaseNoDataTextColor => _blackColor;
 
 		virtual public string AppBackgroundColor => _lightGreyColor;
@@ -100,7 +101,7 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string TestPassingButtonTextColor => _whiteColor;
 		virtual public string TestPassingEntryColor => _whiteColor;
-		virtual public string TestPassingAnswerColor => _greyColor;
+		virtual public string TestPassingAnswerColor => _blackColor;
 		virtual public string TestPassingArrowUpIcon => "icon_arrow_up";
 		virtual public string TestPassingArrowDownIcon => "icon_arrow_down";
 		virtual public string TestPassingQuestionColor => _blackColor;
@@ -125,6 +126,7 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string FilesHeaderImage => "image_file_rectangle";
 		virtual public string FilesTitleColor => _blackColor;
+		virtual public string FilesDownloadedIcon => "icon_download";
 
 		virtual public string RecommendationsHeaderImage => "image_circuit_rectangle";
 		virtual public string RecommendationsTitleColor => _blackColor;
