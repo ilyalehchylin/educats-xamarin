@@ -39,7 +39,7 @@ namespace EduCATS.Helpers.Date
 		/// <summary>
 		/// Default date & time format (without seconds).
 		/// </summary>
-		public const string DefaultDateTimeFormat = "dd-MM-yyyy hh:mm";
+		public const string DefaultDateTimeFormat = "dd-MM-yyyy HH:mm";
 
 		/// <summary>
 		/// Get dates difference in <see cref="TimeSpan"/>.
