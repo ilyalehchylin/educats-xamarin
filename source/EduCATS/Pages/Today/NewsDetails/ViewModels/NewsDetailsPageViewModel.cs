@@ -4,7 +4,6 @@ using EduCATS.Helpers.Extensions;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Themes;
-using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.NewsDetails.ViewModels
@@ -25,6 +24,9 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 			HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 			NewsTitle = title;
 			NewsBody = $"" +
+				$"<style>" +
+				$"a {{ color: {Theme.Current.BaseLinksColor}; }}" +
+				$"</style>" +
 				$"<body style='" +
 					$"font-family:{_fontFamily};" +
 					$"padding:{_fontPadding}px;" +
@@ -57,6 +59,13 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 		public Command SpeechCommand {
 			get {
 				return _speechCommand ?? (_speechCommand = new Command(async () => await speechToText()));
+			}
+		}
+
+		Command _httpNavigatingCommand;
+		public Command HttpNavigatingCommand {
+			get {
+				return _httpNavigatingCommand ?? (_httpNavigatingCommand = new Command(openWebPage));
 			}
 		}
 
@@ -103,6 +112,16 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
+		}
+
+		protected void openWebPage(object url)
+		{
+			if (url == null) {
+				return;
+			}
+
+			_services.Device.MainThread(
+				async () => await _services.Device.OpenUri(url.ToString()));
 		}
 
 		protected async Task closePage()
