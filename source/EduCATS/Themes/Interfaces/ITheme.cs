@@ -21,6 +21,7 @@
 		string BaseHeadphonesIcon { get; }
 		string BaseHeadphonesCancelIcon { get; }
 		string BaseNoDataTextColor { get; }
+		string BaseLinksColor { get; }
 
 		string AppStatusBarBackgroundColor { get; }
 		string AppBackgroundColor { get; }

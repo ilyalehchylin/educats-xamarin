@@ -1,4 +1,5 @@
-﻿using EduCATS.Fonts;
+﻿using EduCATS.Controls;
+using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Converters;
 using EduCATS.Helpers.Forms.Styles;
@@ -77,16 +78,19 @@ namespace EduCATS.Pages.Today.NewsDetails.Views
 			return newsTitleLabel;
 		}
 
-		WebView createNewsBody()
+		CustomWebView createNewsBody()
 		{
 			var source = new HtmlWebViewSource();
 			source.SetBinding(HtmlWebViewSource.HtmlProperty, "NewsBody");
 
-			return new WebView {
+			var webView = new CustomWebView {
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Source = source
 			};
+
+			webView.SetBinding(CustomWebView.HttpNavigatingCommandProperty, "HttpNavigatingCommand");
+			return webView;
 		}
 	}
 }

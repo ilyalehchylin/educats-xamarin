@@ -4,7 +4,6 @@ using EduCATS.Helpers.Extensions;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Themes;
-using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.NewsDetails.ViewModels
@@ -60,6 +59,13 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 			}
 		}
 
+		Command _httpNavigatingCommand;
+		public Command HttpNavigatingCommand {
+			get {
+				return _httpNavigatingCommand ?? (_httpNavigatingCommand = new Command(openWebPage));
+			}
+		}
+
 		Command _closeCommand;
 		public Command CloseCommand {
 			get {
@@ -103,6 +109,16 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
+		}
+
+		protected void openWebPage(object url)
+		{
+			if (url == null) {
+				return;
+			}
+
+			_services.Device.MainThread(
+				async () => await _services.Device.OpenUri(url.ToString()));
 		}
 
 		protected async Task closePage()
