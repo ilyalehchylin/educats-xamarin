@@ -24,6 +24,9 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 			HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 			NewsTitle = title;
 			NewsBody = $"" +
+				$"<style>" +
+				$"a {{ color: {Theme.Current.BaseLinksColor}; }}" +
+				$"</style>" +
 				$"<body style='" +
 					$"font-family:{_fontFamily};" +
 					$"padding:{_fontPadding}px;" +
