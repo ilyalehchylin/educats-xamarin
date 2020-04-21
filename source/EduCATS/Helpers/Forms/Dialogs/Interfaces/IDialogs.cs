@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace EduCATS.Helpers.Forms.Dialogs
 {
@@ -42,9 +43,10 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		/// Show alert sheet.
 		/// </summary>
 		/// <param name="title">Dialog title.</param>
-		/// <param name="buttons">Dialog buttons.</param>
+		/// <param name="buttons">Dialog buttons (id and name).</param>
+		/// <param name="command">Command to execute on button click.</param>
 		/// <returns>Chosen button name.</returns>
-		Task<string> ShowSheet(string title, List<string> buttons);
+		void ShowSheet(string title, Dictionary<int, string> buttons, ICommand command);
 
 		/// <summary>
 		/// Show confirmation dialog.

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Acr.UserDialogs;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
@@ -125,10 +126,20 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		/// Show alert sheet.
 		/// </summary>
 		/// <param name="title">Dialog title.</param>
-		/// <param name="buttons">Dialog buttons.</param>
+		/// <param name="buttons">Dialog buttons (id and name).</param>
+		/// <param name="command">Command to execute on button click.</param>
 		/// <returns>Chosen button name.</returns>
-		public async Task<string> ShowSheet(string title, List<string> buttonList) =>
-			await mainPage.DisplayActionSheet(title, _baseCancel, null, buttonList?.ToArray());
+		public void ShowSheet(string title, Dictionary<int, string> buttonList, ICommand command)
+		{
+			var config = new ActionSheetConfig().SetTitle(title);
+
+			foreach (var button in buttonList) {
+				config.Add(button.Value, () => command.Execute(button.Key));
+			}
+
+			config.SetCancel(_baseCancel, () => command.Execute(-1));
+			UserDialogs.Instance.ActionSheet(config);
+		}
 
 		/// <summary>
 		/// Show confirmation dialog.
