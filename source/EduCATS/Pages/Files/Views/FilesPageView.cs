@@ -65,7 +65,7 @@ namespace EduCATS.Pages.Files.Views
 			return new Label {
 				Padding = _headerPadding,
 				FontAttributes = FontAttributes.Bold,
-				Text = CrossLocalization.Translate("learning_card_files"),
+				Text = CrossLocalization.Translate("files_header"),
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				Style = AppStyles.GetLabelStyle(NamedSize.Large, true)
