@@ -46,8 +46,14 @@ namespace EduCATS.Pages.Pickers
 		public Command ChooseGroupCommand {
 			get {
 				return _chooseGroupCommand ?? (
-					_chooseGroupCommand = new Command(
-						async () => await executeChooseGroupCommand()));
+					_chooseGroupCommand = new Command(chooseGroup));
+			}
+		}
+
+		Command _groupSelectedCommand;
+		public Command GroupSelectedCommand {
+			get {
+				return _groupSelectedCommand ?? (_groupSelectedCommand = new Command(subjectChosen));
 			}
 		}
 
@@ -91,46 +97,53 @@ namespace EduCATS.Pages.Pickers
 		/// Setup group with group name.
 		/// </summary>
 		/// <param name="groupName">Group name.</param>
-		void setupGroup(string groupName = null)
+		void setupGroup()
 		{
 			if (!checkGroupsList()) {
 				return;
 			}
 
-			if (string.IsNullOrEmpty(groupName)) {
-				var savedSubjectId = PlatformServices.Preferences.ChosenGroupId;
-				var success = setChosenGroup(savedSubjectId);
+			var savedSubjectId = PlatformServices.Preferences.ChosenGroupId;
+			var success = setChosenGroup(savedSubjectId);
 
-				if (!success) {
-					setChosenGroup(CurrentGroups[0]);
-				}
-
-				return;
+			if (!success) {
+				setChosenGroup(CurrentGroups[0]);
 			}
-
-			setChosenGroup(groupName);
 		}
 
-		protected async Task executeChooseGroupCommand()
+		protected void chooseGroup()
 		{
 			try {
 				if (CurrentGroups == null) {
 					return;
 				}
 
-				var buttons = CurrentGroups.Select(g => g.GroupName).ToList();
-				var name = await PlatformServices.Dialogs.ShowSheet(
-					CrossLocalization.Translate("subjects_choose"), buttons);
+				var buttons = new Dictionary<int, string>();
+				foreach (var group in CurrentGroups) {
+					buttons.Add(group.GroupId, group.GroupName);
+				}
 
-				if (string.IsNullOrEmpty(name) ||
-					string.Compare(name, CrossLocalization.Translate("base_cancel")) == 0) {
+				PlatformServices.Dialogs.ShowSheet(
+					CrossLocalization.Translate("groups_choose"), buttons, GroupSelectedCommand);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
+		}
+
+		protected void subjectChosen(object chosenObject)
+		{
+			try {
+				var id = Convert.ToInt32(chosenObject);
+
+				if (id == -1) {
 					return;
 				}
 
-				var isChosen = setChosenGroup(name);
+				var group = CurrentGroups.SingleOrDefault(s => s.GroupId == id);
+				var isChosen = setChosenGroup(group);
 
 				if (isChosen) {
-					GroupChanged?.Invoke(PlatformServices.Preferences.GroupId, name);
+					GroupChanged?.Invoke(PlatformServices.Preferences.GroupId, group.GroupName);
 				}
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
@@ -141,13 +154,6 @@ namespace EduCATS.Pages.Pickers
 		{
 			var group = CurrentGroups.SingleOrDefault(
 						g => g.GroupId == groupId);
-			return setChosenGroup(group);
-		}
-
-		bool setChosenGroup(string groupName)
-		{
-			var group = CurrentGroups.SingleOrDefault(
-						g => string.Compare(g.GroupName, groupName) == 0);
 			return setChosenGroup(group);
 		}
 
