@@ -27,18 +27,18 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			setPagesList();
 			setCollapsedDetails();
 
-			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
-
 			services.Device.MainThread(async () => {
 				IsLoading = true;
 				await SetupSubjects();
 				await getAndSetStatistics();
+				checkStudent();
 				IsLoading = false;
 			});
 
 			SubjectChanged += async (id, name) => {
 				PlatformServices.Dialogs.ShowLoading();
 				await getAndSetStatistics();
+				checkStudent();
 				PlatformServices.Dialogs.HideLoading();
 			};
 		}
@@ -142,6 +142,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				PlatformServices.Device.MainThread(() => IsLoading = true);
 				await SetupSubjects();
 				await getAndSetStatistics();
+				checkStudent();
 				PlatformServices.Device.MainThread(() => IsLoading = false);
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
@@ -312,6 +313,11 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			} else {
 				return StatsPageEnum.LecturesVisiting;
 			}
+		}
+
+		void checkStudent()
+		{
+			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
 		}
 	}
 }
