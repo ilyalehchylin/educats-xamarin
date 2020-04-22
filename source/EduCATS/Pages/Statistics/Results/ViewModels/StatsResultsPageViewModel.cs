@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
@@ -238,7 +239,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			var avgSummary = resultSummary / (double)resultCount;
 			setSummary(_statisticsPage == StatsPageEnum.LabsRating ?
-				avgSummary.ToString(_doubleStringFormat) :
+				avgSummary.ToString(_doubleStringFormat, CultureInfo.InvariantCulture) :
 				resultSummary.ToString());
 		}
 

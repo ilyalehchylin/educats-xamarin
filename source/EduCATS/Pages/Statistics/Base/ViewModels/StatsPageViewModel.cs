@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
@@ -187,14 +188,14 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 					stats = new StatsStudentModel();
 				}
 
-				var avgLabs = stats.AverageLabsMark.StringToDouble();
-				AverageLabs = avgLabs.ToString(_doubleStringFormat);
+				var avgLabs = calculateAvgLabsMark(stats.MarkList);
+				AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
 				var avgTests = stats.AverageTestMark.StringToDouble();
-				AverageTests = avgTests.ToString(_doubleStringFormat);
+				AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
 				var rating = (avgLabs + avgTests) / 2;
-				Rating = rating.ToString(_doubleStringFormat);
+				Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
 				setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
 
@@ -318,6 +319,30 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		void checkStudent()
 		{
 			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
+		}
+
+		double calculateAvgLabsMark(IList<StatsMarkModel> marks)
+		{
+			if (marks == null) {
+				return 0;
+			}
+
+			var resultCount = 0;
+			var resultSummary = 0;
+			foreach (var markItem in marks) {
+				var mark = markItem.Mark;
+				if (!string.IsNullOrEmpty(mark)) {
+					int.TryParse(mark, out int result);
+					resultSummary += result;
+					resultCount++;
+				}
+			}
+
+			if (resultCount == 0) {
+				return 0;
+			}
+
+			return resultSummary / (double)resultCount;
 		}
 	}
 }
