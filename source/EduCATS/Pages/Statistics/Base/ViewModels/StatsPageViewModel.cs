@@ -188,7 +188,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 					stats = new StatsStudentModel();
 				}
 
-				var avgLabs = stats.AverageLabsMark.StringToDouble();
+				var avgLabs = calculateAvgLabsMark(stats.MarkList);
 				AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
 				var avgTests = stats.AverageTestMark.StringToDouble();
@@ -319,6 +319,30 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		void checkStudent()
 		{
 			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
+		}
+
+		double calculateAvgLabsMark(IList<StatsMarkModel> marks)
+		{
+			if (marks == null) {
+				return 0;
+			}
+
+			var resultCount = 0;
+			var resultSummary = 0;
+			foreach (var markItem in marks) {
+				var mark = markItem.Mark;
+				if (!string.IsNullOrEmpty(mark)) {
+					int.TryParse(mark, out int result);
+					resultSummary += result;
+					resultCount++;
+				}
+			}
+
+			if (resultCount == 0) {
+				return 0;
+			}
+
+			return resultSummary / (double)resultCount;
 		}
 	}
 }
