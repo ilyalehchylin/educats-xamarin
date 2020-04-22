@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
@@ -188,13 +189,13 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				}
 
 				var avgLabs = stats.AverageLabsMark.StringToDouble();
-				AverageLabs = avgLabs.ToString(_doubleStringFormat);
+				AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
 				var avgTests = stats.AverageTestMark.StringToDouble();
-				AverageTests = avgTests.ToString(_doubleStringFormat);
+				AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
 				var rating = (avgLabs + avgTests) / 2;
-				Rating = rating.ToString(_doubleStringFormat);
+				Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
 				setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
 
