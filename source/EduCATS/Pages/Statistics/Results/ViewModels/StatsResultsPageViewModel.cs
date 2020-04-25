@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
@@ -178,7 +179,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 				var lab = _currentLabsMarksList?.FirstOrDefault(l => l.LabId == m.LabId);
 				var labTitle = lab == null ? null : $"{lab.ShortName}. {lab.Theme}";
 				var result = string.IsNullOrEmpty(m.Mark) ? _emptyRatingString : m.Mark;
-				return new StatsResultsPageModel(labTitle, m.Date, m.Comment, result);
+				return new StatsResultsPageModel(labTitle, m.Date, setCommentByRole(m.Comment), result);
 			});
 
 			Marks = new List<StatsResultsPageModel>(marksResults);
@@ -194,7 +195,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 				var lab = _currentLabsVisitingList.FirstOrDefault(
 					l => l.ProtectionLabId == v.ProtectionLabId);
 				var result = string.IsNullOrEmpty(v.Mark) ? _emptyRatingString : v.Mark;
-				return new StatsResultsPageModel(null, lab?.Date, v.Comment, result);
+				return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment), result);
 			});
 
 			Marks = new List<StatsResultsPageModel>(visitingLabsResult);
@@ -238,13 +239,18 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			var avgSummary = resultSummary / (double)resultCount;
 			setSummary(_statisticsPage == StatsPageEnum.LabsRating ?
-				avgSummary.ToString(_doubleStringFormat) :
+				avgSummary.ToString(_doubleStringFormat, CultureInfo.InvariantCulture) :
 				resultSummary.ToString());
 		}
 
 		void setSummary(string summary)
 		{
 			_services.Device.MainThread(() => Summary = summary);
+		}
+
+		string setCommentByRole(string comment)
+		{
+			return AppUserData.UserType == UserTypeEnum.Professor ? comment : null;
 		}
 	}
 }

@@ -48,7 +48,6 @@
 	"news_details_title": "News",
 
 	"subjects_choose": "Choose a subject",
-	"subjects_identical_error": "There is more than one subject exists with the same name. Please contact support to resolve this issue.",
 
 	"stats_marks_error": "Error occurred during retrieving statistics. Please try to refresh page or contact support.",
 	"stats_expand_chart_text": "More details",
@@ -63,6 +62,7 @@
 	"stats_summary_rating": "Average rating",
 	"stats_summary_visiting": "Total hours skipped",
 
+	"groups_choose": "Choose a group",
 	"groups_fetch_error": "Error occurred during retrieving groups. Please try to refresh page or contact support.",
 
 	"stats_students_search_text": "Search students...",
@@ -101,6 +101,7 @@
 	"eemc_concept_tree_error": "Error occurred during educational-methodical materials list retrieving. Please try again or contact support.",
 	"eemc_back_text": "Back",
 
+	"files_header": "Files to download",
 	"files_fetch_error": "Error occurred during files list retrieving. Please try again or contact support.",
 	"files_downloading": "Downloading",
 	"files_downloading_error": "Error occurred during downloading this file. Please try again or contact support.",

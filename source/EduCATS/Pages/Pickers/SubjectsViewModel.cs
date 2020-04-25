@@ -49,31 +49,50 @@ namespace EduCATS.Pages.Pickers
 		public Command ChooseSubjectCommand {
 			get {
 				return _chooseSubjectCommand ?? (
-					_chooseSubjectCommand = new Command(
-						async () => await executeChooseSubjectCommand()));
+					_chooseSubjectCommand = new Command(chooseSubject));
 			}
 		}
 
-		protected async Task executeChooseSubjectCommand()
+		Command _subjectSelectedCommand;
+		public Command SubjectSelectedCommand {
+			get {
+				return _subjectSelectedCommand ?? (_subjectSelectedCommand = new Command(subjectChosen));
+			}
+		}
+
+		protected void chooseSubject()
 		{
 			try {
 				if (CurrentSubjects == null) {
 					return;
 				}
 
-				var buttons = CurrentSubjects.Select(s => s.Name).ToList();
-				var name = await PlatformServices.Dialogs.ShowSheet(
-					CrossLocalization.Translate("subjects_choose"), buttons);
+				var buttons = new Dictionary<int, string>();
+				foreach (var subject in CurrentSubjects) {
+					buttons.Add(subject.Id, subject.Name);
+				}
 
-				if (string.IsNullOrEmpty(name) ||
-					string.Compare(name, CrossLocalization.Translate("base_cancel")) == 0) {
+				PlatformServices.Dialogs.ShowSheet(
+					CrossLocalization.Translate("subjects_choose"), buttons, SubjectSelectedCommand);
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
+		}
+
+		protected void subjectChosen(object chosenObject)
+		{
+			try {
+				var id = Convert.ToInt32(chosenObject);
+
+				if (id == -1) {
 					return;
 				}
 
-				var isChosen = setChosenSubject(name);
+				var subject = CurrentSubjects.SingleOrDefault(s => s.Id == id);
+				var isChosen = setChosenSubject(subject);
 
 				if (isChosen) {
-					SubjectChanged?.Invoke(PlatformServices.Preferences.ChosenSubjectId, name);
+					SubjectChanged?.Invoke(PlatformServices.Preferences.ChosenSubjectId, subject.Name);
 				}
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
@@ -119,25 +138,18 @@ namespace EduCATS.Pages.Pickers
 		/// <summary>
 		/// Setup subject by subject name.
 		/// </summary>
-		/// <param name="subjectName">Subject name.</param>
-		void setupSubject(string subjectName = null)
+		void setupSubject()
 		{
 			if (!checkSubjectsList()) {
 				return;
 			}
 
-			if (string.IsNullOrEmpty(subjectName)) {
-				var savedSubjectId = PlatformServices.Preferences.ChosenSubjectId;
-				var success = setChosenSubject(savedSubjectId);
+			var savedSubjectId = PlatformServices.Preferences.ChosenSubjectId;
+			var success = setChosenSubject(savedSubjectId);
 
-				if (!success) {
-					setChosenSubject(CurrentSubjects[0]);
-				}
-
-				return;
+			if (!success) {
+				setChosenSubject(CurrentSubjects[0]);
 			}
-
-			setChosenSubject(subjectName);
 		}
 
 		bool setChosenSubject(int subjectId)
@@ -146,20 +158,6 @@ namespace EduCATS.Pages.Pickers
 						s => s.Id == subjectId);
 
 			return setChosenSubject(subject);
-		}
-
-		bool setChosenSubject(string subjectName)
-		{
-			try {
-				var subject = CurrentSubjects.SingleOrDefault(
-							s => string.Compare(s.Name, subjectName) == 0);
-				return setChosenSubject(subject);
-			} catch (InvalidOperationException) {
-				PlatformServices.Dialogs.ShowError(CrossLocalization.Translate("subjects_identical_error"));
-				return false;
-			} catch (Exception) {
-				return false;
-			}
 		}
 
 		bool setChosenSubject(SubjectModel subject)

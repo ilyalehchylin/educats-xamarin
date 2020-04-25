@@ -42,7 +42,7 @@ namespace EduCATS.Pages.Today.Base.Models
 		public string Date {
 			get {
 				var unixDoble = DateHelper.GetUnixFromString(date);
-				var unixString = DateHelper.Convert13DigitsUnixToDateTime(unixDoble);
+				var unixString = DateHelper.Convert13DigitsUnixToDateTime(unixDoble).ToLocalTime();
 				return unixString.ToString(DateHelper.DefaultDateTimeFormat);
 			}
 			set {

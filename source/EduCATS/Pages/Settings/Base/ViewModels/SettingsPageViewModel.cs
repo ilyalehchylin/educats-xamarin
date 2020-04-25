@@ -45,6 +45,12 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			set { SetProperty(ref _group, value); }
 		}
 
+		string _role;
+		public string Role {
+			get { return _role; }
+			set { SetProperty(ref _role, value); }
+		}
+
 		bool _isLoggedIn;
 		public bool IsLoggedIn {
 			get { return _isLoggedIn; }
@@ -79,10 +85,9 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			Username = _services.Preferences.UserLogin;
 			IsLoggedIn = _services.Preferences.IsLoggedIn;
 			Avatar = _services.Preferences.Avatar;
-
-			Group = string.IsNullOrEmpty(_services.Preferences.GroupName) ?
-				CrossLocalization.Translate("role_professor") :
-				$"{_services.Preferences.GroupName} ({CrossLocalization.Translate("role_student")})";
+			var isProfessor = string.IsNullOrEmpty(_services.Preferences.GroupName);
+			Group = isProfessor ? null : _services.Preferences.GroupName;
+			Role = CrossLocalization.Translate(isProfessor ? "role_professor" : "role_student");
 		}
 
 		void setSettings()
