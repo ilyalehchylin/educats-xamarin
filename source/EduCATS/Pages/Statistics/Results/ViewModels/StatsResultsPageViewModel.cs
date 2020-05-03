@@ -37,7 +37,11 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			_currentSubjectId = subjectId;
 			_currentGroupId = groupId;
 			_statisticsPage = statisticsPage;
-			Task.Run(async () => await getData());
+			_services.Device.MainThread(async () => {
+				_services.Dialogs.ShowLoading();
+				await getData();
+				_services.Dialogs.HideLoading();
+			});
 		}
 
 		List<StatsResultsPageModel> _marks;
@@ -68,14 +72,14 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		private async Task executeRefreshCommand()
 		{
+			IsLoading = true;
 			await getData();
+			IsLoading = false;
 		}
 
 		async Task getData()
 		{
 			try {
-				IsLoading = true;
-
 				switch (_statisticsPage) {
 					case StatsPageEnum.LabsRating:
 						await getLabs(false);
@@ -96,8 +100,6 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 					_services.Device.MainThread(
 						() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
 				}
-
-				IsLoading = false;
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
