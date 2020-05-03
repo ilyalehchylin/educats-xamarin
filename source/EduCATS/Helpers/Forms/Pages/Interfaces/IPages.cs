@@ -76,8 +76,9 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// </summary>
 		/// <param name="testId">Test ID.</param>
 		/// <param name="fromComplexLearning">Is opened from Complex learning page.</param>
+		/// <param name="timePassed">Time passed/</param>
 		/// <returns>Task.</returns>
-		Task OpenTestResults(int testId, bool fromComplexLearning = false);
+		Task OpenTestResults(int testId, bool fromComplexLearning = false, string timePassed = null);
 
 		/// <summary>
 		/// Open Electronic educational methodological complexes page.

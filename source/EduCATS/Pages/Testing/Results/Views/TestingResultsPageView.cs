@@ -12,8 +12,11 @@ namespace EduCATS.Pages.Testing.Results.Views
 	{
 		static Thickness _listPadding = new Thickness(10);
 
-		public TestingResultsPageView(int testId, bool fromComplexLearning)
+		readonly string _timePassed;
+
+		public TestingResultsPageView(int testId, bool fromComplexLearning, string timePassed = null)
 		{
+			_timePassed = timePassed;
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Title = CrossLocalization.Translate("test_results_title");
 			BindingContext = new TestingResultsPageViewModel(
@@ -42,14 +45,20 @@ namespace EduCATS.Pages.Testing.Results.Views
 			var markTitleLabel = createRatingTitleLabel();
 			var markLabel = createRatingLabel();
 
+			var headerView = new StackLayout {
+				Padding = _listPadding,
+				Children = {
+					markTitleLabel,
+					markLabel
+				}
+			};
+
+			if (_timePassed != null) {
+				headerView.Children.Add(createTimePassedLabel());
+			}
+
 			var listView = new ListView {
-				Header = new StackLayout {
-					Padding = _listPadding,
-					Children = {
-						markTitleLabel,
-						markLabel
-					}
-				},
+				Header = headerView,
 				HasUnevenRows = true,
 				SelectionMode = ListViewSelectionMode.None,
 				SeparatorVisibility = SeparatorVisibility.None,
@@ -84,6 +93,17 @@ namespace EduCATS.Pages.Testing.Results.Views
 
 			mark.SetBinding(Label.TextProperty, "Mark");
 			return mark;
+		}
+
+		Label createTimePassedLabel()
+		{
+			return new Label {
+				HorizontalTextAlignment = TextAlignment.Center,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetLabelStyle(NamedSize.Medium),
+				TextColor = Color.FromHex(Theme.Current.TestResultsRatingColor),
+				Text = $"{CrossLocalization.Translate("test_results_time")} {_timePassed}"
+			};
 		}
 	}
 }
