@@ -44,5 +44,11 @@ namespace EduCATS.Data.Models
 		/// </summary>
 		[JsonProperty("Id")]
 		public int Id { get; set; }
+
+		/// <summary>
+		/// File size.
+		/// </summary>
+		[JsonProperty("Size")]
+		public int Size { get; set; }
 	}
 }

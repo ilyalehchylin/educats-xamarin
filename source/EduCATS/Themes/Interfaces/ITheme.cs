@@ -120,6 +120,7 @@
 
 		string FilesHeaderImage { get; }
 		string FilesTitleColor { get; }
+		string FilesSizeColor { get; }
 		string FilesDownloadedIcon { get; }
 
 		string RecommendationsHeaderImage { get; }

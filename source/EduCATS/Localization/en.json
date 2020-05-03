@@ -106,6 +106,7 @@
 	"files_fetch_error": "Error occurred during files list retrieving. Please try again or contact support.",
 	"files_downloading": "Downloading",
 	"files_downloading_error": "Error occurred during downloading this file. Please try again or contact support.",
+	"files_megabytes": "MB",
 
 	"recommendations_fetch_error": "Error occurred during retrieving recommendations. Please try again or contact support.",
 
