@@ -20,6 +20,14 @@ namespace EduCATS.Pages.Files.Views.ViewCells
 
 			title.SetBinding(Label.TextProperty, "Name");
 
+			var description = new Label {
+				TextColor = Color.FromHex(Theme.Current.FilesSizeColor),
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Style = AppStyles.GetLabelStyle(NamedSize.Small)
+			};
+
+			description.SetBinding(Label.TextProperty, "Size");
+
 			var downloadedIcon = new CachedImage {
 				HeightRequest = _iconDownloadHeight,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -34,7 +42,13 @@ namespace EduCATS.Pages.Files.Views.ViewCells
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Padding = _padding,
 				Children = {
-					title, downloadedIcon
+					new StackLayout {
+						Children = {
+							title,
+							description
+						}
+					},
+					downloadedIcon
 				}
 			};
 		}
