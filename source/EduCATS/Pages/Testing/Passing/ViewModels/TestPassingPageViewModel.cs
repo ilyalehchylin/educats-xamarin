@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
+using EduCATS.Helpers.Extensions;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking.Models.Testing;
@@ -324,6 +325,16 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				HeadphonesIcon = Theme.Current.BaseHeadphonesCancelIcon;
 				_isBusySpeech = true;
 				await _services.Device.Speak(Question);
+
+				if (!_isBusySpeech) {
+					return;
+				}
+
+				var formattedDescription = Description.RemoveHTMLTags();
+
+				if (!string.IsNullOrEmpty(formattedDescription)) {
+					await _services.Device.Speak(formattedDescription);
+				}
 
 				if (!_isBusySpeech) {
 					return;
