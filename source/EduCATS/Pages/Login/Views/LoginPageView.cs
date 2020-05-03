@@ -24,18 +24,30 @@ namespace EduCATS.Pages.Login.Views
 		const double _loginFormSpacing = 0;
 		const double _settingsIconSize = 45;
 		const double _showPasswordIconSize = 30;
+		const double _mascotTailAnimationRotation = 45;
+		const uint _mascotTailAnimationTime = 2000;
 
 		static Thickness _loginFormPadding = new Thickness(20, 0);
 		static Thickness _baseSpacing = new Thickness(0, 10, 0, 0);
 		static Thickness _iosSettingsMargin = new Thickness(20, 60);
 		static Thickness _androidSettingsMargin = new Thickness(30);
 		static Thickness _showPasswordIconMargin = new Thickness(0, 10, 5, 0);
+		static Thickness _mascotTailMargin = new Thickness(150, 0, 0, 0);
+
+		CachedImage _mascotTailImage;
+		bool _isTailAnimationRunning;
 
 		public LoginPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BindingContext = new LoginPageViewModel(new PlatformServices());
 			createViews();
+		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+			animateMascotTail();
 		}
 
 		void createViews()
@@ -121,11 +133,29 @@ namespace EduCATS.Pages.Login.Views
 			return settingsIcon;
 		}
 
-		CachedImage createMascotImage()
+		Grid createMascotImage()
 		{
-			return new CachedImage {
+			_mascotTailImage = new CachedImage {
+				Margin = _mascotTailMargin,
+				HorizontalOptions = LayoutOptions.End,
+				VerticalOptions = LayoutOptions.End,
+				Source = ImageSource.FromFile(Theme.Current.LoginMascotTailImage)
+			};
+
+			var mascotImage = new CachedImage {
 				HeightRequest = _mascotImage,
 				Source = ImageSource.FromFile(Theme.Current.LoginMascotImage)
+			};
+
+			mascotImage.GestureRecognizers.Add(new TapGestureRecognizer {
+				Command = new Command(() => animateMascotTail())
+			});
+
+			return new Grid {
+				Children = {
+					_mascotTailImage,
+					mascotImage
+				}
 			};
 		}
 
@@ -237,6 +267,21 @@ namespace EduCATS.Pages.Login.Views
 			var random = new Random();
 			var randomBackgroundIndex = random.Next(0, _backgrounds.Length - 1);
 			return _backgrounds[randomBackgroundIndex];
+		}
+
+		void animateMascotTail()
+		{
+			Device.BeginInvokeOnMainThread(async () => {
+				if (_isTailAnimationRunning) {
+					return;
+				}
+
+				_isTailAnimationRunning = true;
+				_mascotTailImage.AnchorX = 0;
+				await _mascotTailImage.RotateTo(_mascotTailAnimationRotation, _mascotTailAnimationTime);
+				await _mascotTailImage.RotateTo(0, _mascotTailAnimationTime);
+				_isTailAnimationRunning = false;
+			});
 		}
 	}
 }

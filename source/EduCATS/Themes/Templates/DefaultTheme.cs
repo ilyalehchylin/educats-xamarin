@@ -40,6 +40,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string LoginBackground2Image => "image_background_2";
 		virtual public string LoginBackground3Image => "image_background_3";
 		virtual public string LoginMascotImage => "image_mascot";
+		virtual public string LoginMascotTailImage => "image_mascot_tail";
 		virtual public string LoginShowPasswordImage => "icon_show_password";
 		virtual public string LoginEntryBackgroundColor => _whiteColor;
 		virtual public string LoginButtonBackgroundColor => _baseBlueColor;
@@ -127,6 +128,7 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string FilesHeaderImage => "image_file_rectangle";
 		virtual public string FilesTitleColor => _blackColor;
+		virtual public string FilesSizeColor => _greyColor;
 		virtual public string FilesDownloadedIcon => "icon_download";
 
 		virtual public string RecommendationsHeaderImage => "image_circuit_rectangle";

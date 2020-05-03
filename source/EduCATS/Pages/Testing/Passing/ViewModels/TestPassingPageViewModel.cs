@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
+using EduCATS.Helpers.Extensions;
+using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking.Models.Testing;
@@ -18,6 +20,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 	public partial class TestPassingPageViewModel : ViewModel
 	{
 		readonly IPlatformServices _services;
+		readonly DateTime _startedEntireTest;
 		readonly int _testId;
 
 		bool _timerCancellation;
@@ -42,6 +45,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		public TestPassingPageViewModel(IPlatformServices services, int testId, bool forSelfStudy)
 		{
+			_startedEntireTest = DateTime.Now;
 			_services = services;
 			_testId = testId;
 			_testIdString = testId.ToString();
@@ -260,8 +264,9 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		void completeTest()
 		{
+			var testTimePassed = DateHelper.CheckDatesDifference(_startedEntireTest, DateTime.Now);
 			_timerCancellation = true;
-			_services.Navigation.OpenTestResults(_testId);
+			_services.Navigation.OpenTestResults(_testId, false, testTimePassed.ToString(@"hh\:mm\:ss"));
 		}
 
 		void autoAnswerAllQuestions()
@@ -324,6 +329,16 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				HeadphonesIcon = Theme.Current.BaseHeadphonesCancelIcon;
 				_isBusySpeech = true;
 				await _services.Device.Speak(Question);
+
+				if (!_isBusySpeech) {
+					return;
+				}
+
+				var formattedDescription = Description.RemoveHTMLTags();
+
+				if (!string.IsNullOrEmpty(formattedDescription)) {
+					await _services.Device.Speak(formattedDescription);
+				}
 
 				if (!_isBusySpeech) {
 					return;

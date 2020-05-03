@@ -119,9 +119,10 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// </summary>
 		/// <param name="testId">Test ID.</param>
 		/// <param name="fromComplexLearning">Is opened from Complex learning page.</param>
+		/// <param name="timePassed">Time passed.</param>
 		/// <returns>Task.</returns>
-		public async Task OpenTestResults(int testId, bool fromComplexLearning = false) =>
-			await pushPage(new TestingResultsPageView(testId, fromComplexLearning), isModal: true);
+		public async Task OpenTestResults(int testId, bool fromComplexLearning = false, string timePassed = null) =>
+			await pushPage(new TestingResultsPageView(testId, fromComplexLearning, timePassed), isModal: true);
 
 		/// <summary>
 		/// Open Electronic educational methodological complexes page.

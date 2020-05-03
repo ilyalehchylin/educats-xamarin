@@ -15,6 +15,7 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 		const int _fontPadding = 10;
 		const string _fontFamily = "Arial";
 
+		string _body;
 		bool _isBusySpeech;
 
 		public NewsDetailsPageViewModel(double fontSize, string title, string body, IPlatformServices services)
@@ -23,6 +24,7 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 
 			HeadphonesIcon = Theme.Current.BaseHeadphonesIcon;
 			NewsTitle = title;
+			_body = body;
 			NewsBody = $"" +
 				$"<style>" +
 				$"a {{ color: {Theme.Current.BaseLinksColor}; }}" +
@@ -99,7 +101,8 @@ namespace EduCATS.Pages.Today.NewsDetails.ViewModels
 					return;
 				}
 
-				var editedNewsBody = NewsBody?.RemoveHTMLTags();
+				var editedNewsBody = _body?.RemoveHTMLTags();
+				editedNewsBody = editedNewsBody.RemoveLinks();
 
 				if (string.IsNullOrEmpty(editedNewsBody)) {
 					_isBusySpeech = false;

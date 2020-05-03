@@ -45,6 +45,20 @@ namespace EduCATS.Helpers.Extensions
 		}
 
 		/// <summary>
+		/// Remove links from string.
+		/// </summary>
+		/// <param name="input">Input string.</param>
+		/// <returns>String without links.</returns>
+		public static string RemoveLinks(this string input)
+		{
+			if (string.IsNullOrEmpty(input)) {
+				return input;
+			}
+
+			return Regex.Replace(input, @"http[^\s]+", "");
+		}
+
+		/// <summary>
 		/// Try to parse <c>double</c> string.
 		/// </summary>
 		/// <param name="doubleString"><c>double</c> string value.</param>

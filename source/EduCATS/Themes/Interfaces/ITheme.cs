@@ -33,6 +33,7 @@
 		string LoginBackground2Image { get; }
 		string LoginBackground3Image { get; }
 		string LoginMascotImage { get; }
+		string LoginMascotTailImage { get; }
 		string LoginShowPasswordImage { get; }
 		string LoginEntryBackgroundColor { get; }
 		string LoginButtonBackgroundColor { get; }
@@ -119,6 +120,7 @@
 
 		string FilesHeaderImage { get; }
 		string FilesTitleColor { get; }
+		string FilesSizeColor { get; }
 		string FilesDownloadedIcon { get; }
 
 		string RecommendationsHeaderImage { get; }

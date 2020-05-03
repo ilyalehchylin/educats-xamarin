@@ -96,6 +96,7 @@
 	"test_results_title": "Results",
 	"test_results_error": "Error occurred during test results retrieving. Please contact support.",
 	"test_results_label": "Your mark",
+	"test_results_time": "Spent time",
 
 	"eemc_root_concepts_error": "Error occurred during root educational-methodical materials list retrieving. Please try again or contact support.",
 	"eemc_concept_tree_error": "Error occurred during educational-methodical materials list retrieving. Please try again or contact support.",
@@ -105,6 +106,7 @@
 	"files_fetch_error": "Error occurred during files list retrieving. Please try again or contact support.",
 	"files_downloading": "Downloading",
 	"files_downloading_error": "Error occurred during downloading this file. Please try again or contact support.",
+	"files_megabytes": "MB",
 
 	"recommendations_fetch_error": "Error occurred during retrieving recommendations. Please try again or contact support.",
 
