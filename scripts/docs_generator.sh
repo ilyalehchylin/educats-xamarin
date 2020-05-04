@@ -1,5 +1,5 @@
 # Install DocFX
-choco install docfx --version=2.51
+brew install docfx
 
 # Remove previous version of documentation
 rm -r docs/
