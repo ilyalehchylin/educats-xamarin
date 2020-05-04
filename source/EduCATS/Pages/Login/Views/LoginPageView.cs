@@ -24,7 +24,7 @@ namespace EduCATS.Pages.Login.Views
 		const double _loginFormSpacing = 0;
 		const double _settingsIconSize = 45;
 		const double _showPasswordIconSize = 30;
-		const double _mascotTailAnimationRotation = 45;
+		const double _mascotTailAnimationRotation = 35;
 		const uint _mascotTailAnimationTime = 2000;
 
 		static Thickness _loginFormPadding = new Thickness(20, 0);
