@@ -66,6 +66,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				a => new TestAnswerDetailsPostModel(
 					Answers[0].Id, isAuto ? _emptyEditableAnswer : Answers[0].ContentToAnswer)).ToList();
 
+			if (answersList != null && answersList.Count > 0 &&
+				string.IsNullOrWhiteSpace(answersList[0].Content)) {
+				return null;
+			}
+
 			return composeAnswer(answersList);
 		}
 

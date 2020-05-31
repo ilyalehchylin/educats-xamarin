@@ -16,12 +16,24 @@ namespace EduCATS.Pages.Recommendations.Views
 		static Thickness _listMargin = new Thickness(10, 1, 10, 20);
 		static Thickness _subjectsMargin = new Thickness(0, 10);
 
+		static RecommendationsPageViewModel pageVM;
+
 		public RecommendationsPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new RecommendationsPageViewModel(new PlatformServices());
+			pageVM = new RecommendationsPageViewModel(new PlatformServices());
+			BindingContext = pageVM;
 			createViews();
+		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+
+			if (!pageVM.IsLoading) {
+				Device.BeginInvokeOnMainThread(async () => await pageVM.Update(true));
+			}
 		}
 
 		void createViews()
