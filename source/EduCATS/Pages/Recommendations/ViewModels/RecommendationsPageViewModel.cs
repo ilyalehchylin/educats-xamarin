@@ -17,8 +17,8 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 	{
 		public RecommendationsPageViewModel(IPlatformServices services) : base(services)
 		{
-			SubjectChanged += async (id, name) => await update(true);
-			Task.Run(async () => await update(true));
+			SubjectChanged += async (id, name) => await Update(true);
+			Task.Run(async () => await Update(true));
 		}
 
 		List<RecommendationsPageModel> _recommendations;
@@ -48,8 +48,7 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 		Command _refreshCommand;
 		public Command RefreshCommand {
 			get {
-				return _refreshCommand ?? (
-					_refreshCommand = new Command(async () => await update(false)));
+				return _refreshCommand ??= new Command(async () => await Update(false));
 			}
 		}
 
@@ -58,7 +57,7 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 		/// </summary>
 		/// <param name="dialog">Is dialog.</param>
 		/// <returns>Task.</returns>
-		async Task update(bool dialog)
+		async public Task Update(bool dialog)
 		{
 			if (dialog) {
 				PlatformServices.Dialogs.ShowLoading();
