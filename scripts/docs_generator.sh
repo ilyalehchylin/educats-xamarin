@@ -1,9 +1,6 @@
 # Install DocFX
 # brew install docfx # Uncomment on bug fix https://github.com/dotnet/docfx/issues/5785
 wget "https://github.com/dotnet/docfx/releases/download/v2.51/docfx.zip" # Download DocFX 2.51 zip
-
-# Unzipping process (remove on bug fix https://github.com/dotnet/docfx/issues/5785)
-apt-get install unzip
 unzip docfx.zip
 
 # Remove previous version of documentation
