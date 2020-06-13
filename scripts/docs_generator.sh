@@ -1,5 +1,7 @@
 # Install DocFX
-brew install docfx
+# brew install docfx # Uncomment on bug fix https://github.com/dotnet/docfx/issues/5785
+wget "https://github.com/dotnet/docfx/releases/download/v2.51/docfx.zip" # Download DocFX 2.51 zip
+unzip docfx.zip
 
 # Remove previous version of documentation
 rm -r docs/
@@ -14,10 +16,12 @@ git clone https://github.com/ovasquez/docfx-material.git material
 DOCFX_SOURCE_BRANCH_NAME=master
 
 # Generate docs metadata
-docfx metadata docfx.json
+# docfx metadata docfx.json # Uncomment on bug fix https://github.com/dotnet/docfx/issues/5785
+mono docfx.exe metadata docfx.json
 
 # Build docs
-docfx build docfx.json -o docs
+# docfx build docfx.json -o docs # Uncomment on bug fix https://github.com/dotnet/docfx/issues/5785
+mono docfx.exe build docfx.json -o docs
 
 # Change theme colors
 sh scripts/docs_theme_edit.sh
