@@ -27,8 +27,9 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// Open main page.
 		/// </summary>
 		void OpenMain();
-
+		
 		public void OpenParental();
+		
 		public void OpenParentalStat(IPlatformServices services,GroupInfo group);
 		/// <summary>
 		/// Open news details page.

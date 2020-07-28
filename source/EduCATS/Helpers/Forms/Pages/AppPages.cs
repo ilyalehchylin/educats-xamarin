@@ -91,7 +91,7 @@ namespace EduCATS.Helpers.Forms.Pages
 			await pushPage(new StudentsPageView(pageIndex, subjectId, students), title);
 
 		/// <summary>
-		/// Open page with students.
+		/// Open page with students List.
 		/// </summary>
 		/// <param name="pageIndex">Index of a page to open after choosing a student.</param>
 		/// <returns>Task.</returns>

@@ -162,6 +162,11 @@ namespace EduCATS.Data
 		static async Task<object> getRecommendationsCallback(
 			int subjectId, int userId) => await AppServices.GetRecommendations(subjectId, userId);
 
+		/// <summary>
+		/// GroupInfo Callback
+		/// </summary>
+		/// <param name="groupName"></param>
+		/// <returns></returns>
 		static async Task<object> getGroupInfoCallback(
 				string groupName) => await AppServices.GetGroupInfo(groupName);
 

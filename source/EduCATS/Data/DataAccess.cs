@@ -61,7 +61,6 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, true) as List<SubjectModel>;
 		}
 
-
 		/// <summary>
 		/// Fetch calendar data.
 		/// </summary>
@@ -235,13 +234,17 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, false) as FilesModel;
 		}
 
+		/// <summary>
+		/// Load goup info by groupName
+		/// </summary>
+		/// <param name="groupName">group Name</param>
+		/// <returns></returns>
 		public async static Task<GroupInfo> GetGroupInfo(string groupName)
 		{
 			var dataAccess = new DataAccess<GroupInfo>(
-				"Ошибка", getGroupInfoCallback(groupName));
+				"Error", getGroupInfoCallback(groupName));
 			return await GetDataObject(dataAccess, false) as GroupInfo;
 		}
-
 
 		/// <summary>
 		/// Fetch recommendations (adaptive learning).
