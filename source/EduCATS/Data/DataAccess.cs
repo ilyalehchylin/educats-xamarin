@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data.Models;
 using EduCATS.Networking.Models.Testing;
+using EduCATS.Pages.Parental.FindGroup.Models;
 
 namespace EduCATS.Data
 {
@@ -59,6 +60,7 @@ namespace EduCATS.Data
 				"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
 			return await GetDataObject(dataAccess, true) as List<SubjectModel>;
 		}
+
 
 		/// <summary>
 		/// Fetch calendar data.
@@ -232,6 +234,14 @@ namespace EduCATS.Data
 				GetKey(GlobalConsts.DataGetFilesKey, subjectId));
 			return await GetDataObject(dataAccess, false) as FilesModel;
 		}
+
+		public async static Task<GroupInfo> GetGroupInfo(string groupName)
+		{
+			var dataAccess = new DataAccess<GroupInfo>(
+				"Ошибка", getGroupInfoCallback(groupName));
+			return await GetDataObject(dataAccess, false) as GroupInfo;
+		}
+
 
 		/// <summary>
 		/// Fetch recommendations (adaptive learning).

@@ -82,6 +82,8 @@ namespace EduCATS.Pages.Login.Views
 			var usernameEntry = createUsernameEntry(entryStyle);
 			var passwordEntryGrid = createPasswordGrid(entryStyle);
 			var loginButton = createLoginButton();
+			var parentalButton = createParentalButton();
+
 			var activityIndicator = createActivityIndicator();
 
 			var mainStackLayout = new StackLayout {
@@ -93,6 +95,7 @@ namespace EduCATS.Pages.Login.Views
 					usernameEntry,
 					passwordEntryGrid,
 					loginButton,
+					parentalButton,
 					activityIndicator
 				}
 			};
@@ -197,6 +200,23 @@ namespace EduCATS.Pages.Login.Views
 			password.SetBinding(Entry.TextProperty, "Password");
 			password.SetBinding(Entry.IsPasswordProperty, "IsPasswordHidden");
 			return password;
+		}
+
+		Button createParentalButton()
+		{
+			var parentalButton = new Button
+			{
+				Text = "Контроль успеваемости",
+				FontAttributes = FontAttributes.Bold,
+				TextColor = Color.White,
+				BackgroundColor = Color.Transparent,
+				Margin = _baseSpacing,
+				HeightRequest = _controlHeight,
+				Style = AppStyles.GetButtonStyle(bold: true)
+			};
+
+			parentalButton.SetBinding(Button.CommandProperty, "ParentalCommand");
+			return parentalButton;
 		}
 
 		Button createLoginButton()

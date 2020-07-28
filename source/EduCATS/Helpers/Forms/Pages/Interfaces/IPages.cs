@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data.Models;
+using EduCATS.Pages.Parental.FindGroup.Models;
 
 namespace EduCATS.Helpers.Forms.Pages
 {
@@ -27,6 +28,8 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// </summary>
 		void OpenMain();
 
+		public void OpenParental();
+		public void OpenParentalStat(IPlatformServices services,GroupInfo group);
 		/// <summary>
 		/// Open news details page.
 		/// </summary>
@@ -42,6 +45,15 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <returns>Task.</returns>
 		Task OpenStudentsListStats(int pageIndex, int subjectId,
 			List<StatsStudentModel> students, string title);
+
+		/// <summary>
+		/// Open page with students.
+		/// </summary>
+		/// <param name="pageIndex">Index of a page to open after choosing a student.</param>
+		/// <returns>Task.</returns>
+		Task OpenParentalStudentsListStats(IPlatformServices services, int pageIndex, int subjectId,
+			List<StatsStudentModel> students, string title);
+
 
 		/// <summary>
 		/// Open page with detailed statistics by page type.
