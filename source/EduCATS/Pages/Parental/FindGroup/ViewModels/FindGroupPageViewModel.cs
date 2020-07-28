@@ -4,12 +4,12 @@ using EduCATS.Data;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Pages;
 using EduCATS.Helpers.Logs;
-using EduCATS.Networking.AppServices;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Parental.FindGroup.ViewModels
-{   /// <summary>
+{  
+	/// <summary>
 	/// Login page ViewModel.
 	/// </summary>
 	public class FindGroupPageViewModel : ViewModel
@@ -17,14 +17,14 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 		/// <summary>
 		/// Platform services.
 		/// </summary>
-		readonly IPlatformServices _services;
+		readonly IPlatformServices _service;
 
 		/// <summary>
-		/// Login page ViewModel constructor.
+		/// FindGroup page ViewModel constructor.
 		/// </summary>
 		public FindGroupPageViewModel(IPlatformServices services)
 		{
-			_services = services;
+			_service = services;
 			IsLoadingCompleted = true;
 		}
 
@@ -53,7 +53,7 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 		string _groupNumber;
 
 		/// <summary>
-		/// Username property.
+		/// Group Number property.
 		/// </summary>
 		public string GroupNumber
 		{
@@ -64,7 +64,7 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 		string _FIO;
 
 		/// <summary>
-		/// Password property.
+		/// FIO property.
 		/// </summary>
 		public string FIO
 		{
@@ -73,6 +73,9 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 		}
 
 		Command _parentalCommand;
+		/// <summary>
+		/// Open Main Statistic page
+		/// </summary>
 		public Command ParentalCommand
 		{
 			get
@@ -86,7 +89,7 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 		{
 			if (string.IsNullOrEmpty(GroupNumber))
 			{
-				_services.Dialogs.ShowError("Пожалуйста введите номер группы");
+				_service.Dialogs.ShowError("Пожалуйста введите номер группы");
 				return;
 			}
 			try
@@ -94,19 +97,19 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 				var result = await DataAccess.GetGroupInfo(GroupNumber);
 				if (result.Code.Equals("200"))
 				{
-					_services.Preferences.GroupId = result.GroupId;
-					_services.Preferences.GroupName = GroupNumber;
-					_services.Preferences.ChosenGroupId = result.GroupId;
-					(_services.Navigation as AppPages).OpenParentalStat(_services, result);
+					_service.Preferences.GroupId = result.GroupId;
+					_service.Preferences.GroupName = GroupNumber;
+					_service.Preferences.ChosenGroupId = result.GroupId;
+					(_service.Navigation as AppPages).OpenParentalStat(_service, result);
 				}
 				else
 				{
-					_services.Dialogs.ShowError("Указанная группа не найдена");
+					_service.Dialogs.ShowError("Указанная группа не найдена");
 				}
 			}
 			catch
 			{
-				_services.Dialogs.ShowError("Не удалось подключиться к серверу");
+				_service.Dialogs.ShowError("Не удалось подключиться к серверу");
 			}
 		}
 
@@ -128,7 +131,7 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 		{
 			try
 			{
-				await _services.Navigation.OpenSettings(
+				await _service.Navigation.OpenSettings(
 					CrossLocalization.Translate("main_settings"));
 			}
 			catch (Exception ex)

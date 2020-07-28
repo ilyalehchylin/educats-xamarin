@@ -19,16 +19,21 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 {
 	public class StatsPageViewModel : SubjectsViewModel
 	{
-		const string _doubleStringFormat = "0.0";
-
-		List<StatsStudentModel> _students;
+		private const string _doubleStringFormat = "0.0";
+		private List<StatsStudentModel> _students;
+		private IPlatformServices _service;
 
 		public StatsPageViewModel(IPlatformServices services) : base(services)
+		{
+			_service = services;
+		}
+
+		public void Init()
 		{
 			setPagesList();
 			setCollapsedDetails();
 
-			services.Device.MainThread(async () => {
+			_service.Device.MainThread(async () => {
 				IsLoading = true;
 				await SetupSubjects();
 				await getAndSetStatistics();
@@ -37,11 +42,12 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			});
 
 			SubjectChanged += async (id, name) => {
-				PlatformServices.Dialogs.ShowLoading();
+				_service.Dialogs.ShowLoading();
 				await getAndSetStatistics();
 				checkStudent();
-				PlatformServices.Dialogs.HideLoading();
+				_service.Dialogs.HideLoading();
 			};
+
 		}
 
 		bool _isLoading;
@@ -137,7 +143,42 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 		}
 
-		protected async Task executeRefreshCommand()
+		public void setPagesList()
+		{
+			PagesList = new List<StatsPageModel> {
+				getPage("stats_page_labs_rating"),
+				getPage("stats_page_labs_visiting"),
+				getPage("stats_page_lectures_visiting")
+			};
+		}
+
+		public void setCollapsedDetails(bool isCollapsed = true)
+		{
+			IsCollapsedStatistics = isCollapsed;
+			IsExpandedStatistics = !isCollapsed;
+		}
+
+		protected StatsPageEnum getPageToOpen(string pageString)
+		{
+			var labsRatingString = CrossLocalization.Translate("stats_page_labs_rating");
+			var labsVisitingString = CrossLocalization.Translate("stats_page_labs_visiting");
+
+			if (pageString.Equals(labsRatingString))
+			{
+				return StatsPageEnum.LabsRating;
+			}
+			else if (pageString.Equals(labsVisitingString))
+			{
+				return StatsPageEnum.LabsVisiting;
+			}
+			else
+			{
+				return StatsPageEnum.LecturesVisiting;
+			}
+		}
+
+
+		protected virtual async Task executeRefreshCommand()
 		{
 			try {
 				PlatformServices.Device.MainThread(() => IsLoading = true);
@@ -150,31 +191,106 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 		}
 
-		protected void executeExpandCommand()
+		protected virtual void openPage(object selectedObject)
+		{
+			try
+			{
+				if (selectedObject == null || selectedObject.GetType() != typeof(StatsPageModel))
+				{
+					return;
+				}
+
+				var page = selectedObject as StatsPageModel;
+				var pageType = getPageToOpen(page.Title);
+
+				if (AppUserData.UserType == UserTypeEnum.Professor)
+				{
+					PlatformServices.Navigation.OpenStudentsListStats(
+						(int)pageType, CurrentSubject.Id, _students, page.Title);
+					return;
+				}
+
+				var user = _students.SingleOrDefault(s => s.StudentId == PlatformServices.Preferences.UserId);
+
+				if (user == null)
+				{
+					return;
+				}
+
+				PlatformServices.Navigation.OpenDetailedStatistics(
+					user.Login, CurrentSubject.Id, PlatformServices.Preferences.GroupId, (int)pageType, page.Title);
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+			}
+		}
+
+		protected virtual async Task<List<StatsStudentModel>> getStatistics()
+		{
+			try
+			{
+				if (!AppUserData.IsProfileLoaded)
+				{
+					await getProfile();
+				}
+
+				var groupId = PlatformServices.Preferences.GroupId;
+
+				if (CurrentSubject == null || groupId == -1)
+				{
+					return null;
+				}
+
+				var statisticsModel = await DataAccess.GetStatistics(
+					CurrentSubject.Id, PlatformServices.Preferences.GroupId);
+
+				if (DataAccess.IsError && !DataAccess.IsConnectionError)
+				{
+					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
+				}
+
+				return statisticsModel.Students?.ToList();
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+				return null;
+			}
+		}
+
+		protected virtual async Task getAndSetStatistics()
+		{
+			try
+			{
+				var studentsStatistics = await getStatistics();
+
+				if (studentsStatistics == null)
+				{
+					setChartData(null);
+				}
+				else
+				{
+					var currentStudentStatistics = studentsStatistics.SingleOrDefault(
+						s => s.StudentId == PlatformServices.Preferences.UserId);
+					setChartData(currentStudentStatistics);
+					_students = studentsStatistics;
+				}
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+			}
+		}
+
+
+		void executeExpandCommand()
 		{
 			try {
 				if (IsCollapsedStatistics) {
 					setCollapsedDetails(false);
 				} else {
 					setCollapsedDetails();
-				}
-			} catch (Exception ex) {
-				AppLogs.Log(ex);
-			}
-		}
-
-		async Task getAndSetStatistics()
-		{
-			try {
-				var studentsStatistics = await getStatistics();
-
-				if (studentsStatistics == null) {
-					setChartData(null);
-				} else {
-					var currentStudentStatistics = studentsStatistics.SingleOrDefault(
-						s => s.StudentId == PlatformServices.Preferences.UserId);
-					setChartData(currentStudentStatistics);
-					_students = studentsStatistics;
 				}
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
@@ -207,33 +323,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 		}
 
-		async Task<List<StatsStudentModel>> getStatistics()
-		{
-			try {
-				if (!AppUserData.IsProfileLoaded) {
-					await getProfile();
-				}
-
-				var groupId = PlatformServices.Preferences.GroupId;
-
-				if (CurrentSubject == null || groupId == -1) {
-					return null;
-				}
-
-				var statisticsModel = await DataAccess.GetStatistics(
-					CurrentSubject.Id, PlatformServices.Preferences.GroupId);
-
-				if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
-				}
-
-				return statisticsModel.Students?.ToList();
-			} catch (Exception ex) {
-				AppLogs.Log(ex);
-				return null;
-			}
-		}
-
 		/// <summary>
 		/// Get profile if <see cref="App.getProfileInfo" didn't have time to load./>
 		/// </summary>
@@ -245,14 +334,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
 		}
 
-		void setPagesList()
-		{
-			PagesList = new List<StatsPageModel> {
-				getPage("stats_page_labs_rating"),
-				getPage("stats_page_labs_visiting"),
-				getPage("stats_page_lectures_visiting")
-			};
-		}
 
 		StatsPageModel getPage(string text)
 		{
@@ -261,59 +342,11 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			};
 		}
 
-		void setCollapsedDetails(bool isCollapsed = true)
-		{
-			IsCollapsedStatistics = isCollapsed;
-			IsExpandedStatistics = !isCollapsed;
-		}
 
 		void setNotEnoughDetails(bool isNotEnough = true)
 		{
 			IsEnoughDetails = !isNotEnough;
 			IsNotEnoughDetails = isNotEnough;
-		}
-
-		void openPage(object selectedObject)
-		{
-			try {
-				if (selectedObject == null || selectedObject.GetType() != typeof(StatsPageModel)) {
-					return;
-				}
-
-				var page = selectedObject as StatsPageModel;
-				var pageType = getPageToOpen(page.Title);
-
-				if (AppUserData.UserType == UserTypeEnum.Professor) {
-					PlatformServices.Navigation.OpenStudentsListStats(
-						(int)pageType, CurrentSubject.Id, _students, page.Title);
-					return;
-				}
-
-				var user = _students.SingleOrDefault(s => s.StudentId == PlatformServices.Preferences.UserId);
-
-				if (user == null) {
-					return;
-				}
-
-				PlatformServices.Navigation.OpenDetailedStatistics(
-					user.Login, CurrentSubject.Id, PlatformServices.Preferences.GroupId, (int)pageType, page.Title);
-			} catch (Exception ex) {
-				AppLogs.Log(ex);
-			}
-		}
-
-		StatsPageEnum getPageToOpen(string pageString)
-		{
-			var labsRatingString = CrossLocalization.Translate("stats_page_labs_rating");
-			var labsVisitingString = CrossLocalization.Translate("stats_page_labs_visiting");
-
-			if (pageString.Equals(labsRatingString)) {
-				return StatsPageEnum.LabsRating;
-			} else if (pageString.Equals(labsVisitingString)) {
-				return StatsPageEnum.LabsVisiting;
-			} else {
-				return StatsPageEnum.LecturesVisiting;
-			}
 		}
 
 		void checkStudent()
@@ -344,5 +377,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 			return resultSummary / (double)resultCount;
 		}
+	
 	}
 }

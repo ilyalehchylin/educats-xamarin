@@ -108,7 +108,7 @@
 		/// <summary>
 		/// При переходе сайта на новое апи заменить на {Servers.Current} 
 		/// </summary>
-		public static string GetGroupInfo => $"{Servers.EduCatsAddress}/Services/Parental/ParentalService.svc/GetGroupSubjectsByGroupName/";
+		public static string GetGroupInfo => $"https://host27072020.of.by/Services/Parental/ParentalService.svc/GetGroupSubjectsByGroupName/";
 
 
 	}

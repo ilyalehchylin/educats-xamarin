@@ -1,12 +1,9 @@
 ﻿using System.Collections.Generic;
-using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
 using EduCATS.Data.Models;
 using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
-using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Parental.Statistics.ViewsModels;
-using EduCATS.Pages.Statistics.Students.ViewModels;
 using EduCATS.Pages.Statistics.Students.Views.ViewCells;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -28,7 +25,9 @@ namespace EduCATS.Pages.Parental.Statistics.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
-			BindingContext = new ParentalStudentsPageViewModel(services, subjectId, students, pageIndex);
+			var parentalStudentsPageViewModel = new ParentalStudentsPageViewModel(services, subjectId, students, pageIndex);
+			parentalStudentsPageViewModel.Init();
+			BindingContext = parentalStudentsPageViewModel;
 			createViews();
 		}
 

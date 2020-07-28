@@ -21,9 +21,5 @@ namespace EduCATS.Pages.Parental.FindGroup.Models
 
 		[JsonProperty("Subjects")]
 		public List<Subject> Subjects { get; set; }
-
-
-
-
 	}
 }

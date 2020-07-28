@@ -103,7 +103,7 @@ namespace EduCATS.Pages.Pickers
 		/// Setup subjects.
 		/// </summary>
 		/// <returns>Task.</returns>
-		public virtual async Task SetupSubjects()
+		public async Task SetupSubjects()
 		{
 			try {
 				var subjects = await getSubjects();

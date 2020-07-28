@@ -32,7 +32,9 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
-			BindingContext = new StatsPageViewModel(new PlatformServices());
+			var statsPageViewModel = new StatsPageViewModel(new PlatformServices());
+			statsPageViewModel.Init();
+			BindingContext = statsPageViewModel;
 			createViews();
 		}
 

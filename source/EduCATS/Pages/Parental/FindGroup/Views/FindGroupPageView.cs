@@ -22,14 +22,10 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 		};
 
 		const double _controlHeight = 50;
-		const double _mascotImage = 200;
-		const double _loginFormSpacing = 0;
+		const double _groupNumberFormSpacing = 0;
 		const double _settingsIconSize = 45;
-		const double _showPasswordIconSize = 30;
-		const double _mascotTailAnimationRotation = 35;
-		const uint _mascotTailAnimationTime = 2000;
 
-		static Thickness _loginFormPadding = new Thickness(20, 0);
+		static Thickness _groupNumberFormPadding = new Thickness(20, 0);
 		static Thickness _baseSpacing = new Thickness(0, 10, 0, 0);
 		static Thickness _iosSettingsMargin = new Thickness(20, 60);
 		static Thickness _androidSettingsMargin = new Thickness(30);
@@ -78,17 +74,17 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 		{
 			var entryStyle = getEntryStyle();
 			var groupNumberEntry = createGroupNumberEntry(entryStyle);
-			var fIOEntryGrid = createPasswordGrid(entryStyle);
+			var fIOEntry = createFIOEntry(entryStyle);
 			var findButton = createFindButton();
 
 			var mainStackLayout = new StackLayout
 			{
-				Spacing = _loginFormSpacing,
-				Padding = _loginFormPadding,
+				Spacing = _groupNumberFormSpacing,
+				Padding = _groupNumberFormPadding,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
 					groupNumberEntry,
-					fIOEntryGrid,
+					fIOEntry,
 					findButton, 
 				}
 			};
@@ -142,18 +138,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 
 			username.SetBinding(Entry.TextProperty, "GroupNumber");
 			return username;
-		}
-
-		Grid createPasswordGrid(Style style)
-		{
-			var passwordEntry = createFIOEntry(style);
-
-			return new Grid
-			{
-				Children = {
-					passwordEntry,
-				}
-			};
 		}
 
 		Entry createFIOEntry(Style style)
