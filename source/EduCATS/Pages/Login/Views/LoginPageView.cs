@@ -206,7 +206,7 @@ namespace EduCATS.Pages.Login.Views
 		{
 			var parentalButton = new Button
 			{
-				Text = "Контроль успеваемости",
+				Text = CrossLocalization.Translate("parental_login"),
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.White,
 				BackgroundColor = Color.Transparent,

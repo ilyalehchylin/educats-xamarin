@@ -19,7 +19,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 {
 	public class StatsPageViewModel : SubjectsViewModel
 	{
-		private const string _doubleStringFormat = "0.0";
+		const string _doubleStringFormat = "0.0";
 		private List<StatsStudentModel> _students;
 		private IPlatformServices _service;
 

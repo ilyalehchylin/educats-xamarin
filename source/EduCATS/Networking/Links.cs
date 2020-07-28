@@ -104,11 +104,10 @@
 		/// </summary>
 		public static string GetRecomendations => $"{Servers.Current}/Tests/GetRecomendations";
 
-
 		/// <summary>
-		/// При переходе сайта на новое апи заменить на {Servers.Current} 
+		/// Get parental URL.
 		/// </summary>
-		public static string GetGroupInfo => $"https://host27072020.of.by/Services/Parental/ParentalService.svc/GetGroupSubjectsByGroupName/";
+		public static string GetGroupInfo => $"{Servers.Current}/Services/Parental/ParentalService.svc/GetGroupSubjectsByGroupName/";
 
 
 	}
