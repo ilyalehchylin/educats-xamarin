@@ -193,6 +193,8 @@
         <None Remove="Fonts\Resources\PTSans-Bold.ttf" />
         <None Remove="Fonts\Resources\PTSerif-Bold.ttf" />
         <None Remove="Fonts\Resources\RobotoCondensed-Bold.ttf" />
+        <None Remove="Localization\lt.json" />
+        <None Remove="Localization\be.json" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Localization\en.json" />
@@ -215,5 +217,7 @@
         <EmbeddedResource Include="Fonts\Resources\PTSans-Bold.ttf" />
         <EmbeddedResource Include="Fonts\Resources\PTSerif-Bold.ttf" />
         <EmbeddedResource Include="Fonts\Resources\RobotoCondensed-Bold.ttf" />
+        <EmbeddedResource Include="Localization\lt.json" />
+        <EmbeddedResource Include="Localization\be.json" />
     </ItemGroup>
 </Project>
