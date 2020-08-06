@@ -49,7 +49,7 @@ namespace EduCATS.Helpers.Forms.Converters
 			}
 
 			var doubleList = value as List<double>;
-			var chartEntries = doubleList.Select(d => new Microcharts.Entry((float)d)).ToArray();
+			var chartEntries = doubleList.Select(d => new ChartEntry((float)d)).ToArray();
 
 			if (chartEntries != null && chartEntries.Length == 3) {
 				chartEntries[0].Color = SKColor.Parse(Theme.Current.StatisticsChartLabsColor);
