@@ -195,6 +195,8 @@
         <None Remove="Fonts\Resources\RobotoCondensed-Bold.ttf" />
         <None Remove="Localization\lt.json" />
         <None Remove="Localization\be.json" />
+        <None Remove="Localization\de.json" />
+        <None Remove="Localization\pl.json" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Localization\en.json" />
@@ -219,5 +221,7 @@
         <EmbeddedResource Include="Fonts\Resources\RobotoCondensed-Bold.ttf" />
         <EmbeddedResource Include="Localization\lt.json" />
         <EmbeddedResource Include="Localization\be.json" />
+        <EmbeddedResource Include="Localization\de.json" />
+        <EmbeddedResource Include="Localization\pl.json" />
     </ItemGroup>
 </Project>
