@@ -1,0 +1,146 @@
+﻿{
+	"base_ok": "OK",
+	"base_no": "Nie",
+	"base_yes": "Tak",
+	"base_error": "Błąd",
+	"base_cancel": "Anuluj",
+	"base_warning": "Uwaga",
+	"base_loading": "Ładowanie...",
+	"base_unexpected_error": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"base_connection_error": "Brak połączenia z Internetem. Sprawdź ustawienia sieci i spróbuj ponownie.",
+	"base_no_data": "Brak danych do wyświetlenia",
+
+	"contributor_ilya_lehchylin": "Ilja Legczilin",
+	"contributor_julia_popova": "Julia Popowa",
+
+	"role_student": "Student",
+	"role_professor": "Wykładowca",
+
+	"server_test": "Serwer testowy",
+	"server_local": "Serwer lokalny",
+	"server_stable": "Serwer stabilny",
+
+	"theme_default": "Standardowy temat (jasny)",
+	"theme_dark": "Ciemny temat",
+
+	"font_default": "Standardowa czcionka",
+
+	"login_username": "Imię użytkownika",
+	"login_password": "Hasło",
+	"login_text": "Zaloguj się",
+	"login_loading": "Logowanie...",
+	"login_profile_loading": "Pobieranie danych profilu...",
+	"login_empty_credentials_error": "Wymagana nazwa użytkownika i hasło.",
+	"login_error": "Nie można się zalogować. Proszę sprawdzić wprowadzone dane.",
+	"login_user_profile_error": "Wystąpił błąd podczas pobierania danych profilu. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+
+	"main_today": "Dzisiaj",
+	"main_learning": "Uczenie",
+	"main_statistics": "Statystyk",
+	"main_settings": "Konfiguracja",
+
+	"today_subjects": "Dyscypliny",
+	"today_news": "Wiadomości",
+	"today_news_load_error": "Wystąpił błąd podczas pobierania listy wiadomości. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
+	"today_subjects_error": "Wystąpił błąd podczas pobierania listy dyscyplin. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
+	"today_calendar_error": "Wystąpił błąd podczas pobierania listy dyscyplin w kalendarzu. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
+
+	"news_details_title": "Wiadomości",
+
+	"subjects_choose": "Wybierz dyscyplinę",
+
+	"stats_marks_error": "Wystąpił błąd podczas pobierania statystyki. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
+	"stats_expand_chart_text": "Czytaj więcej",
+	"stats_collapse_chart_text": "Skryj",
+	"stats_chart_average_labs": "Średnia ocean za pracę laboratoryjne",
+	"stats_chart_average_tests": "Średnia ocena za testy",
+	"stats_chart_rating": "Ocena ratingowa",
+	"stats_chart_not_enough_data": "Brak danych do wyświetlenia grafiku",
+	"stats_page_labs_rating": "Wyniki prac laboratoryjnych",
+	"stats_page_labs_visiting": "Pomijanie prac laboratoryjnych",
+	"stats_page_lectures_visiting": "Pomijanie wykładów",
+	"stats_summary_rating": "Średnia ocena",
+	"stats_summary_visiting": "Сałość nieodebranych godzin",
+
+	"groups_choose": "Wybierz grupę",
+	"groups_fetch_error": "Wystąpił błąd podczas pobierania listy grup. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
+
+	"stats_students_search_text": "Szukanie studentów...",
+
+	"labs_fetch_error": "Wystąpił błąd podczas pobierania prac laboratoryjnych. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
+
+	"lectures_fetch_error": "Wystąpił błąd podczas pobierania wykładów. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
+
+	"learning_card_tests": "Testy",
+	"learning_card_eemc": "Kompleks edukacyjno-metodyczny",
+	"learning_card_files": "Dokumenty",
+	"learning_card_adaptive": "Uczenie adaptacyjne",
+
+	"testing_get_tests_error": "Wystąpił błąd podczas pobierania testów. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
+	"testing_knowledge_control": "Testy dla kontroli wiedzy",
+	"testing_self_study": "Testy dla samokontroli",
+	"testing_start_test_title": "Czy chcesz rozpocząć test?",
+	"testing_start_test_description": "Po potwierdzeniu zostanie uruchomiony timer. Każde pytanie bez odpowiedzi stanie się błędne po upływie timera.",
+
+	"get_test_error": "Wystąpił błąd podczas pobierania szczegółów testu. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"get_test_question_error": "Wystąpił błąd podczas pobierania pytania. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"answer_question_error": "Wystąpił błąd podczas odpowiedzi na pytanie. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"answer_question_not_selected_error": "Nie wybrano żadnej odpowiedzi. Proszę odpowiedzieć na pytanie.",
+	"question_title": "Pytanie",
+
+	"test_passing_options": "Opcje odpowiedzi",
+	"test_passing_skip": "POMINĄĆ",
+	"test_passing_answer": "ODPOWIEDZIEĆ",
+	"test_passing_cancel_message": "Czy na pewno chcesz przerwać test? Wszystkie pytania bez odpowiedzi staną się błędne.",
+
+	"test_results_title": "Wyniki",
+	"test_results_error": "Wystąpił błąd podczas pobierania wyników testu. Skontaktuj się z obsługą klienta.",
+	"test_results_label": "Twoja ocena",
+	"test_results_time": "Czas spędzony",
+
+	"eemc_root_concepts_error": "Wystąpił błąd podczas pobierania listy podstawowych materiałów dydaktyczno-metodycznych. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"eemc_concept_tree_error": "Wystąpił błąd podczas pobierania listy materiałów dydaktyczno-metodycznych. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"eemc_back_text": "Wstecz",
+
+	"files_header": "Dokumenty do pobrania",
+	"files_fetch_error": "Wystąpił błąd podczas pobierania listy dokumentów. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"files_downloading": "Trwa pobieranie",
+	"files_downloading_error": "Wystąpił błąd podczas pobierania tego dokumentu. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"files_megabytes": "MB",
+
+	"recommendations_fetch_error": "Wystąpił błąd podczas pobierania rekomendacji. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+
+	"settings_server": "Serwer",
+	"settings_language": "Język",
+	"settings_theme": "Temat",
+	"settings_font": "Tekst & Czcionka",
+	"settings_about": "Informacje o aplikacji",
+	"settings_logout": "Wyjść",
+	"settings_logout_message": "Czy na pewno chcesz wyjść?",
+
+	"settings_language_system": "Język systemowy",
+	"settings_language_system_description": "Użyj języka systemowego jako podstawowego",
+	"settings_language_choose": "Wybór języka",
+	"settings_language_change_message": "Czy na pewno chcesz zmienić język? To działanie spowoduje ponowne uruchomienie aplikacji.",
+
+	"settings_server_choose": "Wybór serwera",
+	"settings_server_change_message": "Czy na pewno chcesz zmienić serwer? To działanie spowoduje ponowne uruchomienie aplikacji.",
+
+	"settings_theme_choose": "Wybór tematu",
+	"settings_theme_change_message": "Czy na pewno chcesz zmienić serwer? To działanie spowoduje ponowne uruchomienie aplikacji.",
+
+	"settings_font_choose": "Wybór czcionki",
+	"settings_font_change_message": "Czy na pewno chcesz zmienić serwer? To działanie spowoduje ponowne uruchomienie aplikacji.",
+	"settings_font_large": "Duża czcionka",
+	"settings_font_large_description": "Zwiększ czcionkę w aplikacji.",
+
+	"settings_about_app_version": "Wersja",
+	"settings_about_app_build": "Kompilacja",
+	"settings_about_release_notes": "Informacje o kompilacji",
+	"settings_about_open_source": "Otwórz na GitHub",
+	"settings_about_open_web_version": "Otwórz wersję internetową",
+	"settings_about_send_logs": "Wyślij logi błędów",
+	"settings_about_send_logs_not_supported": "Ta funkcja nie jest obsługiwana przez twoje urządzenie.",
+	"settings_about_send_logs_error": "Wystąpił błąd podczas wysyłania logów. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"settings_about_contributors": "Autorzy"
+}

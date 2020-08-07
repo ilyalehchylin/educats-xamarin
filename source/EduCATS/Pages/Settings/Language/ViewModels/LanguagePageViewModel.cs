@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using EduCATS.Helpers.Extensions;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Settings.Language.Models;
@@ -94,7 +95,7 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 				var supportedLanguages = CrossLocalization.GetSupportedLanguages();
 
 				var languages = supportedLanguages.Select(l => new LanguagePageModel {
-					Title = l.LanguageLocal,
+					Title = l.LanguageLocal?.FirstCharToUpper(),
 					Description = l.LanguageEnglish,
 					LanguageCode = l.LangCode,
 					IsChecked = l.LangCode == _services.Preferences.LanguageCode
