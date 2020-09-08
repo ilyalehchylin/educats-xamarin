@@ -16,26 +16,41 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 {
 	public class StudentsPageViewModel : GroupsViewModel
 	{
-		readonly int _pageIndex;
 
-		List<StudentsPageModel> _backupStudents;
+		protected readonly IPlatformServices _service;
+		protected readonly int _subjectId;
+		protected readonly List<StatsStudentModel> _studentsList;
+		protected readonly int _pageIndex;
+
+		private List<StudentsPageModel> _backupStudents;
 
 		public StudentsPageViewModel(
 			IPlatformServices services, int subjectId,
 			List<StatsStudentModel> studentsList, int pageIndex) : base(services, subjectId)
 		{
+			_service = services;
+			_subjectId = subjectId;
+			_studentsList = studentsList;
 			_pageIndex = pageIndex;
-			setStudents(studentsList);
+		}
+
+		public virtual void Init()
+		{
+			setStudents(_studentsList);
 
 			Task.Run(async () => {
-				if (studentsList == null || studentsList.Count == 0) {
+				if (_studentsList == null || _studentsList.Count == 0)
+				{
 					await update();
-				} else {
+				}
+				else
+				{
 					await update(true);
 				}
 			});
 
 			GroupChanged += async (id, name) => await update();
+
 		}
 
 		bool _isLoading;
@@ -79,7 +94,7 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			}
 		}
 
-		async Task update(bool groupsOnly = false)
+		protected virtual async Task update(bool groupsOnly = false)
 		{
 			try {
 				await SetupGroups();
@@ -94,7 +109,28 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			}
 		}
 
-		async Task getAndSetStudents()
+		protected void setStudents(List<StatsStudentModel> studentsStatistics)
+		{
+			try
+			{
+				var students = studentsStatistics?.Select(s => new StudentsPageModel(s.Login, s.Name));
+
+				if (students == null)
+				{
+					return;
+				}
+
+				Students = new List<StudentsPageModel>(students);
+				_backupStudents = new List<StudentsPageModel>(students);
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+			}
+		}
+
+
+		protected virtual async Task getAndSetStudents()
 		{
 			IsLoading = true;
 			var studentsStatistics = await getStatistics();
@@ -102,23 +138,7 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			IsLoading = false;
 		}
 
-		void setStudents(List<StatsStudentModel> studentsStatistics)
-		{
-			try {
-				var students = studentsStatistics?.Select(s => new StudentsPageModel(s.Login, s.Name));
-
-				if (students == null) {
-					return;
-				}
-
-				Students = new List<StudentsPageModel>(students);
-				_backupStudents = new List<StudentsPageModel>(students);
-			} catch (Exception ex) {
-				AppLogs.Log(ex);
-			}
-		}
-
-		async Task<List<StatsStudentModel>> getStatistics()
+		protected virtual async Task<List<StatsStudentModel>> getStatistics()
 		{
 			if (CurrentGroup == null) {
 				return null;

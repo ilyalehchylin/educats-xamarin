@@ -138,7 +138,7 @@ namespace EduCATS.Pages.Pickers
 		/// <summary>
 		/// Setup subject by subject name.
 		/// </summary>
-		void setupSubject()
+		public void setupSubject()
 		{
 			if (!checkSubjectsList()) {
 				return;
@@ -173,7 +173,7 @@ namespace EduCATS.Pages.Pickers
 			return false;
 		}
 
-		void setCurrentSubjectsList(List<SubjectModel> subjects)
+		public void setCurrentSubjectsList(List<SubjectModel> subjects)
 		{
 			CurrentSubjects = subjects;
 		}

@@ -1,31 +1,33 @@
 ﻿using System.Collections.Generic;
-using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
 using EduCATS.Data.Models;
 using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
-using EduCATS.Pages.Statistics.Students.ViewModels;
+using EduCATS.Pages.Parental.Statistics.ViewsModels;
 using EduCATS.Pages.Statistics.Students.Views.ViewCells;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
-namespace EduCATS.Pages.Statistics.Students.Views
+namespace EduCATS.Pages.Parental.Statistics.Views
 {
-	public class StudentsPageView : ContentPage
+	public class ParentalStudentPageView : ContentPage
 	{
 		static Thickness _padding = new Thickness(10, 1);
 		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
 		static Thickness _searchBarMargin = new Thickness(0, 5, 0, 0);
 
-		public StudentsPageView(int pageIndex, int subjectId, List<StatsStudentModel> students)
+		private IPlatformServices services;
+
+		public ParentalStudentPageView(IPlatformServices services, int pageIndex, int subjectId, List<StatsStudentModel> students)
 		{
+			this.services = services;
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
-			var studentsPageViewModel = new StudentsPageViewModel(new PlatformServices(), subjectId, students, pageIndex);
-			studentsPageViewModel.Init();
-			BindingContext = studentsPageViewModel;
+			var parentalStudentsPageViewModel = new ParentalStudentsPageViewModel(services, subjectId, students, pageIndex);
+			parentalStudentsPageViewModel.Init();
+			BindingContext = parentalStudentsPageViewModel;
 			createViews();
 		}
 
@@ -38,13 +40,13 @@ namespace EduCATS.Pages.Statistics.Students.Views
 
 		StackLayout createHeaderView()
 		{
-			var groupsPicker = new GroupsPickerView();
+			
 			var searchBar = createSearchBar();
 
-			return new StackLayout {
+			return new StackLayout
+			{
 				Padding = _headerPadding,
 				Children = {
-					groupsPicker,
 					searchBar
 				}
 			};
@@ -52,7 +54,8 @@ namespace EduCATS.Pages.Statistics.Students.Views
 
 		SearchBar createSearchBar()
 		{
-			var searchBar = new SearchBar {
+			var searchBar = new SearchBar
+			{
 				Margin = _searchBarMargin,
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				CancelButtonColor = Color.FromHex(Theme.Current.BaseAppColor),
@@ -68,7 +71,8 @@ namespace EduCATS.Pages.Statistics.Students.Views
 
 		RoundedListView createRoundedListView(View header)
 		{
-			var roundedListView = new RoundedListView(typeof(StudentsPageViewCell), header: header) {
+			var roundedListView = new RoundedListView(typeof(StudentsPageViewCell), header: header)
+			{
 				IsPullToRefreshEnabled = true
 			};
 
@@ -81,3 +85,4 @@ namespace EduCATS.Pages.Statistics.Students.Views
 		}
 	}
 }
+

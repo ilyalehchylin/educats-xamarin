@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data.Models;
 using EduCATS.Networking.Models.Testing;
+using EduCATS.Pages.Parental.FindGroup.Models;
 
 namespace EduCATS.Data
 {
@@ -231,6 +232,18 @@ namespace EduCATS.Data
 				"files_fetch_error", getFilesCallback(subjectId),
 				GetKey(GlobalConsts.DataGetFilesKey, subjectId));
 			return await GetDataObject(dataAccess, false) as FilesModel;
+		}
+
+		/// <summary>
+		/// Load goup info by groupName
+		/// </summary>
+		/// <param name="groupName">group Name</param>
+		/// <returns></returns>
+		public async static Task<GroupInfo> GetGroupInfo(string groupName)
+		{
+			var dataAccess = new DataAccess<GroupInfo>(
+				"Error", getGroupInfoCallback(groupName));
+			return await GetDataObject(dataAccess, false) as GroupInfo;
 		}
 
 		/// <summary>
