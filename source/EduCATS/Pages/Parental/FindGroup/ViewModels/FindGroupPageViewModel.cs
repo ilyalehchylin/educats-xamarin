@@ -61,15 +61,15 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 			set { SetProperty(ref _groupNumber, value); }
 		}
 
-		string _FIO;
+		string _studentName;
 
 		/// <summary>
 		/// FIO property.
 		/// </summary>
-		public string FIO
+		public string StudentName
 		{
-			get { return _FIO; }
-			set { SetProperty(ref _FIO, value); }
+			get { return _studentName; }
+			set { SetProperty(ref _studentName, value); }
 		}
 
 		Command _parentalCommand;
@@ -89,7 +89,7 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 		{
 			if (string.IsNullOrEmpty(GroupNumber))
 			{
-				_service.Dialogs.ShowError("Пожалуйста введите номер группы");
+				_service.Dialogs.ShowError(CrossLocalization.Translate("parental_error_empty_group_number"));
 				return;
 			}
 			try
@@ -104,19 +104,19 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 				}
 				else
 				{
-					_service.Dialogs.ShowError("Указанная группа не найдена");
+					_service.Dialogs.ShowError(CrossLocalization.Translate("parental_group_not_found"));
 				}
 			}
 			catch
 			{
-				_service.Dialogs.ShowError("Не удалось подключиться к серверу");
+				_service.Dialogs.ShowError(CrossLocalization.Translate("parental_connection_error"));
 			}
 		}
 
 		Command _settingsCommand;
 
 		/// <summary>
-		/// Settigns command.
+		/// Opent settigns page command.
 		/// </summary>
 		public Command SettingsCommand
 		{

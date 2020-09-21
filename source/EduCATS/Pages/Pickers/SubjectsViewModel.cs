@@ -112,8 +112,8 @@ namespace EduCATS.Pages.Pickers
 					return;
 				}
 
-				setCurrentSubjectsList(subjects.ToList());
-				setupSubject();
+				SetCurrentSubjectsList(subjects.ToList());
+				SetupSubject();
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
@@ -138,7 +138,7 @@ namespace EduCATS.Pages.Pickers
 		/// <summary>
 		/// Setup subject by subject name.
 		/// </summary>
-		public void setupSubject()
+		public void SetupSubject()
 		{
 			if (!checkSubjectsList()) {
 				return;
@@ -173,7 +173,7 @@ namespace EduCATS.Pages.Pickers
 			return false;
 		}
 
-		public void setCurrentSubjectsList(List<SubjectModel> subjects)
+		public void SetCurrentSubjectsList(List<SubjectModel> subjects)
 		{
 			CurrentSubjects = subjects;
 		}
