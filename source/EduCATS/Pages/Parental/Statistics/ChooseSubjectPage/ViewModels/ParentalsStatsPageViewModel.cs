@@ -69,8 +69,8 @@ namespace EduCATS.Pages.Parental.Statistics
 				{
 					subjects.Add(new SubjectModel() { Id = subject.Id, ShortName = subject.ShortName, Name = subject.Name, Color = Color.Blue.ToString(), Completing = 0 });
 				}
-				SetCurrentSubjectsList(subjects.ToList());
-				SetupSubject();
+				setCurrentSubjectsList(subjects.ToList());
+				setupSubject();
 			}
 			catch (Exception ex)
 			{

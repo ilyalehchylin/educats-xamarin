@@ -10,7 +10,6 @@ using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Statistics.Base.Views;
 using EduCATS.Pages.Parental.FindGroup.ViewModels;
-using EduCATS.Themes.Templates;
 
 namespace EduCATS.Pages.Parental.FindGroup.Views
 {
@@ -33,7 +32,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 
 		public FindGroupPageView()
 		{
-			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			NavigationPage.SetHasNavigationBar(this, false);
 			BindingContext = new FindGroupPageViewModel(new PlatformServices());
 			createViews();
@@ -46,6 +44,7 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 
 		void createViews()
 		{
+			var backgroundImage = createBackgroundImage();
 			var settingsIcon = createSettingsIcon();
 			var mainLayout = createDataForm();
 
@@ -62,8 +61,9 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 
 			Content = new Grid
 			{
-				HorizontalOptions = LayoutOptions.FillAndExpand,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
 				Children = {
+					backgroundImage,
 					scrollView,
 					settingsIcon
 				}
@@ -85,12 +85,21 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 				Children = {
 					groupNumberEntry,
 					fIOEntry,
-					findButton,
+					findButton, 
 				}
 			};
 
 			mainStackLayout.SetBinding(IsEnabledProperty, "IsLoadingCompleted");
 			return mainStackLayout;
+		}
+
+		CachedImage createBackgroundImage()
+		{
+			return new CachedImage
+			{
+				Aspect = Aspect.AspectFill,
+				Source = ImageSource.FromFile(getRandomBackgroundImage())
+			};
 		}
 
 		CachedImage createSettingsIcon()
@@ -101,15 +110,17 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Margin = Device.RuntimePlatform == Device.iOS ? _iosSettingsMargin : _androidSettingsMargin,
 				Source = ImageSource.FromFile(Theme.Current.MainSettingsIcon),
+				Aspect = Aspect.AspectFill,
 				HeightRequest = _settingsIconSize,
 				WidthRequest = _settingsIconSize,
 				Transformations = new List<FFImageLoading.Work.ITransformation> {
 					new TintTransformation {
 						EnableSolidColor = true,
-						HexColor = Theme.Current.LoginButtonBackgroundColor
+						HexColor = Theme.Current.LoginSettingsColor
 					}
 				}
 			};
+
 			var tapGestureRecognizer = new TapGestureRecognizer();
 			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "SettingsCommand");
 			settingsIcon.GestureRecognizers.Add(tapGestureRecognizer);
@@ -122,7 +133,7 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 			{
 				Style = style,
 				ReturnType = ReturnType.Next,
-				Placeholder = CrossLocalization.Translate("parental_enter_group_number")
+				Placeholder = "Введите номер группы"
 			};
 
 			username.SetBinding(Entry.TextProperty, "GroupNumber");
@@ -137,12 +148,12 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 				IsPassword = false,
 				ReturnType = ReturnType.Done,
 				Margin = _baseSpacing,
-				Placeholder = CrossLocalization.Translate("parental_enter_full_name"),
+				Placeholder = "Введите ФИО",
 				IsEnabled = false,
 				IsVisible = false
 			};
 
-			fIO.SetBinding(Entry.TextProperty, "StudentName");
+			fIO.SetBinding(Entry.TextProperty, "FIO");
 			return fIO;
 		}
 
@@ -150,7 +161,7 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 		{
 			var findButton = new Button
 			{
-				Text = CrossLocalization.Translate("parental_get_statistics"),
+				Text = "Получить статистику",
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
@@ -180,6 +191,13 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 			});
 
 			return style;
+		}
+
+		string getRandomBackgroundImage()
+		{
+			var random = new Random();
+			var randomBackgroundIndex = random.Next(0, _backgrounds.Length - 1);
+			return _backgrounds[randomBackgroundIndex];
 		}
 	}
 }

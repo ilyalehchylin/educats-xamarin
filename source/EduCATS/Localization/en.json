@@ -142,13 +142,5 @@
 	"settings_about_send_logs": "Send crash logs",
 	"settings_about_send_logs_not_supported": "This feature is not supported by your device.",
 	"settings_about_send_logs_error": "Error occurred during sending logs. Please try again or contact support.",
-	"settings_about_contributors": "Contributors",
-
-	"parental_login": "Parental control",
-	"parental_error_empty_group_number": "Please enter the group number",
-	"parental_group_not_found": "The specified group was not found",
-	"parental_connection_error": "Failed to connect to server",
-	"parental_enter_group_number": "Enter group number",
-	"parental_enter_full_name": "Enter your full name",
-	"parental_get_statistics": "Get statistics"
+	"settings_about_contributors": "Contributors"
 }
