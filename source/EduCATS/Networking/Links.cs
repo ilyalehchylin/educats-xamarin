@@ -103,5 +103,12 @@
 		/// Get recommendations URL.
 		/// </summary>
 		public static string GetRecomendations => $"{Servers.Current}/Tests/GetRecomendations";
+
+		/// <summary>
+		/// Get parental URL.
+		/// </summary>
+		public static string GetGroupInfo => $"{Servers.Current}/Services/Parental/ParentalService.svc/GetGroupSubjectsByGroupName/";
+
+
 	}
 }

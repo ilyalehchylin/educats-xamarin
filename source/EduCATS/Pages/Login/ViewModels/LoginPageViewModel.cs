@@ -114,6 +114,23 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
+
+		Command _parentalCommand;
+		public Command ParentalCommand
+		{
+			get
+			{
+				return _parentalCommand ?? (_parentalCommand = new Command(
+					async () => await openParental()));
+			}
+		}
+
+		protected async Task openParental()
+		{
+			_services.Navigation.OpenParental();
+		}
+
+
 		/// <summary>
 		/// Authorization method.
 		/// </summary>
