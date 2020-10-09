@@ -19,6 +19,7 @@ namespace EduCATS.Pages.Parental.Statistics
 {
 	class ParentalsStatsPageView : ContentPage
 	{
+
 		public ParentalsStatsPageView(IPlatformServices service,GroupInfo group)
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
@@ -65,9 +66,9 @@ namespace EduCATS.Pages.Parental.Statistics
 			{
 				Text = groupName,
 				FontAttributes = FontAttributes.Bold,
-				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
-				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
-				Style = AppStyles.GetButtonStyle(bold: true),
+				FontSize = 20,
+				TextColor = Color.FromHex(Theme.Current.BaseLinksColor),
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 			};
 			groupButton.SetBinding(Button.CommandProperty, "ParentalCommand");
 			return new StackLayout

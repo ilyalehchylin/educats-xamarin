@@ -24,6 +24,7 @@ using EduCATS.Pages.Testing.Passing.Views;
 using EduCATS.Pages.Testing.Results.Views;
 using EduCATS.Pages.Today.NewsDetails.Views;
 using EduCATS.Themes;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Helpers.Forms.Pages
@@ -70,7 +71,7 @@ namespace EduCATS.Helpers.Forms.Pages
 
 		public void OpenParental() => switchMainPage(new FindGroupPageView());
 
-		public void OpenParentalStat(IPlatformServices _services,GroupInfo group) => switchMainPage(new ParentalsStatsPageView(_services,group));
+		public void OpenParentalStat(IPlatformServices _services,GroupInfo group) => pushPage(new ParentalsStatsPageView(_services, group),CrossLocalization.Translate("main_statistics"));
 
 		/// <summary>
 		/// Open news details page.
