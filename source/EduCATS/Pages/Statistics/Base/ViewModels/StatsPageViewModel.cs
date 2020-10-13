@@ -146,9 +146,9 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		public void setPagesList()
 		{
 			PagesList = new List<StatsPageModel> {
-				getPage("stats_page_labs_rating"),
+				getPage("stats_page_lectures_visiting"),
 				getPage("stats_page_labs_visiting"),
-				getPage("stats_page_lectures_visiting")
+				getPage("stats_page_labs_rating"),
 			};
 		}
 

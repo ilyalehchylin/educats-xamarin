@@ -85,6 +85,26 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 			}
 		}
 
+		Command _backCommand;
+		/// <summary>
+		/// Open Main Statistic page
+		/// </summary>
+		public Command BackCommand
+		{
+			get
+			{
+				return _backCommand ?? (_backCommand = new Command(
+					async () => await openMain()));
+			}
+		}
+
+		protected async Task openMain()
+		{
+			_service.Navigation.OpenLogin();
+		}
+
+
+
 		protected async Task openParental()
 		{
 			if (string.IsNullOrEmpty(GroupNumber))
@@ -94,6 +114,7 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 			}
 			try
 			{
+				IsLoading = true;
 				var result = await DataAccess.GetGroupInfo(GroupNumber);
 				if (result.Code.Equals("200"))
 				{
@@ -106,6 +127,7 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 				{
 					_service.Dialogs.ShowError(CrossLocalization.Translate("parental_group_not_found"));
 				}
+				IsLoading = false;
 			}
 			catch
 			{
