@@ -98,6 +98,13 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			set { SetProperty(ref _averageTests, value); }
 		}
 
+		string _averagePractice;
+		public string AveragePractice
+		{
+			get { return _averagePractice; }
+			set { SetProperty(ref _averagePractice, value); }
+		}
+
 		string _rating;
 		public string Rating {
 			get { return _rating; }
@@ -310,13 +317,16 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				var avgTests = stats.AverageTestMark.StringToDouble();
 				AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
+				var avgPractice = stats.AveragePracticeMark.StringToDouble();
+				AveragePractice = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+
 				var rating = (avgLabs + avgTests) / 2;
 				Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
 				setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
 
 				ChartEntries = new List<double> {
-					avgLabs, avgTests, rating
+					avgLabs, avgTests, avgPractice, rating
 				};
 			} catch (Exception ex) {
 				AppLogs.Log(ex);

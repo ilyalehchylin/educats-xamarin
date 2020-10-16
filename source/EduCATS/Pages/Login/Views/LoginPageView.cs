@@ -8,6 +8,7 @@ using FFImageLoading.Transformations;
 using System.Collections.Generic;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
+using EduCATS.Helpers.Forms.Effects;
 
 namespace EduCATS.Pages.Login.Views
 {
@@ -83,6 +84,8 @@ namespace EduCATS.Pages.Login.Views
 			var passwordEntryGrid = createPasswordGrid(entryStyle);
 			var loginButton = createLoginButton();
 			var parentalButton = createParentalButton();
+			var chekInButton = createChekInButton();
+			var forgotPasswordButton = createForgotPasswordButton();
 
 			var activityIndicator = createActivityIndicator();
 
@@ -94,8 +97,10 @@ namespace EduCATS.Pages.Login.Views
 					mascotImage,
 					usernameEntry,
 					passwordEntryGrid,
+					forgotPasswordButton,
 					loginButton,
 					parentalButton,
+					chekInButton,
 					activityIndicator
 				}
 			};
@@ -210,6 +215,8 @@ namespace EduCATS.Pages.Login.Views
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.White,
 				BackgroundColor = Color.Transparent,
+				BorderColor = Color.White,
+				BorderWidth = 2,
 				Margin = _baseSpacing,
 				HeightRequest = _controlHeight,
 				Style = AppStyles.GetButtonStyle(bold: true)
@@ -217,6 +224,40 @@ namespace EduCATS.Pages.Login.Views
 
 			parentalButton.SetBinding(Button.CommandProperty, "ParentalCommand");
 			return parentalButton;
+		}
+
+		Button createChekInButton()
+		{
+			var chekInButton = new Button
+			{
+				Text = "New user? Check in",//CrossLocalization.Translate("parental_login"),
+				FontAttributes = FontAttributes.Bold,
+				TextColor = Color.White,
+				BackgroundColor = Color.Transparent,
+				HeightRequest = _controlHeight - 5,
+				Style = AppStyles.GetButtonStyle(bold: true),
+				HorizontalOptions = LayoutOptions.Start,
+			};
+			chekInButton.Effects.Add(new UnderlineEffect());
+			chekInButton.SetBinding(Button.CommandProperty, "RegistrationCommand");
+			return chekInButton;
+		}
+
+		Button createForgotPasswordButton()
+		{
+			var ForgotPasswordButton = new Button
+			{
+				Text = "Forgot Password?",//CrossLocalization.Translate("parental_login"),
+				FontAttributes = FontAttributes.Bold,
+				TextColor = Color.White,
+				BackgroundColor = Color.Transparent,
+				HeightRequest = _controlHeight - 5,
+				Style = AppStyles.GetButtonStyle(bold: true),
+				HorizontalOptions = LayoutOptions.End,
+			};
+			ForgotPasswordButton.Effects.Add(new UnderlineEffect());
+			ForgotPasswordButton.SetBinding(Button.CommandProperty, "ForgotPasswordCommand");
+			return ForgotPasswordButton;
 		}
 
 		Button createLoginButton()

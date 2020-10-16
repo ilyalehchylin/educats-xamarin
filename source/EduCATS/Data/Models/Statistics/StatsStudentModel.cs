@@ -49,5 +49,10 @@ namespace EduCATS.Data.Models
 		/// </summary>
 		[JsonProperty("TestMark")]
 		public string AverageTestMark { get; set; }
+		/// <summary>
+		/// Average practice rating mark.
+		/// </summary>
+		[JsonProperty("PracticeMark")]
+		public string AveragePracticeMark { get; set; }
 	}
 }

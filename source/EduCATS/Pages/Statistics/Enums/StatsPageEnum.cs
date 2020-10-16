@@ -4,6 +4,7 @@
 	{
 		LabsRating = 0,
 		LabsVisiting = 1,
-		LecturesVisiting = 2
+		LecturesVisiting = 2,
+		
 	}
 }

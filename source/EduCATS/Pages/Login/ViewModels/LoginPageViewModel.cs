@@ -125,6 +125,21 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
+		Command _registrationCommand;
+		public Command RegistrationCommand
+		{
+			get
+			{
+				return _registrationCommand ?? (_registrationCommand = new Command(
+					async () => await openRegistration()));
+			}
+		}
+
+		protected async Task openRegistration()
+		{
+			await _services.Navigation.OpenRegistration("Check In");
+		}
+
 		protected async Task openParental()
 		{
 			_services.Navigation.OpenParental();

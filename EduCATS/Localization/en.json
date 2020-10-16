@@ -1,0 +1,154 @@
+﻿{
+	"base_ok": "OK",
+	"base_no": "No",
+	"base_yes": "Yes",
+	"base_error": "Error",
+	"base_cancel": "Cancel",
+	"base_warning": "Warning",
+	"base_loading": "Loading...",
+	"base_unexpected_error": "Unexpected error occurred. Please try again or contact support.",
+	"base_connection_error": "No internet connection. Check your network settings and try again.",
+	"base_no_data": "No data to display",
+
+	"contributor_ilya_lehchylin": "Ilya Lehchylin",
+	"contributor_julia_popova": "Julia Popova",
+
+	"role_student": "Student",
+	"role_professor": "Professor",
+
+	"server_test": "Test server",
+	"server_local": "Local server",
+	"server_stable": "Stable server",
+
+	"theme_default": "Default theme (Light)",
+	"theme_dark": "Dark theme",
+
+	"font_default": "Default font",
+
+	"login_username": "Username",
+	"login_password": "Password",
+	"login_text": "Login",
+	"login_loading": "Signing in...",
+	"login_profile_loading": "Retrieving profile data...",
+	"login_empty_credentials_error": "Username and password are required.",
+	"login_error": "Invalid login attempt. Please check your credentials.",
+	"login_user_profile_error": "Error occurred during retrieving profile data. Please try again or contact support.",
+
+	"main_today": "Today",
+	"main_learning": "Learning",
+	"main_statistics": "Statistics",
+	"main_settings": "Settings",
+
+	"today_subjects": "Subjects",
+	"today_news": "News",
+	"today_news_load_error": "Error occurred during retrieving news. Please try to refresh page or contact support.",
+	"today_subjects_error": "Error occurred during retrieving subjects. Please try to refresh page or contact support.",
+	"today_calendar_error": "Error occurred during retrieving subjects in calendar. Please try to refresh page or contact support.",
+
+	"news_details_title": "News",
+
+	"subjects_choose": "Choose a subject",
+
+	"stats_marks_error": "Error occurred during retrieving statistics. Please try to refresh page or contact support.",
+	"stats_expand_chart_text": "More details",
+	"stats_collapse_chart_text": "Hide",
+	"stats_chart_average_labs": "Average laboratory works rating",
+	"stats_chart_average_tests": "Average tests rating",
+	"stats_chart_rating": "Average rating",
+	"stats_chart_not_enough_data": "Not enough data to display chart",
+	"stats_page_labs_rating": "Laboratory works rating",
+	"stats_page_labs_visiting": "Laboratory works visiting",
+	"stats_page_lectures_visiting": "Lectures visiting",
+	"stats_summary_rating": "Average rating",
+	"stats_summary_visiting": "Total hours skipped",
+
+	"groups_choose": "Choose a group",
+	"groups_fetch_error": "Error occurred during retrieving groups. Please try to refresh page or contact support.",
+
+	"stats_students_search_text": "Search students...",
+
+	"labs_fetch_error": "Error occurred during retrieving laboratory works. Please try to refresh page or contact support.",
+
+	"lectures_fetch_error": "Error occurred during retrieving lectures. Please try to refresh page or contact support.",
+
+	"learning_card_tests": "Tests",
+	"learning_card_eemc": "EEMC",
+	"learning_card_files": "Files",
+	"learning_card_adaptive": "Adaptive learning",
+
+	"testing_get_tests_error": "Error occurred during retrieving tests. Please try to refresh page or contact support.",
+	"testing_knowledge_control": "Tests for knowledge control",
+	"testing_self_study": "Tests for self-study",
+	"testing_start_test_title": "Do you want to start the test?",
+	"testing_start_test_description": "A timer will start after confirmation. Every question without an answer will become wrong after timer expiration.",
+
+	"get_test_error": "Error occurred during retrieving test details. Please try again or contact support.",
+	"get_test_question_error": "Error occurred during retrieving a question. Please try again or contact support.",
+	"answer_question_error": "Error occurred during answering a question. Please try again or contact support.",
+	"answer_question_not_selected_error": "You didn't select any answers. Please answer the question.",
+	"question_title": "Question",
+
+	"test_passing_options": "Answer options",
+	"test_passing_skip": "SKIP",
+	"test_passing_answer": "ANSWER",
+	"test_passing_cancel_message": "Are you sure you want to interrupt the test? Every question without an answer will become incorrect.",
+
+	"test_results_title": "Results",
+	"test_results_error": "Error occurred during test results retrieving. Please contact support.",
+	"test_results_label": "Your mark",
+	"test_results_time": "Spent time",
+
+	"eemc_root_concepts_error": "Error occurred during root educational-methodical materials list retrieving. Please try again or contact support.",
+	"eemc_concept_tree_error": "Error occurred during educational-methodical materials list retrieving. Please try again or contact support.",
+	"eemc_back_text": "Back",
+
+	"files_header": "Files to download",
+	"files_fetch_error": "Error occurred during files list retrieving. Please try again or contact support.",
+	"files_downloading": "Downloading",
+	"files_downloading_error": "Error occurred during downloading this file. Please try again or contact support.",
+	"files_megabytes": "MB",
+
+	"recommendations_fetch_error": "Error occurred during retrieving recommendations. Please try again or contact support.",
+
+	"settings_server": "Server",
+	"settings_language": "Language",
+	"settings_theme": "Theme",
+	"settings_font": "Text & Font",
+	"settings_about": "About application",
+	"settings_logout": "Logout",
+	"settings_logout_message": "Are you sure you want to logout?",
+
+	"settings_language_system": "System language",
+	"settings_language_system_description": "Use system language as default",
+	"settings_language_choose": "Language selection",
+	"settings_language_change_message": "Are you sure you want to change language? This action will reload application.",
+
+	"settings_server_choose": "Server selection",
+	"settings_server_change_message": "Are you sure you want to change server? This action will logout you from the current account.",
+
+	"settings_theme_choose": "Theme selection",
+	"settings_theme_change_message": "Are you sure you want to change theme? This action will reload application.",
+
+	"settings_font_choose": "Font selection",
+	"settings_font_change_message": "Are you sure you want to change font? This action will reload application.",
+	"settings_font_large": "Large font",
+	"settings_font_large_description": "Make application's text larger.",
+
+	"settings_about_app_version": "Version",
+	"settings_about_app_build": "Build",
+	"settings_about_release_notes": "Release notes",
+	"settings_about_open_source": "Open on GitHub",
+	"settings_about_open_web_version": "Open web-version",
+	"settings_about_send_logs": "Send crash logs",
+	"settings_about_send_logs_not_supported": "This feature is not supported by your device.",
+	"settings_about_send_logs_error": "Error occurred during sending logs. Please try again or contact support.",
+	"settings_about_contributors": "Contributors",
+
+	"parental_login": "Parental control",
+	"parental_error_empty_group_number": "Please enter the group number",
+	"parental_group_not_found": "The specified group was not found",
+	"parental_connection_error": "Failed to connect to server",
+	"parental_enter_group_number": "Enter group number",
+	"parental_enter_full_name": "Enter your full name",
+	"parental_get_statistics": "Get statistics"
+}

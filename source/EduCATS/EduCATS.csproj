@@ -31,14 +31,11 @@
         <Folder Include="Pages\" />
         <Folder Include="Helpers\Json\" />
         <Folder Include="Pages\Login\" />
-        <Folder Include="Data\" />
         <Folder Include="Data\Caching\" />
         <Folder Include="Pages\Login\Views\" />
         <Folder Include="Pages\Login\ViewModels\" />
         <Folder Include="Localization\" />
-        <Folder Include="Networking\" />
         <Folder Include="Themes\" />
-        <Folder Include="Data\Models\" />
         <Folder Include="Data\Models\User\" />
         <Folder Include="Data\User\" />
         <Folder Include="Pages\Main\" />

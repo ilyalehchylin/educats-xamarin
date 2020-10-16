@@ -116,6 +116,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 				CrossLocalization.Translate("stats_chart_rating"),
 				Color.FromHex(Theme.Current.StatisticsChartRatingColor),
 				"Rating");
+			
 
 
 			var avgStatsLayout = new StackLayout {

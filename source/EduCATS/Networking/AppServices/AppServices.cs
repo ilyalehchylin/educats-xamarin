@@ -1,5 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 using EduCATS.Data.Models;
+using EduCATS.Data.Models.Registration;
 using EduCATS.Helpers.Json;
 using EduCATS.Networking.Models.Eemc;
 using EduCATS.Networking.Models.Login;
@@ -230,6 +233,32 @@ namespace EduCATS.Networking.AppServices
 			return await AppServicesController.Request(
 				$"{Links.GetGroupInfo}{groupName}");
 		}
+		/// <summary>
+		/// Get statistics from Lectures from new server 
+		/// </summary>
+		/// <param name="subjectId"></param>
+		/// <param name="kindofsubject"></param>
+		/// <returns></returns>
+		//public static async Task<KeyValuePair<string, HttpStatusCode>> RegistrationAsync(string login, string password, string confirmPassword, 
+		//	string name, string surname, string patronymic, string studentGroup, string secretQuestion, string answerSecretQestion)
+		//{
+		//	var userInfo = new RegistrationModel
+		//	{
+		//		Login = login,
+		//		Password = password,
+		//		ConfirmPassword = confirmPassword,
+		//		Name = name,
+		//		Surname = surname,
+		//		Patronymic = patronymic,
+		//		StudentGroup = studentGroup,
+		//		SecretQuestion = secretQuestion,
+		//		AnwerToSecretQuestion = answerSecretQestion,
+		//	};
+		//	var body = JsonController.ConvertObjectToJson(userInfo);
+		//	return await AppServicesController.Request(Links.Registration, body); 
+
+		//	//return await AppServicesController.Request($"{Links.Registration}");
+		//}
 
 		/// <summary>
 		/// Get body for authorize request.

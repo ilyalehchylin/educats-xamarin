@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">educats.by</domain>
+        <domain includeSubdomains="true">172.16.11.72:2020</domain>
+    </domain-config>
+</network-security-config>
