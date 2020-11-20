@@ -27,8 +27,6 @@
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Configuration\" />
-        <Folder Include="Helpers\" />
-        <Folder Include="Pages\" />
         <Folder Include="Helpers\Json\" />
         <Folder Include="Pages\Login\" />
         <Folder Include="Data\" />
@@ -36,7 +34,6 @@
         <Folder Include="Pages\Login\Views\" />
         <Folder Include="Pages\Login\ViewModels\" />
         <Folder Include="Localization\" />
-        <Folder Include="Networking\" />
         <Folder Include="Themes\" />
         <Folder Include="Data\Models\" />
         <Folder Include="Data\Models\User\" />
@@ -157,11 +154,9 @@
         <Folder Include="Pages\Settings\Fonts\Models\" />
         <Folder Include="Pages\Settings\About\" />
         <Folder Include="Pages\Settings\About\ViewModels\" />
-        <Folder Include="Helpers\Forms\" />
         <Folder Include="Helpers\Forms\Speech\" />
         <Folder Include="Helpers\Forms\Styles\" />
         <Folder Include="Helpers\Forms\Settings\" />
-        <Folder Include="Helpers\Forms\Effects\" />
         <Folder Include="Helpers\Forms\Dialogs\" />
         <Folder Include="Helpers\Forms\Devices\" />
         <Folder Include="Helpers\Forms\Converters\" />

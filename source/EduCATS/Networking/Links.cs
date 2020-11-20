@@ -109,6 +109,9 @@
 		/// </summary>
 		public static string GetGroupInfo => $"{Servers.Current}/Services/Parental/ParentalService.svc/GetGroupSubjectsByGroupName/";
 
-
+		/// <summary>
+		/// Get registration URL.
+		/// </summary>
+		public static string Registration => $"{Servers.Current}/Account/Register/";
 	}
 }
