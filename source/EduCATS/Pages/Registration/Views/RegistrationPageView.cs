@@ -19,7 +19,9 @@ namespace EduCATS.Pages.Registration.Views
 		public List<GroupItemModel> groupData = new List<GroupItemModel>();
 		public List<String> SecretQuestions = new List<String>()
 		{
-			"Девичья фамилия матери?","Кличка любимого животного?","Ваше хобби?"
+			CrossLocalization.Translate("mother_last_name"),
+			CrossLocalization.Translate("pets_name"),
+			CrossLocalization.Translate("hobby"),
 		};
 		const double _loginFormSpacing = 0;
 		readonly string[] _backgrounds = {
@@ -133,7 +135,7 @@ namespace EduCATS.Pages.Registration.Views
 				Style = style,
 				ReturnType = ReturnType.Next,
 				Margin = _baseSpacing,
-				Placeholder = "Name"//CrossLocalization.Translate("login_username")
+				Placeholder = CrossLocalization.Translate("name")
 			};
 
 			username.SetBinding(Entry.TextProperty, "Name");
@@ -146,7 +148,7 @@ namespace EduCATS.Pages.Registration.Views
 				Style = style,
 				ReturnType = ReturnType.Next,
 				Margin = _baseSpacing,
-				Placeholder = "Surname"//CrossLocalization.Translate("login_username")
+				Placeholder = CrossLocalization.Translate("surname")
 			};
 
 			username.SetBinding(Entry.TextProperty, "Surname");
@@ -160,7 +162,7 @@ namespace EduCATS.Pages.Registration.Views
 				Style = style,
 				ReturnType = ReturnType.Next,
 				Margin = _baseSpacing,
-				Placeholder = "Patronymic"//CrossLocalization.Translate("login_username")
+				Placeholder = CrossLocalization.Translate("patronymic")
 			};
 
 			username.SetBinding(Entry.TextProperty, "Patronymic");
@@ -191,7 +193,7 @@ namespace EduCATS.Pages.Registration.Views
 				IsPassword = true,
 				ReturnType = ReturnType.Done,
 				Margin = _baseSpacing,
-				Placeholder = "Confirm password",//CrossLocalization.Translate("login_password")
+				Placeholder = CrossLocalization.Translate("confirm_password")
 			};
 
 			password.SetBinding(Entry.TextProperty, "ConfirmPassword");
@@ -205,7 +207,7 @@ namespace EduCATS.Pages.Registration.Views
 			{
 				BackgroundColor = Color.White,
 				Margin = _baseSpacing,
-				Title = "Choose group",
+				Title = CrossLocalization.Translate("choose_group"),
 				HeightRequest = 50,
 				ItemDisplayBinding = new Binding("Name"),
 				ItemsSource = groupData,
@@ -219,7 +221,7 @@ namespace EduCATS.Pages.Registration.Views
 			{
 				BackgroundColor = Color.White,
 				Margin = _baseSpacing,
-				Title = "Choose secret question",
+				Title = CrossLocalization.Translate("select_secret_question"),
 				HeightRequest = 50,
 				ItemsSource = SecretQuestions,
 			};
@@ -237,7 +239,7 @@ namespace EduCATS.Pages.Registration.Views
 				ReturnType = ReturnType.Next,
 				Margin = _baseSpacing,
 				HeightRequest = 50,
-				Placeholder = "Answer to secret question",//CrossLocalization.Translate("login_password")
+				Placeholder = CrossLocalization.Translate("answer_to_secret_question")
 			};
 			answer.SetBinding(Entry.TextProperty, "AnswerToSecretQuestion");
 			return answer;
@@ -247,7 +249,7 @@ namespace EduCATS.Pages.Registration.Views
 		{
 			var chekInButton = new Button
 			{
-				Text = CrossLocalization.Translate("Chek In"),
+				Text = CrossLocalization.Translate("chek_In"),
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),

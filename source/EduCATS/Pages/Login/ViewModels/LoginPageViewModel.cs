@@ -151,11 +151,11 @@ namespace EduCATS.Pages.Login.ViewModels
 		{
 			if (_services.Device.CheckConnectivity())
 			{
-				await _services.Navigation.OpenRegistration("Check In");
+				await _services.Navigation.OpenRegistration(CrossLocalization.Translate("chek_In"));
 			}
 			else
 			{
-				_services.Dialogs.ShowError("No internet connection. Check your network settings and try again.");
+				_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
 			}
 		}
 

@@ -243,7 +243,7 @@ namespace EduCATS.Pages.Login.Views
 		{
 			var chekInButton = new Button
 			{
-				Text = "New user? Check in",//CrossLocalization.Translate("parental_login"),
+				Text = CrossLocalization.Translate("new_user_check_in"),
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.White,
 				BackgroundColor = Color.Transparent,
@@ -260,7 +260,7 @@ namespace EduCATS.Pages.Login.Views
 		{
 			var ForgotPasswordButton = new Button
 			{
-				Text = "Forgot Password?",//CrossLocalization.Translate("parental_login"),
+				Text = CrossLocalization.Translate("forgot_password"),
 				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.White,
 				BackgroundColor = Color.Transparent,

@@ -5,6 +5,7 @@ using EduCATS.Helpers.Json;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Networking.AppServices;
+using Nyxbull.Plugins.CrossLocalization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -82,19 +83,19 @@ namespace EduCATS.Pages.Registration.ViewModels
 							break;
 						}
 					}
-					switch (QuestionId)
+					if (QuestionId == CrossLocalization.Translate("mother_last_name"))
 					{
-						case ("Девичья фамилия матери?"):
-							SelectedQuestionId = 1;
-							break;
-						case ("Кличка любимого животного?"):
-							SelectedQuestionId = 2;
-							break;
-						case ("Ваше хобби?"):
-							SelectedQuestionId = 3;
-							break;
+						SelectedQuestionId = 1;
 					}
-					if (Servers.Current == "https://host27072020.of.by")
+					else if(QuestionId == CrossLocalization.Translate("pets_name"))
+					{
+						SelectedQuestionId = 2;
+					}
+					else if(QuestionId == CrossLocalization.Translate("hobby"))
+					{
+						SelectedQuestionId = 3;
+					}
+					if (Servers.Current == Servers.EduCatsAddress)
 					{
 						if (Password.Length > 6 && Password.Length < 30)
 						{
@@ -106,44 +107,47 @@ namespace EduCATS.Pages.Registration.ViewModels
 									{
 										if (Password == ConfirmPassword)
 										{
-											setLoading(true, "Registration goes"); //CrossLocalization.Translate("login_loading"));
+											setLoading(true, CrossLocalization.Translate("chek_In"));
 											await RegistrationPostAsync(UserName, Name, Surname, Patronymic, Password, ConfirmPassword, Group.Id, SelectedQuestionId, AnswerToSecretQuestion);
 											setLoading(false);
 											await _services.Navigation.ClosePage(false);
 										}
 										else
 										{
-											_services.Dialogs.ShowMessage("Password mismatch", "Passwords do not match");
+											_services.Dialogs.ShowError(CrossLocalization.Translate("password_mismatch"));
 										}
 									}
 									else
 									{
-										_services.Dialogs.ShowMessage("Username error", "Use only Latin letters, numbers, period or underscore.");
+										_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
+											CrossLocalization.Translate("latin_letters"));
 									}
 								}
 								else
 								{
-									_services.Dialogs.ShowMessage("Username error", "You have entered less than 3 characters.");
+									_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
+										CrossLocalization.Translate("less_than_three_characters"));
 								}
 							}
 							else
 							{
-								_services.Dialogs.ShowMessage("Password not correct", "Use only Latin letters (at least one uppercase and lowercase), an underscore and at least one number.");
+								_services.Dialogs.ShowMessage(CrossLocalization.Translate("password_not_correct"),
+									CrossLocalization.Translate("latin_password"));
 							}
 						}
 						else
 						{
-							_services.Dialogs.ShowError("Password length must be more than 3 symbols and less than 30");
+							_services.Dialogs.ShowError("password_length_error");
 						}
 					}
 					else
 					{
-						_services.Dialogs.ShowMessage("Invaild server", "Please change current server on 'educats.by'");
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"), CrossLocalization.Translate("change_server"));
 					}
 				}
 				else
 				{
-					_services.Dialogs.ShowError("Some fields empty...");//CrossLocalization.Translate());
+					_services.Dialogs.ShowError(CrossLocalization.Translate("empty_fields"));//CrossLocalization.Translate());
 				}
 			}
 			catch (Exception ex)
