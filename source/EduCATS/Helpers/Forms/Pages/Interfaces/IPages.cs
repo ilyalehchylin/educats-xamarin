@@ -29,7 +29,9 @@ namespace EduCATS.Helpers.Forms.Pages
 		void OpenMain();
 		
 		public void OpenParental();
-		
+
+		public Task OpenRegistration(string title);
+
 		public void OpenParentalStat(IPlatformServices services,GroupInfo group);
 		/// <summary>
 		/// Open news details page.

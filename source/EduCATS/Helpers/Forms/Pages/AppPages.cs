@@ -10,6 +10,7 @@ using EduCATS.Pages.Parental.FindGroup.Views;
 using EduCATS.Pages.Parental.Statistics;
 using EduCATS.Pages.Parental.Statistics.Views;
 using EduCATS.Pages.Recommendations.Views;
+using EduCATS.Pages.Registration.Views;
 using EduCATS.Pages.Settings.About.Views;
 using EduCATS.Pages.Settings.Base.Views;
 using EduCATS.Pages.Settings.Fonts.Views;
@@ -251,5 +252,8 @@ namespace EduCATS.Helpers.Forms.Pages
 			BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
 			BarTextColor = Color.FromHex(Theme.Current.BaseAppColor)
 		};
+
+		public async Task OpenRegistration(string title) =>
+					await pushPage(new RegistrationPageView(), title);
 	}
 }

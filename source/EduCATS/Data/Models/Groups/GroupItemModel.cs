@@ -18,5 +18,17 @@ namespace EduCATS.Data.Models
 		/// </summary>
 		[JsonProperty("GroupName")]
 		public string GroupName { get; set; }
+
+		/// <summary>
+		/// Group name.
+		/// </summary>
+		[JsonProperty("Name")]
+		public string Name { get; set; }
+
+		/// <summary>
+		/// Group ID.
+		/// </summary>
+		[JsonProperty("Id")]
+		public int Id { get; set; }
 	}
 }

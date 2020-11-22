@@ -35,7 +35,8 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Property for checking loading status.
 		/// </summary>
-		public bool IsLoading {
+		public bool IsLoading
+		{
 			get { return _isLoading; }
 			set { SetProperty(ref _isLoading, value); }
 		}
@@ -45,7 +46,8 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Property for checking loading status completion.
 		/// </summary>
-		public bool IsLoadingCompleted {
+		public bool IsLoadingCompleted
+		{
 			get { return _isLoadingCompleted; }
 			set { SetProperty(ref _isLoadingCompleted, value); }
 		}
@@ -55,7 +57,8 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Username property.
 		/// </summary>
-		public string Username {
+		public string Username
+		{
 			get { return _username; }
 			set { SetProperty(ref _username, value); }
 		}
@@ -65,7 +68,8 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Password property.
 		/// </summary>
-		public string Password {
+		public string Password
+		{
 			get { return _password; }
 			set { SetProperty(ref _password, value); }
 		}
@@ -75,7 +79,8 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Property for checking if password is hidden.
 		/// </summary>
-		public bool IsPasswordHidden {
+		public bool IsPasswordHidden
+		{
 			get { return _isPasswordHidden; }
 			set { SetProperty(ref _isPasswordHidden, value); }
 		}
@@ -85,8 +90,10 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Login command.
 		/// </summary>
-		public Command LoginCommand {
-			get {
+		public Command LoginCommand
+		{
+			get
+			{
 				return _loginCommand ?? (_loginCommand = new Command(async () => await startLogin()));
 			}
 		}
@@ -96,8 +103,10 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Hide password command.
 		/// </summary>
-		public Command HidePasswordCommand {
-			get {
+		public Command HidePasswordCommand
+		{
+			get
+			{
 				return _hidePasswordCommand ?? (_hidePasswordCommand = new Command(hidePassword));
 			}
 		}
@@ -107,8 +116,10 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <summary>
 		/// Settigns command.
 		/// </summary>
-		public Command SettingsCommand {
-			get {
+		public Command SettingsCommand
+		{
+			get
+			{
 				return _settingsCommand ?? (_settingsCommand = new Command(
 					async () => await openSettings()));
 			}
@@ -125,6 +136,30 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
+
+		Command _registrationCommand;
+		public Command RegistrationOpenCommand
+		{
+			get
+			{
+				return _registrationCommand ?? (_registrationCommand = new Command(
+					async () => await openRegistration()));
+			}
+		}
+
+		protected async Task openRegistration()
+		{
+			if (_services.Device.CheckConnectivity())
+			{
+				await _services.Navigation.OpenRegistration(CrossLocalization.Translate("chek_In"));
+			}
+			else
+			{
+				_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
+			}
+		}
+
+
 		protected async Task openParental()
 		{
 			_services.Navigation.OpenParental();
@@ -137,15 +172,21 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns>Task.</returns>
 		protected async Task startLogin()
 		{
-			try {
-				if (checkCredentials()) {
+			try
+			{
+				if (checkCredentials())
+				{
 					setLoading(true, CrossLocalization.Translate("login_loading"));
 					var user = await loginRequest();
 					await loginCompleted(user);
-				} else {
+				}
+				else
+				{
 					_services.Dialogs.ShowError(CrossLocalization.Translate("login_empty_credentials_error"));
 				}
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
@@ -158,14 +199,19 @@ namespace EduCATS.Pages.Login.ViewModels
 		async Task loginCompleted(UserModel user)
 		{
 			setLoading(false);
-			if (user != null && !DataAccess.IsError) {
+			if (user != null && !DataAccess.IsError)
+			{
 				setLoading(true, CrossLocalization.Translate("login_profile_loading"));
 				var profile = await getProfileData(user.Username);
 				setLoading(false);
 				profileRetrieved(profile);
-			} else if (user != null && DataAccess.IsError) {
+			}
+			else if (user != null && DataAccess.IsError)
+			{
 				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
-			} else {
+			}
+			else
+			{
 				_services.Dialogs.ShowError(CrossLocalization.Translate("login_error"));
 			}
 		}
@@ -176,13 +222,18 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <param name="profile">Profile model.</param>
 		void profileRetrieved(UserProfileModel profile)
 		{
-			if (profile != null && !DataAccess.IsError) {
+			if (profile != null && !DataAccess.IsError)
+			{
 				_services.Preferences.GroupId = profile.GroupId;
 				_services.Preferences.IsLoggedIn = true;
 				_services.Navigation.OpenMain();
-			} else if (profile != null && DataAccess.IsError) {
+			}
+			else if (profile != null && DataAccess.IsError)
+			{
 				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
-			} else {
+			}
+			else
+			{
 				_services.Dialogs.ShowError(CrossLocalization.Translate("login_user_profile_error"));
 			}
 		}
@@ -197,10 +248,13 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openSettings()
 		{
-			try {
+			try
+			{
 				await _services.Navigation.OpenSettings(
 					CrossLocalization.Translate("main_settings"));
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
@@ -213,7 +267,8 @@ namespace EduCATS.Pages.Login.ViewModels
 		{
 			var userLogin = await DataAccess.Login(Username, Password);
 
-			if (userLogin != null) {
+			if (userLogin != null)
+			{
 				AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
 			}
 
@@ -239,7 +294,8 @@ namespace EduCATS.Pages.Login.ViewModels
 		bool checkCredentials()
 		{
 			if (string.IsNullOrEmpty(Username) &&
-				string.IsNullOrEmpty(Password)) {
+				string.IsNullOrEmpty(Password))
+			{
 				return false;
 			}
 
@@ -253,9 +309,12 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <param name="message">Message to show.</param>
 		void setLoading(bool isLoading, string message = null)
 		{
-			if (isLoading) {
+			if (isLoading)
+			{
 				_services.Dialogs.ShowLoading(message);
-			} else {
+			}
+			else
+			{
 				_services.Dialogs.HideLoading();
 			}
 		}

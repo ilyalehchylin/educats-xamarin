@@ -16,6 +16,8 @@
 	"role_student": "Студент",
 	"role_professor": "Преподаватель",
 
+
+
 	"server_test": "Тестовый сервер",
 	"server_local": "Локальный сервер",
 	"server_stable": "Стабильный сервер",
@@ -38,6 +40,7 @@
 	"main_learning": "Обучение",
 	"main_statistics": "Статистика",
 	"main_settings": "Настройки",
+
 
 	"today_subjects": "Предметы",
 	"today_news": "Новости",
@@ -150,7 +153,30 @@
 	"parental_error_empty_group_number": "Пожалуйста введите номер группы",
 	"parental_group_not_found": "Указанная группа не найдена",
 	"parental_connection_error": "Не удалось подключиться к серверу",
-	"parental_get_statistics": "Получить статистику"
+	"parental_get_statistics": "Получить статистику",
 
+	"pets_name": "Кличка любимого животного?",
+	"hobby": "Ваше хобби?",
+	"mother_last_name": "Девичья фамилия матери?",
+	"name": "Имя",
+	"surname": "Фамилия",
+	"patronymic": "Отчество",
+	"confirm_password": "Подтверждение пароля",
+	"select_secret_question": "Серкретный вопрос",
+	"choose_group": "Группа",
+	"chek_In": "Регистрация",
+	"answer_to_secret_question": "Ответ",
+	"new_user_check_in": "Нет аккаунта? Регистрация",
+	"forgot_password": "Забыли пароль?",
+	"password_mismatch": "Пароли не совпадают",
+	"username_error": "Имя пользователя неверно",
+	"latin_letters": "Используйте только латинские буквы, цифры, точку или знак подчеркивания.",
+	"less_than_three_characters": "Вы ввели меньше 3 символов.",
+	"password_not_correct": "Неверный формат пароля",
+	"latin_password": "Используйте только латинские буквы (хотя бы одну маленькую и большую), знак подчеркивания и хотя бы одну цифру.",
+	"empty_fields": "Обязательные поля для заполнения пустые!",
+	"password_length_error": "Длина пароля должна быть больше 3 символов и меньше 30",
+	"invaild_server": "Неверный сервер",
+	"change_server": "Пожалуйста, измените текущий сервер на 'educats.by'"
 }
 
