@@ -52,7 +52,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 			return true;
 		}
 
-		protected async Task startRegister()
+		protected async Task<Task<object>> startRegister()
 		{
 			var uppercase = 0;
 			bool latin_password = true;
@@ -87,73 +87,73 @@ namespace EduCATS.Pages.Registration.ViewModels
 					{
 						SelectedQuestionId = 1;
 					}
-					else if(QuestionId == CrossLocalization.Translate("pets_name"))
+					else if (QuestionId == CrossLocalization.Translate("pets_name"))
 					{
 						SelectedQuestionId = 2;
 					}
-					else if(QuestionId == CrossLocalization.Translate("hobby"))
+					else if (QuestionId == CrossLocalization.Translate("hobby"))
 					{
 						SelectedQuestionId = 3;
 					}
-					if (Servers.Current == Servers.EduCatsAddress)
+
+					if (!(Servers.Current == Servers.EduCatsAddress))
 					{
-						if (Password.Length > 6 && Password.Length < 30)
-						{
-							if (uppercase != 0 && latin_password == true)
-							{
-								if (UserName.Length > 3 && UserName.Length < 30)
-								{
-									if (latin_username == true)
-									{
-										if (Password == ConfirmPassword)
-										{
-											setLoading(true, CrossLocalization.Translate("chek_In"));
-											await RegistrationPostAsync(UserName, Name, Surname, Patronymic, Password, ConfirmPassword, Group.Id, SelectedQuestionId, AnswerToSecretQuestion);
-											setLoading(false);
-											await _services.Navigation.ClosePage(false);
-										}
-										else
-										{
-											_services.Dialogs.ShowError(CrossLocalization.Translate("password_mismatch"));
-										}
-									}
-									else
-									{
-										_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
-											CrossLocalization.Translate("latin_letters"));
-									}
-								}
-								else
-								{
-									_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
-										CrossLocalization.Translate("less_than_three_characters"));
-								}
-							}
-							else
-							{
-								_services.Dialogs.ShowMessage(CrossLocalization.Translate("password_not_correct"),
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
+							CrossLocalization.Translate("change_server"));
+						return Task.FromResult<object>(null);
+					}
+
+					if (!(Password.Length > 6 && Password.Length < 30))
+					{
+						_services.Dialogs.ShowError("password_length_error");
+						return Task.FromResult<object>(null);
+					}
+
+					if (!(uppercase != 0 && latin_password == true))
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("password_not_correct"),
 									CrossLocalization.Translate("latin_password"));
-							}
-						}
-						else
-						{
-							_services.Dialogs.ShowError("password_length_error");
-						}
+						return Task.FromResult<object>(null);
 					}
-					else
+
+					if (!(UserName.Length > 3 && UserName.Length < 30))
 					{
-						_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"), CrossLocalization.Translate("change_server"));
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
+										CrossLocalization.Translate("less_than_three_characters"));
+						return Task.FromResult<object>(null);
 					}
+
+
+					if (!(latin_username == true))
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
+											CrossLocalization.Translate("latin_letters"));
+						return Task.FromResult<object>(null);
+					}
+
+					if (!(Password == ConfirmPassword))
+					{
+						_services.Dialogs.ShowError(CrossLocalization.Translate("password_mismatch"));
+						return Task.FromResult<object>(null);
+					}
+
+					setLoading(true, CrossLocalization.Translate("chek_In"));
+					await RegistrationPostAsync(UserName, Name, Surname, Patronymic, Password, 
+						ConfirmPassword, Group.Id, SelectedQuestionId, AnswerToSecretQuestion);
+					setLoading(false); 
+					await _services.Navigation.ClosePage(false);
 				}
 				else
 				{
-					_services.Dialogs.ShowError(CrossLocalization.Translate("empty_fields"));//CrossLocalization.Translate());
+					_services.Dialogs.ShowError(CrossLocalization.Translate("empty_fields"));
+					return Task.FromResult<object>(null);
 				}
 			}
 			catch (Exception ex)
 			{
 				AppLogs.Log(ex);
 			}
+			return Task.FromResult<object>(null);
 		}
 
 		public static async Task<KeyValuePair<string, HttpStatusCode>> RegistrationPostAsync(string username, string name, string surname, string patronymic, string password, string confirmPassword,
@@ -168,7 +168,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 				Password = password,
 				ConfirmPassword = confirmPassword,
 				Group = group,
-				QuestionId = questionId + 1,
+				QuestionId = questionId,
 				AnswerToSecretQuestion = answerToSecretQuestion,
 			};
 
