@@ -166,5 +166,13 @@
 	"empty_fields": "Privalomi laukai tušti!",
 	"password_length_error": "Slaptažodžio ilgis turi būti ilgesnis nei 3 simboliai ir mažesnis nei 30",
 	"invaild_server": "Netinkamas serveris",
-	"change_server": "Prašome pakeisti dabartinį serverį į 'educats.by'"
+	"change_server": "Prašome pakeisti dabartinį serverį į 'educats.by'",
+
+	"reset_password": "Atstatyti slaptažodį",
+	"new_password": "Naujas Slaptažodis",
+	"change_password": "Pakeisti slaptažodį",
+	"no_user": "Vartotojas nerastas!",
+	"invaild_answer": "Įvestas neteisingas slaptas atsakymas",
+	"password_changed": "Slaptažodis pakeistas",
+	"successful_password_change": "Sėkmingas slaptažodžio pakeitimas"
 }

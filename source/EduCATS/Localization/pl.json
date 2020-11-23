@@ -166,5 +166,13 @@
 	"empty_fields": "Wymagane pola są puste!",
 	"password_length_error": "Długość hasła musi być większa niż 3 znaki i mniejsza niż 30",
 	"invaild_server": "Nieprawidłowy serwer",
-	"change_server": "Zmień bieżący serwer na 'Educats.by'"
+	"change_server": "Zmień bieżący serwer na 'Educats.by'",
+
+	"reset_password": "Zresetuj hasło",
+	"new_password": "Nowe hasło",
+	"change_password": "Zmień hasło",
+	"no_user": "Nie znaleziono użytkownika!",
+	"invaild_answer": "Wprowadzono nieprawidłową tajną odpowiedź",
+	"password_changed": "Hasło zostało zmienione",
+	"successful_password_change": "Pomyślna zmiana hasła",
 }

@@ -177,6 +177,14 @@
 	"empty_fields": "Обязательные поля для заполнения пустые!",
 	"password_length_error": "Длина пароля должна быть больше 3 символов и меньше 30",
 	"invaild_server": "Неверный сервер",
-	"change_server": "Пожалуйста, измените текущий сервер на 'educats.by'"
+	"change_server": "Пожалуйста, измените текущий сервер на 'educats.by'",
+
+	"reset_password": "Сброс пароля",
+	"new_password": "Новый пароль",
+	"change_password": "Изменение пароля",
+	"no_user": "Пользователь не найден!",
+	"invaild_answer": "Введен неверный секретный ответ",
+	"password_changed": "Пароль изменен",
+	"successful_password_change": "Успешная смена пароля"
 }
 

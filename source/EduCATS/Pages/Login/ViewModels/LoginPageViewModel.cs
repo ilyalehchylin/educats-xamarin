@@ -147,6 +147,21 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
+		Command _forgotPasswordCommand;
+		public Command ForgotPasswordCommand
+		{
+			get
+			{
+				return _forgotPasswordCommand ?? (_forgotPasswordCommand = new Command(
+					async () => await openForgotPassword()));
+			}
+		}
+
+		protected async Task openForgotPassword()
+		{
+			await _services.Navigation.OpenForgotPassword(CrossLocalization.Translate("reset_password"));
+		}
+
 		protected async Task openRegistration()
 		{
 			if (_services.Device.CheckConnectivity())

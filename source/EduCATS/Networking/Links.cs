@@ -113,5 +113,15 @@
 		/// Get registration URL.
 		/// </summary>
 		public static string Registration => $"{Servers.Current}/Account/Register/";
+
+		/// <summary>
+		/// Get verification URL.
+		/// </summary>
+		public static string VerifySecretQuestion => $"{Servers.Current}/Account/VerifySecretQuestion?";
+
+		/// <summary>
+		/// Get reset password URL.
+		/// </summary>
+		public static string ResetPassword => $"{Servers.Current}/Account/ResetPassword";
 	}
 }

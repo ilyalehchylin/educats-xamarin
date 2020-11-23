@@ -166,5 +166,13 @@
 	"empty_fields": "Erforderliche Felder sind leer!",
 	"password_length_error": "Die Passwortlänge muss mehr als 3 Zeichen und weniger als 30 Zeichen betragen",
 	"invaild_server": "Ungültiger Server",
-	"change_server": "Bitte ändern Sie den aktuellen Server in 'Educats.by'"
+	"change_server": "Bitte ändern Sie den aktuellen Server in 'Educats.by'",
+
+	"reset_password": "Passwort zurücksetzen",
+	"new_password": "Neues Kennwort",
+	"change_password": "Ändere das Passwort",
+	"no_user": "Benutzer wird nicht gefunden!",
+	"invaild_answer": "Ungültige geheime Antwort eingegeben",
+	"password_changed": "Passwort geändert",
+	"successful_password_change": "Erfolgreiche Passwortänderung",
 }
