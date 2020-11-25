@@ -163,10 +163,10 @@
 	"less_than_three_characters": "Įvedėte mažiau nei 3 simbolius.",
 	"password_not_correct": "Neteisingas slaptažodžio formatas",
 	"latin_password": "Naudokite tik lotyniškas raides (bent vieną didelę ir mažą raidę), pabraukimą ir bent vieną skaičių.",
-	"empty_fields": "Privalomi laukai tušti!",
+	"empty_fields": "Būtini laukai (prisijungimas, slaptažodis, patvirtinimo slaptažodis, vardas, pavardė, grupė) turi būti užpildyti!",
 	"password_length_error": "Slaptažodžio ilgis turi būti ilgesnis nei 3 simboliai ir mažesnis nei 30",
 	"invaild_server": "Netinkamas serveris",
-	"change_server": "Prašome pakeisti dabartinį serverį į 'educats.by'",
+	"change_server": "Prašome pakeisti dabartinį serverį į educats.by",
 
 	"reset_password": "Atstatyti slaptažodį",
 	"new_password": "Naujas Slaptažodis",

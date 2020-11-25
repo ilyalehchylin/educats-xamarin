@@ -31,7 +31,6 @@ namespace EduCATS.Pages.Registration.Views
 		};
 		static Thickness _loginFormPadding = new Thickness(20, 0);
 		static Thickness _baseSpacing = new Thickness(0, 10, 0, 0);
-
 		const double _controlHeight = 50;
 		public RegistrationPageView()
 		{

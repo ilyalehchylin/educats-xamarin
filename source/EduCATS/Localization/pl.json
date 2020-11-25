@@ -163,10 +163,10 @@
 	"less_than_three_characters": "Wpisałeś mniej niż 3 znaki.",
 	"password_not_correct": "Nieprawidłowy format hasła",
 	"latin_password": "Użyj tylko liter łacińskich (przynajmniej jednej dużej i małej litery), podkreślenia i przynajmniej jednej cyfry.",
-	"empty_fields": "Wymagane pola są puste!",
+	"empty_fields": "Wymagane pola (login, hasło, potwierdzenie hasła, imię, nazwisko, grupa) muszą być wypełnione!",
 	"password_length_error": "Długość hasła musi być większa niż 3 znaki i mniejsza niż 30",
 	"invaild_server": "Nieprawidłowy serwer",
-	"change_server": "Zmień bieżący serwer na 'Educats.by'",
+	"change_server": "Zmień bieżący serwer na educats.by",
 
 	"reset_password": "Zresetuj hasło",
 	"new_password": "Nowe hasło",
@@ -174,5 +174,5 @@
 	"no_user": "Nie znaleziono użytkownika!",
 	"invaild_answer": "Wprowadzono nieprawidłową tajną odpowiedź",
 	"password_changed": "Hasło zostało zmienione",
-	"successful_password_change": "Pomyślna zmiana hasła",
+	"successful_password_change": "Pomyślna zmiana hasła"
 }

@@ -163,10 +163,10 @@
 	"less_than_three_characters": "Sie haben weniger als 3 Zeichen eingegeben.",
 	"password_not_correct": "Ungültiges Passwortformat",
 	"latin_password": "Verwenden Sie nur lateinische Buchstaben (mindestens einen Groß- und Kleinbuchstaben), einen Unterstrich und mindestens eine Zahl.",
-	"empty_fields": "Erforderliche Felder sind leer!",
+	"empty_fields": "Erforderliche Felder (Login, Passwort, Passwort bestätigen, Vorname, Nachname, Gruppe) müssen ausgefüllt werden!",
 	"password_length_error": "Die Passwortlänge muss mehr als 3 Zeichen und weniger als 30 Zeichen betragen",
 	"invaild_server": "Ungültiger Server",
-	"change_server": "Bitte ändern Sie den aktuellen Server in 'Educats.by'",
+	"change_server": "Bitte ändern Sie den aktuellen Server in educats.by",
 
 	"reset_password": "Passwort zurücksetzen",
 	"new_password": "Neues Kennwort",
@@ -174,5 +174,5 @@
 	"no_user": "Benutzer wird nicht gefunden!",
 	"invaild_answer": "Ungültige geheime Antwort eingegeben",
 	"password_changed": "Passwort geändert",
-	"successful_password_change": "Erfolgreiche Passwortänderung",
+	"successful_password_change": "Erfolgreiche Passwortänderung"
 }

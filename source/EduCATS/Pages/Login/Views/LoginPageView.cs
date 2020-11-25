@@ -229,7 +229,7 @@ namespace EduCATS.Pages.Login.Views
 				TextColor = Color.White,
 				BackgroundColor = Color.Transparent,
 				BorderColor = Color.White,
-				BorderWidth = 2,
+				BorderWidth = 1,
 				Margin = _baseSpacing,
 				HeightRequest = _controlHeight,
 				Style = AppStyles.GetButtonStyle(bold: true)
