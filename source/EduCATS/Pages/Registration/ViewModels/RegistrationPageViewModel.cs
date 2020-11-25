@@ -43,7 +43,6 @@ namespace EduCATS.Pages.Registration.ViewModels
 				string.IsNullOrEmpty(ConfirmPassword) ||
 				string.IsNullOrEmpty(Name) ||
 				string.IsNullOrEmpty(Surname) ||
-				string.IsNullOrEmpty(AnswerToSecretQuestion) ||
 				ReferenceEquals(Group.Id, null))
 			{
 				return false;
@@ -96,16 +95,16 @@ namespace EduCATS.Pages.Registration.ViewModels
 						SelectedQuestionId = 3;
 					}
 
-					if (!(Servers.Current == Servers.EduCatsAddress))
+					if (!(UserName.Length > 3 && UserName.Length < 30))
 					{
-						_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
-							CrossLocalization.Translate("change_server"));
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
+										CrossLocalization.Translate("less_than_three_characters"));
 						return Task.FromResult<object>(null);
 					}
 
 					if (!(Password.Length > 6 && Password.Length < 30))
 					{
-						_services.Dialogs.ShowError("password_length_error");
+						_services.Dialogs.ShowError(CrossLocalization.Translate("password_length_error"));
 						return Task.FromResult<object>(null);
 					}
 
@@ -115,14 +114,6 @@ namespace EduCATS.Pages.Registration.ViewModels
 									CrossLocalization.Translate("latin_password"));
 						return Task.FromResult<object>(null);
 					}
-
-					if (!(UserName.Length > 3 && UserName.Length < 30))
-					{
-						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
-										CrossLocalization.Translate("less_than_three_characters"));
-						return Task.FromResult<object>(null);
-					}
-
 
 					if (!(latin_username == true))
 					{

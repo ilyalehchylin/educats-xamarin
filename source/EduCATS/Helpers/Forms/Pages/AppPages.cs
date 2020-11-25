@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using EduCATS.Data.Models;
 using EduCATS.Pages.Eemc.Views;
 using EduCATS.Pages.Files.Views;
+using EduCATS.Pages.ForgotPassword.Views;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
 using EduCATS.Pages.Parental.FindGroup.Models;
@@ -255,5 +256,8 @@ namespace EduCATS.Helpers.Forms.Pages
 
 		public async Task OpenRegistration(string title) =>
 					await pushPage(new RegistrationPageView(), title);
+
+		public async Task OpenForgotPassword(string title) =>
+			await pushPage(new ForgotPasswordPageView(), title);
 	}
 }

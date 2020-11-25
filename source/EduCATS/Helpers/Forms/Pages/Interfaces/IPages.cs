@@ -32,6 +32,8 @@ namespace EduCATS.Helpers.Forms.Pages
 
 		public Task OpenRegistration(string title);
 
+		public Task OpenForgotPassword(string title);
+
 		public void OpenParentalStat(IPlatformServices services,GroupInfo group);
 		/// <summary>
 		/// Open news details page.

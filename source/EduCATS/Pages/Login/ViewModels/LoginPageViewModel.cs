@@ -5,6 +5,7 @@ using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
+using EduCATS.Networking;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -147,15 +148,53 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
-		protected async Task openRegistration()
+		Command _forgotPasswordCommand;
+		public Command ForgotPasswordCommand
 		{
-			if (_services.Device.CheckConnectivity())
+			get
 			{
-				await _services.Navigation.OpenRegistration(CrossLocalization.Translate("chek_In"));
+				return _forgotPasswordCommand ?? (_forgotPasswordCommand = new Command(
+					async () => await openForgotPassword()));
+			}
+		}
+
+		protected async Task openForgotPassword()
+		{
+			if(Servers.Current == Servers.EduCatsAddress)
+			{
+				if (_services.Device.CheckConnectivity())
+				{
+					await _services.Navigation.OpenForgotPassword(CrossLocalization.Translate("reset_password"));
+				}
+				else
+				{
+					_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
+				}
 			}
 			else
 			{
-				_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
+				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
+							CrossLocalization.Translate("change_server"));
+			}
+		}
+
+		protected async Task openRegistration()
+		{
+			if (Servers.Current == Servers.EduCatsAddress)
+			{
+				if (_services.Device.CheckConnectivity())
+				{
+					await _services.Navigation.OpenRegistration(CrossLocalization.Translate("chek_In"));
+				}
+				else
+				{
+					_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
+				}
+			}
+			else
+			{
+				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
+							CrossLocalization.Translate("change_server"));
 			}
 		}
 

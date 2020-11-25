@@ -162,7 +162,7 @@
 	"surname": "Фамилия",
 	"patronymic": "Отчество",
 	"confirm_password": "Подтверждение пароля",
-	"select_secret_question": "Серкретный вопрос",
+	"select_secret_question": "Секретный вопрос",
 	"choose_group": "Группа",
 	"chek_In": "Регистрация",
 	"answer_to_secret_question": "Ответ",
@@ -174,9 +174,17 @@
 	"less_than_three_characters": "Вы ввели меньше 3 символов.",
 	"password_not_correct": "Неверный формат пароля",
 	"latin_password": "Используйте только латинские буквы (хотя бы одну маленькую и большую), знак подчеркивания и хотя бы одну цифру.",
-	"empty_fields": "Обязательные поля для заполнения пустые!",
+	"empty_fields": "Обязательные поля(Логин, Пароль, Подтверждение пароля, Имя, Фамилия, Группа) должны быть заполнены!",
 	"password_length_error": "Длина пароля должна быть больше 3 символов и меньше 30",
 	"invaild_server": "Неверный сервер",
-	"change_server": "Пожалуйста, измените текущий сервер на 'educats.by'"
+	"change_server": "Пожалуйста, измените текущий сервер на educats.by",
+
+	"reset_password": "Сброс пароля",
+	"new_password": "Новый пароль",
+	"change_password": "Изменение пароля",
+	"no_user": "Пользователь не найден!",
+	"invaild_answer": "Введен неверный секретный ответ",
+	"password_changed": "Пароль изменен",
+	"successful_password_change": "Успешная смена пароля"
 }
 
