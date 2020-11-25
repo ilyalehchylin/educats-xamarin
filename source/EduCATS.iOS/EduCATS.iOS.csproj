@@ -730,5 +730,5 @@
     <Folder Include="Resources\Light.xcassets\icon_headphones_cancel_blue.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_download.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_mascot_tail.imageset\" />
-  </ItemGroup>﻿
+  </ItemGroup>
 </Project>
