@@ -102,6 +102,13 @@ namespace EduCATS.Pages.Registration.ViewModels
 						return Task.FromResult<object>(null);
 					}
 
+					if (!(latin_username == true))
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
+											CrossLocalization.Translate("latin_letters"));
+						return Task.FromResult<object>(null);
+					}
+
 					if (!(Password.Length > 6 && Password.Length < 30))
 					{
 						_services.Dialogs.ShowError(CrossLocalization.Translate("password_length_error"));
@@ -112,13 +119,6 @@ namespace EduCATS.Pages.Registration.ViewModels
 					{
 						_services.Dialogs.ShowMessage(CrossLocalization.Translate("password_not_correct"),
 									CrossLocalization.Translate("latin_password"));
-						return Task.FromResult<object>(null);
-					}
-
-					if (!(latin_username == true))
-					{
-						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
-											CrossLocalization.Translate("latin_letters"));
 						return Task.FromResult<object>(null);
 					}
 
