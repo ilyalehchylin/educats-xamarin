@@ -67,7 +67,7 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 					for (int i = 0; i < NewPassword.Length; i++)
 					{
 						if (!(((NewPassword[i] >= 'a') && (NewPassword[i] <= 'z')) || ((NewPassword[i] >= 'A') && (NewPassword[i] <= 'Z')) ||
-							(NewPassword[i] > '0' && NewPassword[i] < '9')))
+							(int.Parse(NewPassword[i].ToString()) >= 0) && (int.Parse(NewPassword[i].ToString()) <= 9)))
 						{
 							latin_password = false;
 							break;
