@@ -37,7 +37,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 		}
 
 		bool checkCredentials()
-		{
+		{ 
 			if (string.IsNullOrEmpty(UserName) ||
 				string.IsNullOrEmpty(Password) ||
 				string.IsNullOrEmpty(ConfirmPassword) ||
@@ -51,7 +51,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 			return true;
 		}
 
-		protected async Task<Task<object>> startRegister()
+		public async Task<Task<object>> startRegister()
 		{
 			var uppercase = 0;
 			bool latin_password = true;
@@ -67,7 +67,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 					for (int i = 0; i < Password.Length; i++)
 					{
 						if (!(((Password[i] >= 'a') && (Password[i] <= 'z')) || ((Password[i] >= 'A') && (Password[i] <= 'Z')) ||
-							(Password[i] > '0' && Password[i] < '9')))
+							(int.Parse(Password[i].ToString()) >= 0) && (int.Parse(Password[i].ToString()) <= 9)))
 						{
 							latin_password = false;
 							break;
@@ -76,7 +76,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 					for (int i = 0; i < UserName.Length; i++)
 					{
 						if (!(((UserName[i] >= 'a') && (UserName[i] <= 'z')) || ((UserName[i] >= 'A') && (UserName[i] <= 'Z'))
-							|| (Password[i] > '0' && Password[i] < '9')))
+							|| ((int.Parse(UserName[i].ToString()) >= 0) && (int.Parse(UserName[i].ToString()) <= 9))))
 						{
 							latin_username = false;
 							break;
@@ -102,6 +102,13 @@ namespace EduCATS.Pages.Registration.ViewModels
 						return Task.FromResult<object>(null);
 					}
 
+					if (!(latin_username == true))
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
+											CrossLocalization.Translate("latin_letters"));
+						return Task.FromResult<object>(null);
+					}
+
 					if (!(Password.Length > 6 && Password.Length < 30))
 					{
 						_services.Dialogs.ShowError(CrossLocalization.Translate("password_length_error"));
@@ -112,13 +119,6 @@ namespace EduCATS.Pages.Registration.ViewModels
 					{
 						_services.Dialogs.ShowMessage(CrossLocalization.Translate("password_not_correct"),
 									CrossLocalization.Translate("latin_password"));
-						return Task.FromResult<object>(null);
-					}
-
-					if (!(latin_username == true))
-					{
-						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
-											CrossLocalization.Translate("latin_letters"));
 						return Task.FromResult<object>(null);
 					}
 

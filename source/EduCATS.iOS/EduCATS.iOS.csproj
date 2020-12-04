@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderer\UnderlineEffect.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -638,7 +639,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1451" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
     <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="MonkeyCache.FileStore">
       <Version>1.3.0</Version>
@@ -653,13 +654,13 @@
       <Version>2.4.11.982</Version>
     </PackageReference>
     <PackageReference Include="Acr.UserDialogs">
-      <Version>7.1.0.454</Version>
+      <Version>7.1.0.466</Version>
     </PackageReference>
     <PackageReference Include="Microcharts">
-      <Version>0.9.5.8</Version>
+      <Version>0.9.5.9</Version>
     </PackageReference>
     <PackageReference Include="Microcharts.Forms">
-      <Version>0.9.5.8</Version>
+      <Version>0.9.5.9</Version>
     </PackageReference>
     <PackageReference Include="Nyxbull.Plugins.CrossLocalization">
       <Version>1.3.1</Version>
@@ -673,7 +674,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="DependencyServices\" />
+    <Folder Include="Resources\Dark.xcassets\icon_headphones_light.imageset\" />
+    <Folder Include="Resources\Dark.xcassets\icon_show_password_dark.imageset\" />
+    <Folder Include="Resources\Dark.xcassets\image_background_1_dark.imageset\" />
+    <Folder Include="Resources\Dark.xcassets\image_background_2_dark.imageset\" />
+    <Folder Include="Resources\Dark.xcassets\image_background_3_dark.imageset\" />
+    <Folder Include="Resources\Dark.xcassets\image_github_logo_light.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_arrow_down.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_arrow_up.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_calendar.imageset\" />
@@ -688,10 +694,11 @@
     <Folder Include="Resources\Light.xcassets\icon_document_pdf_inactive.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_document_test_active.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_document_test_inactive.imageset\" />
+    <Folder Include="Resources\Light.xcassets\icon_download.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_expand.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_forward.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_headphones_blue.imageset\" />
-    <Folder Include="Resources\Dark.xcassets\icon_headphones_light.imageset\" />
+    <Folder Include="Resources\Light.xcassets\icon_headphones_cancel_blue.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_learning.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_settings.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_settings_about.imageset\" />
@@ -701,34 +708,23 @@
     <Folder Include="Resources\Light.xcassets\icon_settings_server.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_settings_themes.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_show_password.imageset\" />
-    <Folder Include="Resources\Dark.xcassets\icon_show_password_dark.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_stats.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_today.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_background_1.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_background_2.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_background_3.imageset\" />
-    <Folder Include="Resources\Light.xcassets\image_background_1.imageset\" />
-    <Folder Include="Resources\Light.xcassets\image_background_2.imageset\" />
-    <Folder Include="Resources\Light.xcassets\image_background_3.imageset\" />
-    <Folder Include="Resources\Dark.xcassets\image_background_1_dark.imageset\" />
-    <Folder Include="Resources\Dark.xcassets\image_background_2_dark.imageset\" />
-    <Folder Include="Resources\Dark.xcassets\image_background_3_dark.imageset\" />
-    <Folder Include="Resources\Dark.xcassets\image_github_logo_light.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_book_rectangle.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_book_square.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_circuit_rectangle.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_circuit_square.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_file_rectangle.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_file_square.imageset\" />
-    <Folder Include="Resources\Light.xcassets\image_test_rectangle.imageset\" />
-    <Folder Include="Resources\Light.xcassets\image_test_square.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_github_logo_dark.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_logo_rounded.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_mascot.imageset\" />
-    <Folder Include="Resources\Light.xcassets\image_splash_logo.imageset\" />
-    <Folder Include="Renderer\" />
-    <Folder Include="Resources\Light.xcassets\icon_headphones_cancel_blue.imageset\" />
-    <Folder Include="Resources\Light.xcassets\icon_download.imageset\" />
     <Folder Include="Resources\Light.xcassets\image_mascot_tail.imageset\" />
+    <Folder Include="Resources\Light.xcassets\image_splash_logo.imageset\" />
+    <Folder Include="Resources\Light.xcassets\image_test_rectangle.imageset\" />
+    <Folder Include="Resources\Light.xcassets\image_test_square.imageset\" />
   </ItemGroup>
 </Project>
