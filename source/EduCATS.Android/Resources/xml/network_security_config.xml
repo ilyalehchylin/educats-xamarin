@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
+    <debug-overrides> 
+        <trust-anchors> 
+            <certificates src="user" /> 
+        </trust-anchors> 
+    </debug-overrides> 
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">educats.by</domain>
         <domain includeSubdomains="true">172.16.11.72:2020</domain>
+        <domain includeSubdomains="true">educats.bntu.by</domain>
+        <domain includeSubdomains="true">host27072020.of.by</domain>
     </domain-config>
 </network-security-config>
