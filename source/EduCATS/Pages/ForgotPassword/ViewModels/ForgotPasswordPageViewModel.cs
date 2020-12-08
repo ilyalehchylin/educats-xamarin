@@ -51,29 +51,39 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 			return true;
 		}
 
-		protected async Task<object> startResetPassword()
+		public int UpperCaseLettersInPassword()
 		{
-			var uppercase = 0;
+			int uppercase = 0;
+			foreach (char symbol in NewPassword.Where(char.IsUpper))
+			{
+				uppercase++;
+			};
+			return uppercase;
+		}
+
+		public bool LatinPassword()
+		{
 			bool latin_password = true;
+			for (int i = 0; i < NewPassword.Length; i++)
+			{
+				if (!(((NewPassword[i] >= 'a') && (NewPassword[i] <= 'z')) || ((NewPassword[i] >= 'A') && (NewPassword[i] <= 'Z')) ||
+					(int.Parse(NewPassword[i].ToString()) >= 0) && (int.Parse(NewPassword[i].ToString()) <= 9)))
+				{
+					latin_password = false;
+					break;
+				}
+			}
+			return latin_password;
+		}
+
+		protected async Task<object> startResetPassword()
+		{ 
 			try
 			{
 				if (checkCredentials())
 				{
-
-					foreach (char symbol in NewPassword.Where(char.IsUpper))
-					{
-						uppercase++;
-					};
-					for (int i = 0; i < NewPassword.Length; i++)
-					{
-						if (!(((NewPassword[i] >= 'a') && (NewPassword[i] <= 'z')) || ((NewPassword[i] >= 'A') && (NewPassword[i] <= 'Z')) ||
-							(int.Parse(NewPassword[i].ToString()) >= 0) && (int.Parse(NewPassword[i].ToString()) <= 9)))
-						{
-							latin_password = false;
-							break;
-						}
-					}
-
+					var uppercase = UpperCaseLettersInPassword();
+					bool latin_password = LatinPassword();
 					if (!(Servers.Current == Servers.EduCatsAddress))
 					{
 						_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
@@ -139,7 +149,7 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 				}
 				else
 				{
-					_services.Dialogs.ShowError(CrossLocalization.Translate("empty_fields"));
+					_services.Dialogs.ShowError(CrossLocalization.Translate("empty_fields_forgot_password"));
 					return Task.FromResult<object>(null);
 				}
 			}

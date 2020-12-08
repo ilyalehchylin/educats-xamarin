@@ -153,7 +153,7 @@
 	"choose_group": "Группа",
 	"chek_In": "Рэгістрацыя",
 	"answer_to_secret_question": "Адказ",
-	"new_user_check_in": "Няма акаўнта? Рэгістрацыя",
+	"new_user_check_in": "Новы карыстальнік?",
 	"forgot_password": "Забылі пароль?",
 	"password_mismatch": "Паролі не супадаюць",
 	"username_error": "Імя карыстальніка няслушна",
@@ -172,6 +172,7 @@
 	"no_user": "Карыстальнік не знойдзены!",
 	"invaild_answer": "Уведзены няправільны сакрэтны адказ",
 	"password_changed": "Пароль зменены",
-	"successful_password_change": "Паспяховая змена пароля"
+	"successful_password_change": "Паспяховая змена пароля",
+	"empty_fields_forgot_password": "Абавязковыя палі (Лагін, Сакрэтны пытанне, Адказ, Новы пароль, Пацвярджэнне пароля) павінны быць запоўненыя!"
 
 }

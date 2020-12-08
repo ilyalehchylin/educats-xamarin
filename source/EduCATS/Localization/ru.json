@@ -166,7 +166,7 @@
 	"choose_group": "Группа",
 	"chek_In": "Регистрация",
 	"answer_to_secret_question": "Ответ",
-	"new_user_check_in": "Нет аккаунта? Регистрация",
+	"new_user_check_in": "Новый пользователь?",
 	"forgot_password": "Забыли пароль?",
 	"password_mismatch": "Пароли не совпадают",
 	"username_error": "Имя пользователя неверно",
@@ -185,6 +185,7 @@
 	"no_user": "Пользователь не найден!",
 	"invaild_answer": "Введен неверный секретный ответ",
 	"password_changed": "Пароль изменен",
-	"successful_password_change": "Успешная смена пароля"
+	"successful_password_change": "Успешная смена пароля",
+	"empty_fields_forgot_password":  "Обязательные поля(Логин, Секретный вопрос, Ответ, Новый пароль, Подтверждение пароля) должны быть заполнены!"
 }
 

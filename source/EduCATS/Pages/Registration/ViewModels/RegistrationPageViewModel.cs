@@ -36,8 +36,8 @@ namespace EduCATS.Pages.Registration.ViewModels
 			}
 		}
 
-		bool checkCredentials()
-		{ 
+		public bool checkCredentials()
+		{
 			if (string.IsNullOrEmpty(UserName) ||
 				string.IsNullOrEmpty(Password) ||
 				string.IsNullOrEmpty(ConfirmPassword) ||
@@ -51,37 +51,56 @@ namespace EduCATS.Pages.Registration.ViewModels
 			return true;
 		}
 
+		public int UpperCaseLettersInPassword()
+		{
+			int uppercase = 0;
+			foreach (char symbol in Password.Where(char.IsUpper))
+			{
+				uppercase++;
+			};
+			return uppercase;
+		}
+
+		public bool LatinPassword()
+		{
+			bool latin_password = true;
+			for (int i = 0; i < Password.Length; i++)
+			{
+				if (!(((Password[i] >= 'a') && (Password[i] <= 'z')) || ((Password[i] >= 'A') && (Password[i] <= 'Z')) ||
+					(int.Parse(Password[i].ToString()) >= 0) && (int.Parse(Password[i].ToString()) <= 9)))
+				{
+					latin_password = false;
+					break;
+				}
+			}
+			return latin_password;
+		}
+
+		public bool LatinUserName()
+		{
+			bool latin_username = true;
+			for (int i = 0; i < UserName.Length; i++)
+			{
+				if (!(((UserName[i] >= 'a') && (UserName[i] <= 'z')) || ((UserName[i] >= 'A') && (UserName[i] <= 'Z'))
+					|| ((int.Parse(UserName[i].ToString()) >= 0) && (int.Parse(UserName[i].ToString()) <= 9))))
+				{
+					latin_username = false;
+					break;
+				}
+			}
+			return latin_username;
+		}
+
 		public async Task<Task<object>> startRegister()
 		{
-			var uppercase = 0;
-			bool latin_password = true;
-			bool latin_username = true;
 			try
 			{
 				if (checkCredentials())
 				{
-					foreach (char symbol in Password.Where(char.IsUpper))
-					{
-						uppercase++;
-					};
-					for (int i = 0; i < Password.Length; i++)
-					{
-						if (!(((Password[i] >= 'a') && (Password[i] <= 'z')) || ((Password[i] >= 'A') && (Password[i] <= 'Z')) ||
-							(int.Parse(Password[i].ToString()) >= 0) && (int.Parse(Password[i].ToString()) <= 9)))
-						{
-							latin_password = false;
-							break;
-						}
-					}
-					for (int i = 0; i < UserName.Length; i++)
-					{
-						if (!(((UserName[i] >= 'a') && (UserName[i] <= 'z')) || ((UserName[i] >= 'A') && (UserName[i] <= 'Z'))
-							|| ((int.Parse(UserName[i].ToString()) >= 0) && (int.Parse(UserName[i].ToString()) <= 9))))
-						{
-							latin_username = false;
-							break;
-						}
-					}
+					SelectedQuestionId = 0;
+					int uppercase = UpperCaseLettersInPassword();
+					bool latin_password = LatinPassword();
+					bool latin_username = LatinUserName();
 					if (QuestionId == CrossLocalization.Translate("mother_last_name"))
 					{
 						SelectedQuestionId = 1;
@@ -99,6 +118,19 @@ namespace EduCATS.Pages.Registration.ViewModels
 					{
 						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
 										CrossLocalization.Translate("less_than_three_characters"));
+						return Task.FromResult<object>(null);
+						
+					}
+
+					if (SelectedQuestionId == 0 && AnswerToSecretQuestion != null)
+					{
+						_services.Dialogs.ShowMessage("Поля не заполнены","Не выбран секретный вопрос");
+						return Task.FromResult<object>(null);
+					}
+
+					if (SelectedQuestionId != 0 && AnswerToSecretQuestion == null)
+					{
+						_services.Dialogs.ShowMessage("Поля не заполнены", "Не введен ответ на секретный вопрос");
 						return Task.FromResult<object>(null);
 					}
 
@@ -147,7 +179,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 			return Task.FromResult<object>(null);
 		}
 
-		public static async Task<KeyValuePair<string, HttpStatusCode>> RegistrationPostAsync(string username, string name, string surname, string patronymic, string password, string confirmPassword,
+		public async Task<KeyValuePair<string, HttpStatusCode>> RegistrationPostAsync(string username, string name, string surname, string patronymic, string password, string confirmPassword,
 						int group, int questionId, string answerToSecretQuestion)
 		{
 			var registerUser = new RegistrationModel

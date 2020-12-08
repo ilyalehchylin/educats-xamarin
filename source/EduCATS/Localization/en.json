@@ -161,9 +161,9 @@
 	"confirm_password": "Confirm password",
 	"select_secret_question": "Specific question",
 	"choose_group": "Group",
-	"chek_In": "Registration",
+	"chek_In": "Sign Up",
 	"answer_to_secret_question": "Answer",
-	"new_user_check_in": "No account? Sign Up",
+	"new_user_check_in": "New user?",
 	"forgot_password": "Forgot password?",
 	"password_mismatch": "Passwords do not match",
 	"username_error": "Username is invalid",
@@ -182,6 +182,7 @@
 	"no_user": "User is not found!",
 	"invaild_answer": "Invalid secret answer entered",
 	"password_changed": "Password changed",
-	"successful_password_change": "Successful password change"
+	"successful_password_change": "Successful password change",
+	"empty_fields_forgot_password": "Required fields (Login, Specific question, Answer, New Password, Confirm Password) must be filled!"
 
 }

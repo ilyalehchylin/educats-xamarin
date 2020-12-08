@@ -89,7 +89,7 @@ namespace EduCATS.Pages.Login.Views
 			var parentalButton = createParentalButton();
 			var forgotPasswordButton = createForgotPasswordButton();
 			var activityIndicator = createActivityIndicator();
-			var chekInButton = createChekInButton();
+			var chekInGrid = createCheckInGrid();
 
 			var mainStackLayout = new StackLayout
 			{
@@ -103,7 +103,7 @@ namespace EduCATS.Pages.Login.Views
 					forgotPasswordButton,
 					loginButton,
 					parentalButton,
-					chekInButton,
+					chekInGrid,
 					activityIndicator,
 
 				}
@@ -111,6 +111,41 @@ namespace EduCATS.Pages.Login.Views
 
 			mainStackLayout.SetBinding(IsEnabledProperty, "IsLoadingCompleted");
 			return mainStackLayout;
+		}
+
+		Grid createCheckInGrid()
+		{
+			var chekInButton = createChekInButton();
+			var chekInLabel = createCheckInLabel();
+			var gridPanel = new Grid
+			{
+				RowDefinitions =
+				{
+					new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+				},
+				ColumnDefinitions =
+				{
+					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto)},
+				},
+				ColumnSpacing = 5,
+			};
+			gridPanel.Children.Add(chekInLabel, 0, 0);
+			gridPanel.Children.Add(chekInButton, 1, 0);
+			return gridPanel;
+		}
+
+		Label createCheckInLabel()
+		{
+			var new_user = new Label
+			{
+				Text = CrossLocalization.Translate("new_user_check_in"),
+				TextColor = Color.White,
+				HorizontalTextAlignment = TextAlignment.Center,
+				VerticalTextAlignment = TextAlignment.Center,
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+				FontSize = 20,
+			};
+			return new_user;
 		}
 
 		CachedImage createBackgroundImage()
@@ -225,7 +260,8 @@ namespace EduCATS.Pages.Login.Views
 			var parentalButton = new Button
 			{
 				Text = CrossLocalization.Translate("parental_login"),
-				FontAttributes = FontAttributes.Bold,
+				FontAttributes = FontAttributes.None,
+				TextTransform = TextTransform.None,
 				TextColor = Color.White,
 				BackgroundColor = Color.Transparent,
 				BorderColor = Color.White,
@@ -239,37 +275,41 @@ namespace EduCATS.Pages.Login.Views
 			return parentalButton;
 		}
 
-		Button createChekInButton()
+		Label createChekInButton()
 		{
-			var chekInButton = new Button
+			var chekInButton = new Label
 			{
-				Text = CrossLocalization.Translate("new_user_check_in"),
-				FontAttributes = FontAttributes.Bold,
+				Text = CrossLocalization.Translate("chek_In"),
 				TextColor = Color.White,
-				BackgroundColor = Color.Transparent,
-				HeightRequest = _controlHeight - 5,
-				Style = AppStyles.GetButtonStyle(bold: true),
-				HorizontalOptions = LayoutOptions.Start,
+				HorizontalTextAlignment = TextAlignment.Center,
+				VerticalTextAlignment = TextAlignment.Center,
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+				FontSize = 20,
+				Padding = new Thickness(0, 15, 0, 15)
 			};
 			chekInButton.Effects.Add(new UnderlineEffect());
-			chekInButton.SetBinding(Button.CommandProperty, "RegistrationOpenCommand");
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "RegistrationOpenCommand");
+			chekInButton.GestureRecognizers.Add(tapGestureRecognizer);
 			return chekInButton;
 		}
 
-		Button createForgotPasswordButton()
+		Label createForgotPasswordButton()
 		{
-			var ForgotPasswordButton = new Button
+			var ForgotPasswordButton = new Label
 			{
 				Text = CrossLocalization.Translate("forgot_password"),
-				FontAttributes = FontAttributes.Bold,
 				TextColor = Color.White,
-				BackgroundColor = Color.Transparent,
-				HeightRequest = _controlHeight - 5,
-				Style = AppStyles.GetButtonStyle(bold: true),
-				HorizontalOptions = LayoutOptions.End,
+				HorizontalTextAlignment = TextAlignment.Center,
+				VerticalTextAlignment = TextAlignment.Center,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				FontSize = 20,
+				Padding = new Thickness(0, 10, 0, 15)
 			};
 			ForgotPasswordButton.Effects.Add(new UnderlineEffect());
-			ForgotPasswordButton.SetBinding(Button.CommandProperty, "ForgotPasswordCommand");
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "ForgotPasswordCommand");
+			ForgotPasswordButton.GestureRecognizers.Add(tapGestureRecognizer);
 			return ForgotPasswordButton;
 		}
 
@@ -279,7 +319,8 @@ namespace EduCATS.Pages.Login.Views
 			var loginButton = new Button
 			{
 				Text = CrossLocalization.Translate("login_text"),
-				FontAttributes = FontAttributes.Bold,
+				FontAttributes = FontAttributes.None,
+				TextTransform = TextTransform.None,
 				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
 				Margin = _baseSpacing,
