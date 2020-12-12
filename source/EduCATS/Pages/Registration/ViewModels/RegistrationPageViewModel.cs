@@ -64,14 +64,22 @@ namespace EduCATS.Pages.Registration.ViewModels
 		public bool LatinPassword()
 		{
 			bool latin_password = true;
-			for (int i = 0; i < Password.Length; i++)
+			try
 			{
-				if (!(((Password[i] >= 'a') && (Password[i] <= 'z')) || ((Password[i] >= 'A') && (Password[i] <= 'Z')) ||
-					(int.Parse(Password[i].ToString()) >= 0) && (int.Parse(Password[i].ToString()) <= 9)))
+				
+				for (int i = 0; i < Password.Length; i++)
 				{
-					latin_password = false;
-					break;
+					if (!(((Password[i] >= 'a') && (Password[i] <= 'z')) || ((Password[i] >= 'A') && (Password[i] <= 'Z')) ||
+						(int.Parse(Password[i].ToString()) >= 0) && (int.Parse(Password[i].ToString()) <= 9)))
+					{
+						latin_password = false;
+						break;
+					}
 				}
+			}
+			catch
+			{
+				latin_password = false;
 			}
 			return latin_password;
 		}
@@ -79,14 +87,21 @@ namespace EduCATS.Pages.Registration.ViewModels
 		public bool LatinUserName()
 		{
 			bool latin_username = true;
-			for (int i = 0; i < UserName.Length; i++)
+			try
 			{
-				if (!(((UserName[i] >= 'a') && (UserName[i] <= 'z')) || ((UserName[i] >= 'A') && (UserName[i] <= 'Z'))
-					|| ((int.Parse(UserName[i].ToString()) >= 0) && (int.Parse(UserName[i].ToString()) <= 9))))
+				for (int i = 0; i < UserName.Length; i++)
 				{
-					latin_username = false;
-					break;
+					if (!(((UserName[i] >= 'a') && (UserName[i] <= 'z')) || ((UserName[i] >= 'A') && (UserName[i] <= 'Z'))
+						|| ((int.Parse(UserName[i].ToString()) >= 0) && (int.Parse(UserName[i].ToString()) <= 9))))
+					{
+						latin_username = false;
+						break;
+					}
 				}
+			}
+			catch
+			{
+				latin_username = false;
 			}
 			return latin_username;
 		}

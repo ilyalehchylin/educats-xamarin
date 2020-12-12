@@ -143,7 +143,7 @@ namespace EduCATS.Pages.Login.Views
 				HorizontalTextAlignment = TextAlignment.Center,
 				VerticalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.StartAndExpand,
-				FontSize = 20,
+				FontSize = 18,
 			};
 			return new_user;
 		}
@@ -284,7 +284,7 @@ namespace EduCATS.Pages.Login.Views
 				HorizontalTextAlignment = TextAlignment.Center,
 				VerticalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.StartAndExpand,
-				FontSize = 20,
+				FontSize = 18,
 				Padding = new Thickness(0, 15, 0, 15)
 			};
 			chekInButton.Effects.Add(new UnderlineEffect());
@@ -303,7 +303,7 @@ namespace EduCATS.Pages.Login.Views
 				HorizontalTextAlignment = TextAlignment.Center,
 				VerticalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.EndAndExpand,
-				FontSize = 20,
+				FontSize = 18,
 				Padding = new Thickness(0, 10, 0, 15)
 			};
 			ForgotPasswordButton.Effects.Add(new UnderlineEffect());
