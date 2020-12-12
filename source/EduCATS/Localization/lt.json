@@ -155,7 +155,7 @@
 	"select_group": "Grupė",
 	"chek_In": "Registracija",
 	"answer_to_secret_question": "Atsakyti",
-	"new_user_check_in": "Neturite paskyros? Registruotis",
+	"new_user_check_in": "Neturite paskyros?",
 	"forgot_password": "Pamiršote slaptažodį?",
 	"password_mismatch": "Slaptažodžiai nesutampa",
 	"username_error": "Vartotojo vardas neteisingas",
@@ -174,5 +174,6 @@
 	"no_user": "Vartotojas nerastas!",
 	"invaild_answer": "Įvestas neteisingas slaptas atsakymas",
 	"password_changed": "Slaptažodis pakeistas",
-	"successful_password_change": "Sėkmingas slaptažodžio pakeitimas"
+	"successful_password_change": "Sėkmingas slaptažodžio pakeitimas",
+	"empty_fields_forgot_password": "Būtini laukai (prisijungimas, saugos klausimas, atsakymas, naujas slaptažodis, patvirtinimo slaptažodis) turi būti užpildyti!"
 }

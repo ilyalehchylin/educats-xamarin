@@ -155,7 +155,7 @@
 	"choose_group": "Grupa",
 	"chek_In": "Rejestracja",
 	"answer_to_secret_question": "Odpowiedz",
-	"new_user_check_in": "Nie masz konta? Zarejestruj się",
+	"new_user_check_in": "Nowy użytkownik?",
 	"forgot_password": "Nie pamiętasz hasła?",
 	"password_mismatch": "Hasła się nie zgadzają",
 	"username_error": "Nazwa użytkownika jest nieprawidłowa",
@@ -174,5 +174,6 @@
 	"no_user": "Nie znaleziono użytkownika!",
 	"invaild_answer": "Wprowadzono nieprawidłową tajną odpowiedź",
 	"password_changed": "Hasło zostało zmienione",
-	"successful_password_change": "Pomyślna zmiana hasła"
+	"successful_password_change": "Pomyślna zmiana hasła",
+	"empty_fields_forgot_password": "Wymagane pola (login, pytanie zabezpieczające, odpowiedź, nowe hasło, potwierdź hasło) muszą być wypełnione!"
 }

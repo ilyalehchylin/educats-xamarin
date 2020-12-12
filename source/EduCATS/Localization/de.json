@@ -155,7 +155,7 @@
 	"select_group": "Group",
 	"chek_In": "Registrierung",
 	"answer_to_secret_question": "Answer",
-	"new_user_check_in": "Neuer Benutzer? Registrieren",
+	"new_user_check_in": "Neuer Benutzer?",
 	"forgot_password": "Passwort vergessen?",
 	"password_mismatch": "Passwörter stimmen nicht überein",
 	"username_error": "Benutzername ist ungültig",
@@ -174,5 +174,7 @@
 	"no_user": "Benutzer wird nicht gefunden!",
 	"invaild_answer": "Ungültige geheime Antwort eingegeben",
 	"password_changed": "Passwort geändert",
-	"successful_password_change": "Erfolgreiche Passwortänderung"
+	"successful_password_change": "Erfolgreiche Passwortänderung",
+	"empty_fields_forgot_password": "Erforderliche Felder (Login, Sicherheitsfrage, Antwort, Neues Passwort, Passwort bestätigen) müssen ausgefüllt werden!"
+
 }

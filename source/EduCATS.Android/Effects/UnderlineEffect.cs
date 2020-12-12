@@ -1,4 +1,5 @@
 ﻿using Android.Graphics;
+using Android.Widget;
 using EduCATS.Droid.Effects;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -10,14 +11,14 @@ namespace EduCATS.Droid.Effects
 	{
 		protected override void OnAttached()
 		{
-			var textView = (Android.Widget.Button)Control;
-			textView.PaintFlags |= PaintFlags.UnderlineText;
+			var text = (TextView)Control;
+			text.PaintFlags |= PaintFlags.UnderlineText;
 		}
 
 		protected override void OnDetached()
 		{
-			var textView = (Android.Widget.Button)Control;
-			textView.PaintFlags &= ~PaintFlags.UnderlineText;
+			var text = (TextView)Control;
+			text.PaintFlags &= ~PaintFlags.UnderlineText;
 		}
 	}
 }
