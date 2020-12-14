@@ -37,7 +37,7 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 			}
 		}
 
-		bool checkCredentials()
+		public bool checkCredentials()
 		{
 			if (string.IsNullOrEmpty(UserName) ||
 				string.IsNullOrEmpty(NewPassword) ||
@@ -64,14 +64,21 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 		public bool LatinPassword()
 		{
 			bool latin_password = true;
-			for (int i = 0; i < NewPassword.Length; i++)
+			try
 			{
-				if (!(((NewPassword[i] >= 'a') && (NewPassword[i] <= 'z')) || ((NewPassword[i] >= 'A') && (NewPassword[i] <= 'Z')) ||
-					(int.Parse(NewPassword[i].ToString()) >= 0) && (int.Parse(NewPassword[i].ToString()) <= 9)))
+				for (int i = 0; i < NewPassword.Length; i++)
 				{
-					latin_password = false;
-					break;
+					if (!(((NewPassword[i] >= 'a') && (NewPassword[i] <= 'z')) || ((NewPassword[i] >= 'A') && (NewPassword[i] <= 'Z')) ||
+						(int.Parse(NewPassword[i].ToString()) >= 0) && (int.Parse(NewPassword[i].ToString()) <= 9)))
+					{
+						latin_password = false;
+						break;
+					}
 				}
+			}
+			catch
+			{
+				latin_password = false;
 			}
 			return latin_password;
 		}
@@ -93,7 +100,7 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 
 					if (!(NewPassword.Length > 6 && NewPassword.Length < 30))
 					{
-						_services.Dialogs.ShowError("password_length_error");
+						_services.Dialogs.ShowError(CrossLocalization.Translate("password_length_error"));
 						return Task.FromResult<object>(null);
 					}
 
