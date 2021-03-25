@@ -3,9 +3,15 @@ using System.Threading.Tasks;
 using EduCATS.Data.Models;
 using EduCATS.Pages.Eemc.Views;
 using EduCATS.Pages.Files.Views;
+using EduCATS.Pages.ForgotPassword.Views;
 using EduCATS.Pages.Login.Views;
 using EduCATS.Pages.Main;
+using EduCATS.Pages.Parental.FindGroup.Models;
+using EduCATS.Pages.Parental.FindGroup.Views;
+using EduCATS.Pages.Parental.Statistics;
+using EduCATS.Pages.Parental.Statistics.Views;
 using EduCATS.Pages.Recommendations.Views;
+using EduCATS.Pages.Registration.Views;
 using EduCATS.Pages.Settings.About.Views;
 using EduCATS.Pages.Settings.Base.Views;
 using EduCATS.Pages.Settings.Fonts.Views;
@@ -20,6 +26,7 @@ using EduCATS.Pages.Testing.Passing.Views;
 using EduCATS.Pages.Testing.Results.Views;
 using EduCATS.Pages.Today.NewsDetails.Views;
 using EduCATS.Themes;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Helpers.Forms.Pages
@@ -64,6 +71,10 @@ namespace EduCATS.Helpers.Forms.Pages
 		public void OpenMain() =>
 			switchMainPage(new MainPageView());
 
+		public void OpenParental() => switchMainPage(new FindGroupPageView());
+
+		public void OpenParentalStat(IPlatformServices _services,GroupInfo group) => pushPage(new ParentalsStatsPageView(_services, group),CrossLocalization.Translate("main_statistics"));
+
 		/// <summary>
 		/// Open news details page.
 		/// </summary>
@@ -81,6 +92,15 @@ namespace EduCATS.Helpers.Forms.Pages
 		public async Task OpenStudentsListStats(
 			int pageIndex, int subjectId, List<StatsStudentModel> students, string title) =>
 			await pushPage(new StudentsPageView(pageIndex, subjectId, students), title);
+
+		/// <summary>
+		/// Open page with students List.
+		/// </summary>
+		/// <param name="pageIndex">Index of a page to open after choosing a student.</param>
+		/// <returns>Task.</returns>
+		public async Task OpenParentalStudentsListStats(IPlatformServices services,
+			int pageIndex, int subjectId, List<StatsStudentModel> students, string title) =>
+			await pushPage(new ParentalStudentPageView(services, pageIndex, subjectId, students), title);
 
 		/// <summary>
 		/// Open page with detailed statistics by page type.
@@ -233,5 +253,11 @@ namespace EduCATS.Helpers.Forms.Pages
 			BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
 			BarTextColor = Color.FromHex(Theme.Current.BaseAppColor)
 		};
+
+		public async Task OpenRegistration(string title) =>
+					await pushPage(new RegistrationPageView(), title);
+
+		public async Task OpenForgotPassword(string title) =>
+			await pushPage(new ForgotPasswordPageView(), title);
 	}
 }

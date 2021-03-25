@@ -8,6 +8,7 @@ using FFImageLoading.Transformations;
 using System.Collections.Generic;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
+using EduCATS.Helpers.Forms.Effects;
 
 namespace EduCATS.Pages.Login.Views
 {
@@ -56,16 +57,19 @@ namespace EduCATS.Pages.Login.Views
 			var settingsIcon = createSettingsIcon();
 			var mainLayout = createLoginForm();
 
-			var scrollView = new ScrollView {
+			var scrollView = new ScrollView
+			{
 				VerticalOptions = LayoutOptions.FillAndExpand,
-				Content = new StackLayout {
+				Content = new StackLayout
+				{
 					Children = {
 						mainLayout
 					}
 				}
 			};
 
-			Content = new Grid {
+			Content = new Grid
+			{
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				Children = {
 					backgroundImage,
@@ -82,9 +86,13 @@ namespace EduCATS.Pages.Login.Views
 			var usernameEntry = createUsernameEntry(entryStyle);
 			var passwordEntryGrid = createPasswordGrid(entryStyle);
 			var loginButton = createLoginButton();
+			var parentalButton = createParentalButton();
+			var forgotPasswordButton = createForgotPasswordButton();
 			var activityIndicator = createActivityIndicator();
+			var chekInGrid = createCheckInGrid();
 
-			var mainStackLayout = new StackLayout {
+			var mainStackLayout = new StackLayout
+			{
 				Spacing = _loginFormSpacing,
 				Padding = _loginFormPadding,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -92,8 +100,12 @@ namespace EduCATS.Pages.Login.Views
 					mascotImage,
 					usernameEntry,
 					passwordEntryGrid,
+					forgotPasswordButton,
 					loginButton,
-					activityIndicator
+					parentalButton,
+					chekInGrid,
+					activityIndicator,
+
 				}
 			};
 
@@ -101,9 +113,45 @@ namespace EduCATS.Pages.Login.Views
 			return mainStackLayout;
 		}
 
+		Grid createCheckInGrid()
+		{
+			var chekInButton = createChekInButton();
+			var chekInLabel = createCheckInLabel();
+			var gridPanel = new Grid
+			{
+				RowDefinitions =
+				{
+					new RowDefinition { Height = new GridLength(1, GridUnitType.Star) },
+				},
+				ColumnDefinitions =
+				{
+					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Auto)},
+				},
+				ColumnSpacing = 5,
+			};
+			gridPanel.Children.Add(chekInLabel, 0, 0);
+			gridPanel.Children.Add(chekInButton, 1, 0);
+			return gridPanel;
+		}
+
+		Label createCheckInLabel()
+		{
+			var new_user = new Label
+			{
+				Text = CrossLocalization.Translate("new_user_check_in"),
+				TextColor = Color.White,
+				HorizontalTextAlignment = TextAlignment.Center,
+				VerticalTextAlignment = TextAlignment.Center,
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+				FontSize = 18,
+			};
+			return new_user;
+		}
+
 		CachedImage createBackgroundImage()
 		{
-			return new CachedImage {
+			return new CachedImage
+			{
 				Aspect = Aspect.AspectFill,
 				Source = ImageSource.FromFile(getRandomBackgroundImage())
 			};
@@ -111,7 +159,8 @@ namespace EduCATS.Pages.Login.Views
 
 		CachedImage createSettingsIcon()
 		{
-			var settingsIcon = new CachedImage {
+			var settingsIcon = new CachedImage
+			{
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Margin = Device.RuntimePlatform == Device.iOS ? _iosSettingsMargin : _androidSettingsMargin,
@@ -135,23 +184,27 @@ namespace EduCATS.Pages.Login.Views
 
 		Grid createMascotImage()
 		{
-			_mascotTailImage = new CachedImage {
+			_mascotTailImage = new CachedImage
+			{
 				Margin = _mascotTailMargin,
 				HorizontalOptions = LayoutOptions.End,
 				VerticalOptions = LayoutOptions.End,
 				Source = ImageSource.FromFile(Theme.Current.LoginMascotTailImage)
 			};
 
-			var mascotImage = new CachedImage {
+			var mascotImage = new CachedImage
+			{
 				HeightRequest = _mascotImage,
 				Source = ImageSource.FromFile(Theme.Current.LoginMascotImage)
 			};
 
-			mascotImage.GestureRecognizers.Add(new TapGestureRecognizer {
+			mascotImage.GestureRecognizers.Add(new TapGestureRecognizer
+			{
 				Command = new Command(() => animateMascotTail())
 			});
 
-			return new Grid {
+			return new Grid
+			{
 				Children = {
 					_mascotTailImage,
 					mascotImage
@@ -161,7 +214,8 @@ namespace EduCATS.Pages.Login.Views
 
 		Entry createUsernameEntry(Style style)
 		{
-			var username = new Entry {
+			var username = new Entry
+			{
 				Style = style,
 				ReturnType = ReturnType.Next,
 				Placeholder = CrossLocalization.Translate("login_username")
@@ -176,7 +230,8 @@ namespace EduCATS.Pages.Login.Views
 			var passwordEntry = createPasswordEntry(style);
 			var showPasswordImage = createShowPasswordImage();
 
-			return new Grid {
+			return new Grid
+			{
 				Children = {
 					passwordEntry,
 					showPasswordImage
@@ -186,7 +241,8 @@ namespace EduCATS.Pages.Login.Views
 
 		Entry createPasswordEntry(Style style)
 		{
-			var password = new Entry {
+			var password = new Entry
+			{
 				Style = style,
 				IsPassword = true,
 				ReturnType = ReturnType.Done,
@@ -199,11 +255,74 @@ namespace EduCATS.Pages.Login.Views
 			return password;
 		}
 
+		Button createParentalButton()
+		{
+			var parentalButton = new Button
+			{
+				Text = CrossLocalization.Translate("parental_login"),
+				FontAttributes = FontAttributes.None,
+				TextTransform = TextTransform.None,
+				TextColor = Color.White,
+				BackgroundColor = Color.Transparent,
+				BorderColor = Color.White,
+				BorderWidth = 1,
+				Margin = _baseSpacing,
+				HeightRequest = _controlHeight,
+				Style = AppStyles.GetButtonStyle(bold: true)
+			};
+
+			parentalButton.SetBinding(Button.CommandProperty, "ParentalCommand");
+			return parentalButton;
+		}
+
+		Label createChekInButton()
+		{
+			var chekInButton = new Label
+			{
+				Text = CrossLocalization.Translate("chek_In"),
+				TextColor = Color.White,
+				HorizontalTextAlignment = TextAlignment.Center,
+				VerticalTextAlignment = TextAlignment.Center,
+				HorizontalOptions = LayoutOptions.StartAndExpand,
+				FontSize = 18,
+				Padding = new Thickness(0, 15, 0, 15),
+				TextDecorations = TextDecorations.Underline
+			};
+
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "RegistrationOpenCommand");
+			chekInButton.GestureRecognizers.Add(tapGestureRecognizer);
+			return chekInButton;
+		}
+
+		Label createForgotPasswordButton()
+		{
+			var ForgotPasswordButton = new Label
+			{
+				Text = CrossLocalization.Translate("forgot_password"),
+				TextColor = Color.White,
+				HorizontalTextAlignment = TextAlignment.Center,
+				VerticalTextAlignment = TextAlignment.Center,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				FontSize = 18,
+				Padding = new Thickness(0, 10, 0, 15),
+				TextDecorations = TextDecorations.Underline
+			};
+
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "ForgotPasswordCommand");
+			ForgotPasswordButton.GestureRecognizers.Add(tapGestureRecognizer);
+			return ForgotPasswordButton;
+		}
+
+
 		Button createLoginButton()
 		{
-			var loginButton = new Button {
+			var loginButton = new Button
+			{
 				Text = CrossLocalization.Translate("login_text"),
-				FontAttributes = FontAttributes.Bold,
+				FontAttributes = FontAttributes.None,
+				TextTransform = TextTransform.None,
 				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
 				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
 				Margin = _baseSpacing,
@@ -217,7 +336,8 @@ namespace EduCATS.Pages.Login.Views
 
 		CachedImage createShowPasswordImage()
 		{
-			var showPasswordImage = new CachedImage {
+			var showPasswordImage = new CachedImage
+			{
 				HeightRequest = _showPasswordIconSize,
 				Aspect = Aspect.AspectFit,
 				Margin = _showPasswordIconMargin,
@@ -234,7 +354,8 @@ namespace EduCATS.Pages.Login.Views
 
 		ActivityIndicator createActivityIndicator()
 		{
-			var activityIndicator = new ActivityIndicator {
+			var activityIndicator = new ActivityIndicator
+			{
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				Margin = _baseSpacing,
 				Color = Color.White
@@ -249,12 +370,14 @@ namespace EduCATS.Pages.Login.Views
 		{
 			var style = AppStyles.GetEntryStyle();
 
-			style.Setters.Add(new Setter {
+			style.Setters.Add(new Setter
+			{
 				Property = HeightRequestProperty,
 				Value = _controlHeight
 			});
 
-			style.Setters.Add(new Setter {
+			style.Setters.Add(new Setter
+			{
 				Property = BackgroundColorProperty,
 				Value = Theme.Current.LoginEntryBackgroundColor
 			});
@@ -272,7 +395,8 @@ namespace EduCATS.Pages.Login.Views
 		void animateMascotTail()
 		{
 			Device.BeginInvokeOnMainThread(async () => {
-				if (_isTailAnimationRunning) {
+				if (_isTailAnimationRunning)
+				{
 					return;
 				}
 
@@ -285,3 +409,4 @@ namespace EduCATS.Pages.Login.Views
 		}
 	}
 }
+

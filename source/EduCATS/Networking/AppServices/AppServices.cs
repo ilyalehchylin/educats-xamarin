@@ -225,6 +225,12 @@ namespace EduCATS.Networking.AppServices
 				$"{Links.GetRecomendations}?subjectId={subjectId}&studentId={userId}");
 		}
 
+		public static async Task<object> GetGroupInfo(string groupName)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetGroupInfo}{groupName}");
+		}
+
 		/// <summary>
 		/// Get body for authorize request.
 		/// </summary>

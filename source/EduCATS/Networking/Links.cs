@@ -48,8 +48,7 @@
 		/// <summary>
 		/// Get lectures URL.
 		/// </summary>
-		public static string GetLectures =>
-			$"{Servers.Current}/Services/CoreService.svc/GetLecturesMarkVisitingV2";
+		public static string GetLectures =>$"{Servers.Current}/Services/Lectures/LecturesService.svc/GetLecturesMarkVisitingV2";
 
 		/// <summary>
 		/// Get avaiable tests URL.
@@ -103,5 +102,25 @@
 		/// Get recommendations URL.
 		/// </summary>
 		public static string GetRecomendations => $"{Servers.Current}/Tests/GetRecomendations";
+
+		/// <summary>
+		/// Get parental URL.
+		/// </summary>
+		public static string GetGroupInfo => $"{Servers.Current}/Services/Parental/ParentalService.svc/GetGroupSubjectsByGroupName/";
+
+		/// <summary>
+		/// Get registration URL.
+		/// </summary>
+		public static string Registration => $"{Servers.Current}/Account/Register/";
+
+		/// <summary>
+		/// Get verification URL.
+		/// </summary>
+		public static string VerifySecretQuestion => $"{Servers.Current}/Account/VerifySecretQuestion?";
+
+		/// <summary>
+		/// Get reset password URL.
+		/// </summary>
+		public static string ResetPassword => $"{Servers.Current}/Account/ResetPassword";
 	}
 }

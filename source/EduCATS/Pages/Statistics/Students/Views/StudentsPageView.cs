@@ -23,7 +23,9 @@ namespace EduCATS.Pages.Statistics.Students.Views
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
-			BindingContext = new StudentsPageViewModel(new PlatformServices(), subjectId, students, pageIndex);
+			var studentsPageViewModel = new StudentsPageViewModel(new PlatformServices(), subjectId, students, pageIndex);
+			studentsPageViewModel.Init();
+			BindingContext = studentsPageViewModel;
 			createViews();
 		}
 

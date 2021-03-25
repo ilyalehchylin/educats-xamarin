@@ -1,0 +1,180 @@
+﻿{
+	"base_ok": "OK",
+	"base_no": "Nein",
+	"base_yes": "Ja",
+	"base_error": "Fehler",
+	"base_cancel": "Abbruch",
+	"base_warning": "Achtung",
+	"base_loading": "Laden...",
+	"base_unexpected_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"base_connection_error": "Keine Internetverbindung. Überprüfen Sie die Netzwerkeinstellungen und versuchen Sie es erneut.",
+	"base_no_data": "Keine Daten angezeigt werden",
+
+	"contributor_ilya_lehchylin": "Ilya Legtschilin",
+	"contributor_julia_popova": "Yuliya Popova",
+
+	"role_student": "Student",
+	"role_professor": "Lehrer",
+
+	"server_test": "Testserver",
+	"server_local": "Lokaler Server",
+	"server_stable": "Stabiler Server",
+
+	"theme_default": "Standard Thema (Helle)",
+	"theme_dark": "Dunkle Thema",
+
+	"font_default": "Standardschriftart",
+
+	"login_username": "Benutzername",
+	"login_password": "Passwort",
+	"login_text": "Anmelden",
+	"login_loading": "Anmeldung...",
+	"login_profile_loading": "Profildaten wird angeruft...",
+	"login_empty_credentials_error": "Benutzername und Passwort sind erforderlich.",
+	"login_error": "Anmeldung fehlschlagen. Bitte, uberprufen Sie die eingegebenen Daten.",
+	"login_user_profile_error": "Fehler beim abrufen von Profildaten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+
+	"main_today": "Heute",
+	"main_learning": "Ausbildung",
+	"main_statistics": "Statistik",
+	"main_settings": "Einstellungen",
+
+	"today_subjects": "Studienfächer",
+	"today_news": "Nachrichten",
+	"today_news_load_error": "Fehler beim abrufen der Nachrichtenliste. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+	"today_subjects_error": "Fehler beim abrufen der Artikelliste. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+	"today_calendar_error": "Fehler beim abrufen der Liste der Studienfachern im Kalender. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+
+	"news_details_title": "Nachrichten",
+
+	"subjects_choose": "Wählen Sie einen Gegenstand",
+
+	"stats_marks_error": "Fehler beim abrufen von Statistiken. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+	"stats_expand_chart_text": "Genauer",
+	"stats_collapse_chart_text": "Verbergen",
+	"stats_chart_average_labs": "Durchschnittliche Note für Laborarbeiten",
+	"stats_chart_average_tests": "Durchschnittliche Note für Tests",
+	"stats_chart_rating": "Bewertung",
+	"stats_chart_not_enough_data": "Nicht genügend Daten, um das Diagramm anzuzeigen",
+	"stats_page_labs_rating": "Noten zu Laborarbeiten",
+	"stats_page_labs_visiting": "Fehlzeiten der Laborarbeiten",
+	"stats_page_lectures_visiting": "Fehlzeiten der Vorträge",
+	"stats_summary_rating": " Durchschnittliche Bewertung ",
+	"stats_summary_visiting": "Insgesamt verpasste Stunden",
+
+	"groups_choose": "Wählen Sie eine Gruppe aus",
+	"groups_fetch_error": " Fehler beim abrufen der Gruppenliste. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+
+	"stats_students_search_text": "Studenten suchen...",
+
+	"labs_fetch_error": "Fehler beim Empfang von Laborarbeiten. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+
+	"lectures_fetch_error": "Fehler beim Empfang von Laborarbeiten. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+
+	"learning_card_tests": "Tests",
+	"learning_card_eemc": "Methodischer Komplex",
+	"learning_card_files": "Dateien",
+	"learning_card_adaptive": "Adaptives lernen",
+
+	"testing_get_tests_error": "Fehler beim abrufen von Tests. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+	"testing_knowledge_control": "Tests zur Wissenskontrolle",
+	"testing_self_study": "Tests zur Selbstkontrolle",
+	"testing_start_test_title": "Möchten Sie den Test starten?",
+	"testing_start_test_description": "Nach der Bestätigung startet der Timer. Jede unbeantwortete Frage wird nach Ablauf des Timers falsch sein.",
+
+	"get_test_error": "Fehler beim abrufen von Testdetails. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"get_test_question_error": "Fehler beim abrufen der Frage. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"answer_question_error": "Fehler bei der Beantwortung der Frage. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"answer_question_not_selected_error": "Sie haben keine Antworten ausgewählt. Bitte beantworten Sie die Frage.",
+	"question_title": "Frage",
+
+	"test_passing_options": "Antwortoptionen",
+	"test_passing_skip": " VERPASSEN ",
+	"test_passing_answer": "ANTWORTEN",
+	"test_passing_cancel_message": "Möchten Sie den Test wirklich unterbrechen? Alle unbeantworteten Fragen werden falsch sein.",
+
+	"test_results_title": "Ergebnisse",
+	"test_results_error": "Fehler beim abrufen der Testergebnisse. Bitte Kontaktieren Sie den Support.",
+	"test_results_label": "Ihre Note",
+	"test_results_time": " Verbrachte Zeit",
+
+	"eemc_root_concepts_error": "Fehler beim abrufen der Liste der Unterrichtsmaterialien. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"eemc_concept_tree_error": "Fehler beim abrufen der Liste der Unterrichtsmaterialien. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"eemc_back_text": "Zurück",
+
+	"files_header": "Dateien zum herunterladen",
+	"files_fetch_error": "Fehler beim abrufen der Dateiliste. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"files_downloading": "Herunterladen im Prozess",
+	"files_downloading_error": "Fehler beim herunterladen dieser Datei. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"files_megabytes": "MB",
+
+	"recommendations_fetch_error": "Fehler beim abrufen von Empfehlungen. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+
+	"settings_server": "Server",
+	"settings_language": "Sprache",
+	"settings_theme": "Thema",
+	"settings_font": "Text & Schriftart",
+	"settings_about": "Über die App ",
+	"settings_logout": "Abmelden",
+	"settings_logout_message": "Möchten Sie wirklich abmelden?",
+
+	"settings_language_system": "Systemsprache",
+	"settings_language_system_description": "Systemsprache als Hauptsprache verwenden",
+	"settings_language_choose": "Sprachauswahl",
+	"settings_language_change_message": " Möchten Sie die Sprache wirklich ändern? Durch diese Aktion wird die App neu gestartet.",
+
+	"settings_server_choose": "Serverauswahl",
+	"settings_server_change_message": "\" Möchten Sie den Server wirklich ändern? Diese Aktion führt zur Abmeldung.”",
+
+	"settings_theme_choose": "Themenauswahl",
+	"settings_theme_change_message": " Möchten Sie das Thema wirklich ändern? Durch diese Aktion wird die App neu gestartet.",
+
+	"settings_font_choose": "Schriftauswahl",
+	"settings_font_change_message": "Möchten Sie die Schriftart wirklich ändern? Durch diese Aktion wird die App neu gestartet.",
+	"settings_font_large": "Große Schriftart",
+	"settings_font_large_description": "Schriftart in der App größer machen.",
+
+	"settings_about_app_version": "Version",
+	"settings_about_app_build": "Assembling ",
+	"settings_about_release_notes": "Informationen zur Assembling",
+	"settings_about_open_source": "Mit GitHub offnen",
+	"settings_about_open_web_version": "Web-Version öffnen",
+	"settings_about_send_logs": "Fehlerprotokolle senden",
+	"settings_about_send_logs_not_supported": "Diese Funktion wird von Ihrem Gerät nicht unterstützt",
+	"settings_about_send_logs_error": "Fehler beim senden von Protokollen. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"settings_about_contributors": "Autoren",
+
+	"pets_name": "Wie heißt Ihr Lieblingstier?",
+	"hobby": "Was ist dein Hobby?",
+	"mother_last_name": "Mädchenname der Mutter?",
+	"name": "Name",
+	"surname": "Vorname",
+	"patronymic": "Patronym",
+	"confirm_password": "Confirm password",
+	"select_secret_question": "Spezifische Frage",
+	"select_group": "Group",
+	"chek_In": "Registrierung",
+	"answer_to_secret_question": "Answer",
+	"new_user_check_in": "Neuer Benutzer?",
+	"forgot_password": "Passwort vergessen?",
+	"password_mismatch": "Passwörter stimmen nicht überein",
+	"username_error": "Benutzername ist ungültig",
+	"latin_letters": "Verwenden Sie nur lateinische Buchstaben, Zahlen, Punkte oder Unterstriche.",
+	"less_than_three_characters": "Sie haben weniger als 3 Zeichen eingegeben.",
+	"password_not_correct": "Ungültiges Passwortformat",
+	"latin_password": "Verwenden Sie nur lateinische Buchstaben (mindestens einen Groß- und Kleinbuchstaben), einen Unterstrich und mindestens eine Zahl.",
+	"empty_fields": "Erforderliche Felder (Login, Passwort, Passwort bestätigen, Vorname, Nachname, Gruppe) müssen ausgefüllt werden!",
+	"password_length_error": "Die Passwortlänge muss mehr als 3 Zeichen und weniger als 30 Zeichen betragen",
+	"invaild_server": "Ungültiger Server",
+	"change_server": "Bitte ändern Sie den aktuellen Server in educats.by",
+
+	"reset_password": "Passwort zurücksetzen",
+	"new_password": "Neues Kennwort",
+	"change_password": "Ändere das Passwort",
+	"no_user": "Benutzer wird nicht gefunden!",
+	"invaild_answer": "Ungültige geheime Antwort eingegeben",
+	"password_changed": "Passwort geändert",
+	"successful_password_change": "Erfolgreiche Passwortänderung",
+	"empty_fields_forgot_password": "Erforderliche Felder (Login, Sicherheitsfrage, Antwort, Neues Passwort, Passwort bestätigen) müssen ausgefüllt werden!"
+
+}

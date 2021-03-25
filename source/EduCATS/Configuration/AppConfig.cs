@@ -80,6 +80,10 @@ namespace EduCATS.Configuration
 
 			CrossLocalization.AddLanguageSupport(Languages.EN);
 			CrossLocalization.AddLanguageSupport(Languages.RU);
+			CrossLocalization.AddLanguageSupport(Languages.LT);
+			CrossLocalization.AddLanguageSupport(Languages.BE);
+			CrossLocalization.AddLanguageSupport(Languages.DE);
+			CrossLocalization.AddLanguageSupport(Languages.PL);
 			CrossLocalization.SetDefaultLanguage(Languages.EN.LangCode);
 			CrossLocalization.SetLanguage(_services.Preferences.LanguageCode);
 		}
