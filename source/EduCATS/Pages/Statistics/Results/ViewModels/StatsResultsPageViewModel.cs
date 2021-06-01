@@ -8,6 +8,7 @@ using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
+using EduCATS.Networking;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Models;
 using Xamarin.Forms;
@@ -90,7 +91,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 						await getLabsMarksAndVisiting();
 						break;
 					case StatsPageEnum.LecturesVisiting:
-						await getLecturesVisiting();
+							await getLecturesVisiting();
 						break;
 				}
 
@@ -148,7 +149,16 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getLecturesVisiting()
 		{
-			var visitingData = await DataAccess.GetLectures(_currentSubjectId, _currentGroupId);
+			LecturesModel visitingData = new LecturesModel();
+			if(Servers.Current == Servers.EduCatsAddress)
+			{
+				visitingData = await DataAccess.GetLecturesTest(_currentSubjectId, _currentGroupId);
+			}
+			else
+			{
+				visitingData = await DataAccess.GetLectures(_currentSubjectId, _currentGroupId);
+			}
+			
 			var groupVisiting = visitingData?.GroupsVisiting?[0];
 
 			var userLecturesVisiting = groupVisiting?.LecturesVisiting

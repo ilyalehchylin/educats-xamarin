@@ -4,6 +4,8 @@ using EduCATS.Controls.RoundedListView;
 using EduCATS.Data.Models;
 using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
+using EduCATS.Networking;
 using EduCATS.Pages.Statistics.Students.ViewModels;
 using EduCATS.Pages.Statistics.Students.Views.ViewCells;
 using EduCATS.Themes;
@@ -18,8 +20,12 @@ namespace EduCATS.Pages.Statistics.Students.Views
 		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
 		static Thickness _searchBarMargin = new Thickness(0, 5, 0, 0);
 
+		public string TitleOfButton { get; set; }
+		public int pageInd { get; set; }
+
 		public StudentsPageView(int pageIndex, int subjectId, List<StatsStudentModel> students)
 		{
+			pageInd = pageIndex;
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
@@ -40,14 +46,52 @@ namespace EduCATS.Pages.Statistics.Students.Views
 		{
 			var groupsPicker = new GroupsPickerView();
 			var searchBar = createSearchBar();
-
-			return new StackLayout {
-				Padding = _headerPadding,
-				Children = {
+			var addMarks = createAddMarksButton();
+			if (Servers.Current == Servers.EduCatsAddress)
+			{
+				return new StackLayout
+				{
+					Padding = _headerPadding,
+					Children = {
+					groupsPicker,
+					addMarks,
+					searchBar
+				}
+				};
+			}
+			else
+			{
+				return new StackLayout
+				{
+					Padding = _headerPadding,
+					Children = {
 					groupsPicker,
 					searchBar
 				}
+				};
+			}
+		}
+
+		Button createAddMarksButton()
+		{
+			if (pageInd == 1 || pageInd == 2 || pageInd == 3)
+			{
+				TitleOfButton = CrossLocalization.Translate("set_visiting");
+			}
+			else
+			{
+				TitleOfButton = CrossLocalization.Translate("set_marks");
+			}
+			var addMarks = new Button
+			{
+				Text = TitleOfButton,
+				FontAttributes = FontAttributes.Bold,
+				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
+				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
+				Style = AppStyles.GetButtonStyle(bold: true)
 			};
+			addMarks.SetBinding(Button.CommandProperty, "AddMarksCommand");
+			return addMarks;
 		}
 
 		SearchBar createSearchBar()

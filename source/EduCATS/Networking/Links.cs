@@ -8,7 +8,14 @@
 		/// <summary>
 		/// Authorize URL.
 		/// </summary>
+		public static string LoginTest => $"{Servers.Current}/Account/UserSessionCheck";
+
 		public static string Login => $"{Servers.Current}/RemoteApi/Login";
+
+		/// <summary>
+		/// Authorize URL.
+		/// </summary>
+		public static string LoginTestServer => $"{Servers.EduCatsAddress}/Account/LoginJWT";
 
 		/// <summary>
 		/// Get profile URL.
@@ -43,7 +50,9 @@
 		/// <summary>
 		/// Get laboratory works URL.
 		/// </summary>
-		public static string GetLabs => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2";
+		public static string GetLabsTest => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2?";
+
+		public static string GetPracticialsTest => "https://educats.by/subject/Services/Practicals/PracticalService.svc/GetPracticalsV2?";
 
 		/// <summary>
 		/// Get lectures URL.
@@ -123,5 +132,40 @@
 		/// Get reset password URL.
 		/// </summary>
 		public static string ResetPassword => $"{Servers.Current}/Account/ResetPassword";
+
+		/// <summary>
+		/// Get save marks calendar data lectures URL.
+		/// </summary>
+		public static string GetLecturesCalendarData =>
+			"/subject/Services/Lectures/LecturesService.svc/GetLecturesMarkVisitingV3?";
+
+		/// <summary>
+		/// Save marks calendar data lectures URL.
+		/// </summary>
+		public static string SaveLecturesCalendarData =>
+			$"{Servers.Current}/Services/Lectures/LecturesService.svc/SaveMarksCalendarData";
+
+		/// <summary>
+		/// Get save marks calendar data lectures URL.
+		/// </summary>
+		public static string GetLabsCalendarData =>
+			$"/subject/Services/Labs/LabsService.svc/GetMarksV3?";
+
+		public static string GetParticialsMarks => $"/subject/Services/Practicals/PracticalService.svc/GetMarks";
+
+		public static string SaveLabsMark => $"{Servers.Current}/Services/Labs/LabsService.svc/SaveLabsVisitingData";
+
+		public static string SaveStudentLabsMark => $"{Servers.Current}/Services/Labs/LabsService.svc/SaveStudentLabsMark";
+
+		public static string SaveStudentPracticalMark => "https://educats.by/subject/Services/Practicals/PracticalService.svc/SavePracticalsVisitingData";
+
+		public static string SaveSingleLab => "https://educats.by/subject/Services/Labs/LabsService.svc/SaveStudentLabsMark";
+
+		public static string SaveSinglePract => "https://educats.by/subject/Services/Practicals/PracticalService.svc/SaveStudentPracticalMark";
+		/// <summary>
+		/// Get save marks calendar data lectures URL.
+		/// </summary>
+		//public static string SavesCalendarData =>
+		//$"{Servers.Current}/subject/Services/Lectures/LecturesService.svc/SaveMarksCalendarData";
 	}
 }

@@ -16,6 +16,7 @@ namespace EduCATS.Themes.Templates
 		const string _lightGreyColor = "#F7F5F3";
 		const string _blackColor = "#000000";
 
+		virtual public string SubGroupText => _blackColor;
 		virtual public string BaseAppColor => _baseBlueColor;
 		virtual public string BaseBlockColor => _whiteColor;
 		virtual public string BaseSectionTextColor => _blackColor;

@@ -1,6 +1,7 @@
 ﻿using EduCATS.Fonts;
 using EduCATS.Networking;
 using Nyxbull.Plugins.CrossLocalization;
+using System;
 using Xamarin.Essentials;
 
 namespace EduCATS.Helpers.Forms.Settings
@@ -180,12 +181,12 @@ namespace EduCATS.Helpers.Forms.Settings
 		/// <summary>
 		/// Default avatar string.
 		/// </summary>
-		readonly string _avatarDefault = "";
+		readonly String _avatarDefault = "";
 
 		/// <summary>
 		/// Avatar.
 		/// </summary>
-		public string Avatar {
+		public String Avatar {
 			get => Preferences.Get(_avatarKey, _avatarDefault);
 			set => Preferences.Set(_avatarKey, value);
 		}
@@ -245,6 +246,20 @@ namespace EduCATS.Helpers.Forms.Settings
 		}
 
 		/// <summary>
+		/// Default AccessToken
+		/// </summary>
+		const string AccessTokenValue = "";
+		
+		readonly string _isAccessToken = "";
+		/// <summary>
+		/// AccessToken.
+		/// </summary>
+		public string AccessToken { 
+			get => Preferences.Get(AccessTokenValue, _isAccessToken);
+			set => Preferences.Set(AccessTokenValue, value); 
+		}
+
+		/// <summary>
 		/// Delete all preferences except Font and Theme.
 		/// </summary>
 		public void ResetPrefs()
@@ -252,12 +267,14 @@ namespace EduCATS.Helpers.Forms.Settings
 			var fontPrefs = Font;
 			var themePrefs = Theme;
 			var isLargeFont = IsLargeFont;
+			var accsessToken = AccessToken;
 
 			Preferences.Clear();
 
 			Font = fontPrefs;
 			Theme = themePrefs;
 			IsLargeFont = isLargeFont;
+			AccessToken = accsessToken;
 		}
 	}
 }

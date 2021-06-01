@@ -6,7 +6,7 @@
 	"base_cancel": "Abbruch",
 	"base_warning": "Achtung",
 	"base_loading": "Laden...",
-	"base_unexpected_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"base_unexpected_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support. Der Token ist möglicherweise abgelaufen, bitte geben Sie die Anwendung erneut ein.",
 	"base_connection_error": "Keine Internetverbindung. Überprüfen Sie die Netzwerkeinstellungen und versuchen Sie es erneut.",
 	"base_no_data": "Keine Daten angezeigt werden",
 
@@ -175,6 +175,19 @@
 	"invaild_answer": "Ungültige geheime Antwort eingegeben",
 	"password_changed": "Passwort geändert",
 	"successful_password_change": "Erfolgreiche Passwortänderung",
-	"empty_fields_forgot_password": "Erforderliche Felder (Login, Sicherheitsfrage, Antwort, Neues Passwort, Passwort bestätigen) müssen ausgefüllt werden!"
+	"empty_fields_forgot_password": "Erforderliche Felder (Login, Sicherheitsfrage, Antwort, Neues Passwort, Passwort bestätigen) müssen ausgefüllt werden!",
 
+	"set_marks": "Marken setzen",
+	"set_visiting": "Lücken machen",
+	"save_marks": "Speichern",
+
+	"practiсe_visiting": "Praxisbesuch",
+	"practice_mark": "Übungshinweise",
+
+	"sub_group": "Untergruppe ",
+	"mark": "Kennzeichen",
+	"date": "Datum",
+	"comment": "Kommentar",
+	"show_for_student": "Kommentar für Schüler zeigen",
+	"skipped_hours": "Stunden verpasst"
 }

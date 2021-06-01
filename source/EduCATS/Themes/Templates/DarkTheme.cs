@@ -10,6 +10,8 @@
 		const string _blackColor = "#000000";
 		const string _greyColor = "#ADABAA";
 
+
+		override public string SubGroupText => _whiteColor;
 		override public string BaseAppColor => _whiteColor;
 		override public string BaseBlockColor => _baseDarkColor;
 		override public string BaseSectionTextColor => _whiteColor;

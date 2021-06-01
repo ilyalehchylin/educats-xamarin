@@ -53,6 +53,16 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		}
 
+		Command _addMarksCommand;
+		public Command AddMarksCommand
+		{
+			get
+			{
+				return _addMarksCommand ?? (
+					_addMarksCommand = new Command(async () => await openAddMarksPage(CurrentGroup, _subjectId)));
+			}
+		}
+
 		bool _isLoading;
 		public bool IsLoading {
 			get { return _isLoading; }
@@ -91,6 +101,18 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			get {
 				return _refreshCommand ?? (
 					_refreshCommand = new Command(async () => await getAndSetStudents()));
+			}
+		}
+
+		protected async Task openAddMarksPage(GroupItemModel groupId, int subjectId)
+		{
+			if (_pageIndex == 1 || _pageIndex == 2 || _pageIndex == 3)
+			{
+				await _service.Navigation.OpenAddMarks(getTitle((StatsPageEnum)_pageIndex), groupId, subjectId);
+			}
+			else
+			{
+				await _service.Navigation.OpenAddMarksPracticeAndLabs(getTitle((StatsPageEnum)_pageIndex), groupId, subjectId);
 			}
 		}
 
@@ -199,7 +221,9 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 			{
 				StatsPageEnum.LabsRating => CrossLocalization.Translate("stats_page_labs_rating"),
 				StatsPageEnum.LabsVisiting => CrossLocalization.Translate("stats_page_labs_visiting"),
-				_ => CrossLocalization.Translate("stats_page_lectures_visiting"),
+				StatsPageEnum.LecturesVisiting => CrossLocalization.Translate("stats_page_lectures_visiting"),
+				StatsPageEnum.PractiseVisiting => CrossLocalization.Translate("practiсe_visiting"),
+				_ => CrossLocalization.Translate("practice_mark")
 			};
 		}
 	}

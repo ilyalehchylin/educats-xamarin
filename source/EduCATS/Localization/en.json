@@ -6,7 +6,7 @@
 	"base_cancel": "Cancel",
 	"base_warning": "Warning",
 	"base_loading": "Loading...",
-	"base_unexpected_error": "Unexpected error occurred. Please try again or contact support.",
+	"base_unexpected_error": "Unexpected error occurred. Please try again or contact support. May be the token has expired, please re-enter the application.",
 	"base_connection_error": "No internet connection. Check your network settings and try again.",
 	"base_no_data": "No data to display",
 
@@ -183,6 +183,19 @@
 	"invaild_answer": "Invalid secret answer entered",
 	"password_changed": "Password changed",
 	"successful_password_change": "Successful password change",
-	"empty_fields_forgot_password": "Required fields (Login, Specific question, Answer, New Password, Confirm Password) must be filled!"
+	"empty_fields_forgot_password": "Required fields (Login, Specific question, Answer, New Password, Confirm Password) must be filled!",
 
+	"set_marks": "Set marks",
+	"set_visiting": "Put up gaps",
+
+	"save_marks": "Save",
+	"practiсe_visiting": "Practiсe visiting",
+	"practice_mark": "Practice marks",
+
+	"sub_group": "Subgroup ",
+	"mark": "Mark",
+	"date": "Date",
+	"comment": "Comment",
+	"show_for_student": "Show for student",
+	"skipped_hours":  "Skipped hours"
 }

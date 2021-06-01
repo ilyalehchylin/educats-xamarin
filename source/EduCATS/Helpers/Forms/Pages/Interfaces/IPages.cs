@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data.Models;
+using EduCATS.Networking.Models.SaveMarks;
+using EduCATS.Networking.Models.SaveMarks.LabSchedule;
 using EduCATS.Pages.Parental.FindGroup.Models;
 
 namespace EduCATS.Helpers.Forms.Pages
@@ -31,6 +33,12 @@ namespace EduCATS.Helpers.Forms.Pages
 		public void OpenParental();
 
 		public Task OpenRegistration(string title);
+
+		public Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId);
+
+		public Task OpenAddMarksPracticeAndLabs(string title, GroupItemModel groupId, int subject);
+
+		public Task OpenAddSingleMark(string title, string name, LabsVisitingList Marks, TakedLabs prOrLabStat, int subGruop);
 
 		public Task OpenForgotPassword(string title);
 

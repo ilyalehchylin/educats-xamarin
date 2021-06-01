@@ -91,12 +91,6 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 				{
 					var uppercase = UpperCaseLettersInPassword();
 					bool latin_password = LatinPassword();
-					if (!(Servers.Current == Servers.EduCatsAddress))
-					{
-						_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
-							CrossLocalization.Translate("change_server"));
-						return Task.FromResult<object>(null);
-					}
 
 					if (!(NewPassword.Length > 6 && NewPassword.Length < 30))
 					{
@@ -176,7 +170,7 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 			};
 			var body = JsonController.ConvertObjectToJson(newpassword);
 			return await AppServicesController.Request(Links.ResetPassword, body);
-		}
+		}	
 
 		public async Task<KeyValuePair<string, HttpStatusCode>> VerifyPostAsync(string username,
 			int questionId, string answerToSecretQuestion)
