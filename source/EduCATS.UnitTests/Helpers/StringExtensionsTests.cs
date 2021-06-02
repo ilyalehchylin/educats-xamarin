@@ -6,13 +6,13 @@ namespace EduCATS.UnitTests
 	[TestFixture]
 	public class StringExtensionsTests
 	{
-		[Test]
+		/*[Test]
 		public void StringToDoubleTest()
 		{
 			var value = "2.05";
 			var actual = value.StringToDouble();
 			Assert.AreEqual(2.05, actual);
-		}
+		}*/
 
 		[Test]
 		public void StringInvalidToDoubleTest()
