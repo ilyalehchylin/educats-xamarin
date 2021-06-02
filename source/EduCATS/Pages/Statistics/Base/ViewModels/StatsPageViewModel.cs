@@ -149,8 +149,8 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				getPage("stats_page_lectures_visiting"),
 				getPage("stats_page_labs_visiting"),
 				getPage("stats_page_labs_rating"),
-				getPage("Practice visiting"),
-				getPage("Practice rating"),
+				getPage("practiсe_visiting"),
+				getPage("practice_mark"),
 			};
 		}
 
@@ -164,8 +164,8 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			var labsRatingString = CrossLocalization.Translate("stats_page_labs_rating");
 			var labsVisitingString = CrossLocalization.Translate("stats_page_labs_visiting");
-			var practiseVisitingString = "Practice visiting";//CrossLocalization.Translate("stats_page_labs_visiting");
-			var practiseRatingString = "Practice rating";//CrossLocalization.Translate("stats_page_labs_visiting");
+			var practiseVisitingString = CrossLocalization.Translate("practiсe_visiting");
+			var practiseRatingString = CrossLocalization.Translate("practice_mark");
 
 			if (pageString.Equals(labsRatingString))
 			{
