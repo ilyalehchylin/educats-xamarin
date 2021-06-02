@@ -11,7 +11,7 @@ namespace EduCATS.UnitTests
 	[TestFixture]
 	public class RequestControllerTests
 	{
-		const string _apiURL = "https://educats-api-test.com/";
+		/*const string _apiURL = "https://educats-api-test.com/";
 
 		Mock<RequestController> _mock;
 
@@ -64,6 +64,6 @@ namespace EduCATS.UnitTests
 		{
 			var response = await _mock.Object.SendRequest(null);
 			Assert.IsNull(response);
-		}
+		}*/
 	}
 }
