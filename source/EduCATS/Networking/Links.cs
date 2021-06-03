@@ -57,8 +57,7 @@
 		/// <summary>
 		/// Get lectures URL.
 		/// </summary>
-		public static string GetLectures =>
-			$"{Servers.Current}/Services/CoreService.svc/GetLecturesMarkVisitingV2";
+		public static string GetLectures =>$"{Servers.Current}/Services/Lectures/LecturesService.svc/GetLecturesMarkVisitingV2";
 
 		/// <summary>
 		/// Get avaiable tests URL.
