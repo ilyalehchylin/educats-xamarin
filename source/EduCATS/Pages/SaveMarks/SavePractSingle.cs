@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,8 @@ namespace EduCATS.Pages.SaveMarks
 {
 	public class SavePractSingle
 	{
-		public string comment { get; set; }
+		[JsonProperty("comment")]
+		public string Comment { get; set; }
 		public string date { get; set; }
 		public int id { get; set; }
 		public int practicalId { get; set; }

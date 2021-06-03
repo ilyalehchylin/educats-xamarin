@@ -6,6 +6,6 @@
 		LabsVisiting = 1,
 		LecturesVisiting = 2,
 		PractiseVisiting = 3,
-		PractiseMarks = 4,
+		PractiseMarks = 4
 	}
 }

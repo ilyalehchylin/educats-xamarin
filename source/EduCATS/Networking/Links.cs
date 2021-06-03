@@ -52,7 +52,7 @@
 		/// </summary>
 		public static string GetLabsTest => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2?";
 
-		public static string GetPracticialsTest => "https://educats.by/subject/Services/Practicals/PracticalService.svc/GetPracticalsV2?";
+		public static string GetPracticialsTest => $"{Servers.EduCatsByAddress}/subject/Services/Practicals/PracticalService.svc/GetPracticalsV2?";
 
 		/// <summary>
 		/// Get lectures URL.
@@ -157,11 +157,11 @@
 
 		public static string SaveStudentLabsMark => $"{Servers.Current}/Services/Labs/LabsService.svc/SaveStudentLabsMark";
 
-		public static string SaveStudentPracticalMark => "https://educats.by/subject/Services/Practicals/PracticalService.svc/SavePracticalsVisitingData";
+		public static string SaveStudentPracticalMark => $"{Servers.EduCatsByAddress}/subject/Services/Practicals/PracticalService.svc/SavePracticalsVisitingData";
 
-		public static string SaveSingleLab => "https://educats.by/subject/Services/Labs/LabsService.svc/SaveStudentLabsMark";
+		public static string SaveSingleLab => $"{Servers.EduCatsByAddress}/subject/Services/Labs/LabsService.svc/SaveStudentLabsMark";
 
-		public static string SaveSinglePract => "https://educats.by/subject/Services/Practicals/PracticalService.svc/SaveStudentPracticalMark";
+		public static string SaveSinglePract => $"{Servers.EduCatsByAddress}/subject/Services/Practicals/PracticalService.svc/SaveStudentPracticalMark";
 		/// <summary>
 		/// Get save marks calendar data lectures URL.
 		/// </summary>

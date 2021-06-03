@@ -1,4 +1,5 @@
 ﻿using EduCATS.Networking.Models.SaveMarks;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +10,8 @@ namespace EduCATS.Pages.SaveMarks
 	{
 		public List<int> Id = new List<int>();
 
-		public List<string> comments = new List<string>();
+		[JsonProperty("comments")]
+		public List<string> Comments = new List<string>();
 
 		public int dateId { get; set; }
 

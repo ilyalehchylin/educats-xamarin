@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +7,9 @@ namespace EduCATS.Networking.Models.SaveMarks.Practicals
 {
 	public class GroupAndSubjModel
 	{
-		public int subjectId { get; set; }
-		public int groupId { get; set; }
+		[JsonProperty("subjectId")]
+		public int SubjectId { get; set; }
+		[JsonProperty("groupId")]
+		public int GroupId { get; set; }
 	}
 }

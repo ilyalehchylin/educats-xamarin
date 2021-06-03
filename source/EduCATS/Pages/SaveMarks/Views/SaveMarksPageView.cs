@@ -58,8 +58,8 @@ namespace EduCATS.Pages.SaveMarks.Views
 			{
 				string link = Links.GetParticialsMarks;
 				var groupItems = new GroupAndSubjModel();
-				groupItems.groupId = groupId;
-				groupItems.subjectId = subjectId;
+				groupItems.GroupId = groupId;
+				groupItems.SubjectId = subjectId;
 				var body = JsonConvert.SerializeObject(groupItems);
 				httpContent = new StringContent(body, Encoding.UTF8, "application/json");
 				var obj = requestDataAsync(link,httpContent);
@@ -75,13 +75,13 @@ namespace EduCATS.Pages.SaveMarks.Views
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(services.Preferences.AccessToken);
 			if (_title == CrossLocalization.Translate("practiсe_visiting"))
 			{
-				var responce = client.PostAsync("https://educats.by" + link, _postContent).Result;
+				var responce = client.PostAsync(Servers.EduCatsByAddress + link, _postContent).Result;
 				var result = await responce.Content.ReadAsStringAsync();
 				return result;
 			}
 			else
 			{
-				var responce = client.GetAsync("https://educats.by" + link).Result;
+				var responce = client.GetAsync(Servers.EduCatsByAddress + link).Result;
 				var result = await responce.Content.ReadAsStringAsync();
 				return result;
 			}

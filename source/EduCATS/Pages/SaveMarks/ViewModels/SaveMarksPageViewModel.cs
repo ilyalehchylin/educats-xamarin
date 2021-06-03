@@ -286,7 +286,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 						savePracticial.marks.Add(mark.Mark);
 						savePracticial.showForStudents.Add(LecturesMarks[i].ShowForStud);
 						savePracticial.studentsId.Add(practVisiting[pract].StudentId);
-						savePracticial.comments.Add(LecturesMarks[i].Comment);
+						savePracticial.Comments.Add(LecturesMarks[i].Comment);
 					}
 					savePracticial.students.Add(practVisiting[pract]);
 					i++;

@@ -77,7 +77,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 						save.studentId = practic.StudentId;
 						save.showForStudent = ShowForStud;
 						save.mark = Mark;
-						save.comment = Comment;
+						save.Comment = Comment;
 						save.date = DateTime.Today.ToString("dd.MM.yyyy");
 						foreach (var practMark in practic.PracticalsMarks.Where(v => v.PracticalId == save.practicalId))
 						{
@@ -99,7 +99,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 						save.studentId = labs.StudentId;
 						save.showForStudent = ShowForStud;
 						save.mark = Mark;
-						save.comment = Comment;
+						save.Comment = Comment;
 						save.date = DateTime.Today.ToString("dd.MM.yyyy");
 						foreach (var labMark in labs.LabsMarks.Where(v => v.LabId == save.labId))
 						{

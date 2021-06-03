@@ -126,7 +126,7 @@ namespace EduCATS.Networking.AppServices
 
 		public static async Task<object> GetLecturesEducatsBy(int subjectId, int groupId)
 		{
-			string link = "https://educats.by" + Links.GetLecturesCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
+			string link = Servers.EduCatsByAddress + Links.GetLecturesCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
 			return await AppServicesController.Request(link);
 		}
 

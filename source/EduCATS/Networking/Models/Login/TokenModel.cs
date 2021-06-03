@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,6 +7,7 @@ namespace EduCATS.Networking.Models.Login
 {
 	public class TokenModel
 	{
-		public string token { get; set; }
+		[JsonProperty("token")]
+		public string Token { get; set; }
 	}
 }

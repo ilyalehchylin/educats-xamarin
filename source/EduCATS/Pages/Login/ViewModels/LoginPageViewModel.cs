@@ -351,7 +351,7 @@ namespace EduCATS.Pages.Login.ViewModels
 						}
 					}
 					var token = JsonConvert.DeserializeObject<TokenModel>(tok);
-					_services.Preferences.AccessToken = token.token;
+					_services.Preferences.AccessToken = token.Token;
 					SecondUserModel userLoginTest = await DataAccess.LoginTest(Username, Password);
 					userLogin.UserId = userLoginTest.Id;
 					userLogin.Username = userLoginTest.Username;
