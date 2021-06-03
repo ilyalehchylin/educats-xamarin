@@ -6,7 +6,7 @@
 	"base_cancel": "Anuluj",
 	"base_warning": "Uwaga",
 	"base_loading": "Ładowanie...",
-	"base_unexpected_error": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"base_unexpected_error": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie lub skontaktuj się z obsługą klienta. Token mógł wygasnąć, prosimy o ponowne wypełnienie wniosku.",
 	"base_connection_error": "Brak połączenia z Internetem. Sprawdź ustawienia sieci i spróbuj ponownie.",
 	"base_no_data": "Brak danych do wyświetlenia",
 
@@ -175,5 +175,19 @@
 	"invaild_answer": "Wprowadzono nieprawidłową tajną odpowiedź",
 	"password_changed": "Hasło zostało zmienione",
 	"successful_password_change": "Pomyślna zmiana hasła",
-	"empty_fields_forgot_password": "Wymagane pola (login, pytanie zabezpieczające, odpowiedź, nowe hasło, potwierdź hasło) muszą być wypełnione!"
+	"empty_fields_forgot_password": "Wymagane pola (login, pytanie zabezpieczające, odpowiedź, nowe hasło, potwierdź hasło) muszą być wypełnione!",
+
+	"set_marks": "Ustaw znaki",
+	"set_visiting": "Odsłoń przepustki",
+	"save_marks": "Zapisać",
+
+	"practiсe_visiting": "Wizyta ćwiczeniowa",
+	"practice_mark": "Notatki z ćwiczeń",
+
+	"sub_group": "Podgrupa ",
+	"mark": "Znak",
+	"date": "Data",
+	"comment": "Komentarz",
+	"show_for_student": "Pokaż komentarz uczniowi",
+	"skipped_hours": "Brakujące godziny"
 }

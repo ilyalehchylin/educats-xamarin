@@ -9,6 +9,7 @@
 	/// </remarks>
 	public interface ITheme
 	{
+		string SubGroupText { get; }
 		string BaseAppColor { get; }
 		string BaseBlockColor { get; }
 		string BaseArrowForwardIcon { get; }

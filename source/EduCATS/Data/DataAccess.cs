@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data.Models;
+using EduCATS.Data.Models.User;
 using EduCATS.Networking.Models.Testing;
 using EduCATS.Pages.Parental.FindGroup.Models;
 
@@ -24,6 +26,13 @@ namespace EduCATS.Data
 			var dataAccess = new DataAccess<UserModel>("login_error", loginCallback(username, password));
 			return await GetDataObject(dataAccess, false) as UserModel;
 		}
+
+		public async static Task<SecondUserModel> LoginTest(string username, string password)
+		{
+			var dataAccess = new DataAccess<SecondUserModel>("login_error", loginCallbackEducatsby(username, password));
+			return await GetDataObject(dataAccess, false) as SecondUserModel;
+		}
+
 
 		/// <summary>
 		/// Fetch profile information.
@@ -98,6 +107,14 @@ namespace EduCATS.Data
 				"groups_fetch_error", getGroupsCallback(subjectId),
 				GetKey(GlobalConsts.DataGetGroupsKey, subjectId));
 			return await GetDataObject(dataAccess, false) as GroupModel;
+		}
+
+		public async static Task<LecturesModel> GetLecturesTest(int subjectId, int groupId)
+		{
+			var dataAccess = new DataAccess<LecturesModel>(
+				"lectures_fetch_error", getLecturesCallbackTest(subjectId, groupId),
+				GetKey(GlobalConsts.DataGetLecturesKey, subjectId, groupId));
+			return await GetDataObject(dataAccess, false) as LecturesModel;
 		}
 
 		/// <summary>

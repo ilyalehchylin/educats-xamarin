@@ -26,7 +26,12 @@ namespace EduCATS.Networking.AppServices
 			};
 
 			var body = JsonController.ConvertObjectToJson(userCreds);
-			return await AppServicesController.Request(Links.Login, body);
+			return await AppServicesController.Request(Links.Login,body);
+		}
+
+		public static async Task<object> LoginEducatsBy(string username, string password)
+		{
+			return await AppServicesController.Request(Links.LoginTest);
 		}
 
 		/// <summary>
@@ -104,7 +109,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetLabs(int subjectId, int groupId)
 		{
 			return await AppServicesController.Request(
-				$"{Links.GetLabs}?subjectID={subjectId}&groupID={groupId}");
+				$"{Links.GetLabsTest}?subjectID={subjectId}&groupID={groupId}");
 		}
 
 		/// <summary>
@@ -117,6 +122,12 @@ namespace EduCATS.Networking.AppServices
 		{
 			return await AppServicesController.Request(
 				$"{Links.GetLectures}?subjectID={subjectId}&groupID={groupId}");
+		}
+
+		public static async Task<object> GetLecturesEducatsBy(int subjectId, int groupId)
+		{
+			string link = Servers.EduCatsByAddress + Links.GetLecturesCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
+			return await AppServicesController.Request(link);
 		}
 
 		/// <summary>

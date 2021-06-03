@@ -14,6 +14,7 @@
         <LangVersion>8.0</LangVersion>
     </PropertyGroup>
     <ItemGroup>
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.9.0" />
         <PackageReference Include="Xamarin.Forms" Version="4.8.0.1687" />
         <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
         <PackageReference Include="Nyxbull.Plugins.CrossLocalization" Version="1.3.1" />
@@ -29,14 +30,12 @@
         <Folder Include="Configuration\" />
         <Folder Include="Helpers\Json\" />
         <Folder Include="Pages\Login\" />
-        <Folder Include="Data\" />
         <Folder Include="Data\Caching\" />
         <Folder Include="Pages\Login\Views\" />
         <Folder Include="Pages\Login\ViewModels\" />
         <Folder Include="Localization\" />
+        <Folder Include="Pages\Statistics\Marks\ViewModels\" />
         <Folder Include="Themes\" />
-        <Folder Include="Data\Models\" />
-        <Folder Include="Data\Models\User\" />
         <Folder Include="Data\User\" />
         <Folder Include="Pages\Main\" />
         <Folder Include="Pages\Today\" />
@@ -60,7 +59,6 @@
         <Folder Include="Pages\Today\NewsDetails\Views\" />
         <Folder Include="Pages\Today\NewsDetails\ViewModels\" />
         <Folder Include="Pages\Pickers\" />
-        <Folder Include="Pages\Statistics\" />
         <Folder Include="Pages\Statistics\Base\" />
         <Folder Include="Pages\Statistics\Base\Views\" />
         <Folder Include="Pages\Statistics\Base\ViewModels\" />
@@ -74,12 +72,10 @@
         <Folder Include="Pages\Statistics\Students\Views\ViewCells\" />
         <Folder Include="Data\Models\Groups\" />
         <Folder Include="Pages\Statistics\Students\Models\" />
-        <Folder Include="Pages\Statistics\Results\" />
         <Folder Include="Pages\Statistics\Results\Views\" />
         <Folder Include="Pages\Statistics\Results\ViewModels\" />
         <Folder Include="Data\Models\Labs\" />
         <Folder Include="Data\Models\Lectures\" />
-        <Folder Include="Pages\Statistics\Results\Models\" />
         <Folder Include="Pages\Statistics\Results\Views\ViewCells\" />
         <Folder Include="Constants\" />
         <Folder Include="Pages\Learning\" />

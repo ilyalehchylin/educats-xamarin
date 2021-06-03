@@ -15,6 +15,11 @@ namespace EduCATS.Data
 		static async Task<object> loginCallback(
 			string username, string password) => await AppServices.Login(username, password);
 
+		static async Task<object> loginCallbackEducatsby(
+			string username, string password) => await AppServices.Login(username, password);
+
+		static async Task<object> getLecturesCallbackTest(
+			int subjectId, int groupId) => await AppServices.GetLecturesEducatsBy(subjectId, groupId);
 		/// <summary>
 		/// Profile callback.
 		/// </summary>

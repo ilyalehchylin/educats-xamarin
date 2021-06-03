@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data.Models;
+using EduCATS.Networking.Models.SaveMarks;
+using EduCATS.Networking.Models.SaveMarks.LabSchedule;
 using EduCATS.Pages.Eemc.Views;
 using EduCATS.Pages.Files.Views;
 using EduCATS.Pages.ForgotPassword.Views;
@@ -12,6 +14,9 @@ using EduCATS.Pages.Parental.Statistics;
 using EduCATS.Pages.Parental.Statistics.Views;
 using EduCATS.Pages.Recommendations.Views;
 using EduCATS.Pages.Registration.Views;
+using EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels;
+using EduCATS.Pages.SaveLabsAndPracticeMarks.Views;
+using EduCATS.Pages.SaveMarks.Views;
 using EduCATS.Pages.Settings.About.Views;
 using EduCATS.Pages.Settings.Base.Views;
 using EduCATS.Pages.Settings.Fonts.Views;
@@ -259,5 +264,14 @@ namespace EduCATS.Helpers.Forms.Pages
 
 		public async Task OpenForgotPassword(string title) =>
 			await pushPage(new ForgotPasswordPageView(), title);
+
+		public async Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId) =>
+			await pushPage(new SaveMarksPageView(subjectId, groupId.GroupId, title), title);
+
+		public async Task OpenAddMarksPracticeAndLabs(string title, GroupItemModel groupId, int subject) =>
+			await pushPage(new SavePracticeAndLabsPageView(title, subject, groupId.GroupId), title);
+
+		public async Task OpenAddSingleMark(string title, string name, LabsVisitingList Marks, TakedLabs prOrLabStat, int sub) =>
+			await pushPage(new SaveSingleStudentMarkPageView(title, name, Marks, prOrLabStat, sub), title);
 	}
 }

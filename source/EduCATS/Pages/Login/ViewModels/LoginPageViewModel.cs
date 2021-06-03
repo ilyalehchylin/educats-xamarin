@@ -1,11 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IdentityModel.Tokens.Jwt;
+using System.IO;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using System.Web;
 using EduCATS.Data;
 using EduCATS.Data.Models;
+using EduCATS.Data.Models.User;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Json;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
+using EduCATS.Networking.AppServices;
+using EduCATS.Networking.Models.Login;
+using Newtonsoft.Json;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -158,7 +170,7 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
-		protected async Task openForgotPassword()
+		public async Task openForgotPassword()
 		{
 			if(Servers.Current == Servers.EduCatsAddress)
 			{
@@ -217,6 +229,7 @@ namespace EduCATS.Pages.Login.ViewModels
 				{
 					setLoading(true, CrossLocalization.Translate("login_loading"));
 					var user = await loginRequest();
+					
 					await loginCompleted(user);
 				}
 				else
@@ -305,12 +318,46 @@ namespace EduCATS.Pages.Login.ViewModels
 		async Task<UserModel> loginRequest()
 		{
 			var userLogin = await DataAccess.Login(Username, Password);
-
-			if (userLogin != null)
+			
+			if(_services.Preferences.Server == Servers.EduCatsAddress)
 			{
-				AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
-			}
+				if (userLogin != null)
+				{
+					var jwt = new
+					{
+						password = Password,
+						userName = Username,
+					};
+					var body = JsonController.ConvertObjectToJson(jwt);
+					var httpWebRequest = (HttpWebRequest)WebRequest.Create(Links.LoginTestServer);
+					httpWebRequest.ContentType = "application/json";
+					httpWebRequest.Method = "POST";
+					using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+					{
+						string json = body;
 
+						streamWriter.Write(json);
+						streamWriter.Flush();
+						streamWriter.Close();
+					}
+					var tok = "";
+					var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+					using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+					{
+						string line = "";
+						while ((line = streamReader.ReadLine()) != null)
+						{
+							tok += line;
+						}
+					}
+					var token = JsonConvert.DeserializeObject<TokenModel>(tok);
+					_services.Preferences.AccessToken = token.Token;
+					SecondUserModel userLoginTest = await DataAccess.LoginTest(Username, Password);
+					userLogin.UserId = userLoginTest.Id;
+					userLogin.Username = userLoginTest.Username;
+				}
+			}
+			AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
 			return userLogin;
 		}
 
