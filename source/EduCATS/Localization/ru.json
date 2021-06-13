@@ -56,6 +56,7 @@
 	"stats_expand_chart_text": "Подробнее",
 	"stats_collapse_chart_text": "Скрыть",
 	"stats_chart_average_labs": "Средняя оценка за лабораторные работы",
+	"stats_chart_average_pract": "Средняя оценка за практические работы",
 	"stats_chart_average_tests": "Средняя оценка за тесты",
 	"stats_chart_rating": "Рейтинговая оценка",
 	"stats_chart_not_enough_data": "Недостаточно данных для отображения графика",
@@ -192,8 +193,8 @@
 	"set_visiting": "Выставить пропуски",
 	"save_marks": "Сохранить",
 
-	"practiсe_visiting": "Посещение практики",
-	"practice_mark": "Отметки по практике",
+	"practiсe_visiting": "Пропуски практических работ",
+	"practice_mark": "Оценки по практическим работам",
 
 	"sub_group": "Подгруппа ",
 	"mark": "Отметка",

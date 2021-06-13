@@ -19,7 +19,6 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		const double _controlHeight = 50;
 		static Thickness _padding = new Thickness(10, 1);
 		public List<int> Marks = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-		public List<string> Date = new List<string>();
 		public List<string> NameOfLabOrPractice = new List<string>();
 		public string _title { get; set; }
 
@@ -51,7 +50,6 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
 			NavigationPage.SetHasNavigationBar(this, false);
-			Date.Add(DateTime.Today.ToString("dd.MM.yyyy"));
 			var entryStyle = getEntryStyle();
 			var inicials = new Label
 			{
@@ -122,15 +120,14 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 
 			markPicker.SetBinding(Picker.SelectedItemProperty, "Mark");
 
-			var datePicker = new Picker
+			var datePicker = new Entry
 			{
-				BackgroundColor = Color.White,
-				HeightRequest = 50,
-				ItemsSource = Date,
-				HorizontalTextAlignment = TextAlignment.Center,
+				Style = entryStyle,
+				ReturnType = ReturnType.Done,
+				Text = DateTime.Today.ToString("dd.MM.yyyy"),
+				TextColor = Color.Black,
+				IsReadOnly = true,
 			};
-
-			datePicker.SetBinding(Picker.SelectedItemProperty, "SelectedDate");
 
 			var commentEntry = new Entry
 			{

@@ -14,7 +14,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 
 		const double _controlHeight = 50;
 
-		public List<int> listOfMarks = new List<int> {0, 1, 2, 3, 4 };
+		public List<string> listOfMarks = new List<string> {"0", "1", "2", "3", "4" };
 
 		public BindableProperty HeightRequestProperty { get; private set; }
 		public BindableProperty BackgroundColorProperty { get; private set; }
@@ -72,7 +72,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 				ItemsSource = listOfMarks,
 				HorizontalTextAlignment = TextAlignment.Center,
 			};
-
+			markPicker.SetBinding(Picker.SelectedIndexProperty, "Mark");
 			markPicker.SetBinding(Picker.SelectedItemProperty, "Mark");
 
 			var commentEntry = new Entry

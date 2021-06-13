@@ -118,7 +118,7 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <param name="name">Student's name.</param>
 		/// <returns>Task.</returns>
 		public async Task OpenDetailedStatistics(
-			string userLogin, int subjectId, int groupId, int pageIndex, string title, string name = null) =>
+			string userLogin, int subjectId, int groupId, int pageIndex, string title, string name) =>
 			await pushPage(new StatsResultsPageView(
 				userLogin, subjectId, groupId, (StatsPageEnum)pageIndex, name), title);
 

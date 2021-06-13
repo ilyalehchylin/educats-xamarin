@@ -3,7 +3,9 @@ using EduCATS.Data.Models;
 using EduCATS.Helpers.Json;
 using EduCATS.Networking.Models.Eemc;
 using EduCATS.Networking.Models.Login;
+using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Networking.Models.Testing;
+using Newtonsoft.Json;
 
 namespace EduCATS.Networking.AppServices
 {
@@ -91,6 +93,40 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch statistics request.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Statistics data.</returns>
+		public static async Task<object> GetPractTestStatistics(int subjectId, int groupId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetPracticialsTest}subjectID={subjectId}&groupID={groupId}");
+		}
+
+		public static async Task<object> GetPracticials(int subjectId, int groupId)
+		{
+			var groupItems = new GroupAndSubjModel();
+			groupItems.GroupId = groupId;
+			groupItems.SubjectId = subjectId;
+			var body = JsonConvert.SerializeObject(groupItems);
+			return await AppServicesController.Request(
+				$"{Servers.EduCatsByAddress + Links.GetParticialsMarks}", body);
+		}
+
+		/// <summary>
+		/// Fetch statistics request.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Statistics data.</returns>
+		public static async Task<object> GetTestStatistics(int subjectId, int groupId)
+		{
+			return await AppServicesController.Request(
+				$"{Servers.EduCatsByAddress + Links.GetLabsCalendarData}subjectId={subjectId}&groupId={groupId}");
+		}
+
+		/// <summary>
 		/// Fetch groups request.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
@@ -109,7 +145,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetLabs(int subjectId, int groupId)
 		{
 			return await AppServicesController.Request(
-				$"{Links.GetLabsTest}?subjectID={subjectId}&groupID={groupId}");
+				$"{Links.GetLabsTest}subjectID={subjectId}&groupID={groupId}");
 		}
 
 		/// <summary>

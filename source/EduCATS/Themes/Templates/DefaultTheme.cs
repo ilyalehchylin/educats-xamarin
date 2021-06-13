@@ -74,7 +74,9 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string NewsTextColor => _blackColor;
 
+
 		virtual public string StatisticsChartLabsColor => "#FF3900";
+		virtual public string StatisticsChartPractColor => "#1ad2d9";
 		virtual public string StatisticsChartTestsColor => "#086CA2";
 		virtual public string StatisticsChartRatingColor => "#00B454";
 		virtual public string StatisticsBoxTextColor => _whiteColor;
