@@ -25,7 +25,7 @@ namespace EduCATS.Pages.Statistics.Results.Views
 			_statsPageEnum = pageType;
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			BindingContext = new StatsResultsPageViewModel(
-				new PlatformServices(), userLogin, subjectId, groupId, pageType);
+				new PlatformServices(), userLogin, subjectId, groupId, pageType, studentName);
 			createViews(studentName);
 		}
 
@@ -57,7 +57,7 @@ namespace EduCATS.Pages.Statistics.Results.Views
 			var summaryLabel = new Label {
 				Style = AppStyles.GetLabelStyle(NamedSize.Large),
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
-				Text = _statsPageEnum == StatsPageEnum.LabsRating ?
+				Text = _statsPageEnum == StatsPageEnum.LabsRating || _statsPageEnum ==  StatsPageEnum.PractiseMarks ? 
 					CrossLocalization.Translate("stats_summary_rating") :
 					CrossLocalization.Translate("stats_summary_visiting")
 			};

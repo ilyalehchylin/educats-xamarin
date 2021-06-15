@@ -89,15 +89,13 @@ namespace EduCATS.Pages.SaveMarks.Views
 
 		void createView()
 		{
-			var dateforLectures = dateLecturesPicker();
-			var dateforLabs = dateLabsPicker();
-			var subGroupLabsVisiting = subGroupPicker();
 			var stackLayout = new StackLayout();
 			var resultsListView = new RoundedListView(typeof(VisitingPageViewCell));
 			var resultsListViewSubGroup = new RoundedListView(typeof(VisitingPageViewCell));
 			var saveDate = stackView();
 			if (_title == CrossLocalization.Translate("stats_page_lectures_visiting"))
 			{
+				var dateforLectures = dateLecturesPicker();
 				resultsListView = new RoundedListView(typeof(VisitingPageViewCell))
 				{
 					IsPullToRefreshEnabled = false,
@@ -118,6 +116,8 @@ namespace EduCATS.Pages.SaveMarks.Views
 			}
 			else if (_title == CrossLocalization.Translate("stats_page_labs_visiting"))
 			{
+				var dateforLabs = dateLabsPicker();
+				var subGroupLabsVisiting = subGroupPicker();
 				resultsListViewSubGroup = new RoundedListView(typeof(VisitingPageViewCell))
 				{
 					IsPullToRefreshEnabled = false,
@@ -139,6 +139,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 			}
 			else if (_title == CrossLocalization.Translate("practiсe_visiting"))
 			{
+				var dateforPractice = datePractPicker();
 				resultsListView = new RoundedListView(typeof(VisitingPageViewCell))
 				{
 					IsPullToRefreshEnabled = false,
@@ -152,7 +153,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 					Children =
 					{
 						saveDate,
-						dateforLectures,
+						dateforPractice,
 						resultsListView,
 					}
 				};
@@ -206,6 +207,17 @@ namespace EduCATS.Pages.SaveMarks.Views
 			};
 			datePicker.SetBinding(Picker.ItemsSourceProperty, "DateLabs");
 			datePicker.SetBinding(Picker.SelectedItemProperty, new Binding("SelectedLabDate"));
+			return datePicker;
+		}
+
+		Picker datePractPicker()
+		{
+			var datePicker = new Picker
+			{
+				BackgroundColor = Color.White,
+			};
+			datePicker.SetBinding(Picker.ItemsSourceProperty, "Date");
+			datePicker.SetBinding(Picker.SelectedItemProperty, new Binding("SelectedPracDate"));
 			return datePicker;
 		}
 

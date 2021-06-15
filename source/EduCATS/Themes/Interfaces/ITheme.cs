@@ -68,6 +68,7 @@
 		string NewsTextColor { get; }
 
 		string StatisticsChartLabsColor { get; }
+		string StatisticsChartPractColor { get; }
 		string StatisticsChartTestsColor { get; }
 		string StatisticsChartRatingColor { get; }
 		string StatisticsBoxTextColor { get; }

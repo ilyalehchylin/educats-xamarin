@@ -9,6 +9,9 @@ using EduCATS.Data.User;
 using EduCATS.Helpers.Extensions;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
+using EduCATS.Networking;
+using EduCATS.Networking.Models.SaveMarks;
+using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Pages.Pickers;
 using EduCATS.Pages.Statistics.Base.Models;
 using EduCATS.Pages.Statistics.Enums;
@@ -21,6 +24,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 	{
 		const string _doubleStringFormat = "0.0";
 		private List<StatsStudentModel> _students;
+		private LabsVisitingList _studentsTest;
 		private IPlatformServices _service;
 
 		public StatsPageViewModel(IPlatformServices services) : base(services)
@@ -92,6 +96,13 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			set { SetProperty(ref _averageLabs, value); }
 		}
 
+		string _averagePract;
+		public string AveragePract
+		{
+			get { return _averagePract; }
+			set { SetProperty(ref _averagePract, value); }
+		}
+
 		string _averageTests;
 		public string AverageTests {
 			get { return _averageTests; }
@@ -147,10 +158,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			PagesList = new List<StatsPageModel> {
 				getPage("stats_page_lectures_visiting"),
-				getPage("stats_page_labs_visiting"),
-				getPage("stats_page_labs_rating"),
 				getPage("practiсe_visiting"),
 				getPage("practice_mark"),
+				getPage("stats_page_labs_visiting"),
+				getPage("stats_page_labs_rating"),
 			};
 		}
 
@@ -215,22 +226,28 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				var page = selectedObject as StatsPageModel;
 				var pageType = getPageToOpen(page.Title);
 
-				if (AppUserData.UserType == UserTypeEnum.Professor)
+				if (Servers.Current == Servers.EduCatsAddress)
 				{
-					PlatformServices.Navigation.OpenStudentsListStats(
-						(int)pageType, CurrentSubject.Id, _students, page.Title);
-					return;
+					if (AppUserData.UserType == UserTypeEnum.Professor)
+					{
+						PlatformServices.Navigation.OpenStudentsListStats(
+							(int)pageType, CurrentSubject.Id, _students, page.Title);
+						return;
+					}
+					else
+					{
+						var user = _students.SingleOrDefault(s => s.StudentId == PlatformServices.Preferences.UserId);
+						if (user == null)
+						{
+							return;
+						}
+						PlatformServices.Navigation.OpenDetailedStatistics(
+						user.Login, CurrentSubject.Id, PlatformServices.Preferences.GroupId, (int)pageType, page.Title, user.Name);
+					}
 				}
+				
 
-				var user = _students.SingleOrDefault(s => s.StudentId == PlatformServices.Preferences.UserId);
-
-				if (user == null)
-				{
-					return;
-				}
-
-				PlatformServices.Navigation.OpenDetailedStatistics(
-					user.Login, CurrentSubject.Id, PlatformServices.Preferences.GroupId, (int)pageType, page.Title);
+				
 			}
 			catch (Exception ex)
 			{
@@ -276,16 +293,28 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			try
 			{
 				var studentsStatistics = await getStatistics();
-
-				if (studentsStatistics == null)
+				_students = studentsStatistics;
+				var currentPractStudentStatistics = new LaboratoryWorksModel();
+				var studentsPractStatistics = await DataAccess.GetTestPracticialStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
+				if (Servers.Current == Servers.EduCatsAddress)
 				{
-					setChartData(null);
+					var currentStudentStatistics = new StatsStudentModel();
+					var studentTestStatistics = await DataAccess.GetTestStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
+					var currentTestStudentStatistics = studentTestStatistics.Students.SingleOrDefault(
+					s => s.StudentId == PlatformServices.Preferences.UserId);
+					currentPractStudentStatistics = studentsPractStatistics.Students.SingleOrDefault(
+						s => s.StudentId == PlatformServices.Preferences.UserId);
+					setChartData(currentStudentStatistics, currentTestStudentStatistics, currentPractStudentStatistics);
+					_studentsTest = studentTestStatistics;
 				}
 				else
 				{
-					var currentStudentStatistics = studentsStatistics.SingleOrDefault(
-						s => s.StudentId == PlatformServices.Preferences.UserId);
-					setChartData(currentStudentStatistics);
+					var labsTest = new LaboratoryWorksModel();
+					var currentStudentStatistics = new StatsStudentModel();
+					studentsStatistics = await getStatistics();
+					currentStudentStatistics = studentsStatistics.SingleOrDefault(
+					s => s.StudentId == PlatformServices.Preferences.UserId);
+					setChartData(currentStudentStatistics, labsTest, currentPractStudentStatistics);
 					_students = studentsStatistics;
 				}
 			}
@@ -309,31 +338,97 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 		}
 
-		void setChartData(StatsStudentModel stats)
+		void setChartData(StatsStudentModel stats, LaboratoryWorksModel currentPractStudentStatistics, LaboratoryWorksModel worksModel)
 		{
 			try {
+				double avgLabs = 0;
+				double avgTests = 0;
+				double avgPract = 0;
+				double rating = 0;
+
 				if (stats == null) {
 					stats = new StatsStudentModel();
 				}
 
-				var avgLabs = calculateAvgLabsMark(stats.MarkList);
-				AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+				if (Servers.Current == Servers.EduCatsAddress)
+				{
+					avgPract = calculateAvgPractMarks(worksModel.PracticalsMarks);
+					AveragePract = avgPract.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
-				var avgTests = stats.AverageTestMark.StringToDouble();
-				AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+					avgLabs = calculateAvgLabsMarkTest(currentPractStudentStatistics.LabsMarks);
+					AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
-				var rating = (avgLabs + avgTests) / 2;
-				Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+					avgTests = currentPractStudentStatistics.TestMark.StringToDouble();
+					AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
-				setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
+					if (worksModel.PracticalsMarks == null)
+					{
+						rating = (avgLabs + avgTests) / 2;
+						Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+						ChartEntries = new List<double> {
+							avgLabs, avgTests, rating
+						};
+						setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
+					}
+					else
+					{
+						rating = (avgLabs + avgTests + avgPract) / 3;
+						Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+						ChartEntries = new List<double> {
+							avgLabs, avgTests, rating, avgPract
+						};
+						setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && avgPract == 0 && rating == 0);
+					}
+				}
+				else
+				{
+					avgLabs = calculateAvgLabsMark(stats.MarkList);
+					AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
-				ChartEntries = new List<double> {
-					avgLabs, avgTests, rating
-				};
+					avgTests = stats.AverageTestMark.StringToDouble();
+					AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+
+					rating = (avgLabs + avgTests) / 2;
+					Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+					ChartEntries = new List<double> {
+							avgLabs, avgTests, rating
+						};
+					setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
+				}
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
 		}
+
+		double calculateAvgPractMarks(List<PracticialMarks> practicalsMarks)
+		{
+			if (practicalsMarks == null)
+			{
+				return 0;
+			}
+
+			var resultCount = 0;
+			var resultSummary = 0;
+			foreach (var markItem in practicalsMarks)
+			{
+				var mark = markItem.Mark;
+				if (!string.IsNullOrEmpty(mark))
+				{
+					int.TryParse(mark, out int result);
+					resultSummary += result;
+					resultCount++;
+				}
+			}
+
+			if (resultCount == 0)
+			{
+				return 0;
+			}
+
+			return resultSummary / (double)resultCount;
+		}
+
+
 
 		/// <summary>
 		/// Get profile if <see cref="App.getProfileInfo" didn't have time to load./>
@@ -364,6 +459,34 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		void checkStudent()
 		{
 			IsStudent = AppUserData.UserType == UserTypeEnum.Student;
+		}
+
+		double calculateAvgLabsMarkTest(List<LabMarks> marks)
+		{
+			if (marks == null)
+			{
+				return 0;
+			}
+
+			var resultCount = 0;
+			var resultSummary = 0;
+			foreach (var markItem in marks)
+			{
+				var mark = markItem.Mark;
+				if (!string.IsNullOrEmpty(mark))
+				{
+					int.TryParse(mark, out int result);
+					resultSummary += result;
+					resultCount++;
+				}
+			}
+
+			if (resultCount == 0)
+			{
+				return 0;
+			}
+
+			return resultSummary / (double)resultCount;
 		}
 
 		double calculateAvgLabsMark(IList<StatsMarkModel> marks)

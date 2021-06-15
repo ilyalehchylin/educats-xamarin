@@ -51,10 +51,11 @@ namespace EduCATS.Helpers.Forms.Converters
 			var doubleList = value as List<double>;
 			var chartEntries = doubleList.Select(d => new ChartEntry((float)d)).ToArray();
 
-			if (chartEntries != null && chartEntries.Length == 3) {
+			if (chartEntries != null && chartEntries.Length == 4) {
 				chartEntries[0].Color = SKColor.Parse(Theme.Current.StatisticsChartLabsColor);
 				chartEntries[1].Color = SKColor.Parse(Theme.Current.StatisticsChartTestsColor);
 				chartEntries[2].Color = SKColor.Parse(Theme.Current.StatisticsChartRatingColor);
+				chartEntries[3].Color = SKColor.Parse(Theme.Current.StatisticsChartPractColor);
 			}
 
 			return new RadarChart {

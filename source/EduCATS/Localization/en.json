@@ -53,6 +53,7 @@
 	"stats_expand_chart_text": "More details",
 	"stats_collapse_chart_text": "Hide",
 	"stats_chart_average_labs": "Average laboratory works rating",
+	"stats_chart_average_pract": "Average practical works rating",
 	"stats_chart_average_tests": "Average tests rating",
 	"stats_chart_rating": "Average rating",
 	"stats_chart_not_enough_data": "Not enough data to display chart",
@@ -197,5 +198,5 @@
 	"date": "Date",
 	"comment": "Comment",
 	"show_for_student": "Show for student",
-	"skipped_hours":  "Skipped hours"
+	"skipped_hours": "Skipped hours"
 }

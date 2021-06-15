@@ -10,7 +10,7 @@ namespace EduCATS.Data.Models.User
 		[JsonProperty("userName")]
 		public string Username { get; set; }
 
-		[JsonProperty("Id")]
+		[JsonProperty("id")]
 		public int Id { get; set; }
 
 		[JsonProperty("role")]

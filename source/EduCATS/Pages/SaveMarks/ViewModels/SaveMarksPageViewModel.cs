@@ -34,13 +34,12 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 		public LabsVisitingList labsVisitingList = new LabsVisitingList();
 		public LabsVisitingList practiceVisitingList = new LabsVisitingList();
 		public int subjectId { get; set; }
-
-		public List<VisitingPageModel> _currentLecturesVisitingMarksReady = new List<VisitingPageModel>();
+		public int labVisId = 0;
+		public int prVisId = 0;
 		public List<VisitingPageModel> _currentLabsVisitingMarksReady = new List<VisitingPageModel>();
 
 		public List<VisitingPageModel> _currentLecturesVisitingMarks;
 		public List<VisitingPageModel> _currentLabsVisitingMarksSubGroup1;
-		public List<VisitingPageModel> _currentLabsVisitingMarksSubGroup2;
 		public string _titleOfPage { get; set; }
 		public List<string> FullNames { get; set; }
 		
@@ -104,63 +103,37 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 
 		private void createPracticialsVisitingPage(LabsVisitingList statistics)
 		{
+			LecturesMarks = new List<VisitingPageModel>();
 			fullVisitingPract = statistics;
 			Date = new List<string>();
 			FullNames = new List<string>();
-			_currentLabsVisitingMarksSubGroup1 = new List<VisitingPageModel>();
-			foreach (var group in statistics.Students)
-			{
-				_currentLabsVisitingMarksSubGroup1.Add(new VisitingPageModel(group.FullName, "", "", false));
-				FullNames.Add(group.FullName);
-			}
+			_currentLecturesVisitingMarks = new List<VisitingPageModel>();
 			foreach (var pract in _takedLabs.ScheduleProtectionPracticals)
 			{
 				Date.Add(pract.Date);
 			}
-			LecturesMarks = _currentLabsVisitingMarksSubGroup1;
-			SelectedDate = Date[Date.Count - 1];
+			selDateForSave = Date[Date.Count - 1];
+			SelectedPracDate = selDateForSave;
 		}
 
 		void createLabsVisitingPage(LabsVisitingList statistics)
 		{
 			LabsVisitingMarks = new List<VisitingPageModel>();
-			Date1 = new List<string>();
-			Date2 = new List<string>();
 			SubGroup = new List<string>();
 			FullNames = new List<string>();
-			_currentLabsVisitingMarksSubGroup1 = new List<VisitingPageModel>();
-			_currentLabsVisitingMarksSubGroup2 = new List<VisitingPageModel>();
 			fullVisitingLabs = statistics;
-			foreach (var group in statistics.Students)
+			foreach (var subGroup in _takedLabs.Labs)
 			{
-				if (group.SubGroup == 1)
+				if (!currentSubGroups.Contains(subGroup.SubGroup))
 				{
-					_currentLabsVisitingMarksSubGroup1.Add(new VisitingPageModel(group.FullName, "", "", false));
-					FullNames.Add(group.FullName);
-				}
-				else
-				{
-					_currentLabsVisitingMarksSubGroup2.Add(new VisitingPageModel(group.FullName, "", "", false));
-					FullNames.Add(group.FullName);
+					currentSubGroups.Add(subGroup.SubGroup);
 				}
 			}
-			foreach (var lab in _takedLabs.ScheduleProtectionLabs.Where(v => v.SubGroup == 1))
+			foreach (var subGruop in currentSubGroups)
 			{
-				Date1.Add(lab.Date);
-			};
-			foreach (var lab in _takedLabs.ScheduleProtectionLabs.Where(v => v.SubGroup == 2))
-			{
-				Date2.Add(lab.Date);
-			};
-			foreach(var lab in _takedLabs.ScheduleProtectionLabs)
-			{
-				if (!SubGroup.Contains(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString()))
-				{
-					SubGroup.Add(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString());
-				}
+				SubGroup.Add(CrossLocalization.Translate("sub_group") + subGruop.ToString());
 			}
-			LabsVisitingMarksSubGroupOne = _currentLabsVisitingMarksSubGroup1;
-			LabsVisitingMarksSubGroupTwo = _currentLabsVisitingMarksSubGroup2;
+			selSubGroup = currentSubGroups[0];
 			SelectedSubGroup = SubGroup.FirstOrDefault();
 		}
 
@@ -181,14 +154,15 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 							Date.Add(groupVisit.Date);
 						}
 						if (Date[0] == groupVisit.Date &&
-							!(_currentLecturesVisitingMarks.Contains(new VisitingPageModel(groupVis.StudentName, "", groupVisit.Mark, false))))
+							!(_currentLecturesVisitingMarks.Contains(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment, 
+							groupVisit.Mark, false))))
 						{
-							_currentLecturesVisitingMarks.Add(new VisitingPageModel(groupVis.StudentName, "", groupVisit.Mark, false));
+							_currentLecturesVisitingMarks.Add(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
+							groupVisit.Mark, false));
 						}
 					}
 				}
 			}
-			_currentLecturesVisitingMarksReady = _currentLecturesVisitingMarks;
 			SelectedDate = Date[Date.Count-1];
 			LecturesMarks = _currentLecturesVisitingMarks;
 		}
@@ -216,10 +190,10 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				{
 					for(int m = 0; m < lect.Marks.Count; m++)
 					{
-						if (lect.Marks[m].Date == SelectedDate)
+						if (lect.Marks[m].Date == selDateForSave)
 						{
-							lect.Marks[m].Mark = _currentLecturesVisitingMarksReady[i].Mark;
-							lect.Marks[m].Comment = _currentLecturesVisitingMarksReady[i].Comment;
+							lect.Marks[m].Mark = _currentLecturesVisitingMarks[i].Mark;
+							lect.Marks[m].Comment = _currentLecturesVisitingMarks[i].Comment;
 							//lect.Marks[m]. = _currentLecturesVisitingMarksReady[i].ShowForStud;
 							i++;
 						};
@@ -234,7 +208,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				var labsVisiting = fullVisitingLabs.Students;
 				SaveLabs labsMarks = new SaveLabs();
 				int dateId = 0;
-				foreach (var lab in _takedLabs.ScheduleProtectionLabs.Where(v => v.Date == SelectedLabDate && v.SubGroup == selSubGroup))
+				foreach (var lab in _takedLabs.ScheduleProtectionLabs.Where(v => v.Date == selLabDateForSave && v.SubGroup == selSubGroup))
 				{
 					dateId = lab.ScheduleProtectionLabId;
 				}
@@ -271,7 +245,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				SavePracticial savePracticial = new SavePracticial();
 				var practVisiting = fullVisitingPract.Students;
 				link = Links.SaveStudentPracticalMark;
-				foreach (var pr in _takedLabs.ScheduleProtectionPracticals.Where(v => v.Date == SelectedDate))
+				foreach (var pr in _takedLabs.ScheduleProtectionPracticals.Where(v => v.Date == selDateForSave))
 				{
 					dateId = pr.ScheduleProtectionPracticalId;
 				}
@@ -299,6 +273,8 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			return await AppServicesController.Request(link, body);
 		}
 
+		public List<int> currentSubGroups = new List<int>();
+
 		List<string> _subGroup;
 		public List<string> SubGroup
 		{
@@ -311,13 +287,6 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 		{
 			get { return _labsVisitingMarksSubGroup; }
 			set { SetProperty(ref _labsVisitingMarksSubGroup, value); }
-		}
-
-		List<VisitingPageModel> _labsVisitingMarksSubGroupTwo;
-		public List<VisitingPageModel> LabsVisitingMarksSubGroupTwo
-		{
-			get { return _labsVisitingMarksSubGroupTwo; }
-			set { SetProperty(ref _labsVisitingMarksSubGroupTwo, value); }
 		}
 
 		List<VisitingPageModel> _labsVisitingMarksSubGroupOne;
@@ -369,39 +338,94 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			set { SetProperty(ref _date1, value); }
 		}
 
-		List<string> _date2;
-		public List<string> Date2
-		{
-			get { return _date2; }
-			set { SetProperty(ref _date2, value); }
-		}
+		public string selDateForSave { get; set; }
 
 		string _selectedDate;
 		public string SelectedDate
 		{
-			get { return _selectedDate; }
-			set { SetProperty(ref _selectedDate, value); }
+			get
+			{
+				_currentLecturesVisitingMarks = new List<VisitingPageModel>();
+				foreach (var group in fullVisitingLectures.GroupsVisiting)
+				{
+					foreach (var groupVis in group.LecturesMarksVisiting)
+					{
+						foreach (var groupVisit in groupVis.Marks)
+						{
+							if (_selectedDate == groupVisit.Date &&
+								!(_currentLecturesVisitingMarks.Contains(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
+								groupVisit.Mark, false))))
+							{
+								_currentLecturesVisitingMarks.Add(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
+								groupVisit.Mark, false));
+							}
+						}
+					}
+				}
+				selDateForSave = _selectedDate;
+				LecturesMarks = _currentLecturesVisitingMarks;
+				return _selectedDate;
+			}
+			set 
+			{ 
+				SetProperty(ref _selectedDate, value); 
+			}
 		}
 
+		string _selectedPracDate;
+		public string SelectedPracDate
+		{
+			get
+			{
+				_currentLecturesVisitingMarks = new List<VisitingPageModel>();
+				foreach (var pract in _takedLabs.ScheduleProtectionPracticals.Where(v => v.Date == selDateForSave))
+				{
+					prVisId = pract.ScheduleProtectionPracticalId;
+					selDateForSave = _selectedPracDate;
+				}
+				foreach (var group in fullVisitingPract.Students)
+				{
+					foreach (var stud in group.PracticalVisitingMark.Where(v => v.ScheduleProtectionPracticalId == prVisId))
+					{
+						_currentLecturesVisitingMarks.Add(new VisitingPageModel(group.FullName, stud.Comment, stud.Mark, false));
+					}
+				}
+				LecturesMarks = _currentLecturesVisitingMarks;
+				return _selectedPracDate;
+			}
+			set
+			{
+				SetProperty(ref _selectedPracDate, value);
+			}
+		}
+
+		public string selLabDateForSave { get; set; }
 		string _selectedLabDate;
 		public string SelectedLabDate
 		{
-			get { return _selectedLabDate; }
-			set { SetProperty(ref _selectedLabDate, value); }
-		}
-
-		string _selectedDate1;
-		public string SelectedDate1
-		{
-			get { return _selectedDate1; }
-			set { SetProperty(ref _selectedDate1, value); }
-		}
-
-		string _selectedDate2;
-		public string SelectedDate2
-		{
-			get { return _selectedDate2; }
-			set { SetProperty(ref _selectedDate2, value); }
+			get 
+			{
+				_currentLabsVisitingMarksSubGroup1 = new List<VisitingPageModel>();
+				foreach (var date in _takedLabs.ScheduleProtectionLabs.Where(v => v.Date == _selectedLabDate))
+				{
+					labVisId = date.ScheduleProtectionLabId;
+					selLabDateForSave = _selectedLabDate;
+				}
+				foreach (var subGroupStudent in fullVisitingLabs.Students.Where(v => v.SubGroup == selSubGroup))
+				{
+					foreach (var stud in subGroupStudent.LabVisitingMark.Where(v => v.ScheduleProtectionLabId == labVisId))
+					{
+						_currentLabsVisitingMarksSubGroup1.Add(new VisitingPageModel(subGroupStudent.FullName,
+							stud.Comment, stud.Mark, stud.ShowForStudent));
+					}
+				}
+				LabsVisitingMarksSubGroup = _currentLabsVisitingMarksSubGroup1;
+				return _selectedLabDate; 
+			}
+			set 
+			{ 
+				SetProperty(ref _selectedLabDate, value); 
+			}
 		}
 
 		string _selectedSubGroup;
@@ -409,20 +433,26 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 		{
 			get
 			{
-				if (_selectedSubGroup == SubGroup[0])
+				Date1 = new List<string>();
+				_currentLabsVisitingMarksSubGroup1 = new List<VisitingPageModel>();
+				var lenght = _selectedSubGroup.Length;
+				selSubGroup = Int32.Parse(_selectedSubGroup[lenght - 1].ToString());
+				foreach (var labDate in _takedLabs.ScheduleProtectionLabs.Where(v => v.SubGroup == selSubGroup))
 				{
-					LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupOne;
-					DateLabs = Date1;
-					selSubGroup = 1;
-					SelectedLabDate = DateLabs[DateLabs.Count - 1];
+					Date1.Add(labDate.Date);
+					labVisId = labDate.ScheduleProtectionLabId;
 				}
-				else if (_selectedSubGroup == SubGroup[1])
+				foreach (var subGroupStudent in fullVisitingLabs.Students.Where(v => v.SubGroup == selSubGroup))
 				{
-					LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupTwo;
-					DateLabs = Date2;
-					selSubGroup = 2;
-					SelectedLabDate = DateLabs[DateLabs.Count - 1];
+					foreach (var stud in subGroupStudent.LabVisitingMark.Where(v => v.ScheduleProtectionLabId == labVisId))
+					{
+						_currentLabsVisitingMarksSubGroup1.Add(new VisitingPageModel(subGroupStudent.FullName,
+							stud.Comment, stud.Mark, stud.ShowForStudent));
+					}
 				}
+				DateLabs = Date1;
+				LabsVisitingMarksSubGroup = _currentLabsVisitingMarksSubGroup1;
+				SelectedLabDate = DateLabs[DateLabs.Count - 1];
 				return _selectedSubGroup;
 			}
 			set 
