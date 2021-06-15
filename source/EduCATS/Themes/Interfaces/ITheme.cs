@@ -9,6 +9,7 @@
 	/// </remarks>
 	public interface ITheme
 	{
+		string SubGroupText { get; }
 		string BaseAppColor { get; }
 		string BaseBlockColor { get; }
 		string BaseArrowForwardIcon { get; }
@@ -67,6 +68,7 @@
 		string NewsTextColor { get; }
 
 		string StatisticsChartLabsColor { get; }
+		string StatisticsChartPractColor { get; }
 		string StatisticsChartTestsColor { get; }
 		string StatisticsChartRatingColor { get; }
 		string StatisticsBoxTextColor { get; }

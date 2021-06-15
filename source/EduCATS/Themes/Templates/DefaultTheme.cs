@@ -16,6 +16,7 @@ namespace EduCATS.Themes.Templates
 		const string _lightGreyColor = "#F7F5F3";
 		const string _blackColor = "#000000";
 
+		virtual public string SubGroupText => _blackColor;
 		virtual public string BaseAppColor => _baseBlueColor;
 		virtual public string BaseBlockColor => _whiteColor;
 		virtual public string BaseSectionTextColor => _blackColor;
@@ -73,7 +74,9 @@ namespace EduCATS.Themes.Templates
 
 		virtual public string NewsTextColor => _blackColor;
 
+
 		virtual public string StatisticsChartLabsColor => "#FF3900";
+		virtual public string StatisticsChartPractColor => "#1ad2d9";
 		virtual public string StatisticsChartTestsColor => "#086CA2";
 		virtual public string StatisticsChartRatingColor => "#00B454";
 		virtual public string StatisticsBoxTextColor => _whiteColor;

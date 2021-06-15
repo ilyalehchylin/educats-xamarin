@@ -1,7 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data.Models;
+using EduCATS.Data.Models.User;
+using EduCATS.Networking.Models.SaveMarks;
+using EduCATS.Networking.Models.SaveMarks.LabSchedule;
+using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Networking.Models.Testing;
 using EduCATS.Pages.Parental.FindGroup.Models;
 
@@ -24,6 +29,13 @@ namespace EduCATS.Data
 			var dataAccess = new DataAccess<UserModel>("login_error", loginCallback(username, password));
 			return await GetDataObject(dataAccess, false) as UserModel;
 		}
+
+		public async static Task<SecondUserModel> LoginTest(string username, string password)
+		{
+			var dataAccess = new DataAccess<SecondUserModel>("login_error", loginCallbackEducatsby(username, password));
+			return await GetDataObject(dataAccess, false) as SecondUserModel;
+		}
+
 
 		/// <summary>
 		/// Fetch profile information.
@@ -88,6 +100,42 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
+		/// Fetch statistics.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Statistics data.</returns>
+		public async static Task<LabsVisitingList> GetTestStatistics(int subjectId, int groupId)
+		{
+			var dataAccess = new DataAccess<LabsVisitingList>(
+				"stats_marks_error", getTestStatsCallback(subjectId, groupId),
+				GetKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
+			return await GetDataObject(dataAccess, false) as LabsVisitingList;
+		}
+	
+		public async static Task<TakedLabs> GetPractTest(int subjectId, int groupId)
+		{
+			var dataAccess = new DataAccess<TakedLabs>(
+				"stats_marks_error", getTestPractScheduleCallbak(subjectId, groupId),
+				GetKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
+			return await GetDataObject(dataAccess, false) as TakedLabs;
+		}
+
+		/// <summary>
+		/// Fetch statistics.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Statistics data.</returns>
+		public async static Task<LabsVisitingList> GetTestPracticialStatistics(int subjectId, int groupId)
+		{
+			var dataAccess = new DataAccess<LabsVisitingList>(
+				"stats_marks_error", getTestPracticialStatsCallback(subjectId, groupId),
+				GetKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
+			return await GetDataObject(dataAccess, false) as LabsVisitingList;
+		}
+
+		/// <summary>
 		/// Fetch groups.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
@@ -98,6 +146,14 @@ namespace EduCATS.Data
 				"groups_fetch_error", getGroupsCallback(subjectId),
 				GetKey(GlobalConsts.DataGetGroupsKey, subjectId));
 			return await GetDataObject(dataAccess, false) as GroupModel;
+		}
+
+		public async static Task<LecturesModel> GetLecturesTest(int subjectId, int groupId)
+		{
+			var dataAccess = new DataAccess<LecturesModel>(
+				"lectures_fetch_error", getLecturesCallbackTest(subjectId, groupId),
+				GetKey(GlobalConsts.DataGetLecturesKey, subjectId, groupId));
+			return await GetDataObject(dataAccess, false) as LecturesModel;
 		}
 
 		/// <summary>
@@ -112,6 +168,20 @@ namespace EduCATS.Data
 				"labs_fetch_error", getLabsCallback(subjectId, groupId),
 				GetKey(GlobalConsts.DataGetLabsKey, subjectId, groupId));
 			return await GetDataObject(dataAccess, false) as LabsModel;
+		}
+
+		/// <summary>
+		/// Fetch laboratory works data.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Laboratory works data.</returns>
+		public async static Task<TakedLabs> GetLabsTest(int subjectId, int groupId)
+		{
+			var dataAccess = new DataAccess<TakedLabs>(
+				"labs_fetch_error", getTestLabsCallback(subjectId, groupId),
+				GetKey(GlobalConsts.DataGetLabsKey, subjectId, groupId));
+			return await GetDataObject(dataAccess, false) as TakedLabs;
 		}
 
 		/// <summary>

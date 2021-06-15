@@ -6,7 +6,7 @@
 	"base_cancel": "Atšaukimas",
 	"base_warning": "Dėmesio",
 	"base_loading": "Pakrovimas...",
-	"base_unexpected_error": "Įvyko netikėta klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
+	"base_unexpected_error": "Įvyko netikėta klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba. Gali būti, kad prieigos raktas nebegalioja. Įveskite programą iš naujo.",
 	"base_connection_error": "Nėra interneto ryšio. Patikrinkite tinklo nustatymus ir bandykite dar kartą.",
 	"base_no_data": "Nėra rodomų duomenų",
 
@@ -53,6 +53,7 @@
 	"stats_expand_chart_text": "Daugiau informacijos",
 	"stats_collapse_chart_text": "Slėpti",
 	"stats_chart_average_labs": "Vidutinis laboratorinių darbų įvertinimas",
+	"stats_chart_average_pract": "Vidutinis praktinio darbo įvertinimas",
 	"stats_chart_average_tests": "Vidutinis testo rezultatas",
 	"stats_chart_rating": "Vertinimo balas",
 	"stats_chart_not_enough_data": "Nepakanka duomenų diagramai parodyti",
@@ -175,5 +176,19 @@
 	"invaild_answer": "Įvestas neteisingas slaptas atsakymas",
 	"password_changed": "Slaptažodis pakeistas",
 	"successful_password_change": "Sėkmingas slaptažodžio pakeitimas",
-	"empty_fields_forgot_password": "Būtini laukai (prisijungimas, saugos klausimas, atsakymas, naujas slaptažodis, patvirtinimo slaptažodis) turi būti užpildyti!"
+	"empty_fields_forgot_password": "Būtini laukai (prisijungimas, saugos klausimas, atsakymas, naujas slaptažodis, patvirtinimo slaptažodis) turi būti užpildyti!",
+
+	"set_marks": "Nustatyti ženklus",
+	"set_visiting": "Uždėti spragas",
+	"save_marks": "Sutaupyti",
+
+	"practiсe_visiting": "Praktikos vizitas",
+	"practice_mark": "Praktikos užrašai",
+
+	"sub_group": "Pogrupis ",
+	"mark": "Zenklas",
+	"date": "Data",
+	"comment": "Komentuoti",
+	"show_for_student": "Rodyti komentarą studentui",
+	"skipped_hours": "Praleistos valandos"
 }

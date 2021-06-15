@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Settings;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Text;
@@ -17,6 +19,12 @@ namespace EduCATS.Networking
 		readonly HttpClient _client;
 
 		/// <summary>
+		/// Access token.
+		/// </summary>
+
+		bool IsAccessToken = false;
+
+		/// <summary>
 		/// <c>POST</c> content.
 		/// </summary>
 		StringContent _postContent;
@@ -25,6 +33,11 @@ namespace EduCATS.Networking
 		/// Request timeout in seconds.
 		/// </summary>
 		const int _timeoutSeconds = 30;
+
+		/// <summary>
+		/// IsAccessToken.
+		/// </summary>
+		bool isAccessToken = false;
 
 		/// <summary>
 		/// URL.
@@ -36,12 +49,19 @@ namespace EduCATS.Networking
 		/// </summary>
 		public Uri Uri => Url == null ? null : new Uri(Url);
 
+		public IPlatformServices _services;
 		/// <summary>
 		/// Constructor.
 		/// </summary>
 		/// <param name="url">URL.</param>
-		public RequestController(string url = null)
+		
+		///<summary>
+		///Constrctor.
+		///</summary> 
+		///<param name="services">Param</param>
+		public RequestController(string url = null, PlatformServices services = null)
 		{
+			_services = services ?? new PlatformServices();
 			Url = url;
 
 			_client = new HttpClient {
@@ -88,7 +108,15 @@ namespace EduCATS.Networking
 		async Task<HttpResponseMessage> get()
 		{
 			try {
-				return await _client.GetAsync(Uri);
+				_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);	
+				using (var httpClient = new HttpClient { BaseAddress = Uri })
+				{
+					using (var response = await httpClient.GetAsync(Uri))
+					{
+						//string responseData = await response.Content.ReadAsStringAsync();
+						return await _client.GetAsync(Uri);
+					}
+				}
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
 			} catch {
@@ -102,8 +130,18 @@ namespace EduCATS.Networking
 		/// <returns>Response.</returns>
 		async Task<HttpResponseMessage> post()
 		{
-			try {
-				return await _client.PostAsync(Uri, _postContent);
+			try
+			{
+				_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
+				using (var httpClient = new HttpClient { BaseAddress = Uri })
+				{
+					httpClient.DefaultRequestHeaders.Authorization = _client.DefaultRequestHeaders.Authorization;
+					using (var response = await httpClient.GetAsync(Uri))
+					{
+						//string responseData = await response.Content.ReadAsStringAsync();
+						return await _client.PostAsync(Uri, _postContent);
+					}
+				}
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
 			} catch (Exception) {

@@ -15,6 +15,7 @@
 		int ChosenGroupId { get; set; }
 		string Font { get; set; }
 		bool IsLargeFont { get; set; }
+		string AccessToken { get; set; }
 		void ResetPrefs();
 	}
 }

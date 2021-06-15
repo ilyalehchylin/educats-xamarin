@@ -15,6 +15,11 @@ namespace EduCATS.Data
 		static async Task<object> loginCallback(
 			string username, string password) => await AppServices.Login(username, password);
 
+		static async Task<object> loginCallbackEducatsby(
+			string username, string password) => await AppServices.LoginEducatsBy(username, password);
+
+		static async Task<object> getLecturesCallbackTest(
+			int subjectId, int groupId) => await AppServices.GetLecturesEducatsBy(subjectId, groupId);
 		/// <summary>
 		/// Profile callback.
 		/// </summary>
@@ -56,6 +61,14 @@ namespace EduCATS.Data
 		static async Task<object> getStatsCallback(
 			int subjectId, int groupId) => await AppServices.GetStatistics(subjectId, groupId);
 
+		static async Task<object> getTestStatsCallback(
+			int subjectId, int groupId) => await AppServices.GetTestStatistics(subjectId, groupId);
+
+		static async Task<object> getTestPracticialStatsCallback(
+			int subjectId, int groupId) => await AppServices.GetPracticials(subjectId, groupId);
+
+		static async Task<object> getTestPractScheduleCallbak(
+			int subjectId, int gruopId) => await AppServices.GetPractTestStatistics(subjectId, gruopId);
 		/// <summary>
 		/// Groups callback.
 		/// </summary>
@@ -71,6 +84,15 @@ namespace EduCATS.Data
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Laboratory works data.</returns>
 		static async Task<object> getLabsCallback(
+			int subjectId, int groupId) => await AppServices.GetLabs(subjectId, groupId);
+
+		/// <summary>
+		/// Laboratory works callback.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Laboratory works data.</returns>
+		static async Task<object> getTestLabsCallback(
 			int subjectId, int groupId) => await AppServices.GetLabs(subjectId, groupId);
 
 		/// <summary>

@@ -112,6 +112,11 @@ namespace EduCATS.Pages.Statistics.Base.Views
 				Color.FromHex(Theme.Current.StatisticsChartTestsColor),
 				"AverageTests");
 
+			var avgPractView = createStatisticsView(
+				CrossLocalization.Translate("stats_chart_average_pract"),
+				Color.FromHex(Theme.Current.StatisticsChartPractColor),
+				"AveragePract");
+
 			var avgRatingView = createStatisticsView(
 				CrossLocalization.Translate("stats_chart_rating"),
 				Color.FromHex(Theme.Current.StatisticsChartRatingColor),
@@ -120,7 +125,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 			var avgStatsLayout = new StackLayout {
 				Children = {
-					avgLabsView, avgTestsView, avgRatingView
+					avgLabsView, avgTestsView, avgPractView, avgRatingView
 				}
 			};
 

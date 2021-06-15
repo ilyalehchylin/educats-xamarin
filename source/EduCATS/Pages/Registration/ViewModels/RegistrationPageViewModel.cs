@@ -83,7 +83,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 			}
 			return latin_password;
 		}
-
+		 
 		public bool LatinUserName()
 		{
 			bool latin_username = true;

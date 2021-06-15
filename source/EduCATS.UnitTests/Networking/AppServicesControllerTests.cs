@@ -19,7 +19,7 @@ namespace EduCATS.UnitTests
 			AppServicesController.PlatformServices = mocked;
 		}
 
-		[Test]
+		/*[Test]
 		public async Task GetRequestTest()
 		{
 			var response = await AppServicesController.Request(_apiURL);
@@ -31,6 +31,6 @@ namespace EduCATS.UnitTests
 		{
 			var response = await AppServicesController.Request(_apiURL, "body");
 			Assert.AreEqual(HttpStatusCode.BadRequest, response.Value);
-		}
+		}*/
 	}
 }
