@@ -43,7 +43,9 @@ namespace EduCATS.Pages.Registration.ViewModels
 				string.IsNullOrEmpty(ConfirmPassword) ||
 				string.IsNullOrEmpty(Name) ||
 				string.IsNullOrEmpty(Surname) ||
-				ReferenceEquals(Group.Id, null))
+				ReferenceEquals(Group.Id, null) ||
+				ReferenceEquals(SelectedQuestionId, null) ||
+				string.IsNullOrEmpty(AnswerToSecretQuestion))
 			{
 				return false;
 			}
@@ -83,6 +85,31 @@ namespace EduCATS.Pages.Registration.ViewModels
 			}
 			return latin_password;
 		}
+
+		public bool CheckNameOfUser(string nameOfUser)
+		{
+			bool name = true;
+			try
+			{
+				for (int i = 0; i < nameOfUser.Length; i++)
+				{
+					if (!(
+						((nameOfUser[i] >= 'a') && (nameOfUser[i] <= 'z')) || ((nameOfUser[i] >= 'A') && (nameOfUser[i] <= 'Z')) ||
+						((nameOfUser[i] >= 'а') && (nameOfUser[i] <= 'я')) || ((nameOfUser[i] >= 'А') && (nameOfUser[i] <= 'Я')) ||
+						((nameOfUser[i] == '_') || (nameOfUser[i] == ' ') || (nameOfUser[i] == '-')) ||
+						((int.Parse(nameOfUser[i].ToString()) >= 0 && int.Parse(nameOfUser[i].ToString()) <= 9))))
+					{
+						name = false;
+						break;
+					}
+				}
+			}
+			catch
+			{
+				name = false;
+			}
+			return name;
+		}
 		 
 		public bool LatinUserName()
 		{
@@ -112,6 +139,13 @@ namespace EduCATS.Pages.Registration.ViewModels
 			{
 				if (checkCredentials())
 				{
+					bool correctPatronymic = true;
+					bool correctName = CheckNameOfUser(Name);
+					bool correctSurname = CheckNameOfUser(Surname);
+					if (Patronymic != null)
+					{
+						correctPatronymic = CheckNameOfUser(Patronymic);
+					}
 					SelectedQuestionId = 0;
 					int uppercase = UpperCaseLettersInPassword();
 					bool latin_password = LatinPassword();
@@ -129,23 +163,10 @@ namespace EduCATS.Pages.Registration.ViewModels
 						SelectedQuestionId = 3;
 					}
 
-					if (!(UserName.Length > 3 && UserName.Length < 30))
+					if (!(UserName.Length >= 3 && UserName.Length <= 30))
 					{
 						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
 										CrossLocalization.Translate("less_than_three_characters"));
-						return Task.FromResult<object>(null);
-						
-					}
-
-					if (SelectedQuestionId == 0 && AnswerToSecretQuestion != null)
-					{
-						_services.Dialogs.ShowMessage("Поля не заполнены","Не выбран секретный вопрос");
-						return Task.FromResult<object>(null);
-					}
-
-					if (SelectedQuestionId != 0 && AnswerToSecretQuestion == null)
-					{
-						_services.Dialogs.ShowMessage("Поля не заполнены", "Не введен ответ на секретный вопрос");
 						return Task.FromResult<object>(null);
 					}
 
@@ -156,7 +177,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 						return Task.FromResult<object>(null);
 					}
 
-					if (!(Password.Length > 6 && Password.Length < 30))
+					if (!(Password.Length >= 6 && Password.Length <= 30))
 					{
 						_services.Dialogs.ShowError(CrossLocalization.Translate("password_length_error"));
 						return Task.FromResult<object>(null);
@@ -175,10 +196,40 @@ namespace EduCATS.Pages.Registration.ViewModels
 						return Task.FromResult<object>(null);
 					}
 
+					if (Name[0] == ' ' || Name[Name.Length - 1] == ' ' || Surname[0] == ' ' || Surname[Surname.Length - 1] == ' ')
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("not_corrected_data"),
+							CrossLocalization.Translate("delete_spaces"));
+						return Task.FromResult<object>(null);
+					}
+
+					if (Patronymic != null && (Patronymic[0] == ' ' || Patronymic[Patronymic.Length - 1] == ' '))
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("not_corrected_data"),
+							CrossLocalization.Translate("delete_spaces"));
+						return Task.FromResult<object>(null);
+					}
+
+					if (Name.Length >= 30 || Surname.Length >= 30 || Patronymic.Length >= 30)
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("not_carrected_lenth"),
+							CrossLocalization.Translate("lenth_name_surname_patronymic"));
+						return Task.FromResult<object>(null);
+					}
+
+					if (!(correctName && correctSurname && correctPatronymic))
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("not_corrected_data"),
+							CrossLocalization.Translate("name_surmane_patronymic_format"));
+						return Task.FromResult<object>(null);
+					}
+
 					setLoading(true, CrossLocalization.Translate("chek_In"));
 					await RegistrationPostAsync(UserName, Name, Surname, Patronymic, Password, 
 						ConfirmPassword, Group.Id, SelectedQuestionId, AnswerToSecretQuestion);
-					setLoading(false); 
+					setLoading(false);
+					_services.Dialogs.ShowMessage(CrossLocalization.Translate("registration"),
+						CrossLocalization.Translate("succses_reg"));
 					await _services.Navigation.ClosePage(false);
 				}
 				else

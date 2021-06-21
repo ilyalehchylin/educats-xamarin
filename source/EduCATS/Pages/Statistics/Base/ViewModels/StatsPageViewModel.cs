@@ -361,12 +361,12 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 					avgTests = currentPractStudentStatistics.TestMark.StringToDouble();
 					AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
-					if (worksModel.PracticalsMarks == null)
+					if (worksModel.PracticalsMarks.Count == 0)
 					{
 						rating = (avgLabs + avgTests) / 2;
 						Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 						ChartEntries = new List<double> {
-							avgLabs, avgTests, rating
+							avgLabs, avgTests, rating, avgPract
 						};
 						setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
 					}
