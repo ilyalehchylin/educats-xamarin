@@ -285,9 +285,10 @@ namespace EduCATS.Pages.Login.Views
 				VerticalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.StartAndExpand,
 				FontSize = 18,
-				Padding = new Thickness(0, 15, 0, 15)
+				Padding = new Thickness(0, 15, 0, 15),
+				TextDecorations = TextDecorations.Underline
 			};
-			chekInButton.Effects.Add(new UnderlineEffect());
+
 			var tapGestureRecognizer = new TapGestureRecognizer();
 			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "RegistrationOpenCommand");
 			chekInButton.GestureRecognizers.Add(tapGestureRecognizer);
@@ -304,9 +305,10 @@ namespace EduCATS.Pages.Login.Views
 				VerticalTextAlignment = TextAlignment.Center,
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				FontSize = 18,
-				Padding = new Thickness(0, 10, 0, 15)
+				Padding = new Thickness(0, 10, 0, 15),
+				TextDecorations = TextDecorations.Underline
 			};
-			ForgotPasswordButton.Effects.Add(new UnderlineEffect());
+
 			var tapGestureRecognizer = new TapGestureRecognizer();
 			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "ForgotPasswordCommand");
 			ForgotPasswordButton.GestureRecognizers.Add(tapGestureRecognizer);
