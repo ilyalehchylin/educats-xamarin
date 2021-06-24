@@ -164,10 +164,11 @@
 	"less_than_three_characters": "Długość loginu musi być większa niż 3 znaki i mniejsza niż 30.",
 	"password_not_correct": "Nieprawidłowy format hasła",
 	"latin_password": "Użyj tylko liter łacińskich (przynajmniej jednej dużej i małej litery), podkreślenia i przynajmniej jednej cyfry.",
-	"empty_fields": "Wymagane pola (login, hasło, potwierdzenie hasła, imię, nazwisko, grupa) muszą być wypełnione!",
+	"empty_fields": "Wymagane pola (Login, Hasło, Potwierdź hasło, Imię, Nazwisko, Grupa, Pytanie zabezpieczające, Odpowiedź na pytanie zabezpieczające) muszą być wypełnione!",
 	"password_length_error": "Długość hasła musi być większa niż 6 znaki i mniejsza niż 30",
 	"invaild_server": "Nieprawidłowy serwer",
 	"change_server": "Zmień bieżący serwer na educats.by",
+	"user_exists": "Użytkownik o tej samej nazwie już istnieje. Zmień swoją nazwę użytkownika.",
 
 	"not_corrected_data": "Nieprawidłowy format danych",
 	"delete_spaces": "Usuń dodatkowe spacje",
