@@ -128,6 +128,8 @@
 		/// </summary>
 		public static string VerifySecretQuestion => $"{Servers.Current}/Account/VerifySecretQuestion?";
 
+		public static string VerifyUserExists => $"{Servers.EduCatsByAddress}/Account/UserExists?";
+
 		/// <summary>
 		/// Get reset password URL.
 		/// </summary>

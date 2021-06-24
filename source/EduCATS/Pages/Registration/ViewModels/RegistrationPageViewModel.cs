@@ -5,6 +5,7 @@ using EduCATS.Helpers.Json;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Networking.AppServices;
+using Newtonsoft.Json;
 using Nyxbull.Plugins.CrossLocalization;
 using System;
 using System.Collections.Generic;
@@ -119,7 +120,11 @@ namespace EduCATS.Pages.Registration.ViewModels
 				for (int i = 0; i < UserName.Length; i++)
 				{
 					if (!(((UserName[i] >= 'a') && (UserName[i] <= 'z')) || ((UserName[i] >= 'A') && (UserName[i] <= 'Z'))
-						|| ((int.Parse(UserName[i].ToString()) >= 0) && (int.Parse(UserName[i].ToString()) <= 9))))
+						|| ((int.Parse(UserName[i].ToString()) >= 0) && (int.Parse(UserName[i].ToString()) <= 9)) 
+						|| (UserName[i] == '_') 
+						|| (UserName[i] == '.')
+						|| (UserName[i] == '-')
+						|| (UserName[i] == '@')))
 					{
 						latin_username = false;
 						break;
@@ -133,6 +138,8 @@ namespace EduCATS.Pages.Registration.ViewModels
 			return latin_username;
 		}
 
+
+
 		public async Task<Task<object>> startRegister()
 		{
 			try
@@ -142,6 +149,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 					bool correctPatronymic = true;
 					bool correctName = CheckNameOfUser(Name);
 					bool correctSurname = CheckNameOfUser(Surname);
+
 					if (Patronymic != null)
 					{
 						correctPatronymic = CheckNameOfUser(Patronymic);
@@ -161,6 +169,13 @@ namespace EduCATS.Pages.Registration.ViewModels
 					else if (QuestionId == CrossLocalization.Translate("hobby"))
 					{
 						SelectedQuestionId = 3;
+					}
+
+					var userExists = await VerifyUserNameAsync(UserName);
+					if (JsonConvert.DeserializeObject<string>(userExists.Key) == "true")
+					{
+						_services.Dialogs.ShowError(CrossLocalization.Translate(""));
+						return Task.FromResult<object>(null);
 					}
 
 					if (!(UserName.Length >= 3 && UserName.Length <= 30))
@@ -243,6 +258,11 @@ namespace EduCATS.Pages.Registration.ViewModels
 				AppLogs.Log(ex);
 			}
 			return Task.FromResult<object>(null);
+		}
+
+		public async Task<KeyValuePair<string, HttpStatusCode>> VerifyUserNameAsync(string username)
+		{
+			return await AppServicesController.Request(Links.VerifyUserExists + "userName=" + username);
 		}
 
 		public async Task<KeyValuePair<string, HttpStatusCode>> RegistrationPostAsync(string username, string name, string surname, string patronymic, string password, string confirmPassword,
