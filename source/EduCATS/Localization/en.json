@@ -172,10 +172,11 @@
 	"less_than_three_characters": "Login length must be more than 3 characters and less than 30.",
 	"password_not_correct": "Invalid password format",
 	"latin_password": "Use only latin letters (at least one uppercase and lowercase), an underscore and at least one number.",
-	"empty_fields": "Required fields (Login, Password, Confirm Password, First Name, Last Name, Group) must be filled!",
+	"empty_fields": "Required fields (Login, Password, Confirm Password, First Name, Last Name, Group, Security Question, Answer to Security Question) must be filled in!",
 	"password_length_error": "Password length must be more than 6 characters and less than 30",
 	"invaild_server": "Invalid server",
 	"change_server": "Please change the current server to educats.by",
+	"user_exists": "A user with the same name already exists. Please change your username.",
 
 	"not_corrected_data": "Invalid data format",
 	"delete_spaces": "Remove extra spaces",

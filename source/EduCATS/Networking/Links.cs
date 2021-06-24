@@ -122,6 +122,7 @@
 		/// </summary>
 		public static string Registration => $"{Servers.Current}/Account/Register/";
 
+		public static string VerifyUserExists => $"{Servers.EduCatsByAddress}/Account/UserExists?";
 		/// <summary>
 		/// Get verification URL.
 		/// </summary>
