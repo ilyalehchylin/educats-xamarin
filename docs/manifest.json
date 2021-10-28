@@ -4,12 +4,4368 @@
   "xrefmap": "xrefmap.yml",
   "files": [
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.App.html",
+          "hash": "N5SpmNmfz+NW7agbf4KezUcCGJIqNQGExOt6xLyxSQU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Configuration.AppConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Configuration.AppConfig.html",
+          "hash": "MHtx7SzeHDvbhPCueO86btwDHJHUdDrcLKlW8WJNMqw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Configuration.html",
+          "hash": "bLayKIlJ/QKNcckJOngCs9bNWqqhZ2xWt9xoJaanlEo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Constants.GlobalConsts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Constants.GlobalConsts.html",
+          "hash": "Czsxf44Jvwt8bl2Z9YNXFCr/45n4kmpkCRKTZq/N/28="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Constants.html",
+          "hash": "8xd/fQFTGVMI3pgBB2aQiz9c8PyteSwzvidCqkR7dAw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.CustomWebView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.CustomWebView.html",
+          "hash": "WPsv0R0Oyf5OGMOx8/fRk9qG9iQHhU63tzB6j2HYRus="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.Pickers.GroupsPickerView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.Pickers.GroupsPickerView.html",
+          "hash": "uj/5nDTV39W3btLLSWq/roTzCR40v/BjkxF9AXl6XdM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.Pickers.SubjectsPickerView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.Pickers.SubjectsPickerView.html",
+          "hash": "ZuABq2arNmDxoYrrvlBiIHU5NIQQ6I9bCLLgiSPfodg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.Pickers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.Pickers.html",
+          "hash": "GT8VI+UPHJEmZqFqXpd/AhFeJSkRJB7FAdJ+bUtxtI4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Enums.RoundedListTypeEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Enums.RoundedListTypeEnum.html",
+          "hash": "3muB3n9uEP0oARzb+ycgALj1a25gNLxzfm5uNZjLqXM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Enums.html",
+          "hash": "YW3j++MkfExOF7UIdypVH+V0bC5emPwg+ZfnxGEsHyg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.IRoundedListType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.IRoundedListType.html",
+          "hash": "9hnxDLKfh2Lu/6xTH5bAQDuCW1kJt06VULMuIqNP1YM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.html",
+          "hash": "vRbZRuWbeOQG9kGwEQ/5AaLE365tPoQtvvTz3HLn/rI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.RoundedListView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.RoundedListView.html",
+          "hash": "014sHhSe4kGC6oyLPpWAxT5aW57MBbnuJZ/8B0iXNQw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html",
+          "hash": "SAl0GWl6PxHFOLhcwiP9gt0au5X0kM+cnVRd57fAWsY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.html",
+          "hash": "IeaIpbC2caiOCYe6+FLIo07XBBc4xiQgjYdEU/SEIFg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.html",
+          "hash": "5R38UIGa7k3py5zMo7OsUnk72JMPKMx4nv1YWZQ34D4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.SwitchFrame.SwitchFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.SwitchFrame.SwitchFrame.html",
+          "hash": "FmmFtc7QboaDOP+U2F2PlH8RNCMfor9SwM5hcNAxq/E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.SwitchFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.SwitchFrame.html",
+          "hash": "f2W0qTZLsDV9/IhpqoNLVWDhgE9ANjBTSjkPGX89DL4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.html",
+          "hash": "MFGmTqe8P53YmnWKgN7qZ5sYaAfwckYr0dUVq0z9LfY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Caching.DataCaching-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Caching.DataCaching-1.html",
+          "hash": "Zi9zo6N4DkQq8xk4CS69Sr+nDpiEgLH4vy+vVrvAEu0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Caching.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Caching.html",
+          "hash": "6uaQHXvKsLQm82ajilBv0p7dAbw6D+vQKmk7HEymNSc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.DataAccess-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.DataAccess-1.html",
+          "hash": "I0stD6B26e8GOLLyx+VCBds4qCCKBt6f2hjv51AF3kA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.DataAccess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.DataAccess.html",
+          "hash": "CMeaHjeoRb8BvgziVpYqhiumcFdMowKPvlcglIi7sxA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Interfaces.IDataAccess-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Interfaces.IDataAccess-1.html",
+          "hash": "dxv6hxnS7+EhKzDXeZMwO2goYagpAmwZrbDVeYzT0/8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Interfaces.html",
+          "hash": "h37VoDrE41Rddh+zN6pHF4OnlyR0Y3LiwD/eEyt/Hqg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.CalendarModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.CalendarModel.html",
+          "hash": "kOzcT6lqRg+m1TQljiOGJ7vL421qrIE6+2HEJzCBW+s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.CalendarSubjectModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.CalendarSubjectModel.html",
+          "hash": "VI+bhcFgz7p2fxMSiWCOGa+CKmi/tV9Rarkhm8z8Jso="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.ConceptModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.ConceptModel.html",
+          "hash": "D4Bxnzpq2Wd6AZYm8n05JuLf72r8WOoED5js5lTAOxY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.FileDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.FileDetailsModel.html",
+          "hash": "iixL8CvG9ZSyIp+RlVi7rJSvWpSnLWAU2YeT+HbexUA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.FilesModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.FilesModel.html",
+          "hash": "8le/34e76ZUuhzWh6jk1QKeYZ5BGURg2jalsZCkmuSc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.GroupItemModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.GroupItemModel.html",
+          "hash": "nKcKmXupgxJlSjz+EcfvPVIEebtCbijTXmf0RoMFXd0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.GroupModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.GroupModel.html",
+          "hash": "EttLsNdMA6ZV+sfGORo3si+zuKTe0YqZaltMR3OPTWE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LabDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LabDetailsModel.html",
+          "hash": "FdTeE7FGGp9Tnn/9EAiw1L/LVKQx7WSt8lSKPyFRnjQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LabProtectionModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LabProtectionModel.html",
+          "hash": "GyObi+9HcdjVNBS7ryvLmAcvvotGvALpDDY/pOF0BFg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LabsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LabsModel.html",
+          "hash": "FCNg4fUEvoNS1lGDFnW/iB/TrpbVLkXSyLl9icGK3Lw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LecturesDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LecturesDetailsModel.html",
+          "hash": "wD27FtOP8awY3f/T3DI4ATi+2RgNFKzHYrfljJJfzSI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LecturesGroupsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LecturesGroupsModel.html",
+          "hash": "mKf/6O00Zz9i9dX4GzKPYoK8hSyzZD4L5dtx/ggEV9o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LecturesModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LecturesModel.html",
+          "hash": "+QgMMIVETMEFWiSK6A//y+NfA9hVw4ZZT+fcDhEb8RA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LecturesStudentModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LecturesStudentModel.html",
+          "hash": "EWnYKDfnFlcAnr1uVJgnsbiEinicZYiV+l+d/4uApsQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.NewsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.NewsModel.html",
+          "hash": "jS41Q0Jx6lR6AwOk1BjWrwgLPQXC1KKnN+LvuCZQm+Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.NewsSubjectModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.NewsSubjectModel.html",
+          "hash": "fspseZ7lfMNWIPf4DYyuXdlTlae6ONk0lMskcgiYTrM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.RecommendationModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.RecommendationModel.html",
+          "hash": "/nOMyLjvuSxGBRib4l7zc2yUB3PmatwO15dRoPY45SU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Registration.RegistrationModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Registration.RegistrationModel.html",
+          "hash": "au83cCF6fHd7vju5IxJotYWnrwgAGMheYrtop8iZWME="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Registration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Registration.html",
+          "hash": "tFN1Re6NVb9ZaH/NaeOYPiihCN+uaqQdCz3mSqbK5kc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.RootConceptModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.RootConceptModel.html",
+          "hash": "c9KQFv+PbZ8miY/J3JFRpTWVwoYsf6CE+VV9Hr8wWrw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StatsMarkModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StatsMarkModel.html",
+          "hash": "mVNtA+SyDht1hpvnr00uru81h9LxJOJKztS5BtLwAgY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StatsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StatsModel.html",
+          "hash": "TdARGVfAIbGUEI2mBQ7bEtsRtDoIeyeUR+MKdFEUyA8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StatsStudentModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StatsStudentModel.html",
+          "hash": "ySK5FLKqXFasPqn4xCtafU+PIi7mrIAkWztYQgMpNcQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StatsVisitingModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StatsVisitingModel.html",
+          "hash": "CcYb+269zMkXVPZApGV7F6XFII+YLCtYAOhDmURV5Xw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.SubjectModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.SubjectModel.html",
+          "hash": "9PxEfAweeJUkt+5EVrb/GcWBgr9CyUBdCqRzn0ABt84="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestAnswerModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestAnswerModel.html",
+          "hash": "pCNmMEb4Q3zaXG8yB0s+7sRF0x9CLbXptcPSDeV5CHc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestDetailsModel.html",
+          "hash": "i5wmXuYZCeW0RIljlKudcsAjLHX7OYkDKDEQbU09dVQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestModel.html",
+          "hash": "7NXdIO7G/t32HRrp2EX2HMRLY9mC9u7nCHckgIeLzaI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestQuestionDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestQuestionDetailsModel.html",
+          "hash": "DsIxRF8z9jZCSiOVt4OcIibLYnaGX78ySHUUbiLjR24="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestQuestionModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestQuestionModel.html",
+          "hash": "eb1vzQJmbsP7FEsbPzaN0fAnm8fUTSGROjNDzKJwqHw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestResultsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestResultsModel.html",
+          "hash": "OJM+xQjxONLsrvF/lUe0S10/2p0QXb3ftgXFiHHIXx8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.User.SecondUserModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.User.SecondUserModel.html",
+          "hash": "hUTZPFBiGXjjA8NIj/YwsdGEL5GBw6R+0omhuqnifi8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.User.html",
+          "hash": "Ftgd2fonX05YXDXgAa44tms1cxQJLbnTV/k1DNymxHc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.UserLoginModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.UserLoginModel.html",
+          "hash": "fpvuoZ7jLI72NpsPeftA95j/8sBHwNlnjba+PeIGHoU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.UserModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.UserModel.html",
+          "hash": "ykd1r7gFB7bJelnevDxJRDzC4HxCswoV5JRG8XJX7ak="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.UserProfileModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.UserProfileModel.html",
+          "hash": "9tHINag/KBAyjZy7i8357AQlgVwq6YQ6qGwXIHVb0jY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.html",
+          "hash": "YBf7Bp/u05tlBnlfq5SLyF0/k8JM+ZSJgsBat/kLsCU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.User.AppUserData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.User.AppUserData.html",
+          "hash": "9I7jyyWAYpzQr74p1Gz/XlFW5DLbadD4ysBixWXMMpU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.User.UserTypeEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.User.UserTypeEnum.html",
+          "hash": "59LyVqYZEfAX6RYTjCdyn0blAROINPGo0Qryiz2vV94="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.User.html",
+          "hash": "I5/h64GjnMb6vMJ2Ns/ns5gFmMH7X4YCd2U0Jt4YnHE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.html",
+          "hash": "+hZdrbEj388A4SO/Rqo/9PEksTJu4XEaulg0WYe3anA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Fonts.FontExclude.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Fonts.FontExclude.html",
+          "hash": "G1XY0KVvQyd5JwRc2+/gBzCYWR16hF6Vp7HDnH6sV7k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Fonts.FontSizeController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Fonts.FontSizeController.html",
+          "hash": "plWB157SUpAjB+t0qJe3kfBhhggHpNe5UG6UyVS4LzE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Fonts.FontsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Fonts.FontsController.html",
+          "hash": "s202SrMHYrWr6opx0SjBdvLwYtUUXWABbBQaVrQOM94="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Fonts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Fonts.html",
+          "hash": "E97/Y8cpJpJKkEm11cb1V62q0xnsyYVC/8afUlS7o24="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.DateHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.DateHelper.html",
+          "hash": "qciNgaptoSC64ghXkVeh+uI4BfFQmVuGfS9L3fMKle4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.Enums.WeekEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.Enums.WeekEnum.html",
+          "hash": "Fcc5o4bO5pQpDWM4hCTJd2utNNt6yWd4cbUJIllf+Zk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.Enums.html",
+          "hash": "VAz1zL9IcKMVMayXp23GjF3lwGRbttLt/w6hJoQasEE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.Extensions.DateTimeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.Extensions.DateTimeExtensions.html",
+          "hash": "K5s5sARGO92gu1fV57r22RRjHXq/U3/7FwoSw/zCW6Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.Extensions.html",
+          "hash": "nZPfPHwwjJtSvESJdO2oVeKuAU6iuExSkDdyzCtwlMs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.html",
+          "hash": "WNvn7GYpEdkSvUDBX3fTu6qyxzzLZ01FQ0fG4dYgvZI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Extensions.ListExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Extensions.ListExtensions.html",
+          "hash": "4msA/FPbhmTkkBHt8UK6qHMc4En7nYmvrvWCM3+qmrI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Extensions.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Extensions.StringExtensions.html",
+          "hash": "0xVsxCUdiMHe3Ad81x0syLNux6v+FXP0aEIFoSQ0y28="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Extensions.html",
+          "hash": "YSX9TP2fGaD5bzzK4Gixb/en5Bj9vHdInKlZCon6e3U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Files.FileManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Files.FileManager.html",
+          "hash": "7tD0bj5r/bzSx9I2i37G3J5C2Gi1Oej3QSzq4yXShRA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Files.IFileManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Files.IFileManager.html",
+          "hash": "sACCjSk111D7Gy8JlKp0Meh9hNPk9mq5AlfTVGIZVSg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Files.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Files.html",
+          "hash": "TqHAjCQHFnTC5PPK8REMAde/k4b3dpDwaAPkFymZ3Cg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.html",
+          "hash": "MWCEnMBoZnGEA9WGP4xDVnnaWnMSVDFpJqBm3kx3KmI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.html",
+          "hash": "d0jhipa3Lz0M0cPOyrJv5Mog+gPoeHi6qcPEsP/sjAM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.StringToColorConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.StringToColorConverter.html",
+          "hash": "4EEMepcDd23AatxM7HqIr1Z/jpxk1kzkNIKVzy6JL44="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.html",
+          "hash": "EjBQ1ZxOUhYFovOOfvz22YILfLGQSLmjjt/tsi0OLis="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.html",
+          "hash": "iz/pJDe/EuViwfws5K1GecQx1xG7Ankkzq7YA3AKXnU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Devices.AppDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Devices.AppDevice.html",
+          "hash": "jbaYwKEa4Unov6YLZTCurGIahDdW2ovB+OJK8qnawiU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Devices.IDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Devices.IDevice.html",
+          "hash": "GNPWbtaUbQeFk6BGBldzopvuMLsWTva1LblygBpSfYw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Devices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Devices.html",
+          "hash": "nGU33tt3zdf62coQZNVkm39JDT0ijQp5OPy97SYmHmM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Dialogs.AppDialogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Dialogs.AppDialogs.html",
+          "hash": "P/sMonIR/N1324YLndyzzQ0nJMzPN5J+AaA+e5nEPS8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Dialogs.IDialogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Dialogs.IDialogs.html",
+          "hash": "tYhM95T/pi5V2KRkgwqyyBHr+ixWhuJ7XLjmGhIP0+E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Dialogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Dialogs.html",
+          "hash": "DjMc0H89+WhEL589JpzXCZIL2147jpXEtwGNWLsSISs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Effects.DisabledShiftEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Effects.DisabledShiftEffect.html",
+          "hash": "HlxszpghJgr3Qcs1BkjcgAxieoExhv7rc2a7PVLjJIg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Effects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Effects.html",
+          "hash": "l6SeLMg45LGau8uptbAuGTtX8lpw5SBSP6Dwu8CJFnU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.IPlatformServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.IPlatformServices.html",
+          "hash": "mRqgU80LttSUO1o54lUWtOIIwlXI2Of0A9VdLbXu8Uo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Pages.AppPages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Pages.AppPages.html",
+          "hash": "V70qZ6izZ63hjeBWk4bEZkX3Ai5msMXTemtC9eyW4HU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Pages.IPages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Pages.IPages.html",
+          "hash": "yJf2xl68npKkk+SJsJgKN3n6Ews/44givP8ueVAQKdU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Pages.html",
+          "hash": "ECqIL9g+28y3aTU0Gan3zYcRHuBBer8OPzkMC+CzmUQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.PlatformServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.PlatformServices.html",
+          "hash": "kB4eilMDvPWnCUHg/zOvgzpFOa3iZ/ufkfJUK0inun0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Settings.AppPrefs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Settings.AppPrefs.html",
+          "hash": "b5F3zHVMIWPnjVkmh9tZer7zEG0HsreenHA0kk2pJkI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Settings.IPreferences.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Settings.IPreferences.html",
+          "hash": "/CyGfTOUbg0EiZyLRuEAP+MrKPNrjIju2xFqmsVwNgw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Settings.html",
+          "hash": "bg1mWOmw/NyepdG3h2GzBEoC6RcvF/GWL2jkabNipcI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Speech.SpeechController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Speech.SpeechController.html",
+          "hash": "zVCNDiZvt1UcWxGN+RDNxY0xf/FyPR/b+YMAFi8iTrY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Speech.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Speech.html",
+          "hash": "kTYc/ZgYfal8BR9cb/LZGvu3OuFdcgC67MZ/zKfnilE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Styles.AppStyles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Styles.AppStyles.html",
+          "hash": "hVe2BzjyySl9FLKEAeOkzh1naMihc6G0saOim8E7eyg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Styles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Styles.html",
+          "hash": "YwwN6tlXLMXZi7RoDPUh2XuhHK5Kt2sbtF/VSem2BVQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.html",
+          "hash": "qQQwKqgBXX9Zw1i1muIMXnxVJJGuQpTlVqdBKNWyU48="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Json.JsonController-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Json.JsonController-1.html",
+          "hash": "vnZ08VYZG55c3XW9aXwhPYnDU2ixEXlE1VGFfk3a7t8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Json.JsonController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Json.JsonController.html",
+          "hash": "JxEL6zqgdXBtte8qNfSVfVHGDzd3Tb4pA5YLOTv/ffI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Json.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Json.html",
+          "hash": "M9DLO7EeO8BzWb4CVw7KwON3kOQ3SDtlfgqsHrQdjRA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Logs.AppLogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Logs.AppLogs.html",
+          "hash": "Q43ohGPrR4hX50UAdB9U69GHhBeAMeVwQ5Ir25C2n/g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Logs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Logs.html",
+          "hash": "Y6MkSzhkJy9x+xzcviqV98DGcn+YvRBbpA/Y5JJ/DbM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.AppServices.AppServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.AppServices.AppServices.html",
+          "hash": "FevfxmMFpdjq8IVdKx7RzoqPia2nxHsptMdlsji4kRk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.AppServices.AppServicesController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.AppServices.AppServicesController.html",
+          "hash": "4rZ9ec9GENlHQt2J1XLX8DAvyBrztIv3nADjo8YpCkA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.AppServices.AppWebServiceController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.AppServices.AppWebServiceController.html",
+          "hash": "j/0tCTvwGLBK4fKVbpNuReY0xgIl0lE3lzK95vDZfDM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.AppServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.AppServices.html",
+          "hash": "J5v8mzBAkvphwK7+1zw3kISZGEIwCxu2o/JhEQFzLn4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Links.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Links.html",
+          "hash": "vViqF1t1qJ3rbehzzxgWff/jz6TGy3N/lP67nVG/O74="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Eemc.RootConceptsPostModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Eemc.RootConceptsPostModel.html",
+          "hash": "OSYruhImrpd6jkMoneuNsk5rSvS/4V2XwNIx0XcNTZ4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Eemc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Eemc.html",
+          "hash": "PGBY6VJFepp10bcm+1dYsemY/lgehC5ZcnGookpdGtk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.ForgotPasswordModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.ForgotPasswordModel.html",
+          "hash": "/1aiUIS3qwguogwW2iLdBRuksOwWrZU0LotWZMJZRi8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Login.TokenModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Login.TokenModel.html",
+          "hash": "oj6vAWAJTwL8JmKF2glxAP+73k82gM6BfgO1PVYmiL8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Login.UserCredentials.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Login.UserCredentials.html",
+          "hash": "0a9BRoBG0d4YZw08vW2qKEbQOTCX0FWIahx9uWfPgwg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Login.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Login.html",
+          "hash": "3RaCy8OOU2z06zH7fULXNidZBW8RW8YkE+iBXO8E1Ys="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabMarks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabMarks.html",
+          "hash": "Nx4H7CNWfbpBsp9j2fiSkd8zSF7s4k7xb0V+2aPsO0U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.ScheduleProtectionLabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.ScheduleProtectionLabs.html",
+          "hash": "6P+u1jwDBAYMlD+OSvVlIUXk15UpvnikXtByivzjuIQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.TakedLab.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.TakedLab.html",
+          "hash": "S7aDYlKKDM3j0FsUYhKSapsIRpF6GUr3gGEoXayTWts="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.TakedLabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.TakedLabs.html",
+          "hash": "FvKyCTIZ6KxmIZ/aCHGmKdT1XlY635FrDSQVxUk2BkE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.html",
+          "hash": "V40zKlfKFcwV5UfWjCv8pNA+kLVkYiZP+qtt4Xq5HF0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabShedule.ScheduleProtectLabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabShedule.ScheduleProtectLabs.html",
+          "hash": "9yobage/JK0FpziX6IzA1/uJHSb95ar9mSMJfNhu54k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabShedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabShedule.html",
+          "hash": "bhKkUPTMyQFysJDLHTVj19oTpVj9BCisQSDUuodBQig="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LaboratoryWorksModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LaboratoryWorksModel.html",
+          "hash": "BKaEx5G6+d4IxnGxed0iJAuPHK/4jXXqdNZmc2KUCic="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabsVisitingList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabsVisitingList.html",
+          "hash": "dnNcT+ijKVYd3JYEmO5Slj8JoxW6IxqnKfjs2fTtX0E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabsVisitingMark.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabsVisitingMark.html",
+          "hash": "nniv9hw+TY56ItF2QARq7/dDkKqsIQ7lYKxuEJbdgqw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LecturesMarkViewData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LecturesMarkViewData.html",
+          "hash": "SazgEfb4HbAAroix6hHRL2sGwQMErtTeKXdOfXz0IZQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.ListSaveMarksVisiting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.ListSaveMarksVisiting.html",
+          "hash": "L5e+UNO8Hhg4QxyF47i1yk1mEX+6+F/mdVQMf3URgPA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.GroupAndSubjModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.GroupAndSubjModel.html",
+          "hash": "g62xQriQWAF/l3sw7+5HxWtdsp5sv/GzdsPLqZqwf18="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMark.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMark.html",
+          "hash": "1hq8Ae6X0Ab3WrEsIo6+zf//v8+4Mv/wP2xB3CH/lWI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks.html",
+          "hash": "9L9rUs9bhkDDphpUBTxYYuDrcjGSRldyJ6ZUgpCJefo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialVisMark.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialVisMark.html",
+          "hash": "V57rKnFtDbp4v3zItUDqz8CP06pJbxUGucG8VkzDu9k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.SchedulePracticials.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.SchedulePracticials.html",
+          "hash": "Ucgjm/oROo/yWK4eNBG3ZarhQa6tLcI6Evyuiw/kkyE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.html",
+          "hash": "sSzWmGyYhqU33rTKZuZcX+4X2ps1rMZsW0pcUxWN5hk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.SaveMarksCalendarData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.SaveMarksCalendarData.html",
+          "hash": "8WlqDvthoLiCOgwWYxz6sMKMYW6czQ3Wue/ILxd1exg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.VisitingLecturesList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.VisitingLecturesList.html",
+          "hash": "4q0g6AxopbwZ8yT7Qh2J9tHY3XS44nuAQzMzjWF4rvU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.html",
+          "hash": "nGMU0Q/f2IJHkmgR+03B76MM/6px1NxPj1CrfNcuuVY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel.html",
+          "hash": "U+0EVBKIjd8HNWiYsr5w//QaeUhZ3SnAoUOWd4B8ebw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerPostModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerPostModel.html",
+          "hash": "pUbJMBf5njJgIT6X4ewlW5FLfmS84XKJwGYQQYq3f/Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Testing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Testing.html",
+          "hash": "Z/0vyjMcod6c+XvNGBwN0oqGtxoSEumdT+6l9J2AwGY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.html",
+          "hash": "6rJLCyCOSMkNP08DJ6WvuE1GNjpDpFJEnXBYJ5ZbDGk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.RequestController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.RequestController.html",
+          "hash": "ILOrOGAu3kaQ0wBA9zNi4b2/R1kq455CD3hR1IJKCO8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Servers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Servers.html",
+          "hash": "fk5g+ukf9d+cLaVrEtMf4zZNrIv4lTLVx/R2+56zvjk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.html",
+          "hash": "K2VrMLh+slG6SPF1kvNl1T9wdiTzA7rukHv69YY2j+M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.html",
+          "hash": "C9/lTZy+AHqtTpIPu5iUPOQsRnxfvZnSCeM4nbjQ9CM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.ViewModels.html",
+          "hash": "CgWiie/0zX9NOdSOwkEKKEkckoZKNMFIa/pAGXbwcj8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.Views.EemcPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.Views.EemcPageView.html",
+          "hash": "sBbuFMlNjXmag1RMTMoPah20FR4gzk8tavyM+plUFqk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.EemcPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.EemcPageViewCell.html",
+          "hash": "QaZXsg7xmPSSnSbMoaOxYezydhXNusswd3r5kgwsShc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.html",
+          "hash": "VUF4ESKBRMj6Z3l7bIeFXs2ERCaGOrxrhvClM2J0y/g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.Views.html",
+          "hash": "BBjshIHnXrZutDQVf1gS1D4KPK77+1zzxKpy+1aZOa8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Models.FilesPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Models.FilesPageModel.html",
+          "hash": "utsQy4G0Gkp/QGElsKZWmiFuv0bcDOuh3LY8q+11uZo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Models.html",
+          "hash": "UxGb2hL8720cE04QpwcOxoaeLJCV7Cyg+W3BDfJhzjI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html",
+          "hash": "g39e+orPjPdU5tOi5sLX8vo1JILV2o7ITe5+p4U4rzE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.ViewModels.html",
+          "hash": "N3K5gwybkbswsoOj9R9bQeeXuWvYVvzcN8NX49R2w3s="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Views.FilesPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Views.FilesPageView.html",
+          "hash": "8og80hJOdbe57eHACDb4FpcPo8osfDnzIjIlBVp9NUQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.FilesPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.FilesPageViewCell.html",
+          "hash": "U/mDahC+Wc+LcQmFNrjACFL2qL3CPZy1/0NL958Nfs8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.html",
+          "hash": "eoNKLMMCn6+vv8aGQj4LgPS9f43fvoYuZzLs2aQ+nJk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Views.html",
+          "hash": "w+VrBVpALV36B0ZRV8wDmqFmtWEFtZR9B+qKLva9PuU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ForgotPassword.ViewModels.ForgotPasswordPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ForgotPassword.ViewModels.ForgotPasswordPageViewModel.html",
+          "hash": "acgHWdVNYz113ofGIiwW9eJf2krhjpaxsuAFBnXzy3Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ForgotPassword.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ForgotPassword.ViewModels.html",
+          "hash": "pqN4H7TtJoT0T1fmnfb+FHzR6gX/+dv2t5fywTVB9qo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html",
+          "hash": "QFCvw8ojOJFr/F2Kc4bWxEBP13uR9eXSMGbYwDCNdG4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ForgotPassword.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ForgotPassword.Views.html",
+          "hash": "39q3l422aD2BG+OOg4EH6KnyrsGMTwLSxYNATKuEJIw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Models.LearningPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Models.LearningPageModel.html",
+          "hash": "zW4T09csSSHfZDuMcvWAwLZyiyE/z2lYNc1kf62y6i8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Models.html",
+          "hash": "XaQ0jlfJX22mCKhE0Ab6WYZwH+0EialXsKHq2cCCdaA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.ViewModels.LearningPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.ViewModels.LearningPageViewModel.html",
+          "hash": "2+LopZ7Winigi/wwbjw2LsTSecZgD6DOGV7fLUOVC5Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.ViewModels.html",
+          "hash": "v1xGsUyi5vu0iSHvX0GHJFiZQnPNAoQqF+i5f4pIgII="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Views.LearningPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Views.LearningPageView.html",
+          "hash": "oYrRSZFihVzBUbkY/UGqMhXMuagm9L7Thfampuo8W5w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.LearningPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.LearningPageViewCell.html",
+          "hash": "2s/07eMra1XYs8tmIYGV70OMqk+YhJrbaRkzg42JyQU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.html",
+          "hash": "yhSky34siZrsd3dVIYCiNn/M8fUw9Oy5wOjUo3Yt9Ts="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Views.html",
+          "hash": "FgvugpV6MLlq8MxGgQwT0Om3oH5URjIiiD8nx/jAOl4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Login.ViewModels.LoginPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Login.ViewModels.LoginPageViewModel.html",
+          "hash": "astl1n5r6LZYF48rp6oYNr7puM1pGvqKGi94ctrI/lc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Login.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Login.ViewModels.html",
+          "hash": "ogP1J5I1PBm2ObruFbGw0CfledsMa/d+1kllhtGpWHA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Login.Views.LoginPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Login.Views.LoginPageView.html",
+          "hash": "MJLjk78AdSaKkvSMlGuHgMeTOYaLSZIhLBzzu+FS8B0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Login.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Login.Views.html",
+          "hash": "l/OVQEcaI78OKIh7lkJw2yxbDQSi9rNx0eyjGjpU/BM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Main.MainPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Main.MainPageView.html",
+          "hash": "GQ5vwRkDT2AaFCdKh5B/tpKZ0lTllGrUv35Vl5vMG5c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Main.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Main.html",
+          "hash": "c3bnCH3lil8Zzkj/PP5QIlaDlj/bBLBA9lObHGRehhQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.GroupInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.GroupInfo.html",
+          "hash": "uroT3fKqiDd/4p/oDibzv+0/sTI591w4Sms1xyCbP/Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.Subject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.Subject.html",
+          "hash": "28GI2sinOqsqYVA5Vf/hHTAT6DgD2PCOFkiCddjXOPQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.html",
+          "hash": "t8LEAYsTLrsHs+XidKobUxmjq0YdGgtSS9a0yNdvWzs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.ViewModels.FindGroupPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.ViewModels.FindGroupPageViewModel.html",
+          "hash": "rzBnLRasNg3bfqlmPWhYpm6bLZcxCY/Q+9RTdzFHcCk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.ViewModels.html",
+          "hash": "1hCSqJVQQNZUixmGEgz20JS9dchRR1rM/J77KHcM7eM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.html",
+          "hash": "5sW3X7tX5xOdrMAV28l12fheYmyYzz7VOXruNQjLYZI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Views.html",
+          "hash": "jlZiidZZeXrm5hsqaN4j9C+d0UNkVyVJ7n6wzaiKUsQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.html",
+          "hash": "ZrOpBazeKpMrfFUH8sh2qZt2ajrSwEgJID6m1GW1kjk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.Statistics.ParentalsStatsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.Statistics.ParentalsStatsPageViewModel.html",
+          "hash": "shHl1HLcQ2AS4ImyQ0GGu1f9ExfmeayYFaMzir2Wl14="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.html",
+          "hash": "1JaeA5EemEwj77/F1vOPB/GCs1C/LogK6HzwOaaG8FM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.Statistics.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.Statistics.Views.html",
+          "hash": "nKgsC6XuEM+Z6tBvUBah2NLXCw+16saDQ0gHwLUczzs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.html",
+          "hash": "l1iJw/9gtdwXUGHhu7LClGUFh+9gU+NXkEuCwj/MNQg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.Statistics.ViewsModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.Statistics.ViewsModels.html",
+          "hash": "mwdy9GrcQkW50owtYxawlXWQdrpvFz1Uoe7cMqY7l1A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.Statistics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.Statistics.html",
+          "hash": "W3+Wz0/foQXO8FKfP/gx54IG0udHGbnGAj9hVAgtCjo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.GroupEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.GroupEventHandler.html",
+          "hash": "ehA9cRi7sqUuBDBQ7dOm6GDaqLxEasac7IK8BNzsCh8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.html",
+          "hash": "Pzk7nx1v8gUQWVDh7Ql68RDs0R7QtV1qKazssUbsD/w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.SubjectEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.SubjectEventHandler.html",
+          "hash": "F5qdAZfWc9WfqkLJuiT8Ir+ui+ElaYAvTQsc17jRqlg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.html",
+          "hash": "ATttxhKeaG46l8F8m4ekglY8m+1GBiPee/JdzwpTgfw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.html",
+          "hash": "iWQkclnG8L7DoCONffp9VJ0IgYT4vVUJz6m/fdhQlSA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Models.RecommendationsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Models.RecommendationsPageModel.html",
+          "hash": "Da56YZzUExcgkVsK+bLFOFtVel0Eu4cq8Z2PZJ204dU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Models.html",
+          "hash": "IpbIusEqusCkpwChO9P5YxcJ88pX+H5kuA01Wp/sqUQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.html",
+          "hash": "hmOzlelhbzo3KSAopcUo17vO4xvlwNzoNuWqXhNSkWA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.html",
+          "hash": "3M0/omRVIGao8wbIHMIVjJdHlIybbVfor/HFJgyWyjg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.html",
+          "hash": "7Z7OsanvF7Ynk31WuRFQTJcOKF1UjGYHzAVuzcOR6JM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.RecommendationsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.RecommendationsPageViewCell.html",
+          "hash": "6ZqMEq5iudqzA1fMKS1JBuTHuEPPpE96CDOdQMsV1HQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.html",
+          "hash": "1s/UGjVYgHncKYWSGFCGbFAMbvxPhVKnUWPp00BZ45Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Views.html",
+          "hash": "6UoShbRJSVSXUVx6Ban3mHe3sppDELWjePtYNia2OHc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Registration.ViewModels.RegistrationPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Registration.ViewModels.RegistrationPageViewModel.html",
+          "hash": "HvXY2v9+Yoh5oqE1DzFnaQox5kg0Dpl6ezT0JL3g7QM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Registration.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Registration.ViewModels.html",
+          "hash": "Biy2C3qXYMrGMs1DIN/lE/ugi9bWaOObQqV+cOTg3uI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Registration.Views.RegistrationPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Registration.Views.RegistrationPageView.html",
+          "hash": "H+nEAb5AnI8xCUD6Fi+iaL/AisGe20QlfqD3RhXWnBU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Registration.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Registration.Views.html",
+          "hash": "wB4PYXNXSinGyU9dgu2pTYMEZcE5M8GuK7vRqlxFdqU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.html",
+          "hash": "hFCkIpjHsZla0xAAY1SLvYEzOy1KR9Hu9rvqkY5dWow="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SaveSingleStudentMarkPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SaveSingleStudentMarkPageViewModel.html",
+          "hash": "cxA2Bjh/yZrUKlCP/pGFQjFitjhRDLDC+cmEH43XCQ4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.html",
+          "hash": "sSseSmgIIOVZcbJA6bT1RfQf2P11OaSEga7dblVurvw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.SavePracticeAndLabsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.SavePracticeAndLabsPageViewModel.html",
+          "hash": "+omcN8cVgFf5MaMXQUyAVkFrHredNogLBkU49i6rLtM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.SaveSingleStudentMarkPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.SaveSingleStudentMarkPageView.html",
+          "hash": "sZnD5Afh5TpJOB9/47ORpPcZW538Xe0nencV6t3Ebe0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.html",
+          "hash": "UEYNDScTPRzFUGCcbVBwDkuBW+J/gPP5SKA9zoY1ooE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SaveLabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SaveLabs.html",
+          "hash": "VOodA6854kmrFIlyY81AmIoONe5zGDOXZ/Z/DBliajY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SaveLabsSingle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SaveLabsSingle.html",
+          "hash": "Ehdjb4r+mXod67b1ocvFDQ25ibq8gTgzlhfCuXZf87I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SaveLectures.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SaveLectures.html",
+          "hash": "O6RiFbCvo36JqVVkk2IskZcA7MoW2W/7egeAgz45EJM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SavePractSingle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SavePractSingle.html",
+          "hash": "EQdoF+hiPF4DR9eIHqnrmDKxTKKhd3fk0DpnU+ljn+c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SavePracticial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SavePracticial.html",
+          "hash": "hxDadSCC7Ltp++Z8By25wQOBae+IIL9VKFVtaMLHMDI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.ViewModels.SaveMarksPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.ViewModels.SaveMarksPageViewModel.html",
+          "hash": "deE8OXWUEm5UYhCwzOFCkBTPDe8QolVx6yJMO9roJxc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.ViewModels.html",
+          "hash": "mP/OolBufcxPsmP9mit2267zJT2Jxuh+zJbKdpucXfo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.html",
+          "hash": "m/uvBhtwewmP3g/q4Ld++igjm2uPuQyqFycYhHcQ5KQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.Views.html",
+          "hash": "RgfHlofnQquoDAMb3521Xp81cPNDjLMAzFlIZ4cf5+k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.html",
+          "hash": "LuR2vvZUreQEat44seDsQXqSelc/iT1VrFki45SYnO8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html",
+          "hash": "7eB+5yiXo1y8+fkfkVgER+86CXdE6TsS5KclskN4uKs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.About.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.About.ViewModels.html",
+          "hash": "AdYuouKaqOAoFbVxZiLTKnJv9QumshfN55ZXJS1q2FU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.About.Views.AboutPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.About.Views.AboutPageView.html",
+          "hash": "zv34tovT272dJZ50NSqvVuVLTy8xn+HRcJombRzOK9I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.About.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.About.Views.html",
+          "hash": "LLa87dEYWdtssYoFi5h7JUXsJuZC/3flIBsiklNa8J8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.Models.SettingsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.Models.SettingsPageModel.html",
+          "hash": "Sph0lFFD6RXTfpYQD/BOogqGFPDjc0PRd+R5f/+4E9A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.Models.html",
+          "hash": "rcqQY5R8V4jC65MnrNT99KkmmDL14BU0nH3mHITXmu8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.SettingsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.SettingsPageViewModel.html",
+          "hash": "xH1hPPLhAbACtNfZzJRyi4O7y5DVlEcT0+utLLZOLds="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.html",
+          "hash": "vnyOUZZUDiNuDT38bTZJz0x9344gtzR8nw9zcfhW6X8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.Views.SettingsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.Views.SettingsPageView.html",
+          "hash": "obewZSx3OUYt7/PQ7ERL1RGEZdji/5gNFqfynN1pIYI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.Views.html",
+          "hash": "nUTMeVDUDXFU0ATuSn8lET1JB6w2SRzR48dq6GBcQ0M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html",
+          "hash": "f6j5g0pwyhE7+uANMs6vZH64rrUzTuU0Mwo6ZggpKAk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.Models.html",
+          "hash": "m8QimHx6+T4x2QTJIWIjnujG3KVWOm19wBJPCuMZgHA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html",
+          "hash": "/01ym0oTa2PtocRWKf4V6PocYBxNqQ+WHXMbbmIi5c8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.ViewModels.html",
+          "hash": "IYlYXzgoFoQBhPEicRa14jeRQb19o0lI43vkWop7Kv4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html",
+          "hash": "u4WBPP/CZPKErMVXneAbSbJfI1AM5zidbkLP2j7plxM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.Views.html",
+          "hash": "2UXZ5AbxtiUWFzK1Ty7e+Ku0ORBZot/qklUQuDBY0QI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.Models.LanguagePageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.Models.LanguagePageModel.html",
+          "hash": "tU7iQ8i/M/agM3HYPK87AIGdBP/+7tMh4QDIozLQ0ro="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.Models.html",
+          "hash": "phVBZPUToCgOgfQqRIQY2/BGG1u8b6QZsWdabhxEsFs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.LanguagePageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.LanguagePageViewModel.html",
+          "hash": "PwOsSBnhNi348bU5DBlI4eg/LRmmds/Y7S+IkeXxwbw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.html",
+          "hash": "zjECUEPPKnEKUXfIa9Gs+Hfkcr50uQzWEAiy+E1+K7I="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.html",
+          "hash": "PUA5jrT/HMzoOk3sk010iiM6PNzlEnbUQtXZLQNgFYs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.Views.html",
+          "hash": "ZXCAbrlUSvoE8v3bIK47sWCCxcXpFWEeSTKcvL/kylQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.Models.ServerPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.Models.ServerPageModel.html",
+          "hash": "xzWB65KQ97P3TxZOM6+EWUAafBblv6HlgutuH1usKL4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.Models.html",
+          "hash": "SHbRD7sSkXNDKZKat6hDbUwPkn0e83S6MHGvGELLiCo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.ServerPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.ServerPageViewModel.html",
+          "hash": "JBaDhFeOf9bGLIQYj4G2OJJfW4XmJXxFfRVJE+xL9oA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.html",
+          "hash": "ehwjn2qIG7VEvx6S5cGjJZsFA8vKGT1Kox6FLlDUlis="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.Views.ServerPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.Views.ServerPageView.html",
+          "hash": "hecUXyC1Fgg9sw+6QAy8fgEyfUZrHaHVlAm4fzIQx1U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.Views.html",
+          "hash": "hGxCux5gbW5P706FqV5eqripjtK+I/ScBKDojPXJe1g="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html",
+          "hash": "7BZeuGLfsTBcVwXca9Z2Xby9pG5WEqvncUv3kbYfBcI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Models.html",
+          "hash": "rGYGX+TcvIkAsbpTx8z5h3MnHVQ+YtxTTd5CGEYzHVM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html",
+          "hash": "pExjjLOZGB2Z+VUxXd6Nfg91FSA0YsCMwlW35jo1lKo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.html",
+          "hash": "fw9CEngDHhe8rWPsBnbnnFxumhMzrtr4pvxJ5gQDMkQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html",
+          "hash": "53M4sndCkfvFvem8SM59SZ5JTMjMuAPYLzGz4EJrfmc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Views.html",
+          "hash": "Gyw9U2AirYkGfYiFr714xXoXA2zwsTar2qubHxylI14="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html",
+          "hash": "dBTQg7CLc81amkVE0LcX1IExfsUZbCSQ3IqpaBcwFrY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.SettingsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.SettingsPageViewCell.html",
+          "hash": "57vd4sTBkfFCOZz8w6WeImHOaU3PsabVMrygwpLgEQ8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.html",
+          "hash": "fQDX/Sdynrci07OCB4E4oPZAbhNECCPN0Rjt8Fzqbcg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsPageModel.html",
+          "hash": "p2itGypwko/mFo+iM6exdvOR6MJJjaS5Y+NMIr+y/HM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Models.html",
+          "hash": "lgMuGe7Ppw/GSbM0IZwwmGffxHLLBMSlR0AN0krny0Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html",
+          "hash": "6Gz8KmM8RUcknZuUCvQEYn0zlpWbcMrooi28ou27dhk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.html",
+          "hash": "l8MmCVkNn1WAE9eZr+vjqJIsIcDBsmi2gwxRIOvBRSM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.html",
+          "hash": "OmrAx30XTWxUYlr6/N25e3kq4Jhh4CNAx0RS/Layh1c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.StatsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.StatsPageViewCell.html",
+          "hash": "GBqBZwYFRaOzINC3CQGCWaQv8PYeF6FGQMzlFdU8nHg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.html",
+          "hash": "e+7vpaMtPPm1LRHJrr5gBjqrIL/EcUG+kEmwALYutSk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.html",
+          "hash": "UUM5SDWsEGky9rkZeAmGIEkJcv/0LHjlYAU+0mSsuRs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Enums.StatsPageEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Enums.StatsPageEnum.html",
+          "hash": "FE6ijm4316F+qCLvB+OSqj7sug+G9FB+VPW/C/Ok/AU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Enums.html",
+          "hash": "z2StG9ahlnGQKPPm81uibLu8icQUW2X7omry9ssBUEU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Marks.Models.VisitingPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Marks.Models.VisitingPageModel.html",
+          "hash": "Gw6m1VcGmipEn00jJ7/Cs/KCoFxBSFkKekXPdzHUBXM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Marks.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Marks.Models.html",
+          "hash": "0WI/mPR4//d0CjR63Nb87w1Bt+vZeGQFjsEFTBh/Y/M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Marks.Views.ViewCells.VisitingPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Marks.Views.ViewCells.VisitingPageViewCell.html",
+          "hash": "oF+y/TxLNNEu8yv5xGhhWVZovROlxY22sXjQWWf4nco="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Marks.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Marks.Views.ViewCells.html",
+          "hash": "XjoEs/8Mljrq7lk0s66U37OgmniD1nyvj+JY1ZfU7sk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsRatingModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsRatingModel.html",
+          "hash": "+qC+2reLWK3dxyq5aDzM2GCnwM2JYBDTBlDc9zS+MMc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsVisitingModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsVisitingModel.html",
+          "hash": "ZU7ovWLf1kIFynm/O+GvBosFN3GpNJ6a28owtR+R+6A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPagePractiseVisitingModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPagePractiseVisitingModel.html",
+          "hash": "bp5G5WqSwKnQpmjJmwNpOVFuqPBZGFgW88ovesLrzUc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsResultsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsResultsPageModel.html",
+          "hash": "1T/E93n5PVTfaqy14uLIsrKIPoD94MTaBd11peaoHNM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.html",
+          "hash": "ttKua6TfwiuCDDhUofABrDfWnDqFYv41SxOso1dPdGA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html",
+          "hash": "BNqIgsJwtPoGkmcpJFAPWoTpe/wGnTNLGXLlmamNjIg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.html",
+          "hash": "4AIwAllpDXenAi7IrZ/y3DIu11jmhIoDHhdpvjJYvBU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.html",
+          "hash": "lbwMaLlCF3XH+1uyCLWOSxwWPYD5Q1DDtyU6sJedT9E="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell.html",
+          "hash": "2nvG4O6yPjyB3qUDKHWECK+Xb6lqYhcP+Fwjdj4aEEk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.html",
+          "hash": "MOCXuHm5+Ke2IoLpP/AD+aET0YLtyy7telnRkYHDun0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.html",
+          "hash": "Ws/7VK8Gd3I5GK7TCc1Oz44FIqYw3U76O2kQ9ho+jqk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Models.StudentsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Models.StudentsPageModel.html",
+          "hash": "DZ46fTalhgwSkVJcii8I/SNEH9DTPCUuKtKaaXSMW5k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Models.html",
+          "hash": "7tcuDoQYN30rYYg4d7ApwBT7HqyuCMPuKj6+5+jjCOk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html",
+          "hash": "mq+dgxPCc+UzOT0ZwgA3XoSibQiIGFsRt33Nr0/4bsE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.html",
+          "hash": "3OttmI04dRjVVzIOPNtrvfatTpM2kLTUgvsz+BrkyP8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Views.StudentsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.StudentsPageView.html",
+          "hash": "Zb1xcx78Fx4QmkWm4eCS2/RV78ZYs1omuGgOcZhZx5k="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.StudentsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.StudentsPageViewCell.html",
+          "hash": "CBRqhp4T2bt3xaZupmfYnKklXVUE5b4ybUoRqN3iUk4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.html",
+          "hash": "Eia4d7OGQXK0mecTVtfnubYmHsfqQQ8bnTE4EVS7ilQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.html",
+          "hash": "AzHLzhneIS1I6+woA4IZ4Ex/E3FToa7i2MOa/VLPZT0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Models.TestingGroupModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html",
+          "hash": "3vcahwEB3V4DTr+TqRxk64EiHk7vpXhrFYLEYEU3bTg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Models.html",
+          "hash": "V3nmsd9Ek3fuflDdI5pRz5mHdHtZpIFTvKPP5Hq/ghc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html",
+          "hash": "wJ4HOnOuLR04NKFqfOlKmYrAw2l7CWkMqjvXcoOTDZ8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.html",
+          "hash": "ehabrhiWlInQvdkl52Dt6KCvOPCdjqsmF5i5KkaVZJA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.TestingPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.TestingPageView.html",
+          "hash": "C8BD5X5EOFiWka6asvlyJmQ4lUrfDip3M8kKHIcD3tQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell.html",
+          "hash": "NknBvEKRyOkj87+F41rGM6gG4hc6csIeEmCjc64BpRo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingPageViewCell.html",
+          "hash": "pMcHVgUB/PSkdDiufJ5io1L5WnV93zL2thPGgAJFgTk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.html",
+          "hash": "GFtWsREcrGsv3s4xl4XMIPArKLuBNz0Z/t9PDZBB8jY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.html",
+          "hash": "TKn9X97QoF/ostGMj8cQdr8HQsT/yOIYAALD16+nNNE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingAnswerModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingAnswerModel.html",
+          "hash": "NV5M8YZMR3ljeitM+MHgCoIgzWWZ+k4hM2mQD1YIWnU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingPageModel.html",
+          "hash": "aZBHnR0g4hB3e8m+yA8P9eUuRmVOME9PJExhXTga62A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Models.html",
+          "hash": "Z2hT/NFxFtmur5Cstcy0Z2SfyPj069emBXxp7vE6pDs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.html",
+          "hash": "Au9fnihC8+rJEqxikpqSP3rMV1ypp0Vy+sAr4bKV9TU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.html",
+          "hash": "SImSyLKGR0EY4Zt5wZmIwYLcYIvotvGD1sZ964xeDrI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.TestPassingPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.TestPassingPageView.html",
+          "hash": "sFWUKW3obZBIvREtcNw2CqG4tC6XVoaYbdCqY3U1qqs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.html",
+          "hash": "kUx7gM1tSNG4ZzdyFc7+IlMxaOOKUR9kDwN1CqWhr6Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestEditableAnswerViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestEditableAnswerViewCell.html",
+          "hash": "v3s3En/hBKzlBXkAVYzgRdg2gqTLOMuzwx8eO2nb3Ys="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMovableAnswerViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMovableAnswerViewCell.html",
+          "hash": "fTTOeAMrBHLQ5Umoaej0711gU9DRTjU48+Hj9jkpe+c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMultipleAnswerViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMultipleAnswerViewCell.html",
+          "hash": "rB36dH6ncDTobFjJVRp2KeqUBJeVv0zk4zkR3/YbJLY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestSingleAnswerViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestSingleAnswerViewCell.html",
+          "hash": "GAZYu/RdUQ+VBKOIbHLu+h9/T9FGcX53vSP4A/mgiFs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.html",
+          "hash": "WavS8EaS0AjMd4M3D0WuqD4RKJEs/HZqBctJ9ubWcrg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.html",
+          "hash": "ls4i0Iiked+CIen9kU8Yo3JQ41NVcTtKKWwiXmpeSEA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.TestingResultsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.TestingResultsPageViewModel.html",
+          "hash": "6MwwSE1ZWmflh47ptBRC9qFDYvcUgYEM+Ym2V1gCFm8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.html",
+          "hash": "9a0yICvU2GCSv6xbtUCY6lVgLINiYC6bPItjS3x4JhE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.Views.TestingResultsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.Views.TestingResultsPageView.html",
+          "hash": "c7PLFcH5+oQmv5VRWrKm2ALaDLEmq9IbmaGejUvUeRk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.TestingResultsViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.TestingResultsViewCell.html",
+          "hash": "PG1gf30KhjqjyvoGiLeFS1uAzqvV/461aP85fqDPVlU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.html",
+          "hash": "4hcpW4lR2RMa4mt5T43ZImn+BETdpSuoGaygySOubCM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.Views.html",
+          "hash": "6WX3JRSiFPJl6atOIp8YIeUMhfhSR/270y2pvV1+zeQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarSubjectsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarSubjectsModel.html",
+          "hash": "g7UlpwKdbgt5PFwZP471G8UCGG+6TRclmR149KWdTyc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarViewDayModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarViewDayModel.html",
+          "hash": "KE4CP6nhaFIJMn86LSV5UEc7EoMQLRwdwMocCPMYGDg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Models.NewsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Models.NewsPageModel.html",
+          "hash": "iheyaZ4Xz7Y9D/Luw6X7pFF7anS9nRP5mV2Kj+F7Ab4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Models.html",
+          "hash": "pZMkO97/lpuYZDNikbnkzhKqbbVgkkb1tSlvkrwynaE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.CalendarViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.CalendarViewModel.html",
+          "hash": "GOqAmzfm5gEXTjwQTtv7L1bB4x2ImCw7wuEWg8yI9Zk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html",
+          "hash": "F+Hd5q8+g/AH42hFSE/aq6aUYE/9kAIoblThkUBD0t0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.html",
+          "hash": "68wP71kmxav1cjZbQT8nWJ/JVAvbCGrwHYvyIfhGNFY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.TodayPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.TodayPageView.html",
+          "hash": "qsOgHqxcXfFx4BVvRI8cOCfMtL8Z/xyKUB7r8+/mDBU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCarouselViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCarouselViewCell.html",
+          "hash": "a9I5N3wc4vFJzYqioediaqK5aGXZsbR+uJW4J9Juz4Q="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCollectionViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCollectionViewCell.html",
+          "hash": "KiLSWcg1lJFJ0XlkGHUhXPGhm7MSYT7h1g1UKtg12fg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarSubjectsViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarSubjectsViewCell.html",
+          "hash": "YU5qYLlpZPld2LeB3x3kpAJoAurL3hRaJO5fs0hbgg8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.NewsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.NewsPageViewCell.html",
+          "hash": "//OMdsJVwWtiNKTVDJ5h+LZA3uEbCN+ONYXAe8WFh38="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.html",
+          "hash": "kGwilzE10t78VXPDWDfQw/HIRjiAxwStlNh5ttZTXOA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.html",
+          "hash": "Q2pY53Abf0mRVUk8Ti9mSXGfX4TlpeIh5rRdQGUZVuU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.html",
+          "hash": "ggm9H+zd3EHDAcWtH43lt8/v+fwk8PeExDpoHCd3exY="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.html",
+          "hash": "PGl689GPLGBQsBArbL7rQt0tRbquQwIEVXmnNF4jiaw="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView.html",
+          "hash": "dhufDRYFFOIAMKxyM53QMqib2BrPk9JYbxoFVM5TWnM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.html",
+          "hash": "DoXCCeV74J84NPZlLM/1iDz7Ry9c+E5fNFRKI5SaRIk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ViewModel.html",
+          "hash": "Jdg/dXLbnDnwErGB5iqa5JgMBah0a8tJrMXSYiFPqeU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.html",
+          "hash": "/YNfr8HQURq1VMAzinx8RmnwBdcg+4+ZjP+gNVJeJxQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.AppTheme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.AppTheme.html",
+          "hash": "EDVeE8JOqKSjeowIulFHH0GAhthEM/ZkhjzbIfuZN2c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.IThemeNative.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.IThemeNative.html",
+          "hash": "Cd3pa2X0xzrf8uYRUkSSgGWm5ZzFDE4zfYXdcKtclF4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.html",
+          "hash": "TOttclJZcf2NYv0vaMrMIKCea28KwpN0TIlQIM/eELk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.DependencyServices.ThemePlatformSpecific.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.DependencyServices.ThemePlatformSpecific.html",
+          "hash": "TImNwhwXY2nK9MLouX90Vyir5HJt8MK2an6yU6pHbpQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.DependencyServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.DependencyServices.html",
+          "hash": "E9nc6PPmkY3tmqggzeol34lZKNqntLQsB5cQ8AmvrUk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Interfaces.ITheme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Interfaces.ITheme.html",
+          "hash": "aNWrTE62nPjfpDmZiPQokY+M33mPu5DeqVL2xFqFXQ0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Interfaces.html",
+          "hash": "D3A1ABC2PgPOxR22wAlfBqz6ZYNsDOFIXmYnTLpERgc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Templates.DarkTheme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Templates.DarkTheme.html",
+          "hash": "WsDP6q1O/qtZKf1EQBph8TVUZTiC+UTD7XYZYqVli3M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Templates.DefaultTheme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Templates.DefaultTheme.html",
+          "hash": "7d3zVntUWXsdCL4M61meUy96up2L6A238on9tW6rozM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Templates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Templates.html",
+          "hash": "mLlUlFFzv7ES++pFRiFdU7bmm+ngp3Jxe9DRSKRSX6Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Theme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Theme.html",
+          "hash": "jZdsu9wNd+fQiW/5qwa6xk5L2Y0WpKAJna4cScHysRU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.html",
+          "hash": "NwiuLSRhBMXQSNPIMje0CCFLNRJtvwNTE35lIALWHBA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.html",
+          "hash": "UysQuAePYLTfilMbsm/cwdV0pZB9y6JR37VtxdMeJGk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "articles/continuous-integration.md",
       "output": {
         ".html": {
           "relative_path": "articles/continuous-integration.html",
-          "hash": "TSRIiSR+3pVznz4VaA4ynA=="
+          "hash": "KEKavHaO5yKgA0L1Fsq86hKUIKyAbdd9ZxMN8mjyEcY="
         }
       },
       "is_incremental": false,
@@ -24,7 +4380,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/project-structure.html",
-          "hash": "jQwEBot385rXpLEXqrCylg=="
+          "hash": "HETScEmJwWQtuRxYREdlf+7C7EOlNyd5APVvDmaiHK8="
         }
       },
       "is_incremental": false,
@@ -36,7 +4392,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/resources.html",
-          "hash": "OOjxm+60lpZyws0LxwNuIA=="
+          "hash": "5oBTsbD2v2q1Z0PeUp9O54M9tljv6kC+Jmj2kk+Ol08="
         }
       },
       "is_incremental": false,
@@ -48,7 +4404,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/services.html",
-          "hash": "ve6LT5X8WToCMQrpixb3MQ=="
+          "hash": "HldQVNnrXmaVjKFYDHG5MxfNGIEpHhuMSqE9tXGJKgs="
         }
       },
       "is_incremental": false,
@@ -71,7 +4427,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "KZIanXa8YrqWHS5P8nciAQ=="
+          "hash": "gWN1JhdNKJAIg8XVUtG8psfXUP9DGLB3pbeiNM9ddL8="
         }
       },
       "is_incremental": false,
@@ -94,7 +4450,7 @@
       "output": {
         ".html": {
           "relative_path": "privacy-policy.html",
-          "hash": "Y9ZL7w+UqgRFR5a+ekiqRQ=="
+          "hash": "r209C7qlR84FPAEnlgiWShI/Vdfye/Hxi2V9WfyHrCY="
         }
       },
       "is_incremental": false,
@@ -116,6 +4472,12 @@
           "can_incremental": false,
           "incrementalPhase": "build",
           "total_file_count": 6,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 363,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
