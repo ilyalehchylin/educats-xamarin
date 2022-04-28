@@ -1585,6 +1585,10 @@
     <div class="level2"><a class="xref" href="EduCATS.Pages.Pickers.SubjectsViewModel.html">SubjectsViewModel</a></div>
     <div class="level3"><span class="xref">TestingPageViewModel</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -1645,7 +1649,7 @@
       <a class="xref" href="EduCATS.Pages.Pickers.SubjectsViewModel.html#EduCATS_Pages_Pickers_SubjectsViewModel_setChosenSubject_EduCATS_Data_Models_SubjectModel_">SubjectsViewModel.setChosenSubject(SubjectModel)</a>
     </div>
     <div>
-      <a class="xref" href="EduCATS.Pages.Pickers.SubjectsViewModel.html#EduCATS_Pages_Pickers_SubjectsViewModel_SetCurrentSubjectsList_List_EduCATS_Data_Models_SubjectModel__">SubjectsViewModel.SetCurrentSubjectsList(List&lt;SubjectModel&gt;)</a>
+      <a class="xref" href="EduCATS.Pages.Pickers.SubjectsViewModel.html#EduCATS_Pages_Pickers_SubjectsViewModel_SetCurrentSubjectsList_System_Collections_Generic_List_EduCATS_Data_Models_SubjectModel__">SubjectsViewModel.SetCurrentSubjectsList(List&lt;SubjectModel&gt;)</a>
     </div>
     <div>
       <a class="xref" href="EduCATS.Pages.Pickers.SubjectsViewModel.html#EduCATS_Pages_Pickers_SubjectsViewModel_checkSubjectsList">SubjectsViewModel.checkSubjectsList()</a>
@@ -1659,12 +1663,33 @@
     <div>
       <a class="xref" href="EduCATS.Pages.ViewModel.html#EduCATS_Pages_ViewModel_OnPropertyChanged_System_String_">ViewModel.OnPropertyChanged(String)</a>
     </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Pages.Testing.Base.ViewModels.html">EduCATS.Pages.Testing.Base.ViewModels</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class TestingPageViewModel : SubjectsViewModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class TestingPageViewModel : SubjectsViewModel, INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -1734,7 +1759,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Command</span></td>
+        <td><span class="xref">Xamarin.Forms.Command</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1778,7 +1803,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1826,7 +1851,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Command</span></td>
+        <td><span class="xref">Xamarin.Forms.Command</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1872,7 +1897,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1880,7 +1905,7 @@
   <h3 id="methods">Methods
   </h3>
   <a id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_addNonEmptyGroup_" data-uid="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup*"></a>
-  <h4 id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_addNonEmptyGroup_List_EduCATS_Pages_Testing_Base_Models_TestingGroupModel__EduCATS_Pages_Testing_Base_Models_TestingGroupModel_" data-uid="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(List{EduCATS.Pages.Testing.Base.Models.TestingGroupModel},EduCATS.Pages.Testing.Base.Models.TestingGroupModel)">addNonEmptyGroup(List&lt;TestingGroupModel&gt;, TestingGroupModel)</h4>
+  <h4 id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_addNonEmptyGroup_System_Collections_Generic_List_EduCATS_Pages_Testing_Base_Models_TestingGroupModel__EduCATS_Pages_Testing_Base_Models_TestingGroupModel_" data-uid="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(System.Collections.Generic.List{EduCATS.Pages.Testing.Base.Models.TestingGroupModel},EduCATS.Pages.Testing.Base.Models.TestingGroupModel)">addNonEmptyGroup(List&lt;TestingGroupModel&gt;, TestingGroupModel)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1898,7 +1923,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;</td>
         <td><span class="parametername">groups</span></td>
         <td></td>
       </tr>
@@ -1919,7 +1944,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1942,13 +1967,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getGroup_" data-uid="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup*"></a>
-  <h4 id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getGroup_IList_EduCATS_Data_Models_TestModel__System_String_System_Boolean_" data-uid="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(IList{EduCATS.Data.Models.TestModel},System.String,System.Boolean)">getGroup(IList&lt;TestModel&gt;, String, Boolean)</h4>
+  <h4 id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getGroup_System_Collections_Generic_IList_EduCATS_Data_Models_TestModel__System_String_System_Boolean_" data-uid="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(System.Collections.Generic.IList{EduCATS.Data.Models.TestModel},System.String,System.Boolean)">getGroup(IList&lt;TestModel&gt;, String, Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1966,7 +1991,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IList</span>&lt;<a class="xref" href="EduCATS.Data.Models.TestModel.html">TestModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="EduCATS.Data.Models.TestModel.html">TestModel</a>&gt;</td>
         <td><span class="parametername">tests</span></td>
         <td></td>
       </tr>
@@ -1998,7 +2023,7 @@
     </tbody>
   </table>
   <a id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getSeparateTests_" data-uid="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests*"></a>
-  <h4 id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getSeparateTests_IList_EduCATS_Data_Models_TestModel__System_Boolean_" data-uid="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(IList{EduCATS.Data.Models.TestModel},System.Boolean)">getSeparateTests(IList&lt;TestModel&gt;, Boolean)</h4>
+  <h4 id="EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getSeparateTests_System_Collections_Generic_IList_EduCATS_Data_Models_TestModel__System_Boolean_" data-uid="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(System.Collections.Generic.IList{EduCATS.Data.Models.TestModel},System.Boolean)">getSeparateTests(IList&lt;TestModel&gt;, Boolean)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -2016,7 +2041,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IList</span>&lt;<a class="xref" href="EduCATS.Data.Models.TestModel.html">TestModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="EduCATS.Data.Models.TestModel.html">TestModel</a>&gt;</td>
         <td><span class="parametername">tests</span></td>
         <td></td>
       </tr>
@@ -2037,7 +2062,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Data.Models.TestModel.html">TestModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Data.Models.TestModel.html">TestModel</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -2060,7 +2085,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html">TestingGroupModel</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -2108,7 +2133,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -2153,7 +2178,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -2176,11 +2201,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
+  </div>
 </article>
           </div>
           

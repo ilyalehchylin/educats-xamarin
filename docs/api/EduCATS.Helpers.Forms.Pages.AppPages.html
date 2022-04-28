@@ -1588,11 +1588,35 @@
     <h5>Implements</h5>
     <div><a class="xref" href="EduCATS.Helpers.Forms.Pages.IPages.html">IPages</a></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Helpers.Forms.Pages.html">EduCATS.Helpers.Forms.Pages</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Helpers_Forms_Pages_AppPages_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AppPages : object, IPages</code></pre>
+    <pre><code class="lang-csharp hljs">public class AppPages : IPages</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -1615,7 +1639,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NavigationPage</span></td>
+        <td><span class="xref">Xamarin.Forms.NavigationPage</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1665,15 +1689,15 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="EduCATS_Helpers_Forms_Pages_AppPages_getNavigationPage_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage*"></a>
-  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_getNavigationPage_Page_System_String_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage(Page,System.String)">getNavigationPage(Page, String)</h4>
-  <div class="markdown level1 summary"><p>Converts <see cref="!:Page"></see> to <see cref="!:NavigationPage"></see>.</p>
+  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_getNavigationPage_Xamarin_Forms_Page_System_String_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage(Xamarin.Forms.Page,System.String)">getNavigationPage(Page, String)</h4>
+  <div class="markdown level1 summary"><p>Converts <span class="xref">Xamarin.Forms.Page</span> to <span class="xref">Xamarin.Forms.NavigationPage</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1691,7 +1715,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Page</span></td>
+        <td><span class="xref">Xamarin.Forms.Page</span></td>
         <td><span class="parametername">page</span></td>
         <td><p>Page to convert.</p>
 </td>
@@ -1714,7 +1738,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">NavigationPage</span></td>
+        <td><span class="xref">Xamarin.Forms.NavigationPage</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -1765,7 +1789,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1815,7 +1839,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1875,7 +1899,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1947,7 +1971,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -1960,7 +1984,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public async Task OpenEemc(string title, int searchId = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public async Task OpenEemc(string title, int searchId = -1)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1996,7 +2020,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2039,7 +2063,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2080,7 +2104,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -2146,7 +2170,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2191,7 +2215,7 @@
     </tbody>
   </table>
   <a id="EduCATS_Helpers_Forms_Pages_AppPages_OpenParentalStudentsListStats_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats*"></a>
-  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_OpenParentalStudentsListStats_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__System_String_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)">OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List&lt;StatsStudentModel&gt;, String)</h4>
+  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_OpenParentalStudentsListStats_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__System_String_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)">OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List&lt;StatsStudentModel&gt;, String)</h4>
   <div class="markdown level1 summary"><p>Open page with students List.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2226,7 +2250,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Data.Models.StatsStudentModel.html">StatsStudentModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Data.Models.StatsStudentModel.html">StatsStudentModel</a>&gt;</td>
         <td><span class="parametername">students</span></td>
         <td></td>
       </tr>
@@ -2247,7 +2271,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2290,7 +2314,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2331,7 +2355,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -2373,7 +2397,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2416,7 +2440,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2459,7 +2483,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2502,7 +2526,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2545,7 +2569,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2588,14 +2612,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="EduCATS_Helpers_Forms_Pages_AppPages_OpenStudentsListStats_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats*"></a>
-  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_OpenStudentsListStats_System_Int32_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__System_String_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)">OpenStudentsListStats(Int32, Int32, List&lt;StatsStudentModel&gt;, String)</h4>
+  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_OpenStudentsListStats_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__System_String_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)">OpenStudentsListStats(Int32, Int32, List&lt;StatsStudentModel&gt;, String)</h4>
   <div class="markdown level1 summary"><p>Open page with students.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2625,7 +2649,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Data.Models.StatsStudentModel.html">StatsStudentModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Data.Models.StatsStudentModel.html">StatsStudentModel</a>&gt;</td>
         <td><span class="parametername">students</span></td>
         <td></td>
       </tr>
@@ -2646,7 +2670,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2689,7 +2713,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2738,7 +2762,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2793,14 +2817,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="EduCATS_Helpers_Forms_Pages_AppPages_pushPage_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.pushPage*"></a>
-  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_pushPage_Page_System_String_System_Boolean_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.pushPage(Page,System.String,System.Boolean)">pushPage(Page, String, Boolean)</h4>
+  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_pushPage_Xamarin_Forms_Page_System_String_System_Boolean_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.pushPage(Xamarin.Forms.Page,System.String,System.Boolean)">pushPage(Page, String, Boolean)</h4>
   <div class="markdown level1 summary"><p>Push a page to existing navigation stack.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2819,7 +2843,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Page</span></td>
+        <td><span class="xref">Xamarin.Forms.Page</span></td>
         <td><span class="parametername">newPage</span></td>
         <td><p>Page to push.</p>
 </td>
@@ -2848,14 +2872,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="EduCATS_Helpers_Forms_Pages_AppPages_switchMainPage_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage*"></a>
-  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_switchMainPage_Page_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage(Page)">switchMainPage(Page)</h4>
+  <h4 id="EduCATS_Helpers_Forms_Pages_AppPages_switchMainPage_Xamarin_Forms_Page_" data-uid="EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage(Xamarin.Forms.Page)">switchMainPage(Page)</h4>
   <div class="markdown level1 summary"><p>Change Application's main page without animation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2874,7 +2898,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Page</span></td>
+        <td><span class="xref">Xamarin.Forms.Page</span></td>
         <td><span class="parametername">newPage</span></td>
         <td><p>Page to set.</p>
 </td>

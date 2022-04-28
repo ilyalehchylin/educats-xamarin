@@ -1584,11 +1584,35 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">RequestController</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Networking.html">EduCATS.Networking</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Networking_RequestController_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class RequestController : object</code></pre>
+    <pre><code class="lang-csharp hljs">public class RequestController</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -1645,7 +1669,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpClient</span></td>
+        <td><span class="xref">System.Net.Http.HttpClient</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1668,7 +1692,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">StringContent</span></td>
+        <td><span class="xref">System.Net.Http.StringContent</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1701,7 +1725,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const int _timeoutSeconds = null</code></pre>
+    <pre><code class="lang-csharp hljs">const int _timeoutSeconds = 30</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1785,7 +1809,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Uri</span></td>
+        <td><span class="xref">System.Uri</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1817,7 +1841,7 @@
   <h3 id="methods">Methods
   </h3>
   <a id="EduCATS_Networking_RequestController_errorResponseMessage_" data-uid="EduCATS.Networking.RequestController.errorResponseMessage*"></a>
-  <h4 id="EduCATS_Networking_RequestController_errorResponseMessage_HttpStatusCode_" data-uid="EduCATS.Networking.RequestController.errorResponseMessage(HttpStatusCode)">errorResponseMessage(HttpStatusCode)</h4>
+  <h4 id="EduCATS_Networking_RequestController_errorResponseMessage_System_Net_HttpStatusCode_" data-uid="EduCATS.Networking.RequestController.errorResponseMessage(System.Net.HttpStatusCode)">errorResponseMessage(HttpStatusCode)</h4>
   <div class="markdown level1 summary"><p>Get error response.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1836,7 +1860,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpStatusCode</span></td>
+        <td><span class="xref">System.Net.HttpStatusCode</span></td>
         <td><span class="parametername">statusCode</span></td>
         <td><p>Status code.</p>
 </td>
@@ -1853,7 +1877,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpResponseMessage</span></td>
+        <td><span class="xref">System.Net.Http.HttpResponseMessage</span></td>
         <td><p>Error response.</p>
 </td>
       </tr>
@@ -1878,7 +1902,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">HttpResponseMessage</span>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Net.Http.HttpResponseMessage</span>&gt;</td>
         <td><p>Response.</p>
 </td>
       </tr>
@@ -1903,14 +1927,14 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">HttpResponseMessage</span>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Net.Http.HttpResponseMessage</span>&gt;</td>
         <td><p>Response.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="EduCATS_Networking_RequestController_SendRequest_" data-uid="EduCATS.Networking.RequestController.SendRequest*"></a>
-  <h4 id="EduCATS_Networking_RequestController_SendRequest_HttpMethod_" data-uid="EduCATS.Networking.RequestController.SendRequest(HttpMethod)">SendRequest(HttpMethod)</h4>
+  <h4 id="EduCATS_Networking_RequestController_SendRequest_System_Net_Http_HttpMethod_" data-uid="EduCATS.Networking.RequestController.SendRequest(System.Net.Http.HttpMethod)">SendRequest(HttpMethod)</h4>
   <div class="markdown level1 summary"><p>Send request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1929,7 +1953,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpMethod</span></td>
+        <td><span class="xref">System.Net.Http.HttpMethod</span></td>
         <td><span class="parametername">httpMethod</span></td>
         <td><p><code>HTTP</code> method.</p>
 </td>
@@ -1946,17 +1970,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">HttpResponseMessage</span>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Net.Http.HttpResponseMessage</span>&gt;</td>
         <td><p>Response.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  <h5 id="EduCATS_Networking_RequestController_SendRequest_HttpMethod__remarks">Remarks</h5>
+  <h5 id="EduCATS_Networking_RequestController_SendRequest_System_Net_Http_HttpMethod__remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p><code>GET</code> and <code>POST</code> requests are supported only.</p>
 </div>
   <a id="EduCATS_Networking_RequestController_SetPostContent_" data-uid="EduCATS.Networking.RequestController.SetPostContent*"></a>
-  <h4 id="EduCATS_Networking_RequestController_SetPostContent_System_String_Encoding_System_String_" data-uid="EduCATS.Networking.RequestController.SetPostContent(System.String,Encoding,System.String)">SetPostContent(String, Encoding, String)</h4>
+  <h4 id="EduCATS_Networking_RequestController_SetPostContent_System_String_System_Text_Encoding_System_String_" data-uid="EduCATS.Networking.RequestController.SetPostContent(System.String,System.Text.Encoding,System.String)">SetPostContent(String, Encoding, String)</h4>
   <div class="markdown level1 summary"><p>Set <code>POST</code> content.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1981,7 +2005,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Encoding</span></td>
+        <td><span class="xref">System.Text.Encoding</span></td>
         <td><span class="parametername">encoding</span></td>
         <td><p>Encoding.</p>
 </td>

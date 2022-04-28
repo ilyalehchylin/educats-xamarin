@@ -1588,11 +1588,35 @@
     <h5>Implements</h5>
     <div><a class="xref" href="EduCATS.Helpers.Forms.Dialogs.IDialogs.html">IDialogs</a></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Helpers.Forms.Dialogs.html">EduCATS.Helpers.Forms.Dialogs</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Helpers_Forms_Dialogs_AppDialogs_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AppDialogs : object, IDialogs</code></pre>
+    <pre><code class="lang-csharp hljs">public class AppDialogs : IDialogs</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
@@ -1759,7 +1783,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Page</span></td>
+        <td><span class="xref">Xamarin.Forms.Page</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1768,7 +1792,7 @@
   </h3>
   <a id="EduCATS_Helpers_Forms_Dialogs_AppDialogs_getProgressDialog_" data-uid="EduCATS.Helpers.Forms.Dialogs.AppDialogs.getProgressDialog*"></a>
   <h4 id="EduCATS_Helpers_Forms_Dialogs_AppDialogs_getProgressDialog_System_Object_" data-uid="EduCATS.Helpers.Forms.Dialogs.AppDialogs.getProgressDialog(System.Object)">getProgressDialog(Object)</h4>
-  <div class="markdown level1 summary"><p>Convert object to <see cref="!:IProgressDialog"></see>.</p>
+  <div class="markdown level1 summary"><p>Convert object to <span class="xref">Acr.UserDialogs.IProgressDialog</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1803,7 +1827,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">IProgressDialog</span></td>
+        <td><span class="xref">Acr.UserDialogs.IProgressDialog</span></td>
         <td><p>Progress dialog.</p>
 </td>
       </tr>
@@ -1841,7 +1865,7 @@
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">dialog</span></td>
         <td><p>Progress dialog instance
-(retrieved from <a class="xref" href="EduCATS.Helpers.Forms.Dialogs.AppDialogs.html#EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowProgress_System_String_System_String_Action_">ShowProgress(String, String, Action)</a>).</p>
+(retrieved from <a class="xref" href="EduCATS.Helpers.Forms.Dialogs.AppDialogs.html#EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowProgress_System_String_System_String_System_Action_">ShowProgress(String, String, Action)</a>).</p>
 </td>
       </tr>
     </tbody>
@@ -1889,7 +1913,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
         <td><p>Dialog result.</p>
 </td>
       </tr>
@@ -1992,7 +2016,7 @@
     </tbody>
   </table>
   <a id="EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowProgress_" data-uid="EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress*"></a>
-  <h4 id="EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowProgress_System_String_System_String_Action_" data-uid="EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress(System.String,System.String,Action)">ShowProgress(String, String, Action)</h4>
+  <h4 id="EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowProgress_System_String_System_String_System_Action_" data-uid="EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress(System.String,System.String,System.Action)">ShowProgress(String, String, Action)</h4>
   <div class="markdown level1 summary"><p>Show progress dialog.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2023,7 +2047,7 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Action</span></td>
+        <td><span class="xref">System.Action</span></td>
         <td><span class="parametername">onCancel</span></td>
         <td><p>Action on cancel.</p>
 </td>
@@ -2047,7 +2071,7 @@
     </tbody>
   </table>
   <a id="EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowSheet_" data-uid="EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet*"></a>
-  <h4 id="EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowSheet_System_String_Dictionary_System_Int32_System_String__ICommand_" data-uid="EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String,Dictionary{System.Int32,System.String},ICommand)">ShowSheet(String, Dictionary&lt;Int32, String&gt;, ICommand)</h4>
+  <h4 id="EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowSheet_System_String_System_Collections_Generic_Dictionary_System_Int32_System_String__System_Windows_Input_ICommand_" data-uid="EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String,System.Collections.Generic.Dictionary{System.Int32,System.String},System.Windows.Input.ICommand)">ShowSheet(String, Dictionary&lt;Int32, String&gt;, ICommand)</h4>
   <div class="markdown level1 summary"><p>Show alert sheet.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2072,12 +2096,12 @@
 </td>
       </tr>
       <tr>
-        <td><span class="xref">Dictionary</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.String</span>&gt;</td>
         <td><span class="parametername">buttonList</span></td>
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">ICommand</span></td>
+        <td><span class="xref">System.Windows.Input.ICommand</span></td>
         <td><span class="parametername">command</span></td>
         <td><p>Command to execute on button click.</p>
 </td>
@@ -2107,7 +2131,7 @@
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">dialog</span></td>
         <td><p>Progress dialog instance
-(retrieved from <a class="xref" href="EduCATS.Helpers.Forms.Dialogs.AppDialogs.html#EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowProgress_System_String_System_String_Action_">ShowProgress(String, String, Action)</a>).</p>
+(retrieved from <a class="xref" href="EduCATS.Helpers.Forms.Dialogs.AppDialogs.html#EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowProgress_System_String_System_String_System_Action_">ShowProgress(String, String, Action)</a>).</p>
 </td>
       </tr>
       <tr>

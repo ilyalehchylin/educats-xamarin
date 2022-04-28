@@ -702,13 +702,13 @@ references:
   commentId: T:EduCATS.Controls.RoundedListView.RoundedListView
   fullName: EduCATS.Controls.RoundedListView.RoundedListView
   nameWithType: RoundedListView
-- uid: EduCATS.Controls.RoundedListView.RoundedListView.#ctor(Type,System.Boolean,View,Func{System.Object})
+- uid: EduCATS.Controls.RoundedListView.RoundedListView.#ctor(System.Type,System.Boolean,Xamarin.Forms.View,System.Func{System.Object})
   name: RoundedListView(Type, Boolean, View, Func<Object>)
-  href: api/EduCATS.Controls.RoundedListView.RoundedListView.html#EduCATS_Controls_RoundedListView_RoundedListView__ctor_Type_System_Boolean_View_Func_System_Object__
-  commentId: M:EduCATS.Controls.RoundedListView.RoundedListView.#ctor(Type,System.Boolean,View,Func{System.Object})
+  href: api/EduCATS.Controls.RoundedListView.RoundedListView.html#EduCATS_Controls_RoundedListView_RoundedListView__ctor_System_Type_System_Boolean_Xamarin_Forms_View_System_Func_System_Object__
+  commentId: M:EduCATS.Controls.RoundedListView.RoundedListView.#ctor(System.Type,System.Boolean,Xamarin.Forms.View,System.Func{System.Object})
   name.vb: RoundedListView(Type, Boolean, View, Func(Of Object))
-  fullName: EduCATS.Controls.RoundedListView.RoundedListView.RoundedListView(Type, System.Boolean, View, Func<System.Object>)
-  fullName.vb: EduCATS.Controls.RoundedListView.RoundedListView.RoundedListView(Type, System.Boolean, View, Func(Of System.Object))
+  fullName: EduCATS.Controls.RoundedListView.RoundedListView.RoundedListView(System.Type, System.Boolean, Xamarin.Forms.View, System.Func<System.Object>)
+  fullName.vb: EduCATS.Controls.RoundedListView.RoundedListView.RoundedListView(System.Type, System.Boolean, Xamarin.Forms.View, System.Func(Of System.Object))
   nameWithType: RoundedListView.RoundedListView(Type, Boolean, View, Func<Object>)
   nameWithType.vb: RoundedListView.RoundedListView(Type, Boolean, View, Func(Of Object))
 - uid: EduCATS.Controls.RoundedListView.RoundedListView.#ctor*
@@ -768,11 +768,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Controls.RoundedListView.RoundedListView.createFooterCap
   nameWithType: RoundedListView.createFooterCap
-- uid: EduCATS.Controls.RoundedListView.RoundedListView.createHeader(View)
+- uid: EduCATS.Controls.RoundedListView.RoundedListView.createHeader(Xamarin.Forms.View)
   name: createHeader(View)
-  href: api/EduCATS.Controls.RoundedListView.RoundedListView.html#EduCATS_Controls_RoundedListView_RoundedListView_createHeader_View_
-  commentId: M:EduCATS.Controls.RoundedListView.RoundedListView.createHeader(View)
-  fullName: EduCATS.Controls.RoundedListView.RoundedListView.createHeader(View)
+  href: api/EduCATS.Controls.RoundedListView.RoundedListView.html#EduCATS_Controls_RoundedListView_RoundedListView_createHeader_Xamarin_Forms_View_
+  commentId: M:EduCATS.Controls.RoundedListView.RoundedListView.createHeader(Xamarin.Forms.View)
+  fullName: EduCATS.Controls.RoundedListView.RoundedListView.createHeader(Xamarin.Forms.View)
   nameWithType: RoundedListView.createHeader(View)
 - uid: EduCATS.Controls.RoundedListView.RoundedListView.createHeader*
   name: createHeader
@@ -825,20 +825,20 @@ references:
   commentId: T:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector
   fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector
   nameWithType: RoundedListTemplateSelector
-- uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.#ctor(Func{System.Object},System.Boolean)
+- uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.#ctor(System.Func{System.Object},System.Boolean)
   name: RoundedListTemplateSelector(Func<Object>, Boolean)
-  href: api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html#EduCATS_Controls_RoundedListView_Selectors_RoundedListTemplateSelector__ctor_Func_System_Object__System_Boolean_
-  commentId: M:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.#ctor(Func{System.Object},System.Boolean)
+  href: api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html#EduCATS_Controls_RoundedListView_Selectors_RoundedListTemplateSelector__ctor_System_Func_System_Object__System_Boolean_
+  commentId: M:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.#ctor(System.Func{System.Object},System.Boolean)
   name.vb: RoundedListTemplateSelector(Func(Of Object), Boolean)
-  fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.RoundedListTemplateSelector(Func<System.Object>, System.Boolean)
-  fullName.vb: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.RoundedListTemplateSelector(Func(Of System.Object), System.Boolean)
+  fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.RoundedListTemplateSelector(System.Func<System.Object>, System.Boolean)
+  fullName.vb: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.RoundedListTemplateSelector(System.Func(Of System.Object), System.Boolean)
   nameWithType: RoundedListTemplateSelector.RoundedListTemplateSelector(Func<Object>, Boolean)
   nameWithType.vb: RoundedListTemplateSelector.RoundedListTemplateSelector(Func(Of Object), Boolean)
-- uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.#ctor(Type,System.Boolean)
+- uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.#ctor(System.Type,System.Boolean)
   name: RoundedListTemplateSelector(Type, Boolean)
-  href: api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html#EduCATS_Controls_RoundedListView_Selectors_RoundedListTemplateSelector__ctor_Type_System_Boolean_
-  commentId: M:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.#ctor(Type,System.Boolean)
-  fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.RoundedListTemplateSelector(Type, System.Boolean)
+  href: api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html#EduCATS_Controls_RoundedListView_Selectors_RoundedListTemplateSelector__ctor_System_Type_System_Boolean_
+  commentId: M:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.#ctor(System.Type,System.Boolean)
+  fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.RoundedListTemplateSelector(System.Type, System.Boolean)
   nameWithType: RoundedListTemplateSelector.RoundedListTemplateSelector(Type, Boolean)
 - uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.#ctor*
   name: RoundedListTemplateSelector
@@ -859,11 +859,11 @@ references:
   commentId: F:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.NavigationTemplate
   fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.NavigationTemplate
   nameWithType: RoundedListTemplateSelector.NavigationTemplate
-- uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.OnSelectTemplate(System.Object,BindableObject)
+- uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.OnSelectTemplate(System.Object,Xamarin.Forms.BindableObject)
   name: OnSelectTemplate(Object, BindableObject)
-  href: api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html#EduCATS_Controls_RoundedListView_Selectors_RoundedListTemplateSelector_OnSelectTemplate_System_Object_BindableObject_
-  commentId: M:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.OnSelectTemplate(System.Object,BindableObject)
-  fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.OnSelectTemplate(System.Object, BindableObject)
+  href: api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html#EduCATS_Controls_RoundedListView_Selectors_RoundedListTemplateSelector_OnSelectTemplate_System_Object_Xamarin_Forms_BindableObject_
+  commentId: M:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.OnSelectTemplate(System.Object,Xamarin.Forms.BindableObject)
+  fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.OnSelectTemplate(System.Object, Xamarin.Forms.BindableObject)
   nameWithType: RoundedListTemplateSelector.OnSelectTemplate(Object, BindableObject)
 - uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.OnSelectTemplate*
   name: OnSelectTemplate
@@ -872,11 +872,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.OnSelectTemplate
   nameWithType: RoundedListTemplateSelector.OnSelectTemplate
-- uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.setTemplate(DataTemplate,System.Boolean)
+- uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.setTemplate(Xamarin.Forms.DataTemplate,System.Boolean)
   name: setTemplate(DataTemplate, Boolean)
-  href: api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html#EduCATS_Controls_RoundedListView_Selectors_RoundedListTemplateSelector_setTemplate_DataTemplate_System_Boolean_
-  commentId: M:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.setTemplate(DataTemplate,System.Boolean)
-  fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.setTemplate(DataTemplate, System.Boolean)
+  href: api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html#EduCATS_Controls_RoundedListView_Selectors_RoundedListTemplateSelector_setTemplate_Xamarin_Forms_DataTemplate_System_Boolean_
+  commentId: M:EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.setTemplate(Xamarin.Forms.DataTemplate,System.Boolean)
+  fullName: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.setTemplate(Xamarin.Forms.DataTemplate, System.Boolean)
   nameWithType: RoundedListTemplateSelector.setTemplate(DataTemplate, Boolean)
 - uid: EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.setTemplate*
   name: setTemplate
@@ -1842,13 +1842,13 @@ references:
   fullName.vb: EduCATS.Data.DataAccess(Of T)
   nameWithType: DataAccess<T>
   nameWithType.vb: DataAccess(Of T)
-- uid: EduCATS.Data.DataAccess`1.#ctor(System.String,Task{System.Object},System.String,EduCATS.Helpers.Forms.IPlatformServices)
+- uid: EduCATS.Data.DataAccess`1.#ctor(System.String,System.Threading.Tasks.Task{System.Object},System.String,EduCATS.Helpers.Forms.IPlatformServices)
   name: DataAccess(String, Task<Object>, String, IPlatformServices)
-  href: api/EduCATS.Data.DataAccess-1.html#EduCATS_Data_DataAccess_1__ctor_System_String_Task_System_Object__System_String_EduCATS_Helpers_Forms_IPlatformServices_
-  commentId: M:EduCATS.Data.DataAccess`1.#ctor(System.String,Task{System.Object},System.String,EduCATS.Helpers.Forms.IPlatformServices)
+  href: api/EduCATS.Data.DataAccess-1.html#EduCATS_Data_DataAccess_1__ctor_System_String_System_Threading_Tasks_Task_System_Object__System_String_EduCATS_Helpers_Forms_IPlatformServices_
+  commentId: M:EduCATS.Data.DataAccess`1.#ctor(System.String,System.Threading.Tasks.Task{System.Object},System.String,EduCATS.Helpers.Forms.IPlatformServices)
   name.vb: DataAccess(String, Task(Of Object), String, IPlatformServices)
-  fullName: EduCATS.Data.DataAccess<T>.DataAccess(System.String, Task<System.Object>, System.String, EduCATS.Helpers.Forms.IPlatformServices)
-  fullName.vb: EduCATS.Data.DataAccess(Of T).DataAccess(System.String, Task(Of System.Object), System.String, EduCATS.Helpers.Forms.IPlatformServices)
+  fullName: EduCATS.Data.DataAccess<T>.DataAccess(System.String, System.Threading.Tasks.Task<System.Object>, System.String, EduCATS.Helpers.Forms.IPlatformServices)
+  fullName.vb: EduCATS.Data.DataAccess(Of T).DataAccess(System.String, System.Threading.Tasks.Task(Of System.Object), System.String, EduCATS.Helpers.Forms.IPlatformServices)
   nameWithType: DataAccess<T>.DataAccess(String, Task<Object>, String, IPlatformServices)
   nameWithType.vb: DataAccess(Of T).DataAccess(String, Task(Of Object), String, IPlatformServices)
 - uid: EduCATS.Data.DataAccess`1.#ctor*
@@ -1976,13 +1976,13 @@ references:
   fullName.vb: EduCATS.Data.DataAccess(Of T).ErrorMessageKey
   nameWithType: DataAccess<T>.ErrorMessageKey
   nameWithType.vb: DataAccess(Of T).ErrorMessageKey
-- uid: EduCATS.Data.DataAccess`1.GetAccess(KeyValuePair{System.String,HttpStatusCode})
+- uid: EduCATS.Data.DataAccess`1.GetAccess(System.Collections.Generic.KeyValuePair{System.String,System.Net.HttpStatusCode})
   name: GetAccess(KeyValuePair<String, HttpStatusCode>)
-  href: api/EduCATS.Data.DataAccess-1.html#EduCATS_Data_DataAccess_1_GetAccess_KeyValuePair_System_String_HttpStatusCode__
-  commentId: M:EduCATS.Data.DataAccess`1.GetAccess(KeyValuePair{System.String,HttpStatusCode})
+  href: api/EduCATS.Data.DataAccess-1.html#EduCATS_Data_DataAccess_1_GetAccess_System_Collections_Generic_KeyValuePair_System_String_System_Net_HttpStatusCode__
+  commentId: M:EduCATS.Data.DataAccess`1.GetAccess(System.Collections.Generic.KeyValuePair{System.String,System.Net.HttpStatusCode})
   name.vb: GetAccess(KeyValuePair(Of String, HttpStatusCode))
-  fullName: EduCATS.Data.DataAccess<T>.GetAccess(KeyValuePair<System.String, HttpStatusCode>)
-  fullName.vb: EduCATS.Data.DataAccess(Of T).GetAccess(KeyValuePair(Of System.String, HttpStatusCode))
+  fullName: EduCATS.Data.DataAccess<T>.GetAccess(System.Collections.Generic.KeyValuePair<System.String, System.Net.HttpStatusCode>)
+  fullName.vb: EduCATS.Data.DataAccess(Of T).GetAccess(System.Collections.Generic.KeyValuePair(Of System.String, System.Net.HttpStatusCode))
   nameWithType: DataAccess<T>.GetAccess(KeyValuePair<String, HttpStatusCode>)
   nameWithType.vb: DataAccess(Of T).GetAccess(KeyValuePair(Of String, HttpStatusCode))
 - uid: EduCATS.Data.DataAccess`1.GetAccess*
@@ -2045,13 +2045,13 @@ references:
   fullName.vb: EduCATS.Data.DataAccess(Of T).GetList
   nameWithType: DataAccess<T>.GetList
   nameWithType.vb: DataAccess(Of T).GetList
-- uid: EduCATS.Data.DataAccess`1.GetListAccess(KeyValuePair{System.String,HttpStatusCode})
+- uid: EduCATS.Data.DataAccess`1.GetListAccess(System.Collections.Generic.KeyValuePair{System.String,System.Net.HttpStatusCode})
   name: GetListAccess(KeyValuePair<String, HttpStatusCode>)
-  href: api/EduCATS.Data.DataAccess-1.html#EduCATS_Data_DataAccess_1_GetListAccess_KeyValuePair_System_String_HttpStatusCode__
-  commentId: M:EduCATS.Data.DataAccess`1.GetListAccess(KeyValuePair{System.String,HttpStatusCode})
+  href: api/EduCATS.Data.DataAccess-1.html#EduCATS_Data_DataAccess_1_GetListAccess_System_Collections_Generic_KeyValuePair_System_String_System_Net_HttpStatusCode__
+  commentId: M:EduCATS.Data.DataAccess`1.GetListAccess(System.Collections.Generic.KeyValuePair{System.String,System.Net.HttpStatusCode})
   name.vb: GetListAccess(KeyValuePair(Of String, HttpStatusCode))
-  fullName: EduCATS.Data.DataAccess<T>.GetListAccess(KeyValuePair<System.String, HttpStatusCode>)
-  fullName.vb: EduCATS.Data.DataAccess(Of T).GetListAccess(KeyValuePair(Of System.String, HttpStatusCode))
+  fullName: EduCATS.Data.DataAccess<T>.GetListAccess(System.Collections.Generic.KeyValuePair<System.String, System.Net.HttpStatusCode>)
+  fullName.vb: EduCATS.Data.DataAccess(Of T).GetListAccess(System.Collections.Generic.KeyValuePair(Of System.String, System.Net.HttpStatusCode))
   nameWithType: DataAccess<T>.GetListAccess(KeyValuePair<String, HttpStatusCode>)
   nameWithType.vb: DataAccess(Of T).GetListAccess(KeyValuePair(Of String, HttpStatusCode))
 - uid: EduCATS.Data.DataAccess`1.GetListAccess*
@@ -2131,13 +2131,13 @@ references:
   fullName.vb: EduCATS.Data.DataAccess(Of T).parseResponse
   nameWithType: DataAccess<T>.parseResponse
   nameWithType.vb: DataAccess(Of T).parseResponse
-- uid: EduCATS.Data.DataAccess`1.setCallback(Task{System.Object})
+- uid: EduCATS.Data.DataAccess`1.setCallback(System.Threading.Tasks.Task{System.Object})
   name: setCallback(Task<Object>)
-  href: api/EduCATS.Data.DataAccess-1.html#EduCATS_Data_DataAccess_1_setCallback_Task_System_Object__
-  commentId: M:EduCATS.Data.DataAccess`1.setCallback(Task{System.Object})
+  href: api/EduCATS.Data.DataAccess-1.html#EduCATS_Data_DataAccess_1_setCallback_System_Threading_Tasks_Task_System_Object__
+  commentId: M:EduCATS.Data.DataAccess`1.setCallback(System.Threading.Tasks.Task{System.Object})
   name.vb: setCallback(Task(Of Object))
-  fullName: EduCATS.Data.DataAccess<T>.setCallback(Task<System.Object>)
-  fullName.vb: EduCATS.Data.DataAccess(Of T).setCallback(Task(Of System.Object))
+  fullName: EduCATS.Data.DataAccess<T>.setCallback(System.Threading.Tasks.Task<System.Object>)
+  fullName.vb: EduCATS.Data.DataAccess(Of T).setCallback(System.Threading.Tasks.Task(Of System.Object))
   nameWithType: DataAccess<T>.setCallback(Task<Object>)
   nameWithType.vb: DataAccess(Of T).setCallback(Task(Of Object))
 - uid: EduCATS.Data.DataAccess`1.setCallback*
@@ -4728,11 +4728,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Fonts.FontSizeController.GetDynamicSize
   nameWithType: FontSizeController.GetDynamicSize
-- uid: EduCATS.Fonts.FontSizeController.GetSize(NamedSize,Type)
+- uid: EduCATS.Fonts.FontSizeController.GetSize(Xamarin.Forms.NamedSize,System.Type)
   name: GetSize(NamedSize, Type)
-  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController_GetSize_NamedSize_Type_
-  commentId: M:EduCATS.Fonts.FontSizeController.GetSize(NamedSize,Type)
-  fullName: EduCATS.Fonts.FontSizeController.GetSize(NamedSize, Type)
+  href: api/EduCATS.Fonts.FontSizeController.html#EduCATS_Fonts_FontSizeController_GetSize_Xamarin_Forms_NamedSize_System_Type_
+  commentId: M:EduCATS.Fonts.FontSizeController.GetSize(Xamarin.Forms.NamedSize,System.Type)
+  fullName: EduCATS.Fonts.FontSizeController.GetSize(Xamarin.Forms.NamedSize, System.Type)
   nameWithType: FontSizeController.GetSize(NamedSize, Type)
 - uid: EduCATS.Fonts.FontSizeController.GetSize*
   name: GetSize
@@ -4783,11 +4783,11 @@ references:
   commentId: F:EduCATS.Helpers.Date.DateHelper._unixMinTimestamp
   fullName: EduCATS.Helpers.Date.DateHelper._unixMinTimestamp
   nameWithType: DateHelper._unixMinTimestamp
-- uid: EduCATS.Helpers.Date.DateHelper.CheckDatesDifference(DateTime,DateTime)
+- uid: EduCATS.Helpers.Date.DateHelper.CheckDatesDifference(System.DateTime,System.DateTime)
   name: CheckDatesDifference(DateTime, DateTime)
-  href: api/EduCATS.Helpers.Date.DateHelper.html#EduCATS_Helpers_Date_DateHelper_CheckDatesDifference_DateTime_DateTime_
-  commentId: M:EduCATS.Helpers.Date.DateHelper.CheckDatesDifference(DateTime,DateTime)
-  fullName: EduCATS.Helpers.Date.DateHelper.CheckDatesDifference(DateTime, DateTime)
+  href: api/EduCATS.Helpers.Date.DateHelper.html#EduCATS_Helpers_Date_DateHelper_CheckDatesDifference_System_DateTime_System_DateTime_
+  commentId: M:EduCATS.Helpers.Date.DateHelper.CheckDatesDifference(System.DateTime,System.DateTime)
+  fullName: EduCATS.Helpers.Date.DateHelper.CheckDatesDifference(System.DateTime, System.DateTime)
   nameWithType: DateHelper.CheckDatesDifference(DateTime, DateTime)
 - uid: EduCATS.Helpers.Date.DateHelper.CheckDatesDifference*
   name: CheckDatesDifference
@@ -4886,11 +4886,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Date.DateHelper.GetUnixFromString
   nameWithType: DateHelper.GetUnixFromString
-- uid: EduCATS.Helpers.Date.DateHelper.GetWeekDays(DateTime)
+- uid: EduCATS.Helpers.Date.DateHelper.GetWeekDays(System.DateTime)
   name: GetWeekDays(DateTime)
-  href: api/EduCATS.Helpers.Date.DateHelper.html#EduCATS_Helpers_Date_DateHelper_GetWeekDays_DateTime_
-  commentId: M:EduCATS.Helpers.Date.DateHelper.GetWeekDays(DateTime)
-  fullName: EduCATS.Helpers.Date.DateHelper.GetWeekDays(DateTime)
+  href: api/EduCATS.Helpers.Date.DateHelper.html#EduCATS_Helpers_Date_DateHelper_GetWeekDays_System_DateTime_
+  commentId: M:EduCATS.Helpers.Date.DateHelper.GetWeekDays(System.DateTime)
+  fullName: EduCATS.Helpers.Date.DateHelper.GetWeekDays(System.DateTime)
   nameWithType: DateHelper.GetWeekDays(DateTime)
 - uid: EduCATS.Helpers.Date.DateHelper.GetWeekDays*
   name: GetWeekDays
@@ -4899,11 +4899,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Date.DateHelper.GetWeekDays
   nameWithType: DateHelper.GetWeekDays
-- uid: EduCATS.Helpers.Date.DateHelper.GetWeekStartDate(DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)
+- uid: EduCATS.Helpers.Date.DateHelper.GetWeekStartDate(System.DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)
   name: GetWeekStartDate(DateTime, WeekEnum)
-  href: api/EduCATS.Helpers.Date.DateHelper.html#EduCATS_Helpers_Date_DateHelper_GetWeekStartDate_DateTime_EduCATS_Helpers_Date_Enums_WeekEnum_
-  commentId: M:EduCATS.Helpers.Date.DateHelper.GetWeekStartDate(DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)
-  fullName: EduCATS.Helpers.Date.DateHelper.GetWeekStartDate(DateTime, EduCATS.Helpers.Date.Enums.WeekEnum)
+  href: api/EduCATS.Helpers.Date.DateHelper.html#EduCATS_Helpers_Date_DateHelper_GetWeekStartDate_System_DateTime_EduCATS_Helpers_Date_Enums_WeekEnum_
+  commentId: M:EduCATS.Helpers.Date.DateHelper.GetWeekStartDate(System.DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)
+  fullName: EduCATS.Helpers.Date.DateHelper.GetWeekStartDate(System.DateTime, EduCATS.Helpers.Date.Enums.WeekEnum)
   nameWithType: DateHelper.GetWeekStartDate(DateTime, WeekEnum)
 - uid: EduCATS.Helpers.Date.DateHelper.GetWeekStartDate*
   name: GetWeekStartDate
@@ -4960,11 +4960,11 @@ references:
   commentId: F:EduCATS.Helpers.Date.Extensions.DateTimeExtensions._daysInWeek
   fullName: EduCATS.Helpers.Date.Extensions.DateTimeExtensions._daysInWeek
   nameWithType: DateTimeExtensions._daysInWeek
-- uid: EduCATS.Helpers.Date.Extensions.DateTimeExtensions.StartOfWeek(DateTime,DayOfWeek)
+- uid: EduCATS.Helpers.Date.Extensions.DateTimeExtensions.StartOfWeek(System.DateTime,System.DayOfWeek)
   name: StartOfWeek(DateTime, DayOfWeek)
-  href: api/EduCATS.Helpers.Date.Extensions.DateTimeExtensions.html#EduCATS_Helpers_Date_Extensions_DateTimeExtensions_StartOfWeek_DateTime_DayOfWeek_
-  commentId: M:EduCATS.Helpers.Date.Extensions.DateTimeExtensions.StartOfWeek(DateTime,DayOfWeek)
-  fullName: EduCATS.Helpers.Date.Extensions.DateTimeExtensions.StartOfWeek(DateTime, DayOfWeek)
+  href: api/EduCATS.Helpers.Date.Extensions.DateTimeExtensions.html#EduCATS_Helpers_Date_Extensions_DateTimeExtensions_StartOfWeek_System_DateTime_System_DayOfWeek_
+  commentId: M:EduCATS.Helpers.Date.Extensions.DateTimeExtensions.StartOfWeek(System.DateTime,System.DayOfWeek)
+  fullName: EduCATS.Helpers.Date.Extensions.DateTimeExtensions.StartOfWeek(System.DateTime, System.DayOfWeek)
   nameWithType: DateTimeExtensions.StartOfWeek(DateTime, DayOfWeek)
 - uid: EduCATS.Helpers.Date.Extensions.DateTimeExtensions.StartOfWeek*
   name: StartOfWeek
@@ -4992,13 +4992,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Extensions.ListExtensions.Swap
   nameWithType: ListExtensions.Swap
-- uid: EduCATS.Helpers.Extensions.ListExtensions.Swap``1(List{``0},System.Int32,System.Int32)
+- uid: EduCATS.Helpers.Extensions.ListExtensions.Swap``1(System.Collections.Generic.List{``0},System.Int32,System.Int32)
   name: Swap<T>(List<T>, Int32, Int32)
-  href: api/EduCATS.Helpers.Extensions.ListExtensions.html#EduCATS_Helpers_Extensions_ListExtensions_Swap__1_List___0__System_Int32_System_Int32_
-  commentId: M:EduCATS.Helpers.Extensions.ListExtensions.Swap``1(List{``0},System.Int32,System.Int32)
+  href: api/EduCATS.Helpers.Extensions.ListExtensions.html#EduCATS_Helpers_Extensions_ListExtensions_Swap__1_System_Collections_Generic_List___0__System_Int32_System_Int32_
+  commentId: M:EduCATS.Helpers.Extensions.ListExtensions.Swap``1(System.Collections.Generic.List{``0},System.Int32,System.Int32)
   name.vb: Swap(Of T)(List(Of T), Int32, Int32)
-  fullName: EduCATS.Helpers.Extensions.ListExtensions.Swap<T>(List<T>, System.Int32, System.Int32)
-  fullName.vb: EduCATS.Helpers.Extensions.ListExtensions.Swap(Of T)(List(Of T), System.Int32, System.Int32)
+  fullName: EduCATS.Helpers.Extensions.ListExtensions.Swap<T>(System.Collections.Generic.List<T>, System.Int32, System.Int32)
+  fullName.vb: EduCATS.Helpers.Extensions.ListExtensions.Swap(Of T)(System.Collections.Generic.List(Of T), System.Int32, System.Int32)
   nameWithType: ListExtensions.Swap<T>(List<T>, Int32, Int32)
   nameWithType.vb: ListExtensions.Swap(Of T)(List(Of T), Int32, Int32)
 - uid: EduCATS.Helpers.Extensions.StringExtensions
@@ -5270,11 +5270,11 @@ references:
   commentId: F:EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter._base64Prefix
   fullName: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter._base64Prefix
   nameWithType: Base64ToImageSourceConverter._base64Prefix
-- uid: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.Convert(System.Object,Type,System.Object,CultureInfo)
+- uid: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
   name: Convert(Object, Type, Object, CultureInfo)
-  href: api/EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.html#EduCATS_Helpers_Forms_Converters_Base64ToImageSourceConverter_Convert_System_Object_Type_System_Object_CultureInfo_
-  commentId: M:EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.Convert(System.Object,Type,System.Object,CultureInfo)
-  fullName: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.Convert(System.Object, Type, System.Object, CultureInfo)
+  href: api/EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.html#EduCATS_Helpers_Forms_Converters_Base64ToImageSourceConverter_Convert_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
+  commentId: M:EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
+  fullName: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.Convert(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
   nameWithType: Base64ToImageSourceConverter.Convert(Object, Type, Object, CultureInfo)
 - uid: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.Convert*
   name: Convert
@@ -5283,11 +5283,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.Convert
   nameWithType: Base64ToImageSourceConverter.Convert
-- uid: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.ConvertBack(System.Object,Type,System.Object,CultureInfo)
+- uid: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
   name: ConvertBack(Object, Type, Object, CultureInfo)
-  href: api/EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.html#EduCATS_Helpers_Forms_Converters_Base64ToImageSourceConverter_ConvertBack_System_Object_Type_System_Object_CultureInfo_
-  commentId: M:EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.ConvertBack(System.Object,Type,System.Object,CultureInfo)
-  fullName: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.ConvertBack(System.Object, Type, System.Object, CultureInfo)
+  href: api/EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.html#EduCATS_Helpers_Forms_Converters_Base64ToImageSourceConverter_ConvertBack_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
+  commentId: M:EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
+  fullName: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.ConvertBack(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
   nameWithType: Base64ToImageSourceConverter.ConvertBack(Object, Type, Object, CultureInfo)
 - uid: EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.ConvertBack*
   name: ConvertBack
@@ -5326,11 +5326,11 @@ references:
   commentId: F:EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter._poinstSize
   fullName: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter._poinstSize
   nameWithType: DoubleListToRadarChartConverter._poinstSize
-- uid: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.Convert(System.Object,Type,System.Object,CultureInfo)
+- uid: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
   name: Convert(Object, Type, Object, CultureInfo)
-  href: api/EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.html#EduCATS_Helpers_Forms_Converters_DoubleListToRadarChartConverter_Convert_System_Object_Type_System_Object_CultureInfo_
-  commentId: M:EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.Convert(System.Object,Type,System.Object,CultureInfo)
-  fullName: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.Convert(System.Object, Type, System.Object, CultureInfo)
+  href: api/EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.html#EduCATS_Helpers_Forms_Converters_DoubleListToRadarChartConverter_Convert_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
+  commentId: M:EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
+  fullName: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.Convert(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
   nameWithType: DoubleListToRadarChartConverter.Convert(Object, Type, Object, CultureInfo)
 - uid: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.Convert*
   name: Convert
@@ -5339,11 +5339,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.Convert
   nameWithType: DoubleListToRadarChartConverter.Convert
-- uid: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.ConvertBack(System.Object,Type,System.Object,CultureInfo)
+- uid: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
   name: ConvertBack(Object, Type, Object, CultureInfo)
-  href: api/EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.html#EduCATS_Helpers_Forms_Converters_DoubleListToRadarChartConverter_ConvertBack_System_Object_Type_System_Object_CultureInfo_
-  commentId: M:EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.ConvertBack(System.Object,Type,System.Object,CultureInfo)
-  fullName: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.ConvertBack(System.Object, Type, System.Object, CultureInfo)
+  href: api/EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.html#EduCATS_Helpers_Forms_Converters_DoubleListToRadarChartConverter_ConvertBack_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
+  commentId: M:EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
+  fullName: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.ConvertBack(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
   nameWithType: DoubleListToRadarChartConverter.ConvertBack(Object, Type, Object, CultureInfo)
 - uid: EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.ConvertBack*
   name: ConvertBack
@@ -5376,11 +5376,11 @@ references:
   commentId: F:EduCATS.Helpers.Forms.Converters.StringToColorConverter._transparentColorString
   fullName: EduCATS.Helpers.Forms.Converters.StringToColorConverter._transparentColorString
   nameWithType: StringToColorConverter._transparentColorString
-- uid: EduCATS.Helpers.Forms.Converters.StringToColorConverter.Convert(System.Object,Type,System.Object,CultureInfo)
+- uid: EduCATS.Helpers.Forms.Converters.StringToColorConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
   name: Convert(Object, Type, Object, CultureInfo)
-  href: api/EduCATS.Helpers.Forms.Converters.StringToColorConverter.html#EduCATS_Helpers_Forms_Converters_StringToColorConverter_Convert_System_Object_Type_System_Object_CultureInfo_
-  commentId: M:EduCATS.Helpers.Forms.Converters.StringToColorConverter.Convert(System.Object,Type,System.Object,CultureInfo)
-  fullName: EduCATS.Helpers.Forms.Converters.StringToColorConverter.Convert(System.Object, Type, System.Object, CultureInfo)
+  href: api/EduCATS.Helpers.Forms.Converters.StringToColorConverter.html#EduCATS_Helpers_Forms_Converters_StringToColorConverter_Convert_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
+  commentId: M:EduCATS.Helpers.Forms.Converters.StringToColorConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
+  fullName: EduCATS.Helpers.Forms.Converters.StringToColorConverter.Convert(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
   nameWithType: StringToColorConverter.Convert(Object, Type, Object, CultureInfo)
 - uid: EduCATS.Helpers.Forms.Converters.StringToColorConverter.Convert*
   name: Convert
@@ -5389,11 +5389,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Converters.StringToColorConverter.Convert
   nameWithType: StringToColorConverter.Convert
-- uid: EduCATS.Helpers.Forms.Converters.StringToColorConverter.ConvertBack(System.Object,Type,System.Object,CultureInfo)
+- uid: EduCATS.Helpers.Forms.Converters.StringToColorConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
   name: ConvertBack(Object, Type, Object, CultureInfo)
-  href: api/EduCATS.Helpers.Forms.Converters.StringToColorConverter.html#EduCATS_Helpers_Forms_Converters_StringToColorConverter_ConvertBack_System_Object_Type_System_Object_CultureInfo_
-  commentId: M:EduCATS.Helpers.Forms.Converters.StringToColorConverter.ConvertBack(System.Object,Type,System.Object,CultureInfo)
-  fullName: EduCATS.Helpers.Forms.Converters.StringToColorConverter.ConvertBack(System.Object, Type, System.Object, CultureInfo)
+  href: api/EduCATS.Helpers.Forms.Converters.StringToColorConverter.html#EduCATS_Helpers_Forms_Converters_StringToColorConverter_ConvertBack_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
+  commentId: M:EduCATS.Helpers.Forms.Converters.StringToColorConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
+  fullName: EduCATS.Helpers.Forms.Converters.StringToColorConverter.ConvertBack(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
   nameWithType: StringToColorConverter.ConvertBack(Object, Type, Object, CultureInfo)
 - uid: EduCATS.Helpers.Forms.Converters.StringToColorConverter.ConvertBack*
   name: ConvertBack
@@ -5408,11 +5408,11 @@ references:
   commentId: T:EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter
   fullName: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter
   nameWithType: StringToImageSourceConverter
-- uid: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.Convert(System.Object,Type,System.Object,CultureInfo)
+- uid: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
   name: Convert(Object, Type, Object, CultureInfo)
-  href: api/EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.html#EduCATS_Helpers_Forms_Converters_StringToImageSourceConverter_Convert_System_Object_Type_System_Object_CultureInfo_
-  commentId: M:EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.Convert(System.Object,Type,System.Object,CultureInfo)
-  fullName: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.Convert(System.Object, Type, System.Object, CultureInfo)
+  href: api/EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.html#EduCATS_Helpers_Forms_Converters_StringToImageSourceConverter_Convert_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
+  commentId: M:EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.Convert(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
+  fullName: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.Convert(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
   nameWithType: StringToImageSourceConverter.Convert(Object, Type, Object, CultureInfo)
 - uid: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.Convert*
   name: Convert
@@ -5421,11 +5421,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.Convert
   nameWithType: StringToImageSourceConverter.Convert
-- uid: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.ConvertBack(System.Object,Type,System.Object,CultureInfo)
+- uid: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
   name: ConvertBack(Object, Type, Object, CultureInfo)
-  href: api/EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.html#EduCATS_Helpers_Forms_Converters_StringToImageSourceConverter_ConvertBack_System_Object_Type_System_Object_CultureInfo_
-  commentId: M:EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.ConvertBack(System.Object,Type,System.Object,CultureInfo)
-  fullName: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.ConvertBack(System.Object, Type, System.Object, CultureInfo)
+  href: api/EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.html#EduCATS_Helpers_Forms_Converters_StringToImageSourceConverter_ConvertBack_System_Object_System_Type_System_Object_System_Globalization_CultureInfo_
+  commentId: M:EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.ConvertBack(System.Object,System.Type,System.Object,System.Globalization.CultureInfo)
+  fullName: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.ConvertBack(System.Object, System.Type, System.Object, System.Globalization.CultureInfo)
   nameWithType: StringToImageSourceConverter.ConvertBack(Object, Type, Object, CultureInfo)
 - uid: EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.ConvertBack*
   name: ConvertBack
@@ -5504,11 +5504,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Devices.AppDevice.GetBuild
   nameWithType: AppDevice.GetBuild
-- uid: EduCATS.Helpers.Forms.Devices.AppDevice.GetNamedSize(System.Int32,Type)
+- uid: EduCATS.Helpers.Forms.Devices.AppDevice.GetNamedSize(System.Int32,System.Type)
   name: GetNamedSize(Int32, Type)
-  href: api/EduCATS.Helpers.Forms.Devices.AppDevice.html#EduCATS_Helpers_Forms_Devices_AppDevice_GetNamedSize_System_Int32_Type_
-  commentId: M:EduCATS.Helpers.Forms.Devices.AppDevice.GetNamedSize(System.Int32,Type)
-  fullName: EduCATS.Helpers.Forms.Devices.AppDevice.GetNamedSize(System.Int32, Type)
+  href: api/EduCATS.Helpers.Forms.Devices.AppDevice.html#EduCATS_Helpers_Forms_Devices_AppDevice_GetNamedSize_System_Int32_System_Type_
+  commentId: M:EduCATS.Helpers.Forms.Devices.AppDevice.GetNamedSize(System.Int32,System.Type)
+  fullName: EduCATS.Helpers.Forms.Devices.AppDevice.GetNamedSize(System.Int32, System.Type)
   nameWithType: AppDevice.GetNamedSize(Int32, Type)
 - uid: EduCATS.Helpers.Forms.Devices.AppDevice.GetNamedSize*
   name: GetNamedSize
@@ -5543,11 +5543,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Devices.AppDevice.GetVersion
   nameWithType: AppDevice.GetVersion
-- uid: EduCATS.Helpers.Forms.Devices.AppDevice.MainThread(Action)
+- uid: EduCATS.Helpers.Forms.Devices.AppDevice.MainThread(System.Action)
   name: MainThread(Action)
-  href: api/EduCATS.Helpers.Forms.Devices.AppDevice.html#EduCATS_Helpers_Forms_Devices_AppDevice_MainThread_Action_
-  commentId: M:EduCATS.Helpers.Forms.Devices.AppDevice.MainThread(Action)
-  fullName: EduCATS.Helpers.Forms.Devices.AppDevice.MainThread(Action)
+  href: api/EduCATS.Helpers.Forms.Devices.AppDevice.html#EduCATS_Helpers_Forms_Devices_AppDevice_MainThread_System_Action_
+  commentId: M:EduCATS.Helpers.Forms.Devices.AppDevice.MainThread(System.Action)
+  fullName: EduCATS.Helpers.Forms.Devices.AppDevice.MainThread(System.Action)
   nameWithType: AppDevice.MainThread(Action)
 - uid: EduCATS.Helpers.Forms.Devices.AppDevice.MainThread*
   name: MainThread
@@ -5595,13 +5595,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Devices.AppDevice.SetNativeTheme
   nameWithType: AppDevice.SetNativeTheme
-- uid: EduCATS.Helpers.Forms.Devices.AppDevice.SetTimer(TimeSpan,Func{System.Boolean})
+- uid: EduCATS.Helpers.Forms.Devices.AppDevice.SetTimer(System.TimeSpan,System.Func{System.Boolean})
   name: SetTimer(TimeSpan, Func<Boolean>)
-  href: api/EduCATS.Helpers.Forms.Devices.AppDevice.html#EduCATS_Helpers_Forms_Devices_AppDevice_SetTimer_TimeSpan_Func_System_Boolean__
-  commentId: M:EduCATS.Helpers.Forms.Devices.AppDevice.SetTimer(TimeSpan,Func{System.Boolean})
+  href: api/EduCATS.Helpers.Forms.Devices.AppDevice.html#EduCATS_Helpers_Forms_Devices_AppDevice_SetTimer_System_TimeSpan_System_Func_System_Boolean__
+  commentId: M:EduCATS.Helpers.Forms.Devices.AppDevice.SetTimer(System.TimeSpan,System.Func{System.Boolean})
   name.vb: SetTimer(TimeSpan, Func(Of Boolean))
-  fullName: EduCATS.Helpers.Forms.Devices.AppDevice.SetTimer(TimeSpan, Func<System.Boolean>)
-  fullName.vb: EduCATS.Helpers.Forms.Devices.AppDevice.SetTimer(TimeSpan, Func(Of System.Boolean))
+  fullName: EduCATS.Helpers.Forms.Devices.AppDevice.SetTimer(System.TimeSpan, System.Func<System.Boolean>)
+  fullName.vb: EduCATS.Helpers.Forms.Devices.AppDevice.SetTimer(System.TimeSpan, System.Func(Of System.Boolean))
   nameWithType: AppDevice.SetTimer(TimeSpan, Func<Boolean>)
   nameWithType.vb: AppDevice.SetTimer(TimeSpan, Func(Of Boolean))
 - uid: EduCATS.Helpers.Forms.Devices.AppDevice.SetTimer*
@@ -5695,11 +5695,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Devices.IDevice.GetBuild
   nameWithType: IDevice.GetBuild
-- uid: EduCATS.Helpers.Forms.Devices.IDevice.GetNamedSize(System.Int32,Type)
+- uid: EduCATS.Helpers.Forms.Devices.IDevice.GetNamedSize(System.Int32,System.Type)
   name: GetNamedSize(Int32, Type)
-  href: api/EduCATS.Helpers.Forms.Devices.IDevice.html#EduCATS_Helpers_Forms_Devices_IDevice_GetNamedSize_System_Int32_Type_
-  commentId: M:EduCATS.Helpers.Forms.Devices.IDevice.GetNamedSize(System.Int32,Type)
-  fullName: EduCATS.Helpers.Forms.Devices.IDevice.GetNamedSize(System.Int32, Type)
+  href: api/EduCATS.Helpers.Forms.Devices.IDevice.html#EduCATS_Helpers_Forms_Devices_IDevice_GetNamedSize_System_Int32_System_Type_
+  commentId: M:EduCATS.Helpers.Forms.Devices.IDevice.GetNamedSize(System.Int32,System.Type)
+  fullName: EduCATS.Helpers.Forms.Devices.IDevice.GetNamedSize(System.Int32, System.Type)
   nameWithType: IDevice.GetNamedSize(Int32, Type)
 - uid: EduCATS.Helpers.Forms.Devices.IDevice.GetNamedSize*
   name: GetNamedSize
@@ -5734,11 +5734,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Devices.IDevice.GetVersion
   nameWithType: IDevice.GetVersion
-- uid: EduCATS.Helpers.Forms.Devices.IDevice.MainThread(Action)
+- uid: EduCATS.Helpers.Forms.Devices.IDevice.MainThread(System.Action)
   name: MainThread(Action)
-  href: api/EduCATS.Helpers.Forms.Devices.IDevice.html#EduCATS_Helpers_Forms_Devices_IDevice_MainThread_Action_
-  commentId: M:EduCATS.Helpers.Forms.Devices.IDevice.MainThread(Action)
-  fullName: EduCATS.Helpers.Forms.Devices.IDevice.MainThread(Action)
+  href: api/EduCATS.Helpers.Forms.Devices.IDevice.html#EduCATS_Helpers_Forms_Devices_IDevice_MainThread_System_Action_
+  commentId: M:EduCATS.Helpers.Forms.Devices.IDevice.MainThread(System.Action)
+  fullName: EduCATS.Helpers.Forms.Devices.IDevice.MainThread(System.Action)
   nameWithType: IDevice.MainThread(Action)
 - uid: EduCATS.Helpers.Forms.Devices.IDevice.MainThread*
   name: MainThread
@@ -5786,13 +5786,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Devices.IDevice.SetNativeTheme
   nameWithType: IDevice.SetNativeTheme
-- uid: EduCATS.Helpers.Forms.Devices.IDevice.SetTimer(TimeSpan,Func{System.Boolean})
+- uid: EduCATS.Helpers.Forms.Devices.IDevice.SetTimer(System.TimeSpan,System.Func{System.Boolean})
   name: SetTimer(TimeSpan, Func<Boolean>)
-  href: api/EduCATS.Helpers.Forms.Devices.IDevice.html#EduCATS_Helpers_Forms_Devices_IDevice_SetTimer_TimeSpan_Func_System_Boolean__
-  commentId: M:EduCATS.Helpers.Forms.Devices.IDevice.SetTimer(TimeSpan,Func{System.Boolean})
+  href: api/EduCATS.Helpers.Forms.Devices.IDevice.html#EduCATS_Helpers_Forms_Devices_IDevice_SetTimer_System_TimeSpan_System_Func_System_Boolean__
+  commentId: M:EduCATS.Helpers.Forms.Devices.IDevice.SetTimer(System.TimeSpan,System.Func{System.Boolean})
   name.vb: SetTimer(TimeSpan, Func(Of Boolean))
-  fullName: EduCATS.Helpers.Forms.Devices.IDevice.SetTimer(TimeSpan, Func<System.Boolean>)
-  fullName.vb: EduCATS.Helpers.Forms.Devices.IDevice.SetTimer(TimeSpan, Func(Of System.Boolean))
+  fullName: EduCATS.Helpers.Forms.Devices.IDevice.SetTimer(System.TimeSpan, System.Func<System.Boolean>)
+  fullName.vb: EduCATS.Helpers.Forms.Devices.IDevice.SetTimer(System.TimeSpan, System.Func(Of System.Boolean))
   nameWithType: IDevice.SetTimer(TimeSpan, Func<Boolean>)
   nameWithType.vb: IDevice.SetTimer(TimeSpan, Func(Of Boolean))
 - uid: EduCATS.Helpers.Forms.Devices.IDevice.SetTimer*
@@ -6028,11 +6028,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowMessage
   nameWithType: AppDialogs.ShowMessage
-- uid: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress(System.String,System.String,Action)
+- uid: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress(System.String,System.String,System.Action)
   name: ShowProgress(String, String, Action)
-  href: api/EduCATS.Helpers.Forms.Dialogs.AppDialogs.html#EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowProgress_System_String_System_String_Action_
-  commentId: M:EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress(System.String,System.String,Action)
-  fullName: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress(System.String, System.String, Action)
+  href: api/EduCATS.Helpers.Forms.Dialogs.AppDialogs.html#EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowProgress_System_String_System_String_System_Action_
+  commentId: M:EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress(System.String,System.String,System.Action)
+  fullName: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress(System.String, System.String, System.Action)
   nameWithType: AppDialogs.ShowProgress(String, String, Action)
 - uid: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress*
   name: ShowProgress
@@ -6041,13 +6041,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowProgress
   nameWithType: AppDialogs.ShowProgress
-- uid: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String,Dictionary{System.Int32,System.String},ICommand)
+- uid: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String,System.Collections.Generic.Dictionary{System.Int32,System.String},System.Windows.Input.ICommand)
   name: ShowSheet(String, Dictionary<Int32, String>, ICommand)
-  href: api/EduCATS.Helpers.Forms.Dialogs.AppDialogs.html#EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowSheet_System_String_Dictionary_System_Int32_System_String__ICommand_
-  commentId: M:EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String,Dictionary{System.Int32,System.String},ICommand)
+  href: api/EduCATS.Helpers.Forms.Dialogs.AppDialogs.html#EduCATS_Helpers_Forms_Dialogs_AppDialogs_ShowSheet_System_String_System_Collections_Generic_Dictionary_System_Int32_System_String__System_Windows_Input_ICommand_
+  commentId: M:EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String,System.Collections.Generic.Dictionary{System.Int32,System.String},System.Windows.Input.ICommand)
   name.vb: ShowSheet(String, Dictionary(Of Int32, String), ICommand)
-  fullName: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String, Dictionary<System.Int32, System.String>, ICommand)
-  fullName.vb: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String, Dictionary(Of System.Int32, System.String), ICommand)
+  fullName: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String, System.Collections.Generic.Dictionary<System.Int32, System.String>, System.Windows.Input.ICommand)
+  fullName.vb: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet(System.String, System.Collections.Generic.Dictionary(Of System.Int32, System.String), System.Windows.Input.ICommand)
   nameWithType: AppDialogs.ShowSheet(String, Dictionary<Int32, String>, ICommand)
   nameWithType.vb: AppDialogs.ShowSheet(String, Dictionary(Of Int32, String), ICommand)
 - uid: EduCATS.Helpers.Forms.Dialogs.AppDialogs.ShowSheet*
@@ -6160,11 +6160,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowMessage
   nameWithType: IDialogs.ShowMessage
-- uid: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowProgress(System.String,System.String,Action)
+- uid: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowProgress(System.String,System.String,System.Action)
   name: ShowProgress(String, String, Action)
-  href: api/EduCATS.Helpers.Forms.Dialogs.IDialogs.html#EduCATS_Helpers_Forms_Dialogs_IDialogs_ShowProgress_System_String_System_String_Action_
-  commentId: M:EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowProgress(System.String,System.String,Action)
-  fullName: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowProgress(System.String, System.String, Action)
+  href: api/EduCATS.Helpers.Forms.Dialogs.IDialogs.html#EduCATS_Helpers_Forms_Dialogs_IDialogs_ShowProgress_System_String_System_String_System_Action_
+  commentId: M:EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowProgress(System.String,System.String,System.Action)
+  fullName: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowProgress(System.String, System.String, System.Action)
   nameWithType: IDialogs.ShowProgress(String, String, Action)
 - uid: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowProgress*
   name: ShowProgress
@@ -6173,13 +6173,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowProgress
   nameWithType: IDialogs.ShowProgress
-- uid: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowSheet(System.String,Dictionary{System.Int32,System.String},ICommand)
+- uid: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowSheet(System.String,System.Collections.Generic.Dictionary{System.Int32,System.String},System.Windows.Input.ICommand)
   name: ShowSheet(String, Dictionary<Int32, String>, ICommand)
-  href: api/EduCATS.Helpers.Forms.Dialogs.IDialogs.html#EduCATS_Helpers_Forms_Dialogs_IDialogs_ShowSheet_System_String_Dictionary_System_Int32_System_String__ICommand_
-  commentId: M:EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowSheet(System.String,Dictionary{System.Int32,System.String},ICommand)
+  href: api/EduCATS.Helpers.Forms.Dialogs.IDialogs.html#EduCATS_Helpers_Forms_Dialogs_IDialogs_ShowSheet_System_String_System_Collections_Generic_Dictionary_System_Int32_System_String__System_Windows_Input_ICommand_
+  commentId: M:EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowSheet(System.String,System.Collections.Generic.Dictionary{System.Int32,System.String},System.Windows.Input.ICommand)
   name.vb: ShowSheet(String, Dictionary(Of Int32, String), ICommand)
-  fullName: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowSheet(System.String, Dictionary<System.Int32, System.String>, ICommand)
-  fullName.vb: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowSheet(System.String, Dictionary(Of System.Int32, System.String), ICommand)
+  fullName: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowSheet(System.String, System.Collections.Generic.Dictionary<System.Int32, System.String>, System.Windows.Input.ICommand)
+  fullName.vb: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowSheet(System.String, System.Collections.Generic.Dictionary(Of System.Int32, System.String), System.Windows.Input.ICommand)
   nameWithType: IDialogs.ShowSheet(String, Dictionary<Int32, String>, ICommand)
   nameWithType.vb: IDialogs.ShowSheet(String, Dictionary(Of Int32, String), ICommand)
 - uid: EduCATS.Helpers.Forms.Dialogs.IDialogs.ShowSheet*
@@ -6316,11 +6316,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Pages.AppPages.ClosePage
   nameWithType: AppPages.ClosePage
-- uid: EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage(Page,System.String)
+- uid: EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage(Xamarin.Forms.Page,System.String)
   name: getNavigationPage(Page, String)
-  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_getNavigationPage_Page_System_String_
-  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage(Page,System.String)
-  fullName: EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage(Page, System.String)
+  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_getNavigationPage_Xamarin_Forms_Page_System_String_
+  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage(Xamarin.Forms.Page,System.String)
+  fullName: EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage(Xamarin.Forms.Page, System.String)
   nameWithType: AppPages.getNavigationPage(Page, String)
 - uid: EduCATS.Helpers.Forms.Pages.AppPages.getNavigationPage*
   name: getNavigationPage
@@ -6498,13 +6498,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStat
   nameWithType: AppPages.OpenParentalStat
-- uid: EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)
+- uid: EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)
   name: OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List<StatsStudentModel>, String)
-  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_OpenParentalStudentsListStats_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__System_String_
-  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)
+  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_OpenParentalStudentsListStats_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__System_String_
+  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)
   name.vb: OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List(Of StatsStudentModel), String)
-  fullName: EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, List<EduCATS.Data.Models.StatsStudentModel>, System.String)
-  fullName.vb: EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, List(Of EduCATS.Data.Models.StatsStudentModel), System.String)
+  fullName: EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, System.Collections.Generic.List<EduCATS.Data.Models.StatsStudentModel>, System.String)
+  fullName.vb: EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, System.Collections.Generic.List(Of EduCATS.Data.Models.StatsStudentModel), System.String)
   nameWithType: AppPages.OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List<StatsStudentModel>, String)
   nameWithType.vb: AppPages.OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List(Of StatsStudentModel), String)
 - uid: EduCATS.Helpers.Forms.Pages.AppPages.OpenParentalStudentsListStats*
@@ -6618,13 +6618,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Pages.AppPages.OpenSettingsTheme
   nameWithType: AppPages.OpenSettingsTheme
-- uid: EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)
+- uid: EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)
   name: OpenStudentsListStats(Int32, Int32, List<StatsStudentModel>, String)
-  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_OpenStudentsListStats_System_Int32_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__System_String_
-  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)
+  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_OpenStudentsListStats_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__System_String_
+  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)
   name.vb: OpenStudentsListStats(Int32, Int32, List(Of StatsStudentModel), String)
-  fullName: EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32, System.Int32, List<EduCATS.Data.Models.StatsStudentModel>, System.String)
-  fullName.vb: EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32, System.Int32, List(Of EduCATS.Data.Models.StatsStudentModel), System.String)
+  fullName: EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32, System.Int32, System.Collections.Generic.List<EduCATS.Data.Models.StatsStudentModel>, System.String)
+  fullName.vb: EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats(System.Int32, System.Int32, System.Collections.Generic.List(Of EduCATS.Data.Models.StatsStudentModel), System.String)
   nameWithType: AppPages.OpenStudentsListStats(Int32, Int32, List<StatsStudentModel>, String)
   nameWithType.vb: AppPages.OpenStudentsListStats(Int32, Int32, List(Of StatsStudentModel), String)
 - uid: EduCATS.Helpers.Forms.Pages.AppPages.OpenStudentsListStats*
@@ -6673,11 +6673,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Pages.AppPages.OpenTestResults
   nameWithType: AppPages.OpenTestResults
-- uid: EduCATS.Helpers.Forms.Pages.AppPages.pushPage(Page,System.String,System.Boolean)
+- uid: EduCATS.Helpers.Forms.Pages.AppPages.pushPage(Xamarin.Forms.Page,System.String,System.Boolean)
   name: pushPage(Page, String, Boolean)
-  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_pushPage_Page_System_String_System_Boolean_
-  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.pushPage(Page,System.String,System.Boolean)
-  fullName: EduCATS.Helpers.Forms.Pages.AppPages.pushPage(Page, System.String, System.Boolean)
+  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_pushPage_Xamarin_Forms_Page_System_String_System_Boolean_
+  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.pushPage(Xamarin.Forms.Page,System.String,System.Boolean)
+  fullName: EduCATS.Helpers.Forms.Pages.AppPages.pushPage(Xamarin.Forms.Page, System.String, System.Boolean)
   nameWithType: AppPages.pushPage(Page, String, Boolean)
 - uid: EduCATS.Helpers.Forms.Pages.AppPages.pushPage*
   name: pushPage
@@ -6686,11 +6686,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Pages.AppPages.pushPage
   nameWithType: AppPages.pushPage
-- uid: EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage(Page)
+- uid: EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage(Xamarin.Forms.Page)
   name: switchMainPage(Page)
-  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_switchMainPage_Page_
-  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage(Page)
-  fullName: EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage(Page)
+  href: api/EduCATS.Helpers.Forms.Pages.AppPages.html#EduCATS_Helpers_Forms_Pages_AppPages_switchMainPage_Xamarin_Forms_Page_
+  commentId: M:EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage(Xamarin.Forms.Page)
+  fullName: EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage(Xamarin.Forms.Page)
   nameWithType: AppPages.switchMainPage(Page)
 - uid: EduCATS.Helpers.Forms.Pages.AppPages.switchMainPage*
   name: switchMainPage
@@ -6874,13 +6874,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStat
   nameWithType: IPages.OpenParentalStat
-- uid: EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)
+- uid: EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)
   name: OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List<StatsStudentModel>, String)
-  href: api/EduCATS.Helpers.Forms.Pages.IPages.html#EduCATS_Helpers_Forms_Pages_IPages_OpenParentalStudentsListStats_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__System_String_
-  commentId: M:EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)
+  href: api/EduCATS.Helpers.Forms.Pages.IPages.html#EduCATS_Helpers_Forms_Pages_IPages_OpenParentalStudentsListStats_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__System_String_
+  commentId: M:EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)
   name.vb: OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List(Of StatsStudentModel), String)
-  fullName: EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, List<EduCATS.Data.Models.StatsStudentModel>, System.String)
-  fullName.vb: EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, List(Of EduCATS.Data.Models.StatsStudentModel), System.String)
+  fullName: EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, System.Collections.Generic.List<EduCATS.Data.Models.StatsStudentModel>, System.String)
+  fullName.vb: EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStudentsListStats(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, System.Collections.Generic.List(Of EduCATS.Data.Models.StatsStudentModel), System.String)
   nameWithType: IPages.OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List<StatsStudentModel>, String)
   nameWithType.vb: IPages.OpenParentalStudentsListStats(IPlatformServices, Int32, Int32, List(Of StatsStudentModel), String)
 - uid: EduCATS.Helpers.Forms.Pages.IPages.OpenParentalStudentsListStats*
@@ -6994,13 +6994,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Pages.IPages.OpenSettingsTheme
   nameWithType: IPages.OpenSettingsTheme
-- uid: EduCATS.Helpers.Forms.Pages.IPages.OpenStudentsListStats(System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)
+- uid: EduCATS.Helpers.Forms.Pages.IPages.OpenStudentsListStats(System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)
   name: OpenStudentsListStats(Int32, Int32, List<StatsStudentModel>, String)
-  href: api/EduCATS.Helpers.Forms.Pages.IPages.html#EduCATS_Helpers_Forms_Pages_IPages_OpenStudentsListStats_System_Int32_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__System_String_
-  commentId: M:EduCATS.Helpers.Forms.Pages.IPages.OpenStudentsListStats(System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.String)
+  href: api/EduCATS.Helpers.Forms.Pages.IPages.html#EduCATS_Helpers_Forms_Pages_IPages_OpenStudentsListStats_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__System_String_
+  commentId: M:EduCATS.Helpers.Forms.Pages.IPages.OpenStudentsListStats(System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.String)
   name.vb: OpenStudentsListStats(Int32, Int32, List(Of StatsStudentModel), String)
-  fullName: EduCATS.Helpers.Forms.Pages.IPages.OpenStudentsListStats(System.Int32, System.Int32, List<EduCATS.Data.Models.StatsStudentModel>, System.String)
-  fullName.vb: EduCATS.Helpers.Forms.Pages.IPages.OpenStudentsListStats(System.Int32, System.Int32, List(Of EduCATS.Data.Models.StatsStudentModel), System.String)
+  fullName: EduCATS.Helpers.Forms.Pages.IPages.OpenStudentsListStats(System.Int32, System.Int32, System.Collections.Generic.List<EduCATS.Data.Models.StatsStudentModel>, System.String)
+  fullName.vb: EduCATS.Helpers.Forms.Pages.IPages.OpenStudentsListStats(System.Int32, System.Int32, System.Collections.Generic.List(Of EduCATS.Data.Models.StatsStudentModel), System.String)
   nameWithType: IPages.OpenStudentsListStats(Int32, Int32, List<StatsStudentModel>, String)
   nameWithType.vb: IPages.OpenStudentsListStats(Int32, Int32, List(Of StatsStudentModel), String)
 - uid: EduCATS.Helpers.Forms.Pages.IPages.OpenStudentsListStats*
@@ -7739,11 +7739,11 @@ references:
   commentId: T:EduCATS.Helpers.Forms.Styles.AppStyles
   fullName: EduCATS.Helpers.Forms.Styles.AppStyles
   nameWithType: AppStyles
-- uid: EduCATS.Helpers.Forms.Styles.AppStyles.GetButtonStyle(NamedSize,System.Boolean)
+- uid: EduCATS.Helpers.Forms.Styles.AppStyles.GetButtonStyle(Xamarin.Forms.NamedSize,System.Boolean)
   name: GetButtonStyle(NamedSize, Boolean)
-  href: api/EduCATS.Helpers.Forms.Styles.AppStyles.html#EduCATS_Helpers_Forms_Styles_AppStyles_GetButtonStyle_NamedSize_System_Boolean_
-  commentId: M:EduCATS.Helpers.Forms.Styles.AppStyles.GetButtonStyle(NamedSize,System.Boolean)
-  fullName: EduCATS.Helpers.Forms.Styles.AppStyles.GetButtonStyle(NamedSize, System.Boolean)
+  href: api/EduCATS.Helpers.Forms.Styles.AppStyles.html#EduCATS_Helpers_Forms_Styles_AppStyles_GetButtonStyle_Xamarin_Forms_NamedSize_System_Boolean_
+  commentId: M:EduCATS.Helpers.Forms.Styles.AppStyles.GetButtonStyle(Xamarin.Forms.NamedSize,System.Boolean)
+  fullName: EduCATS.Helpers.Forms.Styles.AppStyles.GetButtonStyle(Xamarin.Forms.NamedSize, System.Boolean)
   nameWithType: AppStyles.GetButtonStyle(NamedSize, Boolean)
 - uid: EduCATS.Helpers.Forms.Styles.AppStyles.GetButtonStyle*
   name: GetButtonStyle
@@ -7752,11 +7752,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Styles.AppStyles.GetButtonStyle
   nameWithType: AppStyles.GetButtonStyle
-- uid: EduCATS.Helpers.Forms.Styles.AppStyles.GetEntryStyle(NamedSize,System.Boolean)
+- uid: EduCATS.Helpers.Forms.Styles.AppStyles.GetEntryStyle(Xamarin.Forms.NamedSize,System.Boolean)
   name: GetEntryStyle(NamedSize, Boolean)
-  href: api/EduCATS.Helpers.Forms.Styles.AppStyles.html#EduCATS_Helpers_Forms_Styles_AppStyles_GetEntryStyle_NamedSize_System_Boolean_
-  commentId: M:EduCATS.Helpers.Forms.Styles.AppStyles.GetEntryStyle(NamedSize,System.Boolean)
-  fullName: EduCATS.Helpers.Forms.Styles.AppStyles.GetEntryStyle(NamedSize, System.Boolean)
+  href: api/EduCATS.Helpers.Forms.Styles.AppStyles.html#EduCATS_Helpers_Forms_Styles_AppStyles_GetEntryStyle_Xamarin_Forms_NamedSize_System_Boolean_
+  commentId: M:EduCATS.Helpers.Forms.Styles.AppStyles.GetEntryStyle(Xamarin.Forms.NamedSize,System.Boolean)
+  fullName: EduCATS.Helpers.Forms.Styles.AppStyles.GetEntryStyle(Xamarin.Forms.NamedSize, System.Boolean)
   nameWithType: AppStyles.GetEntryStyle(NamedSize, Boolean)
 - uid: EduCATS.Helpers.Forms.Styles.AppStyles.GetEntryStyle*
   name: GetEntryStyle
@@ -7765,11 +7765,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Styles.AppStyles.GetEntryStyle
   nameWithType: AppStyles.GetEntryStyle
-- uid: EduCATS.Helpers.Forms.Styles.AppStyles.GetLabelStyle(NamedSize,System.Boolean)
+- uid: EduCATS.Helpers.Forms.Styles.AppStyles.GetLabelStyle(Xamarin.Forms.NamedSize,System.Boolean)
   name: GetLabelStyle(NamedSize, Boolean)
-  href: api/EduCATS.Helpers.Forms.Styles.AppStyles.html#EduCATS_Helpers_Forms_Styles_AppStyles_GetLabelStyle_NamedSize_System_Boolean_
-  commentId: M:EduCATS.Helpers.Forms.Styles.AppStyles.GetLabelStyle(NamedSize,System.Boolean)
-  fullName: EduCATS.Helpers.Forms.Styles.AppStyles.GetLabelStyle(NamedSize, System.Boolean)
+  href: api/EduCATS.Helpers.Forms.Styles.AppStyles.html#EduCATS_Helpers_Forms_Styles_AppStyles_GetLabelStyle_Xamarin_Forms_NamedSize_System_Boolean_
+  commentId: M:EduCATS.Helpers.Forms.Styles.AppStyles.GetLabelStyle(Xamarin.Forms.NamedSize,System.Boolean)
+  fullName: EduCATS.Helpers.Forms.Styles.AppStyles.GetLabelStyle(Xamarin.Forms.NamedSize, System.Boolean)
   nameWithType: AppStyles.GetLabelStyle(NamedSize, Boolean)
 - uid: EduCATS.Helpers.Forms.Styles.AppStyles.GetLabelStyle*
   name: GetLabelStyle
@@ -7778,11 +7778,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Forms.Styles.AppStyles.GetLabelStyle
   nameWithType: AppStyles.GetLabelStyle
-- uid: EduCATS.Helpers.Forms.Styles.AppStyles.getSetter(BindableProperty,System.Object)
+- uid: EduCATS.Helpers.Forms.Styles.AppStyles.getSetter(Xamarin.Forms.BindableProperty,System.Object)
   name: getSetter(BindableProperty, Object)
-  href: api/EduCATS.Helpers.Forms.Styles.AppStyles.html#EduCATS_Helpers_Forms_Styles_AppStyles_getSetter_BindableProperty_System_Object_
-  commentId: M:EduCATS.Helpers.Forms.Styles.AppStyles.getSetter(BindableProperty,System.Object)
-  fullName: EduCATS.Helpers.Forms.Styles.AppStyles.getSetter(BindableProperty, System.Object)
+  href: api/EduCATS.Helpers.Forms.Styles.AppStyles.html#EduCATS_Helpers_Forms_Styles_AppStyles_getSetter_Xamarin_Forms_BindableProperty_System_Object_
+  commentId: M:EduCATS.Helpers.Forms.Styles.AppStyles.getSetter(Xamarin.Forms.BindableProperty,System.Object)
+  fullName: EduCATS.Helpers.Forms.Styles.AppStyles.getSetter(Xamarin.Forms.BindableProperty, System.Object)
   nameWithType: AppStyles.getSetter(BindableProperty, Object)
 - uid: EduCATS.Helpers.Forms.Styles.AppStyles.getSetter*
   name: getSetter
@@ -7924,11 +7924,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Logs.AppLogs.Initialize
   nameWithType: AppLogs.Initialize
-- uid: EduCATS.Helpers.Logs.AppLogs.Log(Exception,System.String)
+- uid: EduCATS.Helpers.Logs.AppLogs.Log(System.Exception,System.String)
   name: Log(Exception, String)
-  href: api/EduCATS.Helpers.Logs.AppLogs.html#EduCATS_Helpers_Logs_AppLogs_Log_Exception_System_String_
-  commentId: M:EduCATS.Helpers.Logs.AppLogs.Log(Exception,System.String)
-  fullName: EduCATS.Helpers.Logs.AppLogs.Log(Exception, System.String)
+  href: api/EduCATS.Helpers.Logs.AppLogs.html#EduCATS_Helpers_Logs_AppLogs_Log_System_Exception_System_String_
+  commentId: M:EduCATS.Helpers.Logs.AppLogs.Log(System.Exception,System.String)
+  fullName: EduCATS.Helpers.Logs.AppLogs.Log(System.Exception, System.String)
   nameWithType: AppLogs.Log(Exception, String)
 - uid: EduCATS.Helpers.Logs.AppLogs.Log*
   name: Log
@@ -8413,11 +8413,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Networking.AppServices.AppWebServiceController.Json
   nameWithType: AppWebServiceController.Json
-- uid: EduCATS.Networking.AppServices.AppWebServiceController.SendRequest(HttpMethod,System.String,System.String)
+- uid: EduCATS.Networking.AppServices.AppWebServiceController.SendRequest(System.Net.Http.HttpMethod,System.String,System.String)
   name: SendRequest(HttpMethod, String, String)
-  href: api/EduCATS.Networking.AppServices.AppWebServiceController.html#EduCATS_Networking_AppServices_AppWebServiceController_SendRequest_HttpMethod_System_String_System_String_
-  commentId: M:EduCATS.Networking.AppServices.AppWebServiceController.SendRequest(HttpMethod,System.String,System.String)
-  fullName: EduCATS.Networking.AppServices.AppWebServiceController.SendRequest(HttpMethod, System.String, System.String)
+  href: api/EduCATS.Networking.AppServices.AppWebServiceController.html#EduCATS_Networking_AppServices_AppWebServiceController_SendRequest_System_Net_Http_HttpMethod_System_String_System_String_
+  commentId: M:EduCATS.Networking.AppServices.AppWebServiceController.SendRequest(System.Net.Http.HttpMethod,System.String,System.String)
+  fullName: EduCATS.Networking.AppServices.AppWebServiceController.SendRequest(System.Net.Http.HttpMethod, System.String, System.String)
   nameWithType: AppWebServiceController.SendRequest(HttpMethod, String, String)
 - uid: EduCATS.Networking.AppServices.AppWebServiceController.SendRequest*
   name: SendRequest
@@ -8432,11 +8432,11 @@ references:
   commentId: F:EduCATS.Networking.AppServices.AppWebServiceController.Services
   fullName: EduCATS.Networking.AppServices.AppWebServiceController.Services
   nameWithType: AppWebServiceController.Services
-- uid: EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode(HttpStatusCode)
+- uid: EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode(System.Net.HttpStatusCode)
   name: setStatusCode(HttpStatusCode)
-  href: api/EduCATS.Networking.AppServices.AppWebServiceController.html#EduCATS_Networking_AppServices_AppWebServiceController_setStatusCode_HttpStatusCode_
-  commentId: M:EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode(HttpStatusCode)
-  fullName: EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode(HttpStatusCode)
+  href: api/EduCATS.Networking.AppServices.AppWebServiceController.html#EduCATS_Networking_AppServices_AppWebServiceController_setStatusCode_System_Net_HttpStatusCode_
+  commentId: M:EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode(System.Net.HttpStatusCode)
+  fullName: EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode(System.Net.HttpStatusCode)
   nameWithType: AppWebServiceController.setStatusCode(HttpStatusCode)
 - uid: EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode*
   name: setStatusCode
@@ -10895,11 +10895,11 @@ references:
   commentId: F:EduCATS.Networking.RequestController._timeoutSeconds
   fullName: EduCATS.Networking.RequestController._timeoutSeconds
   nameWithType: RequestController._timeoutSeconds
-- uid: EduCATS.Networking.RequestController.errorResponseMessage(HttpStatusCode)
+- uid: EduCATS.Networking.RequestController.errorResponseMessage(System.Net.HttpStatusCode)
   name: errorResponseMessage(HttpStatusCode)
-  href: api/EduCATS.Networking.RequestController.html#EduCATS_Networking_RequestController_errorResponseMessage_HttpStatusCode_
-  commentId: M:EduCATS.Networking.RequestController.errorResponseMessage(HttpStatusCode)
-  fullName: EduCATS.Networking.RequestController.errorResponseMessage(HttpStatusCode)
+  href: api/EduCATS.Networking.RequestController.html#EduCATS_Networking_RequestController_errorResponseMessage_System_Net_HttpStatusCode_
+  commentId: M:EduCATS.Networking.RequestController.errorResponseMessage(System.Net.HttpStatusCode)
+  fullName: EduCATS.Networking.RequestController.errorResponseMessage(System.Net.HttpStatusCode)
   nameWithType: RequestController.errorResponseMessage(HttpStatusCode)
 - uid: EduCATS.Networking.RequestController.errorResponseMessage*
   name: errorResponseMessage
@@ -10946,11 +10946,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Networking.RequestController.post
   nameWithType: RequestController.post
-- uid: EduCATS.Networking.RequestController.SendRequest(HttpMethod)
+- uid: EduCATS.Networking.RequestController.SendRequest(System.Net.Http.HttpMethod)
   name: SendRequest(HttpMethod)
-  href: api/EduCATS.Networking.RequestController.html#EduCATS_Networking_RequestController_SendRequest_HttpMethod_
-  commentId: M:EduCATS.Networking.RequestController.SendRequest(HttpMethod)
-  fullName: EduCATS.Networking.RequestController.SendRequest(HttpMethod)
+  href: api/EduCATS.Networking.RequestController.html#EduCATS_Networking_RequestController_SendRequest_System_Net_Http_HttpMethod_
+  commentId: M:EduCATS.Networking.RequestController.SendRequest(System.Net.Http.HttpMethod)
+  fullName: EduCATS.Networking.RequestController.SendRequest(System.Net.Http.HttpMethod)
   nameWithType: RequestController.SendRequest(HttpMethod)
 - uid: EduCATS.Networking.RequestController.SendRequest*
   name: SendRequest
@@ -10959,11 +10959,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Networking.RequestController.SendRequest
   nameWithType: RequestController.SendRequest
-- uid: EduCATS.Networking.RequestController.SetPostContent(System.String,Encoding,System.String)
+- uid: EduCATS.Networking.RequestController.SetPostContent(System.String,System.Text.Encoding,System.String)
   name: SetPostContent(String, Encoding, String)
-  href: api/EduCATS.Networking.RequestController.html#EduCATS_Networking_RequestController_SetPostContent_System_String_Encoding_System_String_
-  commentId: M:EduCATS.Networking.RequestController.SetPostContent(System.String,Encoding,System.String)
-  fullName: EduCATS.Networking.RequestController.SetPostContent(System.String, Encoding, System.String)
+  href: api/EduCATS.Networking.RequestController.html#EduCATS_Networking_RequestController_SetPostContent_System_String_System_Text_Encoding_System_String_
+  commentId: M:EduCATS.Networking.RequestController.SetPostContent(System.String,System.Text.Encoding,System.String)
+  fullName: EduCATS.Networking.RequestController.SetPostContent(System.String, System.Text.Encoding, System.String)
   nameWithType: RequestController.SetPostContent(String, Encoding, String)
 - uid: EduCATS.Networking.RequestController.SetPostContent*
   name: SetPostContent
@@ -11227,13 +11227,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.Concepts
   nameWithType: EemcPageViewModel.Concepts
-- uid: EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.getConcept(List{EduCATS.Data.Models.ConceptModel},System.Int32)
+- uid: EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.getConcept(System.Collections.Generic.List{EduCATS.Data.Models.ConceptModel},System.Int32)
   name: getConcept(List<ConceptModel>, Int32)
-  href: api/EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.html#EduCATS_Pages_Eemc_ViewModels_EemcPageViewModel_getConcept_List_EduCATS_Data_Models_ConceptModel__System_Int32_
-  commentId: M:EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.getConcept(List{EduCATS.Data.Models.ConceptModel},System.Int32)
+  href: api/EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.html#EduCATS_Pages_Eemc_ViewModels_EemcPageViewModel_getConcept_System_Collections_Generic_List_EduCATS_Data_Models_ConceptModel__System_Int32_
+  commentId: M:EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.getConcept(System.Collections.Generic.List{EduCATS.Data.Models.ConceptModel},System.Int32)
   name.vb: getConcept(List(Of ConceptModel), Int32)
-  fullName: EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.getConcept(List<EduCATS.Data.Models.ConceptModel>, System.Int32)
-  fullName.vb: EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.getConcept(List(Of EduCATS.Data.Models.ConceptModel), System.Int32)
+  fullName: EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.getConcept(System.Collections.Generic.List<EduCATS.Data.Models.ConceptModel>, System.Int32)
+  fullName.vb: EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.getConcept(System.Collections.Generic.List(Of EduCATS.Data.Models.ConceptModel), System.Int32)
   nameWithType: EemcPageViewModel.getConcept(List<ConceptModel>, Int32)
   nameWithType.vb: EemcPageViewModel.getConcept(List(Of ConceptModel), Int32)
 - uid: EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.getConcept*
@@ -11841,11 +11841,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.completeDownload
   nameWithType: FilesPageViewModel.completeDownload
-- uid: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadCompleted(System.Object,AsyncCompletedEventArgs)
+- uid: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadCompleted(System.Object,System.ComponentModel.AsyncCompletedEventArgs)
   name: downloadCompleted(Object, AsyncCompletedEventArgs)
-  href: api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html#EduCATS_Pages_Files_ViewModels_FilesPageViewModel_downloadCompleted_System_Object_AsyncCompletedEventArgs_
-  commentId: M:EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadCompleted(System.Object,AsyncCompletedEventArgs)
-  fullName: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadCompleted(System.Object, AsyncCompletedEventArgs)
+  href: api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html#EduCATS_Pages_Files_ViewModels_FilesPageViewModel_downloadCompleted_System_Object_System_ComponentModel_AsyncCompletedEventArgs_
+  commentId: M:EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadCompleted(System.Object,System.ComponentModel.AsyncCompletedEventArgs)
+  fullName: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadCompleted(System.Object, System.ComponentModel.AsyncCompletedEventArgs)
   nameWithType: FilesPageViewModel.downloadCompleted(Object, AsyncCompletedEventArgs)
 - uid: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadCompleted*
   name: downloadCompleted
@@ -11854,11 +11854,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadCompleted
   nameWithType: FilesPageViewModel.downloadCompleted
-- uid: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadProgressChanged(System.Object,DownloadProgressChangedEventArgs)
+- uid: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadProgressChanged(System.Object,System.Net.DownloadProgressChangedEventArgs)
   name: downloadProgressChanged(Object, DownloadProgressChangedEventArgs)
-  href: api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html#EduCATS_Pages_Files_ViewModels_FilesPageViewModel_downloadProgressChanged_System_Object_DownloadProgressChangedEventArgs_
-  commentId: M:EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadProgressChanged(System.Object,DownloadProgressChangedEventArgs)
-  fullName: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadProgressChanged(System.Object, DownloadProgressChangedEventArgs)
+  href: api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html#EduCATS_Pages_Files_ViewModels_FilesPageViewModel_downloadProgressChanged_System_Object_System_Net_DownloadProgressChangedEventArgs_
+  commentId: M:EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadProgressChanged(System.Object,System.Net.DownloadProgressChangedEventArgs)
+  fullName: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadProgressChanged(System.Object, System.Net.DownloadProgressChangedEventArgs)
   nameWithType: FilesPageViewModel.downloadProgressChanged(Object, DownloadProgressChangedEventArgs)
 - uid: EduCATS.Pages.Files.ViewModels.FilesPageViewModel.downloadProgressChanged*
   name: downloadProgressChanged
@@ -12097,11 +12097,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Files.Views.FilesPageView.createHeaderLabel
   nameWithType: FilesPageView.createHeaderLabel
-- uid: EduCATS.Pages.Files.Views.FilesPageView.createList(View)
+- uid: EduCATS.Pages.Files.Views.FilesPageView.createList(Xamarin.Forms.View)
   name: createList(View)
-  href: api/EduCATS.Pages.Files.Views.FilesPageView.html#EduCATS_Pages_Files_Views_FilesPageView_createList_View_
-  commentId: M:EduCATS.Pages.Files.Views.FilesPageView.createList(View)
-  fullName: EduCATS.Pages.Files.Views.FilesPageView.createList(View)
+  href: api/EduCATS.Pages.Files.Views.FilesPageView.html#EduCATS_Pages_Files_Views_FilesPageView_createList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Files.Views.FilesPageView.createList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Files.Views.FilesPageView.createList(Xamarin.Forms.View)
   nameWithType: FilesPageView.createList(View)
 - uid: EduCATS.Pages.Files.Views.FilesPageView.createList*
   name: createList
@@ -12502,11 +12502,11 @@ references:
   commentId: F:EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView._loginFormSpacing
   fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView._loginFormSpacing
   nameWithType: ForgotPasswordPageView._loginFormSpacing
-- uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createAnswerEntry(Style)
+- uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createAnswerEntry(Xamarin.Forms.Style)
   name: createAnswerEntry(Style)
-  href: api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html#EduCATS_Pages_ForgotPassword_Views_ForgotPasswordPageView_createAnswerEntry_Style_
-  commentId: M:EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createAnswerEntry(Style)
-  fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createAnswerEntry(Style)
+  href: api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html#EduCATS_Pages_ForgotPassword_Views_ForgotPasswordPageView_createAnswerEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createAnswerEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createAnswerEntry(Xamarin.Forms.Style)
   nameWithType: ForgotPasswordPageView.createAnswerEntry(Style)
 - uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createAnswerEntry*
   name: createAnswerEntry
@@ -12528,11 +12528,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createBackgroundImage
   nameWithType: ForgotPasswordPageView.createBackgroundImage
-- uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createConfirmPasswordEntry(Style)
+- uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createConfirmPasswordEntry(Xamarin.Forms.Style)
   name: createConfirmPasswordEntry(Style)
-  href: api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html#EduCATS_Pages_ForgotPassword_Views_ForgotPasswordPageView_createConfirmPasswordEntry_Style_
-  commentId: M:EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createConfirmPasswordEntry(Style)
-  fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createConfirmPasswordEntry(Style)
+  href: api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html#EduCATS_Pages_ForgotPassword_Views_ForgotPasswordPageView_createConfirmPasswordEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createConfirmPasswordEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createConfirmPasswordEntry(Xamarin.Forms.Style)
   nameWithType: ForgotPasswordPageView.createConfirmPasswordEntry(Style)
 - uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createConfirmPasswordEntry*
   name: createConfirmPasswordEntry
@@ -12554,11 +12554,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createForgotPasswordForm
   nameWithType: ForgotPasswordPageView.createForgotPasswordForm
-- uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createNewPasswordEntry(Style)
+- uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createNewPasswordEntry(Xamarin.Forms.Style)
   name: createNewPasswordEntry(Style)
-  href: api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html#EduCATS_Pages_ForgotPassword_Views_ForgotPasswordPageView_createNewPasswordEntry_Style_
-  commentId: M:EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createNewPasswordEntry(Style)
-  fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createNewPasswordEntry(Style)
+  href: api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html#EduCATS_Pages_ForgotPassword_Views_ForgotPasswordPageView_createNewPasswordEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createNewPasswordEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createNewPasswordEntry(Xamarin.Forms.Style)
   nameWithType: ForgotPasswordPageView.createNewPasswordEntry(Style)
 - uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createNewPasswordEntry*
   name: createNewPasswordEntry
@@ -12593,11 +12593,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createSecretQuestionPicker
   nameWithType: ForgotPasswordPageView.createSecretQuestionPicker
-- uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createUsernameEntry(Style)
+- uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createUsernameEntry(Xamarin.Forms.Style)
   name: createUsernameEntry(Style)
-  href: api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html#EduCATS_Pages_ForgotPassword_Views_ForgotPasswordPageView_createUsernameEntry_Style_
-  commentId: M:EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createUsernameEntry(Style)
-  fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createUsernameEntry(Style)
+  href: api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html#EduCATS_Pages_ForgotPassword_Views_ForgotPasswordPageView_createUsernameEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createUsernameEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createUsernameEntry(Xamarin.Forms.Style)
   nameWithType: ForgotPasswordPageView.createUsernameEntry(Style)
 - uid: EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.createUsernameEntry*
   name: createUsernameEntry
@@ -13582,11 +13582,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Login.Views.LoginPageView.createParentalButton
   nameWithType: LoginPageView.createParentalButton
-- uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry(Style)
+- uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry(Xamarin.Forms.Style)
   name: createPasswordEntry(Style)
-  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordEntry_Style_
-  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry(Style)
-  fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry(Style)
+  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry(Xamarin.Forms.Style)
   nameWithType: LoginPageView.createPasswordEntry(Style)
 - uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry*
   name: createPasswordEntry
@@ -13595,11 +13595,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordEntry
   nameWithType: LoginPageView.createPasswordEntry
-- uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid(Style)
+- uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid(Xamarin.Forms.Style)
   name: createPasswordGrid(Style)
-  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordGrid_Style_
-  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid(Style)
-  fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid(Style)
+  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createPasswordGrid_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid(Xamarin.Forms.Style)
   nameWithType: LoginPageView.createPasswordGrid(Style)
 - uid: EduCATS.Pages.Login.Views.LoginPageView.createPasswordGrid*
   name: createPasswordGrid
@@ -13634,11 +13634,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Login.Views.LoginPageView.createShowPasswordImage
   nameWithType: LoginPageView.createShowPasswordImage
-- uid: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry(Style)
+- uid: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry(Xamarin.Forms.Style)
   name: createUsernameEntry(Style)
-  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createUsernameEntry_Style_
-  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry(Style)
-  fullName: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry(Style)
+  href: api/EduCATS.Pages.Login.Views.LoginPageView.html#EduCATS_Pages_Login_Views_LoginPageView_createUsernameEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry(Xamarin.Forms.Style)
   nameWithType: LoginPageView.createUsernameEntry(Style)
 - uid: EduCATS.Pages.Login.Views.LoginPageView.createUsernameEntry*
   name: createUsernameEntry
@@ -13730,11 +13730,11 @@ references:
   commentId: F:EduCATS.Pages.Main.MainPageView._tabHeight
   fullName: EduCATS.Pages.Main.MainPageView._tabHeight
   nameWithType: MainPageView._tabHeight
-- uid: EduCATS.Pages.Main.MainPageView.createPage(Page,System.String,System.String)
+- uid: EduCATS.Pages.Main.MainPageView.createPage(Xamarin.Forms.Page,System.String,System.String)
   name: createPage(Page, String, String)
-  href: api/EduCATS.Pages.Main.MainPageView.html#EduCATS_Pages_Main_MainPageView_createPage_Page_System_String_System_String_
-  commentId: M:EduCATS.Pages.Main.MainPageView.createPage(Page,System.String,System.String)
-  fullName: EduCATS.Pages.Main.MainPageView.createPage(Page, System.String, System.String)
+  href: api/EduCATS.Pages.Main.MainPageView.html#EduCATS_Pages_Main_MainPageView_createPage_Xamarin_Forms_Page_System_String_System_String_
+  commentId: M:EduCATS.Pages.Main.MainPageView.createPage(Xamarin.Forms.Page,System.String,System.String)
+  fullName: EduCATS.Pages.Main.MainPageView.createPage(Xamarin.Forms.Page, System.String, System.String)
   nameWithType: MainPageView.createPage(Page, String, String)
 - uid: EduCATS.Pages.Main.MainPageView.createPage*
   name: createPage
@@ -13743,11 +13743,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Main.MainPageView.createPage
   nameWithType: MainPageView.createPage
-- uid: EduCATS.Pages.Main.MainPageView.pageChanged(System.Object,EventArgs)
+- uid: EduCATS.Pages.Main.MainPageView.pageChanged(System.Object,System.EventArgs)
   name: pageChanged(Object, EventArgs)
-  href: api/EduCATS.Pages.Main.MainPageView.html#EduCATS_Pages_Main_MainPageView_pageChanged_System_Object_EventArgs_
-  commentId: M:EduCATS.Pages.Main.MainPageView.pageChanged(System.Object,EventArgs)
-  fullName: EduCATS.Pages.Main.MainPageView.pageChanged(System.Object, EventArgs)
+  href: api/EduCATS.Pages.Main.MainPageView.html#EduCATS_Pages_Main_MainPageView_pageChanged_System_Object_System_EventArgs_
+  commentId: M:EduCATS.Pages.Main.MainPageView.pageChanged(System.Object,System.EventArgs)
+  fullName: EduCATS.Pages.Main.MainPageView.pageChanged(System.Object, System.EventArgs)
   nameWithType: MainPageView.pageChanged(Object, EventArgs)
 - uid: EduCATS.Pages.Main.MainPageView.pageChanged*
   name: pageChanged
@@ -14265,11 +14265,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createFindButton
   nameWithType: FindGroupPageView.createFindButton
-- uid: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createFIOEntry(Style)
+- uid: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createFIOEntry(Xamarin.Forms.Style)
   name: createFIOEntry(Style)
-  href: api/EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.html#EduCATS_Pages_Parental_FindGroup_Views_FindGroupPageView_createFIOEntry_Style_
-  commentId: M:EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createFIOEntry(Style)
-  fullName: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createFIOEntry(Style)
+  href: api/EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.html#EduCATS_Pages_Parental_FindGroup_Views_FindGroupPageView_createFIOEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createFIOEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createFIOEntry(Xamarin.Forms.Style)
   nameWithType: FindGroupPageView.createFIOEntry(Style)
 - uid: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createFIOEntry*
   name: createFIOEntry
@@ -14278,11 +14278,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createFIOEntry
   nameWithType: FindGroupPageView.createFIOEntry
-- uid: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createGroupNumberEntry(Style)
+- uid: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createGroupNumberEntry(Xamarin.Forms.Style)
   name: createGroupNumberEntry(Style)
-  href: api/EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.html#EduCATS_Pages_Parental_FindGroup_Views_FindGroupPageView_createGroupNumberEntry_Style_
-  commentId: M:EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createGroupNumberEntry(Style)
-  fullName: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createGroupNumberEntry(Style)
+  href: api/EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.html#EduCATS_Pages_Parental_FindGroup_Views_FindGroupPageView_createGroupNumberEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createGroupNumberEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createGroupNumberEntry(Xamarin.Forms.Style)
   nameWithType: FindGroupPageView.createGroupNumberEntry(Style)
 - uid: EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.createGroupNumberEntry*
   name: createGroupNumberEntry
@@ -14393,11 +14393,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.createHeaderView
   nameWithType: ParentalsStatsPageView.createHeaderView
-- uid: EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.createRoundedList(View)
+- uid: EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.createRoundedList(Xamarin.Forms.View)
   name: createRoundedList(View)
-  href: api/EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.html#EduCATS_Pages_Parental_Statistics_ParentalsStatsPageView_createRoundedList_View_
-  commentId: M:EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.createRoundedList(View)
-  fullName: EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.createRoundedList(View)
+  href: api/EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.html#EduCATS_Pages_Parental_Statistics_ParentalsStatsPageView_createRoundedList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.createRoundedList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.createRoundedList(Xamarin.Forms.View)
   nameWithType: ParentalsStatsPageView.createRoundedList(View)
 - uid: EduCATS.Pages.Parental.Statistics.ParentalsStatsPageView.createRoundedList*
   name: createRoundedList
@@ -14585,13 +14585,13 @@ references:
   commentId: T:EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView
   fullName: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView
   nameWithType: ParentalStudentPageView
-- uid: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel})
+- uid: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel})
   name: ParentalStudentPageView(IPlatformServices, Int32, Int32, List<StatsStudentModel>)
-  href: api/EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.html#EduCATS_Pages_Parental_Statistics_Views_ParentalStudentPageView__ctor_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__
-  commentId: M:EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel})
+  href: api/EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.html#EduCATS_Pages_Parental_Statistics_Views_ParentalStudentPageView__ctor_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__
+  commentId: M:EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel})
   name.vb: ParentalStudentPageView(IPlatformServices, Int32, Int32, List(Of StatsStudentModel))
-  fullName: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.ParentalStudentPageView(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, List<EduCATS.Data.Models.StatsStudentModel>)
-  fullName.vb: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.ParentalStudentPageView(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, List(Of EduCATS.Data.Models.StatsStudentModel))
+  fullName: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.ParentalStudentPageView(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, System.Collections.Generic.List<EduCATS.Data.Models.StatsStudentModel>)
+  fullName.vb: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.ParentalStudentPageView(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Int32, System.Collections.Generic.List(Of EduCATS.Data.Models.StatsStudentModel))
   nameWithType: ParentalStudentPageView.ParentalStudentPageView(IPlatformServices, Int32, Int32, List<StatsStudentModel>)
   nameWithType.vb: ParentalStudentPageView.ParentalStudentPageView(IPlatformServices, Int32, Int32, List(Of StatsStudentModel))
 - uid: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.#ctor*
@@ -14632,11 +14632,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.createHeaderView
   nameWithType: ParentalStudentPageView.createHeaderView
-- uid: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.createRoundedListView(View)
+- uid: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.createRoundedListView(Xamarin.Forms.View)
   name: createRoundedListView(View)
-  href: api/EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.html#EduCATS_Pages_Parental_Statistics_Views_ParentalStudentPageView_createRoundedListView_View_
-  commentId: M:EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.createRoundedListView(View)
-  fullName: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.createRoundedListView(View)
+  href: api/EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.html#EduCATS_Pages_Parental_Statistics_Views_ParentalStudentPageView_createRoundedListView_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.createRoundedListView(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.createRoundedListView(Xamarin.Forms.View)
   nameWithType: ParentalStudentPageView.createRoundedListView(View)
 - uid: EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.createRoundedListView*
   name: createRoundedListView
@@ -14689,13 +14689,13 @@ references:
   commentId: T:EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel
   fullName: EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel
   nameWithType: ParentalStudentsPageViewModel
-- uid: EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.Int32)
+- uid: EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.Int32)
   name: ParentalStudentsPageViewModel(IPlatformServices, Int32, List<StatsStudentModel>, Int32)
-  href: api/EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.html#EduCATS_Pages_Parental_Statistics_ViewsModels_ParentalStudentsPageViewModel__ctor_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__System_Int32_
-  commentId: M:EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.Int32)
+  href: api/EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.html#EduCATS_Pages_Parental_Statistics_ViewsModels_ParentalStudentsPageViewModel__ctor_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__System_Int32_
+  commentId: M:EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.Int32)
   name.vb: ParentalStudentsPageViewModel(IPlatformServices, Int32, List(Of StatsStudentModel), Int32)
-  fullName: EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.ParentalStudentsPageViewModel(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, List<EduCATS.Data.Models.StatsStudentModel>, System.Int32)
-  fullName.vb: EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.ParentalStudentsPageViewModel(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, List(Of EduCATS.Data.Models.StatsStudentModel), System.Int32)
+  fullName: EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.ParentalStudentsPageViewModel(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Collections.Generic.List<EduCATS.Data.Models.StatsStudentModel>, System.Int32)
+  fullName.vb: EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.ParentalStudentsPageViewModel(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Collections.Generic.List(Of EduCATS.Data.Models.StatsStudentModel), System.Int32)
   nameWithType: ParentalStudentsPageViewModel.ParentalStudentsPageViewModel(IPlatformServices, Int32, List<StatsStudentModel>, Int32)
   nameWithType.vb: ParentalStudentsPageViewModel.ParentalStudentsPageViewModel(IPlatformServices, Int32, List(Of StatsStudentModel), Int32)
 - uid: EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.#ctor*
@@ -14941,13 +14941,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Pickers.GroupsViewModel.setChosenGroup
   nameWithType: GroupsViewModel.setChosenGroup
-- uid: EduCATS.Pages.Pickers.GroupsViewModel.setCurrentGroupsList(List{EduCATS.Data.Models.GroupItemModel})
+- uid: EduCATS.Pages.Pickers.GroupsViewModel.setCurrentGroupsList(System.Collections.Generic.List{EduCATS.Data.Models.GroupItemModel})
   name: setCurrentGroupsList(List<GroupItemModel>)
-  href: api/EduCATS.Pages.Pickers.GroupsViewModel.html#EduCATS_Pages_Pickers_GroupsViewModel_setCurrentGroupsList_List_EduCATS_Data_Models_GroupItemModel__
-  commentId: M:EduCATS.Pages.Pickers.GroupsViewModel.setCurrentGroupsList(List{EduCATS.Data.Models.GroupItemModel})
+  href: api/EduCATS.Pages.Pickers.GroupsViewModel.html#EduCATS_Pages_Pickers_GroupsViewModel_setCurrentGroupsList_System_Collections_Generic_List_EduCATS_Data_Models_GroupItemModel__
+  commentId: M:EduCATS.Pages.Pickers.GroupsViewModel.setCurrentGroupsList(System.Collections.Generic.List{EduCATS.Data.Models.GroupItemModel})
   name.vb: setCurrentGroupsList(List(Of GroupItemModel))
-  fullName: EduCATS.Pages.Pickers.GroupsViewModel.setCurrentGroupsList(List<EduCATS.Data.Models.GroupItemModel>)
-  fullName.vb: EduCATS.Pages.Pickers.GroupsViewModel.setCurrentGroupsList(List(Of EduCATS.Data.Models.GroupItemModel))
+  fullName: EduCATS.Pages.Pickers.GroupsViewModel.setCurrentGroupsList(System.Collections.Generic.List<EduCATS.Data.Models.GroupItemModel>)
+  fullName.vb: EduCATS.Pages.Pickers.GroupsViewModel.setCurrentGroupsList(System.Collections.Generic.List(Of EduCATS.Data.Models.GroupItemModel))
   nameWithType: GroupsViewModel.setCurrentGroupsList(List<GroupItemModel>)
   nameWithType.vb: GroupsViewModel.setCurrentGroupsList(List(Of GroupItemModel))
 - uid: EduCATS.Pages.Pickers.GroupsViewModel.setCurrentGroupsList*
@@ -15174,13 +15174,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Pickers.SubjectsViewModel.setChosenSubject
   nameWithType: SubjectsViewModel.setChosenSubject
-- uid: EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(List{EduCATS.Data.Models.SubjectModel})
+- uid: EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(System.Collections.Generic.List{EduCATS.Data.Models.SubjectModel})
   name: SetCurrentSubjectsList(List<SubjectModel>)
-  href: api/EduCATS.Pages.Pickers.SubjectsViewModel.html#EduCATS_Pages_Pickers_SubjectsViewModel_SetCurrentSubjectsList_List_EduCATS_Data_Models_SubjectModel__
-  commentId: M:EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(List{EduCATS.Data.Models.SubjectModel})
+  href: api/EduCATS.Pages.Pickers.SubjectsViewModel.html#EduCATS_Pages_Pickers_SubjectsViewModel_SetCurrentSubjectsList_System_Collections_Generic_List_EduCATS_Data_Models_SubjectModel__
+  commentId: M:EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(System.Collections.Generic.List{EduCATS.Data.Models.SubjectModel})
   name.vb: SetCurrentSubjectsList(List(Of SubjectModel))
-  fullName: EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(List<EduCATS.Data.Models.SubjectModel>)
-  fullName.vb: EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(List(Of EduCATS.Data.Models.SubjectModel))
+  fullName: EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(System.Collections.Generic.List<EduCATS.Data.Models.SubjectModel>)
+  fullName.vb: EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(System.Collections.Generic.List(Of EduCATS.Data.Models.SubjectModel))
   nameWithType: SubjectsViewModel.SetCurrentSubjectsList(List<SubjectModel>)
   nameWithType.vb: SubjectsViewModel.SetCurrentSubjectsList(List(Of SubjectModel))
 - uid: EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList*
@@ -15540,11 +15540,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Recommendations.Views.RecommendationsPageView.createHeaderImage
   nameWithType: RecommendationsPageView.createHeaderImage
-- uid: EduCATS.Pages.Recommendations.Views.RecommendationsPageView.createList(View)
+- uid: EduCATS.Pages.Recommendations.Views.RecommendationsPageView.createList(Xamarin.Forms.View)
   name: createList(View)
-  href: api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.html#EduCATS_Pages_Recommendations_Views_RecommendationsPageView_createList_View_
-  commentId: M:EduCATS.Pages.Recommendations.Views.RecommendationsPageView.createList(View)
-  fullName: EduCATS.Pages.Recommendations.Views.RecommendationsPageView.createList(View)
+  href: api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.html#EduCATS_Pages_Recommendations_Views_RecommendationsPageView_createList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Recommendations.Views.RecommendationsPageView.createList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Recommendations.Views.RecommendationsPageView.createList(Xamarin.Forms.View)
   nameWithType: RecommendationsPageView.createList(View)
 - uid: EduCATS.Pages.Recommendations.Views.RecommendationsPageView.createList*
   name: createList
@@ -16060,11 +16060,11 @@ references:
   commentId: F:EduCATS.Pages.Registration.Views.RegistrationPageView._loginFormSpacing
   fullName: EduCATS.Pages.Registration.Views.RegistrationPageView._loginFormSpacing
   nameWithType: RegistrationPageView._loginFormSpacing
-- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createAnswerEntry(Style)
+- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createAnswerEntry(Xamarin.Forms.Style)
   name: createAnswerEntry(Style)
-  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createAnswerEntry_Style_
-  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createAnswerEntry(Style)
-  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createAnswerEntry(Style)
+  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createAnswerEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createAnswerEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createAnswerEntry(Xamarin.Forms.Style)
   nameWithType: RegistrationPageView.createAnswerEntry(Style)
 - uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createAnswerEntry*
   name: createAnswerEntry
@@ -16112,11 +16112,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createChekInForm
   nameWithType: RegistrationPageView.createChekInForm
-- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createConfirmPasswordEntry(Style)
+- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createConfirmPasswordEntry(Xamarin.Forms.Style)
   name: createConfirmPasswordEntry(Style)
-  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createConfirmPasswordEntry_Style_
-  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createConfirmPasswordEntry(Style)
-  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createConfirmPasswordEntry(Style)
+  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createConfirmPasswordEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createConfirmPasswordEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createConfirmPasswordEntry(Xamarin.Forms.Style)
   nameWithType: RegistrationPageView.createConfirmPasswordEntry(Style)
 - uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createConfirmPasswordEntry*
   name: createConfirmPasswordEntry
@@ -16125,11 +16125,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createConfirmPasswordEntry
   nameWithType: RegistrationPageView.createConfirmPasswordEntry
-- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createFnameEntry(Style)
+- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createFnameEntry(Xamarin.Forms.Style)
   name: createFnameEntry(Style)
-  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createFnameEntry_Style_
-  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createFnameEntry(Style)
-  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createFnameEntry(Style)
+  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createFnameEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createFnameEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createFnameEntry(Xamarin.Forms.Style)
   nameWithType: RegistrationPageView.createFnameEntry(Style)
 - uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createFnameEntry*
   name: createFnameEntry
@@ -16151,11 +16151,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createGroupNumberPicker
   nameWithType: RegistrationPageView.createGroupNumberPicker
-- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createPasswordEntry(Style)
+- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createPasswordEntry(Xamarin.Forms.Style)
   name: createPasswordEntry(Style)
-  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createPasswordEntry_Style_
-  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createPasswordEntry(Style)
-  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createPasswordEntry(Style)
+  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createPasswordEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createPasswordEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createPasswordEntry(Xamarin.Forms.Style)
   nameWithType: RegistrationPageView.createPasswordEntry(Style)
 - uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createPasswordEntry*
   name: createPasswordEntry
@@ -16164,11 +16164,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createPasswordEntry
   nameWithType: RegistrationPageView.createPasswordEntry
-- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createPatronymicnameEntry(Style)
+- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createPatronymicnameEntry(Xamarin.Forms.Style)
   name: createPatronymicnameEntry(Style)
-  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createPatronymicnameEntry_Style_
-  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createPatronymicnameEntry(Style)
-  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createPatronymicnameEntry(Style)
+  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createPatronymicnameEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createPatronymicnameEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createPatronymicnameEntry(Xamarin.Forms.Style)
   nameWithType: RegistrationPageView.createPatronymicnameEntry(Style)
 - uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createPatronymicnameEntry*
   name: createPatronymicnameEntry
@@ -16190,11 +16190,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createSecretQuestionPicker
   nameWithType: RegistrationPageView.createSecretQuestionPicker
-- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createSnameEntry(Style)
+- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createSnameEntry(Xamarin.Forms.Style)
   name: createSnameEntry(Style)
-  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createSnameEntry_Style_
-  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createSnameEntry(Style)
-  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createSnameEntry(Style)
+  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createSnameEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createSnameEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createSnameEntry(Xamarin.Forms.Style)
   nameWithType: RegistrationPageView.createSnameEntry(Style)
 - uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createSnameEntry*
   name: createSnameEntry
@@ -16203,11 +16203,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createSnameEntry
   nameWithType: RegistrationPageView.createSnameEntry
-- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createUsernameEntry(Style)
+- uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createUsernameEntry(Xamarin.Forms.Style)
   name: createUsernameEntry(Style)
-  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createUsernameEntry_Style_
-  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createUsernameEntry(Style)
-  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createUsernameEntry(Style)
+  href: api/EduCATS.Pages.Registration.Views.RegistrationPageView.html#EduCATS_Pages_Registration_Views_RegistrationPageView_createUsernameEntry_Xamarin_Forms_Style_
+  commentId: M:EduCATS.Pages.Registration.Views.RegistrationPageView.createUsernameEntry(Xamarin.Forms.Style)
+  fullName: EduCATS.Pages.Registration.Views.RegistrationPageView.createUsernameEntry(Xamarin.Forms.Style)
   nameWithType: RegistrationPageView.createUsernameEntry(Style)
 - uid: EduCATS.Pages.Registration.Views.RegistrationPageView.createUsernameEntry*
   name: createUsernameEntry
@@ -16368,11 +16368,11 @@ references:
   commentId: F:EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.practicMarksList
   fullName: EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.practicMarksList
   nameWithType: SavePracticeAndLabsPageView.practicMarksList
-- uid: EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.requestDataAsync(System.String,HttpContent)
+- uid: EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.requestDataAsync(System.String,System.Net.Http.HttpContent)
   name: requestDataAsync(String, HttpContent)
-  href: api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.html#EduCATS_Pages_SaveLabsAndPracticeMarks_ViewModels_SavePracticeAndLabsPageView_requestDataAsync_System_String_HttpContent_
-  commentId: M:EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.requestDataAsync(System.String,HttpContent)
-  fullName: EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.requestDataAsync(System.String, HttpContent)
+  href: api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.html#EduCATS_Pages_SaveLabsAndPracticeMarks_ViewModels_SavePracticeAndLabsPageView_requestDataAsync_System_String_System_Net_Http_HttpContent_
+  commentId: M:EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.requestDataAsync(System.String,System.Net.Http.HttpContent)
+  fullName: EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.requestDataAsync(System.String, System.Net.Http.HttpContent)
   nameWithType: SavePracticeAndLabsPageView.requestDataAsync(String, HttpContent)
 - uid: EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.requestDataAsync*
   name: requestDataAsync
@@ -18117,11 +18117,11 @@ references:
   commentId: F:EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.particialVisitingList
   fullName: EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.particialVisitingList
   nameWithType: SaveMarksPageView.particialVisitingList
-- uid: EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.requestDataAsync(System.String,HttpContent)
+- uid: EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.requestDataAsync(System.String,System.Net.Http.HttpContent)
   name: requestDataAsync(String, HttpContent)
-  href: api/EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.html#EduCATS_Pages_SaveMarks_Views_SaveMarksPageView_requestDataAsync_System_String_HttpContent_
-  commentId: M:EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.requestDataAsync(System.String,HttpContent)
-  fullName: EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.requestDataAsync(System.String, HttpContent)
+  href: api/EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.html#EduCATS_Pages_SaveMarks_Views_SaveMarksPageView_requestDataAsync_System_String_System_Net_Http_HttpContent_
+  commentId: M:EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.requestDataAsync(System.String,System.Net.Http.HttpContent)
+  fullName: EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.requestDataAsync(System.String, System.Net.Http.HttpContent)
   nameWithType: SaveMarksPageView.requestDataAsync(String, HttpContent)
 - uid: EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.requestDataAsync*
   name: requestDataAsync
@@ -18499,11 +18499,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createLogo
   nameWithType: AboutPageView.createLogo
-- uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createRightLabelLayout(System.String,System.String,NamedSize)
+- uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createRightLabelLayout(System.String,System.String,Xamarin.Forms.NamedSize)
   name: createRightLabelLayout(String, String, NamedSize)
-  href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createRightLabelLayout_System_String_System_String_NamedSize_
-  commentId: M:EduCATS.Pages.Settings.About.Views.AboutPageView.createRightLabelLayout(System.String,System.String,NamedSize)
-  fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createRightLabelLayout(System.String, System.String, NamedSize)
+  href: api/EduCATS.Pages.Settings.About.Views.AboutPageView.html#EduCATS_Pages_Settings_About_Views_AboutPageView_createRightLabelLayout_System_String_System_String_Xamarin_Forms_NamedSize_
+  commentId: M:EduCATS.Pages.Settings.About.Views.AboutPageView.createRightLabelLayout(System.String,System.String,Xamarin.Forms.NamedSize)
+  fullName: EduCATS.Pages.Settings.About.Views.AboutPageView.createRightLabelLayout(System.String, System.String, Xamarin.Forms.NamedSize)
   nameWithType: AboutPageView.createRightLabelLayout(String, String, NamedSize)
 - uid: EduCATS.Pages.Settings.About.Views.AboutPageView.createRightLabelLayout*
   name: createRightLabelLayout
@@ -18944,11 +18944,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Base.Views.SettingsPageView.createAvatar
   nameWithType: SettingsPageView.createAvatar
-- uid: EduCATS.Pages.Settings.Base.Views.SettingsPageView.createList(View)
+- uid: EduCATS.Pages.Settings.Base.Views.SettingsPageView.createList(Xamarin.Forms.View)
   name: createList(View)
-  href: api/EduCATS.Pages.Settings.Base.Views.SettingsPageView.html#EduCATS_Pages_Settings_Base_Views_SettingsPageView_createList_View_
-  commentId: M:EduCATS.Pages.Settings.Base.Views.SettingsPageView.createList(View)
-  fullName: EduCATS.Pages.Settings.Base.Views.SettingsPageView.createList(View)
+  href: api/EduCATS.Pages.Settings.Base.Views.SettingsPageView.html#EduCATS_Pages_Settings_Base_Views_SettingsPageView_createList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Settings.Base.Views.SettingsPageView.createList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Settings.Base.Views.SettingsPageView.createList(Xamarin.Forms.View)
   nameWithType: SettingsPageView.createList(View)
 - uid: EduCATS.Pages.Settings.Base.Views.SettingsPageView.createList*
   name: createList
@@ -19320,11 +19320,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createHeader
   nameWithType: FontsPageView.createHeader
-- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList(View)
+- uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList(Xamarin.Forms.View)
   name: createList(View)
-  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createList_View_
-  commentId: M:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList(View)
-  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList(View)
+  href: api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html#EduCATS_Pages_Settings_Fonts_Views_FontsPageView_createList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList(Xamarin.Forms.View)
   nameWithType: FontsPageView.createList(View)
 - uid: EduCATS.Pages.Settings.Fonts.Views.FontsPageView.createList*
   name: createList
@@ -19759,11 +19759,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Language.Views.LanguagePageView.createHeader
   nameWithType: LanguagePageView.createHeader
-- uid: EduCATS.Pages.Settings.Language.Views.LanguagePageView.createList(View)
+- uid: EduCATS.Pages.Settings.Language.Views.LanguagePageView.createList(Xamarin.Forms.View)
   name: createList(View)
-  href: api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.html#EduCATS_Pages_Settings_Language_Views_LanguagePageView_createList_View_
-  commentId: M:EduCATS.Pages.Settings.Language.Views.LanguagePageView.createList(View)
-  fullName: EduCATS.Pages.Settings.Language.Views.LanguagePageView.createList(View)
+  href: api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.html#EduCATS_Pages_Settings_Language_Views_LanguagePageView_createList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Settings.Language.Views.LanguagePageView.createList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Settings.Language.Views.LanguagePageView.createList(Xamarin.Forms.View)
   nameWithType: LanguagePageView.createList(View)
 - uid: EduCATS.Pages.Settings.Language.Views.LanguagePageView.createList*
   name: createList
@@ -20059,11 +20059,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Server.Views.ServerPageView.createChooseLabel
   nameWithType: ServerPageView.createChooseLabel
-- uid: EduCATS.Pages.Settings.Server.Views.ServerPageView.createList(View)
+- uid: EduCATS.Pages.Settings.Server.Views.ServerPageView.createList(Xamarin.Forms.View)
   name: createList(View)
-  href: api/EduCATS.Pages.Settings.Server.Views.ServerPageView.html#EduCATS_Pages_Settings_Server_Views_ServerPageView_createList_View_
-  commentId: M:EduCATS.Pages.Settings.Server.Views.ServerPageView.createList(View)
-  fullName: EduCATS.Pages.Settings.Server.Views.ServerPageView.createList(View)
+  href: api/EduCATS.Pages.Settings.Server.Views.ServerPageView.html#EduCATS_Pages_Settings_Server_Views_ServerPageView_createList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Settings.Server.Views.ServerPageView.createList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Settings.Server.Views.ServerPageView.createList(Xamarin.Forms.View)
   nameWithType: ServerPageView.createList(View)
 - uid: EduCATS.Pages.Settings.Server.Views.ServerPageView.createList*
   name: createList
@@ -20346,11 +20346,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createChooseLabel
   nameWithType: ThemePageView.createChooseLabel
-- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList(View)
+- uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList(Xamarin.Forms.View)
   name: createList(View)
-  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView_createList_View_
-  commentId: M:EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList(View)
-  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList(View)
+  href: api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html#EduCATS_Pages_Settings_Themes_Views_ThemePageView_createList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList(Xamarin.Forms.View)
   nameWithType: ThemePageView.createList(View)
 - uid: EduCATS.Pages.Settings.Themes.Views.ThemePageView.createList*
   name: createList
@@ -20739,13 +20739,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.AverageTests
   nameWithType: StatsPageViewModel.AverageTests
-- uid: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark(IList{EduCATS.Data.Models.StatsMarkModel})
+- uid: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark(System.Collections.Generic.IList{EduCATS.Data.Models.StatsMarkModel})
   name: calculateAvgLabsMark(IList<StatsMarkModel>)
-  href: api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html#EduCATS_Pages_Statistics_Base_ViewModels_StatsPageViewModel_calculateAvgLabsMark_IList_EduCATS_Data_Models_StatsMarkModel__
-  commentId: M:EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark(IList{EduCATS.Data.Models.StatsMarkModel})
+  href: api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html#EduCATS_Pages_Statistics_Base_ViewModels_StatsPageViewModel_calculateAvgLabsMark_System_Collections_Generic_IList_EduCATS_Data_Models_StatsMarkModel__
+  commentId: M:EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark(System.Collections.Generic.IList{EduCATS.Data.Models.StatsMarkModel})
   name.vb: calculateAvgLabsMark(IList(Of StatsMarkModel))
-  fullName: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark(IList<EduCATS.Data.Models.StatsMarkModel>)
-  fullName.vb: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark(IList(Of EduCATS.Data.Models.StatsMarkModel))
+  fullName: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark(System.Collections.Generic.IList<EduCATS.Data.Models.StatsMarkModel>)
+  fullName.vb: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark(System.Collections.Generic.IList(Of EduCATS.Data.Models.StatsMarkModel))
   nameWithType: StatsPageViewModel.calculateAvgLabsMark(IList<StatsMarkModel>)
   nameWithType.vb: StatsPageViewModel.calculateAvgLabsMark(IList(Of StatsMarkModel))
 - uid: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark*
@@ -20755,13 +20755,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMark
   nameWithType: StatsPageViewModel.calculateAvgLabsMark
-- uid: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest(List{EduCATS.Networking.Models.SaveMarks.LabMarks})
+- uid: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest(System.Collections.Generic.List{EduCATS.Networking.Models.SaveMarks.LabMarks})
   name: calculateAvgLabsMarkTest(List<LabMarks>)
-  href: api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html#EduCATS_Pages_Statistics_Base_ViewModels_StatsPageViewModel_calculateAvgLabsMarkTest_List_EduCATS_Networking_Models_SaveMarks_LabMarks__
-  commentId: M:EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest(List{EduCATS.Networking.Models.SaveMarks.LabMarks})
+  href: api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html#EduCATS_Pages_Statistics_Base_ViewModels_StatsPageViewModel_calculateAvgLabsMarkTest_System_Collections_Generic_List_EduCATS_Networking_Models_SaveMarks_LabMarks__
+  commentId: M:EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest(System.Collections.Generic.List{EduCATS.Networking.Models.SaveMarks.LabMarks})
   name.vb: calculateAvgLabsMarkTest(List(Of LabMarks))
-  fullName: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest(List<EduCATS.Networking.Models.SaveMarks.LabMarks>)
-  fullName.vb: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest(List(Of EduCATS.Networking.Models.SaveMarks.LabMarks))
+  fullName: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest(System.Collections.Generic.List<EduCATS.Networking.Models.SaveMarks.LabMarks>)
+  fullName.vb: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest(System.Collections.Generic.List(Of EduCATS.Networking.Models.SaveMarks.LabMarks))
   nameWithType: StatsPageViewModel.calculateAvgLabsMarkTest(List<LabMarks>)
   nameWithType.vb: StatsPageViewModel.calculateAvgLabsMarkTest(List(Of LabMarks))
 - uid: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest*
@@ -20771,13 +20771,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgLabsMarkTest
   nameWithType: StatsPageViewModel.calculateAvgLabsMarkTest
-- uid: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgPractMarks(List{EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks})
+- uid: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgPractMarks(System.Collections.Generic.List{EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks})
   name: calculateAvgPractMarks(List<PracticialMarks>)
-  href: api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html#EduCATS_Pages_Statistics_Base_ViewModels_StatsPageViewModel_calculateAvgPractMarks_List_EduCATS_Networking_Models_SaveMarks_Practicals_PracticialMarks__
-  commentId: M:EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgPractMarks(List{EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks})
+  href: api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html#EduCATS_Pages_Statistics_Base_ViewModels_StatsPageViewModel_calculateAvgPractMarks_System_Collections_Generic_List_EduCATS_Networking_Models_SaveMarks_Practicals_PracticialMarks__
+  commentId: M:EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgPractMarks(System.Collections.Generic.List{EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks})
   name.vb: calculateAvgPractMarks(List(Of PracticialMarks))
-  fullName: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgPractMarks(List<EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks>)
-  fullName.vb: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgPractMarks(List(Of EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks))
+  fullName: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgPractMarks(System.Collections.Generic.List<EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks>)
+  fullName.vb: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgPractMarks(System.Collections.Generic.List(Of EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks))
   nameWithType: StatsPageViewModel.calculateAvgPractMarks(List<PracticialMarks>)
   nameWithType.vb: StatsPageViewModel.calculateAvgPractMarks(List(Of PracticialMarks))
 - uid: EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.calculateAvgPractMarks*
@@ -21289,11 +21289,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createHiddenDetailsView
   nameWithType: StatsPageView.createHiddenDetailsView
-- uid: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createRoundedList(View)
+- uid: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createRoundedList(Xamarin.Forms.View)
   name: createRoundedList(View)
-  href: api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.html#EduCATS_Pages_Statistics_Base_Views_StatsPageView_createRoundedList_View_
-  commentId: M:EduCATS.Pages.Statistics.Base.Views.StatsPageView.createRoundedList(View)
-  fullName: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createRoundedList(View)
+  href: api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.html#EduCATS_Pages_Statistics_Base_Views_StatsPageView_createRoundedList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Statistics.Base.Views.StatsPageView.createRoundedList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createRoundedList(Xamarin.Forms.View)
   nameWithType: StatsPageView.createRoundedList(View)
 - uid: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createRoundedList*
   name: createRoundedList
@@ -21302,11 +21302,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createRoundedList
   nameWithType: StatsPageView.createRoundedList
-- uid: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsBoxView(Color,System.String)
+- uid: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsBoxView(Xamarin.Forms.Color,System.String)
   name: createStatisticsBoxView(Color, String)
-  href: api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.html#EduCATS_Pages_Statistics_Base_Views_StatsPageView_createStatisticsBoxView_Color_System_String_
-  commentId: M:EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsBoxView(Color,System.String)
-  fullName: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsBoxView(Color, System.String)
+  href: api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.html#EduCATS_Pages_Statistics_Base_Views_StatsPageView_createStatisticsBoxView_Xamarin_Forms_Color_System_String_
+  commentId: M:EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsBoxView(Xamarin.Forms.Color,System.String)
+  fullName: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsBoxView(Xamarin.Forms.Color, System.String)
   nameWithType: StatsPageView.createStatisticsBoxView(Color, String)
 - uid: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsBoxView*
   name: createStatisticsBoxView
@@ -21328,11 +21328,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsLabel
   nameWithType: StatsPageView.createStatisticsLabel
-- uid: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsView(System.String,Color,System.String)
+- uid: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsView(System.String,Xamarin.Forms.Color,System.String)
   name: createStatisticsView(String, Color, String)
-  href: api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.html#EduCATS_Pages_Statistics_Base_Views_StatsPageView_createStatisticsView_System_String_Color_System_String_
-  commentId: M:EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsView(System.String,Color,System.String)
-  fullName: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsView(System.String, Color, System.String)
+  href: api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.html#EduCATS_Pages_Statistics_Base_Views_StatsPageView_createStatisticsView_System_String_Xamarin_Forms_Color_System_String_
+  commentId: M:EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsView(System.String,Xamarin.Forms.Color,System.String)
+  fullName: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsView(System.String, Xamarin.Forms.Color, System.String)
   nameWithType: StatsPageView.createStatisticsView(String, Color, String)
 - uid: EduCATS.Pages.Statistics.Base.Views.StatsPageView.createStatisticsView*
   name: createStatisticsView
@@ -22536,13 +22536,13 @@ references:
   commentId: T:EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel
   fullName: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel
   nameWithType: StudentsPageViewModel
-- uid: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.Int32)
+- uid: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.Int32)
   name: StudentsPageViewModel(IPlatformServices, Int32, List<StatsStudentModel>, Int32)
-  href: api/EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html#EduCATS_Pages_Statistics_Students_ViewModels_StudentsPageViewModel__ctor_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__System_Int32_
-  commentId: M:EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.Int32)
+  href: api/EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html#EduCATS_Pages_Statistics_Students_ViewModels_StudentsPageViewModel__ctor_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__System_Int32_
+  commentId: M:EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.Int32)
   name.vb: StudentsPageViewModel(IPlatformServices, Int32, List(Of StatsStudentModel), Int32)
-  fullName: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.StudentsPageViewModel(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, List<EduCATS.Data.Models.StatsStudentModel>, System.Int32)
-  fullName.vb: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.StudentsPageViewModel(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, List(Of EduCATS.Data.Models.StatsStudentModel), System.Int32)
+  fullName: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.StudentsPageViewModel(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Collections.Generic.List<EduCATS.Data.Models.StatsStudentModel>, System.Int32)
+  fullName.vb: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.StudentsPageViewModel(EduCATS.Helpers.Forms.IPlatformServices, System.Int32, System.Collections.Generic.List(Of EduCATS.Data.Models.StatsStudentModel), System.Int32)
   nameWithType: StudentsPageViewModel.StudentsPageViewModel(IPlatformServices, Int32, List<StatsStudentModel>, Int32)
   nameWithType.vb: StudentsPageViewModel.StudentsPageViewModel(IPlatformServices, Int32, List(Of StatsStudentModel), Int32)
 - uid: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.#ctor*
@@ -22774,13 +22774,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.SelectedItem
   nameWithType: StudentsPageViewModel.SelectedItem
-- uid: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.setStudents(List{EduCATS.Data.Models.StatsStudentModel})
+- uid: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.setStudents(System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel})
   name: setStudents(List<StatsStudentModel>)
-  href: api/EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html#EduCATS_Pages_Statistics_Students_ViewModels_StudentsPageViewModel_setStudents_List_EduCATS_Data_Models_StatsStudentModel__
-  commentId: M:EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.setStudents(List{EduCATS.Data.Models.StatsStudentModel})
+  href: api/EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html#EduCATS_Pages_Statistics_Students_ViewModels_StudentsPageViewModel_setStudents_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__
+  commentId: M:EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.setStudents(System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel})
   name.vb: setStudents(List(Of StatsStudentModel))
-  fullName: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.setStudents(List<EduCATS.Data.Models.StatsStudentModel>)
-  fullName.vb: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.setStudents(List(Of EduCATS.Data.Models.StatsStudentModel))
+  fullName: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.setStudents(System.Collections.Generic.List<EduCATS.Data.Models.StatsStudentModel>)
+  fullName.vb: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.setStudents(System.Collections.Generic.List(Of EduCATS.Data.Models.StatsStudentModel))
   nameWithType: StudentsPageViewModel.setStudents(List<StatsStudentModel>)
   nameWithType.vb: StudentsPageViewModel.setStudents(List(Of StatsStudentModel))
 - uid: EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.setStudents*
@@ -22828,13 +22828,13 @@ references:
   commentId: T:EduCATS.Pages.Statistics.Students.Views.StudentsPageView
   fullName: EduCATS.Pages.Statistics.Students.Views.StudentsPageView
   nameWithType: StudentsPageView
-- uid: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.#ctor(System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel})
+- uid: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.#ctor(System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel})
   name: StudentsPageView(Int32, Int32, List<StatsStudentModel>)
-  href: api/EduCATS.Pages.Statistics.Students.Views.StudentsPageView.html#EduCATS_Pages_Statistics_Students_Views_StudentsPageView__ctor_System_Int32_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__
-  commentId: M:EduCATS.Pages.Statistics.Students.Views.StudentsPageView.#ctor(System.Int32,System.Int32,List{EduCATS.Data.Models.StatsStudentModel})
+  href: api/EduCATS.Pages.Statistics.Students.Views.StudentsPageView.html#EduCATS_Pages_Statistics_Students_Views_StudentsPageView__ctor_System_Int32_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__
+  commentId: M:EduCATS.Pages.Statistics.Students.Views.StudentsPageView.#ctor(System.Int32,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel})
   name.vb: StudentsPageView(Int32, Int32, List(Of StatsStudentModel))
-  fullName: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.StudentsPageView(System.Int32, System.Int32, List<EduCATS.Data.Models.StatsStudentModel>)
-  fullName.vb: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.StudentsPageView(System.Int32, System.Int32, List(Of EduCATS.Data.Models.StatsStudentModel))
+  fullName: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.StudentsPageView(System.Int32, System.Int32, System.Collections.Generic.List<EduCATS.Data.Models.StatsStudentModel>)
+  fullName.vb: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.StudentsPageView(System.Int32, System.Int32, System.Collections.Generic.List(Of EduCATS.Data.Models.StatsStudentModel))
   nameWithType: StudentsPageView.StudentsPageView(Int32, Int32, List<StatsStudentModel>)
   nameWithType.vb: StudentsPageView.StudentsPageView(Int32, Int32, List(Of StatsStudentModel))
 - uid: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.#ctor*
@@ -22888,11 +22888,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.createHeaderView
   nameWithType: StudentsPageView.createHeaderView
-- uid: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.createRoundedListView(View)
+- uid: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.createRoundedListView(Xamarin.Forms.View)
   name: createRoundedListView(View)
-  href: api/EduCATS.Pages.Statistics.Students.Views.StudentsPageView.html#EduCATS_Pages_Statistics_Students_Views_StudentsPageView_createRoundedListView_View_
-  commentId: M:EduCATS.Pages.Statistics.Students.Views.StudentsPageView.createRoundedListView(View)
-  fullName: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.createRoundedListView(View)
+  href: api/EduCATS.Pages.Statistics.Students.Views.StudentsPageView.html#EduCATS_Pages_Statistics_Students_Views_StudentsPageView_createRoundedListView_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Statistics.Students.Views.StudentsPageView.createRoundedListView(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.createRoundedListView(Xamarin.Forms.View)
   nameWithType: StudentsPageView.createRoundedListView(View)
 - uid: EduCATS.Pages.Statistics.Students.Views.StudentsPageView.createRoundedListView*
   name: createRoundedListView
@@ -22996,13 +22996,13 @@ references:
   commentId: T:EduCATS.Pages.Testing.Base.Models.TestingGroupModel
   fullName: EduCATS.Pages.Testing.Base.Models.TestingGroupModel
   nameWithType: TestingGroupModel
-- uid: EduCATS.Pages.Testing.Base.Models.TestingGroupModel.#ctor(System.String,List{EduCATS.Data.Models.TestModel})
+- uid: EduCATS.Pages.Testing.Base.Models.TestingGroupModel.#ctor(System.String,System.Collections.Generic.List{EduCATS.Data.Models.TestModel})
   name: TestingGroupModel(String, List<TestModel>)
-  href: api/EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html#EduCATS_Pages_Testing_Base_Models_TestingGroupModel__ctor_System_String_List_EduCATS_Data_Models_TestModel__
-  commentId: M:EduCATS.Pages.Testing.Base.Models.TestingGroupModel.#ctor(System.String,List{EduCATS.Data.Models.TestModel})
+  href: api/EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html#EduCATS_Pages_Testing_Base_Models_TestingGroupModel__ctor_System_String_System_Collections_Generic_List_EduCATS_Data_Models_TestModel__
+  commentId: M:EduCATS.Pages.Testing.Base.Models.TestingGroupModel.#ctor(System.String,System.Collections.Generic.List{EduCATS.Data.Models.TestModel})
   name.vb: TestingGroupModel(String, List(Of TestModel))
-  fullName: EduCATS.Pages.Testing.Base.Models.TestingGroupModel.TestingGroupModel(System.String, List<EduCATS.Data.Models.TestModel>)
-  fullName.vb: EduCATS.Pages.Testing.Base.Models.TestingGroupModel.TestingGroupModel(System.String, List(Of EduCATS.Data.Models.TestModel))
+  fullName: EduCATS.Pages.Testing.Base.Models.TestingGroupModel.TestingGroupModel(System.String, System.Collections.Generic.List<EduCATS.Data.Models.TestModel>)
+  fullName.vb: EduCATS.Pages.Testing.Base.Models.TestingGroupModel.TestingGroupModel(System.String, System.Collections.Generic.List(Of EduCATS.Data.Models.TestModel))
   nameWithType: TestingGroupModel.TestingGroupModel(String, List<TestModel>)
   nameWithType.vb: TestingGroupModel.TestingGroupModel(String, List(Of TestModel))
 - uid: EduCATS.Pages.Testing.Base.Models.TestingGroupModel.#ctor*
@@ -23087,13 +23087,13 @@ references:
   commentId: F:EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel._testList
   fullName: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel._testList
   nameWithType: TestingPageViewModel._testList
-- uid: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(List{EduCATS.Pages.Testing.Base.Models.TestingGroupModel},EduCATS.Pages.Testing.Base.Models.TestingGroupModel)
+- uid: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(System.Collections.Generic.List{EduCATS.Pages.Testing.Base.Models.TestingGroupModel},EduCATS.Pages.Testing.Base.Models.TestingGroupModel)
   name: addNonEmptyGroup(List<TestingGroupModel>, TestingGroupModel)
-  href: api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html#EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_addNonEmptyGroup_List_EduCATS_Pages_Testing_Base_Models_TestingGroupModel__EduCATS_Pages_Testing_Base_Models_TestingGroupModel_
-  commentId: M:EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(List{EduCATS.Pages.Testing.Base.Models.TestingGroupModel},EduCATS.Pages.Testing.Base.Models.TestingGroupModel)
+  href: api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html#EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_addNonEmptyGroup_System_Collections_Generic_List_EduCATS_Pages_Testing_Base_Models_TestingGroupModel__EduCATS_Pages_Testing_Base_Models_TestingGroupModel_
+  commentId: M:EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(System.Collections.Generic.List{EduCATS.Pages.Testing.Base.Models.TestingGroupModel},EduCATS.Pages.Testing.Base.Models.TestingGroupModel)
   name.vb: addNonEmptyGroup(List(Of TestingGroupModel), TestingGroupModel)
-  fullName: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(List<EduCATS.Pages.Testing.Base.Models.TestingGroupModel>, EduCATS.Pages.Testing.Base.Models.TestingGroupModel)
-  fullName.vb: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(List(Of EduCATS.Pages.Testing.Base.Models.TestingGroupModel), EduCATS.Pages.Testing.Base.Models.TestingGroupModel)
+  fullName: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(System.Collections.Generic.List<EduCATS.Pages.Testing.Base.Models.TestingGroupModel>, EduCATS.Pages.Testing.Base.Models.TestingGroupModel)
+  fullName.vb: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup(System.Collections.Generic.List(Of EduCATS.Pages.Testing.Base.Models.TestingGroupModel), EduCATS.Pages.Testing.Base.Models.TestingGroupModel)
   nameWithType: TestingPageViewModel.addNonEmptyGroup(List<TestingGroupModel>, TestingGroupModel)
   nameWithType.vb: TestingPageViewModel.addNonEmptyGroup(List(Of TestingGroupModel), TestingGroupModel)
 - uid: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.addNonEmptyGroup*
@@ -23116,13 +23116,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getAndSetTests
   nameWithType: TestingPageViewModel.getAndSetTests
-- uid: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(IList{EduCATS.Data.Models.TestModel},System.String,System.Boolean)
+- uid: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(System.Collections.Generic.IList{EduCATS.Data.Models.TestModel},System.String,System.Boolean)
   name: getGroup(IList<TestModel>, String, Boolean)
-  href: api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html#EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getGroup_IList_EduCATS_Data_Models_TestModel__System_String_System_Boolean_
-  commentId: M:EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(IList{EduCATS.Data.Models.TestModel},System.String,System.Boolean)
+  href: api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html#EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getGroup_System_Collections_Generic_IList_EduCATS_Data_Models_TestModel__System_String_System_Boolean_
+  commentId: M:EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(System.Collections.Generic.IList{EduCATS.Data.Models.TestModel},System.String,System.Boolean)
   name.vb: getGroup(IList(Of TestModel), String, Boolean)
-  fullName: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(IList<EduCATS.Data.Models.TestModel>, System.String, System.Boolean)
-  fullName.vb: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(IList(Of EduCATS.Data.Models.TestModel), System.String, System.Boolean)
+  fullName: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(System.Collections.Generic.IList<EduCATS.Data.Models.TestModel>, System.String, System.Boolean)
+  fullName.vb: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup(System.Collections.Generic.IList(Of EduCATS.Data.Models.TestModel), System.String, System.Boolean)
   nameWithType: TestingPageViewModel.getGroup(IList<TestModel>, String, Boolean)
   nameWithType.vb: TestingPageViewModel.getGroup(IList(Of TestModel), String, Boolean)
 - uid: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup*
@@ -23132,13 +23132,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getGroup
   nameWithType: TestingPageViewModel.getGroup
-- uid: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(IList{EduCATS.Data.Models.TestModel},System.Boolean)
+- uid: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(System.Collections.Generic.IList{EduCATS.Data.Models.TestModel},System.Boolean)
   name: getSeparateTests(IList<TestModel>, Boolean)
-  href: api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html#EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getSeparateTests_IList_EduCATS_Data_Models_TestModel__System_Boolean_
-  commentId: M:EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(IList{EduCATS.Data.Models.TestModel},System.Boolean)
+  href: api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html#EduCATS_Pages_Testing_Base_ViewModels_TestingPageViewModel_getSeparateTests_System_Collections_Generic_IList_EduCATS_Data_Models_TestModel__System_Boolean_
+  commentId: M:EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(System.Collections.Generic.IList{EduCATS.Data.Models.TestModel},System.Boolean)
   name.vb: getSeparateTests(IList(Of TestModel), Boolean)
-  fullName: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(IList<EduCATS.Data.Models.TestModel>, System.Boolean)
-  fullName.vb: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(IList(Of EduCATS.Data.Models.TestModel), System.Boolean)
+  fullName: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(System.Collections.Generic.IList<EduCATS.Data.Models.TestModel>, System.Boolean)
+  fullName.vb: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests(System.Collections.Generic.IList(Of EduCATS.Data.Models.TestModel), System.Boolean)
   nameWithType: TestingPageViewModel.getSeparateTests(IList<TestModel>, Boolean)
   nameWithType.vb: TestingPageViewModel.getSeparateTests(IList(Of TestModel), Boolean)
 - uid: EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.getSeparateTests*
@@ -23315,11 +23315,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Testing.Base.Views.TestingPageView.createHeaderImage
   nameWithType: TestingPageView.createHeaderImage
-- uid: EduCATS.Pages.Testing.Base.Views.TestingPageView.createTestList(View)
+- uid: EduCATS.Pages.Testing.Base.Views.TestingPageView.createTestList(Xamarin.Forms.View)
   name: createTestList(View)
-  href: api/EduCATS.Pages.Testing.Base.Views.TestingPageView.html#EduCATS_Pages_Testing_Base_Views_TestingPageView_createTestList_View_
-  commentId: M:EduCATS.Pages.Testing.Base.Views.TestingPageView.createTestList(View)
-  fullName: EduCATS.Pages.Testing.Base.Views.TestingPageView.createTestList(View)
+  href: api/EduCATS.Pages.Testing.Base.Views.TestingPageView.html#EduCATS_Pages_Testing_Base_Views_TestingPageView_createTestList_Xamarin_Forms_View_
+  commentId: M:EduCATS.Pages.Testing.Base.Views.TestingPageView.createTestList(Xamarin.Forms.View)
+  fullName: EduCATS.Pages.Testing.Base.Views.TestingPageView.createTestList(Xamarin.Forms.View)
   nameWithType: TestingPageView.createTestList(View)
 - uid: EduCATS.Pages.Testing.Base.Views.TestingPageView.createTestList*
   name: createTestList
@@ -23920,13 +23920,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.completeTest
   nameWithType: TestPassingPageViewModel.completeTest
-- uid: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.composeAnswer(List{EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel})
+- uid: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.composeAnswer(System.Collections.Generic.List{EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel})
   name: composeAnswer(List<TestAnswerDetailsPostModel>)
-  href: api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.html#EduCATS_Pages_Testing_Passing_ViewModels_TestPassingPageViewModel_composeAnswer_List_EduCATS_Networking_Models_Testing_TestAnswerDetailsPostModel__
-  commentId: M:EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.composeAnswer(List{EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel})
+  href: api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.html#EduCATS_Pages_Testing_Passing_ViewModels_TestPassingPageViewModel_composeAnswer_System_Collections_Generic_List_EduCATS_Networking_Models_Testing_TestAnswerDetailsPostModel__
+  commentId: M:EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.composeAnswer(System.Collections.Generic.List{EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel})
   name.vb: composeAnswer(List(Of TestAnswerDetailsPostModel))
-  fullName: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.composeAnswer(List<EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel>)
-  fullName.vb: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.composeAnswer(List(Of EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel))
+  fullName: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.composeAnswer(System.Collections.Generic.List<EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel>)
+  fullName.vb: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.composeAnswer(System.Collections.Generic.List(Of EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel))
   nameWithType: TestPassingPageViewModel.composeAnswer(List<TestAnswerDetailsPostModel>)
   nameWithType.vb: TestPassingPageViewModel.composeAnswer(List(Of TestAnswerDetailsPostModel))
 - uid: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.composeAnswer*
@@ -24209,13 +24209,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.selectItem
   nameWithType: TestPassingPageViewModel.selectItem
-- uid: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setAnswers(List{EduCATS.Data.Models.TestAnswerModel})
+- uid: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setAnswers(System.Collections.Generic.List{EduCATS.Data.Models.TestAnswerModel})
   name: setAnswers(List<TestAnswerModel>)
-  href: api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.html#EduCATS_Pages_Testing_Passing_ViewModels_TestPassingPageViewModel_setAnswers_List_EduCATS_Data_Models_TestAnswerModel__
-  commentId: M:EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setAnswers(List{EduCATS.Data.Models.TestAnswerModel})
+  href: api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.html#EduCATS_Pages_Testing_Passing_ViewModels_TestPassingPageViewModel_setAnswers_System_Collections_Generic_List_EduCATS_Data_Models_TestAnswerModel__
+  commentId: M:EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setAnswers(System.Collections.Generic.List{EduCATS.Data.Models.TestAnswerModel})
   name.vb: setAnswers(List(Of TestAnswerModel))
-  fullName: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setAnswers(List<EduCATS.Data.Models.TestAnswerModel>)
-  fullName.vb: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setAnswers(List(Of EduCATS.Data.Models.TestAnswerModel))
+  fullName: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setAnswers(System.Collections.Generic.List<EduCATS.Data.Models.TestAnswerModel>)
+  fullName.vb: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setAnswers(System.Collections.Generic.List(Of EduCATS.Data.Models.TestAnswerModel))
   nameWithType: TestPassingPageViewModel.setAnswers(List<TestAnswerModel>)
   nameWithType.vb: TestPassingPageViewModel.setAnswers(List(Of TestAnswerModel))
 - uid: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setAnswers*
@@ -24283,11 +24283,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setTimer
   nameWithType: TestPassingPageViewModel.setTimer
-- uid: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setTitle(TimeSpan)
+- uid: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setTitle(System.TimeSpan)
   name: setTitle(TimeSpan)
-  href: api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.html#EduCATS_Pages_Testing_Passing_ViewModels_TestPassingPageViewModel_setTitle_TimeSpan_
-  commentId: M:EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setTitle(TimeSpan)
-  fullName: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setTitle(TimeSpan)
+  href: api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.html#EduCATS_Pages_Testing_Passing_ViewModels_TestPassingPageViewModel_setTitle_System_TimeSpan_
+  commentId: M:EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setTitle(System.TimeSpan)
+  fullName: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setTitle(System.TimeSpan)
   nameWithType: TestPassingPageViewModel.setTitle(TimeSpan)
 - uid: EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.setTitle*
   name: setTitle
@@ -24558,11 +24558,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.MultipleTemplate
   nameWithType: TestAnswerDataTemplateSelector.MultipleTemplate
-- uid: EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.OnSelectTemplate(System.Object,BindableObject)
+- uid: EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.OnSelectTemplate(System.Object,Xamarin.Forms.BindableObject)
   name: OnSelectTemplate(Object, BindableObject)
-  href: api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.html#EduCATS_Pages_Testing_Passing_Views_ViewCells_TestAnswerDataTemplateSelector_OnSelectTemplate_System_Object_BindableObject_
-  commentId: M:EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.OnSelectTemplate(System.Object,BindableObject)
-  fullName: EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.OnSelectTemplate(System.Object, BindableObject)
+  href: api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.html#EduCATS_Pages_Testing_Passing_Views_ViewCells_TestAnswerDataTemplateSelector_OnSelectTemplate_System_Object_Xamarin_Forms_BindableObject_
+  commentId: M:EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.OnSelectTemplate(System.Object,Xamarin.Forms.BindableObject)
+  fullName: EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.OnSelectTemplate(System.Object, Xamarin.Forms.BindableObject)
   nameWithType: TestAnswerDataTemplateSelector.OnSelectTemplate(Object, BindableObject)
 - uid: EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.OnSelectTemplate*
   name: OnSelectTemplate
@@ -25873,13 +25873,13 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.changeCalendarSelection
   nameWithType: TodayPageViewModel.changeCalendarSelection
-- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.composeNewsWithSubjects(IList{EduCATS.Data.Models.NewsModel},IList{EduCATS.Data.Models.SubjectModel})
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.composeNewsWithSubjects(System.Collections.Generic.IList{EduCATS.Data.Models.NewsModel},System.Collections.Generic.IList{EduCATS.Data.Models.SubjectModel})
   name: composeNewsWithSubjects(IList<NewsModel>, IList<SubjectModel>)
-  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_composeNewsWithSubjects_IList_EduCATS_Data_Models_NewsModel__IList_EduCATS_Data_Models_SubjectModel__
-  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.composeNewsWithSubjects(IList{EduCATS.Data.Models.NewsModel},IList{EduCATS.Data.Models.SubjectModel})
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_composeNewsWithSubjects_System_Collections_Generic_IList_EduCATS_Data_Models_NewsModel__System_Collections_Generic_IList_EduCATS_Data_Models_SubjectModel__
+  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.composeNewsWithSubjects(System.Collections.Generic.IList{EduCATS.Data.Models.NewsModel},System.Collections.Generic.IList{EduCATS.Data.Models.SubjectModel})
   name.vb: composeNewsWithSubjects(IList(Of NewsModel), IList(Of SubjectModel))
-  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.composeNewsWithSubjects(IList<EduCATS.Data.Models.NewsModel>, IList<EduCATS.Data.Models.SubjectModel>)
-  fullName.vb: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.composeNewsWithSubjects(IList(Of EduCATS.Data.Models.NewsModel), IList(Of EduCATS.Data.Models.SubjectModel))
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.composeNewsWithSubjects(System.Collections.Generic.IList<EduCATS.Data.Models.NewsModel>, System.Collections.Generic.IList<EduCATS.Data.Models.SubjectModel>)
+  fullName.vb: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.composeNewsWithSubjects(System.Collections.Generic.IList(Of EduCATS.Data.Models.NewsModel), System.Collections.Generic.IList(Of EduCATS.Data.Models.SubjectModel))
   nameWithType: TodayPageViewModel.composeNewsWithSubjects(IList<NewsModel>, IList<SubjectModel>)
   nameWithType.vb: TodayPageViewModel.composeNewsWithSubjects(IList(Of NewsModel), IList(Of SubjectModel))
 - uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.composeNewsWithSubjects*
@@ -25902,11 +25902,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.deselectAllCalendarDays
   nameWithType: TodayPageViewModel.deselectAllCalendarDays
-- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.ExecuteCalendarSelectionChangedEvent(DateTime)
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.ExecuteCalendarSelectionChangedEvent(System.DateTime)
   name: ExecuteCalendarSelectionChangedEvent(DateTime)
-  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_ExecuteCalendarSelectionChangedEvent_DateTime_
-  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.ExecuteCalendarSelectionChangedEvent(DateTime)
-  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.ExecuteCalendarSelectionChangedEvent(DateTime)
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_ExecuteCalendarSelectionChangedEvent_System_DateTime_
+  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.ExecuteCalendarSelectionChangedEvent(System.DateTime)
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.ExecuteCalendarSelectionChangedEvent(System.DateTime)
   nameWithType: TodayPageViewModel.ExecuteCalendarSelectionChangedEvent(DateTime)
 - uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.ExecuteCalendarSelectionChangedEvent*
   name: ExecuteCalendarSelectionChangedEvent
@@ -25954,11 +25954,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.getCalendarPosition
   nameWithType: TodayPageViewModel.getCalendarPosition
-- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.getCalendarViewModel(DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.getCalendarViewModel(System.DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)
   name: getCalendarViewModel(DateTime, WeekEnum)
-  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_getCalendarViewModel_DateTime_EduCATS_Helpers_Date_Enums_WeekEnum_
-  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.getCalendarViewModel(DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)
-  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.getCalendarViewModel(DateTime, EduCATS.Helpers.Date.Enums.WeekEnum)
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_getCalendarViewModel_System_DateTime_EduCATS_Helpers_Date_Enums_WeekEnum_
+  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.getCalendarViewModel(System.DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.getCalendarViewModel(System.DateTime, EduCATS.Helpers.Date.Enums.WeekEnum)
   nameWithType: TodayPageViewModel.getCalendarViewModel(DateTime, WeekEnum)
 - uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.getCalendarViewModel*
   name: getCalendarViewModel
@@ -26084,11 +26084,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.openDetailsPage
   nameWithType: TodayPageViewModel.openDetailsPage
-- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectCalendarDay(DateTime)
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectCalendarDay(System.DateTime)
   name: selectCalendarDay(DateTime)
-  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_selectCalendarDay_DateTime_
-  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectCalendarDay(DateTime)
-  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectCalendarDay(DateTime)
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_selectCalendarDay_System_DateTime_
+  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectCalendarDay(System.DateTime)
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectCalendarDay(System.DateTime)
   nameWithType: TodayPageViewModel.selectCalendarDay(DateTime)
 - uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectCalendarDay*
   name: selectCalendarDay
@@ -26097,11 +26097,11 @@ references:
   isSpec: "True"
   fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectCalendarDay
   nameWithType: TodayPageViewModel.selectCalendarDay
-- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectDay(DateTime,System.Boolean,System.Boolean)
+- uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectDay(System.DateTime,System.Boolean,System.Boolean)
   name: selectDay(DateTime, Boolean, Boolean)
-  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_selectDay_DateTime_System_Boolean_System_Boolean_
-  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectDay(DateTime,System.Boolean,System.Boolean)
-  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectDay(DateTime, System.Boolean, System.Boolean)
+  href: api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html#EduCATS_Pages_Today_Base_ViewModels_TodayPageViewModel_selectDay_System_DateTime_System_Boolean_System_Boolean_
+  commentId: M:EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectDay(System.DateTime,System.Boolean,System.Boolean)
+  fullName: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectDay(System.DateTime, System.Boolean, System.Boolean)
   nameWithType: TodayPageViewModel.selectDay(DateTime, Boolean, Boolean)
 - uid: EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.selectDay*
   name: selectDay

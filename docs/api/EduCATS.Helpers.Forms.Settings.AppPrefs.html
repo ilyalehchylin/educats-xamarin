@@ -1588,11 +1588,35 @@
     <h5>Implements</h5>
     <div><a class="xref" href="EduCATS.Helpers.Forms.Settings.IPreferences.html">IPreferences</a></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Helpers.Forms.Settings.html">EduCATS.Helpers.Forms.Settings</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Helpers_Forms_Settings_AppPrefs_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AppPrefs : object, IPreferences</code></pre>
+    <pre><code class="lang-csharp hljs">public class AppPrefs : IPreferences</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -1602,7 +1626,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">readonly String _avatarDefault</code></pre>
+    <pre><code class="lang-csharp hljs">readonly string _avatarDefault</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1614,7 +1638,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1625,7 +1649,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _avatarKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _avatarKey = &quot;USER_AVATAR&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1671,7 +1695,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _chosenGroupIdKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _chosenGroupIdKey = &quot;CHOSEN_GROUP_ID&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1717,7 +1741,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _chosenSubjectIdKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _chosenSubjectIdKey = &quot;CHOSEN_SUBJECT_ID&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1763,7 +1787,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _fontKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _fontKey = &quot;FONT_KEY&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1809,7 +1833,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _groupIdKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _groupIdKey = &quot;USER_GROUP_ID&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1855,7 +1879,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _groupNameKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _groupNameKey = &quot;USER_GROUP_NAME&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1923,7 +1947,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _isLargeFontKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _isLargeFontKey = &quot;IS_LARGE_FONT&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1946,7 +1970,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const bool _isLoggedInDefault = null</code></pre>
+    <pre><code class="lang-csharp hljs">const bool _isLoggedInDefault = false</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1969,7 +1993,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _isLoggedInKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _isLoggedInKey = &quot;IS_LOGGED_IN&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2015,7 +2039,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _languageCodeKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _languageCodeKey = &quot;APP_LANG_CODE&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2038,7 +2062,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _serverDefault = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _serverDefault = &quot;https://educats.bntu.by&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2061,7 +2085,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _serverKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _serverKey = &quot;APP_SERVER&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2084,7 +2108,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _themeDefault = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _themeDefault = &quot;THEME_DEFAULT&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2107,7 +2131,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _themeKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _themeKey = &quot;APP_THEME&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2130,7 +2154,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const int _userIdDefault = null</code></pre>
+    <pre><code class="lang-csharp hljs">const int _userIdDefault = 0</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2153,7 +2177,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _userIdKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _userIdKey = &quot;USER_ID&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2199,7 +2223,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _userLoginKey = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _userLoginKey = &quot;USER_LOGIN&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2222,7 +2246,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string AccessTokenValue = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string AccessTokenValue = &quot;&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2272,7 +2296,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public String Avatar { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Avatar { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -2284,7 +2308,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">String</span></td>
+        <td><span class="xref">System.String</span></td>
         <td></td>
       </tr>
     </tbody>

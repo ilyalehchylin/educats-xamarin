@@ -1584,11 +1584,35 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">DateHelper</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Helpers.Date.html">EduCATS.Helpers.Date</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Helpers_Date_DateHelper_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class DateHelper : object</code></pre>
+    <pre><code class="lang-csharp hljs">public static class DateHelper</code></pre>
   </div>
   <h3 id="fields">Fields
   </h3>
@@ -1598,7 +1622,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _insideRoundBracketsRegex = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _insideRoundBracketsRegex = &quot;(?&lt;=\\().+?(?=\\))&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1624,7 +1648,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const double _unixMaxTimestamp = null</code></pre>
+    <pre><code class="lang-csharp hljs">const double _unixMaxTimestamp = 9999999999999</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1647,7 +1671,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const double _unixMinTimestamp = null</code></pre>
+    <pre><code class="lang-csharp hljs">const double _unixMinTimestamp = 1000000000000</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1670,7 +1694,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string DefaultDateTime = null</code></pre>
+    <pre><code class="lang-csharp hljs">public const string DefaultDateTime = &quot;0001-01-01&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1692,7 +1716,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public const string DefaultDateTimeFormat = null</code></pre>
+    <pre><code class="lang-csharp hljs">public const string DefaultDateTimeFormat = &quot;dd-MM-yyyy HH:mm&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1712,8 +1736,8 @@
   <h3 id="methods">Methods
   </h3>
   <a id="EduCATS_Helpers_Date_DateHelper_CheckDatesDifference_" data-uid="EduCATS.Helpers.Date.DateHelper.CheckDatesDifference*"></a>
-  <h4 id="EduCATS_Helpers_Date_DateHelper_CheckDatesDifference_DateTime_DateTime_" data-uid="EduCATS.Helpers.Date.DateHelper.CheckDatesDifference(DateTime,DateTime)">CheckDatesDifference(DateTime, DateTime)</h4>
-  <div class="markdown level1 summary"><p>Get dates difference in <see cref="!:TimeSpan"></see>.</p>
+  <h4 id="EduCATS_Helpers_Date_DateHelper_CheckDatesDifference_System_DateTime_System_DateTime_" data-uid="EduCATS.Helpers.Date.DateHelper.CheckDatesDifference(System.DateTime,System.DateTime)">CheckDatesDifference(DateTime, DateTime)</h4>
+  <div class="markdown level1 summary"><p>Get dates difference in <span class="xref">System.TimeSpan</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1731,13 +1755,13 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">startDate</span></td>
         <td><p>Start date.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">endDate</span></td>
         <td><p>End date.</p>
 </td>
@@ -1754,7 +1778,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">TimeSpan</span></td>
+        <td><span class="xref">System.TimeSpan</span></td>
         <td><p>Time difference.</p>
 </td>
       </tr>
@@ -1762,7 +1786,7 @@
   </table>
   <a id="EduCATS_Helpers_Date_DateHelper_Convert13DigitsUnixToDateTime_" data-uid="EduCATS.Helpers.Date.DateHelper.Convert13DigitsUnixToDateTime*"></a>
   <h4 id="EduCATS_Helpers_Date_DateHelper_Convert13DigitsUnixToDateTime_System_Double_" data-uid="EduCATS.Helpers.Date.DateHelper.Convert13DigitsUnixToDateTime(System.Double)">Convert13DigitsUnixToDateTime(Double)</h4>
-  <div class="markdown level1 summary"><p>Convert 13-digits unix to <see cref="!:DateTime"></see>.</p>
+  <div class="markdown level1 summary"><p>Convert 13-digits unix to <span class="xref">System.DateTime</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1797,8 +1821,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
-        <td><p>Converted <see cref="!:DateTime"></see>.</p>
+        <td><span class="xref">System.DateTime</span></td>
+        <td><p>Converted <span class="xref">System.DateTime</span>.</p>
 </td>
       </tr>
     </tbody>
@@ -1840,7 +1864,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DayOfWeek</span></td>
+        <td><span class="xref">System.DayOfWeek</span></td>
         <td><p>Day of week enumeration.</p>
 </td>
       </tr>
@@ -1908,7 +1932,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td><p>List of days' first letters.</p>
 </td>
       </tr>
@@ -2002,7 +2026,7 @@ in &quot;<code>Date(123456789999)</code>&quot; format.</p>
     </tbody>
   </table>
   <a id="EduCATS_Helpers_Date_DateHelper_GetWeekDays_" data-uid="EduCATS.Helpers.Date.DateHelper.GetWeekDays*"></a>
-  <h4 id="EduCATS_Helpers_Date_DateHelper_GetWeekDays_DateTime_" data-uid="EduCATS.Helpers.Date.DateHelper.GetWeekDays(DateTime)">GetWeekDays(DateTime)</h4>
+  <h4 id="EduCATS_Helpers_Date_DateHelper_GetWeekDays_System_DateTime_" data-uid="EduCATS.Helpers.Date.DateHelper.GetWeekDays(System.DateTime)">GetWeekDays(DateTime)</h4>
   <div class="markdown level1 summary"><p>Get weeks days by date.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2021,7 +2045,7 @@ in &quot;<code>Date(123456789999)</code>&quot; format.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">date</span></td>
         <td><p>Date.</p>
 </td>
@@ -2038,14 +2062,14 @@ in &quot;<code>Date(123456789999)</code>&quot; format.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<span class="xref">DateTime</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.DateTime</span>&gt;</td>
         <td><p>Week days.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <a id="EduCATS_Helpers_Date_DateHelper_GetWeekStartDate_" data-uid="EduCATS.Helpers.Date.DateHelper.GetWeekStartDate*"></a>
-  <h4 id="EduCATS_Helpers_Date_DateHelper_GetWeekStartDate_DateTime_EduCATS_Helpers_Date_Enums_WeekEnum_" data-uid="EduCATS.Helpers.Date.DateHelper.GetWeekStartDate(DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)">GetWeekStartDate(DateTime, WeekEnum)</h4>
+  <h4 id="EduCATS_Helpers_Date_DateHelper_GetWeekStartDate_System_DateTime_EduCATS_Helpers_Date_Enums_WeekEnum_" data-uid="EduCATS.Helpers.Date.DateHelper.GetWeekStartDate(System.DateTime,EduCATS.Helpers.Date.Enums.WeekEnum)">GetWeekStartDate(DateTime, WeekEnum)</h4>
   <div class="markdown level1 summary"><p>Get start of week date.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -2064,7 +2088,7 @@ in &quot;<code>Date(123456789999)</code>&quot; format.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><span class="parametername">currentDate</span></td>
         <td><p>Current date.</p>
 </td>
@@ -2087,7 +2111,7 @@ in &quot;<code>Date(123456789999)</code>&quot; format.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td><p>Week start date.</p>
 </td>
       </tr>

@@ -1584,6 +1584,10 @@
     <div class="level1"><a class="xref" href="EduCATS.Pages.ViewModel.html">ViewModel</a></div>
     <div class="level2"><span class="xref">CalendarViewModel</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -1595,12 +1599,33 @@
     <div>
       <a class="xref" href="EduCATS.Pages.ViewModel.html#EduCATS_Pages_ViewModel_OnPropertyChanged_System_String_">ViewModel.OnPropertyChanged(String)</a>
     </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Pages.Today.Base.ViewModels.html">EduCATS.Pages.Today.Base.ViewModels</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Pages_Today_Base_ViewModels_CalendarViewModel_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class CalendarViewModel : ViewModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class CalendarViewModel : ViewModel, INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -1670,7 +1695,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Command</span></td>
+        <td><span class="xref">Xamarin.Forms.Command</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1741,7 +1766,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Command</span></td>
+        <td><span class="xref">Xamarin.Forms.Command</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1764,7 +1789,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">DateTime</span></td>
+        <td><span class="xref">System.DateTime</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1787,7 +1812,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">ObservableCollection</span>&lt;<a class="xref" href="EduCATS.Pages.Today.Base.Models.CalendarViewDayModel.html">CalendarViewDayModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.ObjectModel.ObservableCollection</span>&lt;<a class="xref" href="EduCATS.Pages.Today.Base.Models.CalendarViewDayModel.html">CalendarViewDayModel</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1870,6 +1895,10 @@
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">protected void ExecuteCalendarSelectionChangedEvent()</code></pre>
+  </div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
   </div>
 </article>
           </div>

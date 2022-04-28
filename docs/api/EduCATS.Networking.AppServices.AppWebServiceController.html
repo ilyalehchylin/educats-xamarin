@@ -1584,11 +1584,35 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">AppWebServiceController</span></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Networking.AppServices.html">EduCATS.Networking.AppServices</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Networking_AppServices_AppWebServiceController_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AppWebServiceController : object</code></pre>
+    <pre><code class="lang-csharp hljs">public class AppWebServiceController</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -1625,7 +1649,7 @@
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">const string _mediaTypeJson = null</code></pre>
+    <pre><code class="lang-csharp hljs">const string _mediaTypeJson = &quot;application/json&quot;</code></pre>
   </div>
   <h5 class="fieldValue">Field Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -1780,7 +1804,7 @@ like <code>&quot;Ok&quot;</code> (not default response).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpStatusCode</span></td>
+        <td><span class="xref">System.Net.HttpStatusCode</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1788,7 +1812,7 @@ like <code>&quot;Ok&quot;</code> (not default response).</p>
   <h3 id="methods">Methods
   </h3>
   <a id="EduCATS_Networking_AppServices_AppWebServiceController_SendRequest_" data-uid="EduCATS.Networking.AppServices.AppWebServiceController.SendRequest*"></a>
-  <h4 id="EduCATS_Networking_AppServices_AppWebServiceController_SendRequest_HttpMethod_System_String_System_String_" data-uid="EduCATS.Networking.AppServices.AppWebServiceController.SendRequest(HttpMethod,System.String,System.String)">SendRequest(HttpMethod, String, String)</h4>
+  <h4 id="EduCATS_Networking_AppServices_AppWebServiceController_SendRequest_System_Net_Http_HttpMethod_System_String_System_String_" data-uid="EduCATS.Networking.AppServices.AppWebServiceController.SendRequest(System.Net.Http.HttpMethod,System.String,System.String)">SendRequest(HttpMethod, String, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1806,7 +1830,7 @@ like <code>&quot;Ok&quot;</code> (not default response).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpMethod</span></td>
+        <td><span class="xref">System.Net.Http.HttpMethod</span></td>
         <td><span class="parametername">httpMethod</span></td>
         <td></td>
       </tr>
@@ -1832,13 +1856,13 @@ like <code>&quot;Ok&quot;</code> (not default response).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <a id="EduCATS_Networking_AppServices_AppWebServiceController_setStatusCode_" data-uid="EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode*"></a>
-  <h4 id="EduCATS_Networking_AppServices_AppWebServiceController_setStatusCode_HttpStatusCode_" data-uid="EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode(HttpStatusCode)">setStatusCode(HttpStatusCode)</h4>
+  <h4 id="EduCATS_Networking_AppServices_AppWebServiceController_setStatusCode_System_Net_HttpStatusCode_" data-uid="EduCATS.Networking.AppServices.AppWebServiceController.setStatusCode(System.Net.HttpStatusCode)">setStatusCode(HttpStatusCode)</h4>
   <div class="markdown level1 summary"><p>Set status code.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
@@ -1857,7 +1881,7 @@ like <code>&quot;Ok&quot;</code> (not default response).</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">HttpStatusCode</span></td>
+        <td><span class="xref">System.Net.HttpStatusCode</span></td>
         <td><span class="parametername">statusCode</span></td>
         <td><p>Status code.</p>
 </td>

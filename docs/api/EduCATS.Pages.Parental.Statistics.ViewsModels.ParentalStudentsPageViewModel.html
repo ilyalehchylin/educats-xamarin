@@ -1586,6 +1586,10 @@
     <div class="level3"><a class="xref" href="EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html">StudentsPageViewModel</a></div>
     <div class="level4"><span class="xref">ParentalStudentsPageViewModel</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -1643,7 +1647,7 @@
       <a class="xref" href="EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html#EduCATS_Pages_Statistics_Students_ViewModels_StudentsPageViewModel_openAddMarksPage_EduCATS_Data_Models_GroupItemModel_System_Int32_">StudentsPageViewModel.openAddMarksPage(GroupItemModel, Int32)</a>
     </div>
     <div>
-      <a class="xref" href="EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html#EduCATS_Pages_Statistics_Students_ViewModels_StudentsPageViewModel_setStudents_List_EduCATS_Data_Models_StatsStudentModel__">StudentsPageViewModel.setStudents(List&lt;StatsStudentModel&gt;)</a>
+      <a class="xref" href="EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html#EduCATS_Pages_Statistics_Students_ViewModels_StudentsPageViewModel_setStudents_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__">StudentsPageViewModel.setStudents(List&lt;StatsStudentModel&gt;)</a>
     </div>
     <div>
       <a class="xref" href="EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html#EduCATS_Pages_Statistics_Students_ViewModels_StudentsPageViewModel_search_System_String_">StudentsPageViewModel.search(String)</a>
@@ -1709,7 +1713,7 @@
       <a class="xref" href="EduCATS.Pages.Pickers.GroupsViewModel.html#EduCATS_Pages_Pickers_GroupsViewModel_setChosenGroup_EduCATS_Data_Models_GroupItemModel_">GroupsViewModel.setChosenGroup(GroupItemModel)</a>
     </div>
     <div>
-      <a class="xref" href="EduCATS.Pages.Pickers.GroupsViewModel.html#EduCATS_Pages_Pickers_GroupsViewModel_setCurrentGroupsList_List_EduCATS_Data_Models_GroupItemModel__">GroupsViewModel.setCurrentGroupsList(List&lt;GroupItemModel&gt;)</a>
+      <a class="xref" href="EduCATS.Pages.Pickers.GroupsViewModel.html#EduCATS_Pages_Pickers_GroupsViewModel_setCurrentGroupsList_System_Collections_Generic_List_EduCATS_Data_Models_GroupItemModel__">GroupsViewModel.setCurrentGroupsList(List&lt;GroupItemModel&gt;)</a>
     </div>
     <div>
       <a class="xref" href="EduCATS.Pages.Pickers.GroupsViewModel.html#EduCATS_Pages_Pickers_GroupsViewModel_checkGroupsList">GroupsViewModel.checkGroupsList()</a>
@@ -1723,17 +1727,38 @@
     <div>
       <a class="xref" href="EduCATS.Pages.ViewModel.html#EduCATS_Pages_ViewModel_OnPropertyChanged_System_String_">ViewModel.OnPropertyChanged(String)</a>
     </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Pages.Parental.Statistics.ViewsModels.html">EduCATS.Pages.Parental.Statistics.ViewsModels</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Pages_Parental_Statistics_ViewsModels_ParentalStudentsPageViewModel_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">class ParentalStudentsPageViewModel : StudentsPageViewModel</code></pre>
+    <pre><code class="lang-csharp hljs">class ParentalStudentsPageViewModel : StudentsPageViewModel, INotifyPropertyChanged</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   <a id="EduCATS_Pages_Parental_Statistics_ViewsModels_ParentalStudentsPageViewModel__ctor_" data-uid="EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.#ctor*"></a>
-  <h4 id="EduCATS_Pages_Parental_Statistics_ViewsModels_ParentalStudentsPageViewModel__ctor_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_List_EduCATS_Data_Models_StatsStudentModel__System_Int32_" data-uid="EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,List{EduCATS.Data.Models.StatsStudentModel},System.Int32)">ParentalStudentsPageViewModel(IPlatformServices, Int32, List&lt;StatsStudentModel&gt;, Int32)</h4>
+  <h4 id="EduCATS_Pages_Parental_Statistics_ViewsModels_ParentalStudentsPageViewModel__ctor_EduCATS_Helpers_Forms_IPlatformServices_System_Int32_System_Collections_Generic_List_EduCATS_Data_Models_StatsStudentModel__System_Int32_" data-uid="EduCATS.Pages.Parental.Statistics.ViewsModels.ParentalStudentsPageViewModel.#ctor(EduCATS.Helpers.Forms.IPlatformServices,System.Int32,System.Collections.Generic.List{EduCATS.Data.Models.StatsStudentModel},System.Int32)">ParentalStudentsPageViewModel(IPlatformServices, Int32, List&lt;StatsStudentModel&gt;, Int32)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -1761,7 +1786,7 @@
         <td></td>
       </tr>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Data.Models.StatsStudentModel.html">StatsStudentModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Data.Models.StatsStudentModel.html">StatsStudentModel</a>&gt;</td>
         <td><span class="parametername">studentsList</span></td>
         <td></td>
       </tr>
@@ -1792,7 +1817,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1817,7 +1842,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Data.Models.StatsStudentModel.html">StatsStudentModel</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Data.Models.StatsStudentModel.html">StatsStudentModel</a>&gt;&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1869,13 +1894,17 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h5 class="overrides">Overrides</h5>
   <div><a class="xref" href="EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html#EduCATS_Pages_Statistics_Students_ViewModels_StudentsPageViewModel_update_System_Boolean_">StudentsPageViewModel.update(Boolean)</a></div>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
+  </div>
 </article>
           </div>
           

@@ -1590,6 +1590,10 @@
       <div class="level3"><a class="xref" href="EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html">StatsPageViewModel</a></div>
       <div class="level3"><a class="xref" href="EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html">TestingPageViewModel</a></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><span class="xref">System.ComponentModel.INotifyPropertyChanged</span></div>
+  </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
@@ -1601,12 +1605,33 @@
     <div>
       <a class="xref" href="EduCATS.Pages.ViewModel.html#EduCATS_Pages_ViewModel_OnPropertyChanged_System_String_">ViewModel.OnPropertyChanged(String)</a>
     </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="EduCATS.Pages.Pickers.html">EduCATS.Pages.Pickers</a></h6>
   <h6><strong>Assembly</strong>: EduCATS.dll</h6>
   <h5 id="EduCATS_Pages_Pickers_SubjectsViewModel_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class SubjectsViewModel : ViewModel</code></pre>
+    <pre><code class="lang-csharp hljs">public class SubjectsViewModel : ViewModel, INotifyPropertyChanged</code></pre>
   </div>
   <h5 id="EduCATS_Pages_Pickers_SubjectsViewModel_remarks"><strong>Remarks</strong></h5>
   <div class="markdown level0 remarks"><p>Used for Subjects picker.</p>
@@ -1657,7 +1682,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Command</span></td>
+        <td><span class="xref">Xamarin.Forms.Command</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1723,7 +1748,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Command</span></td>
+        <td><span class="xref">Xamarin.Forms.Command</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1771,7 +1796,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Command</span></td>
+        <td><span class="xref">Xamarin.Forms.Command</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1863,7 +1888,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Data.Models.SubjectModel.html">SubjectModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Data.Models.SubjectModel.html">SubjectModel</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -1886,7 +1911,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Command</span></td>
+        <td><span class="xref">Xamarin.Forms.Command</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -1943,7 +1968,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span>&lt;<span class="xref">IList</span>&lt;<a class="xref" href="EduCATS.Data.Models.SubjectModel.html">SubjectModel</a>&gt;&gt;</td>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Collections.Generic.IList</span>&lt;<a class="xref" href="EduCATS.Data.Models.SubjectModel.html">SubjectModel</a>&gt;&gt;</td>
         <td><p>List of subjects.</p>
 </td>
       </tr>
@@ -2030,7 +2055,7 @@
     </tbody>
   </table>
   <a id="EduCATS_Pages_Pickers_SubjectsViewModel_SetCurrentSubjectsList_" data-uid="EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList*"></a>
-  <h4 id="EduCATS_Pages_Pickers_SubjectsViewModel_SetCurrentSubjectsList_List_EduCATS_Data_Models_SubjectModel__" data-uid="EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(List{EduCATS.Data.Models.SubjectModel})">SetCurrentSubjectsList(List&lt;SubjectModel&gt;)</h4>
+  <h4 id="EduCATS_Pages_Pickers_SubjectsViewModel_SetCurrentSubjectsList_System_Collections_Generic_List_EduCATS_Data_Models_SubjectModel__" data-uid="EduCATS.Pages.Pickers.SubjectsViewModel.SetCurrentSubjectsList(System.Collections.Generic.List{EduCATS.Data.Models.SubjectModel})">SetCurrentSubjectsList(List&lt;SubjectModel&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -2048,7 +2073,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">List</span>&lt;<a class="xref" href="EduCATS.Data.Models.SubjectModel.html">SubjectModel</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="EduCATS.Data.Models.SubjectModel.html">SubjectModel</a>&gt;</td>
         <td><span class="parametername">subjects</span></td>
         <td></td>
       </tr>
@@ -2082,7 +2107,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">Task</span></td>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
         <td><p>Task.</p>
 </td>
       </tr>
@@ -2137,6 +2162,10 @@
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <span class="xref">System.ComponentModel.INotifyPropertyChanged</span>
+  </div>
 </article>
           </div>
           
