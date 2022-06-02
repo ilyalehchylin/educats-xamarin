@@ -1,0 +1,26 @@
+name: build
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: [ develop ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Restore NuGet packages
+        run: nuget restore
+        
+      - name: Build iOS        
+        run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhoneSimulator ./source/EduCATS.iOS/EduCATS.iOS.csproj              
+      
+      - name: Build Android
+        run: MSBuild /t:Build /p:Configuration=Release ./source/EduCATS.Android/EduCATS.Android.csproj
