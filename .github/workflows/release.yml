@@ -35,7 +35,7 @@ jobs:
           base64: ${{ secrets.IOS_PROVISIONING_PROFILE_APPSTORE }}
           
       - name: Setup Android signing 
-        run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 — decode) > ./source/EduCATS.Android/educats-release.keystore
+        run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 -- decode) > ./source/EduCATS.Android/educats-release.keystore
       
       - name: Get Github workflow build number
         env:
