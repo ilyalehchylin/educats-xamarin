@@ -42,6 +42,8 @@ jobs:
         run: |
           dotnet test --collect:"XPlat Code Coverage" --settings ./source/coverlet.runsettings --results-directory:"./coverage" ${{ env.UNIT_TESTS_PROJECT_PATH }}
           mv ./coverage/*/coverage.info ./coverage/lcov.info
+          ls ./
+          ls ./coverage
         
       - name: Setup iOS certificates
         uses: apple-actions/import-codesign-certs@v1
