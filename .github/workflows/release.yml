@@ -16,6 +16,7 @@ env:
   IOS_IPA_FILE_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
   APPSTORE_CONNECT_AUTH_KEY: ./source/EduCATS.iOS/AuthKey.p8
   ANDROID_AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
+  UNIT_TESTS_PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
 
 jobs:
   release:
@@ -23,13 +24,24 @@ jobs:
     environment: github-actions-release
 
     steps:
-      - run: dotnet
-      
       - name: Checkout
         uses: actions/checkout@v3
       
       - name: Restore NuGet packages
         run: nuget restore ./source/EduCATS.sln
+        
+      - name: Install Coverlet Collector
+        run: |
+          dotnet tool install --global coverlet.console
+          dotnet add ${{ env.UNIT_TESTS_PROJECT_PATH }} package coverlet.collector
+          
+      - name: Build unit-tests project
+        run: dotnet build ${{ env.UNIT_TESTS_PROJECT_PATH }}
+        
+      - name: Run unit-test with Coverlet and generate report
+        run: |
+          dotnet test --collect:"XPlat Code Coverage" --settings ./source/coverlet.runsettings --results-directory:"./coverage" ${{ env.UNIT_TESTS_PROJECT_PATH }}
+          mv ./coverage/*/coverage.info ./coverage/lcov.info
         
       - name: Setup iOS certificates
         uses: apple-actions/import-codesign-certs@v1
