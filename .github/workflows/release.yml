@@ -12,6 +12,8 @@ env:
   ANDROID_PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
   ANDROID_KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
   ANDROID_KEYSTORE_FILE_NAME: educats-release.keystore
+  IOS_IPA_FILE_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
+  APPSTORE_CONNECT_AUTH_KEY: ./source/EduCATS.iOS/AuthKey.p8
 
 jobs:
   release:
@@ -69,12 +71,13 @@ jobs:
       - name: Build iOS        
         run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ${{ env.IOS_PROJECT_PATH }}
       
-      - run: find ./ -name "*.ipa" -o -name "*.app"
-#       - name: Upload to TestFlight
-#         uses: Apple-Actions/upload-testflight-build@v1
-#         with:
-#           app-path: ./source/EduCATS.iOS/bin/iPhone/
-#           issuer-id: 
-#           api-key-id: 
-#           api-private-key: 
+      - name: Get AppStore Connect API key
+        run: (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > ${{ env.APPSTORE_CONNECT_AUTH_KEY }}
       
+      - name: Upload to TestFlight
+        uses: Apple-Actions/upload-testflight-build@v1
+        with:
+          app-path: ${{ env.IOS_IPA_FILE_PATH }}
+          issuer-id: ${{ secrets.APPSTORE_CONNECT_API_ISSUER_ID }}
+          api-key-id: ${{ secrets.APPSTORE_CONNECT_API_KEY_ID }}
+          api-private-key: ${{ env.APPSTORE_CONNECT_AUTH_KEY }}
