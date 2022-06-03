@@ -15,6 +15,7 @@ env:
   ANDROID_KEYSTORE_FILE_NAME: educats-release.keystore
   IOS_IPA_FILE_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
   APPSTORE_CONNECT_AUTH_KEY: ./source/EduCATS.iOS/AuthKey.p8
+  ANDROID_AAB_FILE_PATH: ./source/EduCATS.Android/obj/Release/android/bin/by.bntu.educats-Signed.aab
 
 jobs:
   release:
@@ -88,5 +89,5 @@ jobs:
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
           packageName: ${{ env.APP_BUNDLE_ID }}
-          releaseFiles: aab
+          releaseFiles: ${{ env.ANDROID_AAB_FILE_PATH }}
           track: beta
