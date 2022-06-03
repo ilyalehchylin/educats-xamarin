@@ -78,7 +78,7 @@ jobs:
           (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > ${{ env.APPSTORE_CONNECT_AUTH_KEY }}
           mkdir -p ~/private_keys
           cp ${{ env.APPSTORE_CONNECT_AUTH_KEY }} ~/private_keys
-          xcrun altool --upload-app -f ${{ env.IOS_IPA_FILE_PATH }} --type ios --apiKey ${{ secrets.APPSTORE_CONNECT_API_KEY_ID }} --apiIssuer ${{ secrets.APPSTORE_CONNECT_API_ISSUER_ID }}
+          xcrun altool --upload-app -f ${{ env.IOS_IPA_FILE_PATH }} -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
           
       - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1.0.16
