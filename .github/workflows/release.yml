@@ -40,7 +40,8 @@ jobs:
       - name: Get Github workflow build number
         env:
           GITHUB_WORKFLOW_NUMBER: ${{ github.run_number }}
-        run: echo ::set-env name=APP_BUILD_NUMBER::$(($GITHUB_WORKFLOW_NUMBER+860))
+#         run: echo ::set-env name=APP_BUILD_NUMBER::$(($GITHUB_WORKFLOW_NUMBER+860))
+        run: echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+860))" >> $GITHUB_ENV
       
       - name: Update iOS app version
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
