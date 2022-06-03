@@ -67,27 +67,27 @@ jobs:
         run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ${{ env.IOS_PROJECT_PATH }}
 
       - if: always()
-        run: ls ./source/./source/EduCATS.Android/obj
+        run: ls ./source/EduCATS.Android/obj
       - if: always()
-        run: ls ./source/./source/EduCATS.iOS/obj
+        run: ls ./source/EduCATS.iOS/obj
       - if: always()
-        run: ls ./source/./source/EduCATS.Android/bin
+        run: ls ./source/EduCATS.Android/bin
       - if: always()
-        run: ls ./source/./source/EduCATS.iOS/bin
+        run: ls ./source/EduCATS.iOS/bin
       - if: always()
-        run: ls ./source/./source/EduCATS.Android/bin/Release
+        run: ls ./source/EduCATS.Android/bin/Release
       - if: always()
-        run: ls ./source/./source/EduCATS.Android/bin/Debug
+        run: ls ./source/EduCATS.Android/bin/Debug
       - if: always()
-        run: ls ./source/./source/EduCATS.Android/obj/Release
+        run: ls ./source/EduCATS.Android/obj/Release
       - if: always()
-        run: ls ./source/./source/EduCATS.Android/obj/Debug
+        run: ls ./source/EduCATS.Android/obj/Debug
       - if: always()
-        run: ls ./source/./source/EduCATS.iOS/bin/Release
+        run: ls ./source/EduCATS.iOS/bin/Release
       - if: always()
-        run: ls ./source/./source/EduCATS.iOS/bin/Debug
+        run: ls ./source/EduCATS.iOS/bin/Debug
       - if: always()
-        run: ls ./source/./source/EduCATS.iOS/obj/Release
+        run: ls ./source/EduCATS.iOS/obj/Release
       - if: always()
-        run: ls ./source/./source/EduCATS.iOS/obj/Debug
+        run: ls ./source/EduCATS.iOS/obj/Debug
         
