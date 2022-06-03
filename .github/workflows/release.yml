@@ -8,6 +8,7 @@ on: [ push ]
   
 env:
   APP_VERSION: 2.2.0
+  APP_BUNDLE_ID: by.bntu.educats
   IOS_PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
   ANDROID_PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
   ANDROID_KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
@@ -81,3 +82,11 @@ jobs:
           issuer-id: ${{ secrets.APPSTORE_CONNECT_API_ISSUER_ID }}
           api-key-id: ${{ secrets.APPSTORE_CONNECT_API_KEY_ID }}
           api-private-key: ${{ env.APPSTORE_CONNECT_AUTH_KEY }}
+          
+      - name: Upload to Google Play
+        uses: r0adkll/upload-google-play@v1.0.16
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
+          packageName: ${{ env.APP_BUNDLE_ID }}
+          releaseFiles: aab
+          track: beta
