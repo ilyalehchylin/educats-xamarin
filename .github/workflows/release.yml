@@ -11,6 +11,7 @@ env:
   IOS_PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
   ANDROID_PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
   ANDROID_KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
+  ANDROID_KEYSTORE_FILE_NAME: educats-release.keystore
 
 jobs:
   build:
@@ -62,7 +63,7 @@ jobs:
           version-code: ${{ env.APP_BUILD_NUMBER }}
   
       - name: Build Android
-        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormats='aab%3Bapk' /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='${{ env.ANDROID_KEYSTORE }}' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' ${{ env.ANDROID_PROJECT_PATH }}
+        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormats='aab%3Bapk' /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='${{ env.ANDROID_KEYSTORE_FILE_NAME }}' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' ${{ env.ANDROID_PROJECT_PATH }}
   
       - name: Build iOS        
         run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ${{ env.IOS_PROJECT_PATH }}
