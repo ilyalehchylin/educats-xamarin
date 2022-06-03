@@ -35,19 +35,24 @@ jobs:
           
       - name: Setup Android signing 
         run: (echo ${{ secrets.ANDROID_KEYSTORE }} | base64 — decode) > ./source/EduCATS.Android/educats-release.keystore
-        
+      
+      - name: Get Github workflow build number
+        env:
+          GITHUB_WORKFLOW_NUMBER: ${{ github.run_number }}
+        run: echo ::set-env name=APP_BUILD_NUMBER::$(($GITHUB_WORKFLOW_NUMBER+860))
+      
       - name: Update iOS app version
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_VERSION }}
-          bundle-short-version-string: ${{ github.run_number + 860 }}
+          bundle-short-version-string: $APP_BUILD_NUMBER
           
       - name: Update Android app version
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-code: ${{ github.run_number + 860 }}
+          version-code: $APP_BUILD_NUMBER
           version-name: ${{ env.APP_VERSION }}
         
       - name: Build iOS        
