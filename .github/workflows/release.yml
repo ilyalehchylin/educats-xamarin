@@ -8,6 +8,8 @@ on: [ push ]
   
 env:
   APP_VERSION: 2.2.0
+  IOS_PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
+  ANDROID_PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
 
 jobs:
   build:
@@ -57,9 +59,9 @@ jobs:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
           version-name: ${{ env.APP_VERSION }}
           version-code: ${{ env.APP_BUILD_NUMBER }}
-        
-      - name: Build iOS        
-        run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ./source/EduCATS.iOS/EduCATS.iOS.csproj              
-      
+  
       - name: Build Android
-        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormats=apk;aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} /p:AndroidSigningKeyPass=${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }} /p:AndroidSigningKeyStore=${{ env.ANDROID_KEYSTORE }} /p:AndroidSigningStorePass=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} ./source/EduCATS.Android/EduCATS.Android.csproj
+        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormats=apk;aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} /p:AndroidSigningKeyPass=${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }} /p:AndroidSigningKeyStore=${{ env.ANDROID_KEYSTORE }} /p:AndroidSigningStorePass=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} ${{ env.ANDROID_PROJECT_PATH }}
+  
+      - name: Build iOS        
+        run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ${{ env.IOS_PROJECT_PATH }}
