@@ -40,7 +40,7 @@ jobs:
       - name: Setup Android signing 
         run: |
           (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > ${{ env.ANDROID_KEYSTORE }}
-          ls
+          ls ./source/EduCATS.Android
       
       - name: Get Github workflow build number
         env:
