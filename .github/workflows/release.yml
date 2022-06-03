@@ -14,7 +14,7 @@ env:
   ANDROID_KEYSTORE_FILE_NAME: educats-release.keystore
 
 jobs:
-  setup:
+  release:
     runs-on: macos-latest
     environment: github-actions-release
 
@@ -60,22 +60,34 @@ jobs:
           version-name: ${{ env.APP_VERSION }}
           version-code: ${{ env.APP_BUILD_NUMBER }}
       
-  test:
-    runs-on: macos-latest
-    environment: github-actions-release
-    needs: setup
-    
-    steps:
-      - run: echo 'Starting unit-tests'
-    
-  build:
-    runs-on: macos-latest
-    environment: github-actions-release
-    needs: test
-
-    steps:
       - name: Build Android
         run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormats='aab%3Bapk' /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='${{ env.ANDROID_KEYSTORE_FILE_NAME }}' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' ${{ env.ANDROID_PROJECT_PATH }}
   
       - name: Build iOS        
         run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ${{ env.IOS_PROJECT_PATH }}
+
+      - if: always()
+        run: ls ./source/./source/EduCATS.Android/obj
+      - if: always()
+        run: ls ./source/./source/EduCATS.iOS/obj
+      - if: always()
+        run: ls ./source/./source/EduCATS.Android/bin
+      - if: always()
+        run: ls ./source/./source/EduCATS.iOS/bin
+      - if: always()
+        run: ls ./source/./source/EduCATS.Android/bin/Release
+      - if: always()
+        run: ls ./source/./source/EduCATS.Android/bin/Debug
+      - if: always()
+        run: ls ./source/./source/EduCATS.Android/obj/Release
+      - if: always()
+        run: ls ./source/./source/EduCATS.Android/obj/Debug
+      - if: always()
+        run: ls ./source/./source/EduCATS.iOS/bin/Release
+      - if: always()
+        run: ls ./source/./source/EduCATS.iOS/bin/Debug
+      - if: always()
+        run: ls ./source/./source/EduCATS.iOS/obj/Release
+      - if: always()
+        run: ls ./source/./source/EduCATS.iOS/obj/Debug
+        
