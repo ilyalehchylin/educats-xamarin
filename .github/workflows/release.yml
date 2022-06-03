@@ -39,9 +39,7 @@ jobs:
           base64: ${{ secrets.IOS_PROVISIONING_PROFILE_APPSTORE }}
           
       - name: Setup Android signing 
-        run: |
-          (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > ${{ env.ANDROID_KEYSTORE }}
-          ls ./source/EduCATS.Android
+        run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > ${{ env.ANDROID_KEYSTORE }}
       
       - name: Get Github workflow build number
         env:
@@ -67,3 +65,7 @@ jobs:
   
       - name: Build iOS        
         run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ${{ env.IOS_PROJECT_PATH }}
+
+      - run: ls ./source/EduCATS.Android/bin/Release
+      - run: ls ./source/EduCATS.iOS/bin/Release
+      - run: dotnet help
