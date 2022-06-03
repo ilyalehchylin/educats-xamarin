@@ -16,6 +16,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
+      - name: Test secrets
+        run: echo ${{ secrets.TEST_SECRET }}
       
       - name: Restore NuGet packages
         run: nuget restore ./source/EduCATS.sln
