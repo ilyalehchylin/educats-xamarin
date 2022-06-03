@@ -23,6 +23,8 @@ jobs:
     environment: github-actions-release
 
     steps:
+      - run: dotnet
+      
       - name: Checkout
         uses: actions/checkout@v3
       
