@@ -17,6 +17,7 @@ env:
   APPSTORE_CONNECT_AUTH_KEY: ./source/EduCATS.iOS/AuthKey.p8
   ANDROID_AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
   UNIT_TESTS_PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
+  TEST_COVERAGE_DIRECTORY: ./coverage
 
 jobs:
   release:
@@ -40,10 +41,15 @@ jobs:
         
       - name: Run unit-test with Coverlet and generate report
         run: |
-          dotnet test --collect:"XPlat Code Coverage" --settings ./source/coverlet.runsettings --results-directory:"./coverage" ${{ env.UNIT_TESTS_PROJECT_PATH }}
-          mv ./coverage/*/coverage.info ./coverage/lcov.info
-          ls ./
-          ls ./coverage
+          dotnet test --collect:"XPlat Code Coverage" --settings ./source/coverlet.runsettings --results-directory:"${{ env.TEST_COVERAGE_DIRECTORY }}" ${{ env.UNIT_TESTS_PROJECT_PATH }}
+          mv ${{ env.TEST_COVERAGE_DIRECTORY }}/*/coverage.info ${{ env.TEST_COVERAGE_DIRECTORY }}/lcov.info
+        
+      - name: Upload test report to Codecov
+        uses: codecov/codecov-action@v3.1.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ${{ env.TEST_COVERAGE_DIRECTORY }}/lcov.info
+          os: macos
         
       - name: Setup iOS certificates
         uses: apple-actions/import-codesign-certs@v1
