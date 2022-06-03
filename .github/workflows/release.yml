@@ -15,7 +15,7 @@ env:
   ANDROID_KEYSTORE_FILE_NAME: educats-release.keystore
   IOS_IPA_FILE_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
   APPSTORE_CONNECT_AUTH_KEY: ./source/EduCATS.iOS/AuthKey.p8
-  ANDROID_AAB_FILE_PATH: ./source/EduCATS.Android/obj/Release/android/bin/by.bntu.educats-Signed.aab
+  ANDROID_AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
 
 jobs:
   release:
@@ -72,6 +72,8 @@ jobs:
   
       - name: Build iOS        
         run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ${{ env.IOS_PROJECT_PATH }}
+      
+      - run: ls ./source/EduCATS.Android/bin/Release
       
       - name: Upload to TestFlight
         run: |
