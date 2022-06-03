@@ -75,17 +75,18 @@ jobs:
       
       - run: ls ./source/EduCATS.Android/bin/Release
       
-      - name: Upload to TestFlight
+      - name: TestFlight deployment
         run: |
           (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > ${{ env.APPSTORE_CONNECT_AUTH_KEY }}
           mkdir -p ~/private_keys
           cp ${{ env.APPSTORE_CONNECT_AUTH_KEY }} ~/private_keys
           xcrun altool --upload-app -f ${{ env.IOS_IPA_FILE_PATH }} --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
           
-      - name: Upload to Google Play
+      - name: Google Play deployment
         uses: r0adkll/upload-google-play@v1.0.16
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
           packageName: ${{ env.APP_BUNDLE_ID }}
           releaseFiles: ${{ env.ANDROID_AAB_FILE_PATH }}
           track: beta
+          status: inProgress
