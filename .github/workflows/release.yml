@@ -60,8 +60,21 @@ jobs:
           version-name: ${{ env.APP_VERSION }}
           version-code: ${{ env.APP_BUILD_NUMBER }}
       
-      - name: Build Android
+      - name: Build Android (APK)
+        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='${{ env.ANDROID_KEYSTORE_FILE_NAME }}' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' ${{ env.ANDROID_PROJECT_PATH }}
+      
+      - name: Build Android (AAB)
         run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='${{ env.ANDROID_KEYSTORE_FILE_NAME }}' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' ${{ env.ANDROID_PROJECT_PATH }}
   
       - name: Build iOS        
         run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ${{ env.IOS_PROJECT_PATH }}
+      
+      - run: find ./ -name "*.ipa" -o -name "*.app"
+#       - name: Upload to TestFlight
+#         uses: Apple-Actions/upload-testflight-build@v1
+#         with:
+#           app-path: ./source/EduCATS.iOS/bin/iPhone/
+#           issuer-id: 
+#           api-key-id: 
+#           api-private-key: 
+      
