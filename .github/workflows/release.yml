@@ -103,7 +103,7 @@ jobs:
           APK_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.apk
           AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
 
-      - name: Build iOS        
+      - name: iOS Build
         run: |
           MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true $PROJECT_PATH
           cp $IPA_PATH ${{ env.ARTIFACTS_IPA_PATH }}
@@ -111,14 +111,14 @@ jobs:
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
           
-      - name: TestFlight deployment
+      - name: AppStore Deploy
         run: |
           (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > $AUTH_KEY
           xcrun altool --upload-app -f ${{ env.ARTIFACTS_IPA_PATH }} --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
         env:
           AUTH_KEY: ./source/EduCATS.iOS/AuthKey.p8
           
-      - name: Google Play deployment
+      - name: Google Play Deploy
         uses: r0adkll/upload-google-play@v1.0.15
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
