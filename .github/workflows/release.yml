@@ -9,15 +9,10 @@ on: [ push ]
 env:
   APP_VERSION: 2.2.0
   APP_BUNDLE_ID: by.bntu.educats
-  IOS_PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
-  ANDROID_PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
-  ANDROID_KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
-  ANDROID_KEYSTORE_FILE_NAME: educats-release.keystore
-  IOS_IPA_FILE_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
-  APPSTORE_CONNECT_AUTH_KEY: ./source/EduCATS.iOS/AuthKey.p8
-  ANDROID_AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
-  UNIT_TESTS_PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
-  TEST_COVERAGE_DIRECTORY: ./coverage
+  ARTIFACTS_IPA_PATH: ./artifacts/EduCATS.ipa
+  ARTIFACTS_APK_PATH: ./artifacts/by.bntu.educats.apk
+  ARTIFACTS_AAB_PATH: ./artifacts/by.bntu.educats.aab
+  COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
 
 jobs:
   release:
@@ -28,30 +23,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Restore NuGet packages
-        run: nuget restore ./source/EduCATS.sln
+      - name: NuGet Restore
+        run: nuget restore $SOLUTION_PATH
+        env:
+          SOLUTION_PATH: ./source/EduCATS.sln
         
-      - name: Install Coverlet Collector
+      - name: Unit-Tests Build + Coverlet
         run: |
           dotnet tool install --global coverlet.console
-          dotnet add ${{ env.UNIT_TESTS_PROJECT_PATH }} package coverlet.collector
-          
-      - name: Build unit-tests project
-        run: dotnet build ${{ env.UNIT_TESTS_PROJECT_PATH }}
+          dotnet add $PROJECT_PATH package coverlet.collector
+          dotnet build $PROJECT_PATH
+          dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
+          mv $COVERAGE_DIRECTORY/*/$COVERAGE_INFO_FILENAME ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
+        env:
+          PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
+          COVERLET_SETTINGS: ./source/coverlet.runsettings
+          COVERAGE_DIRECTORY: ./coverage
+          COVERAGE_INFO_FILENAME: coverage.info          
         
-      - name: Run unit-test with Coverlet and generate report
-        run: |
-          dotnet test --collect:"XPlat Code Coverage" --settings ./source/coverlet.runsettings --results-directory:"${{ env.TEST_COVERAGE_DIRECTORY }}" ${{ env.UNIT_TESTS_PROJECT_PATH }}
-          mv ${{ env.TEST_COVERAGE_DIRECTORY }}/*/coverage.info ${{ env.TEST_COVERAGE_DIRECTORY }}/lcov.info
-        
-      - name: Upload test report to Codecov
+      - name: Codecov Deploy
         uses: codecov/codecov-action@v3.1.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ${{ env.TEST_COVERAGE_DIRECTORY }}/lcov.info
+          file: ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
           os: macos
         
-      - name: Setup iOS certificates
+      - name: iOS Certificates Install
         uses: apple-actions/import-codesign-certs@v1
         with: 
           p12-file-base64: ${{ secrets.IOS_CERTIFICATE_APPSTORE }}
@@ -59,55 +56,72 @@ jobs:
           keychain: github-actions-xamarin
           keychain-password: ''
       
-      - name: Setup iOS provisioning profiles
+      - name: iOS Provisioning Profiles Install
         uses: akiojin/install-provisioning-profile-github-action@v1.0
         with:
           base64: ${{ secrets.IOS_PROVISIONING_PROFILE_APPSTORE }}
           
-      - name: Setup Android signing 
-        run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > ${{ env.ANDROID_KEYSTORE }}
+      - name: Android Signing Setup
+        run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
+        env:
+          KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
       
-      - name: Get Github workflow build number
+      - name: Build Number Variable Setup
         env:
           GITHUB_WORKFLOW_NUMBER: ${{ github.run_number }}
-        run: echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+860))" >> $GITHUB_ENV
+          BITRISE_LAST_BUILD_NUMBER: 860
+        run: echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))" >> $GITHUB_ENV          
       
-      - name: Update iOS app version
+      - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_VERSION }}
           bundle-short-version-string: ${{ env.APP_BUILD_NUMBER }}
           
-      - name: Update Android app version
+      - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
           version-name: ${{ env.APP_VERSION }}
           version-code: ${{ env.APP_BUILD_NUMBER }}
       
-      - name: Build Android (APK)
-        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='${{ env.ANDROID_KEYSTORE_FILE_NAME }}' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' ${{ env.ANDROID_PROJECT_PATH }}
+      - name: Artifacts Directory Setup
+        run: mkdir $ARTIFACTS_DIRECTORY
+        env:
+          ARTIFACTS_DIRECTORY: ./artifacts
       
-      - name: Build Android (AAB)
-        run: MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='${{ env.ANDROID_KEYSTORE_FILE_NAME }}' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' ${{ env.ANDROID_PROJECT_PATH }}
-  
+      - name: Android Build (apk + aab)
+        run: |
+          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='$KEYSTORE_FILENAME' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          cp $APK_FILE_PATH ${{ env.ARTIFACTS_APK_PATH }}
+          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='$KEYSTORE_FILENAME' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          cp $AAB_FILE_PATH ${{ env.ARTIFACTS_AAB_PATH }}
+        env:
+          PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
+          KEYSTORE_FILENAME: educats-release.keystore
+          APK_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.apk
+          AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
+
       - name: Build iOS        
-        run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true ${{ env.IOS_PROJECT_PATH }}
-      
-      - run: ls ./source/EduCATS.Android/bin/Release
-      
+        run: |
+          MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true $PROJECT_PATH
+          cp $IPA_PATH ${{ env.ARTIFACTS_IPA_PATH }}
+        env:
+          PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
+          IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
+          
       - name: TestFlight deployment
         run: |
-          (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > ${{ env.APPSTORE_CONNECT_AUTH_KEY }}
-          mkdir -p ~/private_keys
-          cp ${{ env.APPSTORE_CONNECT_AUTH_KEY }} ~/private_keys
-          xcrun altool --upload-app -f ${{ env.IOS_IPA_FILE_PATH }} --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
+          (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > $AUTH_KEY
+          xcrun altool --upload-app -f ${{ env.ARTIFACTS_IPA_PATH }} --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
+        env:
+          AUTH_KEY: ./source/EduCATS.iOS/AuthKey.p8
           
       - name: Google Play deployment
         uses: r0adkll/upload-google-play@v1.0.15
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
           packageName: ${{ env.APP_BUNDLE_ID }}
-          releaseFiles: ${{ env.ANDROID_AAB_FILE_PATH }}
+          releaseFiles: ${{ env.ARTIFACTS_AAB_PATH }}
           track: beta
