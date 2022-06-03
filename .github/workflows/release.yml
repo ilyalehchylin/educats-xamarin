@@ -10,6 +10,7 @@ env:
   APP_VERSION: 2.2.0
   IOS_PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
   ANDROID_PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
+  ANDROID_KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
 
 jobs:
   build:
@@ -38,8 +39,8 @@ jobs:
           
       - name: Setup Android signing 
         run: |
-          (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > ./source/EduCATS.Android/educats-release.keystore
-          echo "ANDROID_KEYSTORE=./source/EduCATS.Android/educats-release.keystore" >> $GITHUB_ENV
+          (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > ${{ env.ANDROID_KEYSTORE }}
+          ls
       
       - name: Get Github workflow build number
         env:
