@@ -80,16 +80,20 @@ jobs:
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
         with:
-          info-plist-path: ./source/EduCATS.iOS/Info.plist
+          info-plist-path: $INFO_PLIST_PATH
           bundle-version: ${{ env.APP_BUILD_NUMBER }}
           bundle-short-version-string: ${{ env.APP_VERSION }}
+        env:
+          INFO_PLIST_PATH: './source/EduCATS.iOS/Info.plist'
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
-          android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
+          android-manifest-path: $ANDROID_MANIFEST_PATH
           version-name: ${{ env.APP_VERSION }}
           version-code: ${{ env.APP_BUILD_NUMBER }}
+        env:
+          ANDROID_MANIFEST_PATH: './source/EduCATS.Android/Properties/AndroidManifest.xml'
       
       - name: Artifacts Directory Setup
         run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
@@ -146,9 +150,12 @@ jobs:
         uses: r0adkll/upload-google-play@v1.0.15
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
-          packageName: by.bntu.educats
-          releaseFile: ./by.bntu.educats.aab
+          packageName: $BUNDLE_ID
+          releaseFile: $FILE_PATH_AAB
           track: beta
+        env:
+          BUNDLE_ID: by.bntu.educats
+          FILE_PATH_AAB: './by.bntu.educats.aab'
           
       - name: Github Release
         id: github_release
