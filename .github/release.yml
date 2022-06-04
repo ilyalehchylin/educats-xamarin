@@ -1,0 +1,19 @@
+changelog:
+  exclude:
+    labels:
+      - release
+      - documentation
+      - packages
+  categories:
+    - title: New Features
+      labels:
+        - feature
+    - title: Bug Fixes
+      labels:
+        - bug
+    - title: Updates
+      labels:
+        - update
+    - title: Other Changes
+      labels:
+        - "*"
