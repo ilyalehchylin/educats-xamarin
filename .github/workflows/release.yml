@@ -47,6 +47,8 @@ jobs:
     runs-on: macos-latest
     environment: github-actions-release
     needs: test
+    outputs:
+      build_number: ${{ steps.build_number_setup.outputs.build_number }}
     
     steps:
       - name: Checkout
@@ -74,10 +76,13 @@ jobs:
           KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
       
       - name: Build Number Variable Setup
+        id: build_number_setup
         env:
           GITHUB_WORKFLOW_NUMBER: ${{ github.run_number }}
           BITRISE_LAST_BUILD_NUMBER: 860
-        run: echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))" >> $GITHUB_ENV          
+        run: |
+          echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))" >> $GITHUB_ENV
+          echo "::set-output name=build_number::${{ env.APP_BUILD_NUMBER }}"
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
@@ -156,8 +161,8 @@ jobs:
         id: github_release
         uses: release-drafter/release-drafter@v5.19.0
         with:
-          name: Release ${{ env.APP_VERSION }}.${{ env.APP_BUILD_NUMBER }}
-          tag: ${{ env.APP_VERSION }}.${{ env.APP_BUILD_NUMBER }}
+          name: Release ${{ env.APP_VERSION }}.${{ needs.build.outputs.build_number }}
+          tag: ${{ env.APP_VERSION }}.${{ needs.build.outputs.build_number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
