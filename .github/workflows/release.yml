@@ -7,7 +7,7 @@ on: [ push ]
 #   workflow_dispatch:
   
 env:
-  APP_VERSION: 2.2.0
+  APP_VERSION: 2.2.5
   APP_BUNDLE_ID: by.bntu.educats
   ARTIFACTS_IPA_PATH: ./artifacts/EduCATS.ipa
   ARTIFACTS_APK_PATH: ./artifacts/by.bntu.educats.apk
@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/cache@v3.0.3
       
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
@@ -75,9 +75,11 @@ jobs:
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
         with:
-          info-plist-path: ./source/EduCATS.iOS/Info.plist
-          bundle-version: ${{ env.APP_VERSION }}
-          bundle-short-version-string: ${{ env.APP_BUILD_NUMBER }}
+          info-plist-path: $INFO_PLIST_PATH
+          bundle-version: ${{ env.APP_BUILD_NUMBER }}
+          bundle-short-version-string: ${{ env.APP_VERSION }}
+        env:
+          INFO_PLIST_PATH: ./source/EduCATS.iOS/Info.plist     
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
@@ -93,9 +95,9 @@ jobs:
       
       - name: Android Build (apk + aab)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='$KEYSTORE_FILENAME' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $APK_FILE_PATH ${{ env.ARTIFACTS_APK_PATH }}
-          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore='$KEYSTORE_FILENAME' /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $AAB_FILE_PATH ${{ env.ARTIFACTS_AAB_PATH }}
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
