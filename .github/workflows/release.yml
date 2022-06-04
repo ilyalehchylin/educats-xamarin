@@ -159,10 +159,10 @@ jobs:
           track: beta
           
       - name: Release Tag
-        uses: negz/create-tag@v1
+        uses: simpleactions/create-tag@v1.0.0
         with:
-         token: ${{ secrets.GITHUB_TOKEN }}
-         version: ${{ env.APP_VERSION }}.${{ needs.build.outputs.build_number }}
+         github_token: ${{ secrets.GITHUB_TOKEN }}
+         tag: ${{ env.APP_VERSION }}.${{ needs.build.outputs.build_number }}
          message: Release ${{ env.APP_VERSION }}.${{ needs.build.outputs.build_number }}
           
       - name: Github Release
