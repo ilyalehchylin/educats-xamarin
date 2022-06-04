@@ -1,11 +1,11 @@
 name: release
 
-on: [ push, workflow_dispatch ]
-#  push:
-#    branches: [ master ]
+on:
+ workflow_dispatch:
+ push:
+   branches:
+    - feature/github-actions
 
-#   workflow_dispatch:
-  
 env:
   APP_VERSION: 2.2.5
   ARTIFACTS_DIRECTORY: ./artifacts
