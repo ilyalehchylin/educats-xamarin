@@ -40,7 +40,8 @@ jobs:
           OBJ_DIRECTORY_IOS: ./source/EduCATS.iOS/obj
           OBJ_DIRECTORY_ANDROID: ./source/EduCATS.Android/obj
       
-      - name: NuGet Restore
+      - if: ${{ steps.nuget-cache.outputs.cache-hit == 'false' }}
+        name: NuGet Restore
         run: nuget restore ${{ env.SOLUTION_PATH }}
           
   test:
