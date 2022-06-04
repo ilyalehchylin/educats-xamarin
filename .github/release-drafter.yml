@@ -3,6 +3,7 @@ exclude-labels:
   - 'documentation'
   - 'packages'
   - 'repository'
+  - 'github-actions'
 categories:
   - title: 'New Features'
     label: 'feature'
