@@ -74,10 +74,8 @@ jobs:
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
-        env:
-          INFO_PLIST_PATH: ./source/EduCATS.iOS/Info.plist
         with:
-          info-plist-path: $INFO_PLIST_PATH
+          info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_BUILD_NUMBER }}
           bundle-short-version-string: ${{ env.APP_VERSION }}
           
