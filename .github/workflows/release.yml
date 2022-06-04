@@ -37,6 +37,8 @@ jobs:
             $OBJ_DIRECTORY_IOS
             $OBJ_DIRECTORY_ANDROID
           key: ${{ runner.os }}-nuget
+          restore-keys: |
+            ${{ runner.os }}-
         env:
           CACHE_DIRECTORY: ~/.nuget/packages
           OBJ_DIRECTORY_FORMS: ./source/EduCATS/obj
