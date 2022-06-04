@@ -83,7 +83,7 @@ jobs:
           BITRISE_LAST_BUILD_NUMBER: 860
         run: |
           echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))" >> $GITHUB_ENV
-          echo "::set-output name=build::${{ env.APP_BUILD_NUMBER }}"
+          echo "::set-output name=build::$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))"
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
