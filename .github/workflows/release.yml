@@ -80,20 +80,16 @@ jobs:
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
         with:
-          info-plist-path: $INFO_PLIST_PATH
+          info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_BUILD_NUMBER }}
           bundle-short-version-string: ${{ env.APP_VERSION }}
-        env:
-          INFO_PLIST_PATH: './source/EduCATS.iOS/Info.plist'
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
-          android-manifest-path: $ANDROID_MANIFEST_PATH
+          android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
           version-name: ${{ env.APP_VERSION }}
           version-code: ${{ env.APP_BUILD_NUMBER }}
-        env:
-          ANDROID_MANIFEST_PATH: './source/EduCATS.Android/Properties/AndroidManifest.xml'
       
       - name: Artifacts Directory Setup
         run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
@@ -150,12 +146,9 @@ jobs:
         uses: r0adkll/upload-google-play@v1.0.15
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
-          packageName: $BUNDLE_ID
-          releaseFile: $FILE_PATH_AAB
+          packageName: by.bntu.educats
+          releaseFiles: ./by.bntu.educats.aab
           track: beta
-        env:
-          BUNDLE_ID: by.bntu.educats
-          FILE_PATH_AAB: './by.bntu.educats.aab'
           
       - name: Github Release
         id: github_release
@@ -163,19 +156,14 @@ jobs:
         with:
           name: Release ${{ env.APP_VERSION }}.${{ env.APP_BUILD_NUMBER }}
           tag: ${{ env.APP_VERSION }}.${{ env.APP_BUILD_NUMBER }}
-          template: |
-            Changelog
-            
-            $CHANGES
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Github Release Artifacts Upload
         uses: nanoufo/action-upload-artifacts-and-release-assets@v1.4
         with:
-          path: $APK_FILE_PATH
+          path: ./by.bntu.educats.apk
           upload-release-files: true
           release-upload-url: ${{ steps.github_release.outputs.upload_url }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          APK_FILE_PATH: ./by.bntu.educats.apk
