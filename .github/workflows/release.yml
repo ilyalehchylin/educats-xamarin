@@ -129,7 +129,7 @@ jobs:
           (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > $AUTH_KEY
           xcrun altool --upload-app -f ${{ env.ARTIFACTS_IPA_PATH }} --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
         env:
-          AUTH_KEY: ./source/EduCATS.iOS/AuthKey.p8
+          AUTH_KEY: ./AuthKey.p8
           
       - name: Google Play Deploy
         uses: r0adkll/upload-google-play@v1.0.15
