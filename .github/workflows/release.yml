@@ -9,9 +9,6 @@ on: [ push ]
 env:
   APP_VERSION: 2.2.5
   ARTIFACTS_DIRECTORY: ./artifacts
-  ARTIFACTS_IPA_PATH: ./artifacts/EduCATS.ipa
-  ARTIFACTS_APK_PATH: ./artifacts/by.bntu.educats.apk
-  ARTIFACTS_AAB_PATH: ./artifacts/by.bntu.educats.aab
   COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
   SOLUTION_PATH: ./source/EduCATS.sln
 
@@ -100,22 +97,25 @@ jobs:
       - name: Android Build (apk + aab)
         run: |
           MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
-          cp $APK_FILE_PATH ${{ env.ARTIFACTS_APK_PATH }}
+          cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
           MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
-          cp $AAB_FILE_PATH ${{ env.ARTIFACTS_AAB_PATH }}
+          cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
           KEYSTORE_FILENAME: educats-release.keystore
           APK_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.apk
           AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
+          ARTIFACTS_APK_PATH: ./artifacts/by.bntu.educats.apk
+          ARTIFACTS_AAB_PATH: ./artifacts/by.bntu.educats.aab
 
       - name: iOS Build
         run: |
           MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true $PROJECT_PATH
-          cp $IPA_PATH ${{ env.ARTIFACTS_IPA_PATH }}
+          cp $IPA_PATH $ARTIFACTS_IPA_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
+          ARTIFACTS_IPA_PATH: ./artifacts/EduCATS.ipa
           
       - name: Artifacts Upload
         uses: actions/upload-artifact@v2
@@ -137,16 +137,41 @@ jobs:
       - name: AppStore Deploy
         run: |
           (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > $AUTH_KEY
-          xcrun altool --upload-app -f ${{ env.ARTIFACTS_IPA_PATH }} --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
+          xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
         env:
           AUTH_KEY: ./AuthKey.p8
+          IPA_FILE_PATH: ./EduCATS.ipa
           
       - name: Google Play Deploy
         uses: r0adkll/upload-google-play@v1.0.15
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
           packageName: $BUNDLE_ID
-          releaseFiles: ${{ env.ARTIFACTS_AAB_PATH }}
+          releaseFiles: $AAB_FILE_PATH
           track: beta
         env:
           BUNDLE_ID: by.bntu.educats
+          AAB_FILE_PATH: ./by.bntu.educats.aab
+          
+      - name: Github Release
+        id: github_release
+        uses: release-drafter/release-drafter@v5.19.0
+        with:
+          name: Release ${{ env.APP_VERSION }}.${{ env.APP_BUILD_NUMBER }}
+          tag: ${{ env.APP_VERSION }}.${{ env.APP_BUILD_NUMBER }}
+          template: |
+            Changelog
+            
+            $CHANGES
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Github Release Artifacts Upload
+        uses: nanoufo/action-upload-artifacts-and-release-assets@v1.4
+        with:
+          path: $APK_FILE_PATH
+          upload-release-files: true
+          release-upload-url: ${{ steps.github_release.outputs.upload_url }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          APK_FILE_PATH: ./by.bntu.educats.apk
