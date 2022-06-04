@@ -10,6 +10,8 @@ env:
   APP_VERSION: 2.2.5
   ARTIFACTS_DIRECTORY: ./artifacts
   COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
+  GIT_AUTO_USER_NAME: github-actions
+  GIT_AUTO_USER_EMAIL: auto@users.noreply.github.com
   SOLUTION_PATH: ./source/EduCATS.sln
 
 jobs:
@@ -165,5 +167,39 @@ jobs:
           path: ./by.bntu.educats.apk
           upload-release-files: true
           release-upload-url: ${{ steps.github_release.outputs.upload_url }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+  docs:
+    runs-on: macos-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Docs Generation
+        run: sh ./scripts/docs_generator.sh
+        
+      - name: Date Setup
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        
+      - name: Docs Push (master)
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'master'
+          commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
+          files: ./docs
+          name: ${{ env.GIT_AUTO_USER_NAME }}
+          email: ${{ env.GIT_AUTO_USER_EMAIL }}
+          
+      - name: Changes Merge (develop)
+        uses: bambamboole/gha-upmerge@v1.0.1
+        with:
+          from_branch: 'master'
+          to_branch: 'develop'
+          user_name: ${{ env.GIT_AUTO_USER_NAME }}
+          user_email: ${{ env.GIT_AUTO_USER_EMAIL }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
