@@ -74,12 +74,12 @@ jobs:
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
+        env:
+          INFO_PLIST_PATH: ./source/EduCATS.iOS/Info.plist
         with:
           info-plist-path: $INFO_PLIST_PATH
           bundle-version: ${{ env.APP_BUILD_NUMBER }}
           bundle-short-version-string: ${{ env.APP_VERSION }}
-        env:
-          INFO_PLIST_PATH: ./source/EduCATS.iOS/Info.plist     
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
@@ -119,6 +119,7 @@ jobs:
   deploy:
     runs-on: macos-latest
     environment: github-actions-release
+    needs: build
 
     steps:
       - uses: actions/download-artifact@v2
