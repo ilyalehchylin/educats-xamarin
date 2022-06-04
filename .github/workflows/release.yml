@@ -31,10 +31,15 @@ jobs:
         id: nuget-cache
         uses: actions/cache@v3.0.3
         with:
-          path: $CACHE_DIRECTORY
+          path: |
+            $CACHE_DIRECTORY
+            $OBJ_DIRECTORY_IOS
+            $OBJ_DIRECTORY_ANDROID
           key: ${{ runner.os }}-nuget
         env:
           CACHE_DIRECTORY: ~/.nuget/packages
+          OBJ_DIRECTORY_IOS: ./source/EduCATS.iOS/obj
+          OBJ_DIRECTORY_ANDROID: ./source/EduCATS.Android/obj
           
   test:
     runs-on: macos-latest
