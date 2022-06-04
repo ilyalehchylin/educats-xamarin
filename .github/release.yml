@@ -4,6 +4,7 @@ changelog:
       - release
       - documentation
       - packages
+      - repository
   categories:
     - title: New Features
       labels:
