@@ -26,7 +26,6 @@ jobs:
     needs: test
     env:
       APP_VERSION: 2.2.5
-      ARTIFACTS_DIRECTORY: ./artifacts
       BUILD_CONFIGURATION: Release
     outputs:
       build_number: ${{ steps.build_number_setup.outputs.build }}
@@ -34,11 +33,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
-      - run: |
-          echo $APP_VERSION
-          echo $ARTIFACTS_DIRECTORY
-          echo $BUILD_CONFIGURATION
         
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
@@ -87,7 +81,7 @@ jobs:
           version-code: ${{ env.APP_BUILD_NUMBER }}
       
       - name: Artifacts Directory Setup
-        run: mkdir $ARTIFACTS_DIRECTORY
+        run: mkdir ./artifacts
       
       - name: Android Build (apk + aab)
         run: |
@@ -117,7 +111,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: apps-artifacts
-          path: $ARTIFACTS_DIRECTORY
+          path: ./artifacts
           
   deploy:
     runs-on: macos-latest
