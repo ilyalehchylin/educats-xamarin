@@ -1,9 +1,6 @@
 name: build
 
-# on: [ push ]
-on:
-  push:
-    branches: [ develop ]
+on: [ pull_request ]
 
 jobs:
   build:
