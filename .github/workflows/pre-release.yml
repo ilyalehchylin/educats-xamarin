@@ -19,9 +19,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
-      - name: Run tmate
-        uses: mxschmitt/action-tmate@v2
-        
       - run: |
           touch ./version.txt
           echo $TEST_VAR > ./version.txt
@@ -44,6 +41,9 @@ jobs:
           cat ./version.txt
         env:
           TEST_VAR: ${{ secrets.APP_BUILD_NUMBER }}
+          
+      - name: Run tmate
+        uses: mxschmitt/action-tmate@v2
       
       - name: Unit-Tests
         run: dotnet test $PROJECT_PATH
