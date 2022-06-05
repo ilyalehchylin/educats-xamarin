@@ -4,14 +4,16 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+	    <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
         <LangVersion>8.0</LangVersion>
+	    <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <LangVersion>8.0</LangVersion>
+	    <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.13.1" />
