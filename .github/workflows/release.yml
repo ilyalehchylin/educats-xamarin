@@ -3,8 +3,8 @@ name: release
 on:
  workflow_dispatch:
  push:
-   branches:
-    - master
+#    branches:
+#     - master
 
 env:
   APP_VERSION: 2.2.5
