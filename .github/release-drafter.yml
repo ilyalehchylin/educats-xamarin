@@ -1,0 +1,19 @@
+exclude-labels:
+  - 'release'
+  - 'documentation'
+  - 'packages'
+  - 'repository'
+  - 'github-actions'
+categories:
+  - title: 'New Features'
+    label: 'feature'
+  - title: 'Bug Fixes'
+    label: 'bugfix'
+  - title: 'Other Changes'
+    label: 'update'
+change-template: '- $TITLE (#$NUMBER)'
+template: |
+  Changelog
+
+  $CHANGES
+  
