@@ -47,8 +47,6 @@ jobs:
     runs-on: macos-latest
     environment: github-actions-release
     needs: test
-    outputs:
-      build_number: ${{ steps.build_number_setup.outputs.build }}
     
     steps:
       - name: Checkout
@@ -165,16 +163,19 @@ jobs:
         uses: simpleactions/create-tag@v1.0.0
         with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
-         tag: ${{ env.APP_VERSION }}.${{ needs.build.outputs.build_number }}
-         message: Release ${{ env.APP_VERSION }}.${{ needs.build.outputs.build_number }}
+         tag: ${{ env.APP_VERSION }}.$APP_BUILD_NUMBER
+         message: Release ${{ env.APP_VERSION }}.$APP_BUILD_NUMBER
+        env:
+          APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
           
       - name: Github Release
         id: github_release
         uses: release-drafter/release-drafter@v5.19.0
         with:
-          name: Release ${{ env.APP_VERSION }}.${{ needs.build.outputs.build_number }}
-          tag: ${{ env.APP_VERSION }}.${{ needs.build.outputs.build_number }}
+          name: Release ${{ env.APP_VERSION }}.$APP_BUILD_NUMBER
+          tag: ${{ env.APP_VERSION }}.$APP_BUILD_NUMBER
         env:
+          APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Github Release Artifacts Upload
