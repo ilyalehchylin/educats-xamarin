@@ -7,29 +7,44 @@ on:
 #     branches:
 #       - develop
 
-env:
-  APP_VERSION: 2.2.5
-  ARTIFACTS_DIRECTORY: ./artifacts
-  SOLUTION_PATH: ./source/EduCATS.sln
-
 jobs:
   test:
     runs-on: macos-latest
     environment: github-actions-release
+    env:
+      COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
     
     steps:
       - name: Checkout
         uses: actions/checkout@v3
     
-      - name: Unit-Tests
-        run: dotnet test $PROJECT_PATH
+      - name: Unit-Tests Build + Coverlet
+        run: |
+          dotnet tool install --global coverlet.console
+          dotnet add $PROJECT_PATH package coverlet.collector
+          dotnet build $PROJECT_PATH
+          dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
+          mv $COVERAGE_DIRECTORY/*/$COVERAGE_INFO_FILENAME $COVERAGE_COVERAGE_FILE_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
+          COVERLET_SETTINGS: ./source/coverlet.runsettings
+          COVERAGE_DIRECTORY: ./coverage
+          COVERAGE_INFO_FILENAME: coverage.info          
+        
+      - name: Codecov Deploy
+        uses: codecov/codecov-action@v3.1.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: $COVERAGE_COVERAGE_FILE_PATH
+          os: macos
           
   build:
     runs-on: macos-latest
     environment: github-actions-release
     needs: test
+    env:
+      APP_VERSION: 2.2.5
+      ARTIFACTS_DIRECTORY: ./artifacts
     outputs:
       build_number: ${{ steps.build_number_setup.outputs.build }}
     
@@ -38,7 +53,9 @@ jobs:
         uses: actions/checkout@v3
         
       - name: NuGet Restore
-        run: nuget restore ${{ env.SOLUTION_PATH }}
+        run: nuget restore $SOLUTION_PATH
+        env:
+          SOLUTION_PATH: ./source/EduCATS.sln
         
       - name: iOS Certificates Install
         uses: apple-actions/import-codesign-certs@v1
@@ -72,17 +89,17 @@ jobs:
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_BUILD_NUMBER }}
-          bundle-short-version-string: ${{ env.APP_VERSION }}
+          bundle-short-version-string: $APP_VERSION
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-name: ${{ env.APP_VERSION }}
+          version-name: $APP_VERSION
           version-code: ${{ env.APP_BUILD_NUMBER }}
       
       - name: Artifacts Directory Setup
-        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
+        run: mkdir $ARTIFACTS_DIRECTORY
       
       - name: Android Build (apk + aab)
         run: |
@@ -111,7 +128,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: apps-artifacts
-          path: ${{ env.ARTIFACTS_DIRECTORY }}
+          path: $ARTIFACTS_DIRECTORY
           
   deploy:
     runs-on: macos-latest
