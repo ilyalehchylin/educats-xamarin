@@ -18,18 +18,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-        
-      - run: echo ${{ secrets.APP_BUILD_NUMBER }}
-      - name: Update App Build Secret
-        uses: virgil246/secret-manage-action@v1.1.3
-        with:
-          repo: ilyalehchylin/educats-xamarin
-          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          name: APP_BUILD_NUMBER
-          value: $((${{ secrets.APP_BUILD_NUMBER }}+$BITRISE_LAST_BUILD_NUMBER))
-        env:
-          BITRISE_LAST_BUILD_NUMBER: 860
-      - run: echo ${{ secrets.APP_BUILD_NUMBER }}
     
       - name: Unit-Tests
         run: dotnet test $PROJECT_PATH
@@ -70,17 +58,28 @@ jobs:
         env:
           KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
       
-      - name: Build Number Variable Setup
-        run: echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))" >> $GITHUB_ENV
+#       - name: Build Number Variable Setup
+#         run: echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))" >> $GITHUB_ENV
+#         env:
+#           GITHUB_WORKFLOW_NUMBER: ${{ github.run_number }}
+#           BITRISE_LAST_BUILD_NUMBER: 860
+
+      - name: App Build Secret Update
+        uses: virgil246/secret-manage-action@v1.1.3
+        with:
+          repo: ilyalehchylin/educats-xamarin
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          name: APP_BUILD_NUMBER
+          value: $((${{ secrets.APP_BUILD_NUMBER }}+$BITRISE_LAST_BUILD_NUMBER))
         env:
-          GITHUB_WORKFLOW_NUMBER: ${{ github.run_number }}
           BITRISE_LAST_BUILD_NUMBER: 860
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
-          bundle-version: ${{ env.APP_BUILD_NUMBER }}
+#           bundle-version: ${{ env.APP_BUILD_NUMBER }}
+          bundle-version: ${{ secrets.APP_BUILD_NUMBER }}
           bundle-short-version-string: ${{ env.APP_VERSION }}
           
       - name: AndroidManifest Version Update
@@ -88,7 +87,8 @@ jobs:
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
           version-name: ${{ env.APP_VERSION }}
-          version-code: ${{ env.APP_BUILD_NUMBER }}
+#           version-code: ${{ env.APP_BUILD_NUMBER }}
+          version-code: ${{ secrets.APP_BUILD_NUMBER }}
       
       - name: Artifacts Directory Setup
         run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
