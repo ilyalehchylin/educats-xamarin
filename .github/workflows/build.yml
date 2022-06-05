@@ -27,10 +27,19 @@ jobs:
         uses: actions/checkout@v3
       
       - name: Restore NuGet packages
-        run: nuget restore ./source/EduCATS.sln
+        run: nuget restore $SOLUTION_PATH
+        env:
+          SOLUTION_PATH: ./source/EduCATS.sln
         
       - name: Build iOS        
-        run: MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhoneSimulator ./source/EduCATS.iOS/EduCATS.iOS.csproj              
-      
+        run: MSBuild /t:Build /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM $PROJECT_PATH
+        env:
+          CONFIGURATION: Release
+          PLATFORM: iPhoneSimulator
+          PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
+          
       - name: Build Android
-        run: MSBuild /t:Build /p:Configuration=Release ./source/EduCATS.Android/EduCATS.Android.csproj
+        run: MSBuild /t:Build /p:Configuration=$CONFIGURATION $PROJECT_PATH
+        env:
+          CONFIGURATION: Release
+          PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
