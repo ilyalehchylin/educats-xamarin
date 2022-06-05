@@ -35,6 +35,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
+      - run: |
+          echo $APP_VERSION
+          echo $ARTIFACTS_DIRECTORY
+          echo $BUILD_CONFIGURATION
+        
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
         env:
