@@ -4,8 +4,8 @@ on:
   workflow_call:
   workflow_dispatch:
   push:
-#     branches:
-#       - develop
+    branches:
+      - develop
 
 jobs:
   test:
