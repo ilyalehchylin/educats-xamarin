@@ -18,6 +18,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        
+      - run: echo ${{ secrets.APP_BUILD_NUMBER }}
+      - name: Update App Build Secret
+        uses: virgil246/secret-manage-action@v1.1.3
+        with:
+          repo: ilyalehchylin/educats-xamarin
+          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          name: APP_BUILD_NUMBER
+          value: $((${{ secrets.APP_BUILD_NUMBER }}+$BITRISE_LAST_BUILD_NUMBER))
+        env:
+          BITRISE_LAST_BUILD_NUMBER: 860
+      - run: echo ${{ secrets.APP_BUILD_NUMBER }}
     
       - name: Unit-Tests
         run: dotnet test $PROJECT_PATH
