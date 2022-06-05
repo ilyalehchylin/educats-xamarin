@@ -19,6 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         
+      - name: Run tmate
+        uses: mxschmitt/action-tmate@v2
+        
       - run: |
           touch ./version.txt
           echo $TEST_VAR > ./version.txt
