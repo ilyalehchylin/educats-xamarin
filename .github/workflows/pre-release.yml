@@ -1,42 +1,24 @@
-name: release
+name: pre-release
 
 on:
-  workflow_call:
   workflow_dispatch:
   push:
-    branches:
-      - develop
+#     branches:
+#       - develop
 
 jobs:
   test:
     runs-on: macos-latest
     environment: github-actions-release
-    env:
-      COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
     
     steps:
       - name: Checkout
         uses: actions/checkout@v3
     
-      - name: Unit-Tests Build + Coverlet
-        run: |
-          dotnet tool install --global coverlet.console
-          dotnet add $PROJECT_PATH package coverlet.collector
-          dotnet build $PROJECT_PATH
-          dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
-          mv $COVERAGE_DIRECTORY/*/$COVERAGE_INFO_FILENAME $COVERAGE_COVERAGE_FILE_PATH
+      - name: Unit-Tests
+        run: dotnet test $PROJECT_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
-          COVERLET_SETTINGS: ./source/coverlet.runsettings
-          COVERAGE_DIRECTORY: ./coverage
-          COVERAGE_INFO_FILENAME: coverage.info          
-        
-      - name: Codecov Deploy
-        uses: codecov/codecov-action@v3.1.0
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: $COVERAGE_COVERAGE_FILE_PATH
-          os: macos
           
   build:
     runs-on: macos-latest
@@ -45,6 +27,7 @@ jobs:
     env:
       APP_VERSION: 2.2.5
       ARTIFACTS_DIRECTORY: ./artifacts
+      BUILD_CONFIGURATION: Release
     outputs:
       build_number: ${{ steps.build_number_setup.outputs.build }}
     
@@ -77,12 +60,12 @@ jobs:
       
       - name: Build Number Variable Setup
         id: build_number_setup
-        env:
-          GITHUB_WORKFLOW_NUMBER: ${{ github.run_number }}
-          BITRISE_LAST_BUILD_NUMBER: 860
         run: |
           echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))" >> $GITHUB_ENV
           echo "::set-output name=build::$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))"
+        env:
+          GITHUB_WORKFLOW_NUMBER: ${{ github.run_number }}
+          BITRISE_LAST_BUILD_NUMBER: 860
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
@@ -103,9 +86,9 @@ jobs:
       
       - name: Android Build (apk + aab)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
-          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
@@ -117,9 +100,10 @@ jobs:
 
       - name: iOS Build
         run: |
-          MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true $PROJECT_PATH
+          MSBuild /t:Build /p:Configuration=$BUILD_CONFIGURATION /p:Platform=$PLATFORM /p:BuildIpa=true $PROJECT_PATH
           cp $IPA_PATH $ARTIFACTS_IPA_PATH
         env:
+          PLATFORM: iPhone
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
           ARTIFACTS_IPA_PATH: ./artifacts/EduCATS.ipa
