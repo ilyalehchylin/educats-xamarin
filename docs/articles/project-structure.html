@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Project structure | EduCATS Xamarin Documentation </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Project structure | EduCATS Xamarin Documentation ">
+    <meta name="generator" content="docfx 2.59.2.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+    <meta property="docfx:navrel" content="../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../articles/project-structure.html" title="About project">About project</a>
+                      </li>
+                      <li>
+                          <a href="../api/EduCATS.html" title="Code documentation">Code documentation</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="active">
+                      <a href="project-structure.html" title="Project structure" class="active">Project structure</a>
+                    </li>
+                    <li class="">
+                      <a href="resources.html" title="Resources" class="">Resources</a>
+                    </li>
+                    <li class="">
+                      <a href="services.html" title="Services" class="">Services</a>
+                    </li>
+                    <li class="">
+                      <a href="continuous-integration.html" title="Continious integration" class="">Continious integration</a>
+                    </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="project-structure">Project structure</h1>
+
+<p><a href="./source/EduCATS">EduCATS</a> project has the following structure:</p>
+<ul>
+<li><p><strong>Configuration</strong><br>
+Contains configuration files like <a href="https://ilyalehchylin.github.io/educats-xamarin/api/EduCATS.Configuration.AppConfig.html">AppConfig</a> (which is used to configure packages, helpers and tools on application start).</p>
+</li>
+<li><p><strong>Constants</strong><br>
+Contains static classes with global constants.</p>
+</li>
+<li><p><strong>Controls</strong><br>
+Contains views &amp; controls used in the application.</p>
+</li>
+<li><p><strong>Data</strong><br>
+Retrieves, handles, caches and gives access to API data with the help of <a href="https://ilyalehchylin.github.io/educats-xamarin/api/EduCATS.Data.DataAccess.html">DataAccess</a>.</p>
+</li>
+<li><p><strong>Fonts</strong><br>
+Provides fonts and font controllers. More details <a href="./pages/articles/resources.md#fonts">here</a>.</p>
+</li>
+<li><p><strong>Helpers</strong><br>
+Provides helpers and tools for the application (for both UI and logic).</p>
+</li>
+<li><p><strong>Localization</strong><br>
+Contains <code>JSON</code> localization files. More details <a href="./pages/articles/resources.md#localization">here</a>.</p>
+</li>
+<li><p><strong>Networking</strong><br>
+Provides wrapper for the network services and contains API methods (used only by <a href="https://ilyalehchylin.github.io/educats-xamarin/api/EduCATS.Data.DataAccess.html">DataAccess</a>).</p>
+</li>
+<li><p><strong>Pages</strong><br>
+Contains application pages with <code>Model-View-ViewModel (MVVM)</code> pattern.</p>
+<ul>
+<li><strong>Models</strong><br>
+Page models.</li>
+<li><strong>ViewModels</strong><br>
+Page view models (logic).</li>
+<li><strong>Views</strong><br>
+Page views (UI).</li>
+</ul>
+</li>
+<li><p><strong>Properties</strong><br>
+Project's <code>AssemblyInfo</code> (used basically for fonts, more details <a href="./pages/articles/resources.md#fonts">here</a>).</p>
+</li>
+<li><p><strong>Themes</strong><br>
+Used to store application themes and provides manager for this purpose. More details here.</p>
+</li>
+</ul>
+<h3 id="additional-information">Additional information</h3>
+<ul>
+<li>Interfaces are stored in separate directories in places where they are implemented (e.g. <code>Themes/DependencyServices/Interfaces</code>, <code>Data/Interfaces</code>, etc.).</li>
+<li>API models are stored in <code>Data/Models</code>.</li>
+<li>Networking models (for <code>POST</code> requests) are stored in <code>Networking/Models</code>.</li>
+<li><code>Data</code> also contains <code>User</code> directory used for managing user's account.</li>
+</ul>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (C) EduCATS. Generated by DocFX.
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
