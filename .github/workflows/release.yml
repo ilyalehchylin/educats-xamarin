@@ -163,19 +163,16 @@ jobs:
         uses: simpleactions/create-tag@v1.0.0
         with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
-         tag: ${{ env.APP_VERSION }}.$APP_BUILD_NUMBER
-         message: Release ${{ env.APP_VERSION }}.$APP_BUILD_NUMBER
-        env:
-          APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
+         tag: ${{ env.APP_VERSION }}.${{ secrets.APP_BUILD_NUMBER }}
+         message: Release ${{ env.APP_VERSION }}.${{ secrets.APP_BUILD_NUMBER }}
           
       - name: Github Release
         id: github_release
         uses: release-drafter/release-drafter@v5.19.0
         with:
-          name: Release ${{ env.APP_VERSION }}.$APP_BUILD_NUMBER
-          tag: ${{ env.APP_VERSION }}.$APP_BUILD_NUMBER
+          name: Release ${{ env.APP_VERSION }}.${{ secrets.APP_BUILD_NUMBER }}
+          tag: ${{ env.APP_VERSION }}.${{ secrets.APP_BUILD_NUMBER }}
         env:
-          APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
       - name: Github Release Artifacts Upload
@@ -188,7 +185,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
   docs:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     needs: deploy
     
     steps:
@@ -202,7 +199,7 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
         
-      - name: Docs Push (master)
+      - name: Docs Push
         uses: github-actions-x/commit@v2.9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -212,13 +209,3 @@ jobs:
           name: ${{ env.GIT_USER_NAME }}
           email: ${{ env.GIT_USER_EMAIL }}
           rebase: 'true'
-          
-      - name: Changes Merge (develop)
-        uses: bambamboole/gha-upmerge@v1.0.1
-        with:
-          from_branch: 'master'
-          to_branch: 'develop'
-          user_name: ${{ env.GIT_USER_NAME }}
-          user_email: ${{ env.GIT_USER_EMAIL }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
