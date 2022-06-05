@@ -92,15 +92,15 @@ jobs:
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
-          bundle-version: ${{ env.APP_BUILD_NUMBER }}
-          bundle-short-version-string: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
+          bundle-version: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
+          bundle-short-version-string: ${{ env.APP_VERSION }}
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-name: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
-          version-code: ${{ env.APP_BUILD_NUMBER }}
+          version-name: ${{ env.APP_VERSION }}
+          version-code: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
       
       - name: Artifacts Directory Setup
         run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
