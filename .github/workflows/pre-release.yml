@@ -6,6 +6,10 @@ on:
 #     branches:
 #       - develop
 
+env:
+  APP_VERSION: 2.2.5
+  ARTIFACTS_DIRECTORY: ./artifacts
+  
 jobs:
   test:
     runs-on: macos-latest
@@ -25,10 +29,7 @@ jobs:
     environment: github-actions-release
     needs: test
     env:
-      APP_VERSION: 2.2.5
       BUILD_CONFIGURATION: Release
-    outputs:
-      build_number: ${{ steps.build_number_setup.outputs.build }}
     
     steps:
       - name: Checkout
@@ -58,10 +59,7 @@ jobs:
           KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
       
       - name: Build Number Variable Setup
-        id: build_number_setup
-        run: |
-          echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))" >> $GITHUB_ENV
-          echo "::set-output name=build::$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))"
+        run: echo "APP_BUILD_NUMBER=$(($GITHUB_WORKFLOW_NUMBER+$BITRISE_LAST_BUILD_NUMBER))" >> $GITHUB_ENV
         env:
           GITHUB_WORKFLOW_NUMBER: ${{ github.run_number }}
           BITRISE_LAST_BUILD_NUMBER: 860
@@ -71,17 +69,17 @@ jobs:
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_BUILD_NUMBER }}
-          bundle-short-version-string: $APP_VERSION
+          bundle-short-version-string: ${{ env.APP_VERSION }}
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-name: $APP_VERSION
+          version-name: ${{ env.APP_VERSION }}
           version-code: ${{ env.APP_BUILD_NUMBER }}
       
       - name: Artifacts Directory Setup
-        run: mkdir ./artifacts
+        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
       
       - name: Android Build (apk + aab)
         run: |
@@ -111,7 +109,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: apps-artifacts
-          path: ./artifacts
+          path: ${{ env.ARTIFACTS_DIRECTORY }}
           
   deploy:
     runs-on: macos-latest
