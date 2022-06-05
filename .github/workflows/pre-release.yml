@@ -70,7 +70,7 @@ jobs:
           repo: ilyalehchylin/educats-xamarin
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           name: APP_BUILD_NUMBER
-          value: $((${{ secrets.APP_BUILD_NUMBER }}+$BITRISE_LAST_BUILD_NUMBER))
+          value: $((${{ secrets.APP_BUILD_NUMBER }}+$BITRISE_LAST_BUILD_NUMBER+1))
         env:
           BITRISE_LAST_BUILD_NUMBER: 860
       
