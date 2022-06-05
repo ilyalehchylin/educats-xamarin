@@ -23,8 +23,9 @@ jobs:
           touch ./version.txt
           echo ${{ secrets.APP_BUILD_NUMBER }} > ./version.txt
           cat ./version.txt
-          echo ::set-env name=APP_BUILD_NUMBER_INCREMENTED::$((${{ secrets.APP_BUILD_NUMBER }}+$BITRISE_LAST_BUILD_NUMBER))
+          echo ::set-env name=APP_BUILD_NUMBER_INCREMENTED::$(($APP_BUILD_NUMBER+1))
         env:
+          APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
           BITRISE_LAST_BUILD_NUMBER: 860
           
       - name: App Build Secret Update
