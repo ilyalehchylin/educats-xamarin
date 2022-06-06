@@ -7,7 +7,6 @@ on:
       - master
 
 env:
-  APP_VERSION: 2.2.5
   ARTIFACTS_DIRECTORY: ./artifacts
   DOCS_PATH: ./docs
 
@@ -29,8 +28,6 @@ jobs:
     runs-on: macos-latest
     environment: github-actions-release
     needs: test
-    outputs:
-      incremented_build_number: ${{ steps.build_version_bump.outputs.app_build_number }}
     env:
      BUILD_CONFIGURATION: Release
     
@@ -60,10 +57,7 @@ jobs:
           KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
       
       - name: App Build Version Bump
-        id: build_version_bump
-        run: |
-          echo "APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))" >> $GITHUB_ENV
-          echo "::set-output name=app_build_number::${{ env.APP_BUILD_NUMBER_INCREMENTED }}"
+        run: echo "APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))" >> $GITHUB_ENV
         env:
           APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
           
@@ -80,13 +74,13 @@ jobs:
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
-          bundle-short-version-string: ${{ env.APP_VERSION }}
+          bundle-short-version-string: $APP_VERSION_NUMBER
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-name: ${{ env.APP_VERSION }}
+          version-name: $APP_VERSION_NUMBER
           version-code: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
       
       - name: Artifacts Directory Setup
@@ -149,15 +143,15 @@ jobs:
         uses: simpleactions/create-tag@v1.0.0
         with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
-         tag: ${{ env.APP_VERSION }}.${{ needs.build.outputs.incremented_build_number }}
-         message: Release ${{ env.APP_VERSION }}.${{ needs.build.outputs.incremented_build_number }}
+         tag: $APP_VERSION_NUMBER.${{ secrets.APP_BUILD_NUMBER }}
+         message: Release $APP_VERSION_NUMBER.${{ secrets.APP_BUILD_NUMBER }}
           
       - name: Github Release
         id: github_release
         uses: release-drafter/release-drafter@v5.19.0
         with:
-          name: Release ${{ env.APP_VERSION }}.${{ needs.build.outputs.incremented_build_number }}
-          tag: ${{ env.APP_VERSION }}.${{ needs.build.outputs.incremented_build_number }}
+          name: Release $APP_VERSION_NUMBER.${{ secrets.APP_BUILD_NUMBER }}
+          tag: $APP_VERSION_NUMBER.${{ secrets.APP_BUILD_NUMBER }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
