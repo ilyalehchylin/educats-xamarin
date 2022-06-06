@@ -79,13 +79,13 @@ jobs:
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
-          bundle-short-version-string: $APP_VERSION_NUMBER
+          bundle-short-version-string: ${{ secrets.APP_VERSION_NUMBER }}
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-name: $APP_VERSION_NUMBER
+          version-name: ${{ secrets.APP_VERSION_NUMBER }}
           version-code: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
       
       - name: Artifacts Directory Setup
@@ -148,15 +148,15 @@ jobs:
         uses: simpleactions/create-tag@v1.0.0
         with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
-         tag: $APP_VERSION_NUMBER.${{ needs.build.outputs.incremented_build_number }}
-         message: Release $APP_VERSION_NUMBER.${{ needs.build.outputs.incremented_build_number }}
+         tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+         message: Release ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
           
       - name: Github Release
         id: github_release
         uses: release-drafter/release-drafter@v5.19.0
         with:
-          name: Release $APP_VERSION_NUMBER.${{ needs.build.outputs.incremented_build_number }}
-          tag: $APP_VERSION_NUMBER.${{ needs.build.outputs.incremented_build_number }}
+          name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
