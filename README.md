@@ -5,11 +5,17 @@
 A cross-platform client for the [Leaning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
 
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
-[![build](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml)
-[![pre-release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml)
-[![release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml)
+[![Latest GitHub release)](https://img.shields.io/github/v/release/ilyalehchylin/educats-xamarin?logo=github)](https://github.com/ilyalehchylin/educats-xamarin/releases)
 [![Codecov](https://codecov.io/gh/ilyalehchylin/educats-xamarin/branch/develop/graph/badge.svg)](https://codecov.io/gh/ilyalehchylin/educats-xamarin)
-[![Maintainability](https://api.codeclimate.com/v1/badges/24658fe85e2b75648f6d/maintainability)](https://codeclimate.com/github/ilyalehchylin/educats-xamarin/maintainability)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/ilyalehchylin/educats-xamarin?logo=codeclimate)](https://codeclimate.com/github/ilyalehchylin/educats-xamarin/maintainability)
+
+## Pipelines
+
+| Workflow    | Status                                                               |
+| :---        | :---                                                                 |
+| Build | [![build](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml)                                                 |
+| Pre-release | [![pre-release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml) |
+| Release     | [![release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml)     |
 
 ## Tables of Contents
 
@@ -37,7 +43,7 @@ Check [CONTRIBUTING](.github/CONTRIBUTING.md) to know how to help with the proje
 ### Dependencies
 
 | Name                                                                      | Description                                           |
-| :---:                                                                     | :---:                                                 |
+| :---                                                                      | :---                                                  |
 | **[CrossLocalization](https://github.com/nyxbull/CrossLocalization)**     | Custom localization library with JSON files           |
 | **[Icons8](https://icons8.com/)**                                         | Icons for application                                 |
 | **[ACR User Dialogs](https://github.com/aritchie/userdialogs)**           | Cross-platform library for calling standard dialogs   |
