@@ -29,6 +29,8 @@ jobs:
     runs-on: macos-latest
     environment: github-actions-release
     needs: test
+    env:
+     BUILD_CONFIGURATION: Release
     
     steps:
       - name: Checkout
@@ -87,9 +89,9 @@ jobs:
       
       - name: Android Build (apk + aab)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
-          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
@@ -101,7 +103,7 @@ jobs:
 
       - name: iOS Build
         run: |
-          MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true $PROJECT_PATH
+          MSBuild /t:Build /p:Configuration=$BUILD_CONFIGURATION /p:Platform=iPhone /p:BuildIpa=true $PROJECT_PATH
           cp $IPA_PATH $ARTIFACTS_IPA_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
