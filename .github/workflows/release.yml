@@ -9,10 +9,6 @@ on:
 env:
   APP_VERSION: 2.2.5
   ARTIFACTS_DIRECTORY: ./artifacts
-  COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
-  GIT_USER_NAME: github-actions
-  GIT_USER_EMAIL: auto@users.noreply.github.com
-  SOLUTION_PATH: ./source/EduCATS.sln
   DOCS_PATH: ./docs
 
 jobs:
@@ -24,25 +20,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
     
-      - name: Unit-Tests Build + Coverlet
-        run: |
-          dotnet tool install --global coverlet.console
-          dotnet add $PROJECT_PATH package coverlet.collector
-          dotnet build $PROJECT_PATH
-          dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
-          mv $COVERAGE_DIRECTORY/*/$COVERAGE_INFO_FILENAME ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
+      - name: Unit-Tests
+        run: dotnet test $PROJECT_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
-          COVERLET_SETTINGS: ./source/coverlet.runsettings
-          COVERAGE_DIRECTORY: ./coverage
-          COVERAGE_INFO_FILENAME: coverage.info          
-        
-      - name: Codecov Deploy
-        uses: codecov/codecov-action@v3.1.0
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
-          os: macos
           
   build:
     runs-on: macos-latest
@@ -54,7 +35,7 @@ jobs:
         uses: actions/checkout@v3
         
       - name: NuGet Restore
-        run: nuget restore ${{ env.SOLUTION_PATH }}
+        run: nuget restore ./source/EduCATS.sln
         
       - name: iOS Certificates Install
         uses: apple-actions/import-codesign-certs@v1
@@ -145,11 +126,8 @@ jobs:
           name: apps-artifacts
           
       - name: AppStore Deploy
-        run: |
-          (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > $AUTH_KEY
-          xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
+        run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
         env:
-          AUTH_KEY: ./AuthKey.p8
           IPA_FILE_PATH: ./EduCATS.ipa
           
       - name: Google Play Deploy
@@ -227,6 +205,9 @@ jobs:
           push-branch: 'master'
           commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
           files: ${{ env.DOCS_PATH }}
-          name: ${{ env.GIT_USER_NAME }}
-          email: ${{ env.GIT_USER_EMAIL }}
-          rebase: 'true'   
+          name: $GIT_NAME
+          email: $GIT_EMAIL
+          rebase: 'true'
+        env:
+          GIT_NAME: github-actions
+          GIT_EMAIL: auto@users.noreply.github.com
