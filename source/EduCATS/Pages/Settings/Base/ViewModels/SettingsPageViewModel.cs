@@ -101,8 +101,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			};
 
 			if (IsLoggedIn) {
-				SettingsList.Add(
-					createItem(Theme.Current.SettingsLogoutIcon, "settings_logout"));
+				SettingsList.Add(createItem(Theme.Current.SettingsLogoutIcon, "settings_logout"));
 			}
 		}
 
