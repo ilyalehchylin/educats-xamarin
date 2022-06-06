@@ -1,8 +1,9 @@
 name: build
 
-on:
-  workflow_dispatch:
-  pull_request:
+on: [ workflow_dispatch, pull_request ]
+  
+env:
+  COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
 
 jobs:
   test:
@@ -12,11 +13,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-    
-      - name: Unit-Tests
-        run: dotnet test $PROJECT_PATH
+
+      - name: Unit-Tests Build + Coverlet
+        run: |
+          dotnet tool install --global coverlet.console
+          dotnet add $PROJECT_PATH package coverlet.collector
+          dotnet build $PROJECT_PATH
+          dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
+          mv $COVERAGE_DIRECTORY/*/$COVERAGE_INFO_FILENAME ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
+          COVERLET_SETTINGS: ./source/coverlet.runsettings
+          COVERAGE_DIRECTORY: ./coverage
+          COVERAGE_INFO_FILENAME: coverage.info          
+        
+      - name: Codecov Deploy
+        uses: codecov/codecov-action@v3.1.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
+          os: macos
 
   build:
     runs-on: macos-latest
