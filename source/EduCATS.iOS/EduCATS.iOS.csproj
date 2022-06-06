@@ -474,6 +474,18 @@
     <ImageAsset Include="Resources\Dark.xcassets\icon_show_password_dark.imageset\icon_show_password_dark%403x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Dark.xcassets\icon_settings_logout_dark.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Dark.xcassets\icon_settings_logout_dark.imageset\icon_settings_logout_dark%401x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Dark.xcassets\icon_settings_logout_dark.imageset\icon_settings_logout_dark%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Dark.xcassets\icon_settings_logout_dark.imageset\icon_settings_logout_dark%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Resources\Light.xcassets\icon_stats.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -680,6 +692,7 @@
   <ItemGroup>
     <Folder Include="Resources\Dark.xcassets\icon_headphones_light.imageset\" />
     <Folder Include="Resources\Dark.xcassets\icon_show_password_dark.imageset\" />
+    <Folder Include="Resources\Dark.xcassets\icon_settings_logout_dark.imageset\" />
     <Folder Include="Resources\Dark.xcassets\image_background_1_dark.imageset\" />
     <Folder Include="Resources\Dark.xcassets\image_background_2_dark.imageset\" />
     <Folder Include="Resources\Dark.xcassets\image_background_3_dark.imageset\" />

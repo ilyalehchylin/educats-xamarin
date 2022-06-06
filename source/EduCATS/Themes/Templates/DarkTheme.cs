@@ -74,6 +74,8 @@
 		override public string StatisticsDetailsNameColor => _whiteColor;
 		override public string SettingsTitleColor => _whiteColor;
 
+		override public string SettingsLogoutIcon => "icon_settings_logout_dark";
+
 		override public string EemcBackButtonColor => _baseDarkColor;
 		override public string EemcBackButtonTextColor => _whiteColor;
 		override public string EemcItemTitleColor => _whiteColor;
