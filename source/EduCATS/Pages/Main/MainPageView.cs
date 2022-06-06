@@ -82,7 +82,8 @@ namespace EduCATS.Pages.Main
 		{
 			return new NavigationPage(page) {
 				Title = title,
-				IconImageSource = ImageSource.FromFile(icon)
+				IconImageSource = ImageSource.FromFile(icon),
+				BackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor)
 			};
 		}
 
