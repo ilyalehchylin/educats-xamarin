@@ -63,12 +63,13 @@ jobs:
           APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
           
       - name: App Build Secret Update
-        uses: virgil246/secret-manage-action@v1.1.3
+        uses: philips-software/Repo-Secret-Manager@v1.2
         with:
+          action: update
           repo: ilyalehchylin/educats-xamarin
           token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          name: APP_BUILD_NUMBER
-          value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
+          secret-names: APP_BUILD_NUMBER
+          secret-values: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
