@@ -1,46 +1,33 @@
-﻿using EduCATS.Pages.Statistics.Base.Views;
-using System.Collections.Generic;
-using EduCATS.Controls.Pickers;
+﻿using EduCATS.Controls.Pickers;
 using EduCATS.Controls.RoundedListView;
 using EduCATS.Helpers.Forms;
-using EduCATS.Helpers.Forms.Converters;
-using EduCATS.Helpers.Forms.Styles;
-using EduCATS.Pages.Statistics.Base.ViewModels;
+using EduCATS.Pages.Parental.FindGroup.Models;
 using EduCATS.Pages.Statistics.Base.Views.ViewCells;
 using EduCATS.Themes;
-using FFImageLoading.Forms;
-using FFImageLoading.Transformations;
-using Microcharts.Forms;
-using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
-using EduCATS.Pages.Parental.FindGroup.Models;
 
 namespace EduCATS.Pages.Parental.Statistics
 {
-	class ParentalsStatsPageView : ContentPage
+	class ParentalStatsPageView : ContentPage
 	{
+		static Thickness _padding = new Thickness(10, 1, 10, 1);
+		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
 
-		public ParentalsStatsPageView(IPlatformServices service,GroupInfo group)
+		public ParentalStatsPageView(GroupInfo group)
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
-			var parentalsStatsPageViewModel = new ParentalsStatsPageViewModel(service, group);
+			var parentalsStatsPageViewModel = new ParentalsStatsPageViewModel(new PlatformServices(), group);
 			parentalsStatsPageViewModel.Init();
 			BindingContext = parentalsStatsPageViewModel;
-			createViews(service.Preferences.GroupName);
+			createViews();
 		}
 
-
-		static Thickness _padding = new Thickness(10, 1, 10, 1);
-		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
-
-
-		void createViews(string groupName)
+		void createViews()
 		{
-			var headerView = createHeaderView(groupName);
+			var headerView = createHeaderView();
 			var roundedListView = createRoundedList(headerView);
-			
 			Content = roundedListView;
 		}
 
@@ -59,18 +46,20 @@ namespace EduCATS.Pages.Parental.Statistics
 			return roundedListView;
 		}
 
-		StackLayout createHeaderView(string groupName)
+		StackLayout createHeaderView()
 		{
 			var subjectsView = new SubjectsPickerView();
 			var groupButton = new Button
 			{
-				Text = groupName,
 				FontAttributes = FontAttributes.Bold,
 				FontSize = 20,
 				TextColor = Color.FromHex(Theme.Current.BaseLinksColor),
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 			};
+
 			groupButton.SetBinding(Button.CommandProperty, "ParentalCommand");
+			groupButton.SetBinding(Button.TextProperty, "GroupName");
+
 			return new StackLayout
 			{
 				Padding = _headerPadding,

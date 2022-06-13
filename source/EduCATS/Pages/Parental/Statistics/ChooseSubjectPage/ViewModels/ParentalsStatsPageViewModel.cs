@@ -15,13 +15,28 @@ namespace EduCATS.Pages.Parental.Statistics
 {
 	class ParentalsStatsPageViewModel : StatsPageViewModel
 	{
-
 		private List<StatsStudentModel> _students;
-
 		private IPlatformServices _service;
-
 		public GroupInfo Group { get; set; }
-		
+
+		public ParentalsStatsPageViewModel(IPlatformServices services, GroupInfo group) : base(services)
+		{
+			_service = services;
+			Group = group;
+			GroupName = _service.Preferences.GroupName;
+		}
+
+		string _groupName;
+
+		/// <summary>
+		/// Group Name property.
+		/// </summary>
+		public string GroupName
+		{
+			get { return _groupName; }
+			set { SetProperty(ref _groupName, value); }
+		}
+
 		Command _parentalCommand;
 		
 		public Command ParentalCommand
@@ -31,12 +46,6 @@ namespace EduCATS.Pages.Parental.Statistics
 				return _parentalCommand ?? (_parentalCommand = new Command(
 					 () => openParental()));
 			}
-		}
-
-		public ParentalsStatsPageViewModel(IPlatformServices services, GroupInfo group) : base(services)
-		{
-			_service = services;
-			Group = group;
 		}
 
 		public new void Init()
@@ -155,7 +164,7 @@ namespace EduCATS.Pages.Parental.Statistics
 		/// </summary>
 		protected void openParental()
 		{
-			_service.Navigation.OpenParental();
+			_service.Navigation.OpenFindGroup();
 		}
 
 	}

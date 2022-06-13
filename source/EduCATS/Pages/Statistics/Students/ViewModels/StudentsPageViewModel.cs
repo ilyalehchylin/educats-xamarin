@@ -16,7 +16,6 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 {
 	public class StudentsPageViewModel : GroupsViewModel
 	{
-
 		protected readonly IPlatformServices _service;
 		protected readonly int _subjectId;
 		protected readonly List<StatsStudentModel> _studentsList;
