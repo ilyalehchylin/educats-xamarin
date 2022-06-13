@@ -76,9 +76,14 @@ namespace EduCATS.Helpers.Forms.Pages
 		public void OpenMain() =>
 			switchMainPage(new MainPageView());
 
-		public void OpenParental() => switchMainPage(new FindGroupPageView());
+		/// <summary>
+		/// Open group finding page.
+		/// </summary>
+		public void OpenFindGroup() =>
+			switchMainPage(new FindGroupPageView());
 
-		public void OpenParentalStat(IPlatformServices _services,GroupInfo group) => pushPage(new ParentalsStatsPageView(_services, group),CrossLocalization.Translate("main_statistics"));
+		public async Task OpenParentalStats(GroupInfo group, string title) =>
+			await pushPage(new ParentalStatsPageView(group), title);
 
 		/// <summary>
 		/// Open news details page.

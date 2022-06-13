@@ -29,8 +29,19 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// Open main page.
 		/// </summary>
 		void OpenMain();
-		
-		public void OpenParental();
+
+		/// <summary>
+		/// Open finding group page.
+		/// </summary>
+		public void OpenFindGroup();
+
+		/// <summary>
+		/// Open parental control statistics
+		/// </summary>
+		/// <param name="group">Group info.</param>
+		/// <param name="title">Title.</param>
+		/// <returns>Task.</returns>
+		public Task OpenParentalStats(GroupInfo group, string title);
 
 		public Task OpenRegistration(string title);
 
@@ -42,7 +53,6 @@ namespace EduCATS.Helpers.Forms.Pages
 
 		public Task OpenForgotPassword(string title);
 
-		public void OpenParentalStat(IPlatformServices services,GroupInfo group);
 		/// <summary>
 		/// Open news details page.
 		/// </summary>

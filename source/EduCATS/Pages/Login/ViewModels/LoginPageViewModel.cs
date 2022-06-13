@@ -213,7 +213,7 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openParental()
 		{
-			_services.Navigation.OpenParental();
+			_services.Navigation.OpenFindGroup();
 		}
 
 
