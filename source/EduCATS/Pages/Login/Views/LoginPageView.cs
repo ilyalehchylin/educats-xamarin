@@ -8,7 +8,6 @@ using FFImageLoading.Transformations;
 using System.Collections.Generic;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
-using EduCATS.Helpers.Forms.Effects;
 
 namespace EduCATS.Pages.Login.Views
 {
@@ -21,19 +20,19 @@ namespace EduCATS.Pages.Login.Views
 		};
 
 		const double _controlHeight = 50;
-		const double _mascotImage = 200;
+		const double _mascotImageHeight = 200;
+		const double _mascotTailPadding = 30;
 		const double _loginFormSpacing = 0;
 		const double _settingsIconSize = 45;
 		const double _showPasswordIconSize = 30;
 		const double _mascotTailAnimationRotation = 35;
 		const uint _mascotTailAnimationTime = 2000;
 
-		static Thickness _loginFormPadding = new Thickness(20, 0);
-		static Thickness _baseSpacing = new Thickness(0, 10, 0, 0);
-		static Thickness _iosSettingsMargin = new Thickness(20, 60);
-		static Thickness _androidSettingsMargin = new Thickness(30);
-		static Thickness _showPasswordIconMargin = new Thickness(0, 10, 5, 0);
-		static Thickness _mascotTailMargin = new Thickness(150, 0, 0, 0);
+		static Thickness _loginFormPadding = new(20, 0);
+		static Thickness _baseSpacing = new(0, 10, 0, 0);
+		static Thickness _iosSettingsMargin = new(20, 60);
+		static Thickness _androidSettingsMargin = new(30);
+		static Thickness _showPasswordIconMargin = new(0, 10, 5, 0);
 
 		CachedImage _mascotTailImage;
 		bool _isTailAnimationRunning;
@@ -182,19 +181,19 @@ namespace EduCATS.Pages.Login.Views
 			return settingsIcon;
 		}
 
-		Grid createMascotImage()
+		RelativeLayout createMascotImage()
 		{
+			var relativeLayout = new RelativeLayout();
+
 			_mascotTailImage = new CachedImage
 			{
-				Margin = _mascotTailMargin,
-				HorizontalOptions = LayoutOptions.End,
-				VerticalOptions = LayoutOptions.End,
+				HeightRequest = _mascotImageHeight,
 				Source = ImageSource.FromFile(Theme.Current.LoginMascotTailImage)
 			};
 
 			var mascotImage = new CachedImage
 			{
-				HeightRequest = _mascotImage,
+				HeightRequest = _mascotImageHeight,
 				Source = ImageSource.FromFile(Theme.Current.LoginMascotImage)
 			};
 
@@ -203,13 +202,20 @@ namespace EduCATS.Pages.Login.Views
 				Command = new Command(() => animateMascotTail())
 			});
 
-			return new Grid
-			{
-				Children = {
-					_mascotTailImage,
-					mascotImage
-				}
-			};
+			relativeLayout.Children.Add(
+				_mascotTailImage,
+				Constraint.RelativeToView(mascotImage, (parent, sibling) => parent.Width / 2 + _mascotTailPadding),
+				Constraint.Constant(0));
+
+			relativeLayout.Children.Add(
+				mascotImage,
+				Constraint.RelativeToParent(parent => {
+					var width = mascotImage?.Measure(parent.Width, parent.Height).Request.Width ?? -1;
+					return parent.Width / 2 - width / 2;
+				}),
+				Constraint.Constant(0));
+
+			return relativeLayout;
 		}
 
 		Entry createUsernameEntry(Style style)
