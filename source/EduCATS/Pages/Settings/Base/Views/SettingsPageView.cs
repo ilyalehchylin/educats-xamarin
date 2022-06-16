@@ -15,9 +15,8 @@ namespace EduCATS.Pages.Settings.Base.Views
 	{
 		const double _avatarHeight = 60;
 		const double _userLayoutSpacing = 15;
-		static Thickness _listMargin = new Thickness(10, 1, 10, 1);
-		static Thickness _userFrameMargin = new Thickness(0, 10, 0, 10);
-		static Thickness _userLayoutMargin = new Thickness(0, 0, 0, 0);
+		static Thickness _listMargin = new(10, 0, 10, 0);
+		static Thickness _userFrameMargin = new(0, 0, 0, 10);
 
 		public SettingsPageView()
 		{
@@ -52,7 +51,6 @@ namespace EduCATS.Pages.Settings.Base.Views
 			userGroupLabel.SetBinding(Label.TextProperty, "Group");
 
 			var usernameLayout = new StackLayout {
-				Margin = _userLayoutMargin,
 				Children = {
 					userLabel,
 					userRoleLabel,
@@ -118,7 +116,11 @@ namespace EduCATS.Pages.Settings.Base.Views
 
 		RoundedListView createList(View header)
 		{
-			var settingsListView = new RoundedListView(typeof(SettingsPageViewCell), header: header) {
+			var settingsListView = new RoundedListView(
+				typeof(SettingsPageViewCell),
+				header: header,
+				headerTopPadding: 10,
+				footerBottomPadding: 10) {
 				Margin = _listMargin
 			};
 

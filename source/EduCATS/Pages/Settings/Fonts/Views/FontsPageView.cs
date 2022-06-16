@@ -33,7 +33,7 @@ namespace EduCATS.Pages.Settings.Fonts.Views
 
 		RoundedListView createList(View header)
 		{
-			var listView = new RoundedListView(null, true, header, () => new CheckboxViewCell(true)) {
+			var listView = new RoundedListView(null, true, header, 0, 0, () => new CheckboxViewCell(true)) {
 				Margin = _listMargin
 			};
 
