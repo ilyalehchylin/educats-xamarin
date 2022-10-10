@@ -15,7 +15,8 @@ namespace EduCATS.Networking
 		/// <summary>
 		/// Test server address.
 		/// </summary>
-		public const string EduCatsAddress = @"https://host27072020.of.by";
+		//public const string EduCatsAddress = @"https://host27072020.of.by";
+		public const string EduCatsAddress = @"https://educats.by";
 		
 		/// <summary>
 		/// Test server not host27072020 address.
