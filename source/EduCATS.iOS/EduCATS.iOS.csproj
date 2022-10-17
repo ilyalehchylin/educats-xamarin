@@ -15,7 +15,7 @@
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-	  <LangVersion>latest</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,9 +28,9 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-	  <LangVersion>latest</LangVersion>
-	  <CodesignProvision>Automatic</CodesignProvision>
-	  <CodesignKey>iPhone Developer</CodesignKey>
+    <LangVersion>latest</LangVersion>
+    <CodesignProvision>Automatic</CodesignProvision>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -44,7 +44,7 @@
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
-	  <LangVersion>latest</LangVersion>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,8 +60,8 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
-	  <LangVersion>latest</LangVersion>
-	  <CodesignProvision>Automatic</CodesignProvision>
+    <LangVersion>latest</LangVersion>
+    <CodesignProvision>Automatic</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -77,8 +77,8 @@
     <MtouchUseLlvm>true</MtouchUseLlvm>
     <MtouchFloat32>true</MtouchFloat32>
     <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
-	  <LangVersion>latest</LangVersion>
-	  <MtouchLink>SdkOnly</MtouchLink>
+    <LangVersion>latest</LangVersion>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -659,7 +659,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <PackageReference Include="MonkeyCache.FileStore">
       <Version>1.6.3</Version>
@@ -695,8 +695,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Dark.xcassets\icon_headphones_light.imageset\" />
-    <Folder Include="Resources\Dark.xcassets\icon_show_password_dark.imageset\" />
     <Folder Include="Resources\Dark.xcassets\icon_settings_logout_dark.imageset\" />
+    <Folder Include="Resources\Dark.xcassets\icon_show_password_dark.imageset\" />
     <Folder Include="Resources\Dark.xcassets\image_background_1_dark.imageset\" />
     <Folder Include="Resources\Dark.xcassets\image_background_2_dark.imageset\" />
     <Folder Include="Resources\Dark.xcassets\image_background_3_dark.imageset\" />

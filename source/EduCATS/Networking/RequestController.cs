@@ -108,15 +108,13 @@ namespace EduCATS.Networking
 		async Task<HttpResponseMessage> get()
 		{
 			try {
-				_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);	
-				using (var httpClient = new HttpClient { BaseAddress = Uri })
+				if (_services.Preferences.AccessToken != "")
 				{
-					using (var response = await httpClient.GetAsync(Uri))
-					{
-						//string responseData = await response.Content.ReadAsStringAsync();
-						return await _client.GetAsync(Uri);
-					}
+					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
+						
+				return await _client.GetAsync(Uri);
+
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
 			} catch {
@@ -132,19 +130,16 @@ namespace EduCATS.Networking
 		{
 			try
 			{
-				_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
-				using (var httpClient = new HttpClient { BaseAddress = Uri })
+				if (_services.Preferences.AccessToken != "")
 				{
-					httpClient.DefaultRequestHeaders.Authorization = _client.DefaultRequestHeaders.Authorization;
-					using (var response = await httpClient.GetAsync(Uri))
-					{
-						//string responseData = await response.Content.ReadAsStringAsync();
-						return await _client.PostAsync(Uri, _postContent);
-					}
+					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
+
+				return await _client.PostAsync(Uri, _postContent);
+
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
-			} catch (Exception) {
+			} catch (Exception ex) {
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
 		}
