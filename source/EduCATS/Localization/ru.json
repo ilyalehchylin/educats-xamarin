@@ -118,6 +118,7 @@
 	"settings_language": "Язык",
 	"settings_theme": "Тема",
 	"settings_font": "Текст & Шрифт",
+	"settings_delete": "Удалить аккаунт",
 	"settings_about": "О приложении",
 	"settings_logout": "Выйти",
 	"settings_logout_message": "Вы действительно хотите выйти?",
@@ -137,6 +138,8 @@
 	"settings_font_change_message": "Вы действительно хотите изменить шрифт? Это действие перезагрузит приложение.",
 	"settings_font_large": "Большой шрифт",
 	"settings_font_large_description": "Сделать шрифт в приложении больше.",
+
+	"settings_delete_message": "Вы действительно хотите удалить аккаунт?",
 
 	"settings_about_app_version": "Версия",
 	"settings_about_app_build": "Сборка",

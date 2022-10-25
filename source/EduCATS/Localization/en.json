@@ -115,6 +115,7 @@
 	"settings_language": "Language",
 	"settings_theme": "Theme",
 	"settings_font": "Text & Font",
+	"settings_delete": "Delete account",
 	"settings_about": "About application",
 	"settings_logout": "Logout",
 	"settings_logout_message": "Are you sure you want to logout?",
@@ -134,6 +135,8 @@
 	"settings_font_change_message": "Are you sure you want to change font? This action will reload application.",
 	"settings_font_large": "Large font",
 	"settings_font_large_description": "Make application's text larger.",
+
+	"settings_delete_message": "Are you sure you want to delete your account?",
 
 	"settings_about_app_version": "Version",
 	"settings_about_app_build": "Build",
