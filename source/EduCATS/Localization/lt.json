@@ -115,6 +115,7 @@
 	"settings_language": "Kalba",
 	"settings_theme": "Tema",
 	"settings_font": "Tekstas ir šriftas",
+	"settings_delete": "Eliminare l'account",
 	"settings_about": "Apie programą",
 	"settings_logout": "Atsijungti",
 	"settings_logout_message": "Ar tikrai norite atsijungti ?",
@@ -134,6 +135,8 @@
 	"settings_font_change_message": "Ar tikrai norite pakeisti šriftą? Šis veiksmas iš naujo įkels programą.",
 	"settings_font_large": "Didelis šriftas",
 	"settings_font_large_description": "Padidinkite programos šriftą.",
+
+	"settings_delete_message": "Sei sicuro di voler eliminare il tuo account?",
 
 	"settings_about_app_version": "Versija",
 	"settings_about_app_build": "Programos sudarymas",

@@ -134,6 +134,11 @@
 		public static string ResetPassword => $"{Servers.Current}/Account/ResetPassword";
 
 		/// <summary>
+		/// Get delete account URL.
+		/// </summary>
+		public static string DeleteAccount => $"{Servers.Current}/Account/DeleteAccount";
+
+		/// <summary>
 		/// Get save marks calendar data lectures URL.
 		/// </summary>
 		public static string GetLecturesCalendarData =>

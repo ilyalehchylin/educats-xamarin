@@ -36,6 +36,12 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, false) as SecondUserModel;
 		}
 
+		public async static Task<DeleteAccountModel> DeleteAccount()
+		{
+			var dataAccess = new DataAccess<DeleteAccountModel>(
+				"base_error", deleteAccountCallback());
+			return await GetDataObject(dataAccess,false) as DeleteAccountModel;
+		}
 
 		/// <summary>
 		/// Fetch profile information.

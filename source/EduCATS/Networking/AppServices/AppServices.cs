@@ -48,6 +48,15 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch account delete request.
+		/// </summary>
+		public static async Task<object> DeleteAccount()
+		{
+			var body = "";
+			return await AppServicesController.Request(Links.DeleteAccount, body);
+		}
+
+		/// <summary>
 		/// Fetch news request.
 		/// </summary>
 		/// <param name="username">Username.</param>
