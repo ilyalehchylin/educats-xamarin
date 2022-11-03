@@ -50,7 +50,7 @@ namespace EduCATS.Pages.Parental.Statistics
 
 		public new void Init()
 		{
-			setPagesList();
+			//setPagesList();
 			setCollapsedDetails();
 
 			_service.Device.MainThread(async () =>
@@ -58,6 +58,7 @@ namespace EduCATS.Pages.Parental.Statistics
 				IsLoading = true;
 				SetupSubjects();
 				await getAndSetStatistics();
+				await setButtonsList();
 				IsLoading = false;
 			});
 
@@ -65,6 +66,7 @@ namespace EduCATS.Pages.Parental.Statistics
 			{
 				PlatformServices.Dialogs.ShowLoading();
 				await getAndSetStatistics();
+				await setButtonsList();
 				PlatformServices.Dialogs.HideLoading();
 			};
 		}
