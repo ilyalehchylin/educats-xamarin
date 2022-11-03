@@ -5,6 +5,7 @@ using EduCATS.Data;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
+using EduCATS.Networking;
 using EduCATS.Pages.Settings.Base.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -100,6 +101,11 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				createItem(Theme.Current.BaseCloseIcon, "settings_delete"),
 				createItem(Theme.Current.SettingsAboutIcon, "settings_about")
 			};
+
+			if (_services.Preferences.Server == Servers.EduCatsAddress)
+			{
+				SettingsList.Add(createItem(Theme.Current.BaseCloseIcon, "settings_delete"));
+			}
 
 			if (IsLoggedIn) {
 				SettingsList.Add(createItem(Theme.Current.SettingsLogoutIcon, "settings_logout"));
