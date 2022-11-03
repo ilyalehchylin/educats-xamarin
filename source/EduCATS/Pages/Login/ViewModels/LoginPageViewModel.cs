@@ -344,7 +344,7 @@ namespace EduCATS.Pages.Login.ViewModels
 					httpWebRequest.Headers.Add("Sec-Fetch-Dest", "empty");
 					httpWebRequest.Headers.Add("Sec-Fetch-Mode", "cors");
 					httpWebRequest.Headers.Add("Sec-Fetch-Site", "same-origin");
-
+					
 					string json = body;
 					byte[] byte1 = Encoding.UTF8.GetBytes(json);
 					httpWebRequest.ContentLength = byte1.Length;
@@ -355,17 +355,23 @@ namespace EduCATS.Pages.Login.ViewModels
 						streamWriter.Close();
 					}
 					var tok = "";
-					var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-					using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+
+					try
 					{
-						tok = streamReader.ReadToEnd();
-						streamReader.Close();
+						var httpResponse = httpWebRequest.GetResponse();
+
+						using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+						{
+							tok = streamReader.ReadToEnd();
+							streamReader.Close();
+						}
+						var token = JsonConvert.DeserializeObject<TokenModel>(tok);
+						_services.Preferences.AccessToken = token.Token;
+						SecondUserModel userLoginTest = await DataAccess.LoginTest(Username, Password);
+						userLogin.UserId = userLoginTest.Id;
+						userLogin.Username = userLoginTest.Username;
 					}
-					var token = JsonConvert.DeserializeObject<TokenModel>(tok);
-					_services.Preferences.AccessToken = token.Token;
-					SecondUserModel userLoginTest = await DataAccess.LoginTest(Username, Password);
-					userLogin.UserId = userLoginTest.Id;
-					userLogin.Username = userLoginTest.Username;
+					catch (Exception) { }
 				}
 			}
 			AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
