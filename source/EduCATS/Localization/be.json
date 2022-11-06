@@ -113,6 +113,7 @@
 	"settings_language": "Мова",
 	"settings_theme": "Тэма",
 	"settings_font": "Тэкст & Шрыфт",
+	"settings_delete": "Выдаліць акаўнт",
 	"settings_about": "Пра дадатак",
 	"settings_logout": "Выйсці",
 	"settings_logout_message": "Вы насамрэч жадаеце выйсці?",
@@ -132,6 +133,8 @@
 	"settings_font_change_message": "Вы насамрэч жадаеце змяніць шрыфт? Дадзенае дзеянне перазагрузіць дадатак.",
 	"settings_font_large": "Вялікі шрыфт",
 	"settings_font_large_description": "Зрабіць шрыфт у дадатку больш",
+
+	"settings_delete_message": "Вы сапраўды жадаеце выдаліць акаўнт?",
 
 	"settings_about_app_version": "Версія",
 	"settings_about_app_build": "Зборка",

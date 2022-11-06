@@ -1,9 +1,12 @@
 exclude-labels:
-  - 'release'
   - 'documentation'
-  - 'packages'
-  - 'repository'
+  - 'failed'
   - 'github-actions'
+  - 'packages'
+  - 'release'
+  - 'repository'
+  - 'refactoring'
+  - 'tests'
 categories:
   - title: 'New Features'
     label: 'feature'
@@ -13,7 +16,6 @@ categories:
     label: 'update'
 change-template: '- $TITLE (#$NUMBER)'
 template: |
-  Changelog
+  # Changelog
 
   $CHANGES
-  

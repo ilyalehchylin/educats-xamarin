@@ -1,18 +1,13 @@
 name: release
 
 on:
- workflow_dispatch:
- push:
-   branches:
-    - master
+  workflow_dispatch:
+  push:
+    branches:
+      - master
 
 env:
-  APP_VERSION: 2.2.5
   ARTIFACTS_DIRECTORY: ./artifacts
-  COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
-  GIT_USER_NAME: github-actions
-  GIT_USER_EMAIL: auto@users.noreply.github.com
-  SOLUTION_PATH: ./source/EduCATS.sln
   DOCS_PATH: ./docs
 
 jobs:
@@ -24,37 +19,26 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
     
-      - name: Unit-Tests Build + Coverlet
-        run: |
-          dotnet tool install --global coverlet.console
-          dotnet add $PROJECT_PATH package coverlet.collector
-          dotnet build $PROJECT_PATH
-          dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
-          mv $COVERAGE_DIRECTORY/*/$COVERAGE_INFO_FILENAME ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
+      - name: Unit-Tests
+        run: dotnet test $PROJECT_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
-          COVERLET_SETTINGS: ./source/coverlet.runsettings
-          COVERAGE_DIRECTORY: ./coverage
-          COVERAGE_INFO_FILENAME: coverage.info          
-        
-      - name: Codecov Deploy
-        uses: codecov/codecov-action@v3.1.0
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
-          os: macos
           
   build:
     runs-on: macos-latest
     environment: github-actions-release
     needs: test
+    outputs:
+      incremented_build_number: ${{ steps.build_version_bump.outputs.app_build_number }}
+    env:
+     BUILD_CONFIGURATION: Release
     
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         
       - name: NuGet Restore
-        run: nuget restore ${{ env.SOLUTION_PATH }}
+        run: nuget restore ./source/EduCATS.sln
         
       - name: iOS Certificates Install
         uses: apple-actions/import-codesign-certs@v1
@@ -75,7 +59,10 @@ jobs:
           KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
       
       - name: App Build Version Bump
-        run: echo "APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))" >> $GITHUB_ENV
+        id: build_version_bump
+        run: |
+          echo "APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))" >> $GITHUB_ENV
+          echo "::set-output name=app_build_number::${{ env.APP_BUILD_NUMBER_INCREMENTED }}"
         env:
           APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
           
@@ -92,13 +79,13 @@ jobs:
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
-          bundle-short-version-string: ${{ env.APP_VERSION }}
+          bundle-short-version-string: ${{ secrets.APP_VERSION_NUMBER }}
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-name: ${{ env.APP_VERSION }}
+          version-name: ${{ secrets.APP_VERSION_NUMBER }}
           version-code: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
       
       - name: Artifacts Directory Setup
@@ -106,9 +93,9 @@ jobs:
       
       - name: Android Build (apk + aab)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
-          MSBuild /t:SignAndroidPackage /p:Configuration=Release /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
@@ -120,7 +107,7 @@ jobs:
 
       - name: iOS Build
         run: |
-          MSBuild /t:Build /p:Configuration=Release /p:Platform=iPhone /p:BuildIpa=true $PROJECT_PATH
+          MSBuild /t:Build /p:Configuration=$BUILD_CONFIGURATION /p:Platform=iPhone /p:BuildIpa=true $PROJECT_PATH
           cp $IPA_PATH $ARTIFACTS_IPA_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
@@ -145,11 +132,8 @@ jobs:
           name: apps-artifacts
           
       - name: AppStore Deploy
-        run: |
-          (echo ${{ secrets.APPSTORE_CONNECT_API_KEY_FILE_P8 }} | base64 --decode) > $AUTH_KEY
-          xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
+        run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
         env:
-          AUTH_KEY: ./AuthKey.p8
           IPA_FILE_PATH: ./EduCATS.ipa
           
       - name: Google Play Deploy
@@ -164,15 +148,15 @@ jobs:
         uses: simpleactions/create-tag@v1.0.0
         with:
          github_token: ${{ secrets.GITHUB_TOKEN }}
-         tag: ${{ env.APP_VERSION }}.${{ secrets.APP_BUILD_NUMBER }}
-         message: Release ${{ env.APP_VERSION }}.${{ secrets.APP_BUILD_NUMBER }}
+         tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+         message: Release ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
           
       - name: Github Release
         id: github_release
         uses: release-drafter/release-drafter@v5.19.0
         with:
-          name: Release ${{ env.APP_VERSION }}.${{ secrets.APP_BUILD_NUMBER }}
-          tag: ${{ env.APP_VERSION }}.${{ secrets.APP_BUILD_NUMBER }}
+          name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
@@ -227,6 +211,9 @@ jobs:
           push-branch: 'master'
           commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
           files: ${{ env.DOCS_PATH }}
-          name: ${{ env.GIT_USER_NAME }}
-          email: ${{ env.GIT_USER_EMAIL }}
-          rebase: 'true'   
+          name: $GIT_NAME
+          email: $GIT_EMAIL
+          rebase: 'true'
+        env:
+          GIT_NAME: github-actions
+          GIT_EMAIL: auto@users.noreply.github.com

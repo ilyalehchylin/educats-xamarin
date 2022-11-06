@@ -115,6 +115,7 @@
 	"settings_language": "Sprache",
 	"settings_theme": "Thema",
 	"settings_font": "Text & Schriftart",
+	"settings_delete": "Konto löschen",
 	"settings_about": "Über die App ",
 	"settings_logout": "Abmelden",
 	"settings_logout_message": "Möchten Sie wirklich abmelden?",
@@ -134,6 +135,8 @@
 	"settings_font_change_message": "Möchten Sie die Schriftart wirklich ändern? Durch diese Aktion wird die App neu gestartet.",
 	"settings_font_large": "Große Schriftart",
 	"settings_font_large_description": "Schriftart in der App größer machen.",
+
+	"settings_delete_message": "Möchten Sie Ihr Konto wirklich löschen?",
 
 	"settings_about_app_version": "Version",
 	"settings_about_app_build": "Assembling ",

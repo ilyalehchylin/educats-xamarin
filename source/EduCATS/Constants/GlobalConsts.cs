@@ -68,6 +68,11 @@
 		public const string DataGetLabsKey = "GET_LABS_KEY";
 
 		/// <summary>
+		/// Delete key.
+		/// </summary>
+		public const string AccountGetDeleteKey = "GET_DELETE_KEY";
+
+		/// <summary>
 		/// Marks key.
 		/// </summary>
 		public const string DataGetMarksKey = "GET_MARKS_KEY";

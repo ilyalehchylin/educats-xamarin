@@ -45,7 +45,15 @@ namespace EduCATS.Controls.RoundedListView
 		/// <param name="type">View cell type.</param>
 		/// <param name="checkbox">Is template checkbox.</param>
 		/// <param name="header">Header view.</param>
-		public RoundedListView(Type type, bool checkbox = false, View header = null, Func<object> func = null)
+		/// <param name="headerTopPadding">Header top padding.</param>
+		/// <param name="footerBottomPadding">Footer bottom padding.</param>
+		public RoundedListView(
+			Type type,
+			bool checkbox = false,
+			View header = null,
+			double headerTopPadding = 0,
+			double footerBottomPadding = 0,
+			Func<object> func = null)
 		{
 			HasUnevenRows = true;
 			ItemTemplate = func == null ?
@@ -64,16 +72,17 @@ namespace EduCATS.Controls.RoundedListView
 			_capHeight = HeaderHeight / 2;
 			_emptyView = createEmptyView();
 
-			Footer = createFooterCap();
-			Header = createHeader(header);
+			Footer = createFooterCap(footerBottomPadding);
+			Header = createHeader(header, headerTopPadding);
 		}
 
 		/// <summary>
 		/// Create header layout.
 		/// </summary>
 		/// <param name="view">View to add to header.</param>
+		/// <param name="topPadding">Header top padding.</param>
 		/// <returns>Header layout.</returns>
-		StackLayout createHeader(View view)
+		StackLayout createHeader(View view, double topPadding = 0)
 		{
 			var cap = createHeaderCap();
 
@@ -88,6 +97,7 @@ namespace EduCATS.Controls.RoundedListView
 
 			header.Children.Add(cap);
 			header.Children.Add(_emptyView);
+			header.Padding = new Thickness(0, topPadding, 0, 0);
 			return header;
 		}
 
@@ -121,8 +131,9 @@ namespace EduCATS.Controls.RoundedListView
 		/// <summary>
 		/// Create footer cap.
 		/// </summary>
+		/// <param name="bottomPadding">Footer bottom padding.</param>
 		/// <returns>Footer cap.</returns>
-		Grid createFooterCap()
+		Grid createFooterCap(double bottomPadding)
 		{
 			var stackLayout = new StackLayout {
 				HeightRequest = _capHeight,
@@ -137,6 +148,7 @@ namespace EduCATS.Controls.RoundedListView
 			};
 
 			return new Grid {
+				Padding = new Thickness(0, 0, 0, bottomPadding),
 				HeightRequest = HeaderHeight,
 				Children = {
 					stackLayout,

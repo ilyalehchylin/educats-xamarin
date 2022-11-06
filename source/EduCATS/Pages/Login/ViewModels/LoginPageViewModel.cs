@@ -5,6 +5,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using EduCATS.Data;
@@ -213,7 +214,7 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openParental()
 		{
-			_services.Navigation.OpenParental();
+			_services.Navigation.OpenFindGroup();
 		}
 
 
@@ -318,43 +319,59 @@ namespace EduCATS.Pages.Login.ViewModels
 		async Task<UserModel> loginRequest()
 		{
 			var userLogin = await DataAccess.Login(Username, Password);
-			
+
 			if(_services.Preferences.Server == Servers.EduCatsAddress)
 			{
 				if (userLogin != null)
 				{
 					var jwt = new
 					{
-						password = Password,
 						userName = Username,
+						password = Password,
 					};
-					var body = JsonController.ConvertObjectToJson(jwt);
-					var httpWebRequest = (HttpWebRequest)WebRequest.Create(Links.LoginTestServer);
-					httpWebRequest.ContentType = "application/json";
-					httpWebRequest.Method = "POST";
-					using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-					{
-						string json = body;
 
-						streamWriter.Write(json);
-						streamWriter.Flush();
+					ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
+
+					var body = JsonController.ConvertObjectToJson(jwt);
+
+					var httpWebRequest = HttpWebRequest.CreateHttp(Links.LoginTestServer);
+
+					httpWebRequest.Method = "POST";
+					httpWebRequest.ContentType = "application/json";
+					httpWebRequest.Accept = "application/json, text/plain, */*";
+					httpWebRequest.Headers.Add("Origin", Servers.EduCatsAddress);
+					httpWebRequest.Headers.Add("Accept-Encoding", "gzip, deflate, br");
+					httpWebRequest.Headers.Add("Sec-Fetch-Dest", "empty");
+					httpWebRequest.Headers.Add("Sec-Fetch-Mode", "cors");
+					httpWebRequest.Headers.Add("Sec-Fetch-Site", "same-origin");
+					
+					string json = body;
+					byte[] byte1 = Encoding.UTF8.GetBytes(json);
+					httpWebRequest.ContentLength = byte1.Length;
+
+					using (var streamWriter = httpWebRequest.GetRequestStream())
+					{
+						streamWriter.Write(byte1, 0, byte1.Length);
 						streamWriter.Close();
 					}
 					var tok = "";
-					var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-					using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+
+					try
 					{
-						string line = "";
-						while ((line = streamReader.ReadLine()) != null)
+						var httpResponse = httpWebRequest.GetResponse();
+
+						using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
 						{
-							tok += line;
+							tok = streamReader.ReadToEnd();
+							streamReader.Close();
 						}
+						var token = JsonConvert.DeserializeObject<TokenModel>(tok);
+						_services.Preferences.AccessToken = token.Token;
+						SecondUserModel userLoginTest = await DataAccess.LoginTest(Username, Password);
+						userLogin.UserId = userLoginTest.Id;
+						userLogin.Username = userLoginTest.Username;
 					}
-					var token = JsonConvert.DeserializeObject<TokenModel>(tok);
-					_services.Preferences.AccessToken = token.Token;
-					SecondUserModel userLoginTest = await DataAccess.LoginTest(Username, Password);
-					userLogin.UserId = userLoginTest.Id;
-					userLogin.Username = userLoginTest.Username;
+					catch (Exception) { }
 				}
 			}
 			AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);

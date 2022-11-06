@@ -93,17 +93,9 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 		{
 			get
 			{
-				return _backCommand ?? (_backCommand = new Command(
-					async () => await openMain()));
+				return _backCommand ?? (_backCommand = new Command(() => _service.Navigation.OpenLogin()));
 			}
 		}
-
-		protected async Task openMain()
-		{
-			_service.Navigation.OpenLogin();
-		}
-
-
 
 		protected async Task openParental()
 		{
@@ -115,18 +107,20 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 			try
 			{
 				IsLoading = true;
-				var result = await DataAccess.GetGroupInfo(GroupNumber);
-				if (result.Code.Equals("200"))
+				var group = await DataAccess.GetGroupInfo(GroupNumber);
+
+				if (group.Code.Equals("200"))
 				{
-					_service.Preferences.GroupId = result.GroupId;
+					_service.Preferences.GroupId = group.GroupId;
 					_service.Preferences.GroupName = GroupNumber;
-					_service.Preferences.ChosenGroupId = result.GroupId;
-					(_service.Navigation as AppPages).OpenParentalStat(_service, result);
+					_service.Preferences.ChosenGroupId = group.GroupId;
+					await _service.Navigation.OpenParentalStats(group, CrossLocalization.Translate("main_statistics"));
 				}
 				else
 				{
 					_service.Dialogs.ShowError(CrossLocalization.Translate("parental_group_not_found"));
 				}
+
 				IsLoading = false;
 			}
 			catch

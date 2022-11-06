@@ -20,6 +20,9 @@ namespace EduCATS.Data
 
 		static async Task<object> getLecturesCallbackTest(
 			int subjectId, int groupId) => await AppServices.GetLecturesEducatsBy(subjectId, groupId);
+
+		static async Task<object> deleteAccountCallback() => await AppServices.DeleteAccount();
+
 		/// <summary>
 		/// Profile callback.
 		/// </summary>
@@ -69,6 +72,7 @@ namespace EduCATS.Data
 
 		static async Task<object> getTestPractScheduleCallbak(
 			int subjectId, int gruopId) => await AppServices.GetPractTestStatistics(subjectId, gruopId);
+
 		/// <summary>
 		/// Groups callback.
 		/// </summary>

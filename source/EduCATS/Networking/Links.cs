@@ -57,7 +57,7 @@
 		/// <summary>
 		/// Get lectures URL.
 		/// </summary>
-		public static string GetLectures =>$"{Servers.Current}/Services/Lectures/LecturesService.svc/GetLecturesMarkVisitingV2";
+		public static string GetLectures =>$"{Servers.Current}/Services/CoreService.svc/GetLecturesMarkVisitingV2";
 
 		/// <summary>
 		/// Get avaiable tests URL.
@@ -132,6 +132,11 @@
 		/// Get reset password URL.
 		/// </summary>
 		public static string ResetPassword => $"{Servers.Current}/Account/ResetPassword";
+
+		/// <summary>
+		/// Get delete account URL.
+		/// </summary>
+		public static string DeleteAccount => $"{Servers.Current}/Account/DeleteAccount";
 
 		/// <summary>
 		/// Get save marks calendar data lectures URL.

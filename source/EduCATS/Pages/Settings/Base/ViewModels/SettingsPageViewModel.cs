@@ -5,6 +5,7 @@ using EduCATS.Data;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
+using EduCATS.Networking;
 using EduCATS.Pages.Settings.Base.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
@@ -100,9 +101,13 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				createItem(Theme.Current.SettingsAboutIcon, "settings_about")
 			};
 
+			if (_services.Preferences.Server == Servers.EduCatsAddress)
+			{
+				SettingsList.Add(createItem(Theme.Current.BaseCloseIcon, "settings_delete"));
+			}
+
 			if (IsLoggedIn) {
-				SettingsList.Add(
-					createItem(Theme.Current.SettingsLogoutIcon, "settings_logout"));
+				SettingsList.Add(createItem(Theme.Current.SettingsLogoutIcon, "settings_logout"));
 			}
 		}
 
@@ -135,6 +140,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				var languageTitle = CrossLocalization.Translate("settings_language");
 				var themeTitle = CrossLocalization.Translate("settings_theme");
 				var fontTitle = CrossLocalization.Translate("settings_font");
+				var deleteTitle = CrossLocalization.Translate("settings_delete");
 				var aboutTitle = CrossLocalization.Translate("settings_about");
 				var logoutTitle = CrossLocalization.Translate("settings_logout");
 
@@ -146,6 +152,8 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 					await _services.Navigation.OpenSettingsTheme(themeTitle);
 				} else if (title.Equals(fontTitle)) {
 					await _services.Navigation.OpenSettingsFont(fontTitle);
+				} else if (title.Equals(deleteTitle)) { 
+					await deleteAccount();
 				} else if (title.Equals(aboutTitle)) {
 					await _services.Navigation.OpenSettingsAbout(aboutTitle);
 				} else if (title.Equals(logoutTitle)) {
@@ -166,6 +174,32 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				resetData();
 			}
 		}
+
+		async Task deleteAccount()
+		{
+			var result = await _services.Dialogs.ShowConfirmationMessage(
+				CrossLocalization.Translate("base_warning"),
+				CrossLocalization.Translate("settings_delete_message"));
+
+			if (result)
+			{
+				delete();
+			}
+		}
+
+		async void delete()
+		{
+			try
+			{
+				var recommendations = await DataAccess.DeleteAccount();
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+			}
+			resetData();
+		}
+
 
 		void resetData()
 		{

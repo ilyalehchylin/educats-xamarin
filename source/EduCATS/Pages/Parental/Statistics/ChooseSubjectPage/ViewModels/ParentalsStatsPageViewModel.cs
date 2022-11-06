@@ -15,13 +15,28 @@ namespace EduCATS.Pages.Parental.Statistics
 {
 	class ParentalsStatsPageViewModel : StatsPageViewModel
 	{
-
 		private List<StatsStudentModel> _students;
-
 		private IPlatformServices _service;
-
 		public GroupInfo Group { get; set; }
-		
+
+		public ParentalsStatsPageViewModel(IPlatformServices services, GroupInfo group) : base(services)
+		{
+			_service = services;
+			Group = group;
+			GroupName = _service.Preferences.GroupName;
+		}
+
+		string _groupName;
+
+		/// <summary>
+		/// Group Name property.
+		/// </summary>
+		public string GroupName
+		{
+			get { return _groupName; }
+			set { SetProperty(ref _groupName, value); }
+		}
+
 		Command _parentalCommand;
 		
 		public Command ParentalCommand
@@ -33,15 +48,9 @@ namespace EduCATS.Pages.Parental.Statistics
 			}
 		}
 
-		public ParentalsStatsPageViewModel(IPlatformServices services, GroupInfo group) : base(services)
-		{
-			_service = services;
-			Group = group;
-		}
-
 		public new void Init()
 		{
-			setPagesList();
+			//setPagesList();
 			setCollapsedDetails();
 
 			_service.Device.MainThread(async () =>
@@ -49,6 +58,7 @@ namespace EduCATS.Pages.Parental.Statistics
 				IsLoading = true;
 				SetupSubjects();
 				await getAndSetStatistics();
+				await setButtonsList();
 				IsLoading = false;
 			});
 
@@ -56,6 +66,7 @@ namespace EduCATS.Pages.Parental.Statistics
 			{
 				PlatformServices.Dialogs.ShowLoading();
 				await getAndSetStatistics();
+				await setButtonsList();
 				PlatformServices.Dialogs.HideLoading();
 			};
 		}
@@ -155,7 +166,7 @@ namespace EduCATS.Pages.Parental.Statistics
 		/// </summary>
 		protected void openParental()
 		{
-			_service.Navigation.OpenParental();
+			_service.Navigation.OpenFindGroup();
 		}
 
 	}
