@@ -114,8 +114,8 @@ namespace EduCATS.Pages.Files.ViewModels
 		async Task update()
 		{
 			try {
-				await SetupSubjects();
-				await getFiles();
+			await SetupSubjects();
+			await getFiles();
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
@@ -127,19 +127,43 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// <returns>Task.</returns>
 		async Task getFiles()
 		{
-			var filesModel = await DataAccess.GetFiles(CurrentSubject.Id);
-
-			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
-			}
+			IEnumerable<FilesPageModel> files = null;
 
 			var appDataDirectory = PlatformServices.Device.GetAppDataDirectory();
 
-			var files = filesModel.Lectures?.Select(f => {
-				var file = Path.Combine(appDataDirectory, f.Name);
-				var exists = File.Exists(file);
-				return new FilesPageModel(f, exists);
-			});
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+			{
+				var filesModel = await DataAccess.GetFiles(CurrentSubject.Id);
+
+				if (DataAccess.IsError && !DataAccess.IsConnectionError)
+				{
+					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
+				}
+
+
+				files = filesModel.Lectures?.Select(f =>
+				{
+					var file = Path.Combine(appDataDirectory, f.Name);
+					var exists = File.Exists(file);
+					return new FilesPageModel(f, exists);
+				});
+			}
+			else
+			{
+				var filesModel = await DataAccess.GetFilesTest(CurrentSubject.Id);
+				if (DataAccess.IsError && !DataAccess.IsConnectionError)
+				{
+					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
+				}
+
+
+				files = filesModel.Files?.Select(f =>
+				{
+					var file = Path.Combine(appDataDirectory, f.Name);
+					var exists = File.Exists(file);
+					return new FilesPageModel(f, exists);
+				});
+			}
 
 			if (files != null) {
 				FileList = new List<FilesPageModel>(files);
