@@ -100,8 +100,8 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				createItem(Theme.Current.SettingsFontIcon, "settings_font"),
 				createItem(Theme.Current.SettingsAboutIcon, "settings_about")
 			};
-
-			if (_services.Preferences.Server == Servers.EduCatsAddress)
+		
+			if (_services.Preferences.Server == Servers.EduCatsAddress && IsLoggedIn && !string.IsNullOrEmpty(_services.Preferences.GroupName))
 			{
 				SettingsList.Add(createItem(Theme.Current.BaseCloseIcon, "settings_delete"));
 			}
@@ -196,10 +196,14 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 			catch (Exception ex)
 			{
 				AppLogs.Log(ex);
+				return;
 			}
+
+			await _services.Dialogs.ShowConfirmation(
+						CrossLocalization.Translate("base_success"),
+						CrossLocalization.Translate("settings_delete_success"));
 			resetData();
 		}
-
 
 		void resetData()
 		{

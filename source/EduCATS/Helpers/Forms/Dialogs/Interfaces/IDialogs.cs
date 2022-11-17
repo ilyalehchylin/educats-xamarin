@@ -57,6 +57,13 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		Task<bool> ShowConfirmationMessage(string title, string message);
 
 		/// <summary>
+		/// Show confirmation dialog with buttot OK.
+		/// </summary>
+		/// <param name="title">Dialog title.</param>
+		/// <param name="message">Dialog description.</param>
+		Task ShowConfirmation(string title, string message);
+
+		/// <summary>
 		/// Show progress dialog.
 		/// </summary>
 		/// <param name="message">Dialog message.</param>

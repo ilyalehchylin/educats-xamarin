@@ -151,6 +151,15 @@ namespace EduCATS.Helpers.Forms.Dialogs
 			await mainPage.DisplayAlert(title, message, _baseYes, _baseNo);
 
 		/// <summary>
+		/// Show confirmation dialog with button OK.
+		/// </summary>
+		/// <param name="title">Dialog title.</param>
+		/// <param name="message">Dialog description.</param>
+
+		public async Task ShowConfirmation(string title, string message) =>
+			await mainPage.DisplayAlert(title, message, _baseOK);
+
+		/// <summary>
 		/// Convert object to <see cref="IProgressDialog"/>.
 		/// </summary>
 		/// <param name="dialog">Dialog object.</param>
