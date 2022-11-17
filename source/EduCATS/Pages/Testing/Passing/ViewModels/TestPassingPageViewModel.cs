@@ -14,6 +14,7 @@ using EduCATS.Pages.Testing.Passing.Models;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
+using EduCATS.Networking;
 
 namespace EduCATS.Pages.Testing.Passing.ViewModels
 {
@@ -176,12 +177,26 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		async Task getAndSetQuestion(int number)
 		{
-			var question = await getQuestion(number);
-
-			if (question.Question == null) {
+			if (number == -1)
+			{
+				if (Servers.EduCatsBntuAddress == _services.Preferences.Server)
+				{
+					await getQuestion(number);
+				}
 				completeTest();
-			} else {
-				setQuestionData(question);
+			}
+			else
+			{
+				var question = await getQuestion(number);
+
+				if (question.Question == null)
+				{
+					completeTest();
+				}
+				else
+				{
+					setQuestionData(question);
+				}
 			}
 		}
 
