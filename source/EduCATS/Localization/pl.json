@@ -4,6 +4,7 @@
 	"base_yes": "Tak",
 	"base_error": "Błąd",
 	"base_cancel": "Anuluj",
+	"base_success": "Powodzenie",
 	"base_warning": "Uwaga",
 	"base_loading": "Ładowanie...",
 	"base_unexpected_error": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie lub skontaktuj się z obsługą klienta. Token mógł wygasnąć, prosimy o ponowne wypełnienie wniosku.",
@@ -137,6 +138,7 @@
 	"settings_font_large_description": "Zwiększ czcionkę w aplikacji.",
 
 	"settings_delete_message": "Czy na pewno chcesz usunąć swoje konto?",
+	"settings_delete_success": "Twoje konto zostało usunięte",
 
 	"settings_about_app_version": "Wersja",
 	"settings_about_app_build": "Kompilacja",
