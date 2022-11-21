@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
+using EduCATS.Networking;
+using Newtonsoft.Json;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Results.ViewModels
@@ -55,7 +58,19 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 
 		async Task getResults()
 		{
-			var resultList = await DataAccess.GetUserAnswers(AppUserData.UserId, _testId);
+			List<TestResultsModel> resultList;
+
+			if (_services.Preferences.Server == Servers.EduCatsBntuAddress)
+			{
+				resultList = await DataAccess.GetUserAnswers(AppUserData.UserId, _testId);
+			}
+			else
+			{
+				ExtendedTestResultModel extendedResultList = await DataAccess.GetUserAnswers(_testId);
+
+				KeyValuePair<string, object> answer = extendedResultList.Data.SingleOrDefault(x => Equals(x.Key, "Answers"));
+				resultList = JsonConvert.DeserializeObject<List<TestResultsModel>>(answer.Value.ToString());
+			}
 
 			if (DataAccess.IsError) {
 				_services.Dialogs.ShowError(DataAccess.ErrorMessage);

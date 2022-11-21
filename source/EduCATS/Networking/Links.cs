@@ -33,6 +33,11 @@
 		public static string GetProfileInfoSubjects => $"{Servers.Current}/Profile/GetProfileInfoSubjects";
 
 		/// <summary>
+		/// Get subjects test URL.
+		/// </summary>
+		public static string GetProfileInfoSubjectsTest => $"{Servers.Current}/Services/Subjects/SubjectsService.svc/GetUserSubjects";
+
+		/// <summary>
 		/// Get calendar data URL.
 		/// </summary>
 		public static string GetProfileInfoCalendar => $"{Servers.Current}/Profile/GetProfileInfoCalendar";
@@ -75,6 +80,11 @@
 		public static string GetNextQuestion => $"{Servers.Current}/TestPassing/GetNextQuestionJson";
 
 		/// <summary>
+		/// Get test's result URL.
+		/// </summary>
+		public static string GetResultTest => $"{Servers.Current}/TestPassing/CloseTestAndGetResult";
+
+		/// <summary>
 		/// Answer test's question and get next question.
 		/// </summary>
 		public static string AnswerQuestionAndGetNext =>
@@ -86,10 +96,26 @@
 		public static string GetUserAnswers => $"{Servers.Current}/TestPassing/GetUserAnswers";
 
 		/// <summary>
+		/// Get labs URL
+		/// </summary>
+		public static string GetLabs => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabs/";
+
+		/// <summary>
+		/// Get practicals URL
+		/// </summary>
+		public static string GetPracticals => $"{Servers.Current}/Services/Practicals/PracticalService.svc/GetPracticals/";
+
+		/// <summary>
 		/// Get EEMC root concepts URL.
 		/// </summary>
 		public static string GetRootConcepts =>
 			$"{Servers.Current}/Services/Concept/ConceptService.svc/GetRootConceptsMobile";
+
+		/// <summary>
+		/// Get EEMC root concepts test URL.
+		/// </summary>
+		public static string GetRootConceptsTest =>
+			$"{Servers.Current}/Services/Concept/ConceptService.svc/GetRootConcepts";
 
 		/// <summary>
 		/// Get EEMC concept tree URL.
@@ -98,10 +124,20 @@
 			$"{Servers.Current}/Services/Concept/ConceptService.svc/GetConceptTreeMobile";
 
 		/// <summary>
+		/// Get EEMC concept cascade URL.
+		/// </summary>
+		public static string GetConceptCascade =>
+			$"{Servers.Current}/Services/Concept/ConceptService.svc/GetConceptCascade";
+
+		/// <summary>
 		/// Get files URL.
 		/// </summary>
 		public static string GetFiles => $"{Servers.Current}/Subject/GetFileSubjectJson";
 
+		/// <summary>
+		/// Get files test URL.
+		/// </summary>
+		public static string GetFilesTest => $"{Servers.Current}/subject/Subject/GetFileSubjectV2";
 		/// <summary>
 		/// Get files URL.
 		/// </summary>

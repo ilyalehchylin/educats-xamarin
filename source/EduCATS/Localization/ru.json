@@ -4,6 +4,7 @@
 	"base_yes": "Да",
 	"base_error": "Ошибка",
 	"base_cancel": "Отмена",
+	"base_success": "Успех",
 	"base_warning": "Внимание",
 	"base_loading": "Загрузка...",
 	"base_unexpected_error": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки. Возможно срок действия токена истек, перезайдите в приложение.",
@@ -55,8 +56,8 @@
 	"stats_marks_error": "Произошла ошибка во время получения статистики. Пожалуйста, обновите страницу или обратитесь в службу поддержки.",
 	"stats_expand_chart_text": "Подробнее",
 	"stats_collapse_chart_text": "Скрыть",
-	"stats_chart_average_labs": "Средняя оценка за лабораторные работы",
-	"stats_chart_average_pract": "Средняя оценка за практические работы",
+	"stats_chart_average_labs": "Средний балл за лабораторные работы",
+	"stats_chart_average_pract": "Средний балл за практические работы",
 	"stats_chart_average_tests": "Средняя оценка за тесты",
 	"stats_chart_rating": "Рейтинговая оценка",
 	"stats_chart_not_enough_data": "Недостаточно данных для отображения графика",
@@ -140,6 +141,7 @@
 	"settings_font_large_description": "Сделать шрифт в приложении больше.",
 
 	"settings_delete_message": "Вы действительно хотите удалить аккаунт?",
+	"settings_delete_success": "Ваш аккаунт удалён",
 
 	"settings_about_app_version": "Версия",
 	"settings_about_app_build": "Сборка",

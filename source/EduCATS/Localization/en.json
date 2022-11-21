@@ -4,6 +4,7 @@
 	"base_yes": "Yes",
 	"base_error": "Error",
 	"base_cancel": "Cancel",
+	"base_success": "Success",
 	"base_warning": "Warning",
 	"base_loading": "Loading...",
 	"base_unexpected_error": "Unexpected error occurred. Please try again or contact support. May be the token has expired, please re-enter the application.",
@@ -137,6 +138,7 @@
 	"settings_font_large_description": "Make application's text larger.",
 
 	"settings_delete_message": "Are you sure you want to delete your account?",
+	"settings_delete_success": "Your account has been deleted",
 
 	"settings_about_app_version": "Version",
 	"settings_about_app_build": "Build",

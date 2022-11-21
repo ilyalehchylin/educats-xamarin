@@ -4,6 +4,7 @@
 	"base_yes": "Так",
 	"base_error": "Памылка",
 	"base_cancel": "Адмена",
+	"base_success": "Поспех",
 	"base_warning": "Увага",
 	"base_loading": "Пампаванне...",
 	"base_unexpected_error": "Адбылася неспадзяваная памылка. Калі ласка, паспрабуйце яшчэ раз ці звярніцеся ў службу падтрымкі. Магчыма тэрмін дзеяння токена скончыўся, калі ласка перезайдите ў дадатак.",
@@ -135,6 +136,7 @@
 	"settings_font_large_description": "Зрабіць шрыфт у дадатку больш",
 
 	"settings_delete_message": "Вы сапраўды жадаеце выдаліць акаўнт?",
+	"settings_delete_success": "Ваш акаўнт выдалены",
 
 	"settings_about_app_version": "Версія",
 	"settings_about_app_build": "Зборка",

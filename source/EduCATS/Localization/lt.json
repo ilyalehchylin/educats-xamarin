@@ -4,6 +4,7 @@
 	"base_yes": "Taip",
 	"base_error": "Klaida",
 	"base_cancel": "Atšaukimas",
+	"base_success": "Successo",
 	"base_warning": "Dėmesio",
 	"base_loading": "Pakrovimas...",
 	"base_unexpected_error": "Įvyko netikėta klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba. Gali būti, kad prieigos raktas nebegalioja. Įveskite programą iš naujo.",
@@ -137,6 +138,7 @@
 	"settings_font_large_description": "Padidinkite programos šriftą.",
 
 	"settings_delete_message": "Sei sicuro di voler eliminare il tuo account?",
+	"settings_delete_success": "Il tuo account è stato eliminato",
 
 	"settings_about_app_version": "Versija",
 	"settings_about_app_build": "Programos sudarymas",

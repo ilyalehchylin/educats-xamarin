@@ -175,7 +175,7 @@ namespace EduCATS.Pages.Pickers
 
 		public void SetCurrentSubjectsList(List<SubjectModel> subjects)
 		{
-			CurrentSubjects = subjects;
+			CurrentSubjects = subjects.OrderBy(x => x.Name).ToList();
 		}
 
 		bool checkSubjectsList()

@@ -4,6 +4,7 @@
 	"base_yes": "Ja",
 	"base_error": "Fehler",
 	"base_cancel": "Abbruch",
+	"base_success": "Erfolg",
 	"base_warning": "Achtung",
 	"base_loading": "Laden...",
 	"base_unexpected_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support. Der Token ist möglicherweise abgelaufen, bitte geben Sie die Anwendung erneut ein.",
@@ -137,6 +138,7 @@
 	"settings_font_large_description": "Schriftart in der App größer machen.",
 
 	"settings_delete_message": "Möchten Sie Ihr Konto wirklich löschen?",
+	"settings_delete_success": "Dein Account wurde gelöscht",
 
 	"settings_about_app_version": "Version",
 	"settings_about_app_build": "Assembling ",

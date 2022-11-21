@@ -75,7 +75,11 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetProfileInfoSubjects(string username)
 		{
 			var body = getUserLoginBody(username);
-			return await AppServicesController.Request(Links.GetProfileInfoSubjects, body);
+			
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+				return await AppServicesController.Request(Links.GetProfileInfoSubjects, body);
+			else
+				return await AppServicesController.Request(Links.GetProfileInfoSubjectsTest);
 		}
 
 		/// <summary>
@@ -112,7 +116,11 @@ namespace EduCATS.Networking.AppServices
 			return await AppServicesController.Request(
 				$"{Links.GetPracticialsTest}subjectID={subjectId}&groupID={groupId}");
 		}
-
+		public static async Task<object> GetPractTestStatistics(int subjectId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetPracticals}{subjectId}");
+		}
 		public static async Task<object> GetPracticials(int subjectId, int groupId)
 		{
 			var groupItems = new GroupAndSubjModel();
@@ -157,6 +165,11 @@ namespace EduCATS.Networking.AppServices
 				$"{Links.GetLabsTest}subjectID={subjectId}&groupID={groupId}");
 		}
 
+		public static async Task<object> GetLabs(int subjectId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetLabs}{subjectId}");
+		}
 		/// <summary>
 		/// Fetch lectures data request.
 		/// </summary>
@@ -207,7 +220,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetNextQuestion(int testId, int questionNumber, int userId)
 		{
 			return await AppServicesController.Request(
-				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&userId={userId}");
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&userId={userId}");
 		}
 
 		/// <summary>
@@ -233,6 +246,13 @@ namespace EduCATS.Networking.AppServices
 				$"{Links.GetUserAnswers}?studentId={userId}&testId={testId}");
 		}
 
+		public static async Task<object> GetUserAnswers(int testId)
+		{
+			return await AppServicesController.Request(
+					$"{Links.GetResultTest}?testId={testId}");
+		}
+		
+
 		/// <summary>
 		/// Fetch Electronic Educational Methodological Complexes
 		/// root concepts request.
@@ -245,6 +265,11 @@ namespace EduCATS.Networking.AppServices
 			var body = new RootConceptsPostModel(userId, subjectId);
 			var bodyString = JsonController.ConvertObjectToJson(body);
 			return await AppServicesController.Request($"{Links.GetRootConcepts}", bodyString);
+		}
+		public static async Task<object> GetRootConcepts(string subjectId)
+		{
+			return await AppServicesController.Request(
+					$"{Links.GetRootConceptsTest}?subjectId={subjectId}");
 		}
 
 		/// <summary>
@@ -260,13 +285,29 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch Electronic Educational Methodological Complexes
+		/// concept cascade request.
+		/// </summary>
+		/// <param name="elementId">Root element ID.</param>
+		/// <returns>Concept data.</returns>
+		public static async Task<object> GetConceptCascade(int elementId)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetConceptCascade}?parenttId={elementId}");
+		}
+
+
+		/// <summary>
 		/// Fetch files request.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
 		/// <returns>Files data.</returns>
 		public static async Task<object> GetFiles(int subjectId)
 		{
-			return await AppServicesController.Request($"{Links.GetFiles}?subjectId={subjectId}");
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+				return await AppServicesController.Request($"{Links.GetFiles}?subjectId={subjectId}");
+			else
+				return await AppServicesController.Request($"{Links.GetFilesTest}?subjectId={subjectId}");
 		}
 
 		/// <summary>
