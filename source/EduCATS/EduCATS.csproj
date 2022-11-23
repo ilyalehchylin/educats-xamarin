@@ -54,7 +54,6 @@
         <Folder Include="Helpers\Date\" />
         <Folder Include="Helpers\Date\Extensions\" />
         <Folder Include="Helpers\Date\Enums\" />
-        <Folder Include="Data\Models\Subjects\" />
         <Folder Include="Data\Models\News\" />
         <Folder Include="Data\Models\Calendar\" />
         <Folder Include="Pages\Today\NewsDetails\" />
@@ -89,7 +88,6 @@
         <Folder Include="Pages\Testing\Base\Views\" />
         <Folder Include="Pages\Testing\Base\ViewModels\" />
         <Folder Include="Pages\Testing\Base\Views\ViewCells\" />
-        <Folder Include="Data\Models\Testing\" />
         <Folder Include="Pages\Testing\Base\Models\" />
         <Folder Include="Pages\Testing\Passing\" />
         <Folder Include="Pages\Testing\Passing\Models\" />
@@ -99,7 +97,6 @@
         <Folder Include="Data\Models\Testing\Passing\" />
         <Folder Include="Networking\Models\Testing\" />
         <Folder Include="Pages\Testing\Passing\Views\ViewCells\" />
-        <Folder Include="Data\Models\Testing\Results\" />
         <Folder Include="Pages\Testing\Results\" />
         <Folder Include="Pages\Testing\Results\Views\" />
         <Folder Include="Pages\Testing\Results\ViewModels\" />
@@ -108,12 +105,10 @@
         <Folder Include="Pages\Eemc\Views\" />
         <Folder Include="Pages\Eemc\ViewModels\" />
         <Folder Include="Networking\Models\Eemc\" />
-        <Folder Include="Data\Models\Eemc\" />
         <Folder Include="Pages\Eemc\Views\ViewCell\" />
         <Folder Include="Pages\Files\" />
         <Folder Include="Pages\Files\Views\" />
         <Folder Include="Pages\Files\ViewModels\" />
-        <Folder Include="Data\Models\Files\" />
         <Folder Include="Pages\Files\Models\" />
         <Folder Include="Pages\Files\Views\ViewCells\" />
         <Folder Include="Data\Models\Recommendations\" />

@@ -154,6 +154,16 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch groups data.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Group data.</returns>
+		public static async Task<object> GetGroupsData()
+		{
+			return await AppServicesController.Request($"{Links.GetGroupsData}");
+		}
+
+		/// <summary>
 		/// Fetch laboratory works data request.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
