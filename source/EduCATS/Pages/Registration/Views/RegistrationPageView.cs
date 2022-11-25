@@ -1,4 +1,5 @@
-﻿using EduCATS.Data.Models;
+﻿using EduCATS.Data;
+using EduCATS.Data.Models;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Registration.ViewModels;
@@ -37,23 +38,15 @@ namespace EduCATS.Pages.Registration.Views
 			BindingContext = new RegistrationPageViewModel(new PlatformServices());
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			WebRequest request = WebRequest.Create("http://educats.by/Administration/GetGroupsJson");
-			WebResponse response = request.GetResponse();
-			string json = "";
-			using (Stream stream = response.GetResponseStream())
-			{
-				using (StreamReader reader = new StreamReader(stream))
-				{
-					string line = "";
-					while ((line = reader.ReadLine()) != null)
-					{
-						json += line;
-					}
-				}
-			};
-			groupData = JsonConvert.DeserializeObject<List<GroupItemModel>>(json);
+			setGroupData();
+		}
+
+		async void setGroupData()
+		{
+			groupData = await DataAccess.GetGroupsData();
 			createView();
 		}
+
 		void createView()
 		{
 			var backgroundImage = createBackgroundImage();

@@ -44,8 +44,8 @@ namespace EduCATS.Pages.Registration.ViewModels
 				string.IsNullOrEmpty(ConfirmPassword) ||
 				string.IsNullOrEmpty(Name) ||
 				string.IsNullOrEmpty(Surname) ||
-				ReferenceEquals(Group.Id, null) ||
-				ReferenceEquals(SelectedQuestionId, null) ||
+				ReferenceEquals(Group, null) ||
+				ReferenceEquals(SelectedQuestionId, 0) ||
 				string.IsNullOrEmpty(AnswerToSecretQuestion))
 			{
 				return false;
@@ -72,8 +72,8 @@ namespace EduCATS.Pages.Registration.ViewModels
 				
 				for (int i = 0; i < Password.Length; i++)
 				{
-					if (!(((Password[i] >= 'a') && (Password[i] <= 'z')) || ((Password[i] >= 'A') && (Password[i] <= 'Z')) ||
-						(int.Parse(Password[i].ToString()) >= 0) && (int.Parse(Password[i].ToString()) <= 9)))
+					if (!(((Password[i] >= 'a') && (Password[i] <= 'z')) || ((Password[i] >= 'A') && (Password[i] <= 'Z')) || (Password[i] == '_') ||
+						((Password[i] >= '0') && Password[i] <= '9')))
 					{
 						latin_password = false;
 						break;
@@ -98,7 +98,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 						((nameOfUser[i] >= 'a') && (nameOfUser[i] <= 'z')) || ((nameOfUser[i] >= 'A') && (nameOfUser[i] <= 'Z')) ||
 						((nameOfUser[i] >= 'а') && (nameOfUser[i] <= 'я')) || ((nameOfUser[i] >= 'А') && (nameOfUser[i] <= 'Я')) ||
 						((nameOfUser[i] == '_') || (nameOfUser[i] == ' ') || (nameOfUser[i] == '-')) ||
-						((int.Parse(nameOfUser[i].ToString()) >= 0 && int.Parse(nameOfUser[i].ToString()) <= 9))))
+						(nameOfUser[i] >= '0' && nameOfUser[i] <= '9')))
 					{
 						name = false;
 						break;
@@ -120,7 +120,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 				for (int i = 0; i < UserName.Length; i++)
 				{
 					if (!(((UserName[i] >= 'a') && (UserName[i] <= 'z')) || ((UserName[i] >= 'A') && (UserName[i] <= 'Z'))
-						|| ((int.Parse(UserName[i].ToString()) >= 0) && (int.Parse(UserName[i].ToString()) <= 9))
+						|| ((UserName[i] >= '0') && (UserName[i] <= '9'))
 						|| (UserName[i] == '_')
 						|| (UserName[i] == '.')
 						|| (UserName[i] == '-')
@@ -147,14 +147,16 @@ namespace EduCATS.Pages.Registration.ViewModels
 					bool correctPatronymic = true;
 					bool correctName = CheckNameOfUser(Name);
 					bool correctSurname = CheckNameOfUser(Surname);
+					bool secretAnswer = CheckNameOfUser(AnswerToSecretQuestion);
 					if (Patronymic != null)
 					{
 						correctPatronymic = CheckNameOfUser(Patronymic);
 					}
 					SelectedQuestionId = 0;
 					int uppercase = UpperCaseLettersInPassword();
-					bool latin_password = LatinPassword();
-					bool latin_username = LatinUserName();
+					bool latinPassword = LatinPassword();
+					bool latinUsername = LatinUserName();
+
 					if (QuestionId == CrossLocalization.Translate("mother_last_name"))
 					{
 						SelectedQuestionId = 1;
@@ -171,7 +173,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 					var userExists = await VerifyUserNameAsync(UserName);
 					if (JsonConvert.DeserializeObject<string>(userExists.Key) == "true")
 					{
-						_services.Dialogs.ShowError(CrossLocalization.Translate(""));
+						_services.Dialogs.ShowError(CrossLocalization.Translate("user_exists"));
 						return Task.FromResult<object>(null);
 					}
 
@@ -182,7 +184,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 						return Task.FromResult<object>(null);
 					}
 
-					if (!(latin_username == true))
+					if (!(latinUsername == true))
 					{
 						_services.Dialogs.ShowMessage(CrossLocalization.Translate("username_error"),
 											CrossLocalization.Translate("latin_letters"));
@@ -195,7 +197,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 						return Task.FromResult<object>(null);
 					}
 
-					if (!(uppercase != 0 && latin_password == true))
+					if (!(uppercase != 0 && latinPassword == true))
 					{
 						_services.Dialogs.ShowMessage(CrossLocalization.Translate("password_not_correct"),
 									CrossLocalization.Translate("latin_password"));

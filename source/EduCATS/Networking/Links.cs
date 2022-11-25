@@ -53,6 +53,11 @@
 		public static string GetOnlyGroups => $"{Servers.Current}/Services/CoreService.svc/GetOnlyGroups";
 
 		/// <summary>
+		/// Get groups data URL.
+		/// </summary>
+		public static string GetGroupsData => $"{Servers.Current}/Administration/GetGroupsJson";
+
+		/// <summary>
 		/// Get laboratory works URL.
 		/// </summary>
 		public static string GetLabsTest => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2?";

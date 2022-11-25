@@ -84,6 +84,13 @@ namespace EduCATS.Data
 			int subjectId) => await AppServices.GetOnlyGroups(subjectId);
 
 		/// <summary>
+		/// Groups data callback.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Group data.</returns>
+		static async Task<object> getGroupsDataCallback() => await AppServices.GetGroupsData();
+
+		/// <summary>
 		/// Laboratory works callback.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>

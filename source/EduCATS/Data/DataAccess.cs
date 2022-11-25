@@ -173,6 +173,18 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, false) as GroupModel;
 		}
 
+		/// <summary>
+		/// Fetch groups data.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Group data.</returns>
+		public async static Task<List<GroupItemModel>> GetGroupsData()
+		{
+			var dataAccess = new DataAccess<GroupItemModel>(
+				"groups_fetch_error", getGroupsDataCallback());
+			return await GetDataObject(dataAccess, true) as List<GroupItemModel>;
+		}
+
 		public async static Task<LecturesModel> GetLecturesTest(int subjectId, int groupId)
 		{
 			var dataAccess = new DataAccess<LecturesModel>(
