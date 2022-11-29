@@ -27,9 +27,10 @@ namespace EduCATS.Pages.ForgotPassword.Views
 		};
 		static Thickness _loginFormPadding = new Thickness(20, 0);
 		static Thickness _baseSpacing = new Thickness(0, 10, 0, 0);
+		static Thickness _showPasswordIconMargin = new(0, 10, 5, 0);
 
 		const double _controlHeight = 50;
-
+		const double _showPasswordIconSize = 30;
 		public ForgotPasswordPageView()
 		{
 			BindingContext = new ForgotPasswordPageViewModel(new PlatformServices());
@@ -68,8 +69,8 @@ namespace EduCATS.Pages.ForgotPassword.Views
 			var userNameEntry = createUsernameEntry(entryStyle);
 			var questionPicker = createSecretQuestionPicker();
 			var answerEntry = createAnswerEntry(Style);
-			var newpasswordEntry = createNewPasswordEntry(entryStyle);
-			var confirmPasswordEntry = createConfirmPasswordEntry(entryStyle);
+			var newpasswordEntry = createNewPasswordGrid(entryStyle);
+			var confirmPasswordEntry = createConfirmPasswordGrid(entryStyle);
 			var resetPasswordButton = createResetPasswordButton();
 
 			var chekInForm = new StackLayout
@@ -134,6 +135,20 @@ namespace EduCATS.Pages.ForgotPassword.Views
 			return answer;
 		}
 
+		Grid createNewPasswordGrid(Style style)
+		{
+			var passwordEntry = createNewPasswordEntry(style);
+			var showPasswordImage = createShowNewPasswordImage();
+
+			return new Grid
+			{
+				Children = {
+					passwordEntry,
+					showPasswordImage
+				}
+			};
+        }
+
 		Entry createNewPasswordEntry(Style style)
 		{
 			var password = new Entry
@@ -150,6 +165,57 @@ namespace EduCATS.Pages.ForgotPassword.Views
 			return password;
 		}
 
+		CachedImage createShowNewPasswordImage()
+		{
+			var showPasswordImage = new CachedImage
+            {
+				HeightRequest = _showPasswordIconSize,
+				Aspect = Aspect.AspectFit,
+				Margin = _showPasswordIconMargin,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Source = ImageSource.FromFile(Theme.Current.LoginShowPasswordImage)
+			};
+
+			var showPasswordTapGesture = new TapGestureRecognizer();
+			showPasswordTapGesture.SetBinding(TapGestureRecognizer.CommandProperty, "HidePasswordCommand");
+			showPasswordImage.GestureRecognizers.Add(showPasswordTapGesture);
+			return showPasswordImage;
+		}
+
+		Grid createConfirmPasswordGrid(Style style)
+        {
+			var passwordEntry = createConfirmPasswordEntry(style);
+			var showPasswordImage = createShowConfirmPasswordImage();
+	
+	        return new Grid
+	        {
+			Children = {
+				passwordEntry,
+				showPasswordImage
+				}
+		    };
+	    }
+
+		CachedImage createShowConfirmPasswordImage()
+		{
+			var showPasswordImage = new CachedImage
+           {
+				HeightRequest = _showPasswordIconSize,
+				Aspect = Aspect.AspectFit,
+				Margin = _showPasswordIconMargin,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Source = ImageSource.FromFile(Theme.Current.LoginShowPasswordImage)
+			};
+
+			var showPasswordTapGesture = new TapGestureRecognizer();
+			showPasswordTapGesture.SetBinding(TapGestureRecognizer.CommandProperty, "HideConfirmPasswordCommand");
+			showPasswordImage.GestureRecognizers.Add(showPasswordTapGesture);
+			return showPasswordImage;
+		}
+
+
 		Entry createConfirmPasswordEntry(Style style)
 		{
 			var password = new Entry
@@ -162,7 +228,7 @@ namespace EduCATS.Pages.ForgotPassword.Views
 			};
 
 			password.SetBinding(Entry.TextProperty, "ConfirmPassword");
-			password.SetBinding(Entry.IsPasswordProperty, "IsPasswordHidden");
+			password.SetBinding(Entry.IsPasswordProperty, "IsConfirmPasswordHidden");
 			return password;
 		}
 

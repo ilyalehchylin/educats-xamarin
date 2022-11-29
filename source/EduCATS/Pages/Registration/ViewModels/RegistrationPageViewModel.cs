@@ -22,7 +22,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 		public RegistrationPageViewModel(IPlatformServices services)
 		{
 			_services = services;
-			IsPasswordHidden = true;
+			IsConfirmPasswordHidden = IsPasswordHidden = true;
 		}
 
 		Command _registerCommand;
@@ -34,6 +34,30 @@ namespace EduCATS.Pages.Registration.ViewModels
 			get
 			{
 				return _registerCommand ??= new Command(async () => await startRegister());
+			}
+		}
+
+		Command _hidePasswordCommand;
+		/// <summary>
+		/// Hide password command.
+		/// </summary>
+		public Command HidePasswordCommand
+		{
+			get
+			{
+				return _hidePasswordCommand ?? (_hidePasswordCommand = new Command(hidePassword));
+			}
+		}
+
+		Command _hideConfirmPasswordCommand;
+		/// <summary>
+		/// Hide password command.
+		/// </summary>
+		public Command HideConfirmPasswordCommand
+		{
+			get
+			{
+				return _hideConfirmPasswordCommand ?? (_hideConfirmPasswordCommand = new Command(hideConfirmPassword));
 			}
 		}
 
@@ -224,7 +248,7 @@ namespace EduCATS.Pages.Registration.ViewModels
 						return Task.FromResult<object>(null);
 					}
 
-					if (Name.Length >= 30 || Surname.Length >= 30 || Patronymic.Length >= 30)
+					if (Name.Length >= 30 || Surname.Length >= 30 || (Patronymic!= null && Patronymic.Length >= 30))
 					{
 						_services.Dialogs.ShowMessage(CrossLocalization.Translate("not_carrected_lenth"),
 							CrossLocalization.Translate("lenth_name_surname_patronymic"));
@@ -351,6 +375,17 @@ namespace EduCATS.Pages.Registration.ViewModels
 			set { SetProperty(ref _isPasswordHidden, value); }
 		}
 
+		bool _isConfirmPasswordHidden;
+
+		/// <summary>
+		/// Property for checking if confirm password is hidden.
+		/// </summary>
+		public bool IsConfirmPasswordHidden
+		{
+			get { return _isConfirmPasswordHidden; }
+			set { SetProperty(ref _isConfirmPasswordHidden, value); }
+		}
+
 		GroupItemModel _groupNumber;
 
 		/// <summary>
@@ -410,6 +445,19 @@ namespace EduCATS.Pages.Registration.ViewModels
 			{
 				_services.Dialogs.HideLoading();
 			}
+		}
+
+		protected void hidePassword()
+		{
+			IsPasswordHidden = !IsPasswordHidden;
+		}
+
+		/// <summary>
+		/// Hides or shows a confirm password.
+		/// </summary>
+		protected void hideConfirmPassword()
+		{
+			IsConfirmPasswordHidden = !IsConfirmPasswordHidden;
 		}
 	}
 }
