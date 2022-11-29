@@ -5,6 +5,7 @@
 	"base_error": "Памылка",
 	"base_cancel": "Адмена",
 	"base_success": "Поспех",
+	"base_completed": "Дзеянне завершана",
 	"base_warning": "Увага",
 	"base_loading": "Пампаванне...",
 	"base_unexpected_error": "Адбылася неспадзяваная памылка. Калі ласка, паспрабуйце яшчэ раз ці звярніцеся ў службу падтрымкі. Магчыма тэрмін дзеяння токена скончыўся, калі ласка перезайдите ў дадатак.",
@@ -34,6 +35,7 @@
 	"login_empty_credentials_error": "Патрэбныя імя карыстальніка і пароль",
 	"login_error": "Не атрымалася ўвайсці ў сістэму. Калі ласка праверце ўведзеныя даныя.",
 	"login_user_profile_error": "Здарылася памылка падчас атрымання даных профіля. Калі ласка паспрабуйце яшчэ раз альбо звярніцеся ў службу падтрымкі.",
+	"login_user_profile_not_verify": "Ваш акаўнт не пацверджаны. Звяжыцеся са сваім настаўнікам, каб пацвердзіць свой уліковы запіс.",
 
 	"main_today": "Сёння",
 	"main_learning": "Навучанне",
@@ -137,6 +139,7 @@
 
 	"settings_delete_message": "Вы сапраўды жадаеце выдаліць акаўнт?",
 	"settings_delete_success": "Ваш акаўнт выдалены",
+	"settings_delete_process": "Выдаленне дадзеных профілю...",
 
 	"settings_about_app_version": "Версія",
 	"settings_about_app_build": "Зборка",
@@ -147,6 +150,14 @@
 	"settings_about_send_logs_not_supported": "Дадзеная функцыя не падтрымліваецца вашай прыладай.",
 	"settings_about_send_logs_error": "Здарылася памылка падчас адпраўкі логаў. Калі ласка паспрабуйце зноў альбо звярніцеся ў службу падтрымкі.",
 	"settings_about_contributors": "Аўтары",
+
+	"parental_login": "Статыстыка паспяховасці",
+	"parental_enter_group_number": "Увядзіце нумар групы",
+	"parental_enter_full_name": "Увядзіце Прозвішча, імя,",
+	"parental_error_empty_group_number": "Калі ласка, увядзіце нумар гурта",
+	"parental_group_not_found": "Гэты гурт не знойдзены",
+	"parental_connection_error": "Не атрымалася падлучыцца да сервера",
+	"parental_get_statistics": "Атрымаць статыстыку",
 
 	"pets_name": "Мянушка любімага жывёльнага?",
 	"hobby": "Ваша хобі?",

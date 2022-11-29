@@ -5,6 +5,7 @@
 	"base_error": "Fehler",
 	"base_cancel": "Abbruch",
 	"base_success": "Erfolg",
+	"base_completed": "Aktion abgeschlossen",
 	"base_warning": "Achtung",
 	"base_loading": "Laden...",
 	"base_unexpected_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support. Der Token ist möglicherweise abgelaufen, bitte geben Sie die Anwendung erneut ein.",
@@ -34,6 +35,7 @@
 	"login_empty_credentials_error": "Benutzername und Passwort sind erforderlich.",
 	"login_error": "Anmeldung fehlschlagen. Bitte, uberprufen Sie die eingegebenen Daten.",
 	"login_user_profile_error": "Fehler beim abrufen von Profildaten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"login_user_profile_not_verify": "Ihr Konto wurde nicht verifiziert. Wenden Sie sich an Ihren Lehrer, um Ihr Konto zu verifizieren.",
 
 	"main_today": "Heute",
 	"main_learning": "Ausbildung",
@@ -139,6 +141,7 @@
 
 	"settings_delete_message": "Möchten Sie Ihr Konto wirklich löschen?",
 	"settings_delete_success": "Dein Account wurde gelöscht",
+	"settings_delete_process": "Profildaten werden gelöscht...",
 
 	"settings_about_app_version": "Version",
 	"settings_about_app_build": "Assembling ",
@@ -149,6 +152,14 @@
 	"settings_about_send_logs_not_supported": "Diese Funktion wird von Ihrem Gerät nicht unterstützt",
 	"settings_about_send_logs_error": "Fehler beim senden von Protokollen. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
 	"settings_about_contributors": "Autoren",
+
+	"parental_login": "Fortschrittsstatistik",
+	"parental_enter_group_number": "Gruppennummer eingeben",
+	"parental_enter_full_name": "Vollständigen Namen eingeben",
+	"parental_error_empty_group_number": "Bitte geben Sie eine Gruppennummer ein",
+	"parental_group_not_found": "Die angegebene Gruppe wurde nicht gefunden",
+	"parental_connection_error": "Verbindung zum Server nicht möglich",
+	"parental_get_statistics": "Statistik abrufen",
 
 	"pets_name": "Wie heißt Ihr Lieblingstier?",
 	"hobby": "Was ist dein Hobby?",
