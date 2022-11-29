@@ -214,7 +214,7 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openParental()
 		{
-			_services.Navigation.OpenFindGroup();
+			await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
 		}
 
 
@@ -370,6 +370,30 @@ namespace EduCATS.Pages.Login.ViewModels
 						SecondUserModel userLoginTest = await DataAccess.LoginTest(Username, Password);
 						userLogin.UserId = userLoginTest.Id;
 						userLogin.Username = userLoginTest.Username;
+					}
+					catch (WebException ex)
+					{
+						HttpWebResponse httpResponse = (HttpWebResponse)ex.Response;
+						string answer = "";
+						if (ex.Response != null)
+						{
+							using (Stream stream = ex.Response.GetResponseStream())
+							{
+								StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+								answer = reader.ReadToEnd();
+							}
+
+							var serverError = JsonConvert.DeserializeObject<ServerError>(answer);
+
+							if (serverError.Error == 1)
+							{
+								DataAccess.SetError(CrossLocalization.Translate("login_user_profile_not_verify"), false);
+							}
+							else
+							{
+								DataAccess.SetError(CrossLocalization.Translate("login_error"), false);
+							}
+						}
 					}
 					catch (Exception) { }
 				}
