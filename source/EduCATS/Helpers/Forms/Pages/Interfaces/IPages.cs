@@ -33,8 +33,10 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <summary>
 		/// Open finding group page.
 		/// </summary>
-		public void OpenFindGroup();
-
+		/// <param name="title">Title.</param>
+		/// <returns></returns>
+		public Task OpenFindGroup(string title);
+		
 		/// <summary>
 		/// Open parental control statistics
 		/// </summary>

@@ -371,7 +371,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 						var result = string.IsNullOrEmpty(v.Mark) ? _emptyRatingString : v.Mark;
 						return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment), result);
 					});
-					Marks = new List<StatsResultsPageModel>(visitingLabsTestResult);
+					Marks = new List<StatsResultsPageModel>(visitingLabsTestResult).OrderBy(x => DateTime.Parse(x.Date)).ToList();
 				}
 				else
 				{

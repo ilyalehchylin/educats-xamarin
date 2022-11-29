@@ -79,8 +79,10 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <summary>
 		/// Open group finding page.
 		/// </summary>
-		public void OpenFindGroup() =>
-			switchMainPage(new FindGroupPageView());
+		/// <param name="title"></param>
+		/// <returns></returns>
+		public async Task OpenFindGroup(string title) =>
+			await pushPage(new FindGroupPageView(),title);
 
 		public async Task OpenParentalStats(GroupInfo group, string title) =>
 			await pushPage(new ParentalStatsPageView(group), title);
