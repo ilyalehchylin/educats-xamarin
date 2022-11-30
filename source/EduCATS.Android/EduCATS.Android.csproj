@@ -15,7 +15,7 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v13.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
@@ -39,8 +39,6 @@
     <EnableLLVM>false</EnableLLVM>
     <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
     <BundleAssemblies>false</BundleAssemblies>
-    <AndroidTlsProvider>
-    </AndroidTlsProvider>
     <MandroidI18n />
     <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidCreatePackagePerAbi>false</AndroidCreatePackagePerAbi>
