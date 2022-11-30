@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
@@ -10,6 +13,7 @@ using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Pages.Pickers;
 using Newtonsoft.Json;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Eemc.ViewModels
@@ -19,6 +23,9 @@ namespace EduCATS.Pages.Eemc.ViewModels
 	/// </summary>
 	public class EemcPageViewModel : SubjectsViewModel
 	{
+		const string _filepathKey = "filepath";
+		WebClient _client;
+		object _progressDialog;
 		/// <summary>
 		/// Test identifier string.
 		/// </summary>
@@ -303,11 +310,125 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		void openFile(string filePath)
 		{
 			if (Servers.Current == Servers.EduCatsBntuAddress)
-			PlatformServices.Device.MainThread(
-				async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/{filePath}"));
-			else
 				PlatformServices.Device.MainThread(
-				async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/api/Upload?fileName={filePath}"));
+					async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/{filePath}"));
+			else
+			{
+				PlatformServices.Device.MainThread(
+					async () => await downloadAndOpenFile(filePath));
+			}
+		}
+
+
+		async Task downloadAndOpenFile(string filePath)
+		{
+			try
+			{
+				setDownloading();
+				var separatingResult = filePath.Split(new char[1] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+				string fileName = separatingResult[1];
+				string pathFile = separatingResult[0];
+				var storageFilePath = Path.Combine(PlatformServices.Device.GetAppDataDirectory(), fileName);
+
+				if (File.Exists(storageFilePath))
+				{
+					completeDownload(storageFilePath);
+					return;
+				}
+
+				var fileUri = new Uri($"{Servers.Current}/api/Upload?fileName={filePath}");
+				ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
+				_client = new WebClient();
+				_client.DownloadProgressChanged += downloadProgressChanged;
+				_client.DownloadFileCompleted += downloadCompleted;
+				_client.QueryString.Add(_filepathKey, storageFilePath);
+				_client.DownloadFileAsync(fileUri, storageFilePath);
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideProgress(_progressDialog));
+				PlatformServices.Device.MainThread(
+					() => PlatformServices.Dialogs.ShowError(
+						CrossLocalization.Translate("files_downloading_error")));
+			}
+		}
+
+		/// <summary>
+		/// Download completed.
+		/// </summary>
+		/// <param name="sender">Web client.</param>
+		/// <param name="e">Event arguments.</param>
+		private void downloadCompleted(object sender, AsyncCompletedEventArgs e)
+		{
+			if (sender == null)
+			{
+				return;
+			}
+
+			var client = sender as WebClient;
+			var pathForFile = client.QueryString[_filepathKey];
+
+			if (e.Cancelled)
+			{
+				File.Delete(pathForFile);
+			}
+			else
+			{
+				completeDownload(pathForFile);
+			}
+		}
+
+		/// <summary>
+		/// Download progress changed.
+		/// </summary>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">Event arguments.</param>
+		private void downloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
+		{
+			double bytesIn = double.Parse(e.BytesReceived.ToString());
+			double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
+			double percentage = bytesIn / totalBytes * 100;
+			PlatformServices.Device.MainThread(
+				() => PlatformServices.Dialogs.UpdateProgress(_progressDialog, (int)percentage));
+		}
+
+		/// <summary>
+		/// Set downloading.
+		/// </summary>
+		void setDownloading()
+		{
+			PlatformServices.Device.MainThread(() => {
+				_progressDialog = PlatformServices.Dialogs.ShowProgress(
+					CrossLocalization.Translate("files_downloading"),
+					CrossLocalization.Translate("base_cancel"),
+					() => abortDownload());
+			});
+		}
+
+		/// <summary>
+		/// Abort downloading process.
+		/// </summary>
+		void abortDownload()
+		{
+			if (_client == null || !_client.IsBusy)
+			{
+				return;
+			}
+
+			_client.CancelAsync();
+			PlatformServices.Dialogs.HideProgress(_progressDialog);
+		}
+
+		/// <summary>
+		/// Complete download.
+		/// </summary>
+		/// <param name="fileName">File name.</param>
+		/// <param name="pathForFile">Path for file.</param>
+		void completeDownload(string pathForFile)
+		{
+			PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideProgress(_progressDialog));
+			PlatformServices.Device.MainThread(() => PlatformServices.Device.LaunchFile(pathForFile));
 		}
 
 		/// <summary>

@@ -112,7 +112,7 @@ namespace EduCATS.Pages.Pickers
 					return;
 				}
 
-				SetCurrentSubjectsList(subjects.ToList());
+				SetCurrentSubjectsList(subjects.Distinct().ToList());
 				SetupSubject();
 			} catch (Exception ex) {
 				AppLogs.Log(ex);

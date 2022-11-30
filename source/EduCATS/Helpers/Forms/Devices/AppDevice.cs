@@ -53,6 +53,19 @@ namespace EduCATS.Helpers.Forms.Devices
 		/// <param name="callback">Callback.</param>
 		public void SetTimer(TimeSpan interval, Func<bool> callback) =>
 			Device.StartTimer(interval, callback);
+		
+		/// <summary>
+		/// Launch file
+		/// </summary>
+		/// <param name="pathForFile"></param>
+		/// <returns></returns>
+		public async Task LaunchFile(string pathForFile)
+		{
+			await Launcher.OpenAsync(new OpenFileRequest
+			{
+				File = new ReadOnlyFile(pathForFile)
+			});
+		}
 
 		/// <summary>
 		/// Share file.

@@ -32,7 +32,11 @@ namespace EduCATS.Pages.Registration.Views
 		};
 		static Thickness _loginFormPadding = new Thickness(20, 0);
 		static Thickness _baseSpacing = new Thickness(0, 10, 0, 0);
+		static Thickness _showPasswordIconMargin = new(0, 10, 5, 0);
+
 		const double _controlHeight = 50;
+		const double _showPasswordIconSize = 30;
+
 		public RegistrationPageView()
 		{
 			BindingContext = new RegistrationPageViewModel(new PlatformServices());
@@ -74,8 +78,8 @@ namespace EduCATS.Pages.Registration.Views
 		{
 			var entryStyle = getEntryStyle();
 			var userNameEntry = createUsernameEntry(entryStyle);
-			var passwordEntry = createPasswordEntry(entryStyle);
-			var confirmPasswordEntry = createConfirmPasswordEntry(entryStyle);
+			var passwordEntry = createPasswordGrid(entryStyle);
+			var confirmPasswordEntry = createConfirmPasswordGrid(entryStyle);
 			var nameEntry = createFnameEntry(entryStyle);
 			var surnameEntry = createSnameEntry(entryStyle);
 			var patronymicEntry = createPatronymicnameEntry(entryStyle);
@@ -160,6 +164,69 @@ namespace EduCATS.Pages.Registration.Views
 			return username;
 		}
 
+		Grid createPasswordGrid(Style style)
+		{
+			var passwordEntry = createPasswordEntry(style);
+			var showPasswordImage = createShowPasswordImage();
+
+			return new Grid
+			{
+				Children = {
+					passwordEntry,
+					showPasswordImage
+				}
+			};
+		}
+
+		CachedImage createShowPasswordImage()
+		{
+			var showPasswordImage = new CachedImage
+			{
+				HeightRequest = _showPasswordIconSize,
+				Aspect = Aspect.AspectFit,
+				Margin = _showPasswordIconMargin,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Source = ImageSource.FromFile(Theme.Current.LoginShowPasswordImage)
+			};
+
+			var showPasswordTapGesture = new TapGestureRecognizer();
+			showPasswordTapGesture.SetBinding(TapGestureRecognizer.CommandProperty, "HidePasswordCommand");
+			showPasswordImage.GestureRecognizers.Add(showPasswordTapGesture);
+			return showPasswordImage;
+		}
+
+		Grid createConfirmPasswordGrid(Style style)
+		{
+			var passwordEntry = createConfirmPasswordEntry(style);
+			var showPasswordImage = createShowConfirmPasswordImage();
+
+			return new Grid
+			{
+				Children = {
+				passwordEntry,
+				showPasswordImage
+				}
+			};
+		}
+		CachedImage createShowConfirmPasswordImage()
+		{
+			var showPasswordImage = new CachedImage
+			{
+				HeightRequest = _showPasswordIconSize,
+				Aspect = Aspect.AspectFit,
+				Margin = _showPasswordIconMargin,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Source = ImageSource.FromFile(Theme.Current.LoginShowPasswordImage)
+			};
+
+			var showPasswordTapGesture = new TapGestureRecognizer();
+			showPasswordTapGesture.SetBinding(TapGestureRecognizer.CommandProperty, "HideConfirmPasswordCommand");
+			showPasswordImage.GestureRecognizers.Add(showPasswordTapGesture);
+			return showPasswordImage;
+		}
+
 		Entry createPasswordEntry(Style style)
 		{
 			var password = new Entry
@@ -188,7 +255,7 @@ namespace EduCATS.Pages.Registration.Views
 			};
 
 			password.SetBinding(Entry.TextProperty, "ConfirmPassword");
-			password.SetBinding(Entry.IsPasswordProperty, "IsPasswordHidden");
+			password.SetBinding(Entry.IsPasswordProperty, "IsConfirmPasswordHidden");
 			return password;
 		}
 
