@@ -191,6 +191,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 		{
 			try
 			{
+				_services.Dialogs.ShowLoading(CrossLocalization.Translate("settings_delete_process"));
 				var recommendations = await DataAccess.DeleteAccount();
 			}
 			catch (Exception ex)
@@ -198,9 +199,12 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				AppLogs.Log(ex);
 				return;
 			}
-
+			finally
+			{
+				_services.Dialogs.HideLoading();
+			}
 			await _services.Dialogs.ShowConfirmation(
-						CrossLocalization.Translate("base_success"),
+						CrossLocalization.Translate("base_completed"),
 						CrossLocalization.Translate("settings_delete_success"));
 			resetData();
 		}

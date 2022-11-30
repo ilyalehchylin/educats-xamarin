@@ -5,6 +5,7 @@
 	"base_error": "Ошибка",
 	"base_cancel": "Отмена",
 	"base_success": "Успех",
+	"base_completed": "Действие завершено",
 	"base_warning": "Внимание",
 	"base_loading": "Загрузка...",
 	"base_unexpected_error": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки. Возможно срок действия токена истек, перезайдите в приложение.",
@@ -36,6 +37,7 @@
 	"login_empty_credentials_error": "Требуются имя пользователя и пароль.",
 	"login_error": "Не удалось войти в систему. Пожалуйста, проверьте введенные данные.",
 	"login_user_profile_error": "Произошла ошибка во время получения данных профиля. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.",
+	"login_user_profile_not_verify": "Ваш аккаунт не подтвержден. Свяжитесь со своим учителем, чтобы подтвердить свою учетную запись.",
 
 	"main_today": "Сегодня",
 	"main_learning": "Обучение",
@@ -142,6 +144,7 @@
 
 	"settings_delete_message": "Вы действительно хотите удалить аккаунт?",
 	"settings_delete_success": "Ваш аккаунт удалён",
+	"settings_delete_process": "Удаление данных профиля...",
 
 	"settings_about_app_version": "Версия",
 	"settings_about_app_build": "Сборка",
@@ -153,7 +156,7 @@
 	"settings_about_send_logs_error": "Произошла ошибка во время отправки логов. Пожалуйста, попробуйте снова или обратитесь в службу поддержки.",
 	"settings_about_contributors": "Авторы",
 
-	"parental_login": "Контроль успеваемости",
+	"parental_login": "Статистика успеваемости",
 	"parental_enter_group_number": "Введите номер группы",
 	"parental_enter_full_name": "Введите ФИО",
 	"parental_error_empty_group_number": "Пожалуйста введите номер группы",

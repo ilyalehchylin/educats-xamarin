@@ -5,6 +5,7 @@
 	"base_error": "Błąd",
 	"base_cancel": "Anuluj",
 	"base_success": "Powodzenie",
+	"base_completed": "Akcja zakończona",
 	"base_warning": "Uwaga",
 	"base_loading": "Ładowanie...",
 	"base_unexpected_error": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie lub skontaktuj się z obsługą klienta. Token mógł wygasnąć, prosimy o ponowne wypełnienie wniosku.",
@@ -34,7 +35,7 @@
 	"login_empty_credentials_error": "Wymagana nazwa użytkownika i hasło.",
 	"login_error": "Nie można się zalogować. Proszę sprawdzić wprowadzone dane.",
 	"login_user_profile_error": "Wystąpił błąd podczas pobierania danych profilu. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
-
+	"login_user_profile_not_verify": "Twoje konto nie zostało zweryfikowane. Skontaktuj się ze swoim nauczycielem, aby zweryfikować konto.",
 	"main_today": "Dzisiaj",
 	"main_learning": "Uczenie",
 	"main_statistics": "Statystyk",
@@ -139,6 +140,7 @@
 
 	"settings_delete_message": "Czy na pewno chcesz usunąć swoje konto?",
 	"settings_delete_success": "Twoje konto zostało usunięte",
+	"settings_delete_process": "Usuwanie danych profilu...",
 
 	"settings_about_app_version": "Wersja",
 	"settings_about_app_build": "Kompilacja",
@@ -149,6 +151,14 @@
 	"settings_about_send_logs_not_supported": "Ta funkcja nie jest obsługiwana przez twoje urządzenie.",
 	"settings_about_send_logs_error": "Wystąpił błąd podczas wysyłania logów. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
 	"settings_about_contributors": "Autorzy",
+
+	"parental_login": "Statystyki postępu",
+	"parental_enter_group_number": "Wprowadź numer grupy",
+	"parental_enter_full_name": "Wprowadź pełne imię i nazwisko",
+	"parental_error_empty_group_number": "Wprowadź numer grupy",
+	"parental_group_not_found": "Podana grupa nie została znaleziona",
+	"parental_connection_error": "Nie można połączyć się z serwerem",
+	"parental_get_statistics": "Pobierz statystyki",
 
 	"pets_name": "Jak nazywa się twoje ulubione zwierzę?",
 	"hobby": "Jakie jest Twoje hobby?",

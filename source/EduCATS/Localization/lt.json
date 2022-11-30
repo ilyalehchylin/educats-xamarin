@@ -5,6 +5,7 @@
 	"base_error": "Klaida",
 	"base_cancel": "Atšaukimas",
 	"base_success": "Successo",
+	"base_completed": "Azione completata",
 	"base_warning": "Dėmesio",
 	"base_loading": "Pakrovimas...",
 	"base_unexpected_error": "Įvyko netikėta klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba. Gali būti, kad prieigos raktas nebegalioja. Įveskite programą iš naujo.",
@@ -34,6 +35,7 @@
 	"login_empty_credentials_error": "Reikalingas vartotojo vardas ir slaptažodis.",
 	"login_error": "Prisijungimas nepavyko. Patikrinkite įvestus duomenis.",
 	"login_user_profile_error": "Gaunant profilio duomenis įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
+	"login_user_profile_not_verify": "Il tuo account non è stato verificato. Contatta il tuo insegnante per verificare il tuo account.",
 
 	"main_today": "Šiandien",
 	"main_learning": "Mokymai",
@@ -139,6 +141,7 @@
 
 	"settings_delete_message": "Sei sicuro di voler eliminare il tuo account?",
 	"settings_delete_success": "Il tuo account è stato eliminato",
+	"settings_delete_process": "Eliminazione dei dati del profilo...",
 
 	"settings_about_app_version": "Versija",
 	"settings_about_app_build": "Programos sudarymas",
@@ -149,6 +152,14 @@
 	"settings_about_send_logs_not_supported": "Jūsų įrenginys nepalaiko šios funkcijos.",
 	"settings_about_send_logs_error": "Siunčiant žurnalus įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
 	"settings_about_contributors": "Autoriai",
+
+	"parental_login": "Statistiche di avanzamento",
+	"parental_enter_group_number": "Inserisci il numero del gruppo",
+	"parental_enter_full_name": "Inserisci il nome completo",
+	"parental_error_empty_group_number": "Inserisci un numero di gruppo",
+	"parental_group_not_found": "Il gruppo specificato non è stato trovato",
+	"parental_connection_error": "Impossibile connettersi al server",
+	"parental_get_statistics": "Ottieni statistiche",
 
 	"pets_name": "Koks jūsų mėgstamiausio gyvūno vardas?",
 	"hobby": "koks tavo hobis?",

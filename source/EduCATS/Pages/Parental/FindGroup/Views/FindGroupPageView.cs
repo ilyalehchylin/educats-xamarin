@@ -88,7 +88,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 			var groupNumberEntry = createGroupNumberEntry(entryStyle);
 			var fIOEntry = createFIOEntry(entryStyle);
 			var findButton = createFindButton();
-			var backButton = createBackButton();
 
 			var mainStackLayout = new StackLayout
 			{
@@ -99,7 +98,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 					groupNumberEntry,
 					fIOEntry,
 					findButton,
-					backButton,
 				}
 			};
 
@@ -175,23 +173,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 
 			findButton.SetBinding(Button.CommandProperty, "ParentalCommand");
 			return findButton;
-		}
-
-		Button createBackButton()
-		{
-			var backButton = new Button
-			{
-				Text = CrossLocalization.Translate("eemc_back_text"),
-				FontAttributes = FontAttributes.Bold,
-				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
-				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
-				Margin = _baseSpacing,
-				HeightRequest = _controlHeight,
-				Style = AppStyles.GetButtonStyle(bold: true)
-			};
-
-			backButton.SetBinding(Button.CommandProperty, "BackCommand");
-			return backButton;
 		}
 
 		Style getEntryStyle()

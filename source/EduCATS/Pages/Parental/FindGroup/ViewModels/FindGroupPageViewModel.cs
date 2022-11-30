@@ -84,19 +84,6 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 					async () => await openParental()));
 			}
 		}
-
-		Command _backCommand;
-		/// <summary>
-		/// Open Main Statistic page
-		/// </summary>
-		public Command BackCommand
-		{
-			get
-			{
-				return _backCommand ?? (_backCommand = new Command(() => _service.Navigation.OpenLogin()));
-			}
-		}
-
 		protected async Task openParental()
 		{
 			if (string.IsNullOrEmpty(GroupNumber))

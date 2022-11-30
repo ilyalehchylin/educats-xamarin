@@ -10,6 +10,7 @@ using EduCATS.Pages.Statistics.Base.Models;
 using Xamarin.Forms;
 using EduCATS.Pages.Parental.FindGroup.Models;
 using EduCATS.Pages.Statistics.Base.ViewModels;
+using Nyxbull.Plugins.CrossLocalization;
 
 namespace EduCATS.Pages.Parental.Statistics
 {
@@ -166,7 +167,7 @@ namespace EduCATS.Pages.Parental.Statistics
 		/// </summary>
 		protected void openParental()
 		{
-			_service.Navigation.OpenFindGroup();
+			_service.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
 		}
 
 	}
