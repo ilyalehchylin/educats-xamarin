@@ -133,9 +133,10 @@ jobs:
           IPA_FILE_PATH: ./EduCATS.ipa
           
       - name: Google Play Deploy
-        uses: r0adkll/upload-google-play@v1.0.15
+        uses: r0adkll/upload-google-play@v1.0.19
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
           packageName: by.bntu.educats
           releaseFiles: ./by.bntu.educats.aab
           track: beta
+          changesNotSentForReview: true
