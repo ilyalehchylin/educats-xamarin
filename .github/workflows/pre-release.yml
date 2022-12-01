@@ -140,3 +140,4 @@ jobs:
           releaseFiles: ./by.bntu.educats.aab
           track: beta
           changesNotSentForReview: true
+          status: draft
