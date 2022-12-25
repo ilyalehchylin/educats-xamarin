@@ -18,6 +18,13 @@
 	"role_student": "Student",
 	"role_professor": "Wykładowca",
 
+	"address_building": "b.",
+	"address_room": "s.",
+
+	"type_activity_lecture": "Wykład",
+	"type_activity_lab": "Praca laboratoryjna",
+	"type_activity_practical": "Praca praktyczna",
+
 	"server_test": "Serwer testowy",
 	"server_local": "Serwer lokalny",
 	"server_stable": "Serwer stabilny",

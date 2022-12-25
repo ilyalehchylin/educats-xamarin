@@ -18,6 +18,13 @@
 	"role_student": "Student",
 	"role_professor": "Professor",
 
+	"address_building": "b.",
+	"address_room": "а.",
+
+	"type_activity_lecture": "Lecture",
+	"type_activity_lab": "Lab work",
+	"type_activity_practical": "Practical work",
+
 	"server_test": "Test server",
 	"server_local": "Local server",
 	"server_stable": "Stable server",
@@ -35,7 +42,7 @@
 	"login_empty_credentials_error": "Username and password are required.",
 	"login_error": "Invalid login attempt. Please check your credentials.",
 	"login_user_profile_error": "Error occurred during retrieving profile data. Please try again or contact support.",
-	"login_user_profile_not_verify": "Your account has not been verified. Contact your teacher to verify your account.",
+	"login_user_profile_not_verify": "Your account has not been verified. Contact your teacher to confirm your account.",
 
 	"main_today": "Today",
 	"main_learning": "Learning",

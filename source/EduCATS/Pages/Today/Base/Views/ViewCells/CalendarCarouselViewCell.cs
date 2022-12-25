@@ -8,6 +8,7 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 	{
 		const int _daysOfWeekNumber = 7;
 		const string _dataBindingDay = "Day";
+		const double _baseHeight = 30;
 
 		static Thickness _padding = new Thickness(0, 0, 0, 10);
 
@@ -18,9 +19,10 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 			var collection = new CollectionView {
 				ItemsLayout = new GridItemsLayout(_daysOfWeekNumber, ItemsLayoutOrientation.Vertical),
 				ItemTemplate = new DataTemplate(() => new CalendarCollectionViewCell(_dataBindingDay, true)),
-				SelectionMode = SelectionMode.Single
-			};
+				SelectionMode = SelectionMode.Single,
+				HeightRequest = _baseHeight
 
+			};
 			collection.SetBinding(ItemsView.ItemsSourceProperty, "Days");
 			collection.SetBinding(SelectableItemsView.SelectedItemProperty, "CalendarSelectedItem");
 			collection.SetBinding(

@@ -19,6 +19,7 @@ namespace EduCATS.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			Xamarin.Forms.Forms.Init();
+			CarouselView.FormsPlugin.iOS.CarouselViewRenderer.Init();
 			initPackages();
 			LoadApplication(new App());
 			return base.FinishedLaunching(app, options);
