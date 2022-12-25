@@ -14,9 +14,16 @@
 
 	"contributor_ilya_lehchylin": "Ілля Легчылін",
 	"contributor_julia_popova": "Юлія Папова",
-
+	
 	"role_student": "Студэнт",
 	"role_professor": "Выкладчык",
+
+	"address_building": "к.",
+	"address_room": "а.",
+
+	"type_activity_lecture": "Лекцыя",
+	"type_activity_lab": "Лаб. праца",
+	"type_activity_practical": "Практ. праца",
 
 	"server_test": "Тэставы сервер",
 	"server_local": "Лакальны сервер",

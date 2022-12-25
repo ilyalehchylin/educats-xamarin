@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data.Models;
+using EduCATS.Data.Models.Calendar;
 using EduCATS.Data.Models.User;
 using EduCATS.Networking;
 using EduCATS.Networking.Models.SaveMarks;
@@ -103,12 +104,24 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
+		/// Fetch schedule calendar data.
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <returns>Calendar data.</returns>
+		public async static Task<CalendarSubjectModelTest> GetSchedule(string date)
+		{
+			var dataAccess = new DataAccess<CalendarSubjectModelTest>(
+				"today_calendar_error", getScheduleCallback(date), GlobalConsts.DataGetCalendarKey);
+			return await GetDataObject(dataAccess, false) as CalendarSubjectModelTest;
+		}
+
+		/// <summary>
 		/// Fetch statistics.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Statistics data.</returns>
-		public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
+			public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
 		{
 			var dataAccess = new DataAccess<StatsModel>(
 				"stats_marks_error", getStatsCallback(subjectId, groupId),

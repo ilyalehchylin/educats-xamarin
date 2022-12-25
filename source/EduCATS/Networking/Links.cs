@@ -43,6 +43,11 @@
 		public static string GetProfileInfoCalendar => $"{Servers.Current}/Profile/GetProfileInfoCalendar";
 
 		/// <summary>
+		/// Get schedule calendar data URL.
+		/// </summary>
+		public static string GetSchedule => $"{Servers.Current}/Services/Schedule/ScheduleService.svc/GetSchedule?";
+
+		/// <summary>
 		/// Get laboratory works statistics URL.
 		/// </summary>
 		public static string GetStatistics => $"{Servers.Current}/Services/Labs/LabsService.svc/GetMarksV2";
@@ -63,7 +68,7 @@
 		public static string GetLabsTest => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2?";
 
 		public static string GetPracticialsTest => $"{Servers.EduCatsByAddress}/subject/Services/Practicals/PracticalService.svc/GetPracticalsV2?";
-
+		
 		/// <summary>
 		/// Get lectures URL.
 		/// </summary>

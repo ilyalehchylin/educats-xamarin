@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
+using EduCATS.Data.Models.Calendar;
 using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Date.Enums;
 using EduCATS.Helpers.Forms;
@@ -67,6 +68,13 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			set { SetProperty(ref _newsList, value); }
 		}
 
+		List<SubjectPageModel> _newsSubjectList;
+		public List<SubjectPageModel> NewsSubjectList
+		{
+			get { return _newsSubjectList; }
+			set { SetProperty(ref _newsSubjectList, value); }
+		}
+
 		List<CalendarSubjectsModel> _calendarSubjects;
 		public List<CalendarSubjectsModel> CalendarSubjects {
 			get { return _calendarSubjects; }
@@ -83,6 +91,13 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		public string Month {
 			get { return _month; }
 			set { SetProperty(ref _month, value); }
+		}
+
+		bool _isCalendarRefreshing;
+		public bool IsCalendarRefreshing
+		{
+			get { return _isCalendarRefreshing; }
+			set { SetProperty(ref _isCalendarRefreshing, value); }
 		}
 
 		bool _isNewsRefreshing;
@@ -117,11 +132,12 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			}
 		}
 
-		Command _calendarPositionChangedCommand;
-		public Command CalendarPositionChangedCommand {
+		Command<CarouselView.FormsPlugin.Abstractions.PositionSelectedEventArgs> _calendarPositionChangedCommand;
+		public Command<CarouselView.FormsPlugin.Abstractions.PositionSelectedEventArgs> PositionSelectedCommandProperty
+		{
 			get {
 				return _calendarPositionChangedCommand ?? (
-					_calendarPositionChangedCommand = new Command(
+					_calendarPositionChangedCommand = new Command<CarouselView.FormsPlugin.Abstractions.PositionSelectedEventArgs>(
 						calendarPositionChangedEvent));
 			}
 		}
@@ -131,9 +147,9 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			try {
 				_manualSelectedCalendarDay = new DateTime();
 				CalendarSubjects = new List<CalendarSubjectsModel>();
+				NewsSubjectList = new List<SubjectPageModel>();
 				CalendarDaysOfWeekList = new ObservableCollection<string>(DateHelper.GetDaysWithFirstLetters());
 				setInitialCalendarState();
-
 				NewsList = new List<NewsPageModel>();
 				_calendarSubjectsBackup = new List<CalendarSubjectsModel>();
 			} catch (Exception ex) {
@@ -153,27 +169,16 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				currentWeekCalendarModel,
 				nextWeekCalendarModel
 			};
-
+			CalendarPosition = 1;
 			selectCalendarDay(todayDateTime);
-			setInitialCalendarPosition();
 		}
-
-		// FIXME: Workaround for initial calendar position setup.
-		void setInitialCalendarPosition()
-		{
-			Task.Run(() => {
-				Thread.Sleep(1000);
-				_services.Device.MainThread(() => CalendarPosition = 1);
-			});
-		}
-
 		void update()
 		{
 			_services.Device.MainThread(async () => {
 				try {
 					IsNewsRefreshing = true;
-					await getAndSetNews();
 					await getAndSetCalendarNotes();
+					await getAndSetNews();
 					IsNewsRefreshing = false;
 				} catch (Exception ex) {
 					AppLogs.Log(ex);
@@ -183,28 +188,45 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		async Task getAndSetCalendarNotes()
 		{
-			var calendar = await DataAccess.GetProfileInfoCalendar(_services.Preferences.UserLogin);
+			if (_services.Preferences.Server == Networking.Servers.EduCatsBntuAddress)
+			{
+				var calendar = await DataAccess.GetProfileInfoCalendar(_services.Preferences.UserLogin);
 
-			if (calendar == null) {
-				return;
+				if (calendar == null) {
+					return;
+				}
+
+				var calendarList = new List<CalendarSubjectsModel>();
+				var calendarLabsList = calendar.Labs?.Select(c => new CalendarSubjectsModel(c));
+				var calendarLectsList = calendar.Lectures?.Select(c => new CalendarSubjectsModel(c));
+
+				if (calendarLabsList == null && calendarLectsList == null) {
+					return;
+				} else if (calendarLabsList == null && calendarLectsList != null) {
+					calendarList = new List<CalendarSubjectsModel>(calendarLectsList);
+				} else if (calendarLabsList != null && calendarLectsList == null) {
+					calendarList = new List<CalendarSubjectsModel>(calendarLabsList);
+				} else {
+					calendarList = calendarLabsList.Concat(calendarLectsList).ToList();
+				}
+
+				_calendarSubjectsBackup = new List<CalendarSubjectsModel>(calendarList);
+				setFilteredSubjectsList();
 			}
+			else
+			{
+				DateTime date;
+				if (_isManualSelectedCalendarDay)
+				{
+					date = _manualSelectedCalendarDay;
+				}
+				else
+				{
+					date = DateTime.Today;
+				}
 
-			var calendarList = new List<CalendarSubjectsModel>();
-			var calendarLabsList = calendar.Labs?.Select(c => new CalendarSubjectsModel(c));
-			var calendarLectsList = calendar.Lectures?.Select(c => new CalendarSubjectsModel(c));
-
-			if (calendarLabsList == null && calendarLectsList == null) {
-				return;
-			} else if (calendarLabsList == null && calendarLectsList != null) {
-				calendarList = new List<CalendarSubjectsModel>(calendarLectsList);
-			} else if (calendarLabsList != null && calendarLectsList == null) {
-				calendarList = new List<CalendarSubjectsModel>(calendarLabsList);
-			} else {
-				calendarList = calendarLabsList.Concat(calendarLectsList).ToList();
+				setNewSubjectList(date);
 			}
-
-			_calendarSubjectsBackup = new List<CalendarSubjectsModel>(calendarList);
-			setFilteredSubjectsList();
 		}
 
 		async Task getAndSetNews()
@@ -340,13 +362,17 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					calendarDayModel.TextColor = Theme.Current.TodayNotSelectedDateTextColor;
 				}
 
-				CalendarList[indexCalendarModel].Days[indexCalendarDayModel] = calendarDayModel;
+				var temp = CalendarViewModel.Clone(CalendarList[indexCalendarModel], this);
+				temp.Days[indexCalendarDayModel] = calendarDayModel;
+
+				CalendarList[indexCalendarModel] = temp;
+
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
 		}
 
-		protected void calendarPositionChangedEvent()
+		protected void calendarPositionChangedEvent(CarouselView.FormsPlugin.Abstractions.PositionSelectedEventArgs e)
 		{
 			try {
 				selectTodayDateWithoutSelectedFlag();
@@ -358,34 +384,18 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					selectCalendarDay(DateTime.Today);
 				}
 
-
 				switch (CalendarPosition) {
 					case _minimumCalendarPosition:
-						CalendarPosition = getCalendarPosition(_minimumCalendarPosition, WeekEnum.Previous);
+						getCalendarPosition(_minimumCalendarPosition, WeekEnum.Previous);
 						break;
 					case _maximumCalendarPosition:
-						CalendarPosition = getCalendarPosition(_maximumCalendarPosition, WeekEnum.Next);
+						getCalendarPosition(_maximumCalendarPosition, WeekEnum.Next);
 						break;
 				}
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
 		}
-
-		public void ExecuteCalendarSelectionChangedEvent(DateTime date)
-		{
-			try {
-				selectTodayDateWithoutSelectedFlag();
-				deselectAllCalendarDays();
-				_manualSelectedCalendarDay = date;
-				_isManualSelectedCalendarDay = true;
-				selectCalendarDay(date);
-				setFilteredSubjectsList();
-			} catch (Exception ex) {
-				AppLogs.Log(ex);
-			}
-		}
-
 		int getCalendarPosition(int boundaryPosition, WeekEnum week)
 		{
 			int removePosition;
@@ -401,10 +411,48 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 			var date = CalendarList[boundaryPosition].Date;
 			var weekViewModel = getCalendarViewModel(date, week);
+
 			CalendarList.RemoveAt(removePosition);
 			CalendarList.Insert(boundaryPosition, weekViewModel);
+			
 			return calculatedPosition;
 		}
+
+		public void ExecuteCalendarSelectionChangedEvent(DateTime date)
+		{
+			try {
+				selectTodayDateWithoutSelectedFlag();
+				deselectAllCalendarDays();
+				_manualSelectedCalendarDay = date;
+				_isManualSelectedCalendarDay = true;
+				selectCalendarDay(date);
+			
+				if (_services.Preferences.Server == Networking.Servers.EduCatsBntuAddress)
+				{
+					setFilteredSubjectsList();
+				}
+				else
+				{
+					setNewSubjectList(date);
+				}
+
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
+		}
+
+		async Task setNewSubjectList(DateTime dateTime)
+		{
+			var subjects = await DataAccess.GetSchedule(dateTime.ToString(DateHelper.DateTime.Replace('.','-')));
+			
+			List<SubjectPageModel> temp = subjects.Schedule.Select(n => {
+				return new SubjectPageModel(n);
+			}).ToList();
+
+			NewsSubjectList = temp;
+			setupNewsSubjectsHeight();
+		}
+
 
 		void setFilteredSubjectsList()
 		{
@@ -434,6 +482,26 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					(_subjectHeight * CalendarSubjects.Count) +
 					(_subjectsHeaderHeight * 2) + _subjectsHeightToAdd;
 			} catch (Exception ex) {
+				AppLogs.Log(ex);
+			}
+		}
+
+		void setupNewsSubjectsHeight()
+		{
+			try
+			{
+				if (NewsSubjectList.Count == 0)
+				{
+					CalendarSubjectsHeight = _emptySubjectsHeight;
+					return;
+				}
+
+				CalendarSubjectsHeight =
+					(_subjectHeight * NewsSubjectList.Count * 2.5) +
+					(_subjectsHeaderHeight) + _subjectsHeightToAdd;
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}

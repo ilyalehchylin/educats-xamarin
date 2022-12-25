@@ -68,12 +68,12 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 			var clockIcon = new CachedImage {
 				HorizontalOptions = LayoutOptions.Start,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				Source = Xamarin.Forms.ImageSource.FromFile(Theme.Current.TodayNewsDateIcon),
+				Source = Xamarin.Forms.ImageSource.FromFile(Theme.Current.StatisticsCalendarIcon),
 				HeightRequest = _clockIconSize,
 				Transformations = new List<ITransformation> {
 					new TintTransformation {
 						EnableSolidColor = true,
-						HexColor = Theme.Current.TodayNewsDateIconColor
+						HexColor = Theme.Current.StatisticsDetailsColor
 					}
 				}
 			};

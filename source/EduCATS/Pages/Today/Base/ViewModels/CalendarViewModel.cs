@@ -71,5 +71,15 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				AppLogs.Log(ex);
 			}
 		}
+
+		public static CalendarViewModel Clone(CalendarViewModel calendarViewModel, object context)
+		{
+			var cloneObject = new CalendarViewModel(context);
+			cloneObject.Month = calendarViewModel.Month;
+			cloneObject.Year = calendarViewModel.Year;
+			cloneObject.Days = new ObservableCollection<CalendarViewDayModel>(calendarViewModel.Days);
+
+			return cloneObject;
+		}
 	}
 }

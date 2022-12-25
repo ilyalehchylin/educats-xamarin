@@ -56,6 +56,14 @@ namespace EduCATS.Data
 			string username) => await AppServices.GetProfileInfoCalendar(username);
 
 		/// <summary>
+		/// Schedule callback.
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <returns>Calendar data.</returns>
+		static async Task<object> getScheduleCallback(
+			string date) => await AppServices.GetSchedule(date);
+
+		/// <summary>
 		/// Statistics callback.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
