@@ -260,7 +260,7 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <param name="page">Page to convert.</param>
 		/// <param name="title">Page title.</param>
 		/// <returns>Task.</returns>
-		NavigationPage getNavigationPage(Page page, string title = null) => new NavigationPage(page) {
+		NavigationPage getNavigationPage(Page page, string title = "") => new NavigationPage(page) {
 			Title = title,
 			BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
 			BarTextColor = Color.FromHex(Theme.Current.BaseAppColor)

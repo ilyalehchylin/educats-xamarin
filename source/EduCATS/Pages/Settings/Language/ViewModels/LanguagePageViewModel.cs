@@ -94,6 +94,10 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 			try {
 				var supportedLanguages = CrossLocalization.GetSupportedLanguages();
 
+				var temp = supportedLanguages[2];
+				supportedLanguages[2] = supportedLanguages[3];
+				supportedLanguages[3] = temp;
+
 				var languages = supportedLanguages.Select(l => new LanguagePageModel {
 					Title = l.LanguageLocal?.FirstCharToUpper(),
 					Description = l.LanguageEnglish,

@@ -449,7 +449,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				return new SubjectPageModel(n);
 			}).ToList();
 
-			NewsSubjectList = temp;
+			NewsSubjectList = temp.OrderBy(x => x.Date).ToList();
 			setupNewsSubjectsHeight();
 		}
 
@@ -497,7 +497,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				}
 
 				CalendarSubjectsHeight =
-					(_subjectHeight * NewsSubjectList.Count * 2.5) +
+					(_subjectHeight * NewsSubjectList.Count * 2) +
 					(_subjectsHeaderHeight) + _subjectsHeightToAdd;
 			}
 			catch (Exception ex)

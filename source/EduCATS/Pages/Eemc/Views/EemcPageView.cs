@@ -12,9 +12,11 @@ namespace EduCATS.Pages.Eemc.Views
 {
 	public class EemcPageView : ContentPage
 	{
+		const double _spacing = 1;
 		const int _rowsCount = 2;
 		const double _buttonHeight = 50;
-		static Thickness _subjectPadding = new Thickness(10);
+		static Thickness _headerPadding = new Thickness(10);
+		static Thickness _subjectsMargin = new Thickness(0, 0, 0, 10);
 		static Thickness _emptyViewMargin = new Thickness(10, 0);
 		static Thickness _backButtonMargin = new Thickness(30, 0, 30, 15);
 
@@ -29,14 +31,14 @@ namespace EduCATS.Pages.Eemc.Views
 		{
 			var headerImage = createHeaderImage();
 			var subjectsView = createSubjectsPicker();
-			var documentCollectionView = createCollection();
+			var documentCollectionView = createCollection(subjectsView);
 			var backButton = createBackButton();
 
 			Content = new StackLayout {
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
+				Spacing = _spacing,
 				Children = {
 					headerImage,
-					subjectsView,
 					documentCollectionView,
 					backButton
 				}
@@ -53,7 +55,7 @@ namespace EduCATS.Pages.Eemc.Views
 			};
 		}
 
-		CollectionView createCollection()
+		CollectionView createCollection(View header)
 		{
 			var documentsCollectionView = new CollectionView {
 				SelectionMode = SelectionMode.Single,
@@ -62,6 +64,14 @@ namespace EduCATS.Pages.Eemc.Views
 				EmptyView = new StackLayout {
 					BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 					Children = { createEmptyView() }
+				},
+				Header = new StackLayout
+				{
+					BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
+					Padding = _headerPadding,
+					Children = {
+						header
+					}
 				}
 			};
 
@@ -86,16 +96,11 @@ namespace EduCATS.Pages.Eemc.Views
 			};
 		}
 
-		StackLayout createSubjectsPicker()
+		SubjectsPickerView createSubjectsPicker()
 		{
-			var subjectsView = new SubjectsPickerView();
-
-			return new StackLayout {
-				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
-				Padding = _subjectPadding,
-				Children = {
-					subjectsView
-				}
+			return new SubjectsPickerView
+			{
+				Margin = _subjectsMargin,
 			};
 		}
 

@@ -15,7 +15,7 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 		const double _boxViewLayoutSize = 20;
 		const double _clockIconSize = 20;
 		static Thickness _paddingTeacher = new Thickness(10,0);
-		static Thickness _framePadding = new Thickness(20);
+		static Thickness _framePadding = new Thickness(10,5,10,10);
 		static Thickness _paddingItem = new Thickness(25, 0);
 
 		public SubjectPageViewCell()
@@ -134,19 +134,13 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 
 			View = new StackLayout
 			{
-				//HasShadow = false,
-				//CornerRadius = _viewCornerRadius,
 				Padding = _framePadding,
-				//Margin = _frameMargin,
 				BackgroundColor = Color.FromHex(Theme.Current.TodayNewsItemBackgroundColor),
-				//Content = new StackLayout
-				//{
 				Children = {
 					dateLayout,
 					subjectLayout,
 					informationLayout
 					}
-				//}
 			};
 		}
 	}
