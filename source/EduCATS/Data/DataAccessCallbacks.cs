@@ -223,6 +223,14 @@ namespace EduCATS.Data
 			int subjectId, int userId) => await AppServices.GetRecommendations(subjectId, userId);
 
 		/// <summary>
+		/// Files details callback.
+		/// </summary>
+		/// <param name="content uri">content uri.</param>
+		/// <returns>Files data.</returns>
+		static async Task<object> getFilesDetailsCallback(
+			string uri) => await AppServices.GetFilesDetails(uri);
+
+		/// <summary>
 		/// GroupInfo Callback
 		/// </summary>
 		/// <param name="groupName"></param>

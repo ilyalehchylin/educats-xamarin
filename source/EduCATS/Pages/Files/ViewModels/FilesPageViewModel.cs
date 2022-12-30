@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data;
+using EduCATS.Helpers;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
@@ -23,6 +24,9 @@ namespace EduCATS.Pages.Files.ViewModels
 	{
 		const string _filenameKey = "filename";
 		const string _filepathKey = "filepath";
+
+		double bytesIn;
+		double totalBytes;
 
 		object _progressDialog;
 		object _lastSelectedObject;
@@ -147,6 +151,11 @@ namespace EduCATS.Pages.Files.ViewModels
 					var exists = File.Exists(file);
 					return new FilesPageModel(f, exists);
 				});
+
+				if (files != null)
+				{
+					FileList = new List<FilesPageModel>(files);
+				}
 			}
 			else
 			{
@@ -163,10 +172,30 @@ namespace EduCATS.Pages.Files.ViewModels
 					var exists = File.Exists(file);
 					return new FilesPageModel(f, exists);
 				});
-			}
 
-			if (files != null) {
-				FileList = new List<FilesPageModel>(files);
+				if (files != null)
+				{
+
+					var filesList = new List<FilesPageModel>(files);
+					string URIForDetails = "";
+
+					foreach (var file in filesList)
+					{
+						URIForDetails += $"\"{file.Name}/{file.Id}/{file.PathName}/{file.FileName}\",";
+					}
+
+					URIForDetails = URIForDetails.Remove(URIForDetails.Length - 1);
+
+					var filesDetails = await DataAccess.GetDetailsFilesTest(URIForDetails);
+
+					filesList.ForEach(file =>
+					{
+						file.Size = ConverterSize.FormatSize(long.Parse(
+							filesDetails.FirstOrDefault(detail => file.Id == detail.Id).Size));
+					});
+
+					FileList = new List<FilesPageModel>(filesList);
+				}
 			}
 		}
 
@@ -188,13 +217,14 @@ namespace EduCATS.Pages.Files.ViewModels
 				var file = selectedObject as FilesPageModel;
 				var storageFilePath = Path.Combine(PlatformServices.Device.GetAppDataDirectory(), file.Name);
 
-				if (File.Exists(storageFilePath)) {
+				if (File.Exists(storageFilePath) && new FileInfo(storageFilePath).Length != 0) {
 					completeDownload(file.Name, storageFilePath);
 					return;
 				}
 
 				var fileUri = new Uri($"{Links.GetFile}?fileName={file.PathName}/{file.FileName}");
 
+				totalBytes = bytesIn = 0;
 				_client = new WebClient();
 				_client.DownloadProgressChanged += downloadProgressChanged;
 				_client.DownloadFileCompleted += downloadCompleted;
@@ -221,13 +251,24 @@ namespace EduCATS.Pages.Files.ViewModels
 				return;
 			}
 
+				
 			var client = sender as WebClient;
 			var fileName = client.QueryString[_filenameKey];
-			var pathForFile = client.QueryString[_filepathKey];
-
+			var pathForFile = client.QueryString[_filepathKey];	
+				
 			if (e.Cancelled) {
 				File.Delete(pathForFile);
-			} else {
+			} 
+			else 
+			{
+				if (totalBytes != bytesIn || (totalBytes == bytesIn && bytesIn == 0))
+				{
+					File.Delete(pathForFile);
+					hideDownloading();
+					PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.ShowError(
+						CrossLocalization.Translate("files_downloading_error")));
+					return;
+				}
 				completeDownload(fileName, pathForFile);
 			}
 		}
@@ -241,10 +282,12 @@ namespace EduCATS.Pages.Files.ViewModels
 		{
 			hideDownloading();
 			updateDownloadedList();
-			PlatformServices.Device.MainThread(
-				() => PlatformServices.Device.ShareFile(fileName, pathForFile));
+			PlatformServices.Device.MainThread(() => PlatformServices.Device.LaunchFile(pathForFile));
+			/*Platf	ormServices.Device.MainThread(
+				() => P	latformServices.Device.ShareFile(fileName, pathForFile));*/
 		}
 
+					
 		/// <summary>
 		/// Update downloaded files in list.
 		/// </summary>
@@ -272,8 +315,8 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// <param name="e">Event arguments.</param>
 		private void downloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
 		{
-			double bytesIn = double.Parse(e.BytesReceived.ToString());
-			double totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
+			bytesIn = double.Parse(e.BytesReceived.ToString());
+			totalBytes = double.Parse(e.TotalBytesToReceive.ToString());
 			double percentage = bytesIn / totalBytes * 100;
 			updateDownloadingProgress(percentage);
 		}
