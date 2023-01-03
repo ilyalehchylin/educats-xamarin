@@ -207,6 +207,7 @@
 	"no_user": "Benutzer wird nicht gefunden!",
 	"invaild_answer": "Ungültige geheime Antwort eingegeben",
 	"password_changed": "Passwort geändert",
+	"not_recovered_password_changed": "Das Passwort dieses Benutzers kann nicht wiederhergestellt werden!",
 	"successful_password_change": "Erfolgreiche Passwortänderung",
 	"empty_fields_forgot_password": "Erforderliche Felder (Login, Sicherheitsfrage, Antwort, Neues Passwort, Passwort bestätigen) müssen ausgefüllt werden!",
 

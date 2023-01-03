@@ -207,6 +207,7 @@
 	"no_user": "User is not found!",
 	"invaild_answer": "Invalid secret answer entered",
 	"password_changed": "Password changed",
+	"not_recovered_password_changed": "Password reset option is not available!",
 	"successful_password_change": "Successful password change",
 	"empty_fields_forgot_password": "Required fields (Login, Specific question, Answer, New Password, Confirm Password) must be filled!",
 

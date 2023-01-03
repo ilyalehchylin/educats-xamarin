@@ -206,6 +206,7 @@
 	"no_user": "Nie znaleziono użytkownika!",
 	"invaild_answer": "Wprowadzono nieprawidłową tajną odpowiedź",
 	"password_changed": "Hasło zostało zmienione",
+	"not_recovered_password_changed": "Hasła tego użytkownika nie można odzyskać!",
 	"successful_password_change": "Pomyślna zmiana hasła",
 	"empty_fields_forgot_password": "Wymagane pola (login, pytanie zabezpieczające, odpowiedź, nowe hasło, potwierdź hasło) muszą być wypełnione!",
 
