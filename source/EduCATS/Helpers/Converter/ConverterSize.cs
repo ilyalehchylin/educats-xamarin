@@ -2,7 +2,7 @@
 
 namespace EduCATS.Helpers
 {
-	class ConverterSize
+	public class ConverterSize
 	{
 		// Load all suffixes in an array  
 		static readonly string[] suffixes = { "Bytes", "KB", "MB", "GB", "TB", "PB" };
