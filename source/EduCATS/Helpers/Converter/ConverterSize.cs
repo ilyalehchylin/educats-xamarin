@@ -15,7 +15,7 @@ namespace EduCATS.Helpers
 				number = number / 1024;
 				counter++;
 			}
-			return string.Format("{0:n1}{1}", number, suffixes[counter]);
+			return string.Format("{0:N1}{1}", number, suffixes[counter]);
 		}
 	}
 }
