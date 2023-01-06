@@ -14,7 +14,7 @@ namespace EduCATS.UnitTests.Helpers
 			try
 			{
 				long bytes = 0;
-				string expected = "0,0Bytes";
+				string expected = "0.0Bytes";
 				Assert.AreEqual(expected, ConverterSize.FormatSize(bytes));
 				return;
 			}
@@ -30,7 +30,7 @@ namespace EduCATS.UnitTests.Helpers
 			try
 			{
 				long bytes = 1024;
-				string expected = "1,0KB";
+				string expected = "1.0KB";
 				Assert.AreEqual(expected, ConverterSize.FormatSize(bytes));
 				return;
 			}
@@ -46,7 +46,7 @@ namespace EduCATS.UnitTests.Helpers
 			try
 			{
 				long bytes = 1048576;
-				string expected = "1,0MB";
+				string expected = "1.0MB";
 				Assert.AreEqual(expected, ConverterSize.FormatSize(bytes));
 				return;
 			}
@@ -62,7 +62,7 @@ namespace EduCATS.UnitTests.Helpers
 			try
 			{
 				long bytes = 1073741824;
-				string expected = "1,0GB";
+				string expected = "1.0GB";
 				Assert.AreEqual(expected, ConverterSize.FormatSize(bytes));
 				return;
 			}
@@ -78,7 +78,7 @@ namespace EduCATS.UnitTests.Helpers
 			try
 			{
 				long bytes = 1099511627776;
-				string expected = "1,0TB";
+				string expected = "1.0TB";
 				Assert.AreEqual(expected, ConverterSize.FormatSize(bytes));
 				return;
 			}
@@ -94,7 +94,7 @@ namespace EduCATS.UnitTests.Helpers
 			try
 			{
 				long bytes = 1125899906842624;
-				string expected = "1,0PB";
+				string expected = "1.0PB";
 				Assert.AreEqual(expected, ConverterSize.FormatSize(bytes));
 				return;
 			}
