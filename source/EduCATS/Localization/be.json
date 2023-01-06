@@ -14,7 +14,7 @@
 
 	"contributor_ilya_lehchylin": "Ілля Легчылін",
 	"contributor_julia_popova": "Юлія Папова",
-	
+
 	"role_student": "Студэнт",
 	"role_professor": "Выкладчык",
 
@@ -205,6 +205,7 @@
 	"no_user": "Карыстальнік не знойдзены!",
 	"invaild_answer": "Уведзены няправільны сакрэтны адказ",
 	"password_changed": "Пароль зменены",
+	"not_recovered_password_changed": "Пароль дадзенага карыстальніка не можа быць адноўлены!",
 	"successful_password_change": "Паспяховая змена пароля",
 	"empty_fields_forgot_password": "Абавязковыя палі (Лагін, Сакрэтны пытанне, Адказ, Новы пароль, Пацвярджэнне пароля) павінны быць запоўненыя!",
 

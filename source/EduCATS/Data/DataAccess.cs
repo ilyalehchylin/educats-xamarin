@@ -402,6 +402,14 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, false) as FilesModelTest;
 		}
 
+		public async static Task<List<FileDetailsModelTest>> GetDetailsFilesTest(string uri)
+		{
+			var dataAccess = new DataAccess<FileDetailsModelTest>(
+				"files_fetch_error", getFilesDetailsCallback(uri),
+				GetKey(GlobalConsts.DataGetFilesKey, uri));
+			return await GetDataObject(dataAccess, true) as List<FileDetailsModelTest>;
+		}
+
 		/// <summary>
 		/// Load goup info by groupName
 		/// </summary>

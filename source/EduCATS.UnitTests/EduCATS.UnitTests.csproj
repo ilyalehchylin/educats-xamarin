@@ -20,7 +20,6 @@
     <ProjectReference Include="..\EduCATS\EduCATS.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Helpers\" />
     <Folder Include="Data\" />
     <Folder Include="Fonts\" />
     <Folder Include="Networking\" />

@@ -10,7 +10,22 @@ namespace EduCATS.Pages.Today.Base.Models
 		public string Address { get; set; }
 		public string Color { get; set; }
 		public string Name { get; set; }
-		public string TeacherFullName { get; set; }
+
+		string _teacherFullName;
+		public string TeacherFullName {
+			get
+			{
+				var surname = _teacherFullName.Split(' ')[0];
+				var name = _teacherFullName.Split(' ')[1];
+				var patronymic = _teacherFullName.Split(' ')[2];
+
+				return $"{surname} {name[0]}. {patronymic[0]}.";
+			}
+			set 
+			{
+				_teacherFullName = value;
+			} 
+		}
 		public string Date { get; set; }
 		public string Type { get; set; }
 

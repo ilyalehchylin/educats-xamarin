@@ -56,11 +56,12 @@ namespace EduCATS.Pages.Parental.Statistics
 
 			_service.Device.MainThread(async () =>
 			{
-				IsLoading = true;
+				PlatformServices.Dialogs.ShowLoading();
+				IsLoading = false;
 				SetupSubjects();
 				await getAndSetStatistics();
 				await setButtonsList();
-				IsLoading = false;
+				PlatformServices.Dialogs.HideLoading();
 			});
 
 			SubjectChanged += async (id, name) =>
@@ -95,14 +96,18 @@ namespace EduCATS.Pages.Parental.Statistics
 		{
 			try
 			{
-				PlatformServices.Device.MainThread(() => IsLoading = true);
+				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.ShowLoading());
+				PlatformServices.Device.MainThread(() => IsLoading = false);
 				SetupSubjects();
 				await getAndSetStatistics();
-				PlatformServices.Device.MainThread(() => IsLoading = false);
 			}
 			catch (Exception ex)
 			{
 				AppLogs.Log(ex);
+			}
+			finally
+			{
+				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideLoading());
 			}
 		}
 

@@ -44,7 +44,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 		{
 			var settingsIcon = createSettingsIcon();
 			var mainLayout = createDataForm();
-			var activityIndicator = createActivityIndicator();
 
 			var scrollView = new ScrollView
 			{
@@ -52,7 +51,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 				Content = new StackLayout
 				{
 					Children = {
-						activityIndicator,
 						mainLayout
 					}
 				}
@@ -66,20 +64,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 					settingsIcon
 				}
 			};
-		}
-
-		ActivityIndicator createActivityIndicator()
-		{
-			var activityIndicator = new ActivityIndicator
-			{
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				Margin = _baseSpacing,
-				Color = Color.FromHex(Theme.Current.AboutTextColor),
-			};
-
-			activityIndicator.SetBinding(IsVisibleProperty, "IsLoading");
-			activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
-			return activityIndicator;
 		}
 
 		StackLayout createDataForm()

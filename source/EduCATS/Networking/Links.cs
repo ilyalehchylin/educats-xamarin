@@ -153,6 +153,10 @@
 		/// </summary>
 		public static string GetFile => $"{Servers.Current}/api/Upload";
 
+		/// Get files details URL.
+		/// </summary>
+		public static string GetFilesDetails => $"{Servers.Current}/subject/api/Upload";
+
 		/// <summary>
 		/// Get recommendations URL.
 		/// </summary>

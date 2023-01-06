@@ -342,6 +342,15 @@ namespace EduCATS.Networking.AppServices
 				$"{Links.GetRecomendations}?subjectId={subjectId}&studentId={userId}");
 		}
 
+		/// Fetch files details request.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Files data.</returns>
+		public static async Task<object> GetFilesDetails(string uri)
+		{
+			return await AppServicesController.Request($"{Links.GetFilesDetails}?values=[{uri}]&deleteValues=DELETE");
+		}
+
 		public static async Task<object> GetGroupInfo(string groupName)
 		{
 			return await AppServicesController.Request(

@@ -207,6 +207,7 @@
 	"no_user": "Vartotojas nerastas!",
 	"invaild_answer": "Įvestas neteisingas slaptas atsakymas",
 	"password_changed": "Slaptažodis pakeistas",
+	"not_recovered_password_changed": "Šio vartotojo slaptažodis negali būti atkurtas!",
 	"successful_password_change": "Sėkmingas slaptažodžio pakeitimas",
 	"empty_fields_forgot_password": "Būtini laukai (prisijungimas, saugos klausimas, atsakymas, naujas slaptažodis, patvirtinimo slaptažodis) turi būti užpildyti!",
 

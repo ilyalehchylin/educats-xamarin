@@ -171,6 +171,11 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 							CrossLocalization.Translate("successful_password_change"));
 						await _services.Navigation.ClosePage(false);
 					}
+					else if (JsonConvert.DeserializeObject<string>(result.Key) == "Пароль данного пользвателя не может быть восстановлен!")
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("base_error"),
+							CrossLocalization.Translate("not_recovered_password_changed"));
+					}
 				}
 				else
 				{
