@@ -39,19 +39,21 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			setCollapsedDetails();
 
 			_service.Device.MainThread(async () => {
-				IsLoading = true;
+				//IsLoading = true;
+				_service.Device.MainThread(() => _service.Dialogs.ShowLoading());
+				checkStudent();
 				await SetupSubjects();
 				await getAndSetStatistics();
 				await setButtonsList();
-				checkStudent();
+				_service.Device.MainThread(() => _service.Dialogs.HideLoading());
 				IsLoading = false;
 			});
 
 			SubjectChanged += async (id, name) => {
 				_service.Dialogs.ShowLoading();
+				checkStudent();
 				await setButtonsList();
 				await getAndSetStatistics();
-				checkStudent();
 				_service.Dialogs.HideLoading();
 			};
 
@@ -270,12 +272,15 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		protected virtual async Task executeRefreshCommand()
 		{
 			try {
-				PlatformServices.Device.MainThread(() => IsLoading = true);
+				//PlatformServices.Device.MainThread(() => IsLoading = true);
+				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.ShowLoading());
+				checkStudent();
 				await SetupSubjects();
 				await getAndSetStatistics();
-				checkStudent();
+				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideLoading());
 				PlatformServices.Device.MainThread(() => IsLoading = false);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
 		}
