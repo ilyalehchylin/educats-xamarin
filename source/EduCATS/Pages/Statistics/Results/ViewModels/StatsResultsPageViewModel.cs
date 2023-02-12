@@ -79,8 +79,10 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		private async Task executeRefreshCommand()
 		{
-			IsLoading = true;
+			//IsLoading = true;
+			_services.Device.MainThread(() => _services.Dialogs.ShowLoading());
 			await getData();
+			_services.Device.MainThread(() => _services.Dialogs.HideLoading());
 			IsLoading = false;
 		}
 

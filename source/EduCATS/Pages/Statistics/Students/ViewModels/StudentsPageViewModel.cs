@@ -153,9 +153,13 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		protected virtual async Task getAndSetStudents()
 		{
-			IsLoading = true;
+			//IsLoading = true;
+			_service.Device.MainThread(() => _service.Dialogs.ShowLoading());
+
 			var studentsStatistics = await getStatistics();
 			setStudents(studentsStatistics);
+			_service.Device.MainThread(() => _service.Dialogs.HideLoading());
+
 			IsLoading = false;
 		}
 

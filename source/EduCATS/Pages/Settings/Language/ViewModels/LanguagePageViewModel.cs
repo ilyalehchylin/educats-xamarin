@@ -92,7 +92,19 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 		void setLanguages()
 		{
 			try {
-				var supportedLanguages = CrossLocalization.GetSupportedLanguages();
+				var supportedLanguages = new List<Nyxbull.Plugins.CrossLocalization.Language>(CrossLocalization.GetSupportedLanguages());
+
+				var tempLanguage = supportedLanguages[2];
+				supportedLanguages[2] = supportedLanguages[3];
+				supportedLanguages[3] = tempLanguage;
+
+				foreach (var language in supportedLanguages)
+				{
+					if (language.LanguageLocal == "Беларуская")
+					{
+						language.LanguageLocal += " мова";
+					}
+				}
 
 				var temp = supportedLanguages[2];
 				supportedLanguages[2] = supportedLanguages[3];
