@@ -94,9 +94,9 @@ namespace EduCATS.Pages.Settings.Language.ViewModels
 			try {
 				var supportedLanguages = new List<Nyxbull.Plugins.CrossLocalization.Language>(CrossLocalization.GetSupportedLanguages());
 
-				var temp = supportedLanguages[2];
+				var tempLanguage = supportedLanguages[2];
 				supportedLanguages[2] = supportedLanguages[3];
-				supportedLanguages[3] = temp;
+				supportedLanguages[3] = tempLanguage;
 
 				foreach (var language in supportedLanguages)
 				{
