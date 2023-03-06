@@ -219,17 +219,20 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		{
 			get
 			{
-				if (_selectedSubGroup == SubGroup[0])
+				if (SubGroup.Count != 0) 
 				{
-					LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupOne;
-					DateLabs = Date1;
-					selSubGroup = 1;
-				}
-				else if (_selectedSubGroup == SubGroup[1])
-				{
-					LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupTwo;
-					DateLabs = Date2;
-					selSubGroup = 2;
+					if (_selectedSubGroup == SubGroup[0])
+					{
+						LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupOne;
+						DateLabs = Date1;
+						selSubGroup = 1;
+					}
+					else if (_selectedSubGroup == SubGroup[1])
+					{
+						LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupTwo;
+						DateLabs = Date2;
+						selSubGroup = 2;
+					} 
 				}
 				return _selectedSubGroup;
 			}
