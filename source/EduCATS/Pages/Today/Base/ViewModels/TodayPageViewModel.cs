@@ -447,7 +447,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			
 			List<SubjectPageModel> temp = subjects.Schedule.Select(n => {
 				return new SubjectPageModel(n);
-			}).ToList();
+			}).ToList().OrderBy(l => l.Date).ToList();
 
 			NewsSubjectList = temp;
 			setupNewsSubjectsHeight();
