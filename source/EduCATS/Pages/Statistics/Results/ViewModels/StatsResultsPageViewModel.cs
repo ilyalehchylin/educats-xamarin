@@ -303,7 +303,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			var stats = userLecturesVisiting?.VisitingList?.Select(
 				u => new StatsResultsPageModel(
-					null, u.Date, null, string.IsNullOrEmpty(u.Mark) ? _emptyRatingString : u.Mark));
+					null, u.Date, u.Comment, string.IsNullOrEmpty(u.Mark) ? _emptyRatingString : u.Mark));
 
 			var statsList = stats?.ToList();
 
@@ -324,36 +324,39 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			{
 				if (Servers.Current == Servers.EduCatsAddress)
 				{
-					var marksTestResults = labs.LabsMarks?.Select(m =>
+					var marksTestResults = _currentLabsMarksList?.Select(l =>
 					{
-						var lab = _currentLabsMarksList?.FirstOrDefault(l => l.LabId == m.LabId);
-						var labTitle = lab == null ? null : $"{lab.ShortName}. {lab.Theme}";
-						var result = string.IsNullOrEmpty(m.Mark) ? _emptyRatingString : m.Mark;
-						return new StatsResultsPageModel(labTitle, m.Date, setCommentByRole(m.Comment), result);
+						var lab = labs.LabsMarks?.FirstOrDefault(m => l.LabId == m.LabId);
+						var labTitle = lab == null ? null : $"{l.ShortName}. {l.Theme}";
+						var result = string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark;
+						return new StatsResultsPageModel(labTitle, lab.Date, setCommentByRole(lab.Comment, lab.ShowForStudent), result);
 					});
+
 					Marks = new List<StatsResultsPageModel>(marksTestResults);
 				}
 				else
 				{
-					var marksResults = student.MarkList?.Select(m =>
+					var marksResults = _currentLabsMarksList?.Select(l =>
 					{
-						var lab = _currentLabsMarksList?.FirstOrDefault(l => l.LabId == m.LabId);
-						var labTitle = lab == null ? null : $"{lab.ShortName}. {lab.Theme}";
-						var result = string.IsNullOrEmpty(m.Mark) ? _emptyRatingString : m.Mark;
-						return new StatsResultsPageModel(labTitle, m.Date, setCommentByRole(m.Comment), result);
+						var lab = student.MarkList?.FirstOrDefault(m => l.LabId == m.LabId);
+						var labTitle = lab == null ? null : $"{l.ShortName}. {l.Theme}";
+						var result = string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark;
+						return new StatsResultsPageModel(labTitle, lab.Date, setCommentByRole(lab.Comment, true), result);
 					});
+
 					Marks = new List<StatsResultsPageModel>(marksResults);
 				}
 			}
 			else
 			{
-				var practMarkResults = labs.PracticalsMarks?.Select(m =>
+				var practMarkResults = _currentPractMarksList?.Select(l =>
 				{
-					var lab = _currentPractMarksList?.FirstOrDefault(l => l.LabId == m.PracticalId);
-					var labTitle = lab == null ? null : $"{lab.ShortName}. {lab.Theme}";
-					var result = string.IsNullOrEmpty(m.Mark) ? _emptyRatingString : m.Mark;
-					return new StatsResultsPageModel(labTitle, m.Date, setCommentByRole(m.Comment), result);
+					var lab = labs.PracticalsMarks?.FirstOrDefault(m => l.LabId == m.PracticalId);
+					var labTitle = lab == null ? null : $"{l.ShortName}. {l.Theme}";
+					var result = string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark;
+					return new StatsResultsPageModel(labTitle, lab.Date, setCommentByRole(lab.Comment, lab.ShowForStudent), result);
 				});
+
 				Marks = new List<StatsResultsPageModel>(practMarkResults);
 			}
 		}
@@ -369,7 +372,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 						var lab = _currentLabsVisitingList.FirstOrDefault(
 							l => l.ProtectionLabId == v.ScheduleProtectionLabId);
 						var result = string.IsNullOrEmpty(v.Mark) ? _emptyRatingString : v.Mark;
-						return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment), result);
+						return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment, v.ShowForStudent), result);
 					});
 					Marks = new List<StatsResultsPageModel>(visitingLabsTestResult).OrderBy(x => DateTime.Parse(x.Date)).ToList();
 				}
@@ -380,7 +383,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 						var lab = _currentLabsVisitingList.FirstOrDefault(
 							l => l.ProtectionLabId == v.ProtectionLabId);
 						var result = string.IsNullOrEmpty(v.Mark) ? _emptyRatingString : v.Mark;
-						return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment), result);
+						return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment, true), result);
 					});
 					Marks = new List<StatsResultsPageModel>(visitingLabsResult);
 				}
@@ -392,7 +395,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 					var lab = _currentPractVisitingList.FirstOrDefault(
 						l => l.ProtectionLabId == v.ScheduleProtectionPracticalId);
 					var result = string.IsNullOrEmpty(v.Mark) ? _emptyRatingString : v.Mark;
-					return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment), result);
+					return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment, v.ShowForStudent), result);
 				});
 				Marks = new List<StatsResultsPageModel>(practVisitingTestResult);
 			}
@@ -433,9 +436,9 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			_services.Device.MainThread(() => Summary = summary);
 		}
 
-		string setCommentByRole(string comment)
+		string setCommentByRole(string comment, bool show)
 		{
-			return AppUserData.UserType == UserTypeEnum.Professor ? comment : null;
+			return show ? comment : null;
 		}
 	}
 }

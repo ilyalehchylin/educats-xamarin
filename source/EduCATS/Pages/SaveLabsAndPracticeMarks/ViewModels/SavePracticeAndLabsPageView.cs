@@ -39,6 +39,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 		{
 			_title = title;
 			var httpContent = new StringContent("", Encoding.UTF8, "application/json");
+			ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
 			NavigationPage.SetHasNavigationBar(this, false);

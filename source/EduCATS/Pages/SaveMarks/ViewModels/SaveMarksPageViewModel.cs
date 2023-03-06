@@ -47,6 +47,8 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 
 		public SaveMarksPageViewModel(IPlatformServices services, int _subjectId, object stat, int groupId, string title)
 		{
+			ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
+			
 			_titleOfPage = title;
 			_services = services; 
 			if (title == CrossLocalization.Translate("stats_page_lectures_visiting"))
