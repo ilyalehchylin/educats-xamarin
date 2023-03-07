@@ -18,5 +18,11 @@ namespace EduCATS.Data.Models
 		/// </summary>
 		[JsonProperty("Mark")]
 		public string Mark { get; set; }
+
+		/// <summary>
+		/// Lecture comment.
+		/// </summary>
+		[JsonProperty("Comment")]
+		public string Comment { get; set; }
 	}
 }
