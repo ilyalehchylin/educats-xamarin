@@ -272,11 +272,11 @@ namespace EduCATS.Helpers.Forms.Pages
 		public async Task OpenForgotPassword(string title) =>
 			await pushPage(new ForgotPasswordPageView(), title);
 
-		public async Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId) =>
-			await pushPage(new SaveMarksPageView(subjectId, groupId.GroupId, title), title);
+		public async Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId,string groupName) =>
+			await pushPage(new SaveMarksPageView(subjectId, groupId.GroupId, title, groupName), title);
 
-		public async Task OpenAddMarksPracticeAndLabs(string title, GroupItemModel groupId, int subject) =>
-			await pushPage(new SavePracticeAndLabsPageView(title, subject, groupId.GroupId), title);
+		public async Task OpenAddMarksPracticeAndLabs(string title, GroupItemModel groupId, int subject, string groupName) =>
+			await pushPage(new SavePracticeAndLabsPageView(title, subject, groupId.GroupId, groupName), title);
 
 		public async Task OpenAddSingleMark(string title, string name, LabsVisitingList Marks, TakedLabs prOrLabStat, int sub) =>
 			await pushPage(new SaveSingleStudentMarkPageView(title, name, Marks, prOrLabStat, sub), title);

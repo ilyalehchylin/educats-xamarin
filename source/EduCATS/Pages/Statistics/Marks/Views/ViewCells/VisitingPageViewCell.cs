@@ -69,9 +69,9 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 			var markPicker = new Picker
 			{
 				BackgroundColor = Color.White,
-				HeightRequest = 50,
+				HeightRequest = 30,
 				ItemsSource = listOfMarks,
-				HorizontalTextAlignment = TextAlignment.Center,
+				HorizontalTextAlignment = TextAlignment.Center
 			};
 			markPicker.SetBinding(Picker.SelectedIndexProperty, "Mark");
 			markPicker.SetBinding(Picker.SelectedItemProperty, "Mark");
@@ -80,6 +80,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 			{
 				Style = entryStyle,
 				ReturnType = ReturnType.Done,
+				HeightRequest = 30
 			};
 
 			commentEntry.SetBinding(Entry.TextProperty, "Comment");

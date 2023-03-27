@@ -2,6 +2,7 @@
 using EduCATS.Controls.RoundedListView;
 using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Networking;
 using EduCATS.Networking.Models.SaveMarks;
 using EduCATS.Networking.Models.SaveMarks.LabSchedule;
@@ -30,14 +31,17 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 		static Thickness _padding = new Thickness(10, 1);
 		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
 
+		private string _groupName;
+
 		public PlatformServices services = new PlatformServices();
 		public string _title { get; set; }
 		public LabsVisitingList practicMarksList;
 		public LabsVisitingList labMarksList;
 
-		public SavePracticeAndLabsPageView(string title, int subjectId, int groupId)
+		public SavePracticeAndLabsPageView(string title, int subjectId, int groupId, string groupName)
 		{
 			_title = title;
+			_groupName = groupName;
 			var httpContent = new StringContent("", Encoding.UTF8, "application/json");
 			ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
@@ -69,6 +73,14 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 
 		void createLabsMarks()
 		{
+			var group = new Label
+			{
+				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
+				Style = AppStyles.GetLabelStyle(),
+				Font = Font.SystemFontOfSize(NamedSize.Large),
+				Text = CrossLocalization.Translate("choose_group") + " " + _groupName,
+			};
+
 			var stackLayout = new StackLayout();
 			var resultsListViewSubGroup = new RoundedListView(typeof(StudentsPageViewCell));
 			var subGroup = subGroupPicker();
@@ -86,6 +98,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 				Padding = _headerPadding,
 				Children =
 				{
+						group,
 						subGroup,
 						resultsListViewSubGroup,
 				}

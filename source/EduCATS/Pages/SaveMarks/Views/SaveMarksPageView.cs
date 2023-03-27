@@ -24,7 +24,8 @@ namespace EduCATS.Pages.SaveMarks.Views
 
 		static Thickness _padding = new Thickness(10, 1);
 		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
-
+		static int _heightRequest = 30;
+		private string _groupName;
 		const double _controlHeight = 50;
 
 		public PlatformServices services = new PlatformServices();
@@ -33,9 +34,10 @@ namespace EduCATS.Pages.SaveMarks.Views
 		public LabsVisitingList labsVisitingList;
 		public LabsVisitingList particialVisitingList;
 
-		public SaveMarksPageView(int subjectId, int groupId, string title)
+		public SaveMarksPageView(int subjectId, int groupId, string title, string groupName)
 		{
 			_title = title;
+			_groupName = groupName;
 			var httpContent = new StringContent("", Encoding.UTF8, "application/json");
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
@@ -89,6 +91,13 @@ namespace EduCATS.Pages.SaveMarks.Views
 
 		void createView()
 		{
+			var group = new Label
+			{
+				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
+				Style = AppStyles.GetLabelStyle(),
+				Font = Font.SystemFontOfSize(NamedSize.Large),
+				Text = CrossLocalization.Translate("choose_group") + " " + _groupName,
+			};
 			var stackLayout = new StackLayout();
 			var resultsListView = new RoundedListView(typeof(VisitingPageViewCell));
 			var resultsListViewSubGroup = new RoundedListView(typeof(VisitingPageViewCell));
@@ -109,6 +118,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 					Children =
 					{
 						saveDate,
+						group,
 						dateforLectures,
 						resultsListView,
 					}
@@ -131,6 +141,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 					Children =
 					{
 						saveDate,
+						group,
 						subGroupLabsVisiting,
 						dateforLabs,
 						resultsListViewSubGroup,
@@ -153,6 +164,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 					Children =
 					{
 						saveDate,
+						group,
 						dateforPractice,
 						resultsListView,
 					}
@@ -182,6 +194,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 			var subGroupPicker = new Picker
 			{
 				BackgroundColor = Color.White,
+				HeightRequest = _controlHeight
 			};
 			subGroupPicker.SetBinding(Picker.ItemsSourceProperty, "SubGroup");
 			subGroupPicker.SetBinding(Picker.SelectedItemProperty, new Binding("SelectedSubGroup"));
@@ -193,6 +206,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 			var datePicker = new Picker
 			{
 				BackgroundColor = Color.White,
+				HeightRequest = _controlHeight
 			};
 			datePicker.SetBinding(Picker.ItemsSourceProperty, "Date");
 			datePicker.SetBinding(Picker.SelectedItemProperty, new Binding("SelectedDate"));
@@ -204,6 +218,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 			var datePicker = new Picker
 			{
 				BackgroundColor = Color.White,
+				HeightRequest = _controlHeight
 			};
 			datePicker.SetBinding(Picker.ItemsSourceProperty, "DateLabs");
 			datePicker.SetBinding(Picker.SelectedItemProperty, new Binding("SelectedLabDate"));
@@ -215,6 +230,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 			var datePicker = new Picker
 			{
 				BackgroundColor = Color.White,
+				HeightRequest = _heightRequest
 			};
 			datePicker.SetBinding(Picker.ItemsSourceProperty, "Date");
 			datePicker.SetBinding(Picker.SelectedItemProperty, new Binding("SelectedPracDate"));

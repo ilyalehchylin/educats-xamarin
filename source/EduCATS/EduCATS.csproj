@@ -41,8 +41,6 @@
         <Folder Include="Themes\" />
         <Folder Include="Data\User\" />
         <Folder Include="Pages\Main\" />
-        <Folder Include="Pages\Today\" />
-        <Folder Include="Pages\Today\Base\" />
         <Folder Include="Pages\Today\Base\Views\" />
         <Folder Include="Pages\Today\Base\ViewModels\" />
         <Folder Include="Pages\Today\Base\Views\ViewCells\" />
@@ -51,7 +49,6 @@
         <Folder Include="Controls\RoundedListView\Enums\" />
         <Folder Include="Controls\RoundedListView\Interfaces\" />
         <Folder Include="Controls\RoundedListView\Selectors\" />
-        <Folder Include="Pages\Today\Base\Models\" />
         <Folder Include="Helpers\Date\" />
         <Folder Include="Helpers\Date\Extensions\" />
         <Folder Include="Helpers\Date\Enums\" />

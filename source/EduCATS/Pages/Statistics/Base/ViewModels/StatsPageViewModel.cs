@@ -35,11 +35,9 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		public void Init()
 		{
-			//setPagesList();
 			setCollapsedDetails();
 
 			_service.Device.MainThread(async () => {
-				//IsLoading = true;
 				_service.Device.MainThread(() => _service.Dialogs.ShowLoading());
 				checkStudent();
 				await SetupSubjects();
@@ -272,7 +270,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		protected virtual async Task executeRefreshCommand()
 		{
 			try {
-				//PlatformServices.Device.MainThread(() => IsLoading = true);
 				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.ShowLoading());
 				checkStudent();
 				await SetupSubjects();
@@ -358,33 +355,34 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			try
 			{
-				if (_isStudent)
-				{
-					var studentsStatistics = await getStatistics();
-					_students = studentsStatistics;
-					var currentPractStudentStatistics = new LaboratoryWorksModel();
-					var studentsPractStatistics = await DataAccess.GetTestPracticialStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
-					if (Servers.Current == Servers.EduCatsAddress)
+				if (CurrentSubject != null)
+					if (_isStudent)
 					{
-						var currentStudentStatistics = new StatsStudentModel();
-						var studentTestStatistics = await DataAccess.GetTestStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
-						var currentTestStudentStatistics = studentTestStatistics.Students.SingleOrDefault(
-						s => s.StudentId == PlatformServices.Preferences.UserId);
-						currentPractStudentStatistics = studentsPractStatistics.Students.SingleOrDefault(
-							s => s.StudentId == PlatformServices.Preferences.UserId);
-						setChartData(currentStudentStatistics, currentTestStudentStatistics, currentPractStudentStatistics);
-						_studentsTest = studentTestStatistics;
-					}
-					else
-					{
-						var labsTest = new LaboratoryWorksModel();
-						var currentStudentStatistics = new StatsStudentModel();
-						studentsStatistics = await getStatistics();
-						currentStudentStatistics = studentsStatistics.SingleOrDefault(
-						s => s.StudentId == PlatformServices.Preferences.UserId);
-						setChartData(currentStudentStatistics, labsTest, currentPractStudentStatistics);
+						var studentsStatistics = await getStatistics();
 						_students = studentsStatistics;
-					}
+						var currentPractStudentStatistics = new LaboratoryWorksModel();
+						var studentsPractStatistics = await DataAccess.GetTestPracticialStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
+						if (Servers.Current == Servers.EduCatsAddress)
+						{
+							var currentStudentStatistics = new StatsStudentModel();
+							var studentTestStatistics = await DataAccess.GetTestStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
+							var currentTestStudentStatistics = studentTestStatistics.Students.SingleOrDefault(
+							s => s.StudentId == PlatformServices.Preferences.UserId);
+							currentPractStudentStatistics = studentsPractStatistics.Students.SingleOrDefault(
+								s => s.StudentId == PlatformServices.Preferences.UserId);
+							setChartData(currentStudentStatistics, currentTestStudentStatistics, currentPractStudentStatistics);
+							_studentsTest = studentTestStatistics;
+						}
+						else
+						{
+							var labsTest = new LaboratoryWorksModel();
+							var currentStudentStatistics = new StatsStudentModel();
+							studentsStatistics = await getStatistics();
+							currentStudentStatistics = studentsStatistics.SingleOrDefault(
+							s => s.StudentId == PlatformServices.Preferences.UserId);
+							setChartData(currentStudentStatistics, labsTest, currentPractStudentStatistics);
+							_students = studentsStatistics;
+						}
 				}
 			}
 			catch (Exception ex)
