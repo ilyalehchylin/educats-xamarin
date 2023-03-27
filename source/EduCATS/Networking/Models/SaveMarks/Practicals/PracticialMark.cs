@@ -28,5 +28,8 @@ namespace EduCATS.Networking.Models.SaveMarks.Practicals
 
 		[JsonProperty("Theme")]
 		public string Theme { get; set; }
+
+		[JsonProperty("SubGroup")]
+		public int SubGroup { get; set; }
 	}
 }
