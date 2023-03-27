@@ -38,6 +38,11 @@
 		public static string GetProfileInfoSubjectsTest => $"{Servers.Current}/Services/Subjects/SubjectsService.svc/GetUserSubjects";
 
 		/// <summary>
+		/// Get lecturers URL.
+		/// </summary>
+		public static string GetInfoLectures => $"{Servers.Current}/subject/Services/Lectures/LecturesService.svc/GetLectures/";
+
+		/// <summary>
 		/// Get calendar data URL.
 		/// </summary>
 		public static string GetProfileInfoCalendar => $"{Servers.Current}/Profile/GetProfileInfoCalendar";

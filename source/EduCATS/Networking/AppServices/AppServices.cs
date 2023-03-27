@@ -83,6 +83,16 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch lecturers request.
+		/// </summary>
+		/// <param name="subjectId">SubjectId.</param>
+		/// <returns>Data lectures.</returns>
+		public static async Task<object> GetInfoLecturers(int subjectId)
+		{
+			return await AppServicesController.Request(Links.GetInfoLectures + $"{subjectId}");
+		}
+
+		/// <summary>
 		/// Fetch calendar data request.
 		/// </summary>
 		/// <param name="username">Username.</param>

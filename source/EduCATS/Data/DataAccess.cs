@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data.Models;
@@ -12,6 +11,7 @@ using EduCATS.Networking.Models.SaveMarks.LabSchedule;
 using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Networking.Models.Testing;
 using EduCATS.Pages.Parental.FindGroup.Models;
+using EduCATS.Pages.Statistics.Results.Models;
 
 namespace EduCATS.Data
 {
@@ -89,6 +89,18 @@ namespace EduCATS.Data
 					"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
 				return (await GetDataObject(dataAccess, false) as SubjectModelTest).Subjects;
 			}
+		}
+
+		/// <summary>
+		/// Fetch subjects.
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <returns>Subjects data.</returns>
+		public async static Task<InfoLecturesModel> GetInfoLectures(int subjectId)
+		{
+				var dataAccess = new DataAccess<InfoLecturesModel>(
+					"today_subjects_error", getInfoLecturesCallback(subjectId), GlobalConsts.DataGetSubjectsKey);
+				return await GetDataObject(dataAccess, false) as InfoLecturesModel;
 		}
 
 		/// <summary>
