@@ -13,7 +13,7 @@ namespace EduCATS.Pages.Statistics.Results.Views
 	public class StatsResultsPageView : ContentPage
 	{
 		static Thickness _padding = new Thickness(10, 1);
-		static Thickness _studentNameMargin = new Thickness(0, 20);
+		static Thickness _studentNameMargin = new Thickness(5, 5);
 
 		readonly StatsPageEnum _statsPageEnum;
 

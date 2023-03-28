@@ -112,7 +112,7 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 				Padding = _gridPadding,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				ColumnDefinitions = {
-					new ColumnDefinition { Width = new GridLength(2, GridUnitType.Star) },
+					new ColumnDefinition { Width = new GridLength(5, GridUnitType.Star) },
 					new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) }
 				}
 			};

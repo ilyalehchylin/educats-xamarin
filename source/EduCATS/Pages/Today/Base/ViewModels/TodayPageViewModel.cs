@@ -247,6 +247,12 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			}
 
 			var subjectList = await getSubjects();
+			
+			if (subjectList == null)
+			{
+				return composeNewsWithSubjects(news, null);
+			}
+
 			return composeNewsWithSubjects(news, subjectList.OrderBy(x => x.Name).ToList());
 		}
 

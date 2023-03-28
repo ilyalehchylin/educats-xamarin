@@ -23,7 +23,7 @@ namespace EduCATS.Data.Models
 		/// Protection lab ID.
 		/// </summary>
 		[JsonProperty("ScheduleProtectionLabId")]
-		public int ProtectionLabId { get; set; }
+		public int ScheduleProtectionLabId { get; set; }
 
 		/// <summary>
 		/// Student ID.

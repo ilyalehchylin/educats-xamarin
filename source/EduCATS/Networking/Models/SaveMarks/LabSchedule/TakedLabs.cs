@@ -21,6 +21,10 @@ namespace EduCATS.Networking.Models.SaveMarks.LabSchedule
 		[JsonProperty("Labs")]
 		public List<TakedLab> Labs { get; set; }
 
+		[JsonProperty("SubGroup")]
+		public int SubGroup { get; set; }
+
+
 		[JsonProperty("Practicals")]
 		public List<PracticialMark> Practicals { get; set; }
 

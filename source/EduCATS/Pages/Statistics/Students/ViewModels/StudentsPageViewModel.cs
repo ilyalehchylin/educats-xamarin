@@ -107,11 +107,11 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 		{
 			if (_pageIndex == 1 || _pageIndex == 2 || _pageIndex == 3)
 			{
-				await _service.Navigation.OpenAddMarks(getTitle((StatsPageEnum)_pageIndex), groupId, subjectId);
+				await _service.Navigation.OpenAddMarks(getTitle((StatsPageEnum)_pageIndex), groupId, subjectId, CurrentGroup.GroupName);
 			}
 			else
 			{
-				await _service.Navigation.OpenAddMarksPracticeAndLabs(getTitle((StatsPageEnum)_pageIndex), groupId, subjectId);
+				await _service.Navigation.OpenAddMarksPracticeAndLabs(getTitle((StatsPageEnum)_pageIndex), groupId, subjectId, CurrentGroup.GroupName);
 			}
 		}
 
