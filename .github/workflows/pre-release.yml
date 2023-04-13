@@ -139,9 +139,7 @@ jobs:
       - name: Artifacts Download
         uses: actions/download-artifact@v3.0.2
         
-      - run: |
-          ls
-          ls by.bntu*
+      - run: ls -R
           
       - name: AppStore Deploy
         run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
