@@ -149,7 +149,7 @@ jobs:
           IPA_FILE_PATH: ./${{ env.APP_NAME }}_*.ipa
           
       - name: Google Play Deploy
-        uses: r0adkll/upload-google-play@v1.0.19
+        uses: r0adkll/upload-google-play@v1.1.1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
           packageName: ${{ env.BUNDLE_ID }}
