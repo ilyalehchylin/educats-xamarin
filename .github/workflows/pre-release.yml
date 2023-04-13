@@ -110,14 +110,23 @@ jobs:
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
           ARTIFACTS_IPA_PATH: ./artifacts/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
           
-      - name: Artifacts Upload
+      - name: Upload APK Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: apps-artifacts
-          path: |
-            ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
-            ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
-            ./artifacts/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
+          name: by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
+          path: ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
+          
+      - name: Upload AAB Artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
+          path: ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
+          
+      - name: Upload IPA Artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
+          path: ./artifacts/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
           
   deploy:
     runs-on: macos-latest
@@ -127,8 +136,6 @@ jobs:
     steps:
       - name: Artifacts Download
         uses: actions/download-artifact@v3.0.2
-        with:
-          name: apps-artifacts
           
       - name: AppStore Deploy
         run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
