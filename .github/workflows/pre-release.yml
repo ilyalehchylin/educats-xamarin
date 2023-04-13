@@ -138,20 +138,18 @@ jobs:
     steps:
       - name: Artifacts Download
         uses: actions/download-artifact@v3.0.2
-        with:
-          path: ${{ env.ARTIFACTS_DIRECTORY }}
           
       - name: AppStore Deploy
         run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
         env:
-          IPA_FILE_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.APP_NAME }}_*.ipa
+          IPA_FILE_PATH: ./${{ env.APP_NAME }}_*.ipa
           
       - name: Google Play Deploy
         uses: r0adkll/upload-google-play@v1.0.19
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
           packageName: ${{ env.BUNDLE_ID }}
-          releaseFiles: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_*.aab
+          releaseFiles: ./${{ env.BUNDLE_ID }}_*.aab
           track: beta
           changesNotSentForReview: true
           status: draft
