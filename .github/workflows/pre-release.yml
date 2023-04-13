@@ -16,7 +16,7 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
     
       - name: Unit-Tests
         run: dotnet test $PROJECT_PATH
@@ -32,7 +32,7 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
         
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
@@ -70,7 +70,7 @@ jobs:
           value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
       
       - name: Info.plist Version Update
-        uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
+        uses: damienaicheh/update-ios-version-info-plist-action@v1.1.0
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
@@ -97,8 +97,8 @@ jobs:
           KEYSTORE_FILENAME: educats-release.keystore
           APK_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.apk
           AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
-          ARTIFACTS_APK_PATH: ./artifacts/by.bntu.educats.apk
-          ARTIFACTS_AAB_PATH: ./artifacts/by.bntu.educats.aab
+          ARTIFACTS_APK_PATH: ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
+          ARTIFACTS_AAB_PATH: ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
 
       - name: iOS Build
         run: |
@@ -108,13 +108,16 @@ jobs:
           PLATFORM: iPhone
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
-          ARTIFACTS_IPA_PATH: ./artifacts/EduCATS.ipa
+          ARTIFACTS_IPA_PATH: ./artifacts/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
           
       - name: Artifacts Upload
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: apps-artifacts
-          path: ${{ env.ARTIFACTS_DIRECTORY }}
+          path: |
+            ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
+            ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
+            ./artifacts/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
           
   deploy:
     runs-on: macos-latest
@@ -123,7 +126,7 @@ jobs:
 
     steps:
       - name: Artifacts Download
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3.0.2
         with:
           name: apps-artifacts
           
