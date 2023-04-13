@@ -139,9 +139,11 @@ jobs:
         uses: r0adkll/upload-google-play@v1.1.1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
-          packageName: by.bntu.educats
-          releaseFiles: ./by.bntu.educats.aab
+          packageName: ${{ env.BUNDLE_ID }}
+          releaseFiles: ./${{ env.BUNDLE_ID }}_*.aab
           track: beta
+          changesNotSentForReview: true
+          status: draft
           
       - name: Release Tag
         uses: simpleactions/create-tag@v1.0.0
