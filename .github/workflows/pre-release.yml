@@ -8,6 +8,8 @@ on:
 
 env:
   ARTIFACTS_DIRECTORY: ./artifacts
+  APP_NAME: EduCATS
+  BUNDLE_ID: by.bntu.educats
   
 jobs:
   test:
@@ -21,7 +23,7 @@ jobs:
       - name: Unit-Tests
         run: dotnet test $PROJECT_PATH
         env:
-          PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
+          PROJECT_PATH: ./source/${{ env.APP_NAME }}.UnitTests/${{ env.APP_NAME }}.UnitTests.csproj
           
   build:
     runs-on: macos-latest
@@ -37,7 +39,7 @@ jobs:
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
         env:
-          SOLUTION_PATH: ./source/EduCATS.sln
+          SOLUTION_PATH: ./source/${{ env.APP_NAME }}.sln
         
       - name: iOS Certificates Install
         uses: apple-actions/import-codesign-certs@v1
@@ -55,7 +57,7 @@ jobs:
       - name: Android Signing Setup
         run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
         env:
-          KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
+          KEYSTORE: ./source/${{ env.APP_NAME }}.Android/educats-release.keystore
       
       - name: App Build Version Bump
         run: echo "APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))" >> $GITHUB_ENV
@@ -72,14 +74,14 @@ jobs:
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.1.0
         with:
-          info-plist-path: ./source/EduCATS.iOS/Info.plist
+          info-plist-path: ./source/${{ env.APP_NAME }}.iOS/Info.plist
           bundle-version: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
           bundle-short-version-string: ${{ secrets.APP_VERSION_NUMBER }}
           
       - name: AndroidManifest Version Update
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
-          android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
+          android-manifest-path: ./source/${{ env.APP_NAME }}.Android/Properties/AndroidManifest.xml
           version-name: ${{ secrets.APP_VERSION_NUMBER }}
           version-code: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
       
@@ -93,12 +95,12 @@ jobs:
           MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
         env:
-          PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
+          PROJECT_PATH: ./source/${{ env.APP_NAME }}.Android/${{ env.APP_NAME }}.Android.csproj
           KEYSTORE_FILENAME: educats-release.keystore
-          APK_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.apk
-          AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
-          ARTIFACTS_APK_PATH: ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
-          ARTIFACTS_AAB_PATH: ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
+          APK_FILE_PATH: ./source/${{ env.APP_NAME }}.Android/bin/Release/${{ env.BUNDLE_ID }}-Signed.apk
+          AAB_FILE_PATH: ./source/${{ env.APP_NAME }}.Android/bin/Release/${{ env.BUNDLE_ID }}-Signed.aab
+          ARTIFACTS_APK_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
+          ARTIFACTS_AAB_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
 
       - name: iOS Build
         run: |
@@ -106,27 +108,27 @@ jobs:
           cp $IPA_PATH $ARTIFACTS_IPA_PATH
         env:
           PLATFORM: iPhone
-          PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
-          IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
-          ARTIFACTS_IPA_PATH: ./artifacts/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
+          PROJECT_PATH: ./source/${{ env.APP_NAME }}.iOS/${{ env.APP_NAME }}.iOS.csproj
+          IPA_PATH: ./source/${{ env.APP_NAME }}.iOS/bin/iPhone/Release/${{ env.APP_NAME }}.iOS.ipa
+          ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.APP_NAME }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
           
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
-          path: ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
+          name: ${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
+          path: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
           
       - name: Upload AAB Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
-          path: ./artifacts/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
+          name: ${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
+          path: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
           
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
-          path: ./artifacts/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
+          name: ${{ env.APP_NAME }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
+          path: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.APP_NAME }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
           
   deploy:
     runs-on: macos-latest
@@ -136,18 +138,20 @@ jobs:
     steps:
       - name: Artifacts Download
         uses: actions/download-artifact@v3.0.2
+        with:
+          path: ${{ env.ARTIFACTS_DIRECTORY }}
           
       - name: AppStore Deploy
         run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
         env:
-          IPA_FILE_PATH: ./EduCATS_*.ipa
+          IPA_FILE_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.APP_NAME }}_*.ipa
           
       - name: Google Play Deploy
         uses: r0adkll/upload-google-play@v1.0.19
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
-          packageName: by.bntu.educats
-          releaseFiles: ./by.bntu.educats_*.aab
+          packageName: ${{ env.BUNDLE_ID }}
+          releaseFiles: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_*.aab
           track: beta
           changesNotSentForReview: true
           status: draft
