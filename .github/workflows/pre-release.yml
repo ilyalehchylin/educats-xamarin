@@ -115,19 +115,19 @@ jobs:
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: ${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}_apk
+          name: ${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk.zip
           path: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
           
       - name: Upload AAB Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: ${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}_aab
+          name: ${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab.zip
           path: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
           
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: ${{ env.APP_NAME }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}_ipa
+          name: ${{ env.APP_NAME }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa.zip
           path: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.APP_NAME }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
           
   deploy:
@@ -138,6 +138,10 @@ jobs:
     steps:
       - name: Artifacts Download
         uses: actions/download-artifact@v3.0.2
+        
+      - run: |
+          ls
+          ls by.bntu*
           
       - name: AppStore Deploy
         run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
