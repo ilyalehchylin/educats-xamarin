@@ -13,9 +13,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.2
-        
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v3.0.3
 
       - name: Unit-Tests Build + Coverlet
         run: |
