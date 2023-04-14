@@ -7,7 +7,7 @@ env:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     environment: github-actions-release
     
     steps:
@@ -35,7 +35,7 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
-          os: linux
+          os: macos
 
   build:
     runs-on: macos-latest
