@@ -139,8 +139,8 @@ jobs:
         uses: r0adkll/upload-google-play@v1.1.1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
-          packageName: ${{ env.BUNDLE_ID }}
-          releaseFiles: ./${{ env.BUNDLE_ID }}_*.aab
+          packageName: by.bntu.educats
+          releaseFiles: ./by.bntu.educats.aab
           track: beta
           changesNotSentForReview: true
           status: draft
