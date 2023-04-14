@@ -53,7 +53,7 @@ jobs:
           
   generate_documentation:
     runs-on: macos-latest
-    needs: pre_release
+    needs: create_release_tag
     environment: github-actions-release
     steps:
       - name: Checkout
