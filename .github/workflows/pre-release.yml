@@ -8,9 +8,8 @@ on:
 
 env:
   ARTIFACTS_DIRECTORY: ./artifacts
-  APP_NAME: EduCATS
-  BUNDLE_ID: by.bntu.educats
-  
+  RELEASE_BUILD_CONFIGURATION: Release
+
 jobs:
   test:
     runs-on: macos-latest
@@ -23,15 +22,38 @@ jobs:
       - name: Unit-Tests
         run: dotnet test $PROJECT_PATH
         env:
-          PROJECT_PATH: ./source/${{ env.APP_NAME }}.UnitTests/${{ env.APP_NAME }}.UnitTests.csproj
+          PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
           
-  build:
+  prepare_build:
     runs-on: macos-latest
     environment: github-actions-release
     needs: test
-    env:
-      BUILD_CONFIGURATION: Release
-    
+    outputs:
+      incremented_build_number: ${{ steps.increase_build_number.outputs.app_build_number }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+        
+      - name: Increase Build Number
+        id: increase_build_number
+        run: |
+          APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))
+          echo "APP_BUILD_NUMBER_INCREMENTED=$APP_BUILD_NUMBER_INCREMENTED" >> $GITHUB_ENV
+          echo "app_build_number=$APP_BUILD_NUMBER_INCREMENTED" >> $GITHUB_OUTPUT
+        env:
+          APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}  
+      
+      - name: App Build Secret Update
+        uses: gliech/create-github-secret-action@v1.4.10
+        with:
+          pa_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          name: APP_BUILD_NUMBER
+          value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
+          
+  build_apk:
+    runs-on: macos-latest
+    environment: github-actions-release
+    needs: prepare_build
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.2
@@ -39,7 +61,98 @@ jobs:
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
         env:
-          SOLUTION_PATH: ./source/${{ env.APP_NAME }}.sln
+          SOLUTION_PATH: ./source/EduCATS.sln
+      
+      - name: Artifacts Directory Setup
+        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
+          
+      - name: Android Signing Setup
+        run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
+        env:
+          KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
+          
+      - name: AndroidManifest Version Update
+        uses: damienaicheh/update-android-version-manifest-action@v1.0.0
+        with:
+          android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
+          version-name: ${{ secrets.APP_VERSION_NUMBER }}
+          version-code: ${{ needs.prepare_build.outputs.incremented_build_number }}
+      
+      - name: Android Build (apk)
+        run: |
+          MSBuild /t:SignAndroidPackage /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
+        env:
+          PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
+          KEYSTORE_FILENAME: educats-release.keystore
+          APK_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.apk
+          ARTIFACTS_APK_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
+          
+      - name: Upload APK Artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
+          path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
+        
+  build_aab:
+    runs-on: macos-latest
+    environment: github-actions-release
+    needs: prepare_build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+        
+      - name: NuGet Restore
+        run: nuget restore $SOLUTION_PATH
+        env:
+          SOLUTION_PATH: ./source/EduCATS.sln
+      
+      - name: Artifacts Directory Setup
+        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
+          
+      - name: Android Signing Setup
+        run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
+        env:
+          KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
+          
+      - name: AndroidManifest Version Update
+        uses: damienaicheh/update-android-version-manifest-action@v1.0.0
+        with:
+          android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
+          version-name: ${{ secrets.APP_VERSION_NUMBER }}
+          version-code: ${{ needs.prepare_build.outputs.incremented_build_number }}
+      
+      - name: Android Build (aab)
+        run: |
+          MSBuild /t:SignAndroidPackage /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
+        env:
+          PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
+          KEYSTORE_FILENAME: educats-release.keystore
+          AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
+          ARTIFACTS_AAB_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
+          
+      - name: Upload AAB Artifact
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
+          path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
+        
+  build_ipa:
+    runs-on: macos-latest
+    environment: github-actions-release
+    needs: prepare_build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+        
+      - name: NuGet Restore
+        run: nuget restore $SOLUTION_PATH
+        env:
+          SOLUTION_PATH: ./source/EduCATS.sln
+      
+      - name: Artifacts Directory Setup
+        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
         
       - name: iOS Certificates Install
         uses: apple-actions/import-codesign-certs@v1
@@ -53,105 +166,57 @@ jobs:
         uses: akiojin/install-provisioning-profile-github-action@v1.0
         with:
           base64: ${{ secrets.IOS_PROVISIONING_PROFILE_APPSTORE }}
-          
-      - name: Android Signing Setup
-        run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
-        env:
-          KEYSTORE: ./source/${{ env.APP_NAME }}.Android/educats-release.keystore
-      
-      - name: App Build Version Bump
-        run: echo "APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))" >> $GITHUB_ENV
-        env:
-          APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
-          
-      - name: App Build Secret Update
-        uses: gliech/create-github-secret-action@v1.4.10
-        with:
-          pa_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          name: APP_BUILD_NUMBER
-          value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.1.0
         with:
-          info-plist-path: ./source/${{ env.APP_NAME }}.iOS/Info.plist
-          bundle-version: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
+          info-plist-path: ./source/EduCATS.iOS/Info.plist
+          bundle-version: ${{ needs.prepare_build.outputs.incremented_build_number }}
           bundle-short-version-string: ${{ secrets.APP_VERSION_NUMBER }}
           
-      - name: AndroidManifest Version Update
-        uses: damienaicheh/update-android-version-manifest-action@v1.0.0
-        with:
-          android-manifest-path: ./source/${{ env.APP_NAME }}.Android/Properties/AndroidManifest.xml
-          version-name: ${{ secrets.APP_VERSION_NUMBER }}
-          version-code: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
-      
-      - name: Artifacts Directory Setup
-        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
-      
-      - name: Android Build (apk + aab)
+      - name: iOS Build (ipa)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
-          cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
-          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
-          cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
-        env:
-          PROJECT_PATH: ./source/${{ env.APP_NAME }}.Android/${{ env.APP_NAME }}.Android.csproj
-          KEYSTORE_FILENAME: educats-release.keystore
-          APK_FILE_PATH: ./source/${{ env.APP_NAME }}.Android/bin/Release/${{ env.BUNDLE_ID }}-Signed.apk
-          AAB_FILE_PATH: ./source/${{ env.APP_NAME }}.Android/bin/Release/${{ env.BUNDLE_ID }}-Signed.aab
-          ARTIFACTS_APK_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
-          ARTIFACTS_AAB_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
-
-      - name: iOS Build
-        run: |
-          MSBuild /t:Build /p:Configuration=$BUILD_CONFIGURATION /p:Platform=$PLATFORM /p:BuildIpa=true $PROJECT_PATH
+          MSBuild /t:Build /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:Platform=$PLATFORM /p:BuildIpa=true $PROJECT_PATH
           cp $IPA_PATH $ARTIFACTS_IPA_PATH
         env:
           PLATFORM: iPhone
-          PROJECT_PATH: ./source/${{ env.APP_NAME }}.iOS/${{ env.APP_NAME }}.iOS.csproj
-          IPA_PATH: ./source/${{ env.APP_NAME }}.iOS/bin/iPhone/Release/${{ env.APP_NAME }}.iOS.ipa
-          ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.APP_NAME }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
-          
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: ${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
-          path: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.apk
-          
-      - name: Upload AAB Artifact
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: ${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
-          path: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.BUNDLE_ID }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.aab
+          PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
+          IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
+          ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
           
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: ${{ env.APP_NAME }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
-          path: ${{ env.ARTIFACTS_DIRECTORY }}/${{ env.APP_NAME }}_${{ secrets.APP_VERSION_NUMBER }}.${{ env.APP_BUILD_NUMBER_INCREMENTED }}.ipa
-          
-  deploy:
+          name: EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
+          path: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
+     
+  deploy_google_play:
     runs-on: macos-latest
     environment: github-actions-release
-    needs: build
-
+    needs: build_aab
     steps:
       - name: Artifacts Download
         uses: actions/download-artifact@v3.0.2
         
-      - run: ls -R
-          
-      - name: AppStore Deploy
-        run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
-        env:
-          IPA_FILE_PATH: ./${{ env.APP_NAME }}_*.ipa
-          
       - name: Google Play Deploy
         uses: r0adkll/upload-google-play@v1.1.1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
-          packageName: ${{ env.BUNDLE_ID }}
-          releaseFiles: ./${{ env.BUNDLE_ID }}_*.aab
+          packageName: by.bntu.educats
+          releaseFiles: ./*.aab/*.aab
           track: beta
           changesNotSentForReview: true
           status: draft
+          
+  deploy_appstore:
+    runs-on: macos-latest
+    environment: github-actions-release
+    needs: build_ipa
+    steps:
+      - name: Artifacts Download
+        uses: actions/download-artifact@v3.0.2
+        
+      - name: AppStore Deploy
+        run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
+        env:
+          IPA_FILE_PATH: ./*.ipa/*.ipa
