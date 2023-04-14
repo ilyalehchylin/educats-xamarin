@@ -62,7 +62,7 @@ jobs:
         id: build_version_bump
         run: |
           echo "APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))" >> $GITHUB_ENV
-          echo "::set-output name=app_build_number::${{ env.APP_BUILD_NUMBER_INCREMENTED }}"
+          echo "app_build_number=${{ env.APP_BUILD_NUMBER_INCREMENTED }}" >> $GITHUB_OUTPUT
         env:
           APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
           
