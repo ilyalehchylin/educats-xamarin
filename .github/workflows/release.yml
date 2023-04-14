@@ -23,8 +23,10 @@ jobs:
 
   create_tag:
     runs-on: macos-latest
+    needs: pre_release
     environment: github-actions-release
     steps:
+      - run: echo ${{ needs.pre_release.outputs.app_build_number }}
       - name: Release Tag
         uses: simpleactions/create-tag@v1.0.0
         with:
