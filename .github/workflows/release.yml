@@ -11,31 +11,39 @@ env:
   DOCS_PATH: ./docs
 
 jobs:
-  test:
-    runs-on: macos-latest
-    environment: github-actions-release
+  pre_release:
+    uses: ilyalehchylin/educats-xamarin/.github/workflows/pre-release.yml@v1
     
+  release:
+    runs-on: macos-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - run: echo ${{ needs.pre_release.outputs.app_build_number }}
+  
+#   test:
+#     runs-on: macos-latest
+#     environment: github-actions-release
+    
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
     
 #       - name: Unit-Tests
 #         run: dotnet test $PROJECT_PATH
 #         env:
 #           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
           
-  build:
-    runs-on: macos-latest
-    environment: github-actions-release
-    needs: test
-    outputs:
-      incremented_build_number: ${{ steps.build_version_bump.outputs.app_build_number }}
-    env:
-     BUILD_CONFIGURATION: Release
+#   build:
+#     runs-on: macos-latest
+#     environment: github-actions-release
+#     needs: test
+#     outputs:
+#       incremented_build_number: ${{ steps.build_version_bump.outputs.app_build_number }}
+#     env:
+#      BUILD_CONFIGURATION: Release
     
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
         
 #       - name: NuGet Restore
 #         run: nuget restore ./source/EduCATS.sln
@@ -58,21 +66,21 @@ jobs:
 #         env:
 #           KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
       
-      - name: App Build Version Bump
-        id: build_version_bump
-        run: |
-          APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))
-          echo "APP_BUILD_NUMBER_INCREMENTED=$APP_BUILD_NUMBER_INCREMENTED" >> $GITHUB_ENV
-          echo "app_build_number=$APP_BUILD_NUMBER_INCREMENTED" >> $GITHUB_OUTPUT
-        env:
-          APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
+#       - name: App Build Version Bump
+#         id: build_version_bump
+#         run: |
+#           APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))
+#           echo "APP_BUILD_NUMBER_INCREMENTED=$APP_BUILD_NUMBER_INCREMENTED" >> $GITHUB_ENV
+#           echo "app_build_number=$APP_BUILD_NUMBER_INCREMENTED" >> $GITHUB_OUTPUT
+#         env:
+#           APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
           
-      - name: App Build Secret Update
-        uses: gliech/create-github-secret-action@v1.4.10
-        with:
-          pa_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          name: APP_BUILD_NUMBER
-          value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
+#       - name: App Build Secret Update
+#         uses: gliech/create-github-secret-action@v1.4.10
+#         with:
+#           pa_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+#           name: APP_BUILD_NUMBER
+#           value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
       
 #       - name: Info.plist Version Update
 #         uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
@@ -120,12 +128,12 @@ jobs:
 #           name: apps-artifacts
 #           path: ${{ env.ARTIFACTS_DIRECTORY }}
           
-  deploy:
-    runs-on: macos-latest
-    environment: github-actions-release
-    needs: build
+#   deploy:
+#     runs-on: macos-latest
+#     environment: github-actions-release
+#     needs: build
 
-    steps:
+#     steps:
 #       - name: Artifacts Download
 #         uses: actions/download-artifact@v2
 #         with:
@@ -146,78 +154,78 @@ jobs:
 #           changesNotSentForReview: true
 #           status: draft
           
-      - run: echo ${{ needs.build.outputs.incremented_build_number }}
+#       - run: echo ${{ needs.build.outputs.incremented_build_number }}
       
-      - name: Release Tag
-        uses: simpleactions/create-tag@v1.0.0
-        with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
-         tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
-         message: Release ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+#       - name: Release Tag
+#         uses: simpleactions/create-tag@v1.0.0
+#         with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+#          message: Release ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
           
-      - name: Github Release
-        id: github_release
-        uses: release-drafter/release-drafter@v5.19.0
-        with:
-          name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
-          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Github Release
+#         id: github_release
+#         uses: release-drafter/release-drafter@v5.19.0
+#         with:
+#           name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+#           tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Github Release Artifacts Upload
-        uses: nanoufo/action-upload-artifacts-and-release-assets@v1.4
-        with:
-          path: ./by.bntu.educats.apk
-          upload-release-files: true
-          release-upload-url: ${{ steps.github_release.outputs.upload_url }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#       - name: Github Release Artifacts Upload
+#         uses: nanoufo/action-upload-artifacts-and-release-assets@v1.4
+#         with:
+#           path: ./by.bntu.educats.apk
+#           upload-release-files: true
+#           release-upload-url: ${{ steps.github_release.outputs.upload_url }}
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-  docs-generate:
-    runs-on: macos-latest
-    needs: deploy
+#   docs-generate:
+#     runs-on: macos-latest
+#     needs: deploy
     
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
         
-      - name: Docs Generation
-        run: sh ./scripts/docs_generator.sh
+#       - name: Docs Generation
+#         run: sh ./scripts/docs_generator.sh
         
-      - name: Artifacts Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: docs-artifacts
-          path: ${{ env.DOCS_PATH }}
+#       - name: Artifacts Upload
+#         uses: actions/upload-artifact@v2
+#         with:
+#           name: docs-artifacts
+#           path: ${{ env.DOCS_PATH }}
     
-  docs-publish:
-    runs-on: ubuntu-latest
-    needs: docs-generate
+#   docs-publish:
+#     runs-on: ubuntu-latest
+#     needs: docs-generate
     
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
 
-      - name: Artifacts Download
-        uses: actions/download-artifact@v2
-        with:
-          name: docs-artifacts
-          path: ${{ env.DOCS_PATH }}
+#       - name: Artifacts Download
+#         uses: actions/download-artifact@v2
+#         with:
+#           name: docs-artifacts
+#           path: ${{ env.DOCS_PATH }}
       
-      - name: Date Setup
-        id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+#       - name: Date Setup
+#         id: date
+#         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
         
-      - name: Docs Push
-        uses: github-actions-x/commit@v2.9
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: 'main'
-          commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
-          files: ${{ env.DOCS_PATH }}
-          name: $GIT_NAME
-          email: $GIT_EMAIL
-          rebase: 'true'
-        env:
-          GIT_NAME: github-actions
-          GIT_EMAIL: auto@users.noreply.github.com
+#       - name: Docs Push
+#         uses: github-actions-x/commit@v2.9
+#         with:
+#           github-token: ${{ secrets.GITHUB_TOKEN }}
+#           push-branch: 'main'
+#           commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
+#           files: ${{ env.DOCS_PATH }}
+#           name: $GIT_NAME
+#           email: $GIT_EMAIL
+#           rebase: 'true'
+#         env:
+#           GIT_NAME: github-actions
+#           GIT_EMAIL: auto@users.noreply.github.com
