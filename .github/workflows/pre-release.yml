@@ -33,10 +33,17 @@ jobs:
     environment: github-actions-release
     needs: test
     outputs:
+      app_version: ${{ steps.app_version_setup.outputs.app_version }}
       incremented_build_number: ${{ steps.increase_build_number.outputs.app_build_number }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.2
+        
+      - name: Setup App Version
+        id: app_version_setup
+        run: |
+          APP_VERSION=$(cat ./VERSION)
+          echo "app_version=$APP_VERSION" >> $GITHUB_OUTPUT
         
       - name: Increase Build Number
         id: increase_build_number
@@ -87,7 +94,7 @@ jobs:
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-name: ${{ secrets.APP_VERSION_NUMBER }}
+          version-name: ${{ needs.prepare_build.outputs.app_version }}
           version-code: ${{ needs.prepare_build.outputs.incremented_build_number }}
       
       - name: Android Build (apk)
@@ -98,13 +105,13 @@ jobs:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
           KEYSTORE_FILENAME: educats-release.keystore
           APK_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.apk
-          ARTIFACTS_APK_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
+          ARTIFACTS_APK_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
           
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
-          path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
+          name: by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
+          path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
         
   build_aab:
     runs-on: macos-latest
@@ -139,7 +146,7 @@ jobs:
         uses: damienaicheh/update-android-version-manifest-action@v1.0.0
         with:
           android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-name: ${{ secrets.APP_VERSION_NUMBER }}
+          version-name: ${{ needs.prepare_build.outputs.app_version }}
           version-code: ${{ needs.prepare_build.outputs.incremented_build_number }}
       
       - name: Android Build (aab)
@@ -150,13 +157,13 @@ jobs:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
           KEYSTORE_FILENAME: educats-release.keystore
           AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
-          ARTIFACTS_AAB_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
+          ARTIFACTS_AAB_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
           
       - name: Upload AAB Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
-          path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
+          name: by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
+          path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
         
   build_ipa:
     runs-on: macos-latest
@@ -200,7 +207,7 @@ jobs:
         with:
           info-plist-path: ./source/EduCATS.iOS/Info.plist
           bundle-version: ${{ needs.prepare_build.outputs.incremented_build_number }}
-          bundle-short-version-string: ${{ secrets.APP_VERSION_NUMBER }}
+          bundle-short-version-string: ${{ needs.prepare_build.outputs.app_version }}
           
       - name: iOS Build (ipa)
         run: |
@@ -210,13 +217,13 @@ jobs:
           PLATFORM: iPhone
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
-          ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
+          ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
           
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
-          path: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ secrets.APP_VERSION_NUMBER }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
+          name: EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
+          path: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
      
   deploy_google_play:
     runs-on: macos-latest
