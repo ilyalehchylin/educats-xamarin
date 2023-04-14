@@ -8,7 +8,8 @@ on:
 
 env:
   ARTIFACTS_DIRECTORY: ./artifacts
-  
+  RELEASE_BUILD_CONFIGURATION: Release
+
 jobs:
   test:
     runs-on: macos-latest
@@ -79,7 +80,7 @@ jobs:
       
       - name: Android Build (apk)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
@@ -123,7 +124,7 @@ jobs:
       
       - name: Android Build (aab)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          MSBuild /t:SignAndroidPackage /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
           cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
@@ -175,7 +176,7 @@ jobs:
           
       - name: iOS Build (ipa)
         run: |
-          MSBuild /t:Build /p:Configuration=$BUILD_CONFIGURATION /p:Platform=$PLATFORM /p:BuildIpa=true $PROJECT_PATH
+          MSBuild /t:Build /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:Platform=$PLATFORM /p:BuildIpa=true $PROJECT_PATH
           cp $IPA_PATH $ARTIFACTS_IPA_PATH
         env:
           PLATFORM: iPhone
