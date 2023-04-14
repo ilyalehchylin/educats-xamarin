@@ -11,12 +11,12 @@ env:
   
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     environment: github-actions-release
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.5.2
+        uses: actions/checkout@v3
     
       - name: Unit-Tests
         run: dotnet test $PROJECT_PATH
