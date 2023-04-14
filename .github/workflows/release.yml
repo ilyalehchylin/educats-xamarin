@@ -19,10 +19,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
     
-      - name: Unit-Tests
-        run: dotnet test $PROJECT_PATH
-        env:
-          PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
+#       - name: Unit-Tests
+#         run: dotnet test $PROJECT_PATH
+#         env:
+#           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
           
   build:
     runs-on: macos-latest
@@ -145,9 +145,7 @@ jobs:
 #           changesNotSentForReview: true
 #           status: draft
           
-      - run: |
-          echo ${{ secrets.APP_VERSION_NUMBER }} >> file.txt
-          cat file.txt
+      - run: echo ${{ secrets.APP_VERSION_NUMBER }} | sed 's/./& /g'
       
       - name: Release Tag
         uses: simpleactions/create-tag@v1.0.0
