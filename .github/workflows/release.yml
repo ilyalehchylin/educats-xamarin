@@ -14,19 +14,15 @@ jobs:
   pre_release:
     uses: ilyalehchylin/educats-xamarin/.github/workflows/pre-release.yml@update/gha-workflows
     secrets: inherit
-    
-#   release:
-#     runs-on: macos-latest
-#     needs: pre_release
-#     steps:
-#       - run: echo ${{ needs.pre_release.outputs.app_build_number }}
 
-  create_tag:
+  create_release_tag:
     runs-on: macos-latest
     needs: pre_release
     environment: github-actions-release
     steps:
-      - run: echo ${{ needs.pre_release.outputs.app_build_number }}
+      - name: Artifacts Download
+        uses: actions/download-artifact@v3.0.2
+        
       - name: Release Tag
         uses: simpleactions/create-tag@v1.0.0
         with:
@@ -34,69 +30,71 @@ jobs:
          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
          message: Release ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
           
-#       - name: Github Release
-#         id: github_release
-#         uses: release-drafter/release-drafter@v5.19.0
-#         with:
-#           name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
-#           tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Github Release
+        id: github_release
+        uses: release-drafter/release-drafter@v5.21.1
+        with:
+          name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
+          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-#       - name: Github Release Artifacts Upload
-#         uses: nanoufo/action-upload-artifacts-and-release-assets@v1.4
-#         with:
-#           path: ./by.bntu.educats.apk
-#           upload-release-files: true
-#           release-upload-url: ${{ steps.github_release.outputs.upload_url }}
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Github Release Artifacts Upload
+        uses: nanoufo/action-upload-artifacts-and-release-assets@v1.8
+        with:
+          path: |
+            ./*.ipa/*.ipa
+            ./*.aab/*.aab
+            ./*.apk/*.apk
+          upload-release-files: true
+          release-upload-url: ${{ steps.github_release.outputs.upload_url }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           
-#   docs-generate:
-#     runs-on: macos-latest
-#     needs: deploy
-    
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
+  generate_documentation:
+    runs-on: macos-latest
+    needs: pre_release
+    environment: github-actions-release
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
         
-#       - name: Docs Generation
-#         run: sh ./scripts/docs_generator.sh
+      - name: Generate Documentation
+        run: sh ./scripts/docs_generator.sh
         
-#       - name: Artifacts Upload
-#         uses: actions/upload-artifact@v2
-#         with:
-#           name: docs-artifacts
-#           path: ${{ env.DOCS_PATH }}
-    
-#   docs-publish:
-#     runs-on: ubuntu-latest
-#     needs: docs-generate
-    
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v3
-
-#       - name: Artifacts Download
-#         uses: actions/download-artifact@v2
-#         with:
-#           name: docs-artifacts
-#           path: ${{ env.DOCS_PATH }}
+      - name: Upload Documentation Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: documentation
+          path: ${{ env.DOCS_PATH }}
       
-#       - name: Date Setup
-#         id: date
-#         run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+  publish_documentation:
+    runs-on: ubuntu-latest
+    needs: generate_documentation
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+
+      - name: Artifacts Download
+        uses: actions/download-artifact@v3.0.2
+        with:
+          name: documentation
+          path: ${{ env.DOCS_PATH }}
+      
+      - name: Date Setup
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
         
-#       - name: Docs Push
-#         uses: github-actions-x/commit@v2.9
-#         with:
-#           github-token: ${{ secrets.GITHUB_TOKEN }}
-#           push-branch: 'main'
-#           commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
-#           files: ${{ env.DOCS_PATH }}
-#           name: $GIT_NAME
-#           email: $GIT_EMAIL
-#           rebase: 'true'
-#         env:
-#           GIT_NAME: github-actions
-#           GIT_EMAIL: auto@users.noreply.github.com
+      - name: Push Documentation to main
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          push-branch: 'main'
+          commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
+          files: ${{ env.DOCS_PATH }}
+          name: $GIT_NAME
+          email: $GIT_EMAIL
+          rebase: 'true'
+        env:
+          GIT_NAME: github-actions
+          GIT_EMAIL: auto@users.noreply.github.com
