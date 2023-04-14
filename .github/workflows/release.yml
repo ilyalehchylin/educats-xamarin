@@ -212,7 +212,7 @@ jobs:
         uses: github-actions-x/commit@v2.9
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: 'master'
+          push-branch: 'main'
           commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
           files: ${{ env.DOCS_PATH }}
           name: $GIT_NAME
