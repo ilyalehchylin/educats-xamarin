@@ -16,6 +16,7 @@ jobs:
     
   release:
     runs-on: macos-latest
+    needs: pre_release
     steps:
       - run: echo ${{ needs.pre_release.outputs.app_build_number }}
   
