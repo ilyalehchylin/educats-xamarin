@@ -145,7 +145,7 @@ jobs:
 #           changesNotSentForReview: true
 #           status: draft
           
-      - run: echo ${{ secrets.APP_VERSION_NUMBER }} | sed 's/./& /g'
+      - run: echo ${{ needs.build.outputs.incremented_build_number }}
       
       - name: Release Tag
         uses: simpleactions/create-tag@v1.0.0
