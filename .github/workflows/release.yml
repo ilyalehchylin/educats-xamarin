@@ -4,215 +4,96 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - master
+      - main
 
 env:
   ARTIFACTS_DIRECTORY: ./artifacts
   DOCS_PATH: ./docs
 
 jobs:
-  test:
-    runs-on: macos-latest
-    environment: github-actions-release
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-    
-      - name: Unit-Tests
-        run: dotnet test $PROJECT_PATH
-        env:
-          PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
-          
-  build:
-    runs-on: macos-latest
-    environment: github-actions-release
-    needs: test
-    outputs:
-      incremented_build_number: ${{ steps.build_version_bump.outputs.app_build_number }}
-    env:
-     BUILD_CONFIGURATION: Release
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        
-      - name: NuGet Restore
-        run: nuget restore ./source/EduCATS.sln
-        
-      - name: iOS Certificates Install
-        uses: apple-actions/import-codesign-certs@v1
-        with: 
-          p12-file-base64: ${{ secrets.IOS_CERTIFICATE_APPSTORE }}
-          p12-password: ${{ secrets.IOS_CERTIFICATE_APPSTORE_PASSWORD }}
-          keychain: github-actions-xamarin
-          keychain-password: ''
-      
-      - name: iOS Provisioning Profiles Install
-        uses: akiojin/install-provisioning-profile-github-action@v1.0
-        with:
-          base64: ${{ secrets.IOS_PROVISIONING_PROFILE_APPSTORE }}
-          
-      - name: Android Signing Setup
-        run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
-        env:
-          KEYSTORE: ./source/EduCATS.Android/educats-release.keystore
-      
-      - name: App Build Version Bump
-        id: build_version_bump
-        run: |
-          echo "APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))" >> $GITHUB_ENV
-          echo "::set-output name=app_build_number::${{ env.APP_BUILD_NUMBER_INCREMENTED }}"
-        env:
-          APP_BUILD_NUMBER: ${{ secrets.APP_BUILD_NUMBER }}
-          
-      - name: App Build Secret Update
-        uses: gliech/create-github-secret-action@v1.4.10
-        with:
-          pa_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          name: APP_BUILD_NUMBER
-          value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
-      
-      - name: Info.plist Version Update
-        uses: damienaicheh/update-ios-version-info-plist-action@v1.0.0
-        with:
-          info-plist-path: ./source/EduCATS.iOS/Info.plist
-          bundle-version: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
-          bundle-short-version-string: ${{ secrets.APP_VERSION_NUMBER }}
-          
-      - name: AndroidManifest Version Update
-        uses: damienaicheh/update-android-version-manifest-action@v1.0.0
-        with:
-          android-manifest-path: ./source/EduCATS.Android/Properties/AndroidManifest.xml
-          version-name: ${{ secrets.APP_VERSION_NUMBER }}
-          version-code: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
-      
-      - name: Artifacts Directory Setup
-        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
-      
-      - name: Android Build (apk + aab)
-        run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
-          cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
-          MSBuild /t:SignAndroidPackage /p:Configuration=$BUILD_CONFIGURATION /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
-          cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
-        env:
-          PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
-          KEYSTORE_FILENAME: educats-release.keystore
-          APK_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.apk
-          AAB_FILE_PATH: ./source/EduCATS.Android/bin/Release/by.bntu.educats-Signed.aab
-          ARTIFACTS_APK_PATH: ./artifacts/by.bntu.educats.apk
-          ARTIFACTS_AAB_PATH: ./artifacts/by.bntu.educats.aab
+  pre_release:
+    uses: ilyalehchylin/educats-xamarin/.github/workflows/pre-release.yml@develop
+    secrets: inherit
 
-      - name: iOS Build
-        run: |
-          MSBuild /t:Build /p:Configuration=$BUILD_CONFIGURATION /p:Platform=iPhone /p:BuildIpa=true $PROJECT_PATH
-          cp $IPA_PATH $ARTIFACTS_IPA_PATH
-        env:
-          PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
-          IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
-          ARTIFACTS_IPA_PATH: ./artifacts/EduCATS.ipa
-          
-      - name: Artifacts Upload
-        uses: actions/upload-artifact@v2
-        with:
-          name: apps-artifacts
-          path: ${{ env.ARTIFACTS_DIRECTORY }}
-          
-  deploy:
+  create_release_tag:
     runs-on: macos-latest
+    needs: pre_release
     environment: github-actions-release
-    needs: build
-
     steps:
       - name: Artifacts Download
-        uses: actions/download-artifact@v2
-        with:
-          name: apps-artifacts
-          
-      - name: AppStore Deploy
-        run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
-        env:
-          IPA_FILE_PATH: ./EduCATS.ipa
-          
-      - name: Google Play Deploy
-        uses: r0adkll/upload-google-play@v1.0.15
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
-          packageName: by.bntu.educats
-          releaseFiles: ./by.bntu.educats.aab
-          track: beta
-          
+        uses: actions/download-artifact@v3.0.2
+        
       - name: Release Tag
         uses: simpleactions/create-tag@v1.0.0
         with:
-         github_token: ${{ secrets.GITHUB_TOKEN }}
-         tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
-         message: Release ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+         github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+         tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
+         message: Release ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
           
       - name: Github Release
         id: github_release
-        uses: release-drafter/release-drafter@v5.19.0
+        uses: release-drafter/release-drafter@v5.21.1
         with:
-          name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
-          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.build.outputs.incremented_build_number }}
+          name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
+          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           
       - name: Github Release Artifacts Upload
-        uses: nanoufo/action-upload-artifacts-and-release-assets@v1.4
+        uses: nanoufo/action-upload-artifacts-and-release-assets@v1.8
         with:
-          path: ./by.bntu.educats.apk
+          path: |
+            ./*.ipa/*.ipa
+            ./*.aab/*.aab
+            ./*.apk/*.apk
           upload-release-files: true
           release-upload-url: ${{ steps.github_release.outputs.upload_url }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           
-  docs-generate:
+  generate_documentation:
     runs-on: macos-latest
-    needs: deploy
-    
+    needs: create_release_tag
+    environment: github-actions-release
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
         
-      - name: Docs Generation
+      - name: Generate Documentation
         run: sh ./scripts/docs_generator.sh
         
-      - name: Artifacts Upload
-        uses: actions/upload-artifact@v2
+      - name: Upload Documentation Artifacts
+        uses: actions/upload-artifact@v3.1.2
         with:
-          name: docs-artifacts
+          name: documentation
           path: ${{ env.DOCS_PATH }}
-    
-  docs-publish:
+      
+  publish_documentation:
     runs-on: ubuntu-latest
-    needs: docs-generate
-    
+    needs: generate_documentation
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3.5.2
+        with:
+          ref: 'main'
 
       - name: Artifacts Download
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3.0.2
         with:
-          name: docs-artifacts
+          name: documentation
           path: ${{ env.DOCS_PATH }}
       
       - name: Date Setup
         id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
         
-      - name: Docs Push
+      - name: Push Documentation to main
         uses: github-actions-x/commit@v2.9
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: 'master'
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          push-branch: 'main'
           commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
           files: ${{ env.DOCS_PATH }}
-          name: $GIT_NAME
-          email: $GIT_EMAIL
+          name: github-actions
+          email: auto@users.noreply.github.com
           rebase: 'true'
-        env:
-          GIT_NAME: github-actions
-          GIT_EMAIL: auto@users.noreply.github.com

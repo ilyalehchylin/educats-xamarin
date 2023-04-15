@@ -6,6 +6,9 @@
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	    <LangVersion>latest</LangVersion>
     </PropertyGroup>
+    <PropertyGroup>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
