@@ -3,9 +3,9 @@
 set -e
 
 # Install DocFX
-# brew install docfx
-curl -OL https://github.com/dotnet/docfx/releases/download/v2.65.3/docfx-osx-x64-v2.65.3.zip
-unzip docfx*.zip -d docfx_tool
+dotnet tool update -g docfx
+# curl -OL https://github.com/dotnet/docfx/releases/download/v2.65.3/docfx-osx-x64-v2.65.3.zip
+# unzip docfx*.zip -d docfx_tool
 
 # Remove previous version of documentation
 rm -r docs/
@@ -20,10 +20,10 @@ git clone https://github.com/ovasquez/docfx-material.git material
 DOCFX_SOURCE_BRANCH_NAME=master
 
 # Generate docs metadata
-./docfx_tool/docfx metadata docfx.json
+docfx metadata docfx.json
 
 # Build docs
-./docfx_tool/docfx build docfx.json -o docs
+docfx build docfx.json -o docs
 
 # Change theme colors
 sh scripts/docs_theme_edit.sh
