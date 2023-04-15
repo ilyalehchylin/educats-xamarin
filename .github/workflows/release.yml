@@ -63,7 +63,7 @@ jobs:
         run: sh ./scripts/docs_generator.sh
         
       - name: Upload Documentation Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: documentation
           path: ${{ env.DOCS_PATH }}
@@ -94,9 +94,6 @@ jobs:
           push-branch: 'main'
           commit-message: '[UPDATE] [${{ steps.date.outputs.date }}] [skip ci] Docs'
           files: ${{ env.DOCS_PATH }}
-          name: $GIT_NAME
-          email: $GIT_EMAIL
+          name: github-actions
+          email: auto@users.noreply.github.com
           rebase: 'true'
-        env:
-          GIT_NAME: github-actions
-          GIT_EMAIL: auto@users.noreply.github.com
