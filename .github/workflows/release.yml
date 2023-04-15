@@ -11,49 +11,49 @@ env:
   DOCS_PATH: ./docs
 
 jobs:
-#   pre_release:
-#     uses: ilyalehchylin/educats-xamarin/.github/workflows/pre-release.yml@update/gha-workflows
-#     secrets: inherit
+  pre_release:
+    uses: ilyalehchylin/educats-xamarin/.github/workflows/pre-release.yml@update/gha-workflows
+    secrets: inherit
 
-#   create_release_tag:
-#     runs-on: macos-latest
-#     needs: pre_release
-#     environment: github-actions-release
-#     steps:
-#       - name: Artifacts Download
-#         uses: actions/download-artifact@v3.0.2
+  create_release_tag:
+    runs-on: macos-latest
+    needs: pre_release
+    environment: github-actions-release
+    steps:
+      - name: Artifacts Download
+        uses: actions/download-artifact@v3.0.2
         
-#       - name: Release Tag
-#         uses: simpleactions/create-tag@v1.0.0
-#         with:
-#          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-#          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
-#          message: Release ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
+      - name: Release Tag
+        uses: simpleactions/create-tag@v1.0.0
+        with:
+         github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+         tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
+         message: Release ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
           
-#       - name: Github Release
-#         id: github_release
-#         uses: release-drafter/release-drafter@v5.21.1
-#         with:
-#           name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
-#           tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Github Release
+        id: github_release
+        uses: release-drafter/release-drafter@v5.21.1
+        with:
+          name: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
+          tag: ${{ secrets.APP_VERSION_NUMBER }}.${{ needs.pre_release.outputs.app_build_number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           
-#       - name: Github Release Artifacts Upload
-#         uses: nanoufo/action-upload-artifacts-and-release-assets@v1.8
-#         with:
-#           path: |
-#             ./*.ipa/*.ipa
-#             ./*.aab/*.aab
-#             ./*.apk/*.apk
-#           upload-release-files: true
-#           release-upload-url: ${{ steps.github_release.outputs.upload_url }}
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+      - name: Github Release Artifacts Upload
+        uses: nanoufo/action-upload-artifacts-and-release-assets@v1.8
+        with:
+          path: |
+            ./*.ipa/*.ipa
+            ./*.aab/*.aab
+            ./*.apk/*.apk
+          upload-release-files: true
+          release-upload-url: ${{ steps.github_release.outputs.upload_url }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           
   generate_documentation:
     runs-on: macos-latest
-#     needs: create_release_tag
+    needs: create_release_tag
     environment: github-actions-release
     steps:
       - name: Checkout
