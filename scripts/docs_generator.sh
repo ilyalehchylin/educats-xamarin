@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -e
+
 # Install DocFX
 brew install docfx
 
