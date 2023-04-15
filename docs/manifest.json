@@ -4,6 +4,3819 @@
   "xrefmap": "xrefmap.yml",
   "files": [
     {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.App.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.App.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Configuration.AppConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Configuration.AppConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Configuration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Constants.GlobalConsts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Constants.GlobalConsts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Constants.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.CustomWebView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.CustomWebView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.Pickers.GroupsPickerView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.Pickers.GroupsPickerView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.Pickers.SubjectsPickerView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.Pickers.SubjectsPickerView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.Pickers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.Pickers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Enums.RoundedListTypeEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Enums.RoundedListTypeEnum.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Enums.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.IRoundedListType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.IRoundedListType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Interfaces.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.RoundedListView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.RoundedListView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.RoundedListTemplateSelector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.Selectors.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.RoundedListView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.RoundedListView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.SwitchFrame.SwitchFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.SwitchFrame.SwitchFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.SwitchFrame.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.SwitchFrame.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Controls.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Controls.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Caching.DataCaching-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Caching.DataCaching-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Caching.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Caching.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.DataAccess-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.DataAccess-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.DataAccess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.DataAccess.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Interfaces.IDataAccess-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Interfaces.IDataAccess-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Interfaces.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Calendar.CalendarSubjectModelTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Calendar.CalendarSubjectModelTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Calendar.Schedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Calendar.Schedule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Calendar.Teacher.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Calendar.Teacher.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Calendar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Calendar.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.CalendarModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.CalendarModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.CalendarSubjectModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.CalendarSubjectModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.ConceptModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.ConceptModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.ConceptModelTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.ConceptModelTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.ExtendedTestResultModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.ExtendedTestResultModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.FileDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.FileDetailsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.FileDetailsModelTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.FileDetailsModelTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.FilesModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.FilesModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.FilesModelTest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.FilesModelTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.GroupItemModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.GroupItemModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.GroupModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.GroupModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LabDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LabDetailsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LabProtectionModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LabProtectionModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LabsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LabsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LecturesDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LecturesDetailsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LecturesGroupsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LecturesGroupsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LecturesModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LecturesModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.LecturesStudentModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.LecturesStudentModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.NewsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.NewsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.NewsSubjectModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.NewsSubjectModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.RecommendationModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.RecommendationModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Registration.RegistrationModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Registration.RegistrationModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Registration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Registration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.RootConceptModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.RootConceptModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StatsMarkModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StatsMarkModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StatsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StatsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StatsStudentModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StatsStudentModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StatsVisitingModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StatsVisitingModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.SubjectModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.SubjectModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestAnswerModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestAnswerModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestDetailsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestQuestionDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestQuestionDetailsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestQuestionModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestQuestionModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TestResultsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TestResultsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.User.DeleteAccountModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.User.DeleteAccountModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.User.SecondUserModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.User.SecondUserModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.User.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.UserLoginModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.UserLoginModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.UserModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.UserModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.UserProfileModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.UserProfileModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.User.AppUserData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.User.AppUserData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.User.UserTypeEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.User.UserTypeEnum.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.User.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.User.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Fonts.FontExclude.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Fonts.FontExclude.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Fonts.FontSizeController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Fonts.FontSizeController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Fonts.FontsController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Fonts.FontsController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Fonts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Fonts.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.ConverterSize.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.ConverterSize.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.DateHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.DateHelper.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.Enums.WeekEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.Enums.WeekEnum.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.Enums.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.Extensions.DateTimeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.Extensions.DateTimeExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.Extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Date.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Date.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Extensions.ListExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Extensions.ListExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Extensions.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Extensions.StringExtensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Files.FileManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Files.FileManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Files.IFileManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Files.IFileManager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Files.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Files.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.Base64ToImageSourceConverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.StringToColorConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.StringToColorConverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.StringToImageSourceConverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Devices.AppDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Devices.AppDevice.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Devices.IDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Devices.IDevice.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Devices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Devices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Dialogs.AppDialogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Dialogs.AppDialogs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Dialogs.IDialogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Dialogs.IDialogs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Dialogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Dialogs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Effects.DisabledShiftEffect.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Effects.DisabledShiftEffect.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Effects.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Effects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.IPlatformServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.IPlatformServices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Pages.AppPages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Pages.AppPages.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Pages.IPages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Pages.IPages.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Pages.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.PlatformServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.PlatformServices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Settings.AppPrefs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Settings.AppPrefs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Settings.IPreferences.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Settings.IPreferences.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Settings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Settings.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Speech.SpeechController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Speech.SpeechController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Speech.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Speech.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Styles.AppStyles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Styles.AppStyles.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Styles.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Styles.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Json.JsonController-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Json.JsonController-1.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Json.JsonController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Json.JsonController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Json.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Json.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Logs.AppLogs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Logs.AppLogs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Logs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Logs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.AppServices.AppServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.AppServices.AppServices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.AppServices.AppServicesController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.AppServices.AppServicesController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.AppServices.AppWebServiceController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.AppServices.AppWebServiceController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.AppServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.AppServices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Links.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Links.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Eemc.RootConceptsPostModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Eemc.RootConceptsPostModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Eemc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Eemc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.ForgotPasswordModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.ForgotPasswordModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Login.ServerError.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Login.ServerError.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Login.TokenModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Login.TokenModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Login.UserCredentials.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Login.UserCredentials.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Login.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Login.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabMarks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabMarks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.ScheduleProtectionLabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.ScheduleProtectionLabs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.TakedLab.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.TakedLab.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.TakedLabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.TakedLabs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabSchedule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabShedule.ScheduleProtectLabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabShedule.ScheduleProtectLabs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabShedule.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabShedule.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LaboratoryWorksModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LaboratoryWorksModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Labs.Laboratories.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Labs.Laboratories.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Labs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Labs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabsVisitingList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabsVisitingList.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabsVisitingMark.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LabsVisitingMark.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.LecturesMarkViewData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.LecturesMarkViewData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.ListSaveMarksVisiting.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.ListSaveMarksVisiting.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.GroupAndSubjModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.GroupAndSubjModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMark.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMark.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialMarks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialVisMark.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.PracticialVisMark.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.Practs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.Practs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.SchedulePracticials.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.SchedulePracticials.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.Practicals.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.SaveMarksCalendarData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.SaveMarksCalendarData.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.VisitingLecturesList.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.VisitingLecturesList.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.SaveMarks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.SaveMarks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerDetailsPostModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerPostModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Testing.TestAnswerPostModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Testing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Testing.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.RequestController.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.RequestController.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Servers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Servers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.ViewModels.EemcPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.Views.EemcPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.Views.EemcPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.EemcPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.EemcPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.Views.ViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Eemc.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Eemc.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Models.FilesPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Models.FilesPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.ViewModels.FilesPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Views.FilesPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Views.FilesPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.FilesPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.FilesPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Files.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Files.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ForgotPassword.ViewModels.ForgotPasswordPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ForgotPassword.ViewModels.ForgotPasswordPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ForgotPassword.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ForgotPassword.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ForgotPassword.Views.ForgotPasswordPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ForgotPassword.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ForgotPassword.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Models.LearningPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Models.LearningPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.ViewModels.LearningPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.ViewModels.LearningPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Views.LearningPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Views.LearningPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.LearningPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.LearningPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Learning.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Learning.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Login.ViewModels.LoginPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Login.ViewModels.LoginPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Login.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Login.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Login.Views.LoginPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Login.Views.LoginPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Login.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Login.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Main.MainPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Main.MainPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Main.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Main.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.GroupInfo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.GroupInfo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.Subject.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.Subject.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.ViewModels.FindGroupPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.ViewModels.FindGroupPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Views.FindGroupPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.FindGroup.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.FindGroup.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.Statistics.Views.ParentalStudentPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Parental.Statistics.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Parental.Statistics.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.GroupEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.GroupEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.GroupsViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.SubjectEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.SubjectEventHandler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.SubjectsViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Pickers.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Pickers.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Models.RecommendationsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Models.RecommendationsPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.RecommendationsPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Views.RecommendationsPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.RecommendationsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.RecommendationsPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Recommendations.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Recommendations.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Registration.ViewModels.RegistrationPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Registration.ViewModels.RegistrationPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Registration.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Registration.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Registration.Views.RegistrationPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Registration.Views.RegistrationPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Registration.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Registration.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SavePracticeAndLabsPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SaveSingleStudentMarkPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.SaveSingleStudentMarkPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.SavePracticeAndLabsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.SavePracticeAndLabsPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.SaveSingleStudentMarkPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.SaveSingleStudentMarkPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveLabsAndPracticeMarks.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SaveLabs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SaveLabs.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SaveLabsSingle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SaveLabsSingle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SaveLectures.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SaveLectures.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SavePractSingle.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SavePractSingle.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.SavePracticial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.SavePracticial.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.ViewModels.SaveMarksPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.ViewModels.SaveMarksPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.Views.SaveMarksPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.SaveMarks.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.SaveMarks.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.About.ViewModels.AboutPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.About.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.About.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.About.Views.AboutPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.About.Views.AboutPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.About.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.About.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.Models.SettingsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.Models.SettingsPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.SettingsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.SettingsPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.Views.SettingsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.Views.SettingsPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Base.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Base.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.Models.FontsPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.ViewModels.FontsPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.Views.FontsPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Fonts.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Fonts.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.Models.LanguagePageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.Models.LanguagePageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.LanguagePageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.LanguagePageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.Views.LanguagePageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Language.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Language.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.Models.ServerPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.Models.ServerPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.ServerPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.ServerPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.Views.ServerPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.Views.ServerPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Server.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Server.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Models.ThemePageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.ThemePageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Views.ThemePageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Themes.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Themes.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.CheckboxViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.SettingsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.SettingsPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Views.Base.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.StatsPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.StatsPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.StatsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.StatsPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Enums.StatsPageEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Enums.StatsPageEnum.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Enums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Enums.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Marks.Models.VisitingPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Marks.Models.VisitingPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Marks.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Marks.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Marks.Views.ViewCells.VisitingPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Marks.Views.ViewCells.VisitingPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Marks.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Marks.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.InfoLecturesModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.InfoLecturesModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.Lectures.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.Lectures.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsRatingModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsRatingModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsVisitingModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPageLabsVisitingModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPagePractiseVisitingModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsPagePractiseVisitingModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsResultsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.StatsResultsPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.Theme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.Theme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.StatsResultsPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.StatsResultsPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.StatsResultsPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Results.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Results.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Models.StudentsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Models.StudentsPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.StudentsPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Views.StudentsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.StudentsPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.StudentsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.StudentsPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Students.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Students.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Models.TestingGroupModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Models.TestingGroupModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.TestingPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.TestingPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.TestingPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingHeaderViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.TestingPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Base.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Base.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingAnswerModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingAnswerModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Models.TestPassingPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.TestPassingPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.TestPassingPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.TestPassingPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestAnswerDataTemplateSelector.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestEditableAnswerViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestEditableAnswerViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMovableAnswerViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMovableAnswerViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMultipleAnswerViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestMultipleAnswerViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestSingleAnswerViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.TestSingleAnswerViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Passing.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Passing.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.TestingResultsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.TestingResultsPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.Views.TestingResultsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.Views.TestingResultsPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.TestingResultsViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.TestingResultsViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Testing.Results.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Testing.Results.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarSubjectsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarSubjectsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarViewDayModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Models.CalendarViewDayModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Models.NewsPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Models.NewsPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Models.SubjectPageModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Models.SubjectPageModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Models.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Models.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.CalendarViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.CalendarViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.TodayPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.TodayPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.TodayPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCarouselViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCarouselViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCollectionViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarCollectionViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarSubjectsViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.CalendarSubjectsViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.NewsPageViewCell.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.NewsPageViewCell.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.ViewCells.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.Base.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.Base.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.NewsDetailsPageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.NewsDetails.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.NewsDetailsPageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Today.NewsDetails.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.ViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.ViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.AppTheme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.AppTheme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.IThemeNative.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.IThemeNative.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.DependencyServices.Interfaces.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.DependencyServices.ThemePlatformSpecific.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.DependencyServices.ThemePlatformSpecific.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.DependencyServices.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.DependencyServices.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Interfaces.ITheme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Interfaces.ITheme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Interfaces.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Templates.DarkTheme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Templates.DarkTheme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Templates.DefaultTheme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Templates.DefaultTheme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Templates.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Templates.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.Theme.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.Theme.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Themes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Themes.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/continuous-integration.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/continuous-integration.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "articles/project-structure.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/project-structure.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/resources.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/resources.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/services.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/services.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Resource",
       "source_relative_path": "favicon.ico",
       "output": {
@@ -14,11 +3827,31 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Resource",
       "source_relative_path": "logo.svg",
       "output": {
         "resource": {
           "relative_path": "logo.svg"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "privacy-policy.md",
+      "output": {
+        ".html": {
+          "relative_path": "privacy-policy.html"
         }
       },
       "version": ""
