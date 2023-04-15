@@ -12,7 +12,7 @@ env:
 
 jobs:
   pre_release:
-    uses: ilyalehchylin/educats-xamarin/.github/workflows/pre-release.yml@update/gha-workflows
+    uses: ilyalehchylin/educats-xamarin/.github/workflows/pre-release.yml@develop
     secrets: inherit
 
   create_release_tag:
