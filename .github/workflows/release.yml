@@ -48,13 +48,15 @@ jobs:
         uses: nanoufo/action-upload-artifacts-and-release-assets@v1.8
         with:
           path: |
-            ./*.ipa/*.ipa
-            ./*.aab/*.aab
-            ./*.apk/*.apk
+            ./*.ipa/*_$VERSION.$BUILD.ipa
+            ./*.aab/*_$VERSION.$BUILD.aab
+            ./*.apk/*_$VERSION.$BUILD.apk
           upload-release-files: true
           release-upload-url: ${{ steps.github_release.outputs.upload_url }}
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          VERSION: ${{ needs.pre_release.outputs.app_version_number }}
+          BUILD: ${{ needs.pre_release.outputs.app_build_number }}
           
   generate_documentation:
     runs-on: macos-latest
