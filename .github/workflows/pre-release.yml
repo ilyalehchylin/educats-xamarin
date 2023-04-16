@@ -3,6 +3,9 @@ name: pre-release
 on:
   workflow_call:
     outputs:
+      app_version_number:
+        description: "The application version number"
+        value: ${{ jobs.prepare_build.outputs.app_version }}
       app_build_number:
         description: "The application build number"
         value: ${{ jobs.prepare_build.outputs.incremented_build_number }}
