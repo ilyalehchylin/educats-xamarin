@@ -27,36 +27,29 @@ jobs:
         uses: simpleactions/create-tag@v1.0.0
         with:
          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-         tag: $VERSION.$BUILD
-         message: Release $VERSION.$BUILD
-        env:
-          VERSION: ${{ needs.pre_release.outputs.app_version_number }}
-          BUILD: ${{ needs.pre_release.outputs.app_build_number }}
+         tag: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
+         message: Release ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
           
       - name: Github Release
         id: github_release
         uses: release-drafter/release-drafter@v5.21.1
         with:
-          name: $VERSION.$BUILD
-          tag: $VERSION.$BUILD
+          name: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
+          tag: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          VERSION: ${{ needs.pre_release.outputs.app_version_number }}
-          BUILD: ${{ needs.pre_release.outputs.app_build_number }}
           
       - name: Github Release Artifacts Upload
         uses: nanoufo/action-upload-artifacts-and-release-assets@v1.8
         with:
           path: |
-            ./*.ipa/*_$VERSION.$BUILD.ipa
-            ./*.aab/*_$VERSION.$BUILD.aab
-            ./*.apk/*_$VERSION.$BUILD.apk
+            ./*.ipa/*_${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}.ipa
+            ./*.aab/*_${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}.aab
+            ./*.apk/*_${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}.apk
           upload-release-files: true
           release-upload-url: ${{ steps.github_release.outputs.upload_url }}
         env:
           GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          VERSION: ${{ needs.pre_release.outputs.app_version_number }}
-          BUILD: ${{ needs.pre_release.outputs.app_build_number }}
           
   generate_documentation:
     runs-on: macos-latest
