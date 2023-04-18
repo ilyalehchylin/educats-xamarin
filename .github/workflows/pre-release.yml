@@ -46,12 +46,14 @@ jobs:
         id: app_version_setup
         run: |
           APP_VERSION=$(cat ./VERSION)
+          echo $APP_VERSION
           echo "app_version=$APP_VERSION" >> $GITHUB_OUTPUT
         
       - name: Increase Build Number
         id: increase_build_number
         run: |
           APP_BUILD_NUMBER_INCREMENTED=$(($APP_BUILD_NUMBER+1))
+          echo $APP_BUILD_NUMBER_INCREMENTED
           echo "APP_BUILD_NUMBER_INCREMENTED=$APP_BUILD_NUMBER_INCREMENTED" >> $GITHUB_ENV
           echo "app_build_number=$APP_BUILD_NUMBER_INCREMENTED" >> $GITHUB_OUTPUT
         env:
