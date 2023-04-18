@@ -3774,16 +3774,6 @@
       "version": ""
     },
     {
-      "type": "Conceptual",
-      "source_relative_path": "articles/continuous-integration.md",
-      "output": {
-        ".html": {
-          "relative_path": "articles/continuous-integration.html"
-        }
-      },
-      "version": ""
-    },
-    {
       "log_codes": [
         "InvalidFileLink"
       ],
