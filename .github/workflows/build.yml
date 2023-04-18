@@ -41,8 +41,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.2
+        
+      - name: NuGet Cache
+        uses: actions/cache@v3.3.1
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
       
-      - name: Restore NuGet packages
+      - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
         env:
           SOLUTION_PATH: ./source/EduCATS.sln
