@@ -35,6 +35,10 @@ namespace EduCATS.UnitTests
 			Assert.IsFalse(invalidUsernameCredentialsResult);
 			var invalidPasswordCredentialsResult = AppDemo.Instance.CheckDemoAccount(_demoString, _invalidDemoString);
 			Assert.IsFalse(invalidPasswordCredentialsResult);
+			var nullCredentialsResult = AppDemo.Instance.CheckDemoAccount(null, null);
+			Assert.IsFalse(nullCredentialsResult);
+			var emptyCredentialsResult = AppDemo.Instance.CheckDemoAccount("", "");
+			Assert.IsFalse(emptyCredentialsResult);
 		}
 
 		[Test]
