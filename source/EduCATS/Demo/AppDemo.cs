@@ -76,10 +76,6 @@ namespace EduCATS.Demo
 					break;
 			}
 
-			if (string.IsNullOrEmpty(resource)) {
-				return new KeyValuePair<string, HttpStatusCode>(string.Empty, HttpStatusCode.OK);
-			}
-
 			var contents = fileManager.ReadDemoEmbeddedResource(resource, extension);
 
 			if (type == AppDemoType.ProfileInfoCalendar) {
