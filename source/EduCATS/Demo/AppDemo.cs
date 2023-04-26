@@ -62,6 +62,10 @@ namespace EduCATS.Demo
 		/// <returns>Demo response string and status code.</returns>
 		public KeyValuePair<string, HttpStatusCode> GetDemoResponse(AppDemoType type)
 		{
+			if (type == AppDemoType.None) {
+				return GetInvalidResponse();
+			}
+
 			var resource = $"demo{type.ToString()}";
 			var extension = "json";
 
