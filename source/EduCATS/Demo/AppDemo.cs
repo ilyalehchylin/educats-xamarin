@@ -36,7 +36,7 @@ namespace EduCATS.Demo
 				return _isDemoAccount;
 			}
 			set {
-				_isDemoAccount = true;
+				_isDemoAccount = value;
 			}
 		}
 
