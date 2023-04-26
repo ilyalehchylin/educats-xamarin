@@ -19,8 +19,6 @@ namespace EduCATS.Demo
 		const string demoUsername = "demo";
 		const string demoPassword = "demo";
 
-		FileManager fileManager = new FileManager();
-
 		static AppDemo()
 		{
 			Instance = new AppDemo();
@@ -76,7 +74,8 @@ namespace EduCATS.Demo
 					break;
 			}
 
-			var contents = fileManager.ReadDemoEmbeddedResource(resource, extension);
+			var manager = new FileManager();
+			var contents = manager.ReadDemoEmbeddedResource(resource, extension);
 
 			if (type == AppDemoType.ProfileInfoCalendar) {
 				var today = DateTime.Today;
