@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
+using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
@@ -309,6 +310,13 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <param name="filePath">File path.</param>
 		void openFile(string filePath)
 		{
+			if (AppDemo.Instance.IsDemoAccount) {
+				PlatformServices.Device.MainThread(
+						() => PlatformServices.Dialogs.ShowError(
+							CrossLocalization.Translate("demo_eemc_open_error")));
+				return;
+			}
+
 			if (Servers.Current == Servers.EduCatsBntuAddress)
 				PlatformServices.Device.MainThread(
 					async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/{filePath}"));

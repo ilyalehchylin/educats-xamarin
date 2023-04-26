@@ -1,0 +1,354 @@
+﻿{
+	"Code": "200",
+	"DataD": null,
+	"Message": "Лабораторные работы успешно загружены",
+	"Labs": [
+		{
+			"Attachments": null,
+			"Duration": 6,
+			"LabId": 1,
+			"Order": 1,
+			"PathFile": null,
+			"ScheduleProtectionLabsRecomend": [
+				{
+					"Mark": "10",
+					"ScheduleProtectionId": 1
+				},
+				{
+					"Mark": "10",
+					"ScheduleProtectionId": 2
+				},
+				{
+					"Mark": "10",
+					"ScheduleProtectionId": 3
+				},
+				{
+					"Mark": "9",
+					"ScheduleProtectionId": 4
+				},
+				{
+					"Mark": "8",
+					"ScheduleProtectionId": 5
+				},
+				{
+					"Mark": "7",
+					"ScheduleProtectionId": 6
+				},
+				{
+					"Mark": "6",
+					"ScheduleProtectionId": 7
+				},
+				{
+					"Mark": "5",
+					"ScheduleProtectionId": 8
+				},
+				{
+					"Mark": "4",
+					"ScheduleProtectionId": 9
+				},
+				{
+					"Mark": "3",
+					"ScheduleProtectionId": 10
+				},
+				{
+					"Mark": "2",
+					"ScheduleProtectionId": 11
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 12
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 13
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 14
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 15
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 16
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 17
+				}
+			],
+			"ShortName": "ЛР1",
+			"SubGroup": 1,
+			"SubjectId": 2025,
+			"Theme": "Лабораторная работа #1"
+		},
+		{
+			"Attachments": null,
+			"Duration": 4,
+			"LabId": 2,
+			"Order": 2,
+			"PathFile": null,
+			"ScheduleProtectionLabsRecomend": [
+				{
+					"Mark": "",
+					"ScheduleProtectionId": 1
+				},
+				{
+					"Mark": "",
+					"ScheduleProtectionId": 2
+				},
+				{
+					"Mark": "",
+					"ScheduleProtectionId": 3
+				},
+				{
+					"Mark": "10",
+					"ScheduleProtectionId": 4
+				},
+				{
+					"Mark": "10",
+					"ScheduleProtectionId": 5
+				},
+				{
+					"Mark": "9",
+					"ScheduleProtectionId": 6
+				},
+				{
+					"Mark": "8",
+					"ScheduleProtectionId": 7
+				},
+				{
+					"Mark": "7",
+					"ScheduleProtectionId": 8
+				},
+				{
+					"Mark": "6",
+					"ScheduleProtectionId": 9
+				},
+				{
+					"Mark": "5",
+					"ScheduleProtectionId": 10
+				},
+				{
+					"Mark": "4",
+					"ScheduleProtectionId": 11
+				},
+				{
+					"Mark": "3",
+					"ScheduleProtectionId": 12
+				},
+				{
+					"Mark": "2",
+					"ScheduleProtectionId": 13
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 14
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 15
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 16
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 17
+				}
+			],
+			"ShortName": "ЛР2",
+			"SubGroup": 1,
+			"SubjectId": 2025,
+			"Theme": "Лабораторная работа #2"
+		},
+		{
+			"Attachments": null,
+			"Duration": 4,
+			"LabId": 3,
+			"Order": 3,
+			"PathFile": null,
+			"ScheduleProtectionLabsRecomend": [
+				{
+					"Mark": "",
+					"ScheduleProtectionId": 1
+				},
+				{
+					"Mark": "",
+					"ScheduleProtectionId": 2
+				},
+				{
+					"Mark": "",
+					"ScheduleProtectionId": 3
+				},
+				{
+					"Mark": "",
+					"ScheduleProtectionId": 4
+				},
+				{
+					"Mark": "",
+					"ScheduleProtectionId": 5
+				},
+				{
+					"Mark": "10",
+					"ScheduleProtectionId": 6
+				},
+				{
+					"Mark": "10",
+					"ScheduleProtectionId": 7
+				},
+				{
+					"Mark": "9",
+					"ScheduleProtectionId": 8
+				},
+				{
+					"Mark": "8",
+					"ScheduleProtectionId": 9
+				},
+				{
+					"Mark": "7",
+					"ScheduleProtectionId": 10
+				},
+				{
+					"Mark": "6",
+					"ScheduleProtectionId": 11
+				},
+				{
+					"Mark": "5",
+					"ScheduleProtectionId": 12
+				},
+				{
+					"Mark": "4",
+					"ScheduleProtectionId": 13
+				},
+				{
+					"Mark": "3",
+					"ScheduleProtectionId": 14
+				},
+				{
+					"Mark": "2",
+					"ScheduleProtectionId": 15
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 16
+				},
+				{
+					"Mark": "1",
+					"ScheduleProtectionId": 17
+				}
+			],
+			"ShortName": "ЛР3",
+			"SubGroup": 1,
+			"SubjectId": 2025,
+			"Theme": "Лабораторная работа #3"
+		}
+	],
+	"ScheduleProtectionLabs": [
+		{
+			"Date": "06.09.2022",
+			"ScheduleProtectionLabId": 1,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "13.09.2022",
+			"ScheduleProtectionLabId": 2,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "20.09.2022",
+			"ScheduleProtectionLabId": 3,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "27.09.2022",
+			"ScheduleProtectionLabId": 4,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "04.10.2022",
+			"ScheduleProtectionLabId": 5,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "11.10.2022",
+			"ScheduleProtectionLabId": 6,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "18.10.2022",
+			"ScheduleProtectionLabId": 7,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "25.10.2022",
+			"ScheduleProtectionLabId": 8,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "01.11.2022",
+			"ScheduleProtectionLabId": 9,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "08.11.2022",
+			"ScheduleProtectionLabId": 10,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "15.11.2022",
+			"ScheduleProtectionLabId": 11,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "22.11.2022",
+			"ScheduleProtectionLabId": 12,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "29.11.2022",
+			"ScheduleProtectionLabId": 13,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "06.12.2022",
+			"ScheduleProtectionLabId": 14,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "13.12.2022",
+			"ScheduleProtectionLabId": 15,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "20.12.2022",
+			"ScheduleProtectionLabId": 16,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		},
+		{
+			"Date": "27.12.2022",
+			"ScheduleProtectionLabId": 17,
+			"SubGroup": 1,
+			"SubGroupId": 9006
+		}
+	]
+}

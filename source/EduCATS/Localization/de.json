@@ -223,5 +223,9 @@
 	"date": "Datum",
 	"comment": "Kommentar",
 	"show_for_student": "Kommentar für Schüler zeigen",
-	"skipped_hours": "Stunden verpasst"
+	"skipped_hours": "Stunden verpasst",
+
+	"demo_eemc_open_error": "Das Anzeigen von Dokumenten ist für ein Demokonto nicht verfügbar.",
+	"demo_files_download_error": "Das Herunterladen von Tutorials ist für ein Demokonto nicht verfügbar.",
+	"demo_delete_account_error": "Das Löschen eines Demokontos ist nicht möglich."
 }

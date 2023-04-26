@@ -1,0 +1,53 @@
+﻿{
+	"Question": {
+		"QuestionNumber": null,
+		"Test": null,
+		"TestId": 0,
+		"Title": "Демонстрационный вопрос",
+		"Description": null,
+		"ComlexityLevel": 1,
+		"ConceptId": 1,
+		"QuestionType": 0,
+		"Answers": [
+			{
+				"QuestionId": 0,
+				"Question": null,
+				"Content": "1",
+				"СorrectnessIndicator": 1,
+				"Id": 1,
+				"IsNew": false
+			},
+			{
+				"QuestionId": 0,
+				"Question": null,
+				"Content": "2",
+				"СorrectnessIndicator": 0,
+				"Id": 2,
+				"IsNew": false
+			},
+			{
+				"QuestionId": 0,
+				"Question": null,
+				"Content": "3",
+				"СorrectnessIndicator": 0,
+				"Id": 3,
+				"IsNew": false
+			},
+			{
+				"QuestionId": 0,
+				"Question": null,
+				"Content": "4",
+				"СorrectnessIndicator": 0,
+				"Id": 4,
+				"IsNew": false
+			}
+		],
+		"ConceptQuestions": null,
+		"Id": 0,
+		"IsNew": true
+	},
+	"Number": 1,
+	"Seconds": 1499,
+	"SetTimeForAllTest": true,
+	"ForSelfStudy": false
+}

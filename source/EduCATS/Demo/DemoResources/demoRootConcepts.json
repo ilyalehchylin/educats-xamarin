@@ -1,0 +1,26 @@
+﻿{
+	"Code": "200",
+	"DataD": null,
+	"Message": "Операция выполнена успешно",
+	"Children": null,
+	"Concept": null,
+	"Concepts": [
+		{
+			"Container": null,
+			"FilePath": null,
+			"HasData": false,
+			"Id": 1,
+			"IsGroup": true,
+			"Name": "Демонстрационный ЭУМК",
+			"Next": null,
+			"ParentId": 0,
+			"Prev": null,
+			"Published": true,
+			"ReadOnly": false,
+			"ShortName": "Демо ЭУМК",
+			"SubjectName": "Предмет #1",
+			"children": []
+		}
+	],
+	"SubjectName": "Предмет #1"
+}

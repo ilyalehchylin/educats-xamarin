@@ -25,6 +25,10 @@
     <Folder Include="Data\" />
     <Folder Include="Fonts\" />
     <Folder Include="Networking\" />
+    <Folder Include="Demo\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Demo\" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

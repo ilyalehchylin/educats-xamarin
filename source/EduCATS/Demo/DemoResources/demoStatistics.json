@@ -1,0 +1,43 @@
+﻿{
+	"Code": "200",
+	"DataD": null,
+	"Message": "",
+	"Students": [
+		{
+			"FileLabs": null,
+			"FullName": "Demo Account",
+			"LabVisitingMark": [],
+			"LabsMarkTotal": null,
+			"Login": "demo",
+			"Marks": [
+				{
+					"Comment": "",
+					"Date": "06.09.2022",
+					"LabId": 1,
+					"Mark": "9",
+					"StudentId": 1,
+					"StudentLabMarkId": 0
+				},
+				{
+					"Comment": "Демонстрационный комментарий",
+					"Date": "13.09.2022",
+					"LabId": 2,
+					"Mark": "4",
+					"StudentId": 1,
+					"StudentLabMarkId": 0
+				},
+				{
+					"Comment": "",
+					"Date": "20.09.2022",
+					"LabId": 3,
+					"Mark": "",
+					"StudentId": 1,
+					"StudentLabMarkId": 0
+				}
+			],
+			"StudentId": 1,
+			"SubGroup": 1,
+			"TestMark": "5"
+		}
+	]
+}

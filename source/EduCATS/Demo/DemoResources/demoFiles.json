@@ -1,0 +1,22 @@
+﻿{
+	"Lectures": [
+		{
+			"Name": "Демонстрационный файл #1",
+			"FileName": "Демонстрационный файл #1.docx",
+			"PathName": "Path",
+			"AttachmentType": 2,
+			"Id": 1,
+			"IsNew": false
+		},
+		{
+			"Name": "Демонстрационный файл #2",
+			"FileName": "Демонстрационный файл #2.pdf",
+			"PathName": "Path",
+			"AttachmentType": 2,
+			"Id": 1,
+			"IsNew": false
+		}
+	],
+	"Labs": [],
+	"Practicals": []
+}

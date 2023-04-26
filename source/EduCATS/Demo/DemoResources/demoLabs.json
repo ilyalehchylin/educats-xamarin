@@ -1,0 +1,44 @@
+﻿{
+	"Code": "200",
+	"DataD": null,
+	"Message": "Лабораторные работы успешно загружены",
+	"Labs": [
+		{
+			"Attachments": [],
+			"Duration": 6,
+			"LabId": 1,
+			"Order": 1,
+			"PathFile": "",
+			"ScheduleProtectionLabsRecomend": null,
+			"ShortName": "ЛР1",
+			"SubGroup": 0,
+			"SubjectId": 1,
+			"Theme": "Лабораторная работа #1"
+		},
+		{
+			"Attachments": [],
+			"Duration": 4,
+			"LabId": 2,
+			"Order": 2,
+			"PathFile": "",
+			"ScheduleProtectionLabsRecomend": null,
+			"ShortName": "ЛР2",
+			"SubGroup": 0,
+			"SubjectId": 1,
+			"Theme": "Лабораторная работа #2"
+		},
+		{
+			"Attachments": [],
+			"Duration": 4,
+			"LabId": 3,
+			"Order": 3,
+			"PathFile": "",
+			"ScheduleProtectionLabsRecomend": null,
+			"ShortName": "ЛР3",
+			"SubGroup": 0,
+			"SubjectId": 1,
+			"Theme": "Лабораторная работа #3"
+		}
+	],
+	"ScheduleProtectionLabs": null
+}

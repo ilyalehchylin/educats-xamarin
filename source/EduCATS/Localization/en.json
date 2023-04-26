@@ -223,5 +223,9 @@
 	"date": "Date",
 	"comment": "Comment",
 	"show_for_student": "Show for student",
-	"skipped_hours": "Skipped hours"
+	"skipped_hours": "Skipped hours",
+
+	"demo_eemc_open_error": "Viewing EEMC documents is not available for a demo account.",
+	"demo_files_download_error": "Downloading tutorials is not available for a demo account.",
+	"demo_delete_account_error": "Deleting a demo account is not possible."
 }

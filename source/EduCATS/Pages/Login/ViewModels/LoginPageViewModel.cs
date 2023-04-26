@@ -12,6 +12,7 @@ using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.Models.User;
 using EduCATS.Data.User;
+using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Json;
 using EduCATS.Helpers.Logs;
@@ -278,7 +279,7 @@ namespace EduCATS.Pages.Login.ViewModels
 			if (profile != null && !DataAccess.IsError)
 			{
 				_services.Preferences.GroupId = profile.GroupId;
-				_services.Preferences.IsLoggedIn = true;
+				_services.Preferences.IsLoggedIn = !AppDemo.Instance.IsDemoAccount;
 				_services.Navigation.OpenMain();
 			}
 			else if (profile != null && DataAccess.IsError)
