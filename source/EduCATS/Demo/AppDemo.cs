@@ -96,6 +96,10 @@ namespace EduCATS.Demo
 			return new KeyValuePair<string, HttpStatusCode>(contents, HttpStatusCode.OK);
 		}
 
+		/// <summary>
+		/// Generate invalid response with <c>BadRequest</c> status code.
+		/// </summary>
+		/// <returns>Invalid response with empty string and <c>BadRequest</c> status code.</returns>
 		public KeyValuePair<string, HttpStatusCode> GetInvalidResponse()
 		{
 			return new KeyValuePair<string, HttpStatusCode>("", HttpStatusCode.BadRequest);
