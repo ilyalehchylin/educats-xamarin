@@ -160,6 +160,8 @@
         <Folder Include="Helpers\Logs\" />
         <Folder Include="Helpers\Files\" />
         <Folder Include="Helpers\Files\Interfaces\" />
+        <Folder Include="Demo\" />
+        <Folder Include="Demo\DemoResources\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />
@@ -186,6 +188,27 @@
         <None Remove="Localization\be.json" />
         <None Remove="Localization\de.json" />
         <None Remove="Localization\pl.json" />
+        <None Remove="Demo\" />
+        <None Remove="Demo\DemoResources\" />
+        <None Remove="Demo\DemoResources\demo_login.json" />
+        <None Remove="Demo\DemoResources\demo_profile_info.json" />
+        <None Remove="Demo\DemoResources\demoProfileInfoCalendar.json" />
+        <None Remove="Demo\DemoResources\demoNews.json" />
+        <None Remove="Demo\DemoResources\demoProfileInfoSubjects.json" />
+        <None Remove="Demo\DemoResources\demoPracticalTestStatistics.json" />
+        <None Remove="Demo\DemoResources\demoLabs.json" />
+        <None Remove="Demo\DemoResources\demoStatistics.json" />
+        <None Remove="Demo\DemoResources\demoAvailableTests.json" />
+        <None Remove="Demo\DemoResources\demoFiles.json" />
+        <None Remove="Demo\DemoResources\demoRootConcepts.json" />
+        <None Remove="Demo\DemoResources\demoConceptTree.json" />
+        <None Remove="Demo\DemoResources\demoRecommendations.json" />
+        <None Remove="Demo\DemoResources\demoTest.json" />
+        <None Remove="Demo\DemoResources\demoTestNextQuestion.json" />
+        <None Remove="Demo\DemoResources\demoTestAnswerAndGetNext.txt" />
+        <None Remove="Demo\DemoResources\demoTestUserAnswers.json" />
+        <None Remove="Demo\DemoResources\demoLabsResults.json" />
+        <None Remove="Demo\DemoResources\demoInfoLecturers.json" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Localization\en.json" />
@@ -212,5 +235,24 @@
         <EmbeddedResource Include="Localization\be.json" />
         <EmbeddedResource Include="Localization\de.json" />
         <EmbeddedResource Include="Localization\pl.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoLogin.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoProfileInfo.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoProfileInfoCalendar.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoNews.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoProfileInfoSubjects.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoPracticalTestStatistics.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoLabs.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoStatistics.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoAvailableTests.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoFiles.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoRootConcepts.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoConceptTree.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoRecommendations.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTestNextQuestion.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTestAnswerAndGetNext.txt" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTestUserAnswers.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoLabsResults.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoInfoLecturers.json" />
     </ItemGroup>
 </Project>

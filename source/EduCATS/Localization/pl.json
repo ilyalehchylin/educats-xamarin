@@ -222,5 +222,9 @@
 	"date": "Data",
 	"comment": "Komentarz",
 	"show_for_student": "Pokaż komentarz uczniowi",
-	"skipped_hours": "Brakujące godziny"
+	"skipped_hours": "Brakujące godziny",
+
+	"demo_eemc_open_error": "Przeglądanie dokumentów nie jest dostępne dla konta demonstracyjnego.",
+	"demo_files_download_error": "Pobieranie samouczków nie jest dostępne dla konta demonstracyjnego.",
+	"demo_delete_account_error": "Usunięcie konta demonstracyjnego nie jest możliwe."
 }

@@ -1,0 +1,30 @@
+﻿{
+	"Labs": [
+		{
+			"title": "Лабораторная работа #1",
+			"start": "$dateToday",
+			"color": "#BF0606",
+			"subjectId": 1
+		},
+		{
+			"title": "Лабораторная работа #2",
+			"start": "$dateTomorrow",
+			"color": "#06BF09",
+			"subjectId": 2
+		}
+	],
+	"Lect": [
+		{
+			"title": "Лекция #1",
+			"start": "$dateToday",
+			"color": "#BF0606",
+			"subjectId": 1
+		},
+		{
+			"title": "Лекция #2",
+			"start": "$dateTomorrow",
+			"color": "#06BF09",
+			"subjectId": 2
+		}
+	]
+}

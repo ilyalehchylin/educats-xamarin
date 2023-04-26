@@ -179,21 +179,24 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		public async Task setButtonsList()
 		{
-				IsPract = IsLabs = false;
+			IsPract = IsLabs = false;
 
-				var dataPract = await DataAccess.GetPracticals(CurrentSubject.Id);
-				if (dataPract.Practicals.Count != 0)
-				{
-					IsPract = true;
-				}
-
-				var dataLabs = await DataAccess.GetLabs(CurrentSubject.Id);
-				if (dataLabs.Labs.Count != 0)
-				{
-					IsLabs = true;
-				}
-
+			if (CurrentSubject == null) {
 				setPagesList();
+				return;
+			}
+
+			var dataPract = await DataAccess.GetPracticals(CurrentSubject.Id);
+			if (dataPract.Practicals.Count != 0) {
+				IsPract = true;
+			}
+
+			var dataLabs = await DataAccess.GetLabs(CurrentSubject.Id);
+			if (dataLabs.Labs.Count != 0) {
+				IsLabs = true;
+			}
+
+			setPagesList();
 		}
 
 		public void setPagesList()

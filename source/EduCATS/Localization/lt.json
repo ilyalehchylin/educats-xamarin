@@ -223,5 +223,9 @@
 	"date": "Data",
 	"comment": "Komentuoti",
 	"show_for_student": "Rodyti komentarą studentui",
-	"skipped_hours": "Praleistos valandos"
+	"skipped_hours": "Praleistos valandos",
+
+	"demo_eemc_open_error": "Demonstracinėje paskyroje dokumentų peržiūrėti negalima.",
+	"demo_files_download_error": "Mokomųjų programų atsisiuntimas negalimas naudojant demonstracinę paskyrą.",
+	"demo_delete_account_error": "Ištrinti demonstracinę sąskaitą neįmanoma."
 }

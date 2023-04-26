@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Reflection;
 using System.Text;
 
 namespace EduCATS.Helpers.Files
@@ -68,6 +69,23 @@ namespace EduCATS.Helpers.Files
 				return bytes / 1024f / 1024f;
 			} catch {
 				return 0;
+			}
+		}
+
+		/// <summary>
+		/// Get demo embedded resource contents.
+		/// </summary>
+		/// <param name="file">Resource name.</param>
+		/// <param name="extension">Extension (default is <code>json</code>).</param>
+		/// <returns>Demo embedded resource contents.</returns>
+		public string ReadDemoEmbeddedResource(string file, string extension = "json")
+		{
+			var assembly = Assembly.GetExecutingAssembly();
+			var resource = $"EduCATS.Demo.DemoResources.{file}.{extension}";
+
+			using (Stream stream = assembly.GetManifestResourceStream(resource))
+			using (StreamReader reader = new StreamReader(stream)) {
+				return reader.ReadToEnd();
 			}
 		}
 	}

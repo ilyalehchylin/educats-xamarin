@@ -85,6 +85,7 @@ namespace EduCATS.Data
 
 		static async Task<object> getTestPracticialStatsCallback(
 			int subjectId, int groupId) => await AppServices.GetPracticials(subjectId, groupId);
+
 		static async Task<object> getTestPractScheduleCallbak(
 			int subjectId) => await AppServices.GetPractTestStatistics(subjectId);
 

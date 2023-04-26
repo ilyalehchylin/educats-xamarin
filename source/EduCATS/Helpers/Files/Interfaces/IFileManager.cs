@@ -44,5 +44,13 @@
 		/// <param name="path">File path.</param>
 		/// <returns>File size (MB).</returns>
 		double GetFileSize(string path);
+
+		/// <summary>
+		/// Get demo embedded resource contents.
+		/// </summary>
+		/// <param name="file">Resource name.</param>
+		/// <param name="extension">Extension (default is <code>json</code>).</param>
+		/// <returns>Demo embedded resource contents.</returns>
+		string ReadDemoEmbeddedResource(string file, string extension);
 	}
 }

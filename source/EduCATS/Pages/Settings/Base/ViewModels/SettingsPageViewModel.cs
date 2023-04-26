@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.User;
+using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
@@ -84,7 +85,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 		void setInitData()
 		{
 			Username = _services.Preferences.UserLogin;
-			IsLoggedIn = _services.Preferences.IsLoggedIn;
+			IsLoggedIn = AppDemo.Instance.IsDemoAccount ? true : _services.Preferences.IsLoggedIn;
 			Avatar = _services.Preferences.Avatar;
 			var isProfessor = string.IsNullOrEmpty(_services.Preferences.GroupName);
 			Group = isProfessor ? null : _services.Preferences.GroupName;
@@ -177,6 +178,13 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		async Task deleteAccount()
 		{
+			if (AppDemo.Instance.IsDemoAccount) {
+				_services.Device.MainThread(
+					() => _services.Dialogs.ShowError(
+						CrossLocalization.Translate("demo_delete_account_error")));
+				return;
+			}
+
 			var result = await _services.Dialogs.ShowConfirmationMessage(
 				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("settings_delete_message"));

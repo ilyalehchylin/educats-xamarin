@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data;
+using EduCATS.Demo;
 using EduCATS.Helpers;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
@@ -144,7 +145,6 @@ namespace EduCATS.Pages.Files.ViewModels
 					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 				}
 
-
 				files = filesModel.Lectures?.Select(f =>
 				{
 					var file = Path.Combine(appDataDirectory, f.Name);
@@ -206,6 +206,13 @@ namespace EduCATS.Pages.Files.ViewModels
 		void openFile(object selectedObject)
 		{
 			try {
+				if (AppDemo.Instance.IsDemoAccount) {
+					PlatformServices.Device.MainThread(
+						() => PlatformServices.Dialogs.ShowError(
+							CrossLocalization.Translate("demo_files_download_error")));
+					return;
+				}
+
 				if (selectedObject == null || !(selectedObject is FilesPageModel)) {
 					return;
 				}
