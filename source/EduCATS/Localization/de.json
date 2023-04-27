@@ -11,6 +11,7 @@
 	"base_unexpected_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support. Der Token ist möglicherweise abgelaufen, bitte geben Sie die Anwendung erneut ein.",
 	"base_connection_error": "Keine Internetverbindung. Überprüfen Sie die Netzwerkeinstellungen und versuchen Sie es erneut.",
 	"base_no_data": "Keine Daten angezeigt werden",
+	"base_something_went_wrong": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut oder wenden Sie sich an den Support.",
 
 	"contributor_ilya_lehchylin": "Ilya Legtschilin",
 	"contributor_julia_popova": "Yuliya Popova",

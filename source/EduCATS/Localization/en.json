@@ -11,6 +11,7 @@
 	"base_unexpected_error": "Unexpected error occurred. Please try again or contact support. May be the token has expired, please re-enter the application.",
 	"base_connection_error": "No internet connection. Check your network settings and try again.",
 	"base_no_data": "No data to display",
+	"base_something_went_wrong": "Something went wrong. Please try again or contact support.",
 
 	"contributor_ilya_lehchylin": "Ilya Lehchylin",
 	"contributor_julia_popova": "Julia Popova",

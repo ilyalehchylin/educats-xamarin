@@ -11,6 +11,7 @@
 	"base_unexpected_error": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie lub skontaktuj się z obsługą klienta. Token mógł wygasnąć, prosimy o ponowne wypełnienie wniosku.",
 	"base_connection_error": "Brak połączenia z Internetem. Sprawdź ustawienia sieci i spróbuj ponownie.",
 	"base_no_data": "Brak danych do wyświetlenia",
+	"base_something_went_wrong": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z pomocą techniczną.",
 
 	"contributor_ilya_lehchylin": "Ilja Legczilin",
 	"contributor_julia_popova": "Julia Popowa",

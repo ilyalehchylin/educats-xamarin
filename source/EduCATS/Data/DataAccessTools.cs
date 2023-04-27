@@ -50,7 +50,7 @@ namespace EduCATS.Data
 				objectToGet = await dataAccess.GetSingle();
 			}
 
-			SetError(dataAccess.ErrorMessageKey, dataAccess.IsConnectionError);
+			SetError(dataAccess.ErrorMessageKey, dataAccess.IsConnectionError, typeof(T).Name);
 			return objectToGet;
 		}
 
@@ -85,7 +85,7 @@ namespace EduCATS.Data
 		/// <remarks>
 		/// Can be <c>null</c> (if no error occurred).
 		/// </remarks>
-		public static void SetError(string message, bool isConnectionError)
+		public static void SetError(string message, bool isConnectionError, string objectDescription = "Issue")
 		{
 			if (message == null) {
 				IsError = false;
@@ -95,7 +95,7 @@ namespace EduCATS.Data
 
 			IsError = true;
 			IsConnectionError = isConnectionError;
-			ErrorMessage = CrossLocalization.Translate(message);
+			ErrorMessage = $"{objectDescription}: {CrossLocalization.Translate(message)}";
 		}
 	}
 }
