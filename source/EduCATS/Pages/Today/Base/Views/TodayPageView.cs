@@ -21,6 +21,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		const string _calendarCollectionDataBinding = ".";
 
 		double _subjectRowHeight = 50;
+		double _subjectDetailedRowHeight = 80;
 
 		static Thickness _newsLabelMagin = new Thickness(10);
 		static Thickness _subjectsMargin = new Thickness(10, 5);
@@ -165,14 +166,16 @@ namespace EduCATS.Pages.Today.Base.Views
 		{
 			var subjectsLabel = createSubjectsLabel();
 			RoundedListView subjectsListView;
+
 			if (Networking.Servers.Current == Networking.Servers.EduCatsByAddress)
 			{
 				subjectsListView = new RoundedListView(typeof(SubjectPageViewCell), header: subjectsLabel)
 				{
-					RowHeight = (int)_subjectRowHeight,
+					RowHeight = (int)_subjectDetailedRowHeight,
 					IsEnabled = false,
 					Margin = _subjectsMargin,
 				};
+
 				subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "NewsSubjectList");
 			}
 			else
@@ -182,6 +185,7 @@ namespace EduCATS.Pages.Today.Base.Views
 					IsEnabled = false,
 					Margin = _subjectsMargin,
 				};
+
 				subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "CalendarSubjects");
 			}
 
