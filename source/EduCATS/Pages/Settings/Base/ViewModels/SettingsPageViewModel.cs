@@ -219,6 +219,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		void resetData()
 		{
+			AppDemo.Instance.IsDemoAccount = false;
 			_services.Preferences.ResetPrefs();
 			AppUserData.Clear();
 			DataAccess.ResetData();
