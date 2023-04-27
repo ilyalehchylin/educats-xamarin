@@ -84,7 +84,7 @@ namespace EduCATS.Networking.AppServices
 			if (Servers.Current == Servers.EduCatsBntuAddress)
 				return await AppServicesController.Request(Links.GetProfileInfoSubjects, body, AppDemoType.ProfileInfoSubjects);
 			else
-				return await AppServicesController.Request(Links.GetProfileInfoSubjectsTest, AppDemoType.ProfileInfoSubjects);
+				return await AppServicesController.Request(Links.GetProfileInfoSubjectsTest, AppDemoType.ProfileInfoSubjectsTest);
 		}
 
 		/// <summary>
@@ -115,7 +115,7 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Calendar data.</returns>
 		public static async Task<object> GetSchedule(string date)
 		{
-			return await AppServicesController.Request(Links.GetSchedule + $"dateStart={date}&dateEnd={date}");
+			return await AppServicesController.Request(Links.GetSchedule + $"dateStart={date}&dateEnd={date}", AppDemoType.Schedule);
 		}
 
 		/// <summary>
@@ -295,7 +295,7 @@ namespace EduCATS.Networking.AppServices
 		{
 			return await AppServicesController.Request(
 					$"{Links.GetResultTest}?testId={testId}",
-					AppDemoType.TestUserAnswers);
+					AppDemoType.TestUserAnswersExtended);
 		}
 		
 
@@ -342,7 +342,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetConceptCascade(int elementId)
 		{
 			return await AppServicesController.Request(
-				$"{Links.GetConceptCascade}?parenttId={elementId}");
+				$"{Links.GetConceptCascade}?parenttId={elementId}", AppDemoType.ConceptTreeTest);
 		}
 
 
@@ -356,7 +356,7 @@ namespace EduCATS.Networking.AppServices
 			if (Servers.Current == Servers.EduCatsBntuAddress)
 				return await AppServicesController.Request($"{Links.GetFiles}?subjectId={subjectId}", AppDemoType.Files);
 			else
-				return await AppServicesController.Request($"{Links.GetFilesTest}?subjectId={subjectId}", AppDemoType.Files);
+				return await AppServicesController.Request($"{Links.GetFilesTest}?subjectId={subjectId}", AppDemoType.FilesTest);
 		}
 
 		/// <summary>
@@ -377,7 +377,7 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Files data.</returns>
 		public static async Task<object> GetFilesDetails(string uri)
 		{
-			return await AppServicesController.Request($"{Links.GetFilesDetails}?values=[{uri}]&deleteValues=DELETE");
+			return await AppServicesController.Request($"{Links.GetFilesDetails}?values=[{uri}]&deleteValues=DELETE", AppDemoType.FilesDetailsTest);
 		}
 
 		public static async Task<object> GetGroupInfo(string groupName)

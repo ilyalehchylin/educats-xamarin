@@ -267,14 +267,16 @@ namespace EduCATS.Helpers.Forms.Settings
 			var fontPrefs = Font;
 			var themePrefs = Theme;
 			var isLargeFont = IsLargeFont;
-			var accsessToken = AccessToken;
+			var accessToken = AccessToken;
+			var server = Server;
 
 			Preferences.Clear();
 
 			Font = fontPrefs;
 			Theme = themePrefs;
 			IsLargeFont = isLargeFont;
-			AccessToken = accsessToken;
+			AccessToken = accessToken;
+			Server = server;
 		}
 	}
 }

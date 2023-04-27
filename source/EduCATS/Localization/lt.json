@@ -41,7 +41,7 @@
 	"login_loading": "Prisijungimas prie sistemos...",
 	"login_profile_loading": "Profilio duomenų gavimas...",
 	"login_empty_credentials_error": "Reikalingas vartotojo vardas ir slaptažodis.",
-	"login_error": "Prisijungimas nepavyko. Patikrinkite įvestus duomenis.",
+	"login_error": "Nepavyko prisijungti prie sistemos. Patikrinkite savo kredencialus.",
 	"login_user_profile_error": "Gaunant profilio duomenis įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
 	"login_user_profile_not_verify": "Jūsų paskyra nepatvirtinta. Susisiekite su mokytoju, kad patvirtintumėte paskyrą.",
 

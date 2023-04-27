@@ -225,7 +225,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					date = DateTime.Today;
 				}
 
-				setNewSubjectList(date);
+				await setNewSubjectList(date);
 			}
 		}
 
@@ -439,7 +439,9 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				}
 				else
 				{
-					setNewSubjectList(date);
+					_services.Device.MainThread(async () => {
+						await setNewSubjectList(date);
+					});
 				}
 
 			} catch (Exception ex) {

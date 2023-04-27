@@ -1,0 +1,84 @@
+﻿{
+	"Concept": {
+		"Container": null,
+		"FilePath": null,
+		"HasData": false,
+		"Id": 1,
+		"IsGroup": true,
+		"Name": "Демонстрационный ЭУМК",
+		"Next": null,
+		"ParentId": 0,
+		"Prev": null,
+		"Published": true,
+		"ReadOnly": false,
+		"ShortName": "Демо ЭУМК",
+		"SubjectName": "Предмет #1",
+		"children": [
+			{
+				"Container": "Container",
+				"FilePath": "\/UploadedFiles\/Id\/Id.pdf",
+				"HasData": true,
+				"Id": 2,
+				"IsGroup": false,
+				"Name": "Документ #1",
+				"Next": 3,
+				"ParentId": 1,
+				"Prev": null,
+				"Published": true,
+				"ReadOnly": true,
+				"ShortName": "Документ #1",
+				"SubjectName": "Предмет #1",
+				"children": []
+			},
+			{
+				"Container": "Container",
+				"FilePath": "\/UploadedFiles\/Id\/Id.pdf",
+				"HasData": true,
+				"Id": 3,
+				"IsGroup": false,
+				"Name": "Документ #2",
+				"Next": 4,
+				"ParentId": 1,
+				"Prev": 2,
+				"Published": true,
+				"ReadOnly": true,
+				"ShortName": "Документ #2",
+				"SubjectName": "Предмет #1",
+				"children": []
+			},
+			{
+				"Container": null,
+				"FilePath": null,
+				"HasData": false,
+				"Id": 4,
+				"IsGroup": true,
+				"Name": "Демонстрационный раздел",
+				"Next": null,
+				"ParentId": 1,
+				"Prev": 3,
+				"Published": false,
+				"ReadOnly": true,
+				"ShortName": "Демонстрационный раздел",
+				"SubjectName": "Предмет #1",
+				"children": [
+					{
+						"Container": "Container",
+						"FilePath": "\/UploadedFiles\/Id\/Id.pdf",
+						"HasData": true,
+						"Id": 5,
+						"IsGroup": false,
+						"Name": "Документ #3",
+						"Next": null,
+						"ParentId": 4,
+						"Prev": null,
+						"Published": true,
+						"ReadOnly": true,
+						"ShortName": "Документ #3",
+						"SubjectName": "Предмет #1",
+						"children": []
+					}
+				]
+			}
+		]
+	}
+}

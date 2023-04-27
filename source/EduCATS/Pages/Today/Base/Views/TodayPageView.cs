@@ -173,7 +173,7 @@ namespace EduCATS.Pages.Today.Base.Views
 				{
 					RowHeight = (int)_subjectDetailedRowHeight,
 					IsEnabled = false,
-					Margin = _subjectsMargin,
+					Margin = _subjectsMargin
 				};
 
 				subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "NewsSubjectList");

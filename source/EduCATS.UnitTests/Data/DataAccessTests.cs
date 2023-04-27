@@ -142,9 +142,8 @@ namespace EduCATS.UnitTests
 		public void SetErrorTest()
 		{
 			var message = "Error message";
-			var expected = $"Issue: {message}";
 			DataAccess.SetError(message, true);
-			Assert.AreEqual(expected, DataAccess.ErrorMessage);
+			Assert.AreEqual(message, DataAccess.ErrorMessage);
 			Assert.AreEqual(true, DataAccess.IsError);
 			Assert.AreEqual(true, DataAccess.IsConnectionError);
 

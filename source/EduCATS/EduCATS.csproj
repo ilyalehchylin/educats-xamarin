@@ -209,6 +209,12 @@
         <None Remove="Demo\DemoResources\demoTestUserAnswers.json" />
         <None Remove="Demo\DemoResources\demoLabsResults.json" />
         <None Remove="Demo\DemoResources\demoInfoLecturers.json" />
+        <None Remove="Demo\DemoResources\demoSchedule.json" />
+        <None Remove="Demo\DemoResources\demoProfileInfoSubjectsTest.json" />
+        <None Remove="Demo\DemoResources\demoFilesTest.json" />
+        <None Remove="Demo\DemoResources\demoFilesDetailsTest.json" />
+        <None Remove="Demo\DemoResources\demoConceptTreeTest.json" />
+        <None Remove="Demo\DemoResources\demoTestUserAnswersExtended.json" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Localization\en.json" />
@@ -254,5 +260,11 @@
         <EmbeddedResource Include="Demo\DemoResources\demoTestUserAnswers.json" />
         <EmbeddedResource Include="Demo\DemoResources\demoLabsResults.json" />
         <EmbeddedResource Include="Demo\DemoResources\demoInfoLecturers.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoSchedule.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoProfileInfoSubjectsTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoFilesTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoFilesDetailsTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoConceptTreeTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTestUserAnswersExtended.json" />
     </ItemGroup>
 </Project>

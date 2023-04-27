@@ -321,7 +321,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		{
 			var userLogin = await DataAccess.Login(Username, Password);
 
-			if(_services.Preferences.Server == Servers.EduCatsAddress)
+			if(!AppDemo.Instance.IsDemoAccount && _services.Preferences.Server == Servers.EduCatsAddress)
 			{
 				if (userLogin != null)
 				{
@@ -392,7 +392,7 @@ namespace EduCATS.Pages.Login.ViewModels
 							}
 							else
 							{
-								DataAccess.SetError($"{Servers.EduCatsAddress}: {CrossLocalization.Translate("login_error")}", false);
+								DataAccess.SetError(CrossLocalization.Translate("login_error"), false);
 							}
 						}
 					}
