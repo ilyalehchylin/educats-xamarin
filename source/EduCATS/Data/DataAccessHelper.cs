@@ -4,6 +4,7 @@ using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data.Caching;
 using EduCATS.Data.Interfaces;
+using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Json;
 
@@ -282,6 +283,10 @@ namespace EduCATS.Data
 		/// <returns><c>True</c> if established.</returns>
 		public virtual bool CheckConnectionEstablished()
 		{
+			if (AppDemo.Instance.IsDemoAccount) {
+				return true;
+			}
+
 			return _services.Device.CheckConnectivity();
 		}
 	}
