@@ -85,7 +85,7 @@ namespace EduCATS.Data
 		/// <remarks>
 		/// Can be <c>null</c> (if no error occurred).
 		/// </remarks>
-		public static void SetError(string message, bool isConnectionError, string objectDescription = "Issue")
+		public static void SetError(string message, bool isConnectionError)
 		{
 			if (message == null) {
 				IsError = false;
@@ -95,7 +95,7 @@ namespace EduCATS.Data
 
 			IsError = true;
 			IsConnectionError = isConnectionError;
-			ErrorMessage = $"{objectDescription}: {CrossLocalization.Translate(message)}";
+			ErrorMessage = CrossLocalization.Translate(message);
 		}
 	}
 }
