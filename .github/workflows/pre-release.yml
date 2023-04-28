@@ -239,6 +239,7 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         
       - name: Google Play Deploy
+        id: google_play_deploy
         uses: r0adkll/upload-google-play@v1.1.1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
@@ -246,6 +247,16 @@ jobs:
           releaseFiles: ./*.aab/*.aab
           track: beta
           changesNotSentForReview: true
+          status: draft
+          
+      - name: Google Play Deploy On Failure
+        uses: r0adkll/upload-google-play@v1.1.1
+        if: always() && steps.google_play_deploy.outcome == 'failure'
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
+          packageName: by.bntu.educats
+          releaseFiles: ./*.aab/*.aab
+          track: beta
           status: draft
           
   deploy_appstore:
