@@ -50,7 +50,7 @@ namespace EduCATS.Data
 				objectToGet = await dataAccess.GetSingle();
 			}
 
-			SetError(dataAccess.ErrorMessageKey, dataAccess.IsConnectionError, typeof(T).Name);
+			SetError(dataAccess.ErrorMessageKey, dataAccess.IsConnectionError);
 			return objectToGet;
 		}
 
