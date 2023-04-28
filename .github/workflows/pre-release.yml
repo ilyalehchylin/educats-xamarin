@@ -240,6 +240,7 @@ jobs:
         
       - name: Google Play Deploy
         id: google_play_deploy
+        continue-on-error: true
         uses: r0adkll/upload-google-play@v1.1.1
         with:
           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_API_JSON_PLAIN }}
