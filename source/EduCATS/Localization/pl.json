@@ -11,6 +11,7 @@
 	"base_unexpected_error": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie lub skontaktuj się z obsługą klienta. Token mógł wygasnąć, prosimy o ponowne wypełnienie wniosku.",
 	"base_connection_error": "Brak połączenia z Internetem. Sprawdź ustawienia sieci i spróbuj ponownie.",
 	"base_no_data": "Brak danych do wyświetlenia",
+	"base_something_went_wrong": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z pomocą techniczną.",
 
 	"contributor_ilya_lehchylin": "Ilja Legczilin",
 	"contributor_julia_popova": "Julia Popowa",
@@ -40,7 +41,7 @@
 	"login_loading": "Logowanie...",
 	"login_profile_loading": "Pobieranie danych profilu...",
 	"login_empty_credentials_error": "Wymagana nazwa użytkownika i hasło.",
-	"login_error": "Nie można się zalogować. Proszę sprawdzić wprowadzone dane.",
+	"login_error": "Nie można zalogować się do systemu. Sprawdź swoje dane uwierzytelniające.",
 	"login_user_profile_error": "Wystąpił błąd podczas pobierania danych profilu. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
 	"login_user_profile_not_verify": "Twoje konto nie zostało zweryfikowane. Skontaktuj się ze swoim nauczycielem, aby zweryfikować konto.",
 	"main_today": "Dzisiaj",

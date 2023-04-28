@@ -11,6 +11,7 @@
 	"base_unexpected_error": "Unexpected error occurred. Please try again or contact support. May be the token has expired, please re-enter the application.",
 	"base_connection_error": "No internet connection. Check your network settings and try again.",
 	"base_no_data": "No data to display",
+	"base_something_went_wrong": "Something went wrong. Please try again or contact support.",
 
 	"contributor_ilya_lehchylin": "Ilya Lehchylin",
 	"contributor_julia_popova": "Julia Popova",
@@ -40,7 +41,7 @@
 	"login_loading": "Signing in...",
 	"login_profile_loading": "Retrieving profile data...",
 	"login_empty_credentials_error": "Username and password are required.",
-	"login_error": "Invalid login attempt. Please check your credentials.",
+	"login_error": "Could not log in to the system. Please check your credentials.",
 	"login_user_profile_error": "Error occurred during retrieving profile data. Please try again or contact support.",
 	"login_user_profile_not_verify": "Your account has not been verified. Contact your teacher to confirm your account.",
 

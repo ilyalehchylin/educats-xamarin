@@ -11,6 +11,7 @@
 	"base_unexpected_error": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support. Der Token ist möglicherweise abgelaufen, bitte geben Sie die Anwendung erneut ein.",
 	"base_connection_error": "Keine Internetverbindung. Überprüfen Sie die Netzwerkeinstellungen und versuchen Sie es erneut.",
 	"base_no_data": "Keine Daten angezeigt werden",
+	"base_something_went_wrong": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut oder wenden Sie sich an den Support.",
 
 	"contributor_ilya_lehchylin": "Ilya Legtschilin",
 	"contributor_julia_popova": "Yuliya Popova",
@@ -40,7 +41,7 @@
 	"login_loading": "Anmeldung...",
 	"login_profile_loading": "Profildaten wird angeruft...",
 	"login_empty_credentials_error": "Benutzername und Passwort sind erforderlich.",
-	"login_error": "Anmeldung fehlschlagen. Bitte, uberprufen Sie die eingegebenen Daten.",
+	"login_error": "Anmeldung am System nicht möglich. Bitte überprüfen Sie Ihre Anmeldedaten.",
 	"login_user_profile_error": "Fehler beim abrufen von Profildaten. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
 	"login_user_profile_not_verify": "Ihr Konto wurde nicht verifiziert. Wenden Sie sich an Ihren Lehrer, um Ihr Konto zu verifizieren.",
 

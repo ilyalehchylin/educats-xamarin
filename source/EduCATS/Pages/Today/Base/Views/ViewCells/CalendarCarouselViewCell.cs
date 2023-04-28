@@ -8,7 +8,7 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 	{
 		const int _daysOfWeekNumber = 7;
 		const string _dataBindingDay = "Day";
-		const double _baseHeight = 30;
+		const double _baseHeight = 35;
 
 		static Thickness _padding = new Thickness(0, 0, 0, 10);
 

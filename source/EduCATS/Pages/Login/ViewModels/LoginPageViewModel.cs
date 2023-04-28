@@ -266,7 +266,7 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 			else
 			{
-				_services.Dialogs.ShowError(CrossLocalization.Translate("login_error"));
+				_services.Dialogs.ShowError(CrossLocalization.Translate("base_something_went_wrong"));
 			}
 		}
 
@@ -321,7 +321,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		{
 			var userLogin = await DataAccess.Login(Username, Password);
 
-			if(_services.Preferences.Server == Servers.EduCatsAddress)
+			if(!AppDemo.Instance.IsDemoAccount && _services.Preferences.Server == Servers.EduCatsAddress)
 			{
 				if (userLogin != null)
 				{
@@ -399,6 +399,7 @@ namespace EduCATS.Pages.Login.ViewModels
 					catch (Exception) { }
 				}
 			}
+
 			AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
 			return userLogin;
 		}

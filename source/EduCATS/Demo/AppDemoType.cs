@@ -7,7 +7,10 @@ namespace EduCATS.Demo
 		None,
 		AvailableTests,
 		ConceptTree,
+		ConceptTreeTest,
 		Files,
+		FilesTest,
+		FilesDetailsTest,
 		InfoLecturers,
 		Labs,
 		LabsResults,
@@ -17,12 +20,15 @@ namespace EduCATS.Demo
 		ProfileInfo,
 		ProfileInfoCalendar,
 		ProfileInfoSubjects,
+		ProfileInfoSubjectsTest,
 		Recommendations,
 		RootConcepts,
+		Schedule,
 		Statistics,
 		Test,
 		TestAnswerAndGetNext,
 		TestNextQuestion,
-		TestUserAnswers
+		TestUserAnswers,
+		TestUserAnswersExtended
 	}
 }

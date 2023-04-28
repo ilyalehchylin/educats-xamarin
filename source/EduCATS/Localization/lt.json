@@ -11,6 +11,7 @@
 	"base_unexpected_error": "Įvyko netikėta klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba. Gali būti, kad prieigos raktas nebegalioja. Įveskite programą iš naujo.",
 	"base_connection_error": "Nėra interneto ryšio. Patikrinkite tinklo nustatymus ir bandykite dar kartą.",
 	"base_no_data": "Nėra rodomų duomenų",
+	"base_something_went_wrong": "Kažkas nutiko. Bandykite dar kartą arba susisiekite su palaikymo komanda.",
 
 	"contributor_ilya_lehchylin": "Ilya Lehchylin",
 	"contributor_julia_popova": "Julia Popova",
@@ -40,7 +41,7 @@
 	"login_loading": "Prisijungimas prie sistemos...",
 	"login_profile_loading": "Profilio duomenų gavimas...",
 	"login_empty_credentials_error": "Reikalingas vartotojo vardas ir slaptažodis.",
-	"login_error": "Prisijungimas nepavyko. Patikrinkite įvestus duomenis.",
+	"login_error": "Nepavyko prisijungti prie sistemos. Patikrinkite savo kredencialus.",
 	"login_user_profile_error": "Gaunant profilio duomenis įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
 	"login_user_profile_not_verify": "Jūsų paskyra nepatvirtinta. Susisiekite su mokytoju, kad patvirtintumėte paskyrą.",
 

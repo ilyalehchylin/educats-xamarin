@@ -1,0 +1,64 @@
+﻿{
+	"ContentEncoding": null,
+	"ContentType": null,
+	"Data": [
+		{
+			"Key": "TestName",
+			"Value": "Демонстрационный тест"
+		},
+		{
+			"Key": "Percent",
+			"Value": 33
+		},
+		{
+			"Key": "Mark",
+			"Value": 3
+		},
+		{
+			"Key": "Answers",
+			"Value": [
+				{
+					"QuestionTitle": "Демонстрационный вопрос #1",
+					"QuestionDescription": null,
+					"Points": 0,
+					"AnswerString": "4",
+					"Number": 1
+				},
+				{
+					"QuestionTitle": "Демонстрационный вопрос #2",
+					"QuestionDescription": null,
+					"Points": 1,
+					"AnswerString": "2",
+					"Number": 2
+				}
+			]
+		},
+		{
+			"Key": "Thems",
+			"Value": []
+		},
+		{
+			"Key": "NeuralData",
+			"Value": null
+		},
+		{
+			"Key": "FoNN",
+			"Value": false
+		},
+		{
+			"Key": "StartTime",
+			"Value": "\/Date(1682608647420)\/"
+		},
+		{
+			"Key": "EndTime",
+			"Value": "\/Date(1682608703857)\/"
+		},
+		{
+			"Key": "Comment",
+			"Value": null
+		}
+	],
+	"JsonRequestBehavior": 0,
+	"MaxJsonLength": 2147483647,
+	"RecursionLimit": null
+}
