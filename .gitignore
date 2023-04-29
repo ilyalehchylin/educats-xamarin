@@ -135,7 +135,6 @@ publish/
 # NuGet Packages Directory
 packages/
 *.nuget.targets
-*.lock.json
 *.nuget.props
 
 !packages/build/

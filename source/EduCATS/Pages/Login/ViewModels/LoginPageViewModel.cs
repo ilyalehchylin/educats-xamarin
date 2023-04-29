@@ -12,6 +12,7 @@ using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.Models.User;
 using EduCATS.Data.User;
+using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Json;
 using EduCATS.Helpers.Logs;
@@ -214,7 +215,7 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openParental()
 		{
-			_services.Navigation.OpenFindGroup();
+			await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
 		}
 
 
@@ -265,7 +266,7 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 			else
 			{
-				_services.Dialogs.ShowError(CrossLocalization.Translate("login_error"));
+				_services.Dialogs.ShowError(CrossLocalization.Translate("base_something_went_wrong"));
 			}
 		}
 
@@ -278,7 +279,7 @@ namespace EduCATS.Pages.Login.ViewModels
 			if (profile != null && !DataAccess.IsError)
 			{
 				_services.Preferences.GroupId = profile.GroupId;
-				_services.Preferences.IsLoggedIn = true;
+				_services.Preferences.IsLoggedIn = !AppDemo.Instance.IsDemoAccount;
 				_services.Navigation.OpenMain();
 			}
 			else if (profile != null && DataAccess.IsError)
@@ -320,7 +321,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		{
 			var userLogin = await DataAccess.Login(Username, Password);
 
-			if(_services.Preferences.Server == Servers.EduCatsAddress)
+			if(!AppDemo.Instance.IsDemoAccount && _services.Preferences.Server == Servers.EduCatsAddress)
 			{
 				if (userLogin != null)
 				{
@@ -371,9 +372,34 @@ namespace EduCATS.Pages.Login.ViewModels
 						userLogin.UserId = userLoginTest.Id;
 						userLogin.Username = userLoginTest.Username;
 					}
+					catch (WebException ex)
+					{
+						HttpWebResponse httpResponse = (HttpWebResponse)ex.Response;
+						string answer = "";
+						if (ex.Response != null)
+						{
+							using (Stream stream = ex.Response.GetResponseStream())
+							{
+								StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+								answer = reader.ReadToEnd();
+							}
+
+							var serverError = JsonConvert.DeserializeObject<ServerError>(answer);
+
+							if (serverError.Error == 1)
+							{
+								DataAccess.SetError(CrossLocalization.Translate("login_user_profile_not_verify"), false);
+							}
+							else
+							{
+								DataAccess.SetError(CrossLocalization.Translate("login_error"), false);
+							}
+						}
+					}
 					catch (Exception) { }
 				}
 			}
+
 			AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
 			return userLogin;
 		}

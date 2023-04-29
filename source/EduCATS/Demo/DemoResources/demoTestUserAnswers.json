@@ -1,0 +1,16 @@
+﻿[
+	{
+		"QuestionTitle": "Демонстрационный вопрос #1",
+		"QuestionDescription": null,
+		"Points": 0,
+		"AnswerString": "4",
+		"Number": 1
+	},
+	{
+		"QuestionTitle": "Демонстрационный вопрос #2",
+		"QuestionDescription": null,
+		"Points": 1,
+		"AnswerString": "2",
+		"Number": 2
+	}
+]

@@ -35,6 +35,7 @@ A cross-platform client for the [Leaning Management System EduCATS](https://gith
 
 - [iOS TestFlight Open Beta](https://testflight.apple.com/join/WQdDNznJ)
 - [Android Google Play Open Beta](https://play.google.com/apps/testing/by.bntu.educats)
+- [Beta Binaries](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml)
 
 ### Contributing
 

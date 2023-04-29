@@ -33,8 +33,10 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <summary>
 		/// Open finding group page.
 		/// </summary>
-		public void OpenFindGroup();
-
+		/// <param name="title">Title.</param>
+		/// <returns></returns>
+		public Task OpenFindGroup(string title);
+		
 		/// <summary>
 		/// Open parental control statistics
 		/// </summary>
@@ -45,9 +47,9 @@ namespace EduCATS.Helpers.Forms.Pages
 
 		public Task OpenRegistration(string title);
 
-		public Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId);
+		public Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId, string groupName);
 
-		public Task OpenAddMarksPracticeAndLabs(string title, GroupItemModel groupId, int subject);
+		public Task OpenAddMarksPracticeAndLabs(string title, GroupItemModel groupId, int subject, string groupName);
 
 		public Task OpenAddSingleMark(string title, string name, LabsVisitingList Marks, TakedLabs prOrLabStat, int subGruop);
 

@@ -22,7 +22,31 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 		public ForgotPasswordPageViewModel(IPlatformServices services)
 		{
 			_services = services;
-			IsPasswordHidden = true;
+			IsConfirmPasswordHidden = IsPasswordHidden = true;
+		}
+
+		Command _hidePasswordCommand;
+		/// <summary>
+		/// Hide password command.
+		/// </summary>
+		public Command HidePasswordCommand
+		{
+			get
+			{
+				return _hidePasswordCommand ?? (_hidePasswordCommand = new Command(hidePassword));
+			}
+		}
+
+		Command _hideConfirmPasswordCommand;
+		/// <summary>
+		/// Hide password command.
+		/// </summary>
+		public Command HideConfirmPasswordCommand
+		{
+			get
+			{
+				return _hideConfirmPasswordCommand ?? (_hideConfirmPasswordCommand = new Command(hideConfirmPassword));
+			}
 		}
 
 		Command _resetPasswordCommand;
@@ -68,8 +92,8 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 			{
 				for (int i = 0; i < NewPassword.Length; i++)
 				{
-					if (!(((NewPassword[i] >= 'a') && (NewPassword[i] <= 'z')) || ((NewPassword[i] >= 'A') && (NewPassword[i] <= 'Z')) ||
-						(int.Parse(NewPassword[i].ToString()) >= 0) && (int.Parse(NewPassword[i].ToString()) <= 9)))
+					if (!(((NewPassword[i] >= 'a') && (NewPassword[i] <= 'z')) || ((NewPassword[i] >= 'A') && (NewPassword[i] <= 'Z')) || (NewPassword[i] == '_') ||
+						((NewPassword[i] >= '0') && NewPassword[i] <= '9')))
 					{
 						latin_password = false;
 						break;
@@ -146,6 +170,11 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 						_services.Dialogs.ShowMessage(CrossLocalization.Translate("password_changed"),
 							CrossLocalization.Translate("successful_password_change"));
 						await _services.Navigation.ClosePage(false);
+					}
+					else if (JsonConvert.DeserializeObject<string>(result.Key) == "Пароль данного пользвателя не может быть восстановлен!")
+					{
+						_services.Dialogs.ShowMessage(CrossLocalization.Translate("base_error"),
+							CrossLocalization.Translate("not_recovered_password_changed"));
 					}
 				}
 				else
@@ -255,6 +284,19 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 			set { SetProperty(ref _isPasswordHidden, value); }
 		}
 
+
+		bool _isConfirmPasswordHidden;
+
+		/// <summary>
+		/// Property for checking if confirm password is hidden.
+		/// </summary>
+		public bool IsConfirmPasswordHidden
+		{
+			get { return _isConfirmPasswordHidden; }
+			set { SetProperty(ref _isConfirmPasswordHidden, value); }
+		}
+
+
 		/// <summary>
 		/// Sets loading status.
 		/// </summary>
@@ -271,5 +313,22 @@ namespace EduCATS.Pages.ForgotPassword.ViewModels
 				_services.Dialogs.HideLoading();
 			}
 		}
+
+		/// <summary>
+		/// Hides or shows a password.
+		/// </summary>
+		protected void hidePassword()
+		{
+			IsPasswordHidden = !IsPasswordHidden;
+		}
+
+		/// <summary>
+		/// Hides or shows a confirm password.
+		/// </summary>
+		protected void hideConfirmPassword()
+		{
+			IsConfirmPasswordHidden = !IsConfirmPasswordHidden;
+		}
+
 	}
 }

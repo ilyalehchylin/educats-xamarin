@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.User;
+using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
@@ -84,7 +85,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 		void setInitData()
 		{
 			Username = _services.Preferences.UserLogin;
-			IsLoggedIn = _services.Preferences.IsLoggedIn;
+			IsLoggedIn = AppDemo.Instance.IsDemoAccount ? true : _services.Preferences.IsLoggedIn;
 			Avatar = _services.Preferences.Avatar;
 			var isProfessor = string.IsNullOrEmpty(_services.Preferences.GroupName);
 			Group = isProfessor ? null : _services.Preferences.GroupName;
@@ -100,8 +101,8 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				createItem(Theme.Current.SettingsFontIcon, "settings_font"),
 				createItem(Theme.Current.SettingsAboutIcon, "settings_about")
 			};
-
-			if (_services.Preferences.Server == Servers.EduCatsAddress)
+		
+			if (_services.Preferences.Server == Servers.EduCatsAddress && IsLoggedIn && !string.IsNullOrEmpty(_services.Preferences.GroupName))
 			{
 				SettingsList.Add(createItem(Theme.Current.BaseCloseIcon, "settings_delete"));
 			}
@@ -177,6 +178,13 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		async Task deleteAccount()
 		{
+			if (AppDemo.Instance.IsDemoAccount) {
+				_services.Device.MainThread(
+					() => _services.Dialogs.ShowError(
+						CrossLocalization.Translate("demo_delete_account_error")));
+				return;
+			}
+
 			var result = await _services.Dialogs.ShowConfirmationMessage(
 				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("settings_delete_message"));
@@ -191,18 +199,27 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 		{
 			try
 			{
+				_services.Dialogs.ShowLoading(CrossLocalization.Translate("settings_delete_process"));
 				var recommendations = await DataAccess.DeleteAccount();
 			}
 			catch (Exception ex)
 			{
 				AppLogs.Log(ex);
+				return;
 			}
+			finally
+			{
+				_services.Dialogs.HideLoading();
+			}
+			await _services.Dialogs.ShowConfirmation(
+						CrossLocalization.Translate("base_completed"),
+						CrossLocalization.Translate("settings_delete_success"));
 			resetData();
 		}
 
-
 		void resetData()
 		{
+			AppDemo.Instance.IsDemoAccount = false;
 			_services.Preferences.ResetPrefs();
 			AppUserData.Clear();
 			DataAccess.ResetData();

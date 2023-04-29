@@ -4,11 +4,14 @@
 	"base_yes": "Да",
 	"base_error": "Ошибка",
 	"base_cancel": "Отмена",
+	"base_success": "Успех",
+	"base_completed": "Действие завершено",
 	"base_warning": "Внимание",
 	"base_loading": "Загрузка...",
 	"base_unexpected_error": "Произошла непредвиденная ошибка. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки. Возможно срок действия токена истек, перезайдите в приложение.",
 	"base_connection_error": "Нет соединения с интернетом. Проверьте настройки сети и попробуйте снова.",
 	"base_no_data": "Нет данных для отображения",
+	"base_something_went_wrong": "Что-то пошло не так. Повторите попытку или обратитесь в службу поддержки.",
 
 	"contributor_ilya_lehchylin": "Илья Легчилин",
 	"contributor_julia_popova": "Юлия Попова",
@@ -16,7 +19,12 @@
 	"role_student": "Студент",
 	"role_professor": "Преподаватель",
 
+	"address_building": "к.",
+	"address_room": "а.",
 
+	"type_activity_lecture": "Лекция",
+	"type_activity_lab": "Лаб. работа",
+	"type_activity_practical": "Практ. работа",
 
 	"server_test": "Тестовый сервер",
 	"server_local": "Локальный сервер",
@@ -33,8 +41,9 @@
 	"login_loading": "Вход в систему...",
 	"login_profile_loading": "Получение данных профиля...",
 	"login_empty_credentials_error": "Требуются имя пользователя и пароль.",
-	"login_error": "Не удалось войти в систему. Пожалуйста, проверьте введенные данные.",
+	"login_error": "Не удалось войти в систему. Пожалуйста, проверьте свои учетные данные.",
 	"login_user_profile_error": "Произошла ошибка во время получения данных профиля. Пожалуйста, попробуйте еще раз или обратитесь в службу поддержки.",
+	"login_user_profile_not_verify": "Ваш аккаунт не подтвержден. Свяжитесь со своим преподавателем, чтобы подтвердить свою учетную запись.",
 
 	"main_today": "Сегодня",
 	"main_learning": "Обучение",
@@ -55,8 +64,8 @@
 	"stats_marks_error": "Произошла ошибка во время получения статистики. Пожалуйста, обновите страницу или обратитесь в службу поддержки.",
 	"stats_expand_chart_text": "Подробнее",
 	"stats_collapse_chart_text": "Скрыть",
-	"stats_chart_average_labs": "Средняя оценка за лабораторные работы",
-	"stats_chart_average_pract": "Средняя оценка за практические работы",
+	"stats_chart_average_labs": "Средний балл за лабораторные работы",
+	"stats_chart_average_pract": "Средний балл за практические занятия",
 	"stats_chart_average_tests": "Средняя оценка за тесты",
 	"stats_chart_rating": "Рейтинговая оценка",
 	"stats_chart_not_enough_data": "Недостаточно данных для отображения графика",
@@ -140,6 +149,8 @@
 	"settings_font_large_description": "Сделать шрифт в приложении больше.",
 
 	"settings_delete_message": "Вы действительно хотите удалить аккаунт?",
+	"settings_delete_success": "Ваш аккаунт удалён",
+	"settings_delete_process": "Удаление данных профиля...",
 
 	"settings_about_app_version": "Версия",
 	"settings_about_app_build": "Сборка",
@@ -151,7 +162,7 @@
 	"settings_about_send_logs_error": "Произошла ошибка во время отправки логов. Пожалуйста, попробуйте снова или обратитесь в службу поддержки.",
 	"settings_about_contributors": "Авторы",
 
-	"parental_login": "Контроль успеваемости",
+	"parental_login": "Статистика успеваемости",
 	"parental_enter_group_number": "Введите номер группы",
 	"parental_enter_full_name": "Введите ФИО",
 	"parental_error_empty_group_number": "Пожалуйста введите номер группы",
@@ -198,10 +209,11 @@
 	"no_user": "Пользователь не найден!",
 	"invaild_answer": "Введен неверный секретный ответ",
 	"password_changed": "Пароль изменен",
+	"not_recovered_password_changed": "Возможность сброса пароля недоступна!",
 	"successful_password_change": "Успешная смена пароля",
 	"empty_fields_forgot_password": "Обязательные поля(Логин, Секретный вопрос, Ответ, Новый пароль, Подтверждение пароля) должны быть заполнены!",
 
-	"set_marks": "Выставить отметки",
+	"set_marks": "Выставить оценки",
 	"set_visiting": "Выставить пропуски",
 	"save_marks": "Сохранить",
 
@@ -209,10 +221,14 @@
 	"practice_mark": "Оценки по практическим работам",
 
 	"sub_group": "Подгруппа ",
-	"mark": "Отметка",
+	"mark": "Оценка",
 	"date": "Дата",
 	"comment": "Комментарий",
 	"show_for_student": "Показать комментарий студенту",
-	"skipped_hours": "Пропущено часов"
+	"skipped_hours": "Пропущено часов",
+
+	"demo_eemc_open_error": "Просмотр документов недоступен для демонстрационного аккаунта.",
+	"demo_files_download_error": "Загрузка обучающих материалов недоступна для демонстрационного аккаунта.",
+	"demo_delete_account_error": "Удаление демонстрационного аккаунта невозможно."
 }
 

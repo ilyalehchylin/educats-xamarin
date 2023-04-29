@@ -35,23 +35,23 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		public void Init()
 		{
-			//setPagesList();
 			setCollapsedDetails();
 
 			_service.Device.MainThread(async () => {
-				IsLoading = true;
+				_service.Device.MainThread(() => _service.Dialogs.ShowLoading());
+				checkStudent();
 				await SetupSubjects();
 				await getAndSetStatistics();
 				await setButtonsList();
-				checkStudent();
+				_service.Device.MainThread(() => _service.Dialogs.HideLoading());
 				IsLoading = false;
 			});
 
 			SubjectChanged += async (id, name) => {
 				_service.Dialogs.ShowLoading();
+				checkStudent();
 				await setButtonsList();
 				await getAndSetStatistics();
-				checkStudent();
 				_service.Dialogs.HideLoading();
 			};
 
@@ -142,6 +142,26 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 		}
 
+		bool _isLabs;
+		public bool IsLabs
+		{
+			get { return _isLabs; }
+			set
+			{
+				SetProperty(ref _isLabs, value);
+			}
+		}
+
+		bool _isPract;
+		public bool IsPract
+		{
+			get { return _isPract; }
+			set
+			{
+				SetProperty(ref _isPract, value);
+			}
+		}
+
 		Command _refreshCommand;
 		public Command RefreshCommand {
 			get {
@@ -159,41 +179,29 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		public async Task setButtonsList()
 		{
-			bool isLabs = false;
-			bool isPract = false;
+			IsPract = IsLabs = false;
 
-			var dataPract = await DataAccess.GetPractTest(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
-			if (dataPract.Practicals.Count != 0)
-			{
-				isPract = true;
+			if (CurrentSubject == null) {
+				setPagesList();
+				return;
 			}
 
-			var dataLabs = new LabsModel();
-			var dataTestLabs = new TakedLabs();
-
-			if (Servers.Current == Servers.EduCatsAddress)
-			{
-				dataTestLabs = await DataAccess.GetLabsTest(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
-				if (dataTestLabs.Labs.Count != 0)
-				{
-					isLabs = true;
-				}
-			}
-			else
-			{
-				dataLabs = await DataAccess.GetLabs(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
-				if (dataLabs.Labs.Count != 0)
-				{
-					isLabs = true;
-				}
+			var dataPract = await DataAccess.GetPracticals(CurrentSubject.Id);
+			if (dataPract.Practicals.Count != 0) {
+				IsPract = true;
 			}
 
-			setPagesList(isLabs, isPract);
+			var dataLabs = await DataAccess.GetLabs(CurrentSubject.Id);
+			if (dataLabs.Labs.Count != 0) {
+				IsLabs = true;
+			}
+
+			setPagesList();
 		}
 
-		public void setPagesList(bool isLabs, bool isPract)
+		public void setPagesList()
 		{
-			if (isPract && isLabs)
+			if (_isPract && _isLabs)
 			{
 				PagesList = new List<StatsPageModel> {
 				getPage("stats_page_lectures_visiting"),
@@ -203,7 +211,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				getPage("stats_page_labs_rating"),
 				};
 			}
-			else if (isPract)
+			else if (_isPract)
 			{
 				PagesList = new List<StatsPageModel> {
 				getPage("stats_page_lectures_visiting"),
@@ -211,7 +219,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				getPage("practice_mark"),
 				};
 			}
-			else if (isLabs)
+			else if (_isLabs)
 			{
 				PagesList = new List<StatsPageModel> {
 				getPage("stats_page_lectures_visiting"),
@@ -265,12 +273,14 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		protected virtual async Task executeRefreshCommand()
 		{
 			try {
-				PlatformServices.Device.MainThread(() => IsLoading = true);
+				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.ShowLoading());
+				checkStudent();
 				await SetupSubjects();
 				await getAndSetStatistics();
-				checkStudent();
+				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideLoading());
 				PlatformServices.Device.MainThread(() => IsLoading = false);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
 		}
@@ -348,30 +358,34 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			try
 			{
-				var studentsStatistics = await getStatistics();
-				_students = studentsStatistics;
-				var currentPractStudentStatistics = new LaboratoryWorksModel();
-				var studentsPractStatistics = await DataAccess.GetTestPracticialStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
-				if (Servers.Current == Servers.EduCatsAddress)
-				{
-					var currentStudentStatistics = new StatsStudentModel();
-					var studentTestStatistics = await DataAccess.GetTestStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
-					var currentTestStudentStatistics = studentTestStatistics.Students.SingleOrDefault(
-					s => s.StudentId == PlatformServices.Preferences.UserId);
-					currentPractStudentStatistics = studentsPractStatistics.Students.SingleOrDefault(
-						s => s.StudentId == PlatformServices.Preferences.UserId);
-					setChartData(currentStudentStatistics, currentTestStudentStatistics, currentPractStudentStatistics);
-					_studentsTest = studentTestStatistics;
-				}
-				else
-				{
-					var labsTest = new LaboratoryWorksModel();
-					var currentStudentStatistics = new StatsStudentModel();
-					studentsStatistics = await getStatistics();
-					currentStudentStatistics = studentsStatistics.SingleOrDefault(
-					s => s.StudentId == PlatformServices.Preferences.UserId);
-					setChartData(currentStudentStatistics, labsTest, currentPractStudentStatistics);
-					_students = studentsStatistics;
+				if (CurrentSubject != null)
+					if (_isStudent)
+					{
+						var studentsStatistics = await getStatistics();
+						_students = studentsStatistics;
+						var currentPractStudentStatistics = new LaboratoryWorksModel();
+						var studentsPractStatistics = await DataAccess.GetTestPracticialStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
+						if (Servers.Current == Servers.EduCatsAddress)
+						{
+							var currentStudentStatistics = new StatsStudentModel();
+							var studentTestStatistics = await DataAccess.GetTestStatistics(CurrentSubject.Id, PlatformServices.Preferences.GroupId);
+							var currentTestStudentStatistics = studentTestStatistics.Students.SingleOrDefault(
+							s => s.StudentId == PlatformServices.Preferences.UserId);
+							currentPractStudentStatistics = studentsPractStatistics.Students.SingleOrDefault(
+								s => s.StudentId == PlatformServices.Preferences.UserId);
+							setChartData(currentStudentStatistics, currentTestStudentStatistics, currentPractStudentStatistics);
+							_studentsTest = studentTestStatistics;
+						}
+						else
+						{
+							var labsTest = new LaboratoryWorksModel();
+							var currentStudentStatistics = new StatsStudentModel();
+							studentsStatistics = await getStatistics();
+							currentStudentStatistics = studentsStatistics.SingleOrDefault(
+							s => s.StudentId == PlatformServices.Preferences.UserId);
+							setChartData(currentStudentStatistics, labsTest, currentPractStudentStatistics);
+							_students = studentsStatistics;
+						}
 				}
 			}
 			catch (Exception ex)
@@ -408,13 +422,14 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 				if (Servers.Current == Servers.EduCatsAddress)
 				{
-					avgPract = calculateAvgPractMarks(worksModel.PracticalsMarks);
-					AveragePract = avgPract.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+						avgPract = calculateAvgPractMarks(worksModel.PracticalsMarks);
+						AveragePract = avgPract.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
-					avgLabs = calculateAvgLabsMarkTest(currentPractStudentStatistics.LabsMarks);
-					AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+						avgLabs = calculateAvgLabsMarkTest(currentPractStudentStatistics.LabsMarks);
+						AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
-					avgTests = double.Parse(currentPractStudentStatistics.TestMark, CultureInfo.InvariantCulture);
+					if (currentPractStudentStatistics.TestMark != null)
+						avgTests = double.Parse(currentPractStudentStatistics.TestMark, CultureInfo.InvariantCulture);
 
 					AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
@@ -441,8 +456,9 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				{
 					avgLabs = calculateAvgLabsMark(stats.MarkList);
 					AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
-
-					avgTests = double.Parse(stats.AverageTestMark, CultureInfo.InvariantCulture);
+					
+					if (stats.AverageTestMark != null)
+						avgTests = double.Parse(stats.AverageTestMark, CultureInfo.InvariantCulture);
 					
 					AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 

@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data;
+using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
 using MonkeyCache.FileStore;
 using Moq;
@@ -65,12 +66,21 @@ namespace EduCATS.UnitTests
 			var dataAccess = new DataAccess<object>(_message, null, "3", _mockedConnected);
 			var actual = dataAccess.CheckConnectionEstablished();
 			Assert.AreEqual(true, actual);
+			AppDemo.Instance.IsDemoAccount = true;
+			var demoActual = dataAccess.CheckConnectionEstablished();
+			Assert.AreEqual(true, actual);
+			var dataAccessOffline = new DataAccess<object>(_message, null, "4", _mockedOffline);
+			var demoOfflineActual = dataAccessOffline.CheckConnectionEstablished();
+			Assert.AreEqual(true, demoOfflineActual);
+			AppDemo.Instance.IsDemoAccount = false;
+			var offlineActual = dataAccessOffline.CheckConnectionEstablished();
+			Assert.AreEqual(false, offlineActual);
 		}
 
 		[Test]
 		public async Task GetSingleNoConnectionTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "4", _mockedOffline);
+			var dataAccess = new DataAccess<object>(_message, null, "5", _mockedOffline);
 			var actual = await dataAccess.GetSingle();
 			Assert.IsNotNull(actual);
 		}
@@ -78,7 +88,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public async Task GetListNoConnectionTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "5", _mockedOffline);
+			var dataAccess = new DataAccess<object>(_message, null, "6", _mockedOffline);
 			var actual = await dataAccess.GetList();
 			Assert.IsNotNull(actual);
 		}
@@ -97,7 +107,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public async Task GetDataSingleObjectTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "6", _mockedConnected);
+			var dataAccess = new DataAccess<object>(_message, null, "7", _mockedConnected);
 			var data = await DataAccess.GetDataObject(dataAccess, false);
 			Assert.NotNull(data);
 		}
@@ -105,7 +115,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public async Task GetDataListObjectTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "7", _mockedConnected);
+			var dataAccess = new DataAccess<object>(_message, null, "8", _mockedConnected);
 			var data = await DataAccess.GetDataObject(dataAccess, true);
 			Assert.NotNull(data);
 		}
@@ -154,7 +164,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetListAccessValidJsonTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "8", _mockedConnected);
+			var dataAccess = new DataAccess<object>(_message, null, "9", _mockedConnected);
 			var kvp = new KeyValuePair<string, HttpStatusCode>("[ { \"data\": \"test\" } ]", HttpStatusCode.OK);
 			var actual = dataAccess.GetListAccess(kvp);
 			Assert.NotNull(actual);
@@ -163,7 +173,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetListAccessNonValidJsonTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "9", _mockedConnected);
+			var dataAccess = new DataAccess<object>(_message, null, "10", _mockedConnected);
 			var kvp = new KeyValuePair<string, HttpStatusCode>("response", HttpStatusCode.OK);
 			var actual = dataAccess.GetListAccess(kvp);
 			Assert.AreEqual(null, actual);
@@ -172,7 +182,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetListAccessSuccessJsonTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "10", _mockedConnected);
+			var dataAccess = new DataAccess<object>(_message, null, "11", _mockedConnected);
 			var kvp = new KeyValuePair<string, HttpStatusCode>(_nonJsonSuccessResponse, HttpStatusCode.OK);
 			var actual = dataAccess.GetListAccess(kvp);
 			Assert.AreEqual(string.Empty, actual);
@@ -181,7 +191,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetSingleAccessValidJsonTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "11", _mockedConnected);
+			var dataAccess = new DataAccess<object>(_message, null, "12", _mockedConnected);
 			var kvp = new KeyValuePair<string, HttpStatusCode>("{ \"data\": \"test\" }", HttpStatusCode.OK);
 			var actual = dataAccess.GetAccess(kvp);
 			Assert.NotNull(actual);
@@ -190,7 +200,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetSingleAccessNonValidJsonTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "12", _mockedConnected);
+			var dataAccess = new DataAccess<object>(_message, null, "13", _mockedConnected);
 			var kvp = new KeyValuePair<string, HttpStatusCode>("response", HttpStatusCode.OK);
 			var actual = dataAccess.GetAccess(kvp);
 			Assert.AreEqual(null, actual);
@@ -199,7 +209,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void GetSingleAccessSuccessJsonTest()
 		{
-			var dataAccess = new DataAccess<object>(_message, null, "13", _mockedConnected);
+			var dataAccess = new DataAccess<object>(_message, null, "14", _mockedConnected);
 			var kvp = new KeyValuePair<string, HttpStatusCode>(_nonJsonSuccessResponse, HttpStatusCode.OK);
 			var actual = dataAccess.GetAccess(kvp);
 			Assert.NotNull(actual);

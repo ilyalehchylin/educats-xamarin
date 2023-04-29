@@ -7,6 +7,7 @@ using EduCATS.Pages.Today.Base.Views.ViewCells;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
+using CarouselView.FormsPlugin.Abstractions;
 
 namespace EduCATS.Pages.Today.Base.Views
 {
@@ -20,6 +21,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		const string _calendarCollectionDataBinding = ".";
 
 		double _subjectRowHeight = 50;
+		double _subjectDetailedRowHeight = 80;
 
 		static Thickness _newsLabelMagin = new Thickness(10);
 		static Thickness _subjectsMargin = new Thickness(10, 5);
@@ -44,7 +46,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		{
 			var calendarView = createCalendar();
 			var newsView = createNewsList();
-
+			
 			Content = new StackLayout {
 				Spacing = _spacing,
 				Margin = _margin,
@@ -66,7 +68,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		{
 			var calendarDaysOfWeekCollectionView = createCalendarDaysOfWeekCollectionView();
 			var calendarCarouselView = createCalendarCarousel();
-
+			
 			return new StackLayout {
 				Spacing = _spacing,
 				Children = {
@@ -93,26 +95,28 @@ namespace EduCATS.Pages.Today.Base.Views
 			return calendarDaysOfWeekCollectionView;
 		}
 
-		CarouselView createCalendarCarousel()
+		CarouselViewControl createCalendarCarousel()
 		{
 			var heightReqest = _services.Preferences.IsLargeFont
 				? _calendarCarouselHeightLarge : _calendarCarouselHeight;
 
-			var calendarCarouselView = new CarouselView {
+			var calendarCarouselView = new CarouselViewControl
+			{
 				BackgroundColor = Color.FromHex(Theme.Current.TodayCalendarBackgroundColor),
-				HorizontalScrollBarVisibility = ScrollBarVisibility.Never,
 				HeightRequest = heightReqest,
-				ItemTemplate = new DataTemplate(typeof(CalendarCarouselViewCell))
+				ItemTemplate = new DataTemplate(typeof(CalendarCarouselViewCell)),
+				ShowArrows = false,
+				Orientation = CarouselViewOrientation.Horizontal
 			};
+			
+			calendarCarouselView.SetBinding(
+				CarouselViewControl.ItemsSourceProperty, "CalendarList");
 
 			calendarCarouselView.SetBinding(
-				ItemsView.ItemsSourceProperty, "CalendarList");
+				CarouselViewControl.PositionProperty, "CalendarPosition");
 
 			calendarCarouselView.SetBinding(
-				CarouselView.PositionProperty, "CalendarPosition");
-
-			calendarCarouselView.SetBinding(
-				CarouselView.PositionChangedCommandProperty, "CalendarPositionChangedCommand");
+				CarouselViewControl.PositionSelectedCommandProperty, "PositionSelectedCommandProperty");
 
 			return calendarCarouselView;
 		}
@@ -161,13 +165,30 @@ namespace EduCATS.Pages.Today.Base.Views
 		ListView createSubjectsList()
 		{
 			var subjectsLabel = createSubjectsLabel();
-			var subjectsListView = new RoundedListView(typeof(CalendarSubjectsViewCell), header: subjectsLabel) {
-				RowHeight = (int)_subjectRowHeight,
-				IsEnabled = false,
-				Margin = _subjectsMargin
-			};
+			RoundedListView subjectsListView;
 
-			subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "CalendarSubjects");
+			if (Networking.Servers.Current == Networking.Servers.EduCatsByAddress)
+			{
+				subjectsListView = new RoundedListView(typeof(SubjectPageViewCell), header: subjectsLabel)
+				{
+					RowHeight = (int)_subjectDetailedRowHeight,
+					IsEnabled = false,
+					Margin = _subjectsMargin
+				};
+
+				subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "NewsSubjectList");
+			}
+			else
+			{
+				subjectsListView = new RoundedListView(typeof(CalendarSubjectsViewCell), header: subjectsLabel) {
+					RowHeight = (int)_subjectRowHeight,
+					IsEnabled = false,
+					Margin = _subjectsMargin,
+				};
+
+				subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "CalendarSubjects");
+			}
+
 			subjectsListView.SetBinding(HeightRequestProperty, "CalendarSubjectsHeight");
 			return subjectsListView;
 		}

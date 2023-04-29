@@ -4,17 +4,27 @@
 	"base_yes": "Taip",
 	"base_error": "Klaida",
 	"base_cancel": "Atšaukimas",
+	"base_success": "Sėkmė",
+	"base_completed": "Veiksmas baigtas",
 	"base_warning": "Dėmesio",
 	"base_loading": "Pakrovimas...",
 	"base_unexpected_error": "Įvyko netikėta klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba. Gali būti, kad prieigos raktas nebegalioja. Įveskite programą iš naujo.",
 	"base_connection_error": "Nėra interneto ryšio. Patikrinkite tinklo nustatymus ir bandykite dar kartą.",
 	"base_no_data": "Nėra rodomų duomenų",
+	"base_something_went_wrong": "Kažkas nutiko. Bandykite dar kartą arba susisiekite su palaikymo komanda.",
 
 	"contributor_ilya_lehchylin": "Ilya Lehchylin",
 	"contributor_julia_popova": "Julia Popova",
 
 	"role_student": "Studentas",
 	"role_professor": "Mokytojas",
+
+	"address_building": "p.",
+	"address_room": "a.",
+
+	"type_activity_lecture": "Lezione",
+	"type_activity_lab": "Lavoro di laboratorio",
+	"type_activity_practical": "Lavoro pratico",
 
 	"server_test": "Testavimo serveris",
 	"server_local": "Vietinis serveris",
@@ -31,8 +41,9 @@
 	"login_loading": "Prisijungimas prie sistemos...",
 	"login_profile_loading": "Profilio duomenų gavimas...",
 	"login_empty_credentials_error": "Reikalingas vartotojo vardas ir slaptažodis.",
-	"login_error": "Prisijungimas nepavyko. Patikrinkite įvestus duomenis.",
+	"login_error": "Nepavyko prisijungti prie sistemos. Patikrinkite savo kredencialus.",
 	"login_user_profile_error": "Gaunant profilio duomenis įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
+	"login_user_profile_not_verify": "Jūsų paskyra nepatvirtinta. Susisiekite su mokytoju, kad patvirtintumėte paskyrą.",
 
 	"main_today": "Šiandien",
 	"main_learning": "Mokymai",
@@ -136,7 +147,9 @@
 	"settings_font_large": "Didelis šriftas",
 	"settings_font_large_description": "Padidinkite programos šriftą.",
 
-	"settings_delete_message": "Sei sicuro di voler eliminare il tuo account?",
+	"settings_delete_message": "Ar tikrai norite ištrinti savo paskyrą?",
+	"settings_delete_success": "Jūsų paskyra buvo ištrinta",
+	"settings_delete_process": "Trinami profilio duomenys...",
 
 	"settings_about_app_version": "Versija",
 	"settings_about_app_build": "Programos sudarymas",
@@ -147,6 +160,14 @@
 	"settings_about_send_logs_not_supported": "Jūsų įrenginys nepalaiko šios funkcijos.",
 	"settings_about_send_logs_error": "Siunčiant žurnalus įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
 	"settings_about_contributors": "Autoriai",
+
+	"parental_login": "Pažangos statistika",
+	"parental_enter_group_number": "Įveskite grupės numerį",
+	"parental_enter_full_name": "Įveskite visą vardą",
+	"parental_error_empty_group_number": "Įveskite grupės numerį",
+	"parental_group_not_found": "Nurodyta grupė nerasta",
+	"parental_connection_error": "Nepavyko prisijungti prie serverio",
+	"parental_get_statistics": "Gauti statistiką",
 
 	"pets_name": "Koks jūsų mėgstamiausio gyvūno vardas?",
 	"hobby": "koks tavo hobis?",
@@ -187,6 +208,7 @@
 	"no_user": "Vartotojas nerastas!",
 	"invaild_answer": "Įvestas neteisingas slaptas atsakymas",
 	"password_changed": "Slaptažodis pakeistas",
+	"not_recovered_password_changed": "Šio vartotojo slaptažodis negali būti atkurtas!",
 	"successful_password_change": "Sėkmingas slaptažodžio pakeitimas",
 	"empty_fields_forgot_password": "Būtini laukai (prisijungimas, saugos klausimas, atsakymas, naujas slaptažodis, patvirtinimo slaptažodis) turi būti užpildyti!",
 
@@ -202,5 +224,9 @@
 	"date": "Data",
 	"comment": "Komentuoti",
 	"show_for_student": "Rodyti komentarą studentui",
-	"skipped_hours": "Praleistos valandos"
+	"skipped_hours": "Praleistos valandos",
+
+	"demo_eemc_open_error": "Demonstracinėje paskyroje dokumentų peržiūrėti negalima.",
+	"demo_files_download_error": "Mokomųjų programų atsisiuntimas negalimas naudojant demonstracinę paskyrą.",
+	"demo_delete_account_error": "Ištrinti demonstracinę sąskaitą neįmanoma."
 }

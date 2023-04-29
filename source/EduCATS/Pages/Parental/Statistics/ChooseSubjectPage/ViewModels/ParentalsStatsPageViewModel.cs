@@ -10,6 +10,7 @@ using EduCATS.Pages.Statistics.Base.Models;
 using Xamarin.Forms;
 using EduCATS.Pages.Parental.FindGroup.Models;
 using EduCATS.Pages.Statistics.Base.ViewModels;
+using Nyxbull.Plugins.CrossLocalization;
 
 namespace EduCATS.Pages.Parental.Statistics
 {
@@ -55,11 +56,12 @@ namespace EduCATS.Pages.Parental.Statistics
 
 			_service.Device.MainThread(async () =>
 			{
-				IsLoading = true;
+				PlatformServices.Dialogs.ShowLoading();
+				IsLoading = false;
 				SetupSubjects();
 				await getAndSetStatistics();
 				await setButtonsList();
-				IsLoading = false;
+				PlatformServices.Dialogs.HideLoading();
 			});
 
 			SubjectChanged += async (id, name) =>
@@ -94,14 +96,18 @@ namespace EduCATS.Pages.Parental.Statistics
 		{
 			try
 			{
-				PlatformServices.Device.MainThread(() => IsLoading = true);
+				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.ShowLoading());
+				PlatformServices.Device.MainThread(() => IsLoading = false);
 				SetupSubjects();
 				await getAndSetStatistics();
-				PlatformServices.Device.MainThread(() => IsLoading = false);
 			}
 			catch (Exception ex)
 			{
 				AppLogs.Log(ex);
+			}
+			finally
+			{
+				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideLoading());
 			}
 		}
 
@@ -166,7 +172,7 @@ namespace EduCATS.Pages.Parental.Statistics
 		/// </summary>
 		protected void openParental()
 		{
-			_service.Navigation.OpenFindGroup();
+			_service.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
 		}
 
 	}

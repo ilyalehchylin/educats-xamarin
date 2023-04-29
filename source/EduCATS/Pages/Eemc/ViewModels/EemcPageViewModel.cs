@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
+using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Pages.Pickers;
+using Newtonsoft.Json;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Eemc.ViewModels
@@ -18,6 +24,9 @@ namespace EduCATS.Pages.Eemc.ViewModels
 	/// </summary>
 	public class EemcPageViewModel : SubjectsViewModel
 	{
+		const string _filepathKey = "filepath";
+		WebClient _client;
+		object _progressDialog;
 		/// <summary>
 		/// Test identifier string.
 		/// </summary>
@@ -243,7 +252,15 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <returns>Task.</returns>
 		async Task setConceptsFromRoot(int id)
 		{
-			var conceptTree = await DataAccess.GetConceptTree(id);
+			ConceptModel conceptTree = null;
+
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+				conceptTree = await DataAccess.GetConceptTree(id);
+			else
+			{
+				ConceptModelTest conceptCascade = await DataAccess.GetConceptCascade(id);
+				conceptTree = JsonConvert.DeserializeObject<ConceptModel>(conceptCascade.Concept.ToString());
+			}
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
 				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
@@ -293,8 +310,21 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		/// <param name="filePath">File path.</param>
 		void openFile(string filePath)
 		{
-			PlatformServices.Device.MainThread(
-				async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/{filePath}"));
+			if (AppDemo.Instance.IsDemoAccount) {
+				PlatformServices.Device.MainThread(
+						() => PlatformServices.Dialogs.ShowError(
+							CrossLocalization.Translate("demo_eemc_open_error")));
+				return;
+			}
+
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+				PlatformServices.Device.MainThread(
+					async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/{filePath}"));
+			else
+			{
+				PlatformServices.Device.MainThread(
+					async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/api/Upload?fileName={filePath}"));
+			}
 		}
 
 		/// <summary>

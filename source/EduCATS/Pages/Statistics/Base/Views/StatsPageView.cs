@@ -102,26 +102,27 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 		StackLayout createHiddenDetailsView()
 		{
+			var avgPractView = createStatisticsView(
+				CrossLocalization.Translate("stats_chart_average_pract"),
+				Color.FromHex(Theme.Current.StatisticsChartPractColor),
+				"AveragePract");
+			avgPractView.SetBinding(IsVisibleProperty, "IsPract");
+
 			var avgLabsView = createStatisticsView(
 				CrossLocalization.Translate("stats_chart_average_labs"),
 				Color.FromHex(Theme.Current.StatisticsChartLabsColor),
 				"AverageLabs");
+			avgLabsView.SetBinding(IsVisibleProperty,"IsLabs");
 
 			var avgTestsView = createStatisticsView(
 				CrossLocalization.Translate("stats_chart_average_tests"),
 				Color.FromHex(Theme.Current.StatisticsChartTestsColor),
 				"AverageTests");
 
-			var avgPractView = createStatisticsView(
-				CrossLocalization.Translate("stats_chart_average_pract"),
-				Color.FromHex(Theme.Current.StatisticsChartPractColor),
-				"AveragePract");
-
 			var avgRatingView = createStatisticsView(
 				CrossLocalization.Translate("stats_chart_rating"),
 				Color.FromHex(Theme.Current.StatisticsChartRatingColor),
 				"Rating");
-
 
 			var avgStatsLayout = new StackLayout {
 				Children = {

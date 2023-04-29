@@ -14,6 +14,8 @@ namespace EduCATS.Networking.Models.SaveMarks
 
 		public string Mark { get; set; }
 
+		public bool ShowForStudent { get; set; }
+
 		public int StudentId { get; set; }
 
 		public int StudentLabMarkId { get; set; }

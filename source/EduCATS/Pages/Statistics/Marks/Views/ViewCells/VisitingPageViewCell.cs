@@ -14,7 +14,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 
 		const double _controlHeight = 50;
 
-		public List<string> listOfMarks = new List<string> {"0", "1", "2", "3", "4" };
+		public List<string> listOfMarks = new List<string> {"1", "2", "3", "4" };
 
 		public BindableProperty HeightRequestProperty { get; private set; }
 		public BindableProperty BackgroundColorProperty { get; private set; }
@@ -26,6 +26,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
+				Font = Font.SystemFontOfSize(NamedSize.Large).WithAttributes(FontAttributes.Bold),
 				Style = AppStyles.GetLabelStyle()
 			};
 
@@ -68,9 +69,9 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 			var markPicker = new Picker
 			{
 				BackgroundColor = Color.White,
-				HeightRequest = 50,
+				HeightRequest = 30,
 				ItemsSource = listOfMarks,
-				HorizontalTextAlignment = TextAlignment.Center,
+				HorizontalTextAlignment = TextAlignment.Center
 			};
 			markPicker.SetBinding(Picker.SelectedIndexProperty, "Mark");
 			markPicker.SetBinding(Picker.SelectedItemProperty, "Mark");
@@ -79,6 +80,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 			{
 				Style = entryStyle,
 				ReturnType = ReturnType.Done,
+				HeightRequest = 30
 			};
 
 			commentEntry.SetBinding(Entry.TextProperty, "Comment");

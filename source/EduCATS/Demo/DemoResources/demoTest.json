@@ -1,0 +1,15 @@
+﻿{
+	"Id": 1,
+	"Title": "Демонстрационный тест",
+	"Description": "Демонстрационное описание",
+	"SubjectId": 1,
+	"TimeForCompleting": 25,
+	"SetTimeForAllTest": true,
+	"CountOfQuestions": 1,
+	"IsNecessary": false,
+	"ForSelfStudy": false,
+	"ForEUMK": false,
+	"BeforeEUMK": true,
+	"ForNN": false,
+	"TestNumber": null
+}

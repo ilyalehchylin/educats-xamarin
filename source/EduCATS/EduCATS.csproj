@@ -6,6 +6,9 @@
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 	    <LangVersion>latest</LangVersion>
     </PropertyGroup>
+    <PropertyGroup>
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
         <DebugType>portable</DebugType>
         <DebugSymbols>true</DebugSymbols>
@@ -16,8 +19,9 @@
 	    <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
-        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+        <PackageReference Include="CarouselView.FormsPlugin" Version="6.0.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.0" />
+        <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
         <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
         <PackageReference Include="Nyxbull.Plugins.CrossLocalization" Version="1.3.1" />
         <PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
@@ -40,8 +44,6 @@
         <Folder Include="Themes\" />
         <Folder Include="Data\User\" />
         <Folder Include="Pages\Main\" />
-        <Folder Include="Pages\Today\" />
-        <Folder Include="Pages\Today\Base\" />
         <Folder Include="Pages\Today\Base\Views\" />
         <Folder Include="Pages\Today\Base\ViewModels\" />
         <Folder Include="Pages\Today\Base\Views\ViewCells\" />
@@ -50,11 +52,9 @@
         <Folder Include="Controls\RoundedListView\Enums\" />
         <Folder Include="Controls\RoundedListView\Interfaces\" />
         <Folder Include="Controls\RoundedListView\Selectors\" />
-        <Folder Include="Pages\Today\Base\Models\" />
         <Folder Include="Helpers\Date\" />
         <Folder Include="Helpers\Date\Extensions\" />
         <Folder Include="Helpers\Date\Enums\" />
-        <Folder Include="Data\Models\Subjects\" />
         <Folder Include="Data\Models\News\" />
         <Folder Include="Data\Models\Calendar\" />
         <Folder Include="Pages\Today\NewsDetails\" />
@@ -89,7 +89,6 @@
         <Folder Include="Pages\Testing\Base\Views\" />
         <Folder Include="Pages\Testing\Base\ViewModels\" />
         <Folder Include="Pages\Testing\Base\Views\ViewCells\" />
-        <Folder Include="Data\Models\Testing\" />
         <Folder Include="Pages\Testing\Base\Models\" />
         <Folder Include="Pages\Testing\Passing\" />
         <Folder Include="Pages\Testing\Passing\Models\" />
@@ -99,7 +98,6 @@
         <Folder Include="Data\Models\Testing\Passing\" />
         <Folder Include="Networking\Models\Testing\" />
         <Folder Include="Pages\Testing\Passing\Views\ViewCells\" />
-        <Folder Include="Data\Models\Testing\Results\" />
         <Folder Include="Pages\Testing\Results\" />
         <Folder Include="Pages\Testing\Results\Views\" />
         <Folder Include="Pages\Testing\Results\ViewModels\" />
@@ -108,12 +106,10 @@
         <Folder Include="Pages\Eemc\Views\" />
         <Folder Include="Pages\Eemc\ViewModels\" />
         <Folder Include="Networking\Models\Eemc\" />
-        <Folder Include="Data\Models\Eemc\" />
         <Folder Include="Pages\Eemc\Views\ViewCell\" />
         <Folder Include="Pages\Files\" />
         <Folder Include="Pages\Files\Views\" />
         <Folder Include="Pages\Files\ViewModels\" />
-        <Folder Include="Data\Models\Files\" />
         <Folder Include="Pages\Files\Models\" />
         <Folder Include="Pages\Files\Views\ViewCells\" />
         <Folder Include="Data\Models\Recommendations\" />
@@ -164,6 +160,8 @@
         <Folder Include="Helpers\Logs\" />
         <Folder Include="Helpers\Files\" />
         <Folder Include="Helpers\Files\Interfaces\" />
+        <Folder Include="Demo\" />
+        <Folder Include="Demo\DemoResources\" />
     </ItemGroup>
     <ItemGroup>
         <None Remove="Localization\en.json" />
@@ -190,6 +188,33 @@
         <None Remove="Localization\be.json" />
         <None Remove="Localization\de.json" />
         <None Remove="Localization\pl.json" />
+        <None Remove="Demo\" />
+        <None Remove="Demo\DemoResources\" />
+        <None Remove="Demo\DemoResources\demo_login.json" />
+        <None Remove="Demo\DemoResources\demo_profile_info.json" />
+        <None Remove="Demo\DemoResources\demoProfileInfoCalendar.json" />
+        <None Remove="Demo\DemoResources\demoNews.json" />
+        <None Remove="Demo\DemoResources\demoProfileInfoSubjects.json" />
+        <None Remove="Demo\DemoResources\demoPracticalTestStatistics.json" />
+        <None Remove="Demo\DemoResources\demoLabs.json" />
+        <None Remove="Demo\DemoResources\demoStatistics.json" />
+        <None Remove="Demo\DemoResources\demoAvailableTests.json" />
+        <None Remove="Demo\DemoResources\demoFiles.json" />
+        <None Remove="Demo\DemoResources\demoRootConcepts.json" />
+        <None Remove="Demo\DemoResources\demoConceptTree.json" />
+        <None Remove="Demo\DemoResources\demoRecommendations.json" />
+        <None Remove="Demo\DemoResources\demoTest.json" />
+        <None Remove="Demo\DemoResources\demoTestNextQuestion.json" />
+        <None Remove="Demo\DemoResources\demoTestAnswerAndGetNext.txt" />
+        <None Remove="Demo\DemoResources\demoTestUserAnswers.json" />
+        <None Remove="Demo\DemoResources\demoLabsResults.json" />
+        <None Remove="Demo\DemoResources\demoInfoLecturers.json" />
+        <None Remove="Demo\DemoResources\demoSchedule.json" />
+        <None Remove="Demo\DemoResources\demoProfileInfoSubjectsTest.json" />
+        <None Remove="Demo\DemoResources\demoFilesTest.json" />
+        <None Remove="Demo\DemoResources\demoFilesDetailsTest.json" />
+        <None Remove="Demo\DemoResources\demoConceptTreeTest.json" />
+        <None Remove="Demo\DemoResources\demoTestUserAnswersExtended.json" />
     </ItemGroup>
     <ItemGroup>
         <EmbeddedResource Include="Localization\en.json" />
@@ -216,5 +241,30 @@
         <EmbeddedResource Include="Localization\be.json" />
         <EmbeddedResource Include="Localization\de.json" />
         <EmbeddedResource Include="Localization\pl.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoLogin.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoProfileInfo.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoProfileInfoCalendar.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoNews.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoProfileInfoSubjects.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoPracticalTestStatistics.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoLabs.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoStatistics.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoAvailableTests.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoFiles.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoRootConcepts.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoConceptTree.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoRecommendations.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTestNextQuestion.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTestAnswerAndGetNext.txt" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTestUserAnswers.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoLabsResults.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoInfoLecturers.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoSchedule.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoProfileInfoSubjectsTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoFilesTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoFilesDetailsTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoConceptTreeTest.json" />
+        <EmbeddedResource Include="Demo\DemoResources\demoTestUserAnswersExtended.json" />
     </ItemGroup>
 </Project>

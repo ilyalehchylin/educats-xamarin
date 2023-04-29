@@ -4,17 +4,27 @@
 	"base_yes": "Так",
 	"base_error": "Памылка",
 	"base_cancel": "Адмена",
+	"base_success": "Поспех",
+	"base_completed": "Дзеянне завершана",
 	"base_warning": "Увага",
 	"base_loading": "Пампаванне...",
 	"base_unexpected_error": "Адбылася неспадзяваная памылка. Калі ласка, паспрабуйце яшчэ раз ці звярніцеся ў службу падтрымкі. Магчыма тэрмін дзеяння токена скончыўся, калі ласка перезайдите ў дадатак.",
 	"base_connection_error": "Адсутнічае злучэнне з інтэрнэтам. Праверце налады ў сетцы і паспрабуйце зноў",
 	"base_no_data": "Адсутнічаюць даныя для адлюстравання",
+	"base_something_went_wrong": "Нешта пайшло не так. Паўтарыце спробу або звярніцеся ў службу падтрымкі.",
 
 	"contributor_ilya_lehchylin": "Ілля Легчылін",
 	"contributor_julia_popova": "Юлія Папова",
 
 	"role_student": "Студэнт",
 	"role_professor": "Выкладчык",
+
+	"address_building": "к.",
+	"address_room": "а.",
+
+	"type_activity_lecture": "Лекцыя",
+	"type_activity_lab": "Лаб. праца",
+	"type_activity_practical": "Практ. праца",
 
 	"server_test": "Тэставы сервер",
 	"server_local": "Лакальны сервер",
@@ -31,8 +41,9 @@
 	"login_loading": "Уваход у сістэму...",
 	"login_profile_loading": "Атрыманне даных профіля...",
 	"login_empty_credentials_error": "Патрэбныя імя карыстальніка і пароль",
-	"login_error": "Не атрымалася ўвайсці ў сістэму. Калі ласка праверце ўведзеныя даныя.",
+	"login_error": "Не атрымалася ўвайсці ў сістэму. Калі ласка, праверце свае ўліковыя даныя.",
 	"login_user_profile_error": "Здарылася памылка падчас атрымання даных профіля. Калі ласка паспрабуйце яшчэ раз альбо звярніцеся ў службу падтрымкі.",
+	"login_user_profile_not_verify": "Ваш акаўнт не пацверджаны. Звяжыцеся са сваім настаўнікам, каб пацвердзіць свой уліковы запіс.",
 
 	"main_today": "Сёння",
 	"main_learning": "Навучанне",
@@ -135,6 +146,8 @@
 	"settings_font_large_description": "Зрабіць шрыфт у дадатку больш",
 
 	"settings_delete_message": "Вы сапраўды жадаеце выдаліць акаўнт?",
+	"settings_delete_success": "Ваш акаўнт выдалены",
+	"settings_delete_process": "Выдаленне дадзеных профілю...",
 
 	"settings_about_app_version": "Версія",
 	"settings_about_app_build": "Зборка",
@@ -145,6 +158,14 @@
 	"settings_about_send_logs_not_supported": "Дадзеная функцыя не падтрымліваецца вашай прыладай.",
 	"settings_about_send_logs_error": "Здарылася памылка падчас адпраўкі логаў. Калі ласка паспрабуйце зноў альбо звярніцеся ў службу падтрымкі.",
 	"settings_about_contributors": "Аўтары",
+
+	"parental_login": "Статыстыка паспяховасці",
+	"parental_enter_group_number": "Увядзіце нумар групы",
+	"parental_enter_full_name": "Увядзіце Прозвішча, імя,",
+	"parental_error_empty_group_number": "Калі ласка, увядзіце нумар гурта",
+	"parental_group_not_found": "Гэты гурт не знойдзены",
+	"parental_connection_error": "Не атрымалася падлучыцца да сервера",
+	"parental_get_statistics": "Атрымаць статыстыку",
 
 	"pets_name": "Мянушка любімага жывёльнага?",
 	"hobby": "Ваша хобі?",
@@ -185,6 +206,7 @@
 	"no_user": "Карыстальнік не знойдзены!",
 	"invaild_answer": "Уведзены няправільны сакрэтны адказ",
 	"password_changed": "Пароль зменены",
+	"not_recovered_password_changed": "Пароль дадзенага карыстальніка не можа быць адноўлены!",
 	"successful_password_change": "Паспяховая змена пароля",
 	"empty_fields_forgot_password": "Абавязковыя палі (Лагін, Сакрэтны пытанне, Адказ, Новы пароль, Пацвярджэнне пароля) павінны быць запоўненыя!",
 
@@ -200,5 +222,9 @@
 	"date": "Дата",
 	"comment": "Каментар",
 	"show_for_student": "Паказаць каментар студэнту",
-	"skipped_hours": "Прапушчана гадзін"
+	"skipped_hours": "Прапушчана гадзін",
+
+	"demo_eemc_open_error": "Прагляд дакументаў недаступны для дэманстрацыйнага акаўнта.",
+	"demo_files_download_error": "Загрузка навучальных матэрыялаў недаступная для дэманстрацыйнага акаўнта.",
+	"demo_delete_account_error": "Выдаленне дэманстрацыйнага акаўнта немагчыма."
 }

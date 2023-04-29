@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.User;
+using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
@@ -82,6 +83,7 @@ namespace EduCATS.Pages.Settings.Server.ViewModels
 
 		void changeServer(ServerPageModel server)
 		{
+			AppDemo.Instance.IsDemoAccount = false;
 			Servers.SetCurrent(server.Address);
 			_services.Preferences.IsLoggedIn = false;
 			AppUserData.Clear();

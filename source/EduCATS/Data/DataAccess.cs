@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data.Models;
+using EduCATS.Data.Models.Calendar;
 using EduCATS.Data.Models.User;
+using EduCATS.Networking;
 using EduCATS.Networking.Models.SaveMarks;
+using EduCATS.Networking.Models.SaveMarks.Labs;
 using EduCATS.Networking.Models.SaveMarks.LabSchedule;
 using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Networking.Models.Testing;
 using EduCATS.Pages.Parental.FindGroup.Models;
+using EduCATS.Pages.Statistics.Results.Models;
 
 namespace EduCATS.Data
 {
@@ -74,9 +77,30 @@ namespace EduCATS.Data
 		/// <returns>Subjects data.</returns>
 		public async static Task<List<SubjectModel>> GetProfileInfoSubjects(string username)
 		{
-			var dataAccess = new DataAccess<SubjectModel>(
-				"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
-			return await GetDataObject(dataAccess, true) as List<SubjectModel>;
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+			{
+				var dataAccess = new DataAccess<SubjectModel>(
+					"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
+				return await GetDataObject(dataAccess, true) as List<SubjectModel>;
+			}
+			else
+			{
+				var dataAccess = new DataAccess<SubjectModelTest>(
+					"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
+				return (await GetDataObject(dataAccess, false) as SubjectModelTest).Subjects;
+			}
+		}
+
+		/// <summary>
+		/// Fetch subjects.
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <returns>Subjects data.</returns>
+		public async static Task<InfoLecturesModel> GetInfoLectures(int subjectId)
+		{
+				var dataAccess = new DataAccess<InfoLecturesModel>(
+					"today_subjects_error", getInfoLecturesCallback(subjectId), GlobalConsts.DataGetSubjectsKey);
+				return await GetDataObject(dataAccess, false) as InfoLecturesModel;
 		}
 
 		/// <summary>
@@ -92,12 +116,24 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
+		/// Fetch schedule calendar data.
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <returns>Calendar data.</returns>
+		public async static Task<CalendarSubjectModelTest> GetSchedule(string date)
+		{
+			var dataAccess = new DataAccess<CalendarSubjectModelTest>(
+				"today_calendar_error", getScheduleCallback(date), GlobalConsts.DataGetCalendarKey);
+			return await GetDataObject(dataAccess, false) as CalendarSubjectModelTest;
+		}
+
+		/// <summary>
 		/// Fetch statistics.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Statistics data.</returns>
-		public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
+			public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
 		{
 			var dataAccess = new DataAccess<StatsModel>(
 				"stats_marks_error", getStatsCallback(subjectId, groupId),
@@ -127,6 +163,14 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, false) as TakedLabs;
 		}
 
+		public async static Task<Practs> GetPracticals(int subjectId)
+		{
+			var dataAccess = new DataAccess<Practs>(
+				"stats_marks_error", getTestPractScheduleCallbak(subjectId),
+				GetKey(GlobalConsts.DataGetPractsKey, subjectId));
+			return await GetDataObject(dataAccess, false) as Practs;
+		}
+
 		/// <summary>
 		/// Fetch statistics.
 		/// </summary>
@@ -154,6 +198,18 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, false) as GroupModel;
 		}
 
+		/// <summary>
+		/// Fetch groups data.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Group data.</returns>
+		public async static Task<List<GroupItemModel>> GetGroupsData()
+		{
+			var dataAccess = new DataAccess<GroupItemModel>(
+				"groups_fetch_error", getGroupsDataCallback());
+			return await GetDataObject(dataAccess, true) as List<GroupItemModel>;
+		}
+
 		public async static Task<LecturesModel> GetLecturesTest(int subjectId, int groupId)
 		{
 			var dataAccess = new DataAccess<LecturesModel>(
@@ -174,6 +230,14 @@ namespace EduCATS.Data
 				"labs_fetch_error", getLabsCallback(subjectId, groupId),
 				GetKey(GlobalConsts.DataGetLabsKey, subjectId, groupId));
 			return await GetDataObject(dataAccess, false) as LabsModel;
+		}
+
+		public async static Task<Laboratories> GetLabs(int subjectId)
+		{
+			var dataAccess = new DataAccess<Laboratories>(
+				"labs_fetch_error", getLabsCallback(subjectId),
+				GetKey(GlobalConsts.DataGetLabsKey, subjectId));
+			return await GetDataObject(dataAccess, false) as Laboratories;
 		}
 
 		/// <summary>
@@ -268,6 +332,14 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, true) as List<TestResultsModel>;
 		}
 
+		public async static Task<ExtendedTestResultModel> GetUserAnswers(int testId)
+		{
+			var dataAccess = new DataAccess<ExtendedTestResultModel>(
+				"test_results_error", getTestAnswersCallback(testId),
+				GetKey(GlobalConsts.DataGetTestAnswersKey, testId));
+			return await GetDataObject(dataAccess, false) as ExtendedTestResultModel;
+		}
+
 		/// <summary>
 		/// Fetch Electronic Educational Methodological Complexes
 		/// root concepts.
@@ -277,10 +349,20 @@ namespace EduCATS.Data
 		/// <returns>Root concept data.</returns>
 		public async static Task<RootConceptModel> GetRootConcepts(string userId, string subjectId)
 		{
-			var dataAccess = new DataAccess<RootConceptModel>(
+			DataAccess<RootConceptModel> dataAccess = null;
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+			{
+				 dataAccess = new DataAccess<RootConceptModel>(
 				"eemc_root_concepts_error", getRootConceptsCallback(userId, subjectId),
 				GetKey(GlobalConsts.DataGetRootConceptKey, userId, subjectId));
-			return await GetDataObject(dataAccess, false) as RootConceptModel;
+			}
+			else
+			{
+				dataAccess = new DataAccess<RootConceptModel>(
+				"eemc_root_concepts_error", getRootConceptsCallback(subjectId),
+				GetKey(GlobalConsts.DataGetRootConceptKey, subjectId));
+			}
+				return await GetDataObject(dataAccess, false) as RootConceptModel;
 		}
 
 		/// <summary>
@@ -298,6 +380,20 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
+		/// Fetch Electronic Educational Methodological Complexes
+		/// concept cascade.
+		/// </summary>
+		/// <param name="elementId">Root element ID.</param>
+		/// <returns>Concept data.</returns>
+		public async static Task<ConceptModelTest> GetConceptCascade(int elementId)
+		{
+			var dataAccess = new DataAccess<ConceptModelTest>(
+				"eemc_concept_tree_error", getConceptCascadeCallback(elementId),
+				GetKey(GlobalConsts.DataGetConceptTreeKey, elementId));
+			return await GetDataObject(dataAccess, false) as ConceptModelTest;
+		}
+
+		/// <summary>
 		/// Fetch files.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
@@ -308,6 +404,22 @@ namespace EduCATS.Data
 				"files_fetch_error", getFilesCallback(subjectId),
 				GetKey(GlobalConsts.DataGetFilesKey, subjectId));
 			return await GetDataObject(dataAccess, false) as FilesModel;
+		}
+
+		public async static Task<FilesModelTest> GetFilesTest(int subjectId)
+		{
+			var dataAccess = new DataAccess<FilesModelTest>(
+				"files_fetch_error", getFilesCallback(subjectId),
+				GetKey(GlobalConsts.DataGetFilesKey, subjectId));
+			return await GetDataObject(dataAccess, false) as FilesModelTest;
+		}
+
+		public async static Task<List<FileDetailsModelTest>> GetDetailsFilesTest(string uri)
+		{
+			var dataAccess = new DataAccess<FileDetailsModelTest>(
+				"files_fetch_error", getFilesDetailsCallback(uri),
+				GetKey(GlobalConsts.DataGetFilesKey, uri));
+			return await GetDataObject(dataAccess, true) as List<FileDetailsModelTest>;
 		}
 
 		/// <summary>

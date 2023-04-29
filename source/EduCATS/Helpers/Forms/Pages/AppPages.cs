@@ -79,8 +79,10 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <summary>
 		/// Open group finding page.
 		/// </summary>
-		public void OpenFindGroup() =>
-			switchMainPage(new FindGroupPageView());
+		/// <param name="title"></param>
+		/// <returns></returns>
+		public async Task OpenFindGroup(string title) =>
+			await pushPage(new FindGroupPageView(),title);
 
 		public async Task OpenParentalStats(GroupInfo group, string title) =>
 			await pushPage(new ParentalStatsPageView(group), title);
@@ -258,7 +260,7 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <param name="page">Page to convert.</param>
 		/// <param name="title">Page title.</param>
 		/// <returns>Task.</returns>
-		NavigationPage getNavigationPage(Page page, string title = null) => new NavigationPage(page) {
+		NavigationPage getNavigationPage(Page page, string title = "") => new NavigationPage(page) {
 			Title = title,
 			BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
 			BarTextColor = Color.FromHex(Theme.Current.BaseAppColor)
@@ -270,11 +272,11 @@ namespace EduCATS.Helpers.Forms.Pages
 		public async Task OpenForgotPassword(string title) =>
 			await pushPage(new ForgotPasswordPageView(), title);
 
-		public async Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId) =>
-			await pushPage(new SaveMarksPageView(subjectId, groupId.GroupId, title), title);
+		public async Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId,string groupName) =>
+			await pushPage(new SaveMarksPageView(subjectId, groupId.GroupId, title, groupName), title);
 
-		public async Task OpenAddMarksPracticeAndLabs(string title, GroupItemModel groupId, int subject) =>
-			await pushPage(new SavePracticeAndLabsPageView(title, subject, groupId.GroupId), title);
+		public async Task OpenAddMarksPracticeAndLabs(string title, GroupItemModel groupId, int subject, string groupName) =>
+			await pushPage(new SavePracticeAndLabsPageView(title, subject, groupId.GroupId, groupName), title);
 
 		public async Task OpenAddSingleMark(string title, string name, LabsVisitingList Marks, TakedLabs prOrLabStat, int sub) =>
 			await pushPage(new SaveSingleStudentMarkPageView(title, name, Marks, prOrLabStat, sub), title);

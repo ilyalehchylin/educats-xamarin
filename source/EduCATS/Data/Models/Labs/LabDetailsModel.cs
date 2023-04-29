@@ -42,5 +42,8 @@ namespace EduCATS.Data.Models
 		/// </summary>
 		[JsonProperty("Theme")]
 		public string Theme { get; set; }
+
+		[JsonProperty("SubGroup")]
+		public int SubGroup { get; set; }
 	}
 }

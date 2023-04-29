@@ -1,5 +1,11 @@
+#!/bin/bash
+
+set -e
+
 # Install DocFX
-brew install docfx
+dotnet tool update -g docfx
+# curl -OL https://github.com/dotnet/docfx/releases/download/v2.65.3/docfx-osx-x64-v2.65.3.zip
+# unzip docfx*.zip -d docfx_tool
 
 # Remove previous version of documentation
 rm -r docs/

@@ -180,7 +180,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 		int getNextQuestion()
 		{
-			return _questionNumber + 1 <= _questionCount ? _questionNumber + 1 : 1;
+			return _questionNumber + 1 <= _questionCount ? _questionNumber + 1 : -1;
 		}
 	}
 }

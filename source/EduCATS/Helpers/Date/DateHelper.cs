@@ -37,6 +37,11 @@ namespace EduCATS.Helpers.Date
 		public const string DefaultDateTime = "0001-01-01";
 
 		/// <summary>
+		/// Date string.
+		/// </summary>
+		public const string DateTime = "dd.MM.yyyy";
+
+		/// <summary>
 		/// Default date & time format (without seconds).
 		/// </summary>
 		public const string DefaultDateTimeFormat = "dd-MM-yyyy HH:mm";

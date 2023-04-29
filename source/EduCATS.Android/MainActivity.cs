@@ -42,6 +42,7 @@ namespace EduCATS.Droid
 		{
 			Platform.Init(this, savedInstanceState);
 			Xamarin.Forms.Forms.Init(this, savedInstanceState);
+			CarouselView.FormsPlugin.Droid.CarouselViewRenderer.Init();
 			CachedImageRenderer.Init(enableFastRenderer: true);
 			UserDialogs.Init(this);
 		}

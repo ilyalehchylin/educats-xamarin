@@ -55,10 +55,11 @@ namespace EduCATS.Pages.Parental.Statistics.ViewsModels
 
 		protected override async Task getAndSetStudents()
 		{
-			IsLoading = true;
+			PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.ShowLoading());
+			IsLoading = false;
 			var studentsStatistics = await getStatistics();
 			setStudents(studentsStatistics);
-			IsLoading = false;
+			PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideLoading());
 		}
 
 		protected override async Task<List<StatsStudentModel>> getStatistics()

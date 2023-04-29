@@ -17,6 +17,8 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 	{
 		static Thickness _gridPadding = new Thickness(15);
 		const double _controlHeight = 50;
+		const double _heightRequest = 30;
+
 		static Thickness _padding = new Thickness(10, 1);
 		public List<int> Marks = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		public List<string> NameOfLabOrPractice = new List<string>();
@@ -54,15 +56,17 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			var inicials = new Label
 			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
 				Style = AppStyles.GetLabelStyle(),
+				Font = Font.SystemFontOfSize(NamedSize.Large).WithSize(20).WithAttributes(FontAttributes.Bold),
 				Text = name,
 			};
 
 			var nameOfPrOrLb = new Picker
 			{
 				BackgroundColor = Color.White,
-				HeightRequest = 50,
+				HeightRequest = _controlHeight,
 				ItemsSource = NameOfLabOrPractice,
 				HorizontalTextAlignment = TextAlignment.Center,
 			};
@@ -99,7 +103,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
 				Style = AppStyles.GetLabelStyle(),
-				HeightRequest = 60,
+				HeightRequest = _heightRequest,
 				Text = CrossLocalization.Translate("show_for_student"),
 			};
 
@@ -113,7 +117,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			var markPicker = new Picker
 			{
 				BackgroundColor = Color.White,
-				HeightRequest = 50,
+				HeightRequest = _heightRequest,
 				ItemsSource = Marks,
 				HorizontalTextAlignment = TextAlignment.Center,
 			};
@@ -127,6 +131,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 				Text = DateTime.Today.ToString("dd.MM.yyyy"),
 				TextColor = Color.Black,
 				IsReadOnly = true,
+				HeightRequest = _heightRequest
 			};
 
 			var commentEntry = new Entry

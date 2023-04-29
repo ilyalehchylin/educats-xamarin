@@ -1,0 +1,16 @@
+﻿[
+	{
+		"Name": "Предмет #1",
+		"Id": 1,
+		"ShortName": "П1",
+		"Color": "#BF0606",
+		"Completing": 0
+	},
+	{
+		"Name": "Предмет #2",
+		"Id": 2,
+		"ShortName": "П2",
+		"Color": "#06BF09",
+		"Completing": 0
+	}
+]

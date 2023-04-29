@@ -29,6 +29,13 @@ namespace EduCATS.Helpers.Forms.Devices
 		void MainThread(Action action);
 
 		/// <summary>
+		/// Launch file
+		/// </summary>
+		/// <param name="pathForFile"></param>
+		/// <returns></returns>
+		Task LaunchFile(string pathForFile);
+
+		/// <summary>
 		/// Share file.
 		/// </summary>
 		/// <param name="title">Title.</param>

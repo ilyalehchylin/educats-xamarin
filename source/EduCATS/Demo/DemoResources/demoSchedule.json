@@ -1,0 +1,28 @@
+﻿{
+	"Schedule": [
+		{
+			"Audience": "1",
+			"Building": "1",
+			"Color": "#BF0606",
+			"Start": "15:00",
+			"End": "16:00",
+			"Name": "Лабораторная работа",
+			"Teacher": {
+				"FullName": "Фамилия Имя Отчество"
+			},
+			"Type": 2
+		},
+		{
+			"Audience": "2",
+			"Building": "2",
+			"Color": "#06BF09",
+			"Start": "10:00",
+			"End": "11:00",
+			"Name": "Лекция",
+			"Teacher": {
+				"FullName": "Фамилия Имя"
+			},
+			"Type": 0
+		}
+	]
+}

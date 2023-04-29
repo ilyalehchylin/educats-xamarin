@@ -99,17 +99,7 @@ In this case GitHub will ignore `docs/` directory contribution (500,000+ lines) 
 Before submitting pull request you should choose the reviewer.  
 The following checks should pass:
 
-- Bitrise ci check (more details [here](../pages/articles/continuous-integration.md))
+- [GitHub Actions](https://github.com/ilyalehchylin/educats-xamarin/actions) CI/CD
 - Reviewer check
 
-Name conventions for pull request commits:
-
-```
-[PR] [GH-Associated_issue_number] Description
-```
-
-Examples:
-
-```
-[PR] [GH-123] Fixed app settings crash
-```
+Name conventions for pull request titles are the same as for [commits](#commits).

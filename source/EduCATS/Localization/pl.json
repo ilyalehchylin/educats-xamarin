@@ -4,17 +4,27 @@
 	"base_yes": "Tak",
 	"base_error": "Błąd",
 	"base_cancel": "Anuluj",
+	"base_success": "Powodzenie",
+	"base_completed": "Akcja zakończona",
 	"base_warning": "Uwaga",
 	"base_loading": "Ładowanie...",
 	"base_unexpected_error": "Wystąpił nieoczekiwany błąd. Spróbuj ponownie lub skontaktuj się z obsługą klienta. Token mógł wygasnąć, prosimy o ponowne wypełnienie wniosku.",
 	"base_connection_error": "Brak połączenia z Internetem. Sprawdź ustawienia sieci i spróbuj ponownie.",
 	"base_no_data": "Brak danych do wyświetlenia",
+	"base_something_went_wrong": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z pomocą techniczną.",
 
 	"contributor_ilya_lehchylin": "Ilja Legczilin",
 	"contributor_julia_popova": "Julia Popowa",
 
 	"role_student": "Student",
 	"role_professor": "Wykładowca",
+
+	"address_building": "b.",
+	"address_room": "s.",
+
+	"type_activity_lecture": "Wykład",
+	"type_activity_lab": "Praca laboratoryjna",
+	"type_activity_practical": "Praca praktyczna",
 
 	"server_test": "Serwer testowy",
 	"server_local": "Serwer lokalny",
@@ -31,9 +41,9 @@
 	"login_loading": "Logowanie...",
 	"login_profile_loading": "Pobieranie danych profilu...",
 	"login_empty_credentials_error": "Wymagana nazwa użytkownika i hasło.",
-	"login_error": "Nie można się zalogować. Proszę sprawdzić wprowadzone dane.",
+	"login_error": "Nie można zalogować się do systemu. Sprawdź swoje dane uwierzytelniające.",
 	"login_user_profile_error": "Wystąpił błąd podczas pobierania danych profilu. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
-
+	"login_user_profile_not_verify": "Twoje konto nie zostało zweryfikowane. Skontaktuj się ze swoim nauczycielem, aby zweryfikować konto.",
 	"main_today": "Dzisiaj",
 	"main_learning": "Uczenie",
 	"main_statistics": "Statystyk",
@@ -137,6 +147,8 @@
 	"settings_font_large_description": "Zwiększ czcionkę w aplikacji.",
 
 	"settings_delete_message": "Czy na pewno chcesz usunąć swoje konto?",
+	"settings_delete_success": "Twoje konto zostało usunięte",
+	"settings_delete_process": "Usuwanie danych profilu...",
 
 	"settings_about_app_version": "Wersja",
 	"settings_about_app_build": "Kompilacja",
@@ -147,6 +159,14 @@
 	"settings_about_send_logs_not_supported": "Ta funkcja nie jest obsługiwana przez twoje urządzenie.",
 	"settings_about_send_logs_error": "Wystąpił błąd podczas wysyłania logów. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
 	"settings_about_contributors": "Autorzy",
+
+	"parental_login": "Statystyki postępu",
+	"parental_enter_group_number": "Wprowadź numer grupy",
+	"parental_enter_full_name": "Wprowadź pełne imię i nazwisko",
+	"parental_error_empty_group_number": "Wprowadź numer grupy",
+	"parental_group_not_found": "Podana grupa nie została znaleziona",
+	"parental_connection_error": "Nie można połączyć się z serwerem",
+	"parental_get_statistics": "Pobierz statystyki",
 
 	"pets_name": "Jak nazywa się twoje ulubione zwierzę?",
 	"hobby": "Jakie jest Twoje hobby?",
@@ -187,6 +207,7 @@
 	"no_user": "Nie znaleziono użytkownika!",
 	"invaild_answer": "Wprowadzono nieprawidłową tajną odpowiedź",
 	"password_changed": "Hasło zostało zmienione",
+	"not_recovered_password_changed": "Hasła tego użytkownika nie można odzyskać!",
 	"successful_password_change": "Pomyślna zmiana hasła",
 	"empty_fields_forgot_password": "Wymagane pola (login, pytanie zabezpieczające, odpowiedź, nowe hasło, potwierdź hasło) muszą być wypełnione!",
 
@@ -202,5 +223,9 @@
 	"date": "Data",
 	"comment": "Komentarz",
 	"show_for_student": "Pokaż komentarz uczniowi",
-	"skipped_hours": "Brakujące godziny"
+	"skipped_hours": "Brakujące godziny",
+
+	"demo_eemc_open_error": "Przeglądanie dokumentów nie jest dostępne dla konta demonstracyjnego.",
+	"demo_files_download_error": "Pobieranie samouczków nie jest dostępne dla konta demonstracyjnego.",
+	"demo_delete_account_error": "Usunięcie konta demonstracyjnego nie jest możliwe."
 }

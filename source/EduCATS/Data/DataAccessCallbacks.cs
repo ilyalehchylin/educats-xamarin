@@ -14,7 +14,7 @@ namespace EduCATS.Data
 		/// <returns>User data.</returns>
 		static async Task<object> loginCallback(
 			string username, string password) => await AppServices.Login(username, password);
-
+		
 		static async Task<object> loginCallbackEducatsby(
 			string username, string password) => await AppServices.LoginEducatsBy(username, password);
 
@@ -48,12 +48,28 @@ namespace EduCATS.Data
 			string username) => await AppServices.GetProfileInfoSubjects(username);
 
 		/// <summary>
+		/// Lectures callback.
+		/// </summary>
+		/// <param name="subjectId">SubjectId.</param>
+		/// <returns>Data lectures.</returns>
+		static async Task<object> getInfoLecturesCallback(
+			int subjectId) => await AppServices.GetInfoLecturers(subjectId);
+
+		/// <summary>
 		/// Calendar callback.
 		/// </summary>
 		/// <param name="username">Username.</param>
 		/// <returns>Calendar data.</returns>
 		static async Task<object> getCalendarCallback(
 			string username) => await AppServices.GetProfileInfoCalendar(username);
+
+		/// <summary>
+		/// Schedule callback.
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <returns>Calendar data.</returns>
+		static async Task<object> getScheduleCallback(
+			string date) => await AppServices.GetSchedule(date);
 
 		/// <summary>
 		/// Statistics callback.
@@ -71,7 +87,10 @@ namespace EduCATS.Data
 			int subjectId, int groupId) => await AppServices.GetPracticials(subjectId, groupId);
 
 		static async Task<object> getTestPractScheduleCallbak(
-			int subjectId, int gruopId) => await AppServices.GetPractTestStatistics(subjectId, gruopId);
+			int subjectId) => await AppServices.GetPractTestStatistics(subjectId);
+
+		static async Task<object> getTestPractScheduleCallbak(
+			int subjectId, int groupId) => await AppServices.GetPractTestStatistics(subjectId, groupId);
 
 		/// <summary>
 		/// Groups callback.
@@ -82,6 +101,13 @@ namespace EduCATS.Data
 			int subjectId) => await AppServices.GetOnlyGroups(subjectId);
 
 		/// <summary>
+		/// Groups data callback.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Group data.</returns>
+		static async Task<object> getGroupsDataCallback() => await AppServices.GetGroupsData();
+
+		/// <summary>
 		/// Laboratory works callback.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
@@ -89,6 +115,8 @@ namespace EduCATS.Data
 		/// <returns>Laboratory works data.</returns>
 		static async Task<object> getLabsCallback(
 			int subjectId, int groupId) => await AppServices.GetLabs(subjectId, groupId);
+		static async Task<object> getLabsCallback(
+			int subjectId) => await AppServices.GetLabs(subjectId);
 
 		/// <summary>
 		/// Laboratory works callback.
@@ -98,6 +126,8 @@ namespace EduCATS.Data
 		/// <returns>Laboratory works data.</returns>
 		static async Task<object> getTestLabsCallback(
 			int subjectId, int groupId) => await AppServices.GetLabs(subjectId, groupId);
+		static async Task<object> getTestLabsCallback(
+			int subjectId) => await AppServices.GetLabs(subjectId);
 
 		/// <summary>
 		/// Lectures callback.
@@ -153,6 +183,8 @@ namespace EduCATS.Data
 		/// <returns>List of results data.</returns>
 		static async Task<object> getTestAnswersCallback(
 			int userId, int testId) => await AppServices.GetUserAnswers(userId, testId);
+		static async Task<object> getTestAnswersCallback(
+			int testId) => await AppServices.GetUserAnswers(testId);
 
 		/// <summary>
 		/// Root concepts callback.
@@ -163,6 +195,9 @@ namespace EduCATS.Data
 		static async Task<object> getRootConceptsCallback(
 			string userId, string subjectId) => await AppServices.GetRootConcepts(userId, subjectId);
 
+		static async Task<object> getRootConceptsCallback(
+			string subjectId) => await AppServices.GetRootConcepts(subjectId);
+
 		/// <summary>
 		/// Concept tree callback.
 		/// </summary>
@@ -170,6 +205,14 @@ namespace EduCATS.Data
 		/// <returns>Concept data.</returns>
 		static async Task<object> getConceptTreeCallback(
 			int elementId) => await AppServices.GetConceptTree(elementId);
+
+		/// <summary>
+		/// Concept cascade callback.
+		/// </summary>
+		/// <param name="elementId">Root element ID.</param>
+		/// <returns>Concept data.</returns>
+		static async Task<object> getConceptCascadeCallback(
+			int elementId) => await AppServices.GetConceptCascade(elementId);
 
 		/// <summary>
 		/// Files callback.
@@ -187,6 +230,14 @@ namespace EduCATS.Data
 		/// <returns>List of recommendations data.</returns>
 		static async Task<object> getRecommendationsCallback(
 			int subjectId, int userId) => await AppServices.GetRecommendations(subjectId, userId);
+
+		/// <summary>
+		/// Files details callback.
+		/// </summary>
+		/// <param name="content uri">content uri.</param>
+		/// <returns>Files data.</returns>
+		static async Task<object> getFilesDetailsCallback(
+			string uri) => await AppServices.GetFilesDetails(uri);
 
 		/// <summary>
 		/// GroupInfo Callback

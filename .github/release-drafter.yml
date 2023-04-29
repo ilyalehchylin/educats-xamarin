@@ -11,7 +11,7 @@ categories:
   - title: 'New Features'
     label: 'feature'
   - title: 'Bug Fixes'
-    label: 'bugfix'
+    label: 'bug'
   - title: 'Other Changes'
     label: 'update'
 change-template: '- $TITLE (#$NUMBER)'

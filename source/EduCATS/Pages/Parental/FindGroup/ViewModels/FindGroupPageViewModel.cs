@@ -28,17 +28,6 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 			IsLoadingCompleted = true;
 		}
 
-		bool _isLoading;
-
-		/// <summary>
-		/// Property for checking loading status.
-		/// </summary>
-		public bool IsLoading
-		{
-			get { return _isLoading; }
-			set { SetProperty(ref _isLoading, value); }
-		}
-
 		bool _isLoadingCompleted;
 
 		/// <summary>
@@ -84,19 +73,6 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 					async () => await openParental()));
 			}
 		}
-
-		Command _backCommand;
-		/// <summary>
-		/// Open Main Statistic page
-		/// </summary>
-		public Command BackCommand
-		{
-			get
-			{
-				return _backCommand ?? (_backCommand = new Command(() => _service.Navigation.OpenLogin()));
-			}
-		}
-
 		protected async Task openParental()
 		{
 			if (string.IsNullOrEmpty(GroupNumber))
@@ -106,7 +82,8 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 			}
 			try
 			{
-				IsLoading = true;
+				_service.Device.MainThread(() => _service.Dialogs.ShowLoading());
+
 				var group = await DataAccess.GetGroupInfo(GroupNumber);
 
 				if (group.Code.Equals("200"))
@@ -121,11 +98,14 @@ namespace EduCATS.Pages.Parental.FindGroup.ViewModels
 					_service.Dialogs.ShowError(CrossLocalization.Translate("parental_group_not_found"));
 				}
 
-				IsLoading = false;
 			}
 			catch
 			{
 				_service.Dialogs.ShowError(CrossLocalization.Translate("parental_connection_error"));
+			}
+			finally
+			{
+				_service.Device.MainThread(() => _service.Dialogs.HideLoading());
 			}
 		}
 

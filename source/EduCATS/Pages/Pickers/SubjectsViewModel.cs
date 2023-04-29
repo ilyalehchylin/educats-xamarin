@@ -112,7 +112,7 @@ namespace EduCATS.Pages.Pickers
 					return;
 				}
 
-				SetCurrentSubjectsList(subjects.ToList());
+				SetCurrentSubjectsList(subjects.Distinct().ToList());
 				SetupSubject();
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
@@ -175,7 +175,7 @@ namespace EduCATS.Pages.Pickers
 
 		public void SetCurrentSubjectsList(List<SubjectModel> subjects)
 		{
-			CurrentSubjects = subjects;
+			CurrentSubjects = subjects.OrderBy(x => x.Name).ToList();
 		}
 
 		bool checkSubjectsList()

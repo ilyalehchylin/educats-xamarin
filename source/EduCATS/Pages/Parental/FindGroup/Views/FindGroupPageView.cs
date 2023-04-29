@@ -44,7 +44,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 		{
 			var settingsIcon = createSettingsIcon();
 			var mainLayout = createDataForm();
-			var activityIndicator = createActivityIndicator();
 
 			var scrollView = new ScrollView
 			{
@@ -52,7 +51,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 				Content = new StackLayout
 				{
 					Children = {
-						activityIndicator,
 						mainLayout
 					}
 				}
@@ -68,27 +66,12 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 			};
 		}
 
-		ActivityIndicator createActivityIndicator()
-		{
-			var activityIndicator = new ActivityIndicator
-			{
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				Margin = _baseSpacing,
-				Color = Color.FromHex(Theme.Current.AboutTextColor),
-			};
-
-			activityIndicator.SetBinding(IsVisibleProperty, "IsLoading");
-			activityIndicator.SetBinding(ActivityIndicator.IsRunningProperty, "IsLoading");
-			return activityIndicator;
-		}
-
 		StackLayout createDataForm()
 		{
 			var entryStyle = getEntryStyle();
 			var groupNumberEntry = createGroupNumberEntry(entryStyle);
 			var fIOEntry = createFIOEntry(entryStyle);
 			var findButton = createFindButton();
-			var backButton = createBackButton();
 
 			var mainStackLayout = new StackLayout
 			{
@@ -99,7 +82,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 					groupNumberEntry,
 					fIOEntry,
 					findButton,
-					backButton,
 				}
 			};
 
@@ -175,23 +157,6 @@ namespace EduCATS.Pages.Parental.FindGroup.Views
 
 			findButton.SetBinding(Button.CommandProperty, "ParentalCommand");
 			return findButton;
-		}
-
-		Button createBackButton()
-		{
-			var backButton = new Button
-			{
-				Text = CrossLocalization.Translate("eemc_back_text"),
-				FontAttributes = FontAttributes.Bold,
-				TextColor = Color.FromHex(Theme.Current.LoginButtonTextColor),
-				BackgroundColor = Color.FromHex(Theme.Current.LoginButtonBackgroundColor),
-				Margin = _baseSpacing,
-				HeightRequest = _controlHeight,
-				Style = AppStyles.GetButtonStyle(bold: true)
-			};
-
-			backButton.SetBinding(Button.CommandProperty, "BackCommand");
-			return backButton;
 		}
 
 		Style getEntryStyle()
