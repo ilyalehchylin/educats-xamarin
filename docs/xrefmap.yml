@@ -4205,6 +4205,241 @@ references:
   commentId: F:EduCATS.Data.User.UserTypeEnum.Student
   fullName: EduCATS.Data.User.UserTypeEnum.Student
   nameWithType: UserTypeEnum.Student
+- uid: EduCATS.Demo
+  name: EduCATS.Demo
+  href: api/EduCATS.Demo.html
+  commentId: N:EduCATS.Demo
+  fullName: EduCATS.Demo
+  nameWithType: EduCATS.Demo
+- uid: EduCATS.Demo.AppDemo
+  name: AppDemo
+  href: api/EduCATS.Demo.AppDemo.html
+  commentId: T:EduCATS.Demo.AppDemo
+  fullName: EduCATS.Demo.AppDemo
+  nameWithType: AppDemo
+- uid: EduCATS.Demo.AppDemo.CheckDemoAccount(System.String,System.String)
+  name: CheckDemoAccount(string, string)
+  href: api/EduCATS.Demo.AppDemo.html#EduCATS_Demo_AppDemo_CheckDemoAccount_System_String_System_String_
+  commentId: M:EduCATS.Demo.AppDemo.CheckDemoAccount(System.String,System.String)
+  name.vb: CheckDemoAccount(String, String)
+  fullName: EduCATS.Demo.AppDemo.CheckDemoAccount(string, string)
+  fullName.vb: EduCATS.Demo.AppDemo.CheckDemoAccount(String, String)
+  nameWithType: AppDemo.CheckDemoAccount(string, string)
+  nameWithType.vb: AppDemo.CheckDemoAccount(String, String)
+- uid: EduCATS.Demo.AppDemo.CheckDemoAccount*
+  name: CheckDemoAccount
+  href: api/EduCATS.Demo.AppDemo.html#EduCATS_Demo_AppDemo_CheckDemoAccount_
+  commentId: Overload:EduCATS.Demo.AppDemo.CheckDemoAccount
+  isSpec: "True"
+  fullName: EduCATS.Demo.AppDemo.CheckDemoAccount
+  nameWithType: AppDemo.CheckDemoAccount
+- uid: EduCATS.Demo.AppDemo.GetDemoResponse(EduCATS.Demo.AppDemoType)
+  name: GetDemoResponse(AppDemoType)
+  href: api/EduCATS.Demo.AppDemo.html#EduCATS_Demo_AppDemo_GetDemoResponse_EduCATS_Demo_AppDemoType_
+  commentId: M:EduCATS.Demo.AppDemo.GetDemoResponse(EduCATS.Demo.AppDemoType)
+  fullName: EduCATS.Demo.AppDemo.GetDemoResponse(EduCATS.Demo.AppDemoType)
+  nameWithType: AppDemo.GetDemoResponse(AppDemoType)
+- uid: EduCATS.Demo.AppDemo.GetDemoResponse*
+  name: GetDemoResponse
+  href: api/EduCATS.Demo.AppDemo.html#EduCATS_Demo_AppDemo_GetDemoResponse_
+  commentId: Overload:EduCATS.Demo.AppDemo.GetDemoResponse
+  isSpec: "True"
+  fullName: EduCATS.Demo.AppDemo.GetDemoResponse
+  nameWithType: AppDemo.GetDemoResponse
+- uid: EduCATS.Demo.AppDemo.GetInvalidResponse
+  name: GetInvalidResponse()
+  href: api/EduCATS.Demo.AppDemo.html#EduCATS_Demo_AppDemo_GetInvalidResponse
+  commentId: M:EduCATS.Demo.AppDemo.GetInvalidResponse
+  fullName: EduCATS.Demo.AppDemo.GetInvalidResponse()
+  nameWithType: AppDemo.GetInvalidResponse()
+- uid: EduCATS.Demo.AppDemo.GetInvalidResponse*
+  name: GetInvalidResponse
+  href: api/EduCATS.Demo.AppDemo.html#EduCATS_Demo_AppDemo_GetInvalidResponse_
+  commentId: Overload:EduCATS.Demo.AppDemo.GetInvalidResponse
+  isSpec: "True"
+  fullName: EduCATS.Demo.AppDemo.GetInvalidResponse
+  nameWithType: AppDemo.GetInvalidResponse
+- uid: EduCATS.Demo.AppDemo.Instance
+  name: Instance
+  href: api/EduCATS.Demo.AppDemo.html#EduCATS_Demo_AppDemo_Instance
+  commentId: F:EduCATS.Demo.AppDemo.Instance
+  fullName: EduCATS.Demo.AppDemo.Instance
+  nameWithType: AppDemo.Instance
+- uid: EduCATS.Demo.AppDemo.IsDemoAccount
+  name: IsDemoAccount
+  href: api/EduCATS.Demo.AppDemo.html#EduCATS_Demo_AppDemo_IsDemoAccount
+  commentId: P:EduCATS.Demo.AppDemo.IsDemoAccount
+  fullName: EduCATS.Demo.AppDemo.IsDemoAccount
+  nameWithType: AppDemo.IsDemoAccount
+- uid: EduCATS.Demo.AppDemo.IsDemoAccount*
+  name: IsDemoAccount
+  href: api/EduCATS.Demo.AppDemo.html#EduCATS_Demo_AppDemo_IsDemoAccount_
+  commentId: Overload:EduCATS.Demo.AppDemo.IsDemoAccount
+  isSpec: "True"
+  fullName: EduCATS.Demo.AppDemo.IsDemoAccount
+  nameWithType: AppDemo.IsDemoAccount
+- uid: EduCATS.Demo.AppDemoType
+  name: AppDemoType
+  href: api/EduCATS.Demo.AppDemoType.html
+  commentId: T:EduCATS.Demo.AppDemoType
+  fullName: EduCATS.Demo.AppDemoType
+  nameWithType: AppDemoType
+- uid: EduCATS.Demo.AppDemoType.AvailableTests
+  name: AvailableTests
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_AvailableTests
+  commentId: F:EduCATS.Demo.AppDemoType.AvailableTests
+  fullName: EduCATS.Demo.AppDemoType.AvailableTests
+  nameWithType: AppDemoType.AvailableTests
+- uid: EduCATS.Demo.AppDemoType.ConceptTree
+  name: ConceptTree
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_ConceptTree
+  commentId: F:EduCATS.Demo.AppDemoType.ConceptTree
+  fullName: EduCATS.Demo.AppDemoType.ConceptTree
+  nameWithType: AppDemoType.ConceptTree
+- uid: EduCATS.Demo.AppDemoType.ConceptTreeTest
+  name: ConceptTreeTest
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_ConceptTreeTest
+  commentId: F:EduCATS.Demo.AppDemoType.ConceptTreeTest
+  fullName: EduCATS.Demo.AppDemoType.ConceptTreeTest
+  nameWithType: AppDemoType.ConceptTreeTest
+- uid: EduCATS.Demo.AppDemoType.Files
+  name: Files
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_Files
+  commentId: F:EduCATS.Demo.AppDemoType.Files
+  fullName: EduCATS.Demo.AppDemoType.Files
+  nameWithType: AppDemoType.Files
+- uid: EduCATS.Demo.AppDemoType.FilesDetailsTest
+  name: FilesDetailsTest
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_FilesDetailsTest
+  commentId: F:EduCATS.Demo.AppDemoType.FilesDetailsTest
+  fullName: EduCATS.Demo.AppDemoType.FilesDetailsTest
+  nameWithType: AppDemoType.FilesDetailsTest
+- uid: EduCATS.Demo.AppDemoType.FilesTest
+  name: FilesTest
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_FilesTest
+  commentId: F:EduCATS.Demo.AppDemoType.FilesTest
+  fullName: EduCATS.Demo.AppDemoType.FilesTest
+  nameWithType: AppDemoType.FilesTest
+- uid: EduCATS.Demo.AppDemoType.InfoLecturers
+  name: InfoLecturers
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_InfoLecturers
+  commentId: F:EduCATS.Demo.AppDemoType.InfoLecturers
+  fullName: EduCATS.Demo.AppDemoType.InfoLecturers
+  nameWithType: AppDemoType.InfoLecturers
+- uid: EduCATS.Demo.AppDemoType.Labs
+  name: Labs
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_Labs
+  commentId: F:EduCATS.Demo.AppDemoType.Labs
+  fullName: EduCATS.Demo.AppDemoType.Labs
+  nameWithType: AppDemoType.Labs
+- uid: EduCATS.Demo.AppDemoType.LabsResults
+  name: LabsResults
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_LabsResults
+  commentId: F:EduCATS.Demo.AppDemoType.LabsResults
+  fullName: EduCATS.Demo.AppDemoType.LabsResults
+  nameWithType: AppDemoType.LabsResults
+- uid: EduCATS.Demo.AppDemoType.Login
+  name: Login
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_Login
+  commentId: F:EduCATS.Demo.AppDemoType.Login
+  fullName: EduCATS.Demo.AppDemoType.Login
+  nameWithType: AppDemoType.Login
+- uid: EduCATS.Demo.AppDemoType.News
+  name: News
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_News
+  commentId: F:EduCATS.Demo.AppDemoType.News
+  fullName: EduCATS.Demo.AppDemoType.News
+  nameWithType: AppDemoType.News
+- uid: EduCATS.Demo.AppDemoType.None
+  name: None
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_None
+  commentId: F:EduCATS.Demo.AppDemoType.None
+  fullName: EduCATS.Demo.AppDemoType.None
+  nameWithType: AppDemoType.None
+- uid: EduCATS.Demo.AppDemoType.PracticalTestStatistics
+  name: PracticalTestStatistics
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_PracticalTestStatistics
+  commentId: F:EduCATS.Demo.AppDemoType.PracticalTestStatistics
+  fullName: EduCATS.Demo.AppDemoType.PracticalTestStatistics
+  nameWithType: AppDemoType.PracticalTestStatistics
+- uid: EduCATS.Demo.AppDemoType.ProfileInfo
+  name: ProfileInfo
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_ProfileInfo
+  commentId: F:EduCATS.Demo.AppDemoType.ProfileInfo
+  fullName: EduCATS.Demo.AppDemoType.ProfileInfo
+  nameWithType: AppDemoType.ProfileInfo
+- uid: EduCATS.Demo.AppDemoType.ProfileInfoCalendar
+  name: ProfileInfoCalendar
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_ProfileInfoCalendar
+  commentId: F:EduCATS.Demo.AppDemoType.ProfileInfoCalendar
+  fullName: EduCATS.Demo.AppDemoType.ProfileInfoCalendar
+  nameWithType: AppDemoType.ProfileInfoCalendar
+- uid: EduCATS.Demo.AppDemoType.ProfileInfoSubjects
+  name: ProfileInfoSubjects
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_ProfileInfoSubjects
+  commentId: F:EduCATS.Demo.AppDemoType.ProfileInfoSubjects
+  fullName: EduCATS.Demo.AppDemoType.ProfileInfoSubjects
+  nameWithType: AppDemoType.ProfileInfoSubjects
+- uid: EduCATS.Demo.AppDemoType.ProfileInfoSubjectsTest
+  name: ProfileInfoSubjectsTest
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_ProfileInfoSubjectsTest
+  commentId: F:EduCATS.Demo.AppDemoType.ProfileInfoSubjectsTest
+  fullName: EduCATS.Demo.AppDemoType.ProfileInfoSubjectsTest
+  nameWithType: AppDemoType.ProfileInfoSubjectsTest
+- uid: EduCATS.Demo.AppDemoType.Recommendations
+  name: Recommendations
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_Recommendations
+  commentId: F:EduCATS.Demo.AppDemoType.Recommendations
+  fullName: EduCATS.Demo.AppDemoType.Recommendations
+  nameWithType: AppDemoType.Recommendations
+- uid: EduCATS.Demo.AppDemoType.RootConcepts
+  name: RootConcepts
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_RootConcepts
+  commentId: F:EduCATS.Demo.AppDemoType.RootConcepts
+  fullName: EduCATS.Demo.AppDemoType.RootConcepts
+  nameWithType: AppDemoType.RootConcepts
+- uid: EduCATS.Demo.AppDemoType.Schedule
+  name: Schedule
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_Schedule
+  commentId: F:EduCATS.Demo.AppDemoType.Schedule
+  fullName: EduCATS.Demo.AppDemoType.Schedule
+  nameWithType: AppDemoType.Schedule
+- uid: EduCATS.Demo.AppDemoType.Statistics
+  name: Statistics
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_Statistics
+  commentId: F:EduCATS.Demo.AppDemoType.Statistics
+  fullName: EduCATS.Demo.AppDemoType.Statistics
+  nameWithType: AppDemoType.Statistics
+- uid: EduCATS.Demo.AppDemoType.Test
+  name: Test
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_Test
+  commentId: F:EduCATS.Demo.AppDemoType.Test
+  fullName: EduCATS.Demo.AppDemoType.Test
+  nameWithType: AppDemoType.Test
+- uid: EduCATS.Demo.AppDemoType.TestAnswerAndGetNext
+  name: TestAnswerAndGetNext
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_TestAnswerAndGetNext
+  commentId: F:EduCATS.Demo.AppDemoType.TestAnswerAndGetNext
+  fullName: EduCATS.Demo.AppDemoType.TestAnswerAndGetNext
+  nameWithType: AppDemoType.TestAnswerAndGetNext
+- uid: EduCATS.Demo.AppDemoType.TestNextQuestion
+  name: TestNextQuestion
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_TestNextQuestion
+  commentId: F:EduCATS.Demo.AppDemoType.TestNextQuestion
+  fullName: EduCATS.Demo.AppDemoType.TestNextQuestion
+  nameWithType: AppDemoType.TestNextQuestion
+- uid: EduCATS.Demo.AppDemoType.TestUserAnswers
+  name: TestUserAnswers
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_TestUserAnswers
+  commentId: F:EduCATS.Demo.AppDemoType.TestUserAnswers
+  fullName: EduCATS.Demo.AppDemoType.TestUserAnswers
+  nameWithType: AppDemoType.TestUserAnswers
+- uid: EduCATS.Demo.AppDemoType.TestUserAnswersExtended
+  name: TestUserAnswersExtended
+  href: api/EduCATS.Demo.AppDemoType.html#EduCATS_Demo_AppDemoType_TestUserAnswersExtended
+  commentId: F:EduCATS.Demo.AppDemoType.TestUserAnswersExtended
+  fullName: EduCATS.Demo.AppDemoType.TestUserAnswersExtended
+  nameWithType: AppDemoType.TestUserAnswersExtended
 - uid: EduCATS.Fonts
   name: EduCATS.Fonts
   href: api/EduCATS.Fonts.html
@@ -4826,6 +5061,22 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Files.FileManager.Read
   nameWithType: FileManager.Read
+- uid: EduCATS.Helpers.Files.FileManager.ReadDemoEmbeddedResource(System.String,System.String)
+  name: ReadDemoEmbeddedResource(string, string)
+  href: api/EduCATS.Helpers.Files.FileManager.html#EduCATS_Helpers_Files_FileManager_ReadDemoEmbeddedResource_System_String_System_String_
+  commentId: M:EduCATS.Helpers.Files.FileManager.ReadDemoEmbeddedResource(System.String,System.String)
+  name.vb: ReadDemoEmbeddedResource(String, String)
+  fullName: EduCATS.Helpers.Files.FileManager.ReadDemoEmbeddedResource(string, string)
+  fullName.vb: EduCATS.Helpers.Files.FileManager.ReadDemoEmbeddedResource(String, String)
+  nameWithType: FileManager.ReadDemoEmbeddedResource(string, string)
+  nameWithType.vb: FileManager.ReadDemoEmbeddedResource(String, String)
+- uid: EduCATS.Helpers.Files.FileManager.ReadDemoEmbeddedResource*
+  name: ReadDemoEmbeddedResource
+  href: api/EduCATS.Helpers.Files.FileManager.html#EduCATS_Helpers_Files_FileManager_ReadDemoEmbeddedResource_
+  commentId: Overload:EduCATS.Helpers.Files.FileManager.ReadDemoEmbeddedResource
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Files.FileManager.ReadDemoEmbeddedResource
+  nameWithType: FileManager.ReadDemoEmbeddedResource
 - uid: EduCATS.Helpers.Files.IFileManager
   name: IFileManager
   href: api/EduCATS.Helpers.Files.IFileManager.html
@@ -4928,6 +5179,22 @@ references:
   isSpec: "True"
   fullName: EduCATS.Helpers.Files.IFileManager.Read
   nameWithType: IFileManager.Read
+- uid: EduCATS.Helpers.Files.IFileManager.ReadDemoEmbeddedResource(System.String,System.String)
+  name: ReadDemoEmbeddedResource(string, string)
+  href: api/EduCATS.Helpers.Files.IFileManager.html#EduCATS_Helpers_Files_IFileManager_ReadDemoEmbeddedResource_System_String_System_String_
+  commentId: M:EduCATS.Helpers.Files.IFileManager.ReadDemoEmbeddedResource(System.String,System.String)
+  name.vb: ReadDemoEmbeddedResource(String, String)
+  fullName: EduCATS.Helpers.Files.IFileManager.ReadDemoEmbeddedResource(string, string)
+  fullName.vb: EduCATS.Helpers.Files.IFileManager.ReadDemoEmbeddedResource(String, String)
+  nameWithType: IFileManager.ReadDemoEmbeddedResource(string, string)
+  nameWithType.vb: IFileManager.ReadDemoEmbeddedResource(String, String)
+- uid: EduCATS.Helpers.Files.IFileManager.ReadDemoEmbeddedResource*
+  name: ReadDemoEmbeddedResource
+  href: api/EduCATS.Helpers.Files.IFileManager.html#EduCATS_Helpers_Files_IFileManager_ReadDemoEmbeddedResource_
+  commentId: Overload:EduCATS.Helpers.Files.IFileManager.ReadDemoEmbeddedResource
+  isSpec: "True"
+  fullName: EduCATS.Helpers.Files.IFileManager.ReadDemoEmbeddedResource
+  nameWithType: IFileManager.ReadDemoEmbeddedResource
 - uid: EduCATS.Helpers.Forms
   name: EduCATS.Helpers.Forms
   href: api/EduCATS.Helpers.Forms.html
@@ -8093,24 +8360,24 @@ references:
   isSpec: "True"
   fullName: EduCATS.Networking.AppServices.AppServicesController.PlatformServices
   nameWithType: AppServicesController.PlatformServices
-- uid: EduCATS.Networking.AppServices.AppServicesController.Request(System.String,System.String)
-  name: Request(string, string)
-  href: api/EduCATS.Networking.AppServices.AppServicesController.html#EduCATS_Networking_AppServices_AppServicesController_Request_System_String_System_String_
-  commentId: M:EduCATS.Networking.AppServices.AppServicesController.Request(System.String,System.String)
-  name.vb: Request(String, String)
-  fullName: EduCATS.Networking.AppServices.AppServicesController.Request(string, string)
-  fullName.vb: EduCATS.Networking.AppServices.AppServicesController.Request(String, String)
-  nameWithType: AppServicesController.Request(string, string)
-  nameWithType.vb: AppServicesController.Request(String, String)
-- uid: EduCATS.Networking.AppServices.AppServicesController.Request(System.String)
-  name: Request(string)
-  href: api/EduCATS.Networking.AppServices.AppServicesController.html#EduCATS_Networking_AppServices_AppServicesController_Request_System_String_
-  commentId: M:EduCATS.Networking.AppServices.AppServicesController.Request(System.String)
-  name.vb: Request(String)
-  fullName: EduCATS.Networking.AppServices.AppServicesController.Request(string)
-  fullName.vb: EduCATS.Networking.AppServices.AppServicesController.Request(String)
-  nameWithType: AppServicesController.Request(string)
-  nameWithType.vb: AppServicesController.Request(String)
+- uid: EduCATS.Networking.AppServices.AppServicesController.Request(System.String,EduCATS.Demo.AppDemoType)
+  name: Request(string, AppDemoType)
+  href: api/EduCATS.Networking.AppServices.AppServicesController.html#EduCATS_Networking_AppServices_AppServicesController_Request_System_String_EduCATS_Demo_AppDemoType_
+  commentId: M:EduCATS.Networking.AppServices.AppServicesController.Request(System.String,EduCATS.Demo.AppDemoType)
+  name.vb: Request(String, AppDemoType)
+  fullName: EduCATS.Networking.AppServices.AppServicesController.Request(string, EduCATS.Demo.AppDemoType)
+  fullName.vb: EduCATS.Networking.AppServices.AppServicesController.Request(String, EduCATS.Demo.AppDemoType)
+  nameWithType: AppServicesController.Request(string, AppDemoType)
+  nameWithType.vb: AppServicesController.Request(String, AppDemoType)
+- uid: EduCATS.Networking.AppServices.AppServicesController.Request(System.String,System.String,EduCATS.Demo.AppDemoType)
+  name: Request(string, string, AppDemoType)
+  href: api/EduCATS.Networking.AppServices.AppServicesController.html#EduCATS_Networking_AppServices_AppServicesController_Request_System_String_System_String_EduCATS_Demo_AppDemoType_
+  commentId: M:EduCATS.Networking.AppServices.AppServicesController.Request(System.String,System.String,EduCATS.Demo.AppDemoType)
+  name.vb: Request(String, String, AppDemoType)
+  fullName: EduCATS.Networking.AppServices.AppServicesController.Request(string, string, EduCATS.Demo.AppDemoType)
+  fullName.vb: EduCATS.Networking.AppServices.AppServicesController.Request(String, String, EduCATS.Demo.AppDemoType)
+  nameWithType: AppServicesController.Request(string, string, AppDemoType)
+  nameWithType.vb: AppServicesController.Request(String, String, AppDemoType)
 - uid: EduCATS.Networking.AppServices.AppServicesController.Request*
   name: Request
   href: api/EduCATS.Networking.AppServices.AppServicesController.html#EduCATS_Networking_AppServices_AppServicesController_Request_

@@ -360,6 +360,18 @@
                         </ul>                    </li>
                     <li class="">
                       <span class="expand-stub"></span>
+                      <a href="EduCATS.Demo.html" title="EduCATS.Demo" class="">EduCATS.Demo</a>
+
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="EduCATS.Demo.AppDemo.html" title="AppDemo" class="">AppDemo</a>
+                          </li>
+                          <li class="">
+                            <a href="EduCATS.Demo.AppDemoType.html" title="AppDemoType" class="">AppDemoType</a>
+                          </li>
+                        </ul>                    </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
                       <a href="EduCATS.Fonts.html" title="EduCATS.Fonts" class="">EduCATS.Fonts</a>
 
                         <ul class="nav level2">
@@ -1688,13 +1700,13 @@
   <h3 id="methods">Methods
 </h3>
   <a id="EduCATS_Networking_AppServices_AppServicesController_Request_" data-uid="EduCATS.Networking.AppServices.AppServicesController.Request*"></a>
-  <h4 id="EduCATS_Networking_AppServices_AppServicesController_Request_System_String_System_String_" data-uid="EduCATS.Networking.AppServices.AppServicesController.Request(System.String,System.String)">Request(string, string)</h4>
-  <div class="markdown level1 summary"><p>Send <code>POST</code> request.</p>
+  <h4 id="EduCATS_Networking_AppServices_AppServicesController_Request_System_String_EduCATS_Demo_AppDemoType_" data-uid="EduCATS.Networking.AppServices.AppServicesController.Request(System.String,EduCATS.Demo.AppDemoType)">Request(string, AppDemoType)</h4>
+  <div class="markdown level1 summary"><p>Send <code>GET</code> request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task&lt;KeyValuePair&lt;string, HttpStatusCode&gt;&gt; Request(string link, string body)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Task&lt;KeyValuePair&lt;string, HttpStatusCode&gt;&gt; Request(string link, AppDemoType demoType = AppDemoType.None)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -1713,9 +1725,10 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
-        <td><span class="parametername">body</span></td>
-        <td></td>
+        <td><a class="xref" href="EduCATS.Demo.AppDemoType.html">AppDemoType</a></td>
+        <td><span class="parametername">demoType</span></td>
+        <td><p>Demo response type.</p>
+</td>
       </tr>
     </tbody>
   </table>
@@ -1737,13 +1750,13 @@ response and status code.</p>
     </tbody>
   </table>
   <a id="EduCATS_Networking_AppServices_AppServicesController_Request_" data-uid="EduCATS.Networking.AppServices.AppServicesController.Request*"></a>
-  <h4 id="EduCATS_Networking_AppServices_AppServicesController_Request_System_String_" data-uid="EduCATS.Networking.AppServices.AppServicesController.Request(System.String)">Request(string)</h4>
-  <div class="markdown level1 summary"><p>Send <code>GET</code> request.</p>
+  <h4 id="EduCATS_Networking_AppServices_AppServicesController_Request_System_String_System_String_EduCATS_Demo_AppDemoType_" data-uid="EduCATS.Networking.AppServices.AppServicesController.Request(System.String,System.String,EduCATS.Demo.AppDemoType)">Request(string, string, AppDemoType)</h4>
+  <div class="markdown level1 summary"><p>Send <code>POST</code> request.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task&lt;KeyValuePair&lt;string, HttpStatusCode&gt;&gt; Request(string link)</code></pre>
+    <pre><code class="lang-csharp hljs">public static Task&lt;KeyValuePair&lt;string, HttpStatusCode&gt;&gt; Request(string link, string body, AppDemoType demoType = AppDemoType.None)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-condensed">
@@ -1759,6 +1772,18 @@ response and status code.</p>
         <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
         <td><span class="parametername">link</span></td>
         <td><p>API URL.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></td>
+        <td><span class="parametername">body</span></td>
+        <td><p>Body to post.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="EduCATS.Demo.AppDemoType.html">AppDemoType</a></td>
+        <td><span class="parametername">demoType</span></td>
+        <td><p>Demo response type.</p>
 </td>
       </tr>
     </tbody>

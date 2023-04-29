@@ -765,6 +765,36 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Demo.AppDemo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Demo.AppDemo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Demo.AppDemoType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Demo.AppDemoType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Demo.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Demo.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EduCATS.Fonts.FontExclude.yml",
       "output": {
         ".html": {
