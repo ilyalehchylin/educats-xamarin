@@ -69,7 +69,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 			var markPicker = new Picker
 			{
 				BackgroundColor = Color.White,
-				HeightRequest = 30,
+				HeightRequest = 40,
 				ItemsSource = listOfMarks,
 				HorizontalTextAlignment = TextAlignment.Center
 			};
@@ -80,7 +80,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 			{
 				Style = entryStyle,
 				ReturnType = ReturnType.Done,
-				HeightRequest = 30
+				HeightRequest = 40
 			};
 
 			commentEntry.SetBinding(Entry.TextProperty, "Comment");
@@ -90,7 +90,11 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 				Padding = _gridPadding,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 			};
-			
+
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0, GridUnitType.Auto) });
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Auto) });
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(3, GridUnitType.Auto) });
 			gridLayout.Children.Add(inicials, 0, 0);
 			gridLayout.Children.Add(markLabel, 0, 1);
 			gridLayout.Children.Add(markPicker, 2, 1);

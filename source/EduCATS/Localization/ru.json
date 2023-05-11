@@ -24,7 +24,7 @@
 
 	"type_activity_lecture": "Лекция",
 	"type_activity_lab": "Лаб. работа",
-	"type_activity_practical": "Практ. работа",
+	"type_activity_practical": "Практ. занятие",
 
 	"server_test": "Тестовый сервер",
 	"server_local": "Локальный сервер",
@@ -217,8 +217,8 @@
 	"set_visiting": "Выставить пропуски",
 	"save_marks": "Сохранить",
 
-	"practiсe_visiting": "Пропуски практических работ",
-	"practice_mark": "Оценки по практическим работам",
+	"practiсe_visiting": "Пропуски практических занятий",
+	"practice_mark": "Оценки по практическим занятиям",
 
 	"sub_group": "Подгруппа ",
 	"mark": "Оценка",
