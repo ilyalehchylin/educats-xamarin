@@ -403,24 +403,30 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 						}
 					}
 
+					var labsVisitingList = _currentLabsVisitingList.OrderBy(vis => DateTime.Parse(vis.Date)).ToList();
 
-					var visitingLabsTestResult = labs.LabVisitingMark.Select(v =>
+					List<StatsResultsPageModel> temp = new List<StatsResultsPageModel>();
+
+					foreach (var vis in labsVisitingList)
 					{
-						var lab = _currentLabsVisitingList.FirstOrDefault(
-							l => l.ProtectionLabId == v.ScheduleProtectionLabId);
+						var lab = labs.LabVisitingMark.FirstOrDefault(l => l.ScheduleProtectionLabId == vis.ProtectionLabId);
 
-						Theme theme = null;
-						if (queueTheme.Count > 0)
+						if (lab != null)
 						{
-							theme = queueTheme.Dequeue();
-						}
+							Theme theme = null;
+							if (queueTheme.Count > 0)
+							{
+								theme = queueTheme.Dequeue();
+							}
 
-						var labTitle = lab == null ? null : $"{theme.ShortName}. {theme.LabTheme}";
-						var result = string.IsNullOrEmpty(v.Mark) ? _emptyRatingString : v.Mark;
-						return new StatsResultsPageModel(labTitle, lab?.Date, setCommentByRole(v.Comment, v.ShowForStudent), result);
-					});
+							var labTitle = lab == null ? null : $"{theme.ShortName}. {theme.LabTheme}";
+							var result = string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark;
+
+							temp.Add(new StatsResultsPageModel(labTitle, vis?.Date, setCommentByRole(lab.Comment, lab.ShowForStudent), result));
+						}
+					}
 ;
-					Marks = new List<StatsResultsPageModel>(visitingLabsTestResult).OrderBy(x => DateTime.Parse(x.Date)).ToList();
+					Marks = new List<StatsResultsPageModel>(temp);
 				}
 				else
 				{

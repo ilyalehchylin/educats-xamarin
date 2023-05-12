@@ -61,7 +61,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 			}
 		}
 
-		private async Task<KeyValuePair<string, HttpStatusCode>> saveMarks()
+		private async Task saveMarks()
 		{
 			string body = ""; 
 			string link = "";
@@ -72,6 +72,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 				foreach (var pract in _takedLabs.Practicals.Where(v => v.ShortName == SelectedShortName))
 				{
 					save.practicalId = pract.PracticalId;
+					save.subjectId = _services.Preferences.ChosenSubjectId;
 					foreach (var practic in fullPractice.Students.Where(v => v.FullName == studentName))
 					{
 						save.studentId = practic.StudentId;
@@ -109,8 +110,11 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 				}
 				body = JsonController.ConvertObjectToJson(save);
 			}
+			
+			await AppServicesController.Request(link, body);
 			await _services.Navigation.ClosePage(false);
-			return await AppServicesController.Request(link, body);
+
+			return;
 		}
 
 		string _selectedShortName;

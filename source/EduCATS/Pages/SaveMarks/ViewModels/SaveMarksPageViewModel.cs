@@ -454,7 +454,10 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				}
 				DateLabs = Date1;
 				LabsVisitingMarksSubGroup = _currentLabsVisitingMarksSubGroup1;
-				SelectedLabDate = DateLabs[DateLabs.Count - 1];
+				
+				if (DateLabs.Count != 0)
+					SelectedLabDate = DateLabs[DateLabs.Count - 1];
+
 				return _selectedSubGroup;
 			}
 			set 

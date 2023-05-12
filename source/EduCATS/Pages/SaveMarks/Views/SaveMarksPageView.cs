@@ -24,7 +24,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 
 		static Thickness _padding = new Thickness(10, 1);
 		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
-		static int _heightRequest = 30;
+		static int _heightRequest = 40;
 		private string _groupName;
 		const double _controlHeight = 50;
 

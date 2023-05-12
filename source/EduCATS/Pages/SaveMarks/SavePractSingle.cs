@@ -15,5 +15,6 @@ namespace EduCATS.Pages.SaveMarks
 		public int mark { get; set; }
 		public bool showForStudent { get; set; }
 		public int studentId { get; set; }
+		public int subjectId { get; set; }
 	}
 }
