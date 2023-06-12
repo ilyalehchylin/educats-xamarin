@@ -2,7 +2,7 @@
 
 # EduCATS Xamarin
 
-A cross-platform client for the [Leaning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
+A cross-platform client for the [Learning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
 
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
 [![Latest GitHub release)](https://img.shields.io/github/v/release/ilyalehchylin/educats-xamarin?logo=github)](https://github.com/ilyalehchylin/educats-xamarin/releases)
