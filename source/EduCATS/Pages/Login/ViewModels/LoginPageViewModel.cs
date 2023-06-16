@@ -215,7 +215,15 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openParental()
 		{
-			await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
+			if (Servers.Current == Servers.EduCatsAddress)
+			{
+				await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
+			}
+			else
+			{
+				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
+							CrossLocalization.Translate("change_server"));
+			}
 		}
 
 
