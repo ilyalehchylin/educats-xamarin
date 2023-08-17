@@ -57,6 +57,7 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidPackageFormats>aab;apk</AndroidPackageFormats>
     <LangVersion>latest</LangVersion>
+    <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
