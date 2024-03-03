@@ -55,7 +55,7 @@ namespace EduCATS.Controls.RoundedListView
 			double footerBottomPadding = 0,
 			Func<object> func = null)
 		{
-			HasUnevenRows = true;
+			//HasUnevenRows = true;
 			ItemTemplate = func == null ?
 				new RoundedListTemplateSelector(type, checkbox) :
 				new RoundedListTemplateSelector(func, checkbox);
@@ -142,6 +142,7 @@ namespace EduCATS.Controls.RoundedListView
 			};
 
 			var frame = new Frame {
+				Padding = new Thickness(0, 0, 0, bottomPadding),
 				HasShadow = false,
 				CornerRadius = (float)_capHeight,
 				BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor)
