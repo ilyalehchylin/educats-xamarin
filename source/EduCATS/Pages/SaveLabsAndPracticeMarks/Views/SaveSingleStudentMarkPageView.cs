@@ -20,6 +20,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		const double _heightRequest = 40;
 
 		static Thickness _padding = new Thickness(10, 1);
+		static Thickness _margin = new Thickness(0, 10);
 		public List<int> Marks = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		public List<string> NameOfLabOrPractice = new List<string>();
 		public string _title { get; set; }
@@ -56,10 +57,11 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			var inicials = new Label
 			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Margin = _margin,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
 				Style = AppStyles.GetLabelStyle(),
-				Font = Font.SystemFontOfSize(NamedSize.Large).WithSize(20).WithAttributes(FontAttributes.Bold),
+				Font = Font.SystemFontOfSize(NamedSize.Large).WithSize(20).WithAttributes(FontAttributes.None),
 				Text = name,
 			};
 
