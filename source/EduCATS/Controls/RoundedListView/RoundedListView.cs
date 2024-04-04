@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using EduCATS.Controls.RoundedListView.Selectors;
 using EduCATS.Helpers.Forms.Styles;
+using EduCATS.Pages.Today.Base.Views.ViewCells;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
@@ -55,7 +56,8 @@ namespace EduCATS.Controls.RoundedListView
 			double footerBottomPadding = 0,
 			Func<object> func = null)
 		{
-			//HasUnevenRows = true;
+			if (type == typeof(SubjectPageViewCell) || type == typeof(CalendarSubjectsViewCell)) HasUnevenRows = false;
+			else HasUnevenRows = true;
 			ItemTemplate = func == null ?
 				new RoundedListTemplateSelector(type, checkbox) :
 				new RoundedListTemplateSelector(func, checkbox);

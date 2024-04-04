@@ -144,6 +144,20 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 
 			commentEntry.SetBinding(Entry.TextProperty, "Comment");
 
+			nameOfPrOrLb.PropertyChanged += delegate {
+				if (nameOfPrOrLb.SelectedItem is not null)
+				if (marks.Students.First(student => student.FullName == name).LabsMarks.First(labmarks => labmarks.LabId == prOrLabStat.Labs.First(lab => lab.ShortName == nameOfPrOrLb.SelectedItem as string).LabId).Mark != string.Empty)
+				{
+					markPicker.SelectedIndex = Convert.ToInt32(marks.Students.First(student => student.FullName == name).LabsMarks.First(labmarks => labmarks.LabId == prOrLabStat.Labs.First(lab => lab.ShortName == nameOfPrOrLb.SelectedItem as string).LabId).Mark) - 1;
+					commentEntry.Text = marks.Students.First(student => student.FullName == name).LabsMarks.First(labmarks => labmarks.LabId == prOrLabStat.Labs.First(lab => lab.ShortName == nameOfPrOrLb.SelectedItem as string).LabId).Comment;
+				}
+				else
+					{
+						markPicker.SelectedItem = null;
+						commentEntry.Text = string.Empty;
+					}
+			};
+
 			var gridLayout = new Grid
 			{
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),

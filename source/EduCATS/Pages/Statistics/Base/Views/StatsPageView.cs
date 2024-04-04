@@ -51,7 +51,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 				IsPullToRefreshEnabled = true
 			};
 
-			roundedListView.ItemTapped += (sender, e) => ((ListView)sender).SelectedItem = null;
+			//roundedListView.ItemTapped += (sender, e) => ((ListView)sender).SelectedItem = null;
 			roundedListView.SetBinding(ListView.IsRefreshingProperty, "IsLoading");
 			roundedListView.SetBinding(ListView.RefreshCommandProperty, "RefreshCommand");
 			roundedListView.SetBinding(ListView.SelectedItemProperty, "SelectedItem");
@@ -63,7 +63,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		{
 			var subjectsView = new SubjectsPickerView();
 			var radarChartView = createFrameWithChartView();
-			radarChartView.SetBinding(IsVisibleProperty, "IsStudent");
+			//radarChartView.SetBinding(IsVisibleProperty, "IsStudent");
 
 			return new StackLayout {
 				Padding = _headerPadding,
