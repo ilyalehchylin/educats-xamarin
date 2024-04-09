@@ -398,7 +398,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 						var currentStudentStatistics = new StatsStudentModel();
 
-						List<double> averages = [0, 0, 0];
+						List<double> averages = new();
+						averages.Add(0);
+						averages.Add(0);
+						averages.Add(0);
 
 						List<double> avForGroup;
 
