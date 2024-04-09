@@ -291,6 +291,18 @@
         "contentHash": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A=="
       }
     },
+    "Xamarin.iOS,Version=v1.0/win-arm64": {
+      "SkiaSharp": {
+        "type": "Transitive",
+        "resolved": "2.80.2",
+        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+      },
+      "System.Security.Cryptography.Cng": {
+        "type": "Transitive",
+        "resolved": "4.5.0",
+        "contentHash": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A=="
+      }
+    },
     "Xamarin.iOS,Version=v1.0/win-x64": {
       "SkiaSharp": {
         "type": "Transitive",

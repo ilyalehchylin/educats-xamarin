@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using EduCATS.Controls.RoundedListView;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.Models.Calendar;
@@ -12,6 +13,7 @@ using EduCATS.Helpers.Date.Enums;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Today.Base.Models;
+using EduCATS.Pages.Today.Base.Views;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
@@ -23,13 +25,15 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		readonly IPlatformServices _services;
 
 		readonly double _subjectHeight;
-		readonly double _subjectsHeaderHeight;
+		readonly double _subjectsFooterHeight;
+		readonly double _subjectsHeaderHeight = 71;
 
 		const int _minimumCalendarPosition = 0;
 		const int _maximumCalendarPosition = 2;
 		const double _subjectsHeightToAdd = 55;
 		const double _emptySubjectsHeight = 110;
 
+		// bool _isCreation = true;
 		bool _isManualSelectedCalendarDay;
 		DateTime _manualSelectedCalendarDay;
 		List<CalendarSubjectsModel> _calendarSubjectsBackup;
@@ -37,7 +41,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		public TodayPageViewModel(double subjectHeight, double subjectsHeaderHeight, IPlatformServices services)
 		{
 			_subjectHeight = subjectHeight;
-			_subjectsHeaderHeight = subjectsHeaderHeight;
+			_subjectsFooterHeight = subjectsHeaderHeight;
 			_services = services;
 
 			initSetup();
@@ -179,6 +183,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					IsNewsRefreshing = true;
 					await getAndSetCalendarNotes();
 					await getAndSetNews();
+					//_isCreation = false;
 					IsNewsRefreshing = false;
 				} catch (Exception ex) {
 					AppLogs.Log(ex);
@@ -505,8 +510,8 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				}
 
 				CalendarSubjectsHeight =
-					(_subjectHeight * NewsSubjectList.Count * 2) +
-					(_subjectsHeaderHeight) + _subjectsHeightToAdd;
+					(_subjectHeight * (NewsSubjectList.Count) /** 2*/) +
+					_subjectsHeaderHeight + _subjectsFooterHeight + _subjectsHeightToAdd;
 			}
 			catch (Exception ex)
 			{
