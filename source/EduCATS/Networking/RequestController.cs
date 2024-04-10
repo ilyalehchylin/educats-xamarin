@@ -1,5 +1,7 @@
 ﻿using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Settings;
+using EduCATS.Pages.Login.ViewModels;
+using EduCATS.Pages.Login.Views;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -117,6 +119,20 @@ namespace EduCATS.Networking
 
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
+			} catch (HttpRequestException) {
+				try
+				{
+					_services.Preferences.AccessToken = await ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
+					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
+					return await _client.GetAsync(Uri);
+				}
+				catch (TaskCanceledException)
+				{
+					return errorResponseMessage(HttpStatusCode.RequestTimeout);
+				} catch
+				{
+					return errorResponseMessage(HttpStatusCode.BadRequest);
+				}
 			} catch {
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
@@ -139,6 +155,21 @@ namespace EduCATS.Networking
 
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
+			} catch (HttpRequestException) {
+				try
+				{
+					_services.Preferences.AccessToken = await ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
+					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
+					return await _client.PostAsync(Uri, _postContent);
+				}
+				catch (TaskCanceledException)
+				{
+					return errorResponseMessage(HttpStatusCode.RequestTimeout);
+				}
+				catch
+				{
+					return errorResponseMessage(HttpStatusCode.BadRequest);
+				}
 			} catch (Exception ex) {
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}

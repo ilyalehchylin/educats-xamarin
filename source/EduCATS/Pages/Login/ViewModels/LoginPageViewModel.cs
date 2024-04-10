@@ -226,6 +226,90 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
+		public async Task<string?> RefreshToken()
+		{
+			Username = DataAccess.Username;
+			Password = DataAccess.Password;
+
+			if (!AppDemo.Instance.IsDemoAccount && _services.Preferences.Server == Servers.EduCatsAddress)
+			{
+				var jwt = new
+					{
+						userName = Username,
+						password = Password,
+					};
+
+					ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
+
+					var body = JsonController.ConvertObjectToJson(jwt);
+
+					var httpWebRequest = HttpWebRequest.CreateHttp(Links.LoginTestServer);
+
+					httpWebRequest.Method = "POST";
+					httpWebRequest.ContentType = "application/json";
+					httpWebRequest.Accept = "application/json, text/plain, */*";
+					httpWebRequest.Headers.Add("Origin", Servers.EduCatsAddress);
+					httpWebRequest.Headers.Add("Accept-Encoding", "gzip, deflate, br");
+					httpWebRequest.Headers.Add("Sec-Fetch-Dest", "empty");
+					httpWebRequest.Headers.Add("Sec-Fetch-Mode", "cors");
+					httpWebRequest.Headers.Add("Sec-Fetch-Site", "same-origin");
+
+					string json = body;
+					byte[] byte1 = Encoding.UTF8.GetBytes(json);
+					httpWebRequest.ContentLength = byte1.Length;
+
+					using (var streamWriter = httpWebRequest.GetRequestStream())
+					{
+						streamWriter.Write(byte1, 0, byte1.Length);
+						streamWriter.Close();
+					}
+					var tok = "";
+
+					try
+					{
+						var httpResponse = httpWebRequest.GetResponse();
+
+						using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+						{
+							tok = streamReader.ReadToEnd();
+							streamReader.Close();
+						}
+						var token = JsonConvert.DeserializeObject<TokenModel>(tok);
+						return token.Token;
+					}
+					catch (WebException ex)
+					{
+						HttpWebResponse httpResponse = (HttpWebResponse)ex.Response;
+						string answer = "";
+						if (ex.Response != null)
+						{
+							using (Stream stream = ex.Response.GetResponseStream())
+							{
+								StreamReader reader = new StreamReader(stream, Encoding.UTF8);
+								answer = reader.ReadToEnd();
+							}
+
+							var serverError = JsonConvert.DeserializeObject<ServerError>(answer);
+
+							if (serverError.Error == 1)
+							{
+								DataAccess.SetError(CrossLocalization.Translate("login_user_profile_not_verify"), false);
+							}
+							else
+							{
+								DataAccess.SetError(CrossLocalization.Translate("login_error"), false);
+							}
+						}
+
+						return null;
+					}
+					catch (Exception) {
+					return null;
+				}
+			}
+
+			return null;
+		}
 
 		/// <summary>
 		/// Authorization method.
@@ -264,7 +348,7 @@ namespace EduCATS.Pages.Login.ViewModels
 			if (user != null && !DataAccess.IsError)
 			{
 				setLoading(true, CrossLocalization.Translate("login_profile_loading"));
-				var profile = await getProfileData(user.Username);
+				var profile = await getProfileData(user.Username, user.Password);
 				setLoading(false);
 				profileRetrieved(profile);
 			}
@@ -379,6 +463,7 @@ namespace EduCATS.Pages.Login.ViewModels
 						SecondUserModel userLoginTest = await DataAccess.LoginTest(Username, Password);
 						userLogin.UserId = userLoginTest.Id;
 						userLogin.Username = userLoginTest.Username;
+						userLogin.Password = Password;
 					}
 					catch (WebException ex)
 					{
@@ -416,10 +501,11 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// Gets profile data by username and user's ID and saves it.
 		/// </summary>
 		/// <param name="username">Username.</param>
+		/// <param name="password">Password.</param>
 		/// <returns>Task.</returns>
-		async Task<UserProfileModel> getProfileData(string username)
+		async Task<UserProfileModel> getProfileData(string username, string password)
 		{
-			var userProfile = await DataAccess.GetProfileInfo(username);
+			var userProfile = await DataAccess.GetProfileInfo(username, password);
 			AppUserData.SetProfileData(_services, userProfile);
 			return userProfile;
 		}
