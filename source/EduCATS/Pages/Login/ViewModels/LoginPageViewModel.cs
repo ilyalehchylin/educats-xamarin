@@ -226,7 +226,11 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
-		public async Task<string?> RefreshToken()
+		/// <summary>
+		/// Implements refresh token.
+		/// </summary>
+		/// <returns>Access token string on success, <code>null</code> otherwise.</returns>
+		public string RefreshToken()
 		{
 			Username = DataAccess.Username;
 			Password = DataAccess.Password;
