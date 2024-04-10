@@ -97,6 +97,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 				Style = AppStyles.GetLabelStyle(),
 				Font = Font.SystemFontOfSize(NamedSize.Large),
 				Text = CrossLocalization.Translate("choose_group") + " " + _groupName,
+				HorizontalOptions = LayoutOptions.Center,
 			};
 			var stackLayout = new StackLayout();
 			var resultsListView = new RoundedListView(typeof(VisitingPageViewCell));

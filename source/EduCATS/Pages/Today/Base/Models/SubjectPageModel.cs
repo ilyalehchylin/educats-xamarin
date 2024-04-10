@@ -79,6 +79,7 @@ namespace EduCATS.Pages.Today.Base.Models
 				Date = schedule.Start + "-" + schedule.End;
 				Name = schedule.Name;
 
+				
 				switch (schedule.Type) {
 					case 0:
 						Type = CrossLocalization.Translate("type_activity_lecture");
@@ -89,7 +90,12 @@ namespace EduCATS.Pages.Today.Base.Models
 					case 2:
 						Type = CrossLocalization.Translate("type_activity_lab");
 						break;
-
+					case 3:
+						Type = CrossLocalization.Translate("type_activity_kconsultation");
+						break;
+					case 4:
+						Type = CrossLocalization.Translate("type_activity_dconsultation");
+						break;
 					default:
 						break;
 				}

@@ -79,6 +79,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 				Style = AppStyles.GetLabelStyle(),
 				Font = Font.SystemFontOfSize(NamedSize.Large),
 				Text = CrossLocalization.Translate("choose_group") + " " + _groupName,
+				HorizontalOptions = LayoutOptions.Center,
 			};
 
 			var stackLayout = new StackLayout();
@@ -136,6 +137,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 			var subGroupPicker = new Picker
 			{
 				BackgroundColor = Color.White,
+				HeightRequest = 70,
 			};
 			subGroupPicker.SetBinding(Picker.ItemsSourceProperty, "SubGroup");
 			subGroupPicker.SetBinding(Picker.SelectedItemProperty, new Binding("SelectedSubGroup"));

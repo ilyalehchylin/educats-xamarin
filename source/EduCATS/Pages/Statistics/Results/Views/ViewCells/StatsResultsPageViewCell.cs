@@ -16,7 +16,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 		public StatsResultsPageViewCell()
 		{
-			var titleLabel = new Label {
+			var titleLabel = new Label
+			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
 				Style = AppStyles.GetLabelStyle()
@@ -25,7 +26,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			titleLabel.SetBinding(Label.TextProperty, "Title");
 			titleLabel.SetBinding(VisualElement.IsVisibleProperty, "IsTitle");
 
-			var dateIcon = new CachedImage {
+			var dateIcon = new CachedImage
+			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Source = ImageSource.FromFile(Theme.Current.StatisticsCalendarIcon),
 				HeightRequest = _iconSize,
@@ -38,7 +40,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 				}
 			};
 
-			var dateLabel = new Label {
+			var dateLabel = new Label
+			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsColor),
 				Style = AppStyles.GetLabelStyle(NamedSize.Small)
@@ -46,7 +49,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 			dateLabel.SetBinding(Label.TextProperty, "Date");
 
-			var dateLayout = new StackLayout {
+			var dateLayout = new StackLayout
+			{
 				Orientation = StackOrientation.Horizontal,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
@@ -57,7 +61,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 			dateLayout.SetBinding(VisualElement.IsVisibleProperty, "IsDate");
 
-			var commentIcon = new CachedImage {
+			var commentIcon = new CachedImage
+			{
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Source = ImageSource.FromFile(Theme.Current.StatisticsCommentIcon),
 				HeightRequest = _iconSize,
@@ -70,7 +75,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 				}
 			};
 
-			var commentLabel = new Label {
+			var commentLabel = new Label
+			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsColor),
 				Style = AppStyles.GetLabelStyle(NamedSize.Small)
@@ -78,7 +84,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 			commentLabel.SetBinding(Label.TextProperty, "Comment");
 
-			var commentLayout = new StackLayout {
+			var commentLayout = new StackLayout
+			{
 				Orientation = StackOrientation.Horizontal,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
@@ -89,7 +96,8 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 
 			commentLayout.SetBinding(VisualElement.IsVisibleProperty, "IsComment");
 
-			var infoLayout = new StackLayout {
+			var infoLayout = new StackLayout
+			{
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Spacing = _infoSpacing,
 				Children = {
@@ -99,16 +107,18 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 				}
 			};
 
-			var resultLabel = new Label {
+			var resultLabel = new Label
+			{
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsResultsColor),
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				Style = AppStyles.GetLabelStyle(NamedSize.Large)
+				Style = AppStyles.GetLabelStyle(NamedSize.Large),
 			};
 
 			resultLabel.SetBinding(Label.TextProperty, "Result");
 
-			var gridLayout = new Grid {
+			var gridLayout = new Grid
+			{
 				Padding = _gridPadding,
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				ColumnDefinitions = {
@@ -120,7 +130,9 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 			gridLayout.Children.Add(infoLayout, 0, 0);
 			gridLayout.Children.Add(resultLabel, 1, 0);
 
-			View = new StackLayout {
+			View = new StackLayout
+			{
+
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Children = {
 					gridLayout
@@ -129,3 +141,4 @@ namespace EduCATS.Pages.Statistics.Results.Views.ViewCells
 		}
 	}
 }
+

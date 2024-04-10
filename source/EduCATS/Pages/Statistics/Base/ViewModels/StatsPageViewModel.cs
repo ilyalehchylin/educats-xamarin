@@ -14,7 +14,6 @@ using EduCATS.Networking.Models.SaveMarks;
 using EduCATS.Networking.Models.SaveMarks.LabSchedule;
 using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Pages.Pickers;
-using EduCATS.Pages.SaveMarks;
 using EduCATS.Pages.Statistics.Base.Models;
 using EduCATS.Pages.Statistics.Enums;
 using Nyxbull.Plugins.CrossLocalization;
@@ -360,7 +359,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			try
 			{
 				if (CurrentSubject != null)
-				{
 					if (_isStudent)
 					{
 						var studentsStatistics = await getStatistics();
@@ -375,67 +373,19 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 							s => s.StudentId == PlatformServices.Preferences.UserId);
 							currentPractStudentStatistics = studentsPractStatistics.Students.SingleOrDefault(
 								s => s.StudentId == PlatformServices.Preferences.UserId);
-							setChartData(currentStudentStatistics, studentTestStatistics, studentsPractStatistics);
+							setChartData(currentStudentStatistics, currentTestStudentStatistics, currentPractStudentStatistics);
 							_studentsTest = studentTestStatistics;
 						}
 						else
 						{
+							var labsTest = new LaboratoryWorksModel();
 							var currentStudentStatistics = new StatsStudentModel();
 							studentsStatistics = await getStatistics();
 							currentStudentStatistics = studentsStatistics.SingleOrDefault(
 							s => s.StudentId == PlatformServices.Preferences.UserId);
-							setChartData(currentStudentStatistics, new LabsVisitingList(), studentsPractStatistics);
+							setChartData(currentStudentStatistics, labsTest, currentPractStudentStatistics);
 							_students = studentsStatistics;
 						}
-					}
-					else
-					{
-						var studentsStatistics = await getStatistics();
-
-						var groupsModel = new GroupsViewModel(new PlatformServices(), CurrentSubject.Id);
-
-						await groupsModel.SetupGroups();
-
-						var currentStudentStatistics = new StatsStudentModel();
-
-						List<double> averages = new();
-						averages.Add(0);
-						averages.Add(0);
-						averages.Add(0);
-
-						List<double> avForGroup;
-
-						int countOfGroups = 0;
-
-						foreach (var group in (groupsModel.CurrentGroups))
-						{
-							countOfGroups++;
-							var studentsPractStatistics = await DataAccess.GetTestPracticialStatistics(CurrentSubject.Id, group.GroupId);
-
-							if (Servers.Current == Servers.EduCatsAddress)
-							{
-								var studentTestStatistics = await DataAccess.GetTestStatistics(CurrentSubject.Id, group.GroupId);
-								avForGroup = calculateChartData(currentStudentStatistics, studentTestStatistics, studentsPractStatistics, new(), new());
-								averages[0] += avForGroup[0];
-								averages[1] += avForGroup[1];
-								averages[2] += avForGroup[2];
-							}
-							else
-							{								
-								studentsStatistics = await getStatistics();
-								avForGroup = calculateChartData(currentStudentStatistics, new LabsVisitingList(), studentsPractStatistics, new(), new());
-								averages[0] += avForGroup[0];
-								averages[1] += avForGroup[1];
-								averages[2] += avForGroup[2];
-							}
-						}
-
-						averages[0] /= countOfGroups;
-						averages[1] /= countOfGroups;
-						averages[2] /= countOfGroups;
-
-						setChartData(currentStudentStatistics, new LabsVisitingList(), null, averages);
-					}
 				}
 			}
 			catch (Exception ex)
@@ -458,139 +408,70 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 		}
 
-		void setChartData(StatsStudentModel stats, LabsVisitingList studentsPractStatistics, LabsVisitingList studentTestStatistics, List<double> averages = null)
+		void setChartData(StatsStudentModel stats, LaboratoryWorksModel currentPractStudentStatistics, LaboratoryWorksModel worksModel)
 		{
 			try {
+				double avgLabs = 0;
+				double avgTests = 0;
+				double avgPract = 0;
 				double rating = 0;
 
 				if (stats == null) {
 					stats = new StatsStudentModel();
 				}
 
-
-				LaboratoryWorksModel currentPractStudentStatistics = null, worksModel = null;
-
-				if (_isStudent)
-				{
-					averages = calculateChartData(stats, studentsPractStatistics, studentTestStatistics, currentPractStudentStatistics, worksModel);
-				}
-
-				AveragePract = averages[2].ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
-				AverageLabs = averages[0].ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
-				AverageTests = averages[1].ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
-
 				if (Servers.Current == Servers.EduCatsAddress)
 				{
+						avgPract = calculateAvgPractMarks(worksModel.PracticalsMarks);
+						AveragePract = avgPract.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
-					if (worksModel is not null && worksModel.PracticalsMarks.Count == 0 || worksModel is null && averages[2] == 0)
-					{
-						rating = (averages[0] + averages[1]) / 2;
-						Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
-						ChartEntries = new List<double> {
-							averages[0], averages[1], rating, averages[2]
-						};
-						setNotEnoughDetails(averages[0] == 0 && averages[1] == 0 && rating == 0);
-					}
-					else
-					{
-						rating = (averages[0] + averages[1] + averages[2]) / 3;
-						Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
-						ChartEntries = new List<double> {
-							averages[0], averages[1], rating, averages[2]
-						};
-						setNotEnoughDetails(averages[0] == 0 && averages[1] == 0 && averages[2] == 0 && rating == 0);
-					}
-				}
-				else
-				{
-					rating = (averages[0] + averages[1]) / 2;
-					Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
-					ChartEntries = new List<double> {
-							averages[0], averages[1], rating
-						};
-					setNotEnoughDetails(averages[0] == 0 && averages[1] == 0 && rating == 0);
-				}
-
-			} catch (Exception ex) {
-				AppLogs.Log(ex);
-			}
-		}
-
-		List<double> calculateChartData(StatsStudentModel stats, LabsVisitingList studentsPractStatistics, LabsVisitingList studentTestStatistics, LaboratoryWorksModel currentPractStudentStatistics, LaboratoryWorksModel worksModel)
-		{
-			double avgLabs = 0;
-			double avgTests = 0;
-			double avgPract = 0;
-
-			List<double> averages = new();
-
-			if (_isStudent)
-			{
-				currentPractStudentStatistics = studentsPractStatistics.Students.SingleOrDefault(
-								s => s.StudentId == PlatformServices.Preferences.UserId);
-				worksModel = studentTestStatistics.Students.SingleOrDefault(
-					s => s.StudentId == PlatformServices.Preferences.UserId);
-
-				if (Servers.Current == Servers.EduCatsAddress)
-				{
-					avgPract = calculateAvgPractMarks(worksModel.PracticalsMarks);
-
-					avgLabs = calculateAvgLabsMarkTest(currentPractStudentStatistics.LabsMarks);
+						avgLabs = calculateAvgLabsMarkTest(currentPractStudentStatistics.LabsMarks);
+						AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 
 					if (currentPractStudentStatistics.TestMark != null)
 						avgTests = double.Parse(currentPractStudentStatistics.TestMark, CultureInfo.InvariantCulture);
+
+					AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+
+					if (worksModel.PracticalsMarks.Count == 0)
+					{
+						rating = (avgLabs + avgTests) / 2;
+						Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+						ChartEntries = new List<double> {
+							avgLabs, avgTests, rating, avgPract
+						};
+						setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
+					}
+					else
+					{
+						rating = (avgLabs + avgTests + avgPract) / 3;
+						Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+						ChartEntries = new List<double> {
+							avgLabs, avgTests, rating, avgPract
+						};
+						setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && avgPract == 0 && rating == 0);
+					}
 				}
 				else
 				{
 					avgLabs = calculateAvgLabsMark(stats.MarkList);
-
-					if (stats.AverageTestMark != null)
-						avgTests = double.Parse(stats.AverageTestMark, CultureInfo.InvariantCulture);
-				}
-			}
-			else
-			{
-				if (Servers.Current == Servers.EduCatsAddress)
-				{
-					int countOfPractStudents = 0;
-					foreach (var student in studentTestStatistics.Students)
-					{
-						avgPract += calculateAvgPractMarks(student.PracticalsMarks);
-						countOfPractStudents++;
-					}
-
-					avgPract /= countOfPractStudents;
-
+					AverageLabs = avgLabs.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
 					
-
-					int countOfStudents = 0;
-					foreach (var student in studentsPractStatistics.Students)
-					{
-						avgLabs += calculateAvgLabsMarkTest(student.LabsMarks);
-						countOfStudents++;
-
-						if (student.TestMark != null)
-							avgTests += double.Parse(student.TestMark, CultureInfo.InvariantCulture);
-					}
-
-					avgLabs /= countOfStudents;
-
-					avgTests /= countOfStudents;
-				}
-				else
-				{
-					avgLabs = calculateAvgLabsMark(stats.MarkList);
-
 					if (stats.AverageTestMark != null)
 						avgTests = double.Parse(stats.AverageTestMark, CultureInfo.InvariantCulture);
+					
+					AverageTests = avgTests.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+
+					rating = (avgLabs + avgTests) / 2;
+					Rating = rating.ToString(_doubleStringFormat, CultureInfo.InvariantCulture);
+					ChartEntries = new List<double> {
+							avgLabs, avgTests, rating
+						};
+					setNotEnoughDetails(avgLabs == 0 && avgTests == 0 && rating == 0);
 				}
+			} catch (Exception ex) {
+				AppLogs.Log(ex);
 			}
-
-			averages.Add(avgLabs);
-			averages.Add(avgTests);
-			averages.Add(avgPract);
-
-			return averages;
 		}
 
 		double calculateAvgPractMarks(List<PracticialMarks> practicalsMarks)

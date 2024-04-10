@@ -63,41 +63,50 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 		}
 
 		bool _isLoading;
-		public bool IsLoading {
+		public bool IsLoading
+		{
 			get { return _isLoading; }
 			set { SetProperty(ref _isLoading, value); }
 		}
 
 		string _searchText;
-		public string SearchText {
+		public string SearchText
+		{
 			get { return _searchText; }
-			set {
+			set
+			{
 				SetProperty(ref _searchText, value);
 				search(_searchText);
 			}
 		}
 
 		object _selectedItem;
-		public object SelectedItem {
+		public object SelectedItem
+		{
 			get { return _selectedItem; }
-			set {
+			set
+			{
 				SetProperty(ref _selectedItem, value);
 
-				if (_selectedItem != null) {
+				if (_selectedItem != null)
+				{
 					openPage(_selectedItem);
 				}
 			}
 		}
 
 		List<StudentsPageModel> _students;
-		public List<StudentsPageModel> Students {
+		public List<StudentsPageModel> Students
+		{
 			get { return _students; }
 			set { SetProperty(ref _students, value); }
 		}
 
 		Command _refreshCommand;
-		public Command RefreshCommand {
-			get {
+		public Command RefreshCommand
+		{
+			get
+			{
 				return _refreshCommand ?? (
 					_refreshCommand = new Command(async () => await getAndSetStudents()));
 			}
@@ -117,15 +126,19 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		protected virtual async Task update(bool groupsOnly = false)
 		{
-			try {
+			try
+			{
 				await SetupGroups();
 
-				if (groupsOnly) {
+				if (groupsOnly)
+				{
 					return;
 				}
 
 				await getAndSetStudents();
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
@@ -165,13 +178,15 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		protected virtual async Task<List<StatsStudentModel>> getStatistics()
 		{
-			if (CurrentGroup == null) {
+			if (CurrentGroup == null)
+			{
 				return null;
 			}
 
 			var statisticsModel = await DataAccess.GetStatistics(SubjectId, CurrentGroup.GroupId);
 
-			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
+			if (DataAccess.IsError && !DataAccess.IsConnectionError)
+			{
 				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 
@@ -180,8 +195,10 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 
 		void search(string text)
 		{
-			try {
-				if (string.IsNullOrEmpty(text)) {
+			try
+			{
+				if (string.IsNullOrEmpty(text))
+				{
 					Students = new List<StudentsPageModel>(_backupStudents);
 					return;
 				}
@@ -192,28 +209,35 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 					s => string.IsNullOrEmpty(s.Name) ? false : s.Name.ToLower().Contains(text));
 
 				Students = new List<StudentsPageModel>(foundStudents);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
 
 		void openPage(object selectedObject)
 		{
-			try {
-				if (selectedObject == null || selectedObject.GetType() != typeof(StudentsPageModel)) {
+			try
+			{
+				if (selectedObject == null || selectedObject.GetType() != typeof(StudentsPageModel))
+				{
 					return;
 				}
 
 				var student = selectedObject as StudentsPageModel;
 				var title = getTitle((StatsPageEnum)_pageIndex);
 
-				if (CurrentGroup == null) {
+				if (CurrentGroup == null)
+				{
 					return;
 				}
 
 				PlatformServices.Navigation.OpenDetailedStatistics(
 					student.Username, SubjectId, CurrentGroup.GroupId, _pageIndex, title, student.Name);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}

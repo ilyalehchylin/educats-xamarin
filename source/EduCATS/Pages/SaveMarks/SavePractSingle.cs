@@ -7,7 +7,7 @@ namespace EduCATS.Pages.SaveMarks
 {
 	public class SavePractSingle
 	{
-		[JsonProperty("Comment")]
+		[JsonProperty("comment")]
 		public string Comment { get; set; }
 		public string date { get; set; }
 		public int id { get; set; }

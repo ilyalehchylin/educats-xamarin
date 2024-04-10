@@ -8,6 +8,8 @@ using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 using CarouselView.FormsPlugin.Abstractions;
+using Acr.UserDialogs.Infrastructure;
+using System.IO;
 
 namespace EduCATS.Pages.Today.Base.Views
 {
@@ -20,11 +22,11 @@ namespace EduCATS.Pages.Today.Base.Views
 		const double _calendarDaysOfWeekCollectionHeight = 50;
 		const string _calendarCollectionDataBinding = ".";
 
-		double _subjectRowHeight = 80;
+		double _subjectRowHeight = 50;
 		double _subjectDetailedRowHeight = 80;
 
 		static Thickness _newsLabelMagin = new Thickness(10);
-		static Thickness _subjectsMargin = new Thickness(10, 5, 10, 0);
+		static Thickness _subjectsMargin = new Thickness(10, 5);
 		static Thickness _margin = new Thickness(0, 0, 0, 1);
 		static Thickness _listMargin = new Thickness(0, 1, 0, 0);
 		static Thickness _subjectsLabelMargin = new Thickness(0, 10, 10, 10);
@@ -147,7 +149,6 @@ namespace EduCATS.Pages.Today.Base.Views
 			newsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "NewsList");
 			newsListView.SetBinding(ListView.SelectedItemProperty, "SelectedNewsItem");
 			newsListView.ItemSelected += (sender, e) => { ((ListView)sender).SelectedItem = null; };
-
 			return newsListView;
 		}
 
@@ -176,7 +177,7 @@ namespace EduCATS.Pages.Today.Base.Views
 					IsEnabled = false,
 					Margin = _subjectsMargin
 				};
-
+				
 				subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "NewsSubjectList");
 			}
 			else
@@ -189,8 +190,6 @@ namespace EduCATS.Pages.Today.Base.Views
 
 				subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "CalendarSubjects");
 			}
-
-
 
 			subjectsListView.SetBinding(HeightRequestProperty, "CalendarSubjectsHeight");
 			return subjectsListView;

@@ -53,26 +53,31 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		}
 
 		List<StatsResultsPageModel> _marks;
-		public List<StatsResultsPageModel> Marks {
+		public List<StatsResultsPageModel> Marks
+		{
 			get { return _marks; }
 			set { SetProperty(ref _marks, value); }
 		}
 
 		bool _isLoading;
-		public bool IsLoading {
+		public bool IsLoading
+		{
 			get { return _isLoading; }
 			set { SetProperty(ref _isLoading, value); }
 		}
 
 		string _summary;
-		public string Summary {
+		public string Summary
+		{
 			get { return _summary; }
 			set { SetProperty(ref _summary, value); }
 		}
 
 		Command refreshCommand;
-		public Command RefreshCommand {
-			get {
+		public Command RefreshCommand
+		{
+			get
+			{
 				return refreshCommand ?? (
 					refreshCommand = new Command(async () => await executeRefreshCommand()));
 			}
@@ -89,8 +94,10 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getData()
 		{
-			try {
-				switch (_statisticsPage) {
+			try
+			{
+				switch (_statisticsPage)
+				{
 					case StatsPageEnum.LabsRating:
 						await getLabs(false);
 						await getLabsMarksAndVisiting();
@@ -114,11 +121,14 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 				calculateSummary();
 
-				if (DataAccess.IsError) {
+				if (DataAccess.IsError)
+				{
 					_services.Device.MainThread(
 						() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
 				}
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
@@ -221,17 +231,22 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 				dataLabs = await DataAccess.GetLabs(_currentSubjectId, _currentGroupId);
 			}
 
-			if (dataTestLabs == null){
+			if (dataTestLabs == null)
+			{
 				return;
 			}
 
-			if (dataLabs == null) {
+			if (dataLabs == null)
+			{
 				return;
 			}
 
-			if (isVisiting) {
+			if (isVisiting)
+			{
 				setVisitingLabsStatistics(dataLabs, dataTestLabs);
-			} else {
+			}
+			else
+			{
 				setRatingLabsStatistics(dataLabs, dataTestLabs);
 			}
 		}
@@ -285,7 +300,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			{
 				_currentLabsMarksList = new List<StatsPageLabsRatingModel>(marksLabsList);
 			}
-			
+
 		}
 
 		async Task getLecturesVisiting()
@@ -298,7 +313,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			foreach (var lecture in listLectures.Lectures)
 			{
-				for (int i = 0; i <  lecture.Duration/2; i++)
+				for (int i = 0; i < lecture.Duration / 2; i++)
 				{
 					queueTheme.Enqueue(lecture.Theme);
 				}
@@ -312,14 +327,14 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			{
 				visitingData = await DataAccess.GetLectures(_currentSubjectId, _currentGroupId);
 			}
-			
+
 			var groupVisiting = visitingData?.GroupsVisiting?[0];
 
 			var userLecturesVisiting = groupVisiting?.LecturesVisiting
 				.SingleOrDefault(v => string.Compare(v.StudentName?.ToLower(), _currentUserName?.ToLower()) == 0);
 
 			var stats = userLecturesVisiting?.VisitingList?.Select(
-				u => 
+				u =>
 				{
 					string theme = null;
 					if (queueTheme.Count > 0)
@@ -332,7 +347,8 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			var statsList = stats.ToList();
 
-			if (statsList == null) {
+			if (statsList == null)
+			{
 				return;
 			}
 
@@ -451,28 +467,32 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 				});
 				Marks = new List<StatsResultsPageModel>(practVisitingTestResult);
 			}
-			
+
 		}
 
 
 		void calculateSummary()
 		{
-			if (Marks == null) {
+			if (Marks == null)
+			{
 				setSummary(_emptyRatingString);
 				return;
 			}
 
 			var resultCount = 0;
 			var resultSummary = 0;
-			foreach (var mark in Marks) {
-				if (!string.IsNullOrEmpty(mark.Result) && !mark.Result.Equals(_emptyRatingString)) {
+			foreach (var mark in Marks)
+			{
+				if (!string.IsNullOrEmpty(mark.Result) && !mark.Result.Equals(_emptyRatingString))
+				{
 					int.TryParse(mark.Result, out int result);
 					resultSummary += result;
 					resultCount++;
 				}
 			}
 
-			if (resultCount == 0) {
+			if (resultCount == 0)
+			{
 				setSummary(_emptyRatingString);
 				return;
 			}
