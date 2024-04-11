@@ -22,9 +22,10 @@
 	"address_building": "p.",
 	"address_room": "a.",
 
-	"type_activity_lecture": "Lezione",
-	"type_activity_lab": "Lavoro di laboratorio",
-	"type_activity_practical": "Lavoro pratico",
+	"type_activity_lecture": "Paskaita",
+
+	"type_activity_lab": "Laboratoriniai darbai",
+	"type_activity_practical": "Praktinė pamoka",
 
 	"server_test": "Testavimo serveris",
 	"server_local": "Vietinis serveris",

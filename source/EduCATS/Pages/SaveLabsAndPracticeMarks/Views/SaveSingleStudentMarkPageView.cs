@@ -20,7 +20,6 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		const double _heightRequest = 40;
 
 		static Thickness _padding = new Thickness(10, 1);
-		static Thickness _margin = new Thickness(0, 10);
 		public List<int> Marks = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		public List<string> NameOfLabOrPractice = new List<string>();
 		public string _title { get; set; }
@@ -29,13 +28,13 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		{
 			_title = title;
 
-			if(title == CrossLocalization.Translate("practice_mark"))
+			if (title == CrossLocalization.Translate("practice_mark"))
 			{
-				foreach(var pract in prOrLabStat.Practicals)
+				foreach (var pract in prOrLabStat.Practicals)
 				{
 					NameOfLabOrPractice.Add(pract.ShortName);
 				}
-				BindingContext = new SaveSingleStudentMarkPageViewModel(new PlatformServices(), 
+				BindingContext = new SaveSingleStudentMarkPageViewModel(new PlatformServices(),
 					NameOfLabOrPractice.FirstOrDefault(), marks, prOrLabStat, title, name, subGruop);
 			}
 			else if (title == CrossLocalization.Translate("stats_page_labs_rating"))
@@ -57,11 +56,10 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			var inicials = new Label
 			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
-				Margin = _margin,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
 				Style = AppStyles.GetLabelStyle(),
-				Font = Font.SystemFontOfSize(NamedSize.Large).WithSize(20).WithAttributes(FontAttributes.None),
+				Font = Font.SystemFontOfSize(NamedSize.Large).WithSize(20).WithAttributes(FontAttributes.Bold),
 				Text = name,
 			};
 
@@ -143,20 +141,6 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			};
 
 			commentEntry.SetBinding(Entry.TextProperty, "Comment");
-
-			nameOfPrOrLb.PropertyChanged += delegate {
-				if (nameOfPrOrLb.SelectedItem is not null)
-				if (marks.Students.First(student => student.FullName == name).LabsMarks.First(labmarks => labmarks.LabId == prOrLabStat.Labs.First(lab => lab.ShortName == nameOfPrOrLb.SelectedItem as string).LabId).Mark != string.Empty)
-				{
-					markPicker.SelectedIndex = Convert.ToInt32(marks.Students.First(student => student.FullName == name).LabsMarks.First(labmarks => labmarks.LabId == prOrLabStat.Labs.First(lab => lab.ShortName == nameOfPrOrLb.SelectedItem as string).LabId).Mark) - 1;
-					commentEntry.Text = marks.Students.First(student => student.FullName == name).LabsMarks.First(labmarks => labmarks.LabId == prOrLabStat.Labs.First(lab => lab.ShortName == nameOfPrOrLb.SelectedItem as string).LabId).Comment;
-				}
-				else
-					{
-						markPicker.SelectedItem = null;
-						commentEntry.Text = string.Empty;
-					}
-			};
 
 			var gridLayout = new Grid
 			{

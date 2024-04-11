@@ -10,14 +10,16 @@ namespace EduCATS.Pages.Statistics.Base.Views.ViewCells
 
 		public StatsPageViewCell()
 		{
-			var menuLabel = new Label {
+			var menuLabel = new Label
+			{
 				TextColor = Color.FromHex(Theme.Current.StatisticsBaseTitleColor),
 				Style = AppStyles.GetLabelStyle()
 			};
 
 			menuLabel.SetBinding(Label.TextProperty, "Title");
 
-			View = new StackLayout {
+			View = new StackLayout
+			{
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Padding = _padding,
 				Children = {

@@ -42,15 +42,15 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 		public List<VisitingPageModel> _currentLabsVisitingMarksSubGroup1;
 		public string _titleOfPage { get; set; }
 		public List<string> FullNames { get; set; }
-		
+
 		public TakedLabs _takedLabs { get; set; }
 
 		public SaveMarksPageViewModel(IPlatformServices services, int _subjectId, object stat, int groupId, string title)
 		{
 			ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
-			
+
 			_titleOfPage = title;
-			_services = services; 
+			_services = services;
 			if (title == CrossLocalization.Translate("stats_page_lectures_visiting"))
 			{
 				groupData = stat as VisitingLecturesList;
@@ -156,7 +156,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 							Date.Add(groupVisit.Date);
 						}
 						if (Date[0] == groupVisit.Date &&
-							!(_currentLecturesVisitingMarks.Contains(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment, 
+							!(_currentLecturesVisitingMarks.Contains(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
 							groupVisit.Mark, false))))
 						{
 							_currentLecturesVisitingMarks.Add(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
@@ -165,7 +165,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 					}
 				}
 			}
-			SelectedDate = Date[Date.Count-1];
+			SelectedDate = Date[Date.Count - 1];
 			LecturesMarks = _currentLecturesVisitingMarks;
 		}
 
@@ -190,7 +190,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				var i = 0;
 				foreach (var lect in lecturesVisiting.LecturesMarksVisiting)
 				{
-					for(int m = 0; m < lect.Marks.Count; m++)
+					for (int m = 0; m < lect.Marks.Count; m++)
 					{
 						if (lect.Marks[m].Date == selDateForSave)
 						{
@@ -215,7 +215,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 					dateId = lab.ScheduleProtectionLabId;
 				}
 				int i = 0;
-				for(int stud = 0; stud < labsVisiting.Count; stud++)
+				for (int stud = 0; stud < labsVisiting.Count; stud++)
 				{
 					if (labsVisiting[stud].FullName == LabsVisitingMarksSubGroup[i].Title)
 					{
@@ -252,9 +252,9 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 					dateId = pr.ScheduleProtectionPracticalId;
 				}
 				int i = 0;
-				for(int pract = 0; pract < practVisiting.Count; pract++)
+				for (int pract = 0; pract < practVisiting.Count; pract++)
 				{
-					foreach(var mark in practVisiting[pract].PracticalVisitingMark.Where(v => v.ScheduleProtectionPracticalId == dateId))
+					foreach (var mark in practVisiting[pract].PracticalVisitingMark.Where(v => v.ScheduleProtectionPracticalId == dateId))
 					{
 						mark.Mark = LecturesMarks[i].Mark;
 						mark.Comment = LecturesMarks[i].Comment;
@@ -368,9 +368,9 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				LecturesMarks = _currentLecturesVisitingMarks;
 				return _selectedDate;
 			}
-			set 
-			{ 
-				SetProperty(ref _selectedDate, value); 
+			set
+			{
+				SetProperty(ref _selectedDate, value);
 			}
 		}
 
@@ -405,7 +405,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 		string _selectedLabDate;
 		public string SelectedLabDate
 		{
-			get 
+			get
 			{
 				_currentLabsVisitingMarksSubGroup1 = new List<VisitingPageModel>();
 				foreach (var date in _takedLabs.ScheduleProtectionLabs.Where(v => v.Date == _selectedLabDate))
@@ -422,11 +422,11 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 					}
 				}
 				LabsVisitingMarksSubGroup = _currentLabsVisitingMarksSubGroup1;
-				return _selectedLabDate; 
+				return _selectedLabDate;
 			}
-			set 
-			{ 
-				SetProperty(ref _selectedLabDate, value); 
+			set
+			{
+				SetProperty(ref _selectedLabDate, value);
 			}
 		}
 
@@ -454,15 +454,15 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				}
 				DateLabs = Date1;
 				LabsVisitingMarksSubGroup = _currentLabsVisitingMarksSubGroup1;
-				
+
 				if (DateLabs.Count != 0)
 					SelectedLabDate = DateLabs[DateLabs.Count - 1];
 
 				return _selectedSubGroup;
 			}
-			set 
+			set
 			{
-				SetProperty(ref _selectedSubGroup, value); 
+				SetProperty(ref _selectedSubGroup, value);
 			}
 		}
 	}

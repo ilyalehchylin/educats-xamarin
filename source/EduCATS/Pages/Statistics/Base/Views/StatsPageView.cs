@@ -47,11 +47,12 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 		RoundedListView createRoundedList(View header)
 		{
-			var roundedListView = new RoundedListView(typeof(StatsPageViewCell), header: header) {
+			var roundedListView = new RoundedListView(typeof(StatsPageViewCell), header: header)
+			{
 				IsPullToRefreshEnabled = true
 			};
 
-			//roundedListView.ItemTapped += (sender, e) => ((ListView)sender).SelectedItem = null;
+			roundedListView.ItemTapped += (sender, e) => ((ListView)sender).SelectedItem = null;
 			roundedListView.SetBinding(ListView.IsRefreshingProperty, "IsLoading");
 			roundedListView.SetBinding(ListView.RefreshCommandProperty, "RefreshCommand");
 			roundedListView.SetBinding(ListView.SelectedItemProperty, "SelectedItem");
@@ -63,9 +64,10 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		{
 			var subjectsView = new SubjectsPickerView();
 			var radarChartView = createFrameWithChartView();
-			//radarChartView.SetBinding(IsVisibleProperty, "IsStudent");
+			radarChartView.SetBinding(IsVisibleProperty, "IsStudent");
 
-			return new StackLayout {
+			return new StackLayout
+			{
 				Padding = _headerPadding,
 				Children = {
 					subjectsView,
@@ -86,10 +88,12 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			var collapsibleView = createExpandableView(false);
 			collapsibleView.SetBinding(IsVisibleProperty, "IsExpandedStatistics");
 
-			return new Frame {
+			return new Frame
+			{
 				HasShadow = false,
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
-				Content = new StackLayout {
+				Content = new StackLayout
+				{
 					Children = {
 						chartView,
 						hiddenDetailsView,
@@ -112,7 +116,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 				CrossLocalization.Translate("stats_chart_average_labs"),
 				Color.FromHex(Theme.Current.StatisticsChartLabsColor),
 				"AverageLabs");
-			avgLabsView.SetBinding(IsVisibleProperty,"IsLabs");
+			avgLabsView.SetBinding(IsVisibleProperty, "IsLabs");
 
 			var avgTestsView = createStatisticsView(
 				CrossLocalization.Translate("stats_chart_average_tests"),
@@ -124,7 +128,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 				Color.FromHex(Theme.Current.StatisticsChartRatingColor),
 				"Rating");
 
-			var avgStatsLayout = new StackLayout {
+			var avgStatsLayout = new StackLayout
+			{
 				Children = {
 					avgLabsView, avgTestsView, avgPractView, avgRatingView
 				}
@@ -137,7 +142,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 			notEnoughDataLabel.SetBinding(IsVisibleProperty, "IsNotEnoughDetails");
 
-			var hiddenDetailsView = new StackLayout {
+			var hiddenDetailsView = new StackLayout
+			{
 				Padding = _hiddenDetailsPadding,
 				Children = {
 					avgStatsLayout,
@@ -154,7 +160,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			var statsBoxView = createStatisticsBoxView(color, property);
 			var statsLabel = createStatisticsLabel(text);
 
-			var grid = new Grid {
+			var grid = new Grid
+			{
 				HorizontalOptions = LayoutOptions.StartAndExpand,
 				ColumnSpacing = _statsSpacing,
 				ColumnDefinitions = {
@@ -170,7 +177,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 		StackLayout createStatisticsBoxView(Color color, string property)
 		{
-			var ratingLabel = new Label {
+			var ratingLabel = new Label
+			{
 				TextColor = Color.FromHex(Theme.Current.StatisticsBoxTextColor),
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -179,7 +187,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 			ratingLabel.SetBinding(Label.TextProperty, property);
 
-			return new StackLayout {
+			return new StackLayout
+			{
 				HeightRequest = _boxSize,
 				BackgroundColor = color,
 				Children = {
@@ -190,14 +199,16 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 		Label createStatisticsLabel(string text, bool isCenteredHorizontally = false)
 		{
-			var statsLabel = new Label {
+			var statsLabel = new Label
+			{
 				TextColor = Color.FromHex(Theme.Current.StatisticsBaseRatingTextColor),
 				Style = AppStyles.GetLabelStyle(NamedSize.Small),
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Text = text
 			};
 
-			if (isCenteredHorizontally) {
+			if (isCenteredHorizontally)
+			{
 				statsLabel.HorizontalOptions = LayoutOptions.CenterAndExpand;
 				statsLabel.HorizontalTextAlignment = TextAlignment.Center;
 			}
@@ -221,7 +232,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			var tapGestureRecognizer = new TapGestureRecognizer();
 			tapGestureRecognizer.SetBinding(TapGestureRecognizer.CommandProperty, "ExpandCommand");
 
-			return new StackLayout {
+			return new StackLayout
+			{
 				Padding = _expandableViewPadding,
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				GestureRecognizers = {
@@ -236,7 +248,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 		Label createExpandLabel(string expandTextString)
 		{
-			return new Label {
+			return new Label
+			{
 				Text = expandTextString,
 				HorizontalTextAlignment = TextAlignment.Center,
 				Style = AppStyles.GetLabelStyle(NamedSize.Small),
@@ -246,7 +259,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 		CachedImage createExpandIcon(string expandIconString)
 		{
-			return new CachedImage {
+			return new CachedImage
+			{
 				HeightRequest = _expandIconHeight,
 				Source = ImageSource.FromFile(expandIconString),
 				Transformations = new List<FFImageLoading.Work.ITransformation> {
@@ -260,7 +274,8 @@ namespace EduCATS.Pages.Statistics.Base.Views
 
 		ChartView createChartView()
 		{
-			var radarChartView = new ChartView {
+			var radarChartView = new ChartView
+			{
 				HeightRequest = _chartHeight
 			};
 
