@@ -25,6 +25,8 @@
 	"type_activity_lecture": "Лекция",
 	"type_activity_lab": "Лаб. работа",
 	"type_activity_practical": "Практ. занятие",
+	"type_activity_kconsultation": "КП",
+	"type_activity_dconsultation": "ДП",
 
 	"server_test": "Тестовый сервер",
 	"server_local": "Локальный сервер",

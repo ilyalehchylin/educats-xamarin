@@ -10,14 +10,16 @@ namespace EduCATS.Pages.Statistics.Students.Views.ViewCells
 
 		public StudentsPageViewCell()
 		{
-			var nameLabel = new Label {
+			var nameLabel = new Label
+			{
 				TextColor = Color.FromHex(Theme.Current.StatisticsBaseTitleColor),
 				Style = AppStyles.GetLabelStyle()
 			};
 
 			nameLabel.SetBinding(Label.TextProperty, "Name");
 
-			View = new StackLayout {
+			View = new StackLayout
+			{
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				Padding = _padding,
 				Children = {

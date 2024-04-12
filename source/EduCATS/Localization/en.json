@@ -17,14 +17,14 @@
 	"contributor_julia_popova": "Julia Popova",
 
 	"role_student": "Student",
-	"role_professor": "Professor",
+	"role_professor": "Lecturer",
 
 	"address_building": "b.",
 	"address_room": "а.",
 
 	"type_activity_lecture": "Lecture",
-	"type_activity_lab": "Lab work",
-	"type_activity_practical": "Practical work",
+	"type_activity_lab": "Lab",
+	"type_activity_practical": "Workshop",
 
 	"server_test": "Test server",
 	"server_local": "Local server",
@@ -84,7 +84,7 @@
 	"lectures_fetch_error": "Error occurred during retrieving lectures. Please try to refresh page or contact support.",
 
 	"learning_card_tests": "Tests",
-	"learning_card_eemc": "EEMC",
+	"learning_card_eemc": "Educational Complex",
 	"learning_card_files": "Files",
 	"learning_card_adaptive": "Adaptive learning",
 
@@ -213,7 +213,7 @@
 	"empty_fields_forgot_password": "Required fields (Login, Specific question, Answer, New Password, Confirm Password) must be filled!",
 
 	"set_marks": "Set marks",
-	"set_visiting": "Put up gaps",
+	"set_visiting": "Mark attendance",
 
 	"save_marks": "Save",
 	"practiсe_visiting": "Practiсe visiting",
@@ -226,7 +226,7 @@
 	"show_for_student": "Show for student",
 	"skipped_hours": "Skipped hours",
 
-	"demo_eemc_open_error": "Viewing EEMC documents is not available for a demo account.",
+	"demo_eemc_open_error": "Viewing Educational Complex documents is not available for a demo account.",
 	"demo_files_download_error": "Downloading tutorials is not available for a demo account.",
 	"demo_delete_account_error": "Deleting a demo account is not possible."
 }
