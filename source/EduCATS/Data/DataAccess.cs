@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Constants;
 using EduCATS.Data.Models;
@@ -21,6 +22,9 @@ namespace EduCATS.Data
 	/// </summary>
 	public static partial class DataAccess
 	{
+		public static string Password { get; private set; }
+		public static string Username { get; private set; }
+
 		/// <summary>
 		/// Authorize.
 		/// </summary>
@@ -50,9 +54,12 @@ namespace EduCATS.Data
 		/// Fetch profile information.
 		/// </summary>
 		/// <param name="username">Username.</param>
+		/// <param name="password">Password.</param>
 		/// <returns>User profile data.</returns>
-		public async static Task<UserProfileModel> GetProfileInfo(string username)
+		public async static Task<UserProfileModel> GetProfileInfo(string username, string password = "")
 		{
+			Password = password;
+			Username = username;
 			var dataAccess = new DataAccess<UserProfileModel>(
 				"login_user_profile_error", getProfileCallback(username), GlobalConsts.DataProfileKey);
 			return await GetDataObject(dataAccess, false) as UserProfileModel;
