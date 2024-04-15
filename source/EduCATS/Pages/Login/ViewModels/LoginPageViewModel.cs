@@ -283,27 +283,7 @@ namespace EduCATS.Pages.Login.ViewModels
 					}
 					catch (WebException ex)
 					{
-						HttpWebResponse httpResponse = (HttpWebResponse)ex.Response;
-						string answer = "";
-						if (ex.Response != null)
-						{
-							using (Stream stream = ex.Response.GetResponseStream())
-							{
-								StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-								answer = reader.ReadToEnd();
-							}
-
-							var serverError = JsonConvert.DeserializeObject<ServerError>(answer);
-
-							if (serverError.Error == 1)
-							{
-								DataAccess.SetError(CrossLocalization.Translate("login_user_profile_not_verify"), false);
-							}
-							else
-							{
-								DataAccess.SetError(CrossLocalization.Translate("login_error"), false);
-							}
-						}
+						
 
 						return null;
 					}
@@ -497,7 +477,7 @@ namespace EduCATS.Pages.Login.ViewModels
 				}
 			}
 
-			AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
+			AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username, userLogin.Password);
 			return userLogin;
 		}
 

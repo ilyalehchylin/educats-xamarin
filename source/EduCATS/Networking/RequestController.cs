@@ -109,31 +109,32 @@ namespace EduCATS.Networking
 		/// <returns>Response.</returns>
 		async Task<HttpResponseMessage> get()
 		{
-			try {
+			try
+			{
 				if (_services.Preferences.AccessToken != "")
 				{
 					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
-						
-				return await _client.GetAsync(Uri);
 
-			} catch (TaskCanceledException) {
-				return errorResponseMessage(HttpStatusCode.RequestTimeout);
-			} catch (HttpRequestException) {
-				try
+				var response = await _client.GetAsync(Uri);
+				if (!response.IsSuccessStatusCode)
 				{
 					_services.Preferences.AccessToken = ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
 					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
 					return await _client.GetAsync(Uri);
 				}
-				catch (TaskCanceledException)
+				else
 				{
-					return errorResponseMessage(HttpStatusCode.RequestTimeout);
-				} catch
-				{
-					return errorResponseMessage(HttpStatusCode.BadRequest);
+					return response;
 				}
-			} catch {
+
+			}
+			catch (TaskCanceledException)
+			{
+				return errorResponseMessage(HttpStatusCode.RequestTimeout);
+			}
+			catch (Exception ex)
+			{
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
 		}
@@ -151,25 +152,20 @@ namespace EduCATS.Networking
 					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
 
-				return await _client.PostAsync(Uri, _postContent);
-
-			} catch (TaskCanceledException) {
-				return errorResponseMessage(HttpStatusCode.RequestTimeout);
-			} catch (HttpRequestException) {
-				try
+				var response = await _client.PostAsync(Uri, _postContent);
+				if (!response.IsSuccessStatusCode)
 				{
 					_services.Preferences.AccessToken = ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
 					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
 					return await _client.PostAsync(Uri, _postContent);
 				}
-				catch (TaskCanceledException)
+				else
 				{
-					return errorResponseMessage(HttpStatusCode.RequestTimeout);
+					return response;
 				}
-				catch
-				{
-					return errorResponseMessage(HttpStatusCode.BadRequest);
-				}
+
+			} catch (TaskCanceledException) {
+				return errorResponseMessage(HttpStatusCode.RequestTimeout);
 			} catch (Exception ex) {
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}

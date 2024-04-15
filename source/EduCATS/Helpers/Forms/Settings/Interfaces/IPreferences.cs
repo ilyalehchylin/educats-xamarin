@@ -7,6 +7,7 @@
 		string Server { get; set; }
 		bool IsLoggedIn { get; set; }
 		string UserLogin { get; set; }
+		string UserPassword { get; set; }
 		int UserId { get; set; }
 		int ChosenSubjectId { get; set; }
 		int GroupId { get; set; }

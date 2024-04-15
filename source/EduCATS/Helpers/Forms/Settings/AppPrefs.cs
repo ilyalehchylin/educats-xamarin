@@ -94,6 +94,25 @@ namespace EduCATS.Helpers.Forms.Settings
 		const string _userLoginDefault = null;
 
 		/// <summary>
+		/// Password key.
+		/// </summary>
+		const string _userPassKey = "USER_LOGIN";
+
+		/// <summary>
+		/// Default password.
+		/// </summary>
+		const string _userPassDefault = null;
+
+		/// <summary>
+		/// Password.
+		/// </summary>
+		public string UserPassword
+		{
+			get => Preferences.Get(_userPassKey, _userPassDefault);
+			set => Preferences.Set(_userPassKey, value);
+		}
+
+		/// <summary>
 		/// Username.
 		/// </summary>
 		public string UserLogin {
