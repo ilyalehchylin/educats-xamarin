@@ -20,11 +20,11 @@ namespace EduCATS.Pages.Today.Base.Views
 		const double _calendarDaysOfWeekCollectionHeight = 50;
 		const string _calendarCollectionDataBinding = ".";
 
-		double _subjectRowHeight = 80;
+		double _subjectRowHeight = 170;
 		double _subjectDetailedRowHeight = 80;
 
 		static Thickness _newsLabelMagin = new Thickness(10);
-		static Thickness _subjectsMargin = new Thickness(10, 5, 10, 0);
+		static Thickness _subjectsMargin = new Thickness(10, 5);
 		static Thickness _margin = new Thickness(0, 0, 0, 1);
 		static Thickness _listMargin = new Thickness(0, 1, 0, 0);
 		static Thickness _subjectsLabelMargin = new Thickness(0, 10, 10, 10);

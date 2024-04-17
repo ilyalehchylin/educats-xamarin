@@ -56,8 +56,7 @@ namespace EduCATS.Controls.RoundedListView
 			double footerBottomPadding = 0,
 			Func<object> func = null)
 		{
-			if (type == typeof(SubjectPageViewCell) || type == typeof(CalendarSubjectsViewCell)) HasUnevenRows = false;
-			else HasUnevenRows = true;
+			HasUnevenRows = true;
 			ItemTemplate = func == null ?
 				new RoundedListTemplateSelector(type, checkbox) :
 				new RoundedListTemplateSelector(func, checkbox);
