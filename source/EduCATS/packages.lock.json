@@ -111,9 +111,9 @@
       },
       "Xamarin.Forms": {
         "type": "Direct",
-        "requested": "[5.0.0.2612, )",
-        "resolved": "5.0.0.2612",
-        "contentHash": "zQcy3NJgRJnLRWQZ2TZPCgDoTDHoYskHLutKDvz1pVNtvJ8U7kkg4mE2XATs3dAkQ+oWoqB4VOBGRk9uAfoRMw=="
+        "requested": "[5.0.0.2662, )",
+        "resolved": "5.0.0.2662",
+        "contentHash": "SNQvq2tNJUl54KXfFrCx7SzfxDeJOUxQPaLxzLK8y/KFd6H9mwnhEu/W0Bejv79ogLYIy4r1ka2AHR+injTNow=="
       },
       "Microsoft.Bcl.AsyncInterfaces": {
         "type": "Transitive",

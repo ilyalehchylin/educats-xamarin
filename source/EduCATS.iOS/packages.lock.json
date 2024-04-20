@@ -101,9 +101,9 @@
       },
       "Xamarin.Forms": {
         "type": "Direct",
-        "requested": "[5.0.0.2612, )",
-        "resolved": "5.0.0.2612",
-        "contentHash": "zQcy3NJgRJnLRWQZ2TZPCgDoTDHoYskHLutKDvz1pVNtvJ8U7kkg4mE2XATs3dAkQ+oWoqB4VOBGRk9uAfoRMw=="
+        "requested": "[5.0.0.2662, )",
+        "resolved": "5.0.0.2662",
+        "contentHash": "SNQvq2tNJUl54KXfFrCx7SzfxDeJOUxQPaLxzLK8y/KFd6H9mwnhEu/W0Bejv79ogLYIy4r1ka2AHR+injTNow=="
       },
       "BTProgressHUD": {
         "type": "Transitive",
@@ -275,23 +275,11 @@
           "Xamarin.FFImageLoading": "[2.4.11.982, )",
           "Xamarin.FFImageLoading.Forms": "[2.4.11.982, )",
           "Xamarin.FFImageLoading.Transformations": "[2.4.11.982, )",
-          "Xamarin.Forms": "[5.0.0.2612, )"
+          "Xamarin.Forms": "[5.0.0.2662, )"
         }
       }
     },
     "Xamarin.iOS,Version=v1.0/win": {
-      "SkiaSharp": {
-        "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
-      },
-      "System.Security.Cryptography.Cng": {
-        "type": "Transitive",
-        "resolved": "4.5.0",
-        "contentHash": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A=="
-      }
-    },
-    "Xamarin.iOS,Version=v1.0/win-arm64": {
       "SkiaSharp": {
         "type": "Transitive",
         "resolved": "2.80.2",
