@@ -119,7 +119,7 @@ namespace EduCATS.Networking
 				var response = await _client.GetAsync(Uri);
 				if (!response.IsSuccessStatusCode)
 				{
-					_services.Preferences.AccessToken = ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
+					_services.Preferences.AccessToken = await ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
 					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
 					return await _client.GetAsync(Uri);
 				}
@@ -155,7 +155,7 @@ namespace EduCATS.Networking
 				var response = await _client.PostAsync(Uri, _postContent);
 				if (!response.IsSuccessStatusCode)
 				{
-					_services.Preferences.AccessToken = ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
+					_services.Preferences.AccessToken = await ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
 					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
 					return await _client.PostAsync(Uri, _postContent);
 				}

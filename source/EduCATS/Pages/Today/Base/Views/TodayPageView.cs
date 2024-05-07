@@ -20,7 +20,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		const double _calendarDaysOfWeekCollectionHeight = 50;
 		const string _calendarCollectionDataBinding = ".";
 
-		double _subjectRowHeight = 80;
+		double _subjectRowHeight = 170;
 		double _subjectDetailedRowHeight = 80;
 
 		static Thickness _newsLabelMagin = new Thickness(10);
@@ -170,7 +170,7 @@ namespace EduCATS.Pages.Today.Base.Views
 
 			if (Networking.Servers.Current == Networking.Servers.EduCatsByAddress)
 			{
-				subjectsListView = new RoundedListView(typeof(SubjectPageViewCell), header: subjectsLabel)
+				subjectsListView = new RoundedListView(typeof(SubjectPageViewCell), header: subjectsLabel, services: _services)
 				{
 					RowHeight = (int)_subjectDetailedRowHeight,
 					IsEnabled = false,
@@ -181,7 +181,7 @@ namespace EduCATS.Pages.Today.Base.Views
 			}
 			else
 			{
-				subjectsListView = new RoundedListView(typeof(CalendarSubjectsViewCell), header: subjectsLabel) {
+				subjectsListView = new RoundedListView(typeof(CalendarSubjectsViewCell), header: subjectsLabel, services: _services) {
 					RowHeight = (int)_subjectRowHeight,
 					IsEnabled = false,
 					Margin = _subjectsMargin,

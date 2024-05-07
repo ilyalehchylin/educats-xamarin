@@ -65,7 +65,6 @@
         <Folder Include="Pages\Statistics\Base\" />
         <Folder Include="Pages\Statistics\Base\Views\" />
         <Folder Include="Pages\Statistics\Base\ViewModels\" />
-        <Folder Include="Data\Models\Statistics\" />
         <Folder Include="Pages\Statistics\Base\Views\ViewCells\" />
         <Folder Include="Pages\Statistics\Base\Models\" />
         <Folder Include="Pages\Statistics\Enums\" />

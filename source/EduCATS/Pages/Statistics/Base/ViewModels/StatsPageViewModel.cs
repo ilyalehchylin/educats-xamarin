@@ -430,9 +430,9 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 							}
 						}
 
-						averages[0] /= countOfGroups;
-						averages[1] /= countOfGroups;
-						averages[2] /= countOfGroups;
+						averages[0] /= countOfGroups == 0? 1 : countOfGroups;
+						averages[1] /= countOfGroups == 0? 1 : countOfGroups;
+						averages[2] /= countOfGroups == 0 ? 1 : countOfGroups;
 
 						setChartData(currentStudentStatistics, new LabsVisitingList(), null, averages);
 					}
@@ -559,7 +559,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 						countOfPractStudents++;
 					}
 
-					avgPract /= countOfPractStudents;
+					avgPract /= countOfPractStudents == 0 ? 1 : countOfPractStudents;
 
 					
 
@@ -573,9 +573,9 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 							avgTests += double.Parse(student.TestMark, CultureInfo.InvariantCulture);
 					}
 
-					avgLabs /= countOfStudents;
+					avgLabs /= countOfStudents == 0 ? 1 : countOfStudents;
 
-					avgTests /= countOfStudents;
+					avgTests /= countOfStudents == 0 ? 1 : countOfStudents;
 				}
 				else
 				{
