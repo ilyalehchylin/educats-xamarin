@@ -24,7 +24,7 @@ namespace EduCATS.UnitTests
 	{
 		[TestCase("TestLecturer5", "TestLecturer5")]
 		[Test]
-		public async void RefreshToken_Test(string username, string password)
+		public async Task RefreshToken_Test(string username, string password)
 		{
 			try
 			{
