@@ -232,7 +232,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns>Access token string on success, <code>null</code> otherwise.</returns>
 		public async Task<string> RefreshToken()
 		{
-			if (DataAccess.Username == string.Empty || DataAccess.Password == string.Empty)
+			if (_services.Preferences.AccessToken == string.Empty)
 			{
 				await loginRequest();
 			}
