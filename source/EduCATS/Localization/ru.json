@@ -53,7 +53,7 @@
 	"main_settings": "Настройки",
 
 
-	"today_subjects": "Предметы",
+	"today_subjects": "Расписание",
 	"today_news": "Новости",
 	"today_news_load_error": "Произошла ошибка во время получения списка новостей. Пожалуйста, обновите страницу или обратитесь в службу поддержки.",
 	"today_subjects_error": "Произошла ошибка во время получения списка предметов. Пожалуйста, обновите страницу или обратитесь в службу поддержки.",
@@ -131,6 +131,7 @@
 	"settings_font": "Текст & Шрифт",
 	"settings_delete": "Удалить аккаунт",
 	"settings_about": "О приложении",
+	"settings_about_profile": "Об аккаунте",
 	"settings_logout": "Выйти",
 	"settings_logout_message": "Вы действительно хотите выйти?",
 
@@ -178,6 +179,11 @@
 	"name": "Имя",
 	"surname": "Фамилия",
 	"patronymic": "Отчество",
+	"login": "Логин",
+	"email": "Почта",
+	"phone": "Телефон",
+	"accountinfo": "Skype, Viber, Telegram и др.",
+	"about": "О себе",
 	"confirm_password": "Подтверждение пароля",
 	"select_secret_question": "Секретный вопрос",
 	"choose_group": "Группа",

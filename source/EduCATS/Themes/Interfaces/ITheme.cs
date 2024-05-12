@@ -136,7 +136,7 @@
 		string SettingsLogoutIcon { get; }
 		string SettingsGroupUserColor { get; }
 		string SettingsTitleColor { get; }
-
+		string SettingsProfileColor{ get;}
 		string CheckboxIcon { get; }
 		string CheckboxDescriptionColor { get; }
 

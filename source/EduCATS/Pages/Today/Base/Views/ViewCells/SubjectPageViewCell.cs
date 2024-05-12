@@ -6,6 +6,7 @@ using FFImageLoading.Transformations;
 using FFImageLoading.Work;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.Shapes;
 
 namespace EduCATS.Pages.Today.Base.Views.ViewCells
 {
@@ -14,7 +15,11 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 		const double _boxViewSize = 10;
 		const double _boxViewLayoutSize = 20;
 		const double _clockIconSize = 20;
-		static Thickness _paddingTeacher = new Thickness(10, 0);
+		double _boxViewSizeAngle = _boxViewSize / 2;
+		double _boxViewSizeRotate = 0;
+
+		static Thickness _paddingTeacher = new Thickness(10	, 0);
+		static Thickness _paddingNote = new Thickness(20, 0);
 		static Thickness _framePadding = new Thickness(10, 5, 10, 10);
 		static Thickness _paddingItem = new Thickness(25, 0);
 
@@ -61,16 +66,14 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 					address
 				}
 			};
-
 			var subjectBoxView = new BoxView
 			{
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				HeightRequest = _boxViewSize,
 				WidthRequest = _boxViewSize,
-				CornerRadius = _boxViewSize / 2
+				CornerRadius = _boxViewSizeAngle,
 			};
-
 			subjectBoxView.SetBinding(
 				BoxView.ColorProperty, "Color", converter: new StringToColorConverter());
 
@@ -130,15 +133,26 @@ namespace EduCATS.Pages.Today.Base.Views.ViewCells
 					type,
 					teacher
 				}
+			};	
+			var note = new Label
+			{
+				Padding = _paddingItem,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				TextColor = Color.FromHex(Theme.Current.TodayNewsDateColor),
+				Style = AppStyles.GetLabelStyle(NamedSize.Micro)
 			};
+
+			note.SetBinding(Label.TextProperty, "Note");
 
 			View = new StackLayout {
 				Padding = _framePadding,
 				BackgroundColor = Color.FromHex(Theme.Current.TodayNewsItemBackgroundColor),
 				Children = {
 					dateLayout,
-					subjectLayout,
-					informationLayout
+					subjectLayout,		
+					informationLayout,
+					note,
+
 				}
 			};
 		}

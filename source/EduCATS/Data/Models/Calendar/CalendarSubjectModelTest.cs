@@ -41,6 +41,9 @@ namespace EduCATS.Data.Models.Calendar
 
 		[JsonProperty("Type")]
 		public int Type { get; set; }
+		
+		[JsonProperty("Notes")]
+		public string[] Notes { get; set; }
 
 	}
 

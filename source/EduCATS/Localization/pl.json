@@ -49,7 +49,7 @@
 	"main_statistics": "Statystyk",
 	"main_settings": "Konfiguracja",
 
-	"today_subjects": "Dyscypliny",
+	"today_subjects": "harmonogram",
 	"today_news": "Wiadomości",
 	"today_news_load_error": "Wystąpił błąd podczas pobierania listy wiadomości. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
 	"today_subjects_error": "Wystąpił błąd podczas pobierania listy dyscyplin. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
@@ -127,6 +127,7 @@
 	"settings_font": "Tekst & Czcionka",
 	"settings_delete": "Usuń konto",
 	"settings_about": "Informacje o aplikacji",
+	"settings_about_profile": "O koncie",
 	"settings_logout": "Wyjść",
 	"settings_logout_message": "Czy na pewno chcesz wyjść?",
 
@@ -174,6 +175,11 @@
 	"name": "Nazwa",
 	"surname": "Nazwisko",
 	"patronymic": "Patronimiczny",
+	"login": "Zaloguj sie",
+	"email": "Poczta",
+	"phone": "Telefon",
+	"accountinfo": "Skype, Viber, Telegram i inne.",
+	"about": "O mnie",
 	"confirm_password": "Potwierdź hasło",
 	"select_secret_question": "Konkretne pytanie",
 	"choose_group": "Grupa",

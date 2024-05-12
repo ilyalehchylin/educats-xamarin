@@ -72,6 +72,14 @@ namespace EduCATS.Data
 			string date) => await AppServices.GetSchedule(date);
 
 		/// <summary>
+		/// Schedule callback.
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <returns>Calendar data.</returns>
+		static async Task<object> getEventCallback(
+			string date) => await AppServices.GetEvent(date);
+
+		/// <summary>
 		/// Statistics callback.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>

@@ -119,6 +119,16 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch calendar data request.
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <returns>Calendar data.</returns>
+		public static async Task<object> GetEvent(string date)
+		{
+			return await AppServicesController.Request(Links.GetEvent + $"dateStart={date}&dateEnd={date}", AppDemoType.Schedule);
+		}
+
+		/// <summary>
 		/// Fetch statistics request.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>

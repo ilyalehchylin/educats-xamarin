@@ -3,10 +3,12 @@ using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Converters;
 using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Settings.Base.ViewModels;
+using EduCATS.Pages.Settings.Profile.Views;
 using EduCATS.Pages.Settings.Views.Base.ViewCells;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using FFImageLoading.Transformations;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Settings.Base.Views
@@ -15,14 +17,19 @@ namespace EduCATS.Pages.Settings.Base.Views
 	{
 		const double _avatarHeight = 60;
 		const double _userLayoutSpacing = 15;
+		const double _forwardIcon = 20;
 		static Thickness _listMargin = new(10, 0, 10, 0);
 		static Thickness _userFrameMargin = new(0, 0, 0, 10);
+		const double _buttonHeight = 10;
+		readonly IPlatformServices _services;
 
 		public SettingsPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
-			BindingContext = new SettingsPageViewModel(new PlatformServices());
+			_services = new PlatformServices();
+			BindingContext = new SettingsPageViewModel(_services);
+			
 			createViews();
 		}
 
@@ -36,7 +43,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 				Children = {
 					settingsListView
 				}
-			};
+			};	
 		}
 
 		Frame createUserLayout()
@@ -50,11 +57,19 @@ namespace EduCATS.Pages.Settings.Base.Views
 			var userGroupLabel = createSubtitleLabel();
 			userGroupLabel.SetBinding(Label.TextProperty, "Group");
 
+			var forwardIcon = new CachedImage
+			{
+				HeightRequest = _forwardIcon,
+				HorizontalOptions = LayoutOptions.EndAndExpand,
+				VerticalOptions = LayoutOptions.CenterAndExpand,
+				Source = ImageSource.FromFile(Theme.Current.BaseArrowForwardIcon)
+			};
+
 			var usernameLayout = new StackLayout {
 				Children = {
 					userLabel,
 					userRoleLabel,
-					userGroupLabel
+					userGroupLabel,
 				}
 			};
 
@@ -64,7 +79,8 @@ namespace EduCATS.Pages.Settings.Base.Views
 				HorizontalOptions = LayoutOptions.FillAndExpand,
 				Children = {
 					avatar,
-					usernameLayout
+					usernameLayout,
+					forwardIcon,
 				}
 			};
 
@@ -75,7 +91,15 @@ namespace EduCATS.Pages.Settings.Base.Views
 				Content = userLayout
 			};
 
+			var profileTitle = CrossLocalization.Translate("settings_about_profile");
 			userFrame.SetBinding(IsVisibleProperty, "IsLoggedIn");
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.Tapped += async (s, e) =>
+			{
+				await _services.Navigation.OpenProfileAbout(profileTitle);
+			};
+			userFrame.GestureRecognizers.Add(tapGestureRecognizer);
+
 			return userFrame;
 		}
 
@@ -93,6 +117,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 				converter: new Base64ToImageSourceConverter());
 			return avatarImage;
 		}
+
 
 		Label createUserLabel()
 		{
@@ -124,7 +149,7 @@ namespace EduCATS.Pages.Settings.Base.Views
 				Margin = _listMargin
 			};
 
-			settingsListView.ItemTapped += (sender, e) => ((ListView)sender).SelectedItem = null;
+				settingsListView.ItemTapped += (sender, e) => ((ListView)sender).SelectedItem = null;
 			settingsListView.SetBinding(ListView.SelectedItemProperty, "SelectedItem");
 			settingsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "SettingsList");
 			return settingsListView;

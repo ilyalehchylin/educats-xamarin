@@ -51,7 +51,7 @@
 	"main_statistics": "Statistika",
 	"main_settings": "Nustatymai",
 
-	"today_subjects": "Dalykai",
+	"today_subjects": "Tvarkaraštį",
 	"today_news": "Naujienos",
 	"today_news_load_error": "Gaunant naujienų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
 	"today_subjects_error": "Gaunant elementų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
@@ -129,6 +129,7 @@
 	"settings_font": "Tekstas ir šriftas",
 	"settings_delete": "Eliminare l'account",
 	"settings_about": "Apie programą",
+	"settings_about_profile": "Apie paskyrą",
 	"settings_logout": "Atsijungti",
 	"settings_logout_message": "Ar tikrai norite atsijungti ?",
 
@@ -176,6 +177,11 @@
 	"name": "Vardas",
 	"surname": "Pavardė",
 	"patronymic": "Tėvavardis",
+	"login": "Prisijungti",
+	"email": "Paštas",
+	"phone": "Telefonas",
+	"accountinfo": "Skype, Viber, Telegram ir kita",
+	"about": "Apie mane",
 	"confirm_password": "Patvirtinti slaptažodį",
 	"select_secret_question": "Konkretus klausimas",
 	"select_group": "Grupė",

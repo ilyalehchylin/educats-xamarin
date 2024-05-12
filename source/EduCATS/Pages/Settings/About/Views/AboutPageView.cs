@@ -1,10 +1,12 @@
 ﻿using EduCATS.Constants;
+using EduCATS.Data.Models;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Settings.About.ViewModels;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Nyxbull.Plugins.CrossLocalization;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Settings.About.Views
@@ -13,7 +15,6 @@ namespace EduCATS.Pages.Settings.About.Views
 	{
 		static Thickness _padding = new Thickness(20);
 		static Thickness _buttonsPadding = new Thickness(0, 0, 0, 10);
-
 		const double _spacing = 20;
 		const double _buttonHeight = 50;
 

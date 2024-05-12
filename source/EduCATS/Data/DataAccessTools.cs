@@ -43,7 +43,7 @@ namespace EduCATS.Data
 		public async static Task<object> GetDataObject<T>(IDataAccess<T> dataAccess, bool isList)
 		{
 			object objectToGet;
-
+			var x = dataAccess;
 			if (isList) {
 				objectToGet = await dataAccess.GetList();
 			} else {

@@ -79,6 +79,13 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			set { SetProperty(ref _newsSubjectList, value); }
 		}
 
+		List<EventPageModel> _newsEventList;
+		public List<EventPageModel> NewsEventList
+		{
+			get { return _newsEventList; }
+			set { SetProperty(ref _newsEventList, value); }
+		}
+
 		List<CalendarSubjectsModel> _calendarSubjects;
 		public List<CalendarSubjectsModel> CalendarSubjects {
 			get { return _calendarSubjects; }
@@ -89,6 +96,13 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		public double CalendarSubjectsHeight {
 			get { return _calendarSubjectsHeight; }
 			set { SetProperty(ref _calendarSubjectsHeight, value); }
+		}
+
+		double _calendarEventHeight;
+		public double CalendarEventHeight
+		{
+			get { return _calendarEventHeight; }
+			set { SetProperty(ref _calendarEventHeight, value); }
 		}
 
 		string _month;
@@ -231,6 +245,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				}
 
 				await setNewSubjectList(date);
+				await setNewEventList(date);
 			}
 		}
 
@@ -446,6 +461,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				{
 					_services.Device.MainThread(async () => {
 						await setNewSubjectList(date);
+						await setNewEventList(date);
 					});
 				}
 
@@ -466,6 +482,17 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			setupNewsSubjectsHeight();
 		}
 
+		async Task setNewEventList(DateTime dateTime)
+		{
+			var subjects = await DataAccess.GetEvent(dateTime.ToString(DateHelper.DateTime.Replace('.', '-')));
+
+			List<EventPageModel> temp = subjects.Event.Select(n => {
+				return new EventPageModel(n);
+			}).ToList().OrderBy(l => l.Date).ToList();
+
+			NewsEventList = temp.OrderBy(x => x.Date).ToList();
+			setupEventSubjectsHeight();
+		}
 
 		void setFilteredSubjectsList()
 		{
@@ -511,6 +538,27 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 				CalendarSubjectsHeight =
 					(_subjectHeight * (NewsSubjectList.Count) /** 2*/) +
+					_subjectsHeaderHeight + _subjectsFooterHeight + _subjectsHeightToAdd;
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+			}
+
+			
+		}
+		void setupEventSubjectsHeight()
+		{
+			try
+			{
+				if (NewsEventList.Count == 0)
+				{
+					CalendarEventHeight = _emptySubjectsHeight;
+					return;
+				}
+
+				CalendarEventHeight =
+					(_subjectHeight * (NewsEventList.Count) /** 2*/) +
 					_subjectsHeaderHeight + _subjectsFooterHeight + _subjectsHeightToAdd;
 			}
 			catch (Exception ex)

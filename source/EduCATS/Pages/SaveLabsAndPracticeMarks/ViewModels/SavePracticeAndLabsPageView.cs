@@ -30,6 +30,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 	{
 		static Thickness _padding = new Thickness(10, 1);
 		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
+		const double _controlHeight = 55;
 
 		private string _groupName;
 
@@ -137,7 +138,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 			var subGroupPicker = new Picker
 			{
 				BackgroundColor = Color.White,
-				HeightRequest = 70,
+				HeightRequest = _controlHeight,
 			};
 			subGroupPicker.SetBinding(Picker.ItemsSourceProperty, "SubGroup");
 			subGroupPicker.SetBinding(Picker.SelectedItemProperty, new Binding("SelectedSubGroup"));

@@ -26,7 +26,6 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
-				//Font = Font.SystemFontOfSize(NamedSize.Large).WithAttributes(FontAttributes.Bold),
 				Style = AppStyles.GetLabelStyle()
 			};
 

@@ -51,7 +51,12 @@
 		/// Get schedule calendar data URL.
 		/// </summary>
 		public static string GetSchedule => $"{Servers.Current}/Services/Schedule/ScheduleService.svc/GetSchedule?";
-
+		
+		/// <summary>
+		/// Get schedule calendar data URL.
+		/// </summary>
+		public static string GetEvent => $"{Servers.Current}/Services/Notes/NotesService.svc/GetPersonalNotesBetweenDates?";
+		
 		/// <summary>
 		/// Get laboratory works statistics URL.
 		/// </summary>

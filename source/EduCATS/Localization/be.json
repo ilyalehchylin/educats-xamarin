@@ -50,7 +50,7 @@
 	"main_statistics": "Статыстыка",
 	"main_settings": "Налады",
 
-	"today_subjects": "Прадметы",
+	"today_subjects": "Расклад",
 	"today_news": "Навіны",
 	"today_news_load_error": "Здарылася памылка падчас атрымання спісу навін. Калі ласка абнавіце старонку альбо звярніцеся ў службу падтрымкі.",
 	"today_subjects_error": "Здарылася памылка падчас атрымання спісу прадметаў. Калі ласка абнавіце старонку альбо звярніцеся ў службу падтрымкі.",
@@ -126,6 +126,7 @@
 	"settings_font": "Тэкст & Шрыфт",
 	"settings_delete": "Выдаліць акаўнт",
 	"settings_about": "Пра дадатак",
+	"settings_about_profile": "Аб акаўнце",
 	"settings_logout": "Выйсці",
 	"settings_logout_message": "Вы насамрэч жадаеце выйсці?",
 
@@ -173,6 +174,11 @@
 	"name": "Імя",
 	"surname": "Прозвішча",
 	"patronymic": "Імя па бацьку",
+	"login": "Лагін",
+	"email": "Пошта",
+	"phone": "Тэлефон",
+	"accountinfo": "Skype, Viber, Telegram і др.",
+	"about": "Пра сябе",
 	"confirm_password": "Пацверджанне пароля",
 	"select_secret_question": "Серкретный пытанне",
 	"choose_group": "Группа",

@@ -128,12 +128,24 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
+		/// Fetch schedule calendar data.
+		/// </summary>
+		/// <param name="username">Username.</param>
+		/// <returns>Calendar data.</returns>
+		public async static Task<CalendarEventModelTest> GetEvent(string date)
+		{
+			var dataAccess = new DataAccess<CalendarEventModelTest>(
+				"today_calendar_error", getEventCallback(date), GlobalConsts.DataGetCalendarKey);
+			return await GetDataObject(dataAccess, false) as CalendarEventModelTest;
+		}
+
+		/// <summary>
 		/// Fetch statistics.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Statistics data.</returns>
-			public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
+		public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
 		{
 			var dataAccess = new DataAccess<StatsModel>(
 				"stats_marks_error", getStatsCallback(subjectId, groupId),

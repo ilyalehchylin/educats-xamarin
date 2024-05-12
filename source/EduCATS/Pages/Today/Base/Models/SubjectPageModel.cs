@@ -11,6 +11,8 @@ namespace EduCATS.Pages.Today.Base.Models
 		public string Color { get; set; }
 		public string Name { get; set; }
 
+		public string Note {  get; set; }
+
 		string _teacherFullName;
 		public string TeacherFullName
 		{
@@ -94,7 +96,10 @@ namespace EduCATS.Pages.Today.Base.Models
 				Address = $"{CrossLocalization.Translate("address_building")} {schedule.Building}, {CrossLocalization.Translate("address_room")} {schedule.Audience}";
 				Date = schedule.Start + "-" + schedule.End;
 				Name = schedule.Name;
-
+				for(int i = 0; i < schedule.Notes.Length; i++)
+				{
+					Note += schedule.Notes[i];
+				}
 
 				switch (schedule.Type)
 				{
@@ -114,6 +119,7 @@ namespace EduCATS.Pages.Today.Base.Models
 						Type = CrossLocalization.Translate("type_activity_dconsultation");
 						break;
 					default:
+						Type = "";
 						break;
 				}
 

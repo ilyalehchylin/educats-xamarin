@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EduCATS.Constants;
 using EduCATS.Data;
 using EduCATS.Data.User;
 using EduCATS.Demo;
@@ -99,7 +100,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				createItem(Theme.Current.SettingsLanguageIcon, "settings_language"),
 				createItem(Theme.Current.SettingsThemeIcon, "settings_theme"),
 				createItem(Theme.Current.SettingsFontIcon, "settings_font"),
-				createItem(Theme.Current.SettingsAboutIcon, "settings_about")
+				createItem(Theme.Current.SettingsAboutIcon, "settings_about"),
 			};
 		
 			if (_services.Preferences.Server == Servers.EduCatsAddress && IsLoggedIn && !string.IsNullOrEmpty(_services.Preferences.GroupName))
@@ -144,6 +145,8 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				var deleteTitle = CrossLocalization.Translate("settings_delete");
 				var aboutTitle = CrossLocalization.Translate("settings_about");
 				var logoutTitle = CrossLocalization.Translate("settings_logout");
+				var profileTitle = CrossLocalization.Translate("settings_about_profile");
+
 
 				if (title.Equals(serverTitle)) {
 					await _services.Navigation.OpenSettingsServer(serverTitle);
@@ -157,6 +160,8 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 					await deleteAccount();
 				} else if (title.Equals(aboutTitle)) {
 					await _services.Navigation.OpenSettingsAbout(aboutTitle);
+				} else if (title.Equals(profileTitle)) {
+					await _services.Navigation.OpenProfileAbout(profileTitle);
 				} else if (title.Equals(logoutTitle)) {
 					await logout();
 				}
