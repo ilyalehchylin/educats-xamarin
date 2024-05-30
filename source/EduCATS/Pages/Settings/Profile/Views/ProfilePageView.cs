@@ -8,7 +8,6 @@ using FFImageLoading.Forms;
 using Nyxbull.Plugins.CrossLocalization;
 using System.Collections.Generic;
 using Xamarin.Forms;
-using EduCATS.Data.Models;
 using EduCATS.Helpers.Forms.Converters;
 using FFImageLoading.Transformations;
 

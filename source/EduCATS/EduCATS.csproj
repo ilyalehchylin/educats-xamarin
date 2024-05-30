@@ -146,6 +146,9 @@
         <Folder Include="Pages\Settings\Fonts\Views\" />
         <Folder Include="Pages\Settings\Fonts\ViewModels\" />
         <Folder Include="Pages\Settings\Fonts\Models\" />
+		<Folder Include="Pages\Settings\Profile\" />
+		<Folder Include="Pages\Settings\Profile\Views\" />
+		<Folder Include="Pages\Settings\Profile\ViewModels\" />
         <Folder Include="Pages\Settings\About\" />
         <Folder Include="Pages\Settings\About\ViewModels\" />
         <Folder Include="Helpers\Forms\Speech\" />
