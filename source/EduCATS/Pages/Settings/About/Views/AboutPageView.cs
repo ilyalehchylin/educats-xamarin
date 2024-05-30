@@ -1,10 +1,12 @@
 ﻿using EduCATS.Constants;
+using EduCATS.Data.Models;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Pages.Settings.About.ViewModels;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Nyxbull.Plugins.CrossLocalization;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Settings.About.Views
@@ -13,7 +15,6 @@ namespace EduCATS.Pages.Settings.About.Views
 	{
 		static Thickness _padding = new Thickness(20);
 		static Thickness _buttonsPadding = new Thickness(0, 0, 0, 10);
-
 		const double _spacing = 20;
 		const double _buttonHeight = 50;
 
@@ -28,7 +29,8 @@ namespace EduCATS.Pages.Settings.About.Views
 
 		void createViews()
 		{
-			Content = new StackLayout {
+			Content = new StackLayout
+			{
 				Spacing = _spacing,
 				Padding = _buttonsPadding,
 				Children = {
@@ -56,7 +58,8 @@ namespace EduCATS.Pages.Settings.About.Views
 				CrossLocalization.Translate("settings_about_open_web_version"),
 				"OpenWebSiteCommand");
 
-			return new StackLayout {
+			return new StackLayout
+			{
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {
 					releaseNotesButton,
@@ -73,7 +76,8 @@ namespace EduCATS.Pages.Settings.About.Views
 			var logo = createLogo();
 			var rightLayout = createRightLayout();
 
-			return new StackLayout {
+			return new StackLayout
+			{
 				Spacing = _spacing,
 				Orientation = StackOrientation.Horizontal,
 				Children = { logo, rightLayout }
@@ -82,7 +86,8 @@ namespace EduCATS.Pages.Settings.About.Views
 
 		CachedImage createLogo()
 		{
-			return new CachedImage {
+			return new CachedImage
+			{
 				HeightRequest = 100,
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Source = Theme.Current.BaseLogoImage
@@ -101,7 +106,8 @@ namespace EduCATS.Pages.Settings.About.Views
 				$"{CrossLocalization.Translate("settings_about_app_build")}: ",
 				"Build");
 
-			return new StackLayout {
+			return new StackLayout
+			{
 				VerticalOptions = LayoutOptions.StartAndExpand,
 				Children = {
 					nameLabel,
@@ -116,21 +122,25 @@ namespace EduCATS.Pages.Settings.About.Views
 		{
 			var color = Color.FromHex(Theme.Current.AboutTextColor);
 
-			var leftSpan = new Span {
+			var leftSpan = new Span
+			{
 				Text = title,
 				ForegroundColor = color,
 				FontAttributes = FontAttributes.Bold,
 				Style = AppStyles.GetLabelStyle(namedSize, true)
 			};
 
-			var formattedString = new FormattedString {
+			var formattedString = new FormattedString
+			{
 				Spans = {
 					leftSpan
 				}
 			};
 
-			if (bindingProperty != null) {
-				var rightSpan = new Span {
+			if (bindingProperty != null)
+			{
+				var rightSpan = new Span
+				{
 					ForegroundColor = color,
 					Style = AppStyles.GetLabelStyle()
 				};
@@ -139,7 +149,8 @@ namespace EduCATS.Pages.Settings.About.Views
 				formattedString.Spans.Add(rightSpan);
 			}
 
-			return new Label {
+			return new Label
+			{
 				FormattedText = formattedString
 			};
 		}
@@ -150,7 +161,8 @@ namespace EduCATS.Pages.Settings.About.Views
 			var ilContributor = createContributorLabel("contributor_ilya_lehchylin");
 			var jpContributor = createContributorLabel("contributor_julia_popova");
 
-			return new StackLayout {
+			return new StackLayout
+			{
 				VerticalOptions = LayoutOptions.EndAndExpand,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
 				Children = {
@@ -163,7 +175,8 @@ namespace EduCATS.Pages.Settings.About.Views
 
 		Label createContributorLabel(string localizedKey, bool bold = false)
 		{
-			return new Label {
+			return new Label
+			{
 				Style = AppStyles.GetLabelStyle(bold: bold),
 				HorizontalTextAlignment = TextAlignment.Center,
 				Text = CrossLocalization.Translate(localizedKey),
@@ -173,7 +186,8 @@ namespace EduCATS.Pages.Settings.About.Views
 
 		Button createButton(string text, string commandProperty)
 		{
-			var button = new Button {
+			var button = new Button
+			{
 				Text = text,
 				HeightRequest = _buttonHeight,
 				Style = AppStyles.GetButtonStyle(),

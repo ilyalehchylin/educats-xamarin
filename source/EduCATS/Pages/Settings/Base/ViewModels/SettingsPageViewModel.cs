@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using EduCATS.Constants;
 using EduCATS.Data;
 using EduCATS.Data.User;
 using EduCATS.Demo;
@@ -20,63 +21,76 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		public SettingsPageViewModel(IPlatformServices services)
 		{
-			try {
+			try
+			{
 				_services = services;
 				setInitData();
 				setSettings();
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex, nameof(SettingsPageViewModel));
 			}
 		}
 
 		string _avatar;
-		public string Avatar {
+		public string Avatar
+		{
 			get { return _avatar; }
 			set { SetProperty(ref _avatar, value); }
 		}
 
 		string _username;
-		public string Username {
+		public string Username
+		{
 			get { return _username; }
 			set { SetProperty(ref _username, value); }
 		}
 
 		string _group;
-		public string Group {
+		public string Group
+		{
 			get { return _group; }
 			set { SetProperty(ref _group, value); }
 		}
 
 		string _role;
-		public string Role {
+		public string Role
+		{
 			get { return _role; }
 			set { SetProperty(ref _role, value); }
 		}
 
 		bool _isLoggedIn;
-		public bool IsLoggedIn {
+		public bool IsLoggedIn
+		{
 			get { return _isLoggedIn; }
 			set { SetProperty(ref _isLoggedIn, value); }
 		}
 
 		List<SettingsPageModel> _settingsList;
-		public List<SettingsPageModel> SettingsList {
+		public List<SettingsPageModel> SettingsList
+		{
 			get { return _settingsList; }
 			set { SetProperty(ref _settingsList, value); }
 		}
 
 		object _selectedItem;
-		public object SelectedItem {
+		public object SelectedItem
+		{
 			get { return _selectedItem; }
-			set {
+			set
+			{
 				SetProperty(ref _selectedItem, value);
 				openSettings(_selectedItem);
 			}
 		}
 
 		Command _closeCommand;
-		public Command CloseCommand {
-			get {
+		public Command CloseCommand
+		{
+			get
+			{
 				return _closeCommand ?? (
 					_closeCommand = new Command(closePage));
 			}
@@ -99,22 +113,24 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				createItem(Theme.Current.SettingsLanguageIcon, "settings_language"),
 				createItem(Theme.Current.SettingsThemeIcon, "settings_theme"),
 				createItem(Theme.Current.SettingsFontIcon, "settings_font"),
-				createItem(Theme.Current.SettingsAboutIcon, "settings_about")
+				createItem(Theme.Current.SettingsAboutIcon, "settings_about"),
 			};
-		
+
 			if (_services.Preferences.Server == Servers.EduCatsAddress && IsLoggedIn && !string.IsNullOrEmpty(_services.Preferences.GroupName))
 			{
 				SettingsList.Add(createItem(Theme.Current.BaseCloseIcon, "settings_delete"));
 			}
 
-			if (IsLoggedIn) {
+			if (IsLoggedIn)
+			{
 				SettingsList.Add(createItem(Theme.Current.SettingsLogoutIcon, "settings_logout"));
 			}
 		}
 
 		SettingsPageModel createItem(string icon, string localizedKey)
 		{
-			return new SettingsPageModel {
+			return new SettingsPageModel
+			{
 				Icon = icon,
 				Title = CrossLocalization.Translate(localizedKey)
 			};
@@ -122,21 +138,26 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 
 		void openSettings(object selectedObject)
 		{
-			try {
-				if (selectedObject == null || !(selectedObject is SettingsPageModel)) {
+			try
+			{
+				if (selectedObject == null || !(selectedObject is SettingsPageModel))
+				{
 					return;
 				}
 
 				var settings = selectedObject as SettingsPageModel;
 				_services.Device.MainThread(async () => await openPage(settings.Title));
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
 
 		async Task openPage(string title)
 		{
-			try {
+			try
+			{
 				var serverTitle = CrossLocalization.Translate("settings_server");
 				var languageTitle = CrossLocalization.Translate("settings_language");
 				var themeTitle = CrossLocalization.Translate("settings_theme");
@@ -144,23 +165,44 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				var deleteTitle = CrossLocalization.Translate("settings_delete");
 				var aboutTitle = CrossLocalization.Translate("settings_about");
 				var logoutTitle = CrossLocalization.Translate("settings_logout");
+				var profileTitle = CrossLocalization.Translate("settings_about_profile");
 
-				if (title.Equals(serverTitle)) {
+
+				if (title.Equals(serverTitle))
+				{
 					await _services.Navigation.OpenSettingsServer(serverTitle);
-				} else if (title.Equals(languageTitle)) {
+				}
+				else if (title.Equals(languageTitle))
+				{
 					await _services.Navigation.OpenSettingsLanguage(languageTitle);
-				} else if (title.Equals(themeTitle)) {
+				}
+				else if (title.Equals(themeTitle))
+				{
 					await _services.Navigation.OpenSettingsTheme(themeTitle);
-				} else if (title.Equals(fontTitle)) {
+				}
+				else if (title.Equals(fontTitle))
+				{
 					await _services.Navigation.OpenSettingsFont(fontTitle);
-				} else if (title.Equals(deleteTitle)) { 
+				}
+				else if (title.Equals(deleteTitle))
+				{
 					await deleteAccount();
-				} else if (title.Equals(aboutTitle)) {
+				}
+				else if (title.Equals(aboutTitle))
+				{
 					await _services.Navigation.OpenSettingsAbout(aboutTitle);
-				} else if (title.Equals(logoutTitle)) {
+				}
+				else if (title.Equals(profileTitle))
+				{
+					await _services.Navigation.OpenProfileAbout(profileTitle);
+				}
+				else if (title.Equals(logoutTitle))
+				{
 					await logout();
 				}
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
@@ -171,14 +213,16 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				CrossLocalization.Translate("base_warning"),
 				CrossLocalization.Translate("settings_logout_message"));
 
-			if (result) {
+			if (result)
+			{
 				resetData();
 			}
 		}
 
 		async Task deleteAccount()
 		{
-			if (AppDemo.Instance.IsDemoAccount) {
+			if (AppDemo.Instance.IsDemoAccount)
+			{
 				_services.Device.MainThread(
 					() => _services.Dialogs.ShowError(
 						CrossLocalization.Translate("demo_delete_account_error")));

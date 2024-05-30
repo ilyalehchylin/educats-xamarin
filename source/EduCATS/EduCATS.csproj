@@ -119,7 +119,6 @@
         <Folder Include="Pages\Recommendations\Views\ViewCells\" />
         <Folder Include="Pages\Recommendations\ViewModels\" />
         <Folder Include="Pages\Recommendations\Models\" />
-        <Folder Include="Pages\Settings\" />
         <Folder Include="Pages\Settings\Base\" />
         <Folder Include="Pages\Settings\Base\Models\" />
         <Folder Include="Pages\Settings\Base\ViewModels\" />

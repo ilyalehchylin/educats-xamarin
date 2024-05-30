@@ -36,7 +36,7 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <param name="title">Title.</param>
 		/// <returns></returns>
 		public Task OpenFindGroup(string title);
-		
+
 		/// <summary>
 		/// Open parental control statistics
 		/// </summary>
@@ -180,5 +180,12 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <param name="title">Title.</param>
 		/// <returns>Task.</returns>
 		Task OpenSettingsAbout(string title);
+
+		/// <summary>
+		/// Open Settings About application page.
+		/// </summary>
+		/// <param name="title">Title.</param>
+		/// <returns>Task.</returns>
+		Task OpenProfileAbout(string title);
 	}
 }

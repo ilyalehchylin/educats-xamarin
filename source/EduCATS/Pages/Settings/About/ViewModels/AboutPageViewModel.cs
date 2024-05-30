@@ -15,54 +15,68 @@ namespace EduCATS.Pages.Settings.About.ViewModels
 
 		public AboutPageViewModel(IPlatformServices services)
 		{
-			try {
+			try
+			{
 				_services = services;
 				Build = _services.Device.GetBuild();
 				Version = _services.Device.GetVersion();
-			} catch (Exception ex) {
+
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex, nameof(AboutPageViewModel));
 			}
 		}
 
 		string _version;
-		public string Version {
+		public string Version
+		{
 			get { return _version; }
 			set { SetProperty(ref _version, value); }
 		}
 
 		string _build;
-		public string Build {
+		public string Build
+		{
 			get { return _build; }
 			set { SetProperty(ref _build, value); }
 		}
 
 		Command _releaseNotesCommand;
-		public Command ReleaseNotesCommand {
-			get {
+		public Command ReleaseNotesCommand
+		{
+			get
+			{
 				return _releaseNotesCommand ?? (
 					_releaseNotesCommand = new Command(async () => await openReleaseNotes()));
 			}
 		}
 
 		Command _sendLogsCommand;
-		public Command SendLogsCommand {
-			get {
+		public Command SendLogsCommand
+		{
+			get
+			{
 				return _sendLogsCommand ?? (
 					_sendLogsCommand = new Command(async () => await sendLogs()));
 			}
 		}
 
 		Command _openSourceCommand;
-		public Command OpenSourceCommand {
-			get {
+		public Command OpenSourceCommand
+		{
+			get
+			{
 				return _openSourceCommand ?? (
 					_openSourceCommand = new Command(async () => await openSourceSite()));
 			}
 		}
 
 		Command _openWebSiteCommand;
-		public Command OpenWebSiteCommand {
-			get {
+		public Command OpenWebSiteCommand
+		{
+			get
+			{
 				return _openWebSiteCommand ?? (
 					_openWebSiteCommand = new Command(async () => await openWebSite()));
 			}
@@ -70,34 +84,44 @@ namespace EduCATS.Pages.Settings.About.ViewModels
 
 		protected async Task openReleaseNotes()
 		{
-			try {
+			try
+			{
 				await _services.Device.OpenUri(GlobalConsts.ReleaseNotesLink);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
 
 		protected async Task openSourceSite()
 		{
-			try {
+			try
+			{
 				await _services.Device.OpenUri(GlobalConsts.GitHubLink);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
 
 		protected async Task openWebSite()
 		{
-			try {
+			try
+			{
 				await _services.Device.OpenUri(Servers.Current);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
 
 		protected async Task sendLogs()
 		{
-			try {
+			try
+			{
 				var platform = _services.Device.GetRuntimePlatform();
 				var logsFilePath = AppLogs.LogsFilePath;
 
@@ -107,11 +131,14 @@ namespace EduCATS.Pages.Settings.About.ViewModels
 					$"Sent from {platform}, app version: {Version} ({Build})",
 					logsFilePath);
 
-				if (!result) {
+				if (!result)
+				{
 					_services.Dialogs.ShowError(
 						CrossLocalization.Translate("settings_about_send_logs_not_supported"));
 				}
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 				_services.Dialogs.ShowError(
 						CrossLocalization.Translate("settings_about_send_logs_error"));

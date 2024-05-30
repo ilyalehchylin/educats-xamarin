@@ -49,7 +49,7 @@
 	"main_statistics": "Statystyk",
 	"main_settings": "Konfiguracja",
 
-	"today_subjects": "Dyscypliny",
+	"today_subjects": "harmonogram",
 	"today_news": "Wiadomości",
 	"today_news_load_error": "Wystąpił błąd podczas pobierania listy wiadomości. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
 	"today_subjects_error": "Wystąpił błąd podczas pobierania listy dyscyplin. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
@@ -86,6 +86,11 @@
 	"learning_card_eemc": "Kompleks edukacyjno-metodyczny",
 	"learning_card_files": "Dokumenty",
 	"learning_card_adaptive": "Uczenie adaptacyjne",
+
+	"update_title": "Aktualizacja",
+	"update_message": "Aktualizacja wydana ",
+	"update_link_button": "Aktualizacja",
+	"update_cancel_button": "Później",
 
 	"testing_get_tests_error": "Wystąpił błąd podczas pobierania testów. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
 	"testing_knowledge_control": "Testy dla kontroli wiedzy",
@@ -127,6 +132,7 @@
 	"settings_font": "Tekst & Czcionka",
 	"settings_delete": "Usuń konto",
 	"settings_about": "Informacje o aplikacji",
+	"settings_about_profile": "O koncie",
 	"settings_logout": "Wyjść",
 	"settings_logout_message": "Czy na pewno chcesz wyjść?",
 
@@ -174,6 +180,11 @@
 	"name": "Nazwa",
 	"surname": "Nazwisko",
 	"patronymic": "Patronimiczny",
+	"login": "Zaloguj sie",
+	"email": "Poczta",
+	"phone": "Telefon",
+	"accountinfo": "Skype, Viber, Telegram i inne.",
+	"about": "O mnie",
 	"confirm_password": "Potwierdź hasło",
 	"select_secret_question": "Konkretne pytanie",
 	"choose_group": "Grupa",
