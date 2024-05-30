@@ -123,7 +123,6 @@ namespace EduCATS.Pages.Settings.Base.Views
 			return avatarImage;
 		}
 
-
 		Label createUserLabel()
 		{
 			var userLabel = new Label

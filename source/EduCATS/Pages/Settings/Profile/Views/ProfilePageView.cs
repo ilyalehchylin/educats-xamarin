@@ -12,7 +12,6 @@ using EduCATS.Data.Models;
 using EduCATS.Helpers.Forms.Converters;
 using FFImageLoading.Transformations;
 
-
 namespace EduCATS.Pages.Settings.Profile.Views
 {
 	public class ProfilePageView : ContentPage
@@ -24,7 +23,6 @@ namespace EduCATS.Pages.Settings.Profile.Views
 		const double _buttonHeight = 50;
 		const double _avatarHeight = 200;
 		const double _photoBlockHeight = 400;
-
 
 		public ProfilePageView()
 		{
@@ -49,7 +47,6 @@ namespace EduCATS.Pages.Settings.Profile.Views
 					}
 				}
 			};
-
 		}
 
 		StackLayout createPhotoBlock()
@@ -64,7 +61,6 @@ namespace EduCATS.Pages.Settings.Profile.Views
 					avatar
 				}
 			};
-
 		}
 		StackLayout createSecondInfoBlock()
 		{
@@ -86,7 +82,6 @@ namespace EduCATS.Pages.Settings.Profile.Views
 
 			return new StackLayout
 			{
-
 				BackgroundColor = Color.FromHex(Theme.Current.SettingsProfileColor),
 				Children =
 				{
@@ -101,7 +96,6 @@ namespace EduCATS.Pages.Settings.Profile.Views
 				}
 			};
 		}
-
 
 		StackLayout createMainInfoBlock()
 		{
@@ -180,7 +174,6 @@ namespace EduCATS.Pages.Settings.Profile.Views
 				Style = AppStyles.GetLabelStyle(),
 				TextDecorations = TextDecorations.Underline
 			};
-
 		}
 		Label createGroupLabel()
 		{

@@ -20,7 +20,6 @@ namespace EduCATS.Pages.Settings.About.ViewModels
 				_services = services;
 				Build = _services.Device.GetBuild();
 				Version = _services.Device.GetVersion();
-
 			}
 			catch (Exception ex)
 			{

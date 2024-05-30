@@ -16,7 +16,6 @@ using System.Net;
 using System.IO;
 using System.Text.RegularExpressions;
 
-
 namespace EduCATS.Pages.Settings.Profile.ViewModels
 {
 	public class ProfilePageViewModel : ViewModel

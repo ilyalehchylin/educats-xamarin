@@ -167,7 +167,6 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				var logoutTitle = CrossLocalization.Translate("settings_logout");
 				var profileTitle = CrossLocalization.Translate("settings_about_profile");
 
-
 				if (title.Equals(serverTitle))
 				{
 					await _services.Navigation.OpenSettingsServer(serverTitle);
