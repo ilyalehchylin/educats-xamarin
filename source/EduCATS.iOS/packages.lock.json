@@ -173,8 +173,16 @@
       },
       "SkiaSharp": {
         "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+        "resolved": "2.88.6",
+        "contentHash": "wdfeBAQrEQCbJIRgAiargzP1Uy+0grZiG4CSgBnhAgcJTsPzlifIaO73JRdwIlT3TyBoeU9jEqzwFUhl4hTYnQ==",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.6"
+        }
+      },
+      "SkiaSharp.NativeAssets.iOS": {
+        "type": "Transitive",
+        "resolved": "2.88.6",
+        "contentHash": "j+Nv2cKDb6YZDebtIWjaypG7rngEw7xLvB0WlCoIpUShop0jPLutoqiPx2r4FFt72egzVhUrUn/rlyL7EeYpTA=="
       },
       "SkiaSharp.Views": {
         "type": "Transitive",
@@ -263,6 +271,7 @@
           "Microcharts.Forms": "[0.9.5.9, )",
           "MonkeyCache.FileStore": "[1.6.3, )",
           "Nyxbull.Plugins.CrossLocalization": "[1.3.1, )",
+          "SkiaSharp": "[2.88.6, )",
           "System.IdentityModel.Tokens.Jwt": "[7.6.0, )",
           "Xamarin.Essentials": "[1.8.0, )",
           "Xamarin.FFImageLoading": "[2.4.11.982, )",
@@ -273,10 +282,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win": {
-      "SkiaSharp": {
+      "SkiaSharp.NativeAssets.iOS": {
         "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+        "resolved": "2.88.6",
+        "contentHash": "j+Nv2cKDb6YZDebtIWjaypG7rngEw7xLvB0WlCoIpUShop0jPLutoqiPx2r4FFt72egzVhUrUn/rlyL7EeYpTA=="
       },
       "System.Security.Cryptography.Cng": {
         "type": "Transitive",
@@ -285,10 +294,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-arm64": {
-      "SkiaSharp": {
+      "SkiaSharp.NativeAssets.iOS": {
         "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+        "resolved": "2.88.6",
+        "contentHash": "j+Nv2cKDb6YZDebtIWjaypG7rngEw7xLvB0WlCoIpUShop0jPLutoqiPx2r4FFt72egzVhUrUn/rlyL7EeYpTA=="
       },
       "System.Security.Cryptography.Cng": {
         "type": "Transitive",
@@ -297,10 +306,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x64": {
-      "SkiaSharp": {
+      "SkiaSharp.NativeAssets.iOS": {
         "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+        "resolved": "2.88.6",
+        "contentHash": "j+Nv2cKDb6YZDebtIWjaypG7rngEw7xLvB0WlCoIpUShop0jPLutoqiPx2r4FFt72egzVhUrUn/rlyL7EeYpTA=="
       },
       "System.Security.Cryptography.Cng": {
         "type": "Transitive",
@@ -309,10 +318,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x86": {
-      "SkiaSharp": {
+      "SkiaSharp.NativeAssets.iOS": {
         "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+        "resolved": "2.88.6",
+        "contentHash": "j+Nv2cKDb6YZDebtIWjaypG7rngEw7xLvB0WlCoIpUShop0jPLutoqiPx2r4FFt72egzVhUrUn/rlyL7EeYpTA=="
       },
       "System.Security.Cryptography.Cng": {
         "type": "Transitive",
