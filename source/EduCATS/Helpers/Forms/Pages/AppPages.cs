@@ -18,6 +18,7 @@ using EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels;
 using EduCATS.Pages.SaveLabsAndPracticeMarks.Views;
 using EduCATS.Pages.SaveMarks.Views;
 using EduCATS.Pages.Settings.About.Views;
+using EduCATS.Pages.Settings.Profile.Views;
 using EduCATS.Pages.Settings.Base.Views;
 using EduCATS.Pages.Settings.Fonts.Views;
 using EduCATS.Pages.Settings.Language.Views;
@@ -44,7 +45,8 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <summary>
 		/// Property for getting and setting <see cref="Application.Current.MainPage"/>.
 		/// </summary>
-		NavigationPage mainPage {
+		NavigationPage mainPage
+		{
 			get => Application.Current.MainPage as NavigationPage;
 			set => Application.Current.MainPage = value;
 		}
@@ -57,9 +59,12 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <returns>Task.</returns>
 		public async Task ClosePage(bool modal, bool animated = true)
 		{
-			if (modal) {
+			if (modal)
+			{
 				await mainPage.Navigation.PopModalAsync(animated);
-			} else {
+			}
+			else
+			{
 				await mainPage.Navigation.PopAsync(animated);
 			}
 		}
@@ -82,7 +87,7 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <param name="title"></param>
 		/// <returns></returns>
 		public async Task OpenFindGroup(string title) =>
-			await pushPage(new FindGroupPageView(),title);
+			await pushPage(new FindGroupPageView(), title);
 
 		public async Task OpenParentalStats(GroupInfo group, string title) =>
 			await pushPage(new ParentalStatsPageView(group), title);
@@ -233,6 +238,13 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// Change Application's main page without animation.
 		/// </summary>
 		/// <param name="newPage">Page to set.</param>
+		public async Task OpenProfileAbout(string title) =>
+			await pushPage(new ProfilePageView(), title);
+
+		/// <summary>
+		/// Change Application's main page without animation.
+		/// </summary>
+		/// <param name="newPage">Page to set.</param>
 		void switchMainPage(Page newPage) =>
 			mainPage = getNavigationPage(newPage);
 
@@ -245,10 +257,13 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <returns>Task.</returns>
 		async Task pushPage(Page newPage, string title = null, bool isModal = false)
 		{
-			if (isModal) {
+			if (isModal)
+			{
 				await mainPage.Navigation.PushModalAsync(
 					getNavigationPage(newPage, title));
-			} else {
+			}
+			else
+			{
 				await mainPage.Navigation.PushAsync(
 					getNavigationPage(newPage, title));
 			}
@@ -260,7 +275,8 @@ namespace EduCATS.Helpers.Forms.Pages
 		/// <param name="page">Page to convert.</param>
 		/// <param name="title">Page title.</param>
 		/// <returns>Task.</returns>
-		NavigationPage getNavigationPage(Page page, string title = "") => new NavigationPage(page) {
+		NavigationPage getNavigationPage(Page page, string title = "") => new NavigationPage(page)
+		{
 			Title = title,
 			BarBackgroundColor = Color.FromHex(Theme.Current.AppNavigationBarBackgroundColor),
 			BarTextColor = Color.FromHex(Theme.Current.BaseAppColor)
@@ -272,7 +288,7 @@ namespace EduCATS.Helpers.Forms.Pages
 		public async Task OpenForgotPassword(string title) =>
 			await pushPage(new ForgotPasswordPageView(), title);
 
-		public async Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId,string groupName) =>
+		public async Task OpenAddMarks(string title, GroupItemModel groupId, int subjectId, string groupName) =>
 			await pushPage(new SaveMarksPageView(subjectId, groupId.GroupId, title, groupName), title);
 
 		public async Task OpenAddMarksPracticeAndLabs(string title, GroupItemModel groupId, int subject, string groupName) =>
