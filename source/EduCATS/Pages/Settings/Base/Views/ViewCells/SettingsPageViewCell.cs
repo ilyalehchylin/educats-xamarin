@@ -17,7 +17,8 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 
 		public SettingsPageViewCell()
 		{
-			var settingsIcon = new CachedImage {
+			var settingsIcon = new CachedImage
+			{
 				HeightRequest = _settingsIcon,
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
@@ -25,7 +26,8 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 			settingsIcon.SetBinding(CachedImage.SourceProperty, "Icon",
 				converter: new StringToImageSourceConverter());
 
-			var settingsTitle = new Label {
+			var settingsTitle = new Label
+			{
 				Margin = _settingsTitleMargin,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.SettingsTitleColor),
@@ -34,14 +36,16 @@ namespace EduCATS.Pages.Settings.Views.Base.ViewCells
 
 			settingsTitle.SetBinding(Label.TextProperty, "Title");
 
-			var forwardIcon = new CachedImage {
+			var forwardIcon = new CachedImage
+			{
 				HeightRequest = _forwardIcon,
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				Source = ImageSource.FromFile(Theme.Current.BaseArrowForwardIcon)
 			};
 
-			View = new StackLayout {
+			View = new StackLayout
+			{
 				Padding = _padding,
 				Orientation = StackOrientation.Horizontal,
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),

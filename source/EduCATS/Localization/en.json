@@ -50,7 +50,7 @@
 	"main_statistics": "Statistics",
 	"main_settings": "Settings",
 
-	"today_subjects": "Subjects",
+	"today_subjects": "Schedule",
 	"today_news": "News",
 	"today_news_load_error": "Error occurred during retrieving news. Please try to refresh page or contact support.",
 	"today_subjects_error": "Error occurred during retrieving subjects. Please try to refresh page or contact support.",
@@ -87,6 +87,11 @@
 	"learning_card_eemc": "Educational Complex",
 	"learning_card_files": "Files",
 	"learning_card_adaptive": "Adaptive learning",
+
+	"update_title": "Update",
+	"update_message": "Update released ",
+	"update_link_button": "Update",
+	"update_cancel_button": "Later",
 
 	"testing_get_tests_error": "Error occurred during retrieving tests. Please try to refresh page or contact support.",
 	"testing_knowledge_control": "Tests for knowledge control",
@@ -128,6 +133,7 @@
 	"settings_font": "Text & Font",
 	"settings_delete": "Delete account",
 	"settings_about": "About application",
+	"settings_about_profile": "About the account",
 	"settings_logout": "Logout",
 	"settings_logout_message": "Are you sure you want to logout?",
 
@@ -175,6 +181,11 @@
 	"name": "Name",
 	"surname": "Last name",
 	"patronymic": "Patronymic",
+	"login": "Login",
+	"email": "Email",
+	"phone": "Telephone",
+	"accountinfo": "Skype, Viber, Telegram and other",
+	"about": "About",
 	"confirm_password": "Confirm password",
 	"select_secret_question": "Specific question",
 	"choose_group": "Group",
