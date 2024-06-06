@@ -42,7 +42,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		public TodayPageViewModel(double subjectHeight, double subjectsHeaderHeight, IPlatformServices services)
 		{
-			_subjectHeight = services.Preferences.IsLargeFont? (subjectHeight + 90) : subjectHeight;
+			_subjectHeight = services.Preferences.IsLargeFont ? (subjectHeight + 90) : subjectHeight;
 			_subjectsHeightToSubtract = services.Preferences.IsLargeFont ? 95 : 85;
 			_subjectsFooterHeight = subjectsHeaderHeight;
 			_isLargeFont = services.Preferences.IsLargeFont;
@@ -508,7 +508,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			{
 				if (NewsSubjectList.Count == 0)
 				{
-					CalendarSubjectsHeight = _isLargeFont? _emptySubjectsHeightLarge : _emptySubjectsHeight;
+					CalendarSubjectsHeight = _isLargeFont ? _emptySubjectsHeightLarge : _emptySubjectsHeight;
 					return;
 				}
 

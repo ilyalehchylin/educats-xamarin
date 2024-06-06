@@ -21,7 +21,7 @@ namespace EduCATS.Pages.Today.Base.Views
 		const string _calendarCollectionDataBinding = ".";
 
 		double _subjectRowHeight = 170;
-		double _subjectDetailedRowHeight = 170;
+		double _subjectDetailedRowHeight = 80;
 
 		static Thickness _newsLabelMagin = new Thickness(10);
 		static Thickness _subjectsMargin = new Thickness(10, 5);

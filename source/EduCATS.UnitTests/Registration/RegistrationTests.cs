@@ -24,7 +24,7 @@ namespace EduCATS.UnitTests
 	{
 		[TestCase("TestLecturer5", "TestLecturer5")]
 		[Test]
-		public void RefreshToken_Test(string username, string password)
+		public async Task RefreshToken_Test(string username, string password)
 		{
 			try
 			{
@@ -34,7 +34,7 @@ namespace EduCATS.UnitTests
 				var mockedLoginPageView = new Mock<LoginPageViewModel>(mockedServices).Object;
 				mockedLoginPageView.Username = username;
 				mockedLoginPageView.Password = password;
-				var actual = mockedLoginPageView.RefreshToken();
+				var actual = await mockedLoginPageView.RefreshToken();
 				Assert.IsNotEmpty(actual);
 			}
 			catch (Exception ex)

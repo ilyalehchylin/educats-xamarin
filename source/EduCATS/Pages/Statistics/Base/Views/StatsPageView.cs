@@ -64,7 +64,6 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		{
 			var subjectsView = new SubjectsPickerView();
 			var radarChartView = createFrameWithChartView();
-			radarChartView.SetBinding(IsVisibleProperty, "IsStudent");
 
 			return new StackLayout
 			{

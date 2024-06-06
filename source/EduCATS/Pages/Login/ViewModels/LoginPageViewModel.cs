@@ -230,8 +230,13 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// Implements refresh token.
 		/// </summary>
 		/// <returns>Access token string on success, <code>null</code> otherwise.</returns>
-		public string RefreshToken()
+		public async Task<string> RefreshToken()
 		{
+			if (_services.Preferences.AccessToken == string.Empty)
+			{
+				await loginRequest();
+			}
+
 			Username = DataAccess.Username;
 			Password = DataAccess.Password;
 
