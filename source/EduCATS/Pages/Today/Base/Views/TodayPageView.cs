@@ -20,11 +20,11 @@ namespace EduCATS.Pages.Today.Base.Views
 		const double _calendarDaysOfWeekCollectionHeight = 50;
 		const string _calendarCollectionDataBinding = ".";
 
-		double _subjectRowHeight = 80;
-		double _subjectDetailedRowHeight = 80;
+		double _subjectRowHeight = 170;
+		double _subjectDetailedRowHeight = 170;
 
 		static Thickness _newsLabelMagin = new Thickness(10);
-		static Thickness _subjectsMargin = new Thickness(10, 5, 10, 0);
+		static Thickness _subjectsMargin = new Thickness(10, 5);
 		static Thickness _margin = new Thickness(0, 0, 0, 1);
 		static Thickness _listMargin = new Thickness(0, 1, 0, 0);
 		static Thickness _subjectsLabelMargin = new Thickness(0, 10, 10, 10);
@@ -170,7 +170,7 @@ namespace EduCATS.Pages.Today.Base.Views
 
 			if (Networking.Servers.Current == Networking.Servers.EduCatsByAddress)
 			{
-				subjectsListView = new RoundedListView(typeof(SubjectPageViewCell), header: subjectsLabel)
+				subjectsListView = new RoundedListView(typeof(SubjectPageViewCell), header: subjectsLabel, services: _services)
 				{
 					RowHeight = (int)_subjectDetailedRowHeight,
 					IsEnabled = false,
@@ -181,7 +181,7 @@ namespace EduCATS.Pages.Today.Base.Views
 			}
 			else
 			{
-				subjectsListView = new RoundedListView(typeof(CalendarSubjectsViewCell), header: subjectsLabel) {
+				subjectsListView = new RoundedListView(typeof(CalendarSubjectsViewCell), header: subjectsLabel, services: _services) {
 					RowHeight = (int)_subjectRowHeight,
 					IsEnabled = false,
 					Margin = _subjectsMargin,

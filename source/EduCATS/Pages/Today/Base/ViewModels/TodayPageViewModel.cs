@@ -25,13 +25,15 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		readonly IPlatformServices _services;
 
 		readonly double _subjectHeight;
+		readonly double _subjectsHeightToSubtract;
 		readonly double _subjectsFooterHeight;
 		readonly double _subjectsHeaderHeight = 71;
+		readonly bool _isLargeFont;
 
 		const int _minimumCalendarPosition = 0;
 		const int _maximumCalendarPosition = 2;
-		const double _subjectsHeightToAdd = 55;
-		const double _emptySubjectsHeight = 110;
+		const double _emptySubjectsHeight = 120;
+		const double _emptySubjectsHeightLarge = 130;
 
 		// bool _isCreation = true;
 		bool _isManualSelectedCalendarDay;
@@ -40,8 +42,10 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		public TodayPageViewModel(double subjectHeight, double subjectsHeaderHeight, IPlatformServices services)
 		{
-			_subjectHeight = subjectHeight;
+			_subjectHeight = services.Preferences.IsLargeFont? (subjectHeight + 90) : subjectHeight;
+			_subjectsHeightToSubtract = services.Preferences.IsLargeFont ? 95 : 85;
 			_subjectsFooterHeight = subjectsHeaderHeight;
+			_isLargeFont = services.Preferences.IsLargeFont;
 			_services = services;
 
 			initSetup();
@@ -492,8 +496,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				}
 
 				CalendarSubjectsHeight =
-					(_subjectHeight * CalendarSubjects.Count) +
-					(_subjectsHeaderHeight * 2) + _subjectsHeightToAdd;
+					_subjectHeight * CalendarSubjects.Count;
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
@@ -505,13 +508,12 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			{
 				if (NewsSubjectList.Count == 0)
 				{
-					CalendarSubjectsHeight = _emptySubjectsHeight;
+					CalendarSubjectsHeight = _isLargeFont? _emptySubjectsHeightLarge : _emptySubjectsHeight;
 					return;
 				}
 
 				CalendarSubjectsHeight =
-					(_subjectHeight * (NewsSubjectList.Count) /** 2*/) +
-					_subjectsHeaderHeight + _subjectsFooterHeight + _subjectsHeightToAdd;
+					_subjectHeight * NewsSubjectList.Count - _subjectsHeightToSubtract * (NewsSubjectList.Count - 1);
 			}
 			catch (Exception ex)
 			{
