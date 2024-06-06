@@ -42,14 +42,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3.5.2
 
-      - name: Homebrew Cache
-        uses: actions/cache@v3.3.1
-        with:
-          path: ~/Library/Caches/Homebrew
-          key: ${{ runner.os }}-homebrew-${{ hashFiles('./homebrew.lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-homebrew-
-
       - name: Setup Xamarin
         run: |
           brew install --cask xamarin-ios
