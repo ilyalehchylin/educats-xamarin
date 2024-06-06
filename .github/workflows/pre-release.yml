@@ -67,12 +67,17 @@ jobs:
           value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
           
   build_apk:
-    runs-on: macos-latest
+    runs-on: macos-13
     environment: github-actions-release
     needs: prepare_build
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.2
+
+      - name: Setup Xamarin
+        run: |
+          brew install --cask xamarin-ios
+          brew install --cask xamarin-android
         
       - name: NuGet Cache
         uses: actions/cache@v3.3.1
@@ -119,12 +124,17 @@ jobs:
           path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
         
   build_aab:
-    runs-on: macos-latest
+    runs-on: macos-13
     environment: github-actions-release
     needs: prepare_build
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.2
+
+      - name: Setup Xamarin
+        run: |
+          brew install --cask xamarin-ios
+          brew install --cask xamarin-android
         
       - name: NuGet Cache
         uses: actions/cache@v3.3.1
@@ -171,12 +181,17 @@ jobs:
           path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
         
   build_ipa:
-    runs-on: macos-latest
+    runs-on: macos-13
     environment: github-actions-release
     needs: prepare_build
     steps:
       - name: Checkout
         uses: actions/checkout@v3.5.2
+
+      - name: Setup Xamarin
+        run: |
+          brew install --cask xamarin-ios
+          brew install --cask xamarin-android
         
       - name: NuGet Cache
         uses: actions/cache@v3.3.1
