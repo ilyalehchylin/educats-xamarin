@@ -25,6 +25,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		readonly IPlatformServices _services;
 
 		readonly double _subjectHeight;
+		readonly double _subjectsHeightToSubtract;
 		readonly double _subjectsFooterHeight;
 		readonly double _subjectsHeaderHeight = 71;
 		readonly double _subjectsHeightToSubtract;
