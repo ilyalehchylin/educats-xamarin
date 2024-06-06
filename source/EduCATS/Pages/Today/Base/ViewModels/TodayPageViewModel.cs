@@ -28,7 +28,6 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		readonly double _subjectsHeightToSubtract;
 		readonly double _subjectsFooterHeight;
 		readonly double _subjectsHeaderHeight = 71;
-		readonly double _subjectsHeightToSubtract;
 		readonly bool _isLargeFont;
 
 		const int _minimumCalendarPosition = 0;
