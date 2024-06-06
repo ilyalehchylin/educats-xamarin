@@ -43,7 +43,9 @@ jobs:
         uses: actions/checkout@v3.5.2
 
       - name: Setup Xamarin
-        uses: maxim-lobanov/setup-xamarin@v1.2.1
+        run: |
+          brew install --cask xamarin-ios
+          brew install --cask xamarin-android
         
       - name: NuGet Cache
         uses: actions/cache@v3.3.1
