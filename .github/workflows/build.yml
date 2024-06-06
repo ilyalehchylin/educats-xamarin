@@ -35,7 +35,7 @@ jobs:
           os: macos
 
   build:
-    runs-on: macos-latest
+    runs-on: macos-13
     needs: test
 
     steps:
