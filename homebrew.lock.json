@@ -1,7 +1,0 @@
-{
-  "description": "This is a specific file to identify cache for GitHub Actions. Should be updated manually.",
-  "casks": {
-    "xamarin-ios": "16.4.0.23",
-    "xamarin-android": "13.2.2.0"
-  }
-}
