@@ -66,6 +66,15 @@
           "Newtonsoft.Json": "12.0.3"
         }
       },
+      "SkiaSharp": {
+        "type": "Direct",
+        "requested": "[2.88.8, )",
+        "resolved": "2.88.8",
+        "contentHash": "bRkp3uKp5ZI8gXYQT57uKwil1uobb2p8c69n7v5evlB/2JNcMAXVcw9DZAP5Ig3WSvgzGm2YSn27UVeOi05NlA==",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.Android": "2.88.8"
+        }
+      },
       "Xamarin.Essentials": {
         "type": "Direct",
         "requested": "[1.8.0, )",
@@ -185,18 +194,10 @@
         "resolved": "13.0.1",
         "contentHash": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A=="
       },
-      "SkiaSharp": {
-        "type": "Transitive",
-        "resolved": "2.88.6",
-        "contentHash": "wdfeBAQrEQCbJIRgAiargzP1Uy+0grZiG4CSgBnhAgcJTsPzlifIaO73JRdwIlT3TyBoeU9jEqzwFUhl4hTYnQ==",
-        "dependencies": {
-          "SkiaSharp.NativeAssets.Android": "2.88.6"
-        }
-      },
       "SkiaSharp.NativeAssets.Android": {
         "type": "Transitive",
-        "resolved": "2.88.6",
-        "contentHash": "yFtWleVp7hRhSPuyEJPlTRsiEQANTHJuREcpIFiFG9bdGmYgAS5CMJXOiO67jyUT7v7vSj3Qk34I7P5FRm1wUg=="
+        "resolved": "2.88.8",
+        "contentHash": "tq417LpTlN9BB02LDnODI5WpTiaf2Wqwp9VsrUpLv1XOAXsIMscQrCagJbYkpfheZ0YoiqG4QuTMcQXL+P+4kg=="
       },
       "SkiaSharp.Views": {
         "type": "Transitive",
@@ -1010,7 +1011,7 @@
           "Microcharts.Forms": "[0.9.5.9, )",
           "MonkeyCache.FileStore": "[1.6.3, )",
           "Nyxbull.Plugins.CrossLocalization": "[1.3.1, )",
-          "SkiaSharp": "[2.88.6, )",
+          "SkiaSharp": "[2.88.8, )",
           "System.IdentityModel.Tokens.Jwt": "[7.6.0, )",
           "Xamarin.Essentials": "[1.8.0, )",
           "Xamarin.FFImageLoading": "[2.4.11.982, )",
