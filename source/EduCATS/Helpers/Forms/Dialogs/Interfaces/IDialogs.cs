@@ -18,6 +18,13 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		void ShowMessage(string title, string message);
 
 		/// <summary>
+		/// Show message dialog.
+		/// </summary>
+		/// <param name="title">Dialog title.</param>
+		/// <param name="message">Dialog description.</param>
+		Task<bool> ShowMessageUpdate(string title, string message, string linkButton, string cancelButton);
+
+		/// <summary>
 		/// Show error dialog.
 		/// </summary>
 		/// <param name="message">Dialog description.</param>

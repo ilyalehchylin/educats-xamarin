@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using EduCATS.Controls.RoundedListView;
@@ -12,10 +14,13 @@ using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Date.Enums;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
+using EduCATS.Networking;
 using EduCATS.Pages.Today.Base.Models;
 using EduCATS.Pages.Today.Base.Views;
 using EduCATS.Themes;
+using Newtonsoft.Json.Linq;
 using Nyxbull.Plugins.CrossLocalization;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.Base.ViewModels
@@ -46,7 +51,8 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			_subjectsHeightToSubtract = services.Preferences.IsLargeFont ? 95 : 85;
 			_subjectsFooterHeight = subjectsHeaderHeight;
 			_isLargeFont = services.Preferences.IsLargeFont;
-			_services = services;
+			_services = services; 
+			Version = _services.Device.GetVersion();
 
 			initSetup();
 			update();
@@ -131,6 +137,12 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				}
 			}
 		}
+		string _version;
+		public string Version
+		{
+			get { return _version; }
+			set { SetProperty(ref _version, value); }
+		}
 
 		Command _newsRefreshCommand;
 		public Command NewsRefreshCommand {
@@ -187,6 +199,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					IsNewsRefreshing = true;
 					await getAndSetCalendarNotes();
 					await getAndSetNews();
+					await getUpdateMessage();
 					//_isCreation = false;
 					IsNewsRefreshing = false;
 				} catch (Exception ex) {
@@ -246,9 +259,73 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				NewsList = new List<NewsPageModel>(news);
 			}
 		}
-
-		async Task<List<NewsPageModel>> getNews()
+		async Task getUpdateMessage()
 		{
+			string version = _version;
+			string storeUrl;
+			if (Device.RuntimePlatform == Device.Android)
+			{
+				version = await GetAndroidVersion();
+			}
+			else if (Device.RuntimePlatform == Device.iOS)
+			{
+				version = await GetIOSVersion();
+				if (version == null)
+				{
+					return;
+				}
+			}
+			if (version != _version)
+			{
+				string title = CrossLocalization.Translate("update_title");
+				string message = CrossLocalization.Translate("update_message");
+				string linkButton = CrossLocalization.Translate("update_link_button");
+				string cancelButton = CrossLocalization.Translate("update_cancel_button");
+
+				var result = await _services.Dialogs.ShowMessageUpdate(title, message + version, linkButton, cancelButton);
+				if (result)
+				{
+					if (Device.RuntimePlatform == Device.Android)
+						await _services.Device.OpenUri(Servers.EducatsBntuAndroidMarketString);
+					else if (Device.RuntimePlatform == Device.iOS)
+						await Launcher.OpenAsync(new Uri(Servers.EducatsBntuIOSMarketString));
+				}
+			}
+		}
+
+		async Task<string> GetAndroidVersion()
+		{
+			string storeUrl = "https://play.google.com/store/apps/details?id=by.bntu.educats";
+			string html;
+			using (HttpClient client = new HttpClient())
+			{
+				html = await client.GetStringAsync(storeUrl);
+			}
+
+			MatchCollection matches = Regex.Matches(html, @"\[\[\[\""\d+\.\d+\.\d+");
+
+			return matches[0].Value.Substring(4);
+		}
+		async Task<string> GetIOSVersion()
+		{
+			using (var httpClient = new HttpClient())
+			{
+				string iTunesUrlTemplate = "https://itunes.apple.com/lookup?bundleId=by.bntu.educats";
+				string bundleId = "by.bntu.educats";
+				var url = string.Format(iTunesUrlTemplate, bundleId);
+				var response = await httpClient.GetStringAsync(url);
+				var json = JObject.Parse(response);
+
+				if (json["resultCount"].Value<int>() == 0)
+					return null;
+
+				var appInfo = json["results"].First;
+
+				return appInfo["version"].Value<string>();
+			}
+		}
+		async Task<List<NewsPageModel>> getNews()
+			{
 			var news = await DataAccess.GetNews(_services.Preferences.UserLogin);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
