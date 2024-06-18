@@ -17,7 +17,7 @@ namespace EduCATS.Networking
 		/// </summary>
 		//public const string EduCatsAddress = @"https://host27072020.of.by";
 		public const string EduCatsAddress = @"https://educats.by";
-		
+
 		/// <summary>
 		/// Test server not host27072020 address.
 		/// </summary>
@@ -46,11 +46,22 @@ namespace EduCATS.Networking
 		/// <summary>
 		/// Platform services.
 		/// </summary>
+		public const string EducatsBntuAndroidMarketString = @"https://play.google.com/store/apps/details?id=by.bntu.educats";
+
+		/// <summary>
+		/// Platform services.
+		/// </summary>
+		public const string EducatsBntuIOSMarketString = @"https://apps.apple.com/by/app/educats/id1505738731";
+
+		/// <summary>
+		/// Platform services.
+		/// </summary>
 		public static IPlatformServices PlatformServices;
 
 		static Servers()
 		{
-			if (PlatformServices == null) {
+			if (PlatformServices == null)
+			{
 				PlatformServices = new PlatformServices();
 			}
 		}

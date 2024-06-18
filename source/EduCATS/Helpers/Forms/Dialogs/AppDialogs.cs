@@ -64,6 +64,15 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		public void ShowMessage(string title, string message) =>
 			mainPage.DisplayAlert(title, message, _baseOK);
 
+
+		/// <summary>
+		/// Show message dialog.
+		/// </summary>
+		/// <param name="title">Dialog title.</param>
+		/// <param name="message">Dialog description.</param>
+		public Task<bool> ShowMessageUpdate(string title, string message, string linkButton, string cancelButton) =>
+			mainPage.DisplayAlert(title, message, linkButton, cancelButton);
+
 		/// <summary>
 		/// Show loading dialog.
 		/// </summary>
@@ -105,7 +114,8 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		{
 			var progressDialog = getProgressDialog(dialog);
 
-			if (progressDialog == null) {
+			if (progressDialog == null)
+			{
 				return;
 			}
 
@@ -133,7 +143,8 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		{
 			var config = new ActionSheetConfig().SetTitle(title);
 
-			foreach (var button in buttonList) {
+			foreach (var button in buttonList)
+			{
 				config.Add(button.Value, () => command.Execute(button.Key));
 			}
 
@@ -166,7 +177,8 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		/// <returns>Progress dialog.</returns>
 		IProgressDialog getProgressDialog(object dialog)
 		{
-			if (dialog == null || !(dialog is IProgressDialog)) {
+			if (dialog == null || !(dialog is IProgressDialog))
+			{
 				return null;
 			}
 
