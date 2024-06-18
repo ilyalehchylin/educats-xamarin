@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -63,7 +63,6 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		/// <param name="message">Dialog description.</param>
 		public void ShowMessage(string title, string message) =>
 			mainPage.DisplayAlert(title, message, _baseOK);
-
 
 		/// <summary>
 		/// Show message dialog.
@@ -166,7 +165,6 @@ namespace EduCATS.Helpers.Forms.Dialogs
 		/// </summary>
 		/// <param name="title">Dialog title.</param>
 		/// <param name="message">Dialog description.</param>
-
 		public async Task ShowConfirmation(string title, string message) =>
 			await mainPage.DisplayAlert(title, message, _baseOK);
 
