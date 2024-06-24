@@ -12,6 +12,7 @@
 	"base_connection_error": "Brak połączenia z Internetem. Sprawdź ustawienia sieci i spróbuj ponownie.",
 	"base_no_data": "Brak danych do wyświetlenia",
 	"base_something_went_wrong": "Coś poszło nie tak. Spróbuj ponownie lub skontaktuj się z pomocą techniczną.",
+	"base_session_expired": "Sesja wygasła. Proszę zalogować się ponownie na swoje konto.",
 
 	"contributor_ilya_lehchylin": "Ilja Legczilin",
 	"contributor_julia_popova": "Julia Popowa",

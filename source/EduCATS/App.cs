@@ -69,14 +69,13 @@ namespace EduCATS
 				}
 
 				var username = _services.Preferences.UserLogin;
-				var password = _services.Preferences.UserPassword;
 
 				if (string.IsNullOrEmpty(username)) {
 					return;
 				}
 
-				var profile = await DataAccess.GetProfileInfo(username, password);
-				AppUserData.SetLoginData(_services, _services.Preferences.UserId, username, password);
+				var profile = await DataAccess.GetProfileInfo(username);
+				AppUserData.SetLoginData(_services, _services.Preferences.UserId, username);
 				AppUserData.SetProfileData(_services, profile);
 				_services.Preferences.GroupName = profile?.GroupName;
 				_services.Preferences.Avatar = profile?.Avatar;

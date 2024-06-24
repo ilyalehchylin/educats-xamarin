@@ -36,9 +36,21 @@ namespace EduCATS.Networking.AppServices
 			return await AppServicesController.Request(Links.Login, body);
 		}
 
-		public static async Task<object> LoginEducatsBy(string username, string password)
+		public static async Task<object> GetAccountData()
 		{
-			return await AppServicesController.Request(Links.LoginTest);
+			return await AppServicesController.Request(Links.GetAccountData);
+		}
+
+		public static async Task<object> GetToken(string username, string password)
+		{
+			var credentials = new TokenCredentials
+			{
+				Username = username,
+				Password = password
+			};
+
+			var body = JsonController.ConvertObjectToJson(credentials);
+			return await AppServicesController.Request(Links.GetToken, body);
 		}
 
 		/// <summary>

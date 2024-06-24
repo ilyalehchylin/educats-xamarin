@@ -6,11 +6,19 @@
 	public static class Links
 	{
 		/// <summary>
-		/// Authorize URL.
+		/// Account information URL.
 		/// </summary>
-		public static string LoginTest => $"{Servers.Current}/Account/UserSessionCheck";
+		public static string GetAccountData => $"{Servers.Current}/Account/UserSessionCheck";
 
+		/// <summary>
+		/// Authorize URL (for deprecated URLs).
+		/// </summary>
 		public static string Login => $"{Servers.Current}/RemoteApi/Login";
+
+		/// <summary>
+		/// Access token retrieval URL.
+		/// </summary>
+		public static string GetToken => $"{Servers.Current}/Account/LoginJWT";
 
 		/// <summary>
 		/// Authorize URL.

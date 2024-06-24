@@ -12,6 +12,7 @@
 	"base_connection_error": "Keine Internetverbindung. Überprüfen Sie die Netzwerkeinstellungen und versuchen Sie es erneut.",
 	"base_no_data": "Keine Daten angezeigt werden",
 	"base_something_went_wrong": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut oder wenden Sie sich an den Support.",
+	"base_session_expired": "Die Sitzung ist abgelaufen. Bitte melden Sie sich erneut bei Ihrem Konto an.",
 
 	"contributor_ilya_lehchylin": "Ilya Legtschilin",
 	"contributor_julia_popova": "Yuliya Popova",

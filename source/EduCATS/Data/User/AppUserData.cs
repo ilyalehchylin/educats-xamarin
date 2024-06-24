@@ -67,11 +67,10 @@ namespace EduCATS.Data.User
 		/// <param name="services">Platfrom services.</param>
 		/// <param name="userId">User ID.</param>
 		/// <param name="username">Username.</param>
-		public static void SetLoginData(IPlatformServices services, int userId, string username, string password)
+		public static void SetLoginData(IPlatformServices services, int userId, string username)
 		{
 			services.Preferences.UserId = userId;
 			services.Preferences.UserLogin = username;
-			services.Preferences.UserPassword = password;
 			UserId = userId;
 			Username = username;
 		}

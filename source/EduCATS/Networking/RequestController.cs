@@ -5,6 +5,7 @@ using EduCATS.Pages.Login.Views;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -111,29 +112,25 @@ namespace EduCATS.Networking
 		{
 			try
 			{
-				if (_services.Preferences.AccessToken != "")
+				if (!string.IsNullOrEmpty(_services.Preferences.AccessToken))
 				{
-					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
+					_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
 
 				var response = await _client.GetAsync(Uri);
-				if (!response.IsSuccessStatusCode)
+
+				if (response.StatusCode == HttpStatusCode.Unauthorized)
 				{
-					_services.Preferences.AccessToken = await ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
-					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
-					return await _client.GetAsync(Uri);
-				}
-				else
-				{
-					return response;
+					return errorResponseMessage(HttpStatusCode.Unauthorized);
 				}
 
+				return response;
 			}
 			catch (TaskCanceledException)
 			{
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
@@ -149,24 +146,25 @@ namespace EduCATS.Networking
 			{
 				if (_services.Preferences.AccessToken != "")
 				{
-					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
+					_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
+				}
+
+				if (_services.Preferences.Server == Servers.EduCatsAddress)
+				{
+					_client.DefaultRequestHeaders.Add("Origin", Servers.EduCatsAddress);
 				}
 
 				var response = await _client.PostAsync(Uri, _postContent);
-				if (!response.IsSuccessStatusCode)
+
+				if (response.StatusCode == HttpStatusCode.Unauthorized)
 				{
-					_services.Preferences.AccessToken = await ((LoginPageViewModel)(new LoginPageView().BindingContext)).RefreshToken();
-					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
-					return await _client.PostAsync(Uri, _postContent);
-				}
-				else
-				{
-					return response;
+					return errorResponseMessage(HttpStatusCode.Unauthorized);
 				}
 
+				return response;
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
-			} catch (Exception ex) {
+			} catch (Exception) {
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
 		}

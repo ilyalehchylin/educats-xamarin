@@ -140,11 +140,11 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void SetErrorMessageNullTest()
 		{
-			DataAccess.SetError(null, true);
+			DataAccess.SetError(null, true, false);
 			Assert.AreEqual(false, DataAccess.IsError);
 			Assert.AreEqual(false, DataAccess.IsConnectionError);
 
-			DataAccess.SetError(null, false);
+			DataAccess.SetError(null, false, false);
 			Assert.AreEqual(false, DataAccess.IsConnectionError);
 		}
 
@@ -152,12 +152,12 @@ namespace EduCATS.UnitTests
 		public void SetErrorTest()
 		{
 			var message = "Error message";
-			DataAccess.SetError(message, true);
+			DataAccess.SetError(message, true, false);
 			Assert.AreEqual(message, DataAccess.ErrorMessage);
 			Assert.AreEqual(true, DataAccess.IsError);
 			Assert.AreEqual(true, DataAccess.IsConnectionError);
 
-			DataAccess.SetError(message, false);
+			DataAccess.SetError(message, false, false);
 			Assert.AreEqual(false, DataAccess.IsConnectionError);
 		}
 
