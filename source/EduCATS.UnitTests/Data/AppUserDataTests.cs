@@ -44,7 +44,7 @@ namespace EduCATS.UnitTests
 		[Test]
 		public void SetLoginDataTest()
 		{
-			AppUserData.SetLoginData(_mocked, _userId, _username, _username);
+			AppUserData.SetLoginData(_mocked, _userId, _username);
 			Assert.AreEqual(_userId, AppUserData.UserId);
 			Assert.AreEqual(_username, AppUserData.Username);
 		}
