@@ -9,7 +9,5 @@ namespace EduCATS.Data.Models
 
 		[JsonProperty("UserId")]
 		public int UserId { get; set; }
-
-		public string Password { get; set; }
 	}
 }

@@ -12,6 +12,7 @@
 	"base_connection_error": "No internet connection. Check your network settings and try again.",
 	"base_no_data": "No data to display",
 	"base_something_went_wrong": "Something went wrong. Please try again or contact support.",
+	"base_session_expired": "Session has been expired. Please log into account again.",
 
 	"contributor_ilya_lehchylin": "Ilya Lehchylin",
 	"contributor_julia_popova": "Julia Popova",

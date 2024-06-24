@@ -6,6 +6,7 @@ using EduCATS.Data.Models;
 using EduCATS.Data.Models.Calendar;
 using EduCATS.Data.Models.User;
 using EduCATS.Networking;
+using EduCATS.Networking.Models.Login;
 using EduCATS.Networking.Models.SaveMarks;
 using EduCATS.Networking.Models.SaveMarks.Labs;
 using EduCATS.Networking.Models.SaveMarks.LabSchedule;
@@ -22,7 +23,6 @@ namespace EduCATS.Data
 	/// </summary>
 	public static partial class DataAccess
 	{
-		public static string Password { get; private set; }
 		public static string Username { get; private set; }
 
 		/// <summary>
@@ -37,10 +37,16 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, false) as UserModel;
 		}
 
-		public async static Task<SecondUserModel> LoginTest(string username, string password)
+		public async static Task<SecondUserModel> GetAccountData()
 		{
-			var dataAccess = new DataAccess<SecondUserModel>("login_error", loginCallbackEducatsby(username, password));
+			var dataAccess = new DataAccess<SecondUserModel>("login_error", getAccountDataCallback());
 			return await GetDataObject(dataAccess, false) as SecondUserModel;
+		}
+
+		public async static Task<TokenModel> GetToken(string username, string password)
+		{
+			var dataAccess = new DataAccess<TokenModel>("login_error", getTokenCallback(username, password));
+			return await GetDataObject(dataAccess, false) as TokenModel;
 		}
 
 		public async static Task<DeleteAccountModel> DeleteAccount()
@@ -56,9 +62,8 @@ namespace EduCATS.Data
 		/// <param name="username">Username.</param>
 		/// <param name="password">Password.</param>
 		/// <returns>User profile data.</returns>
-		public async static Task<UserProfileModel> GetProfileInfo(string username, string password = "")
+		public async static Task<UserProfileModel> GetProfileInfo(string username)
 		{
-			Password = password;
 			Username = username;
 			var dataAccess = new DataAccess<UserProfileModel>(
 				"login_user_profile_error", getProfileCallback(username), GlobalConsts.DataProfileKey);

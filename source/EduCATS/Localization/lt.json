@@ -12,6 +12,7 @@
 	"base_connection_error": "Nėra interneto ryšio. Patikrinkite tinklo nustatymus ir bandykite dar kartą.",
 	"base_no_data": "Nėra rodomų duomenų",
 	"base_something_went_wrong": "Kažkas nutiko. Bandykite dar kartą arba susisiekite su palaikymo komanda.",
+	"base_session_expired": "Sesija ir beigusies. Lūdzu, vēlreiz piesakieties savā kontā.",
 
 	"contributor_ilya_lehchylin": "Ilya Lehchylin",
 	"contributor_julia_popova": "Julia Popova",

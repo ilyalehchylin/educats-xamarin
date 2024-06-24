@@ -4,19 +4,15 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
-using System.Threading;
 using System.Threading.Tasks;
-using EduCATS.Controls.RoundedListView;
 using EduCATS.Data;
 using EduCATS.Data.Models;
-using EduCATS.Data.Models.Calendar;
 using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Date.Enums;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Pages.Today.Base.Models;
-using EduCATS.Pages.Today.Base.Views;
 using EduCATS.Themes;
 using Newtonsoft.Json.Linq;
 using Nyxbull.Plugins.CrossLocalization;
@@ -31,8 +27,6 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		readonly double _subjectHeight;
 		readonly double _subjectsHeightToSubtract;
-		readonly double _subjectsFooterHeight;
-		readonly double _subjectsHeaderHeight = 71;
 		readonly bool _isLargeFont;
 
 		const int _minimumCalendarPosition = 0;
@@ -49,7 +43,6 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		{
 			_subjectHeight = services.Preferences.IsLargeFont ? (subjectHeight + 90) : subjectHeight;
 			_subjectsHeightToSubtract = services.Preferences.IsLargeFont ? 95 : 85;
-			_subjectsFooterHeight = subjectsHeaderHeight;
 			_isLargeFont = services.Preferences.IsLargeFont;
 			_services = services; 
 			Version = _services.Device.GetVersion();
@@ -200,7 +193,6 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					await getAndSetCalendarNotes();
 					await getAndSetNews();
 					await getUpdateMessage();
-					//_isCreation = false;
 					IsNewsRefreshing = false;
 				} catch (Exception ex) {
 					AppLogs.Log(ex);
@@ -259,10 +251,11 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				NewsList = new List<NewsPageModel>(news);
 			}
 		}
+
 		async Task getUpdateMessage()
 		{
 			string version = _version;
-			string storeUrl;
+
 			if (Device.RuntimePlatform == Device.Android)
 			{
 				version = await GetAndroidVersion();
@@ -306,6 +299,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 			return matches[0].Value.Substring(4);
 		}
+
 		async Task<string> GetIOSVersion()
 		{
 			using (var httpClient = new HttpClient())
@@ -324,9 +318,17 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				return appInfo["version"].Value<string>();
 			}
 		}
+
 		async Task<List<NewsPageModel>> getNews()
 			{
 			var news = await DataAccess.GetNews(_services.Preferences.UserLogin);
+
+			if (DataAccess.IsError && DataAccess.IsSessionExpiredError)
+			{
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
+				_services.Navigation.OpenLogin();
+				return null;
+			}
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
 				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
