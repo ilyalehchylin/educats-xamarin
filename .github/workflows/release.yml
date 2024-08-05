@@ -24,13 +24,13 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         
       - name: Release Tag
-        uses: simpleactions/create-tag@v1.0.0
+        uses: negz/create-tag@v1
         with:
-         github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-         tag: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
+         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+         version: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
          message: Release ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
           
-      - name: Github Release
+      - name: GitHub Release
         id: github_release
         uses: release-drafter/release-drafter@v5.21.1
         with:
