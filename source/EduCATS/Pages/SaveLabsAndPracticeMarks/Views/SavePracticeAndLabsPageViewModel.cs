@@ -94,7 +94,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			{
 				if (group.SubGroup == 1)
 				{
-					_currentLabsVisitingMarksSubGroup1.Add(new StudentsPageModel(group.Login ,group.FullName));
+					_currentLabsVisitingMarksSubGroup1.Add(new StudentsPageModel(group.Login, group.FullName));
 					FullNames.Add(group.FullName);
 				}
 				else
@@ -219,7 +219,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		{
 			get
 			{
-				if (SubGroup.Count != 0) 
+				if (SubGroup.Count != 0)
 				{
 					if (_selectedSubGroup == SubGroup[0])
 					{
@@ -232,7 +232,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 						LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupTwo;
 						DateLabs = Date2;
 						selSubGroup = 2;
-					} 
+					}
 				}
 				return _selectedSubGroup;
 			}
@@ -261,7 +261,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 				{
 					_services.Navigation.OpenAddSingleMark(_title, student.Name, labsVisitingList, _takedLabs, selSubGroup);
 				}
-				
+
 			}
 			catch (Exception ex)
 			{

@@ -62,11 +62,20 @@
           "Newtonsoft.Json": "12.0.3"
         }
       },
+      "SkiaSharp": {
+        "type": "Direct",
+        "requested": "[2.88.8, )",
+        "resolved": "2.88.8",
+        "contentHash": "bRkp3uKp5ZI8gXYQT57uKwil1uobb2p8c69n7v5evlB/2JNcMAXVcw9DZAP5Ig3WSvgzGm2YSn27UVeOi05NlA==",
+        "dependencies": {
+          "SkiaSharp.NativeAssets.iOS": "2.88.8"
+        }
+      },
       "Xamarin.Essentials": {
         "type": "Direct",
-        "requested": "[1.7.4, )",
-        "resolved": "1.7.4",
-        "contentHash": "oYCnkjzooqWdI1VnOOt1gyUF+s1Nbi6OYy7HlltzHrfNyh8MMKgMTO30UGe3kcj9YmD7IeT5clh3xCDmfTfZSw==",
+        "requested": "[1.8.0, )",
+        "resolved": "1.8.0",
+        "contentHash": "g1yB0CkX7BVOx84P0SLm8guypbEfigqjddZsI9KgJzba6yRRcekBqDp6YTT1hO8ZcFcW8VZbsymejTJftJoQyg==",
         "dependencies": {
           "System.Numerics.Vectors": "4.5.0"
         }
@@ -101,9 +110,9 @@
       },
       "Xamarin.Forms": {
         "type": "Direct",
-        "requested": "[5.0.0.2515, )",
-        "resolved": "5.0.0.2515",
-        "contentHash": "n/Y/xk1idWRkxk7xItwvNwwda7CHpIk7JxD6tXkGXmTqiVGV1xRkepf5aKXFkQLM9KIQhXXYBxPsdyJysPpktw=="
+        "requested": "[5.0.0.2612, )",
+        "resolved": "5.0.0.2612",
+        "contentHash": "zQcy3NJgRJnLRWQZ2TZPCgDoTDHoYskHLutKDvz1pVNtvJ8U7kkg4mE2XATs3dAkQ+oWoqB4VOBGRk9uAfoRMw=="
       },
       "BTProgressHUD": {
         "type": "Transitive",
@@ -125,36 +134,36 @@
       },
       "Microsoft.IdentityModel.Abstractions": {
         "type": "Transitive",
-        "resolved": "6.25.0",
-        "contentHash": "70MbUvri/xthpVpSEve7X6ysNtTe5MgLEgNyhnZ5z7WXVgFOkUfI7RNtqS6oenLoaaMpnRJrrZFt9Pps5NknBQ=="
+        "resolved": "7.6.0",
+        "contentHash": "q4MZ8d0LlWKWtQfxNl9ZRZVOQ7IPEAR6CF4rFKITfuqEUOhqrbwHbqBanReI37155IKb8V/tPJqpPa3KXm9wQQ=="
       },
       "Microsoft.IdentityModel.JsonWebTokens": {
         "type": "Transitive",
-        "resolved": "6.25.0",
-        "contentHash": "3Lhgxoc1YhIocnPh3fTE5IK3Ap7yG3WK4TFk01Y90danCYmV7gIW8E1d4b3BtaP9B85eIJ0bmtV4GPiSOF5i/A==",
+        "resolved": "7.6.0",
+        "contentHash": "lsleZbCuh3wZ3RfKd8WJ7E52nIeQQzJsDrgHN+B3Zhzd32UTQ1V3Vjn1N9PssnSulAoEMF0aAiue7ucX+TPoQA==",
         "dependencies": {
-          "Microsoft.IdentityModel.Tokens": "6.25.0",
-          "System.Text.Encoding": "4.3.0",
+          "Microsoft.IdentityModel.Tokens": "7.6.0",
+          "System.Text.Encodings.Web": "4.7.2",
           "System.Text.Json": "4.7.2"
         }
       },
       "Microsoft.IdentityModel.Logging": {
         "type": "Transitive",
-        "resolved": "6.25.0",
-        "contentHash": "65/a4Ln4hWKy3M+yMApYKkht/feQKr2DmnHPKROSLxBxFTvrm49K34yuD/VhGmg38U9lAhN5DOK/khq9W4B1ig==",
+        "resolved": "7.6.0",
+        "contentHash": "7AVJhNY4y/i96XGfaXovX8aAyYWz6HHtPEPHPpbg5JCchwVaoO08VmmpHe0L2gVagW/iHG0w4a4Xg9gxLXQ/8A==",
         "dependencies": {
-          "Microsoft.IdentityModel.Abstractions": "6.25.0"
+          "Microsoft.IdentityModel.Abstractions": "7.6.0"
         }
       },
       "Microsoft.IdentityModel.Tokens": {
         "type": "Transitive",
-        "resolved": "6.25.0",
-        "contentHash": "GIDvDPu2ii11w4UyHPTBsReNraoh3253sQIOPQg7ZCW6kfDj5a/0OrTInYMliIdSNpDXQMYKMimRJG/3i1sAYQ==",
+        "resolved": "7.6.0",
+        "contentHash": "xvEil42RUe4Si/TuLDvglNXpklgCWMSecPduczXPS2BAypjheUehPqKLwIy8vSdzB4K2zza3yLgmODBt+J6ZxQ==",
         "dependencies": {
           "Microsoft.CSharp": "4.5.0",
-          "Microsoft.IdentityModel.Logging": "6.25.0",
+          "Microsoft.IdentityModel.Logging": "7.6.0",
           "System.Security.Cryptography.Cng": "4.5.0",
-          "System.Text.Encoding": "4.3.0",
+          "System.Text.Encodings.Web": "4.7.2",
           "System.Text.Json": "4.7.2"
         }
       },
@@ -171,10 +180,10 @@
         "resolved": "13.0.1",
         "contentHash": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A=="
       },
-      "SkiaSharp": {
+      "SkiaSharp.NativeAssets.iOS": {
         "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+        "resolved": "2.88.8",
+        "contentHash": "bo00z/N46eptBnCrdrLNMwLpJnjjMHJDW8c3/gA6WsGEc4M+n02WpQUbCukZMZzAGq4XmLMzBg46LcElHlAU6Q=="
       },
       "SkiaSharp.Views": {
         "type": "Transitive",
@@ -201,11 +210,11 @@
       },
       "System.IdentityModel.Tokens.Jwt": {
         "type": "Transitive",
-        "resolved": "6.25.0",
-        "contentHash": "MCET1ZS8HYEc7+FiNO+0a7OH30pH42lbLKfriuvmOYSRBYi0wkq7duOYvOXPCXHn5qmP+hg30N4afwVM/G/Viw==",
+        "resolved": "7.6.0",
+        "contentHash": "LIuEbv/kFpuw00yI/mPu+T9NAVdH/u7Y5ChCGzYQQeCg9Pft2C7HFWuO/P+Z7c2RcySNjVk1FmuAheKjYIbOkw==",
         "dependencies": {
-          "Microsoft.IdentityModel.JsonWebTokens": "6.25.0",
-          "Microsoft.IdentityModel.Tokens": "6.25.0"
+          "Microsoft.IdentityModel.JsonWebTokens": "7.6.0",
+          "Microsoft.IdentityModel.Tokens": "7.6.0"
         }
       },
       "System.Numerics.Vectors": {
@@ -223,15 +232,10 @@
         "resolved": "4.5.0",
         "contentHash": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A=="
       },
-      "System.Text.Encoding": {
-        "type": "Transitive",
-        "resolved": "4.3.0",
-        "contentHash": "BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw=="
-      },
       "System.Text.Encodings.Web": {
         "type": "Transitive",
-        "resolved": "4.7.1",
-        "contentHash": "3qreYFQcLnyFk1LuaNWyyWE+sfkfe5eSTaIIssYrLNUIDbgyZNQBYQSzSDo4AprpjVeVX2T4KHKii9fiSZVUow=="
+        "resolved": "4.7.2",
+        "contentHash": "iTUgB/WtrZ1sWZs84F2hwyQhiRH6QNjQv2DkwrH+WP6RoFga2Q1m3f9/Q7FG8cck8AdHitQkmkXSY8qylcDmuA=="
       },
       "System.Text.Json": {
         "type": "Transitive",
@@ -268,20 +272,33 @@
           "Microcharts.Forms": "[0.9.5.9, )",
           "MonkeyCache.FileStore": "[1.6.3, )",
           "Nyxbull.Plugins.CrossLocalization": "[1.3.1, )",
-          "System.IdentityModel.Tokens.Jwt": "[6.25.0, )",
-          "Xamarin.Essentials": "[1.7.3, )",
+          "SkiaSharp": "[2.88.8, )",
+          "System.IdentityModel.Tokens.Jwt": "[7.6.0, )",
+          "Xamarin.Essentials": "[1.8.0, )",
           "Xamarin.FFImageLoading": "[2.4.11.982, )",
           "Xamarin.FFImageLoading.Forms": "[2.4.11.982, )",
           "Xamarin.FFImageLoading.Transformations": "[2.4.11.982, )",
-          "Xamarin.Forms": "[5.0.0.2545, )"
+          "Xamarin.Forms": "[5.0.0.2612, )"
         }
       }
     },
     "Xamarin.iOS,Version=v1.0/win": {
-      "SkiaSharp": {
+      "SkiaSharp.NativeAssets.iOS": {
         "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+        "resolved": "2.88.8",
+        "contentHash": "bo00z/N46eptBnCrdrLNMwLpJnjjMHJDW8c3/gA6WsGEc4M+n02WpQUbCukZMZzAGq4XmLMzBg46LcElHlAU6Q=="
+      },
+      "System.Security.Cryptography.Cng": {
+        "type": "Transitive",
+        "resolved": "4.5.0",
+        "contentHash": "WG3r7EyjUe9CMPFSs6bty5doUqT+q9pbI80hlNzo2SkPkZ4VTuZkGWjpp77JB8+uaL4DFPRdBsAY+DX3dBK92A=="
+      }
+    },
+    "Xamarin.iOS,Version=v1.0/win-arm64": {
+      "SkiaSharp.NativeAssets.iOS": {
+        "type": "Transitive",
+        "resolved": "2.88.8",
+        "contentHash": "bo00z/N46eptBnCrdrLNMwLpJnjjMHJDW8c3/gA6WsGEc4M+n02WpQUbCukZMZzAGq4XmLMzBg46LcElHlAU6Q=="
       },
       "System.Security.Cryptography.Cng": {
         "type": "Transitive",
@@ -290,10 +307,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x64": {
-      "SkiaSharp": {
+      "SkiaSharp.NativeAssets.iOS": {
         "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+        "resolved": "2.88.8",
+        "contentHash": "bo00z/N46eptBnCrdrLNMwLpJnjjMHJDW8c3/gA6WsGEc4M+n02WpQUbCukZMZzAGq4XmLMzBg46LcElHlAU6Q=="
       },
       "System.Security.Cryptography.Cng": {
         "type": "Transitive",
@@ -302,10 +319,10 @@
       }
     },
     "Xamarin.iOS,Version=v1.0/win-x86": {
-      "SkiaSharp": {
+      "SkiaSharp.NativeAssets.iOS": {
         "type": "Transitive",
-        "resolved": "2.80.2",
-        "contentHash": "D25rzdCwh+3L+XyXqpNa+H/yiLJbE3/R3K/XexwHyQjGdzZvSufFW3oqf3En7hhqSIsxsJ8f5NEZ0J5W5wlGBg=="
+        "resolved": "2.88.8",
+        "contentHash": "bo00z/N46eptBnCrdrLNMwLpJnjjMHJDW8c3/gA6WsGEc4M+n02WpQUbCukZMZzAGq4XmLMzBg46LcElHlAU6Q=="
       },
       "System.Security.Cryptography.Cng": {
         "type": "Transitive",

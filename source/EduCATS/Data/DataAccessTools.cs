@@ -21,6 +21,11 @@ namespace EduCATS.Data
 		public static bool IsConnectionError { get; set; }
 
 		/// <summary>
+		/// Is session expired issue.
+		/// </summary>
+		public static bool IsSessionExpiredError { get; set; }
+
+		/// <summary>
 		/// Error message.
 		/// </summary>
 		public static string ErrorMessage { get; set; }
@@ -50,7 +55,7 @@ namespace EduCATS.Data
 				objectToGet = await dataAccess.GetSingle();
 			}
 
-			SetError(dataAccess.ErrorMessageKey, dataAccess.IsConnectionError);
+			SetError(dataAccess.ErrorMessageKey, dataAccess.IsConnectionError, dataAccess.IsSessionExpiredError);
 			return objectToGet;
 		}
 
@@ -82,19 +87,22 @@ namespace EduCATS.Data
 		/// </summary>
 		/// <param name="message">Error message.</param>
 		/// <param name="isConnectionError">Is network connection issue.</param>
+		/// <param name="sessionExpired">Is session expired issue.</param>
 		/// <remarks>
 		/// Can be <c>null</c> (if no error occurred).
 		/// </remarks>
-		public static void SetError(string message, bool isConnectionError)
+		public static void SetError(string message, bool isConnectionError, bool sessionExpired)
 		{
 			if (message == null) {
 				IsError = false;
 				IsConnectionError = false;
+				IsSessionExpiredError = false;
 				return;
 			}
 
 			IsError = true;
 			IsConnectionError = isConnectionError;
+			IsSessionExpiredError = sessionExpired;
 			ErrorMessage = CrossLocalization.Translate(message);
 		}
 	}

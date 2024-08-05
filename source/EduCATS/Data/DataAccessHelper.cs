@@ -52,6 +52,11 @@ namespace EduCATS.Data
 		public bool IsConnectionError { get; set; }
 
 		/// <summary>
+		/// Is session expired issue.
+		/// </summary>
+		public bool IsSessionExpiredError { get; set; }
+
+		/// <summary>
 		/// Error message localized key.
 		/// </summary>
 		public string ErrorMessageKey { get; set; }
@@ -93,6 +98,13 @@ namespace EduCATS.Data
 			}
 
 			var response = await _callback();
+
+			if (response.Value == HttpStatusCode.Unauthorized)
+			{
+				setError("base_session_expired", sessionExpired: true);
+				return new T();
+			}
+
 			singleObject = GetAccess(response);
 
 			if (singleObject == null) {
@@ -116,6 +128,13 @@ namespace EduCATS.Data
 			}
 
 			var response = await _callback();
+
+			if (response.Value == HttpStatusCode.Unauthorized)
+			{
+				setError("base_session_expired", sessionExpired: true);
+				return new List<T>();
+			}
+
 			list = GetListAccess(response);
 
 			if (list == null) {
@@ -221,12 +240,14 @@ namespace EduCATS.Data
 		/// Set error details.
 		/// </summary>
 		/// <param name="message">Error message.</param>
+		/// <param name="sessionExpired">Session expired error.</param>
 		/// <param name="isConnectionError">Is connection error.</param>
-		void setError(string message, bool isConnectionError = false)
+		void setError(string message, bool sessionExpired = false, bool isConnectionError = false)
 		{
 			IsError = true;
 			ErrorMessageKey = message;
 			IsConnectionError = isConnectionError;
+			IsSessionExpiredError = sessionExpired;
 		}
 
 		/// <summary>

@@ -12,6 +12,7 @@
 	"base_connection_error": "Keine Internetverbindung. Überprüfen Sie die Netzwerkeinstellungen und versuchen Sie es erneut.",
 	"base_no_data": "Keine Daten angezeigt werden",
 	"base_something_went_wrong": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut oder wenden Sie sich an den Support.",
+	"base_session_expired": "Die Sitzung ist abgelaufen. Bitte melden Sie sich erneut bei Ihrem Konto an.",
 
 	"contributor_ilya_lehchylin": "Ilya Legtschilin",
 	"contributor_julia_popova": "Yuliya Popova",
@@ -50,7 +51,7 @@
 	"main_statistics": "Statistik",
 	"main_settings": "Einstellungen",
 
-	"today_subjects": "Studienfächer",
+	"today_subjects": "Zeitplan",
 	"today_news": "Nachrichten",
 	"today_news_load_error": "Fehler beim abrufen der Nachrichtenliste. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
 	"today_subjects_error": "Fehler beim abrufen der Artikelliste. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
@@ -87,6 +88,11 @@
 	"learning_card_eemc": "Methodischer Komplex",
 	"learning_card_files": "Dateien",
 	"learning_card_adaptive": "Adaptives lernen",
+
+	"update_title": "Aktualisieren",
+	"update_message": "Update veröffentlicht ",
+	"update_link_button": "Aktualisieren",
+	"update_cancel_button": "Später",
 
 	"testing_get_tests_error": "Fehler beim abrufen von Tests. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
 	"testing_knowledge_control": "Tests zur Wissenskontrolle",
@@ -128,6 +134,7 @@
 	"settings_font": "Text & Schriftart",
 	"settings_delete": "Konto löschen",
 	"settings_about": "Über die App ",
+	"settings_about_profile": "Über das Konto",
 	"settings_logout": "Abmelden",
 	"settings_logout_message": "Möchten Sie wirklich abmelden?",
 
@@ -175,6 +182,11 @@
 	"name": "Name",
 	"surname": "Vorname",
 	"patronymic": "Patronym",
+	"login": "Anmeldung",
+	"email": "Post",
+	"phone": "Telefon",
+	"accountinfo": "Skype, Viber, Telegram und andere",
+	"about": "Über mich",
 	"confirm_password": "Confirm password",
 	"select_secret_question": "Spezifische Frage",
 	"select_group": "Group",

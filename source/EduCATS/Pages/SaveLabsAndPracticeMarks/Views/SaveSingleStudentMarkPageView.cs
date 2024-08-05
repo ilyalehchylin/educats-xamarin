@@ -17,7 +17,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 	{
 		static Thickness _gridPadding = new Thickness(15);
 		const double _controlHeight = 50;
-		const double _heightRequest = 30;
+		const double _heightRequest = 40;
 
 		static Thickness _padding = new Thickness(10, 1);
 		public List<int> Marks = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -28,13 +28,13 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		{
 			_title = title;
 
-			if(title == CrossLocalization.Translate("practice_mark"))
+			if (title == CrossLocalization.Translate("practice_mark"))
 			{
-				foreach(var pract in prOrLabStat.Practicals)
+				foreach (var pract in prOrLabStat.Practicals)
 				{
 					NameOfLabOrPractice.Add(pract.ShortName);
 				}
-				BindingContext = new SaveSingleStudentMarkPageViewModel(new PlatformServices(), 
+				BindingContext = new SaveSingleStudentMarkPageViewModel(new PlatformServices(),
 					NameOfLabOrPractice.FirstOrDefault(), marks, prOrLabStat, title, name, subGruop);
 			}
 			else if (title == CrossLocalization.Translate("stats_page_labs_rating"))
@@ -103,7 +103,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
 				Style = AppStyles.GetLabelStyle(),
-				HeightRequest = _heightRequest,
+				HeightRequest = 50,
 				Text = CrossLocalization.Translate("show_for_student"),
 			};
 
@@ -161,6 +161,13 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 
 			saveBut.SetBinding(Button.CommandProperty, "SaveMarksButton");
 
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0, GridUnitType.Auto) });
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Auto) });
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(2, GridUnitType.Auto) });
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(3, GridUnitType.Auto) });
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(5, GridUnitType.Auto) });
+			gridLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(6, GridUnitType.Auto) });
+
 			gridLayout.Children.Add(inicials, 0, 0);
 			gridLayout.Children.Add(nameOfPrOrLb, 0, 1);
 			gridLayout.Children.Add(markLabel, 0, 2);
@@ -178,6 +185,9 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			Grid.SetColumnSpan(markLabel, 2);
 			Grid.SetColumnSpan(saveBut, 3);
 			Grid.SetColumnSpan(nameOfPrOrLb, 3);
+
+			gridLayout.RowSpacing = 10;
+
 			Content = gridLayout;
 		}
 

@@ -96,7 +96,8 @@ namespace EduCATS.Pages.Statistics.Students.Views
 
 		SearchBar createSearchBar()
 		{
-			var searchBar = new SearchBar {
+			var searchBar = new SearchBar
+			{
 				Margin = _searchBarMargin,
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				CancelButtonColor = Color.FromHex(Theme.Current.BaseAppColor),
@@ -112,7 +113,8 @@ namespace EduCATS.Pages.Statistics.Students.Views
 
 		RoundedListView createRoundedListView(View header)
 		{
-			var roundedListView = new RoundedListView(typeof(StudentsPageViewCell), header: header) {
+			var roundedListView = new RoundedListView(typeof(StudentsPageViewCell), header: header)
+			{
 				IsPullToRefreshEnabled = true
 			};
 

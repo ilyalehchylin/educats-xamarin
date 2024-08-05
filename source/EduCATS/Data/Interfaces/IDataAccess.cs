@@ -19,6 +19,11 @@ namespace EduCATS.Data.Interfaces
 		bool IsConnectionError { get; set; }
 
 		/// <summary>
+		/// Is error referred to expired session.
+		/// </summary>
+		bool IsSessionExpiredError { get; set; }
+
+		/// <summary>
 		/// Error message localization key.
 		/// </summary>
 		string ErrorMessageKey { get; set; }

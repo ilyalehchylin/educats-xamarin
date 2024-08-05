@@ -1,8 +1,11 @@
 ﻿using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Settings;
+using EduCATS.Pages.Login.ViewModels;
+using EduCATS.Pages.Login.Views;
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -107,17 +110,28 @@ namespace EduCATS.Networking
 		/// <returns>Response.</returns>
 		async Task<HttpResponseMessage> get()
 		{
-			try {
-				if (_services.Preferences.AccessToken != "")
+			try
+			{
+				if (!string.IsNullOrEmpty(_services.Preferences.AccessToken))
 				{
-					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
+					_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
-						
-				return await _client.GetAsync(Uri);
 
-			} catch (TaskCanceledException) {
+				var response = await _client.GetAsync(Uri);
+
+				if (response.StatusCode == HttpStatusCode.Unauthorized)
+				{
+					return errorResponseMessage(HttpStatusCode.Unauthorized);
+				}
+
+				return response;
+			}
+			catch (TaskCanceledException)
+			{
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
-			} catch {
+			}
+			catch (Exception)
+			{
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
 		}
@@ -132,14 +146,25 @@ namespace EduCATS.Networking
 			{
 				if (_services.Preferences.AccessToken != "")
 				{
-					_client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(_services.Preferences.AccessToken);
+					_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
 
-				return await _client.PostAsync(Uri, _postContent);
+				if (_services.Preferences.Server == Servers.EduCatsAddress)
+				{
+					_client.DefaultRequestHeaders.Add("Origin", Servers.EduCatsAddress);
+				}
 
+				var response = await _client.PostAsync(Uri, _postContent);
+
+				if (response.StatusCode == HttpStatusCode.Unauthorized)
+				{
+					return errorResponseMessage(HttpStatusCode.Unauthorized);
+				}
+
+				return response;
 			} catch (TaskCanceledException) {
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
-			} catch (Exception ex) {
+			} catch (Exception) {
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
 		}

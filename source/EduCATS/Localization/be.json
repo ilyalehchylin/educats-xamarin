@@ -12,6 +12,7 @@
 	"base_connection_error": "Адсутнічае злучэнне з інтэрнэтам. Праверце налады ў сетцы і паспрабуйце зноў",
 	"base_no_data": "Адсутнічаюць даныя для адлюстравання",
 	"base_something_went_wrong": "Нешта пайшло не так. Паўтарыце спробу або звярніцеся ў службу падтрымкі.",
+	"base_session_expired": "Сесія скончылася. Калі ласка, увайдзіце ў рахунак зноў.",
 
 	"contributor_ilya_lehchylin": "Ілля Легчылін",
 	"contributor_julia_popova": "Юлія Папова",
@@ -50,7 +51,7 @@
 	"main_statistics": "Статыстыка",
 	"main_settings": "Налады",
 
-	"today_subjects": "Прадметы",
+	"today_subjects": "Расклад",
 	"today_news": "Навіны",
 	"today_news_load_error": "Здарылася памылка падчас атрымання спісу навін. Калі ласка абнавіце старонку альбо звярніцеся ў службу падтрымкі.",
 	"today_subjects_error": "Здарылася памылка падчас атрымання спісу прадметаў. Калі ласка абнавіце старонку альбо звярніцеся ў службу падтрымкі.",
@@ -85,6 +86,11 @@
 	"learning_card_eemc": "ЭНМК",
 	"learning_card_files": "Файлы",
 	"learning_card_adaptive": "Адаптыўнае навучанне",
+
+	"update_title": "Абнаўленне",
+	"update_message": "Выйшла абнаўленне ",
+	"update_link_button": "Абнавіць",
+	"update_cancel_button": "Пазней",
 
 	"testing_get_tests_error": "Здарылася памылка падчас атрымання тэстаў. Калі ласка абнавіце старонку альбо звярніцеся ў службу падтрымкі.",
 	"testing_knowledge_control": "Тэсты для кантролю ведаў",
@@ -126,6 +132,7 @@
 	"settings_font": "Тэкст & Шрыфт",
 	"settings_delete": "Выдаліць акаўнт",
 	"settings_about": "Пра дадатак",
+	"settings_about_profile": "Аб акаўнце",
 	"settings_logout": "Выйсці",
 	"settings_logout_message": "Вы насамрэч жадаеце выйсці?",
 
@@ -173,6 +180,11 @@
 	"name": "Імя",
 	"surname": "Прозвішча",
 	"patronymic": "Імя па бацьку",
+	"login": "Лагін",
+	"email": "Пошта",
+	"phone": "Тэлефон",
+	"accountinfo": "Skype, Viber, Telegram і др.",
+	"about": "Пра сябе",
 	"confirm_password": "Пацверджанне пароля",
 	"select_secret_question": "Серкретный пытанне",
 	"choose_group": "Группа",

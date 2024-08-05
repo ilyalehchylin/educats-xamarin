@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Runtime.CompilerServices;
 using EduCATS.Controls.RoundedListView.Selectors;
+using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
+using EduCATS.Pages.Today.Base.Views.ViewCells;
 using EduCATS.Themes;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
@@ -53,9 +55,13 @@ namespace EduCATS.Controls.RoundedListView
 			View header = null,
 			double headerTopPadding = 0,
 			double footerBottomPadding = 0,
-			Func<object> func = null)
+			Func<object> func = null,
+			IPlatformServices services = null)
 		{
 			HasUnevenRows = true;
+
+			if ((type == typeof(SubjectPageViewCell) || type == typeof(CalendarSubjectsViewCell)) && services is not null && services.Preferences.IsLargeFont) HasUnevenRows = false;
+
 			ItemTemplate = func == null ?
 				new RoundedListTemplateSelector(type, checkbox) :
 				new RoundedListTemplateSelector(func, checkbox);
@@ -142,6 +148,7 @@ namespace EduCATS.Controls.RoundedListView
 			};
 
 			var frame = new Frame {
+				Padding = new Thickness(0, 0, 0, bottomPadding),
 				HasShadow = false,
 				CornerRadius = (float)_capHeight,
 				BackgroundColor = Color.FromHex(Theme.Current.RoundedListViewBackgroundColor)

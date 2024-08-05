@@ -1,25 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.IdentityModel.Tokens.Jwt;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using EduCATS.Data;
 using EduCATS.Data.Models;
-using EduCATS.Data.Models.User;
 using EduCATS.Data.User;
 using EduCATS.Demo;
 using EduCATS.Helpers.Forms;
-using EduCATS.Helpers.Json;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
-using EduCATS.Networking.AppServices;
-using EduCATS.Networking.Models.Login;
-using Newtonsoft.Json;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
@@ -215,9 +202,16 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		protected async Task openParental()
 		{
-			await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
+			if (Servers.Current == Servers.EduCatsAddress)
+			{
+				await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
+			}
+			else
+			{
+				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
+							CrossLocalization.Translate("change_server"));
+			}
 		}
-
 
 		/// <summary>
 		/// Authorization method.
@@ -319,95 +313,31 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns><see cref="UserModel"/> on success, <code>null</code> otherwise.</returns>
 		async Task<UserModel> loginRequest()
 		{
-			var userLogin = await DataAccess.Login(Username, Password);
-
-			if(!AppDemo.Instance.IsDemoAccount && _services.Preferences.Server == Servers.EduCatsAddress)
+			if (AppDemo.Instance.IsDemoAccount || _services.Preferences.Server != Servers.EduCatsAddress)
 			{
-				if (userLogin != null)
-				{
-					var jwt = new
-					{
-						userName = Username,
-						password = Password,
-					};
-
-					ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
-
-					var body = JsonController.ConvertObjectToJson(jwt);
-
-					var httpWebRequest = HttpWebRequest.CreateHttp(Links.LoginTestServer);
-
-					httpWebRequest.Method = "POST";
-					httpWebRequest.ContentType = "application/json";
-					httpWebRequest.Accept = "application/json, text/plain, */*";
-					httpWebRequest.Headers.Add("Origin", Servers.EduCatsAddress);
-					httpWebRequest.Headers.Add("Accept-Encoding", "gzip, deflate, br");
-					httpWebRequest.Headers.Add("Sec-Fetch-Dest", "empty");
-					httpWebRequest.Headers.Add("Sec-Fetch-Mode", "cors");
-					httpWebRequest.Headers.Add("Sec-Fetch-Site", "same-origin");
-					
-					string json = body;
-					byte[] byte1 = Encoding.UTF8.GetBytes(json);
-					httpWebRequest.ContentLength = byte1.Length;
-
-					using (var streamWriter = httpWebRequest.GetRequestStream())
-					{
-						streamWriter.Write(byte1, 0, byte1.Length);
-						streamWriter.Close();
-					}
-					var tok = "";
-
-					try
-					{
-						var httpResponse = httpWebRequest.GetResponse();
-
-						using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-						{
-							tok = streamReader.ReadToEnd();
-							streamReader.Close();
-						}
-						var token = JsonConvert.DeserializeObject<TokenModel>(tok);
-						_services.Preferences.AccessToken = token.Token;
-						SecondUserModel userLoginTest = await DataAccess.LoginTest(Username, Password);
-						userLogin.UserId = userLoginTest.Id;
-						userLogin.Username = userLoginTest.Username;
-					}
-					catch (WebException ex)
-					{
-						HttpWebResponse httpResponse = (HttpWebResponse)ex.Response;
-						string answer = "";
-						if (ex.Response != null)
-						{
-							using (Stream stream = ex.Response.GetResponseStream())
-							{
-								StreamReader reader = new StreamReader(stream, Encoding.UTF8);
-								answer = reader.ReadToEnd();
-							}
-
-							var serverError = JsonConvert.DeserializeObject<ServerError>(answer);
-
-							if (serverError.Error == 1)
-							{
-								DataAccess.SetError(CrossLocalization.Translate("login_user_profile_not_verify"), false);
-							}
-							else
-							{
-								DataAccess.SetError(CrossLocalization.Translate("login_error"), false);
-							}
-						}
-					}
-					catch (Exception) { }
-				}
+				var userLogin = await DataAccess.Login(Username, Password);
+				AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
+				return userLogin;
 			}
 
-			AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
-			return userLogin;
+			var tokenData = await DataAccess.GetToken(Username, Password);
+			_services.Preferences.AccessToken = tokenData.Token;
+			var accountData = await DataAccess.GetAccountData();
+			AppUserData.SetLoginData(_services, accountData.Id, accountData.Username);
+			var user = new UserModel
+			{
+				UserId = accountData.Id,
+				Username = accountData.Username
+			};
+
+			return user;
 		}
 
 		/// <summary>
 		/// Gets profile data by username and user's ID and saves it.
 		/// </summary>
 		/// <param name="username">Username.</param>
+		/// <param name="password">Password.</param>
 		/// <returns>Task.</returns>
 		async Task<UserProfileModel> getProfileData(string username)
 		{

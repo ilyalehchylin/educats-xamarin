@@ -2,12 +2,13 @@
 
 # EduCATS Xamarin
 
-A cross-platform client for the [Leaning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
+A cross-platform client for the [Learning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
 
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
 [![Latest GitHub release)](https://img.shields.io/github/v/release/ilyalehchylin/educats-xamarin?logo=github)](https://github.com/ilyalehchylin/educats-xamarin/releases)
 [![Codecov](https://codecov.io/gh/ilyalehchylin/educats-xamarin/branch/develop/graph/badge.svg)](https://codecov.io/gh/ilyalehchylin/educats-xamarin)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/ilyalehchylin/educats-xamarin?logo=codeclimate)](https://codeclimate.com/github/ilyalehchylin/educats-xamarin/maintainability)
+[![CodeFactor](https://www.codefactor.io/repository/github/ilyalehchylin/educats-xamarin/badge)](https://www.codefactor.io/repository/github/ilyalehchylin/educats-xamarin)
 
 ## Pipelines
 

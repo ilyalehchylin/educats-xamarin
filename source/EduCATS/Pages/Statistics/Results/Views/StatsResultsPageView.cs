@@ -13,7 +13,7 @@ namespace EduCATS.Pages.Statistics.Results.Views
 	public class StatsResultsPageView : ContentPage
 	{
 		static Thickness _padding = new Thickness(10, 1);
-		static Thickness _studentNameMargin = new Thickness(5, 5);
+		static Thickness _studentNameMargin = new Thickness(1, 5);
 
 		readonly StatsPageEnum _statsPageEnum;
 
@@ -33,13 +33,15 @@ namespace EduCATS.Pages.Statistics.Results.Views
 		{
 			var headerLayout = new StackLayout();
 
-			if (!string.IsNullOrEmpty(name)) {
+			if (!string.IsNullOrEmpty(name))
+			{
 				headerLayout.Children.Add(createStudentNameLabel(name));
 			}
 
 			headerLayout.Children.Add(createSummary());
 
-			var resultsListView = new RoundedListView(typeof(StatsResultsPageViewCell), header: headerLayout) {
+			var resultsListView = new RoundedListView(typeof(StatsResultsPageViewCell), header: headerLayout)
+			{
 				IsPullToRefreshEnabled = true
 			};
 
@@ -54,15 +56,17 @@ namespace EduCATS.Pages.Statistics.Results.Views
 
 		Frame createSummary()
 		{
-			var summaryLabel = new Label {
+			var summaryLabel = new Label
+			{
 				Style = AppStyles.GetLabelStyle(NamedSize.Large),
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
-				Text = _statsPageEnum == StatsPageEnum.LabsRating || _statsPageEnum ==  StatsPageEnum.PractiseMarks ? 
+				Text = _statsPageEnum == StatsPageEnum.LabsRating || _statsPageEnum == StatsPageEnum.PractiseMarks ?
 					CrossLocalization.Translate("stats_summary_rating") :
 					CrossLocalization.Translate("stats_summary_visiting")
 			};
 
-			var summaryDetailsLabel = new Label {
+			var summaryDetailsLabel = new Label
+			{
 				HorizontalOptions = LayoutOptions.EndAndExpand,
 				Style = AppStyles.GetLabelStyle(NamedSize.Large),
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsResultsColor)
@@ -70,11 +74,13 @@ namespace EduCATS.Pages.Statistics.Results.Views
 
 			summaryDetailsLabel.SetBinding(Label.TextProperty, "Summary");
 
-			return new Frame {
+			return new Frame
+			{
 				HasShadow = false,
 				Margin = _studentNameMargin,
 				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
-				Content = new StackLayout {
+				Content = new StackLayout
+				{
 					Orientation = StackOrientation.Horizontal,
 					Children = { summaryLabel, summaryDetailsLabel }
 				}
@@ -83,7 +89,8 @@ namespace EduCATS.Pages.Statistics.Results.Views
 
 		Label createStudentNameLabel(string name)
 		{
-			return new Label {
+			return new Label
+			{
 				Text = name,
 				Margin = _studentNameMargin,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsNameColor),

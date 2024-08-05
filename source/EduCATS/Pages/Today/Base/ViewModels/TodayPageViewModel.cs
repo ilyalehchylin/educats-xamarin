@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading;
+using System.Net.Http;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
-using EduCATS.Data.Models.Calendar;
 using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Date.Enums;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
+using EduCATS.Networking;
 using EduCATS.Pages.Today.Base.Models;
 using EduCATS.Themes;
+using Newtonsoft.Json.Linq;
 using Nyxbull.Plugins.CrossLocalization;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Today.Base.ViewModels
@@ -23,22 +26,26 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		readonly IPlatformServices _services;
 
 		readonly double _subjectHeight;
-		readonly double _subjectsHeaderHeight;
+		readonly double _subjectsHeightToSubtract;
+		readonly bool _isLargeFont;
 
 		const int _minimumCalendarPosition = 0;
 		const int _maximumCalendarPosition = 2;
-		const double _subjectsHeightToAdd = 55;
-		const double _emptySubjectsHeight = 110;
+		const double _emptySubjectsHeight = 120;
+		const double _emptySubjectsHeightLarge = 130;
 
+		// bool _isCreation = true;
 		bool _isManualSelectedCalendarDay;
 		DateTime _manualSelectedCalendarDay;
 		List<CalendarSubjectsModel> _calendarSubjectsBackup;
 
 		public TodayPageViewModel(double subjectHeight, double subjectsHeaderHeight, IPlatformServices services)
 		{
-			_subjectHeight = subjectHeight;
-			_subjectsHeaderHeight = subjectsHeaderHeight;
-			_services = services;
+			_subjectHeight = services.Preferences.IsLargeFont ? (subjectHeight + 90) : subjectHeight;
+			_subjectsHeightToSubtract = services.Preferences.IsLargeFont ? 95 : 85;
+			_isLargeFont = services.Preferences.IsLargeFont;
+			_services = services; 
+			Version = _services.Device.GetVersion();
 
 			initSetup();
 			update();
@@ -123,6 +130,12 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				}
 			}
 		}
+		string _version;
+		public string Version
+		{
+			get { return _version; }
+			set { SetProperty(ref _version, value); }
+		}
 
 		Command _newsRefreshCommand;
 		public Command NewsRefreshCommand {
@@ -179,6 +192,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 					IsNewsRefreshing = true;
 					await getAndSetCalendarNotes();
 					await getAndSetNews();
+					await getUpdateMessage();
 					IsNewsRefreshing = false;
 				} catch (Exception ex) {
 					AppLogs.Log(ex);
@@ -238,9 +252,83 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			}
 		}
 
-		async Task<List<NewsPageModel>> getNews()
+		async Task getUpdateMessage()
 		{
+			string version = _version;
+
+			if (Device.RuntimePlatform == Device.Android)
+			{
+				version = await GetAndroidVersion();
+			}
+			else if (Device.RuntimePlatform == Device.iOS)
+			{
+				version = await GetIOSVersion();
+				if (version == null)
+				{
+					return;
+				}
+			}
+			if (version != _version)
+			{
+				string title = CrossLocalization.Translate("update_title");
+				string message = CrossLocalization.Translate("update_message");
+				string linkButton = CrossLocalization.Translate("update_link_button");
+				string cancelButton = CrossLocalization.Translate("update_cancel_button");
+
+				var result = await _services.Dialogs.ShowMessageUpdate(title, message + version, linkButton, cancelButton);
+				if (result)
+				{
+					if (Device.RuntimePlatform == Device.Android)
+						await _services.Device.OpenUri(Servers.EducatsBntuAndroidMarketString);
+					else if (Device.RuntimePlatform == Device.iOS)
+						await Launcher.OpenAsync(new Uri(Servers.EducatsBntuIOSMarketString));
+				}
+			}
+		}
+
+		async Task<string> GetAndroidVersion()
+		{
+			string storeUrl = "https://play.google.com/store/apps/details?id=by.bntu.educats";
+			string html;
+			using (HttpClient client = new HttpClient())
+			{
+				html = await client.GetStringAsync(storeUrl);
+			}
+
+			MatchCollection matches = Regex.Matches(html, @"\[\[\[\""\d+\.\d+\.\d+");
+
+			return matches[0].Value.Substring(4);
+		}
+
+		async Task<string> GetIOSVersion()
+		{
+			using (var httpClient = new HttpClient())
+			{
+				string iTunesUrlTemplate = "https://itunes.apple.com/lookup?bundleId=by.bntu.educats";
+				string bundleId = "by.bntu.educats";
+				var url = string.Format(iTunesUrlTemplate, bundleId);
+				var response = await httpClient.GetStringAsync(url);
+				var json = JObject.Parse(response);
+
+				if (json["resultCount"].Value<int>() == 0)
+					return null;
+
+				var appInfo = json["results"].First;
+
+				return appInfo["version"].Value<string>();
+			}
+		}
+
+		async Task<List<NewsPageModel>> getNews()
+			{
 			var news = await DataAccess.GetNews(_services.Preferences.UserLogin);
+
+			if (DataAccess.IsError && DataAccess.IsSessionExpiredError)
+			{
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
+				_services.Navigation.OpenLogin();
+				return null;
+			}
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
 				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
@@ -487,8 +575,7 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				}
 
 				CalendarSubjectsHeight =
-					(_subjectHeight * CalendarSubjects.Count) +
-					(_subjectsHeaderHeight * 2) + _subjectsHeightToAdd;
+					_subjectHeight * CalendarSubjects.Count;
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
@@ -500,13 +587,12 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			{
 				if (NewsSubjectList.Count == 0)
 				{
-					CalendarSubjectsHeight = _emptySubjectsHeight;
+					CalendarSubjectsHeight = _isLargeFont ? _emptySubjectsHeightLarge : _emptySubjectsHeight;
 					return;
 				}
 
 				CalendarSubjectsHeight =
-					(_subjectHeight * NewsSubjectList.Count * 2) +
-					(_subjectsHeaderHeight) + _subjectsHeightToAdd;
+					_subjectHeight * NewsSubjectList.Count - _subjectsHeightToSubtract * (NewsSubjectList.Count - 1);
 			}
 			catch (Exception ex)
 			{

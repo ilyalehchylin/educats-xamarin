@@ -12,6 +12,7 @@
 	"base_connection_error": "Nėra interneto ryšio. Patikrinkite tinklo nustatymus ir bandykite dar kartą.",
 	"base_no_data": "Nėra rodomų duomenų",
 	"base_something_went_wrong": "Kažkas nutiko. Bandykite dar kartą arba susisiekite su palaikymo komanda.",
+	"base_session_expired": "Sesija ir beigusies. Lūdzu, vēlreiz piesakieties savā kontā.",
 
 	"contributor_ilya_lehchylin": "Ilya Lehchylin",
 	"contributor_julia_popova": "Julia Popova",
@@ -22,9 +23,10 @@
 	"address_building": "p.",
 	"address_room": "a.",
 
-	"type_activity_lecture": "Lezione",
-	"type_activity_lab": "Lavoro di laboratorio",
-	"type_activity_practical": "Lavoro pratico",
+	"type_activity_lecture": "Paskaita",
+
+	"type_activity_lab": "Laboratoriniai darbai",
+	"type_activity_practical": "Praktinė pamoka",
 
 	"server_test": "Testavimo serveris",
 	"server_local": "Vietinis serveris",
@@ -50,7 +52,7 @@
 	"main_statistics": "Statistika",
 	"main_settings": "Nustatymai",
 
-	"today_subjects": "Dalykai",
+	"today_subjects": "Tvarkaraštį",
 	"today_news": "Naujienos",
 	"today_news_load_error": "Gaunant naujienų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
 	"today_subjects_error": "Gaunant elementų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
@@ -87,6 +89,11 @@
 	"learning_card_eemc": "Mokymo kompleksas",
 	"learning_card_files": "Failai",
 	"learning_card_adaptive": "Adaptyvusis mokymasis",
+
+	"update_title": "Atnaujinti",
+	"update_message": "Atnaujinimas išleistas ",
+	"update_link_button": "Atnaujinti",
+	"update_cancel_button": "Vėliau",
 
 	"testing_get_tests_error": "Gaunant testus įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
 	"testing_knowledge_control": "Žinių kontrolės testai",
@@ -128,6 +135,7 @@
 	"settings_font": "Tekstas ir šriftas",
 	"settings_delete": "Eliminare l'account",
 	"settings_about": "Apie programą",
+	"settings_about_profile": "Apie paskyrą",
 	"settings_logout": "Atsijungti",
 	"settings_logout_message": "Ar tikrai norite atsijungti ?",
 
@@ -175,6 +183,11 @@
 	"name": "Vardas",
 	"surname": "Pavardė",
 	"patronymic": "Tėvavardis",
+	"login": "Prisijungti",
+	"email": "Paštas",
+	"phone": "Telefonas",
+	"accountinfo": "Skype, Viber, Telegram ir kita",
+	"about": "Apie mane",
 	"confirm_password": "Patvirtinti slaptažodį",
 	"select_secret_question": "Konkretus klausimas",
 	"select_group": "Grupė",

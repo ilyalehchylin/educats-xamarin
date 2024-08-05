@@ -17,14 +17,14 @@ using Xamarin.Forms;
 
 namespace EduCATS.Pages.SaveMarks.Views
 {
-	public class SaveMarksPageView : ContentPage 
+	public class SaveMarksPageView : ContentPage
 	{
 
 		public string _title { get; set; }
 
 		static Thickness _padding = new Thickness(10, 1);
 		static Thickness _headerPadding = new Thickness(0, 10, 0, 10);
-		static int _heightRequest = 30;
+		static int _heightRequest = 40;
 		private string _groupName;
 		const double _controlHeight = 50;
 
@@ -45,14 +45,14 @@ namespace EduCATS.Pages.SaveMarks.Views
 			if (title == CrossLocalization.Translate("stats_page_lectures_visiting"))
 			{
 				string link = Links.GetLecturesCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
-				var obj = requestDataAsync(link,httpContent);
+				var obj = requestDataAsync(link, httpContent);
 				groupData = JsonConvert.DeserializeObject<VisitingLecturesList>(obj.Result.ToString());
 				BindingContext = new SaveMarksPageViewModel(new PlatformServices(), subjectId, groupData, groupId, title);
 			}
 			else if (title == CrossLocalization.Translate("stats_page_labs_visiting"))
 			{
 				string link = Links.GetLabsCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
-				var obj = requestDataAsync(link,httpContent);
+				var obj = requestDataAsync(link, httpContent);
 				labsVisitingList = JsonConvert.DeserializeObject<LabsVisitingList>(obj.Result.ToString());
 				BindingContext = new SaveMarksPageViewModel(new PlatformServices(), subjectId, labsVisitingList, groupId, title);
 			}
@@ -64,7 +64,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 				groupItems.SubjectId = subjectId;
 				var body = JsonConvert.SerializeObject(groupItems);
 				httpContent = new StringContent(body, Encoding.UTF8, "application/json");
-				var obj = requestDataAsync(link,httpContent);
+				var obj = requestDataAsync(link, httpContent);
 				particialVisitingList = JsonConvert.DeserializeObject<LabsVisitingList>(obj.Result.ToString());
 				BindingContext = new SaveMarksPageViewModel(new PlatformServices(), subjectId, particialVisitingList, groupId, title);
 			}
@@ -97,6 +97,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 				Style = AppStyles.GetLabelStyle(),
 				Font = Font.SystemFontOfSize(NamedSize.Large),
 				Text = CrossLocalization.Translate("choose_group") + " " + _groupName,
+				HorizontalOptions = LayoutOptions.Center,
 			};
 			var stackLayout = new StackLayout();
 			var resultsListView = new RoundedListView(typeof(VisitingPageViewCell));
@@ -175,7 +176,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 
 		StackLayout stackView()
 		{
-			
+
 			var save = saveMarksButton();
 			var form = new StackLayout
 			{
@@ -183,7 +184,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 				VerticalOptions = LayoutOptions.Center,
 				Children =
 				{
-					save, 
+					save,
 				}
 			};
 			return form;
