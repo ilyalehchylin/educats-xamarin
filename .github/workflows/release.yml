@@ -24,11 +24,11 @@ jobs:
         uses: actions/download-artifact@v3.0.2
         
       - name: Release Tag
-        uses: negz/create-tag@v1
+        uses: qoomon/actions--create-tag@v1.0.0
         with:
-         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-         version: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
+         name: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
          message: Release ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
+         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           
       - name: GitHub Release
         id: github_release
