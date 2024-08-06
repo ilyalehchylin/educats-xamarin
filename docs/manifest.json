@@ -1,5 +1,4 @@
 {
-  "homepages": [],
   "source_base_path": "/Users/runner/work/educats-xamarin/educats-xamarin",
   "xrefmap": "xrefmap.yml",
   "files": [
@@ -1375,6 +1374,16 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Networking.Models.Login.TokenCredentials.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Networking.Models.Login.TokenCredentials.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EduCATS.Networking.Models.Login.TokenModel.yml",
       "output": {
         ".html": {
@@ -2675,6 +2684,46 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Profile.ViewModels.ProfilePageViewModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Profile.ViewModels.ProfilePageViewModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Profile.ViewModels.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Profile.ViewModels.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Profile.Views.ProfilePageView.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Profile.Views.ProfilePageView.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Settings.Profile.Views.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Settings.Profile.Views.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EduCATS.Pages.Settings.Server.Models.ServerPageModel.yml",
       "output": {
         ".html": {
@@ -3804,9 +3853,16 @@
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "articles/project-structure.md",
       "output": {
@@ -3832,6 +3888,16 @@
       "output": {
         ".html": {
           "relative_path": "articles/services.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "articles/toc.json"
         }
       },
       "version": ""
@@ -3875,9 +3941,18 @@
         }
       },
       "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
     }
   ],
-  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"
