@@ -32,6 +32,8 @@ jobs:
          name: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
          message: Release ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
          token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+
+      - run: git push origin "${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}"
           
       - name: GitHub Release
         id: github_release
