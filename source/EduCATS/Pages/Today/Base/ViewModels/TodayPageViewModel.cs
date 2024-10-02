@@ -20,6 +20,8 @@ using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using EduCATS.Networking.AppServices;
+using EduCATS.Data.User;
+using EduCATS.Demo;
 
 namespace EduCATS.Pages.Today.Base.ViewModels
 {
@@ -287,6 +289,10 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			if (DataAccess.IsError && DataAccess.IsSessionExpiredError)
 			{
 				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
+				AppDemo.Instance.IsDemoAccount = false;
+				_services.Preferences.ResetPrefs();
+				AppUserData.Clear();
+				DataAccess.ResetData();
 				_services.Navigation.OpenLogin();
 				return null;
 			}

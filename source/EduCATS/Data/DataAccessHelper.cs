@@ -242,7 +242,7 @@ namespace EduCATS.Data
 		/// <param name="message">Error message.</param>
 		/// <param name="sessionExpired">Session expired error.</param>
 		/// <param name="isConnectionError">Is connection error.</param>
-		void setError(string message, bool sessionExpired = false, bool isConnectionError = false)
+		void setError(string message, bool sessionExpired = true, bool isConnectionError = false)
 		{
 			IsError = true;
 			ErrorMessageKey = message;
