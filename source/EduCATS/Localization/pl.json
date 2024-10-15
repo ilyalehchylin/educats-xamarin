@@ -98,6 +98,10 @@
 	"testing_self_study": "Testy dla samokontroli",
 	"testing_start_test_title": "Czy chcesz rozpocząć test?",
 	"testing_start_test_description": "Po potwierdzeniu zostanie uruchomiony timer. Każde pytanie bez odpowiedzi stanie się błędne po upływie timera.",
+	"testing_end_test_title": "Test jest już otwarty na innym urządzeniu!",
+	"testing_end_test_description": "Kontynuuj test na działającym urządzeniu. Jeśli chcesz przerwać test, kliknij przycisk \"tak\". W takim przypadku pytania pozostawione bez odpowiedzi będą liczone jako udzielone niepoprawnie. Aby powtórzyć test, skontaktuj się z nauczycielem.",
+	"testing_end_test_notification": "Test został zakończony na innym urządzeniu. Aby powtórzyć test, skontaktuj się z nauczycielem.",
+	"testing_comment": "Testy otwierane są przez nauczyciela jednorazowo. Przystąpienie do testu możliwe jest tylko na jednym urządzeniu. Zabrania się odświeżania i opuszczania strony z rozpoczętym testem.",
 
 	"get_test_error": "Wystąpił błąd podczas pobierania szczegółów testu. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
 	"get_test_question_error": "Wystąpił błąd podczas pobierania pytania. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",

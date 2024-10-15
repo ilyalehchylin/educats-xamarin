@@ -100,6 +100,10 @@
 	"testing_self_study": "Savikontrolės testai",
 	"testing_start_test_title": "Ar norite pradėti testą?",
 	"testing_start_test_description": "Po patvirtinimo įsijungs laikmatis. Kiekvienas neatsakytas klausimas taps neteisingas pasibaigus laikmačiui.",
+	"testing_end_test_title": "Expertus iam est apertus in alia fabrica!",
+	"testing_end_test_description": "Permanere test in currit fabrica. Si vis probationem abortire, preme in deprimendo \"Ita\". Hoc in casu, quaestiones nihil auditum reputabuntur sicut non recte responderunt. Ad probationem recipiendam, magistro tuo contactum.",
+	"testing_end_test_notification": "Expertus est alius fabrica. Ad probationem recipiendam, magistro tuo contactum.",
+	"testing_comment": "Probat a magistro semel aperiuntur. Expertus nonnisi in una cogitatione sumi potest. Prohibetur renovare vel paginam incohata probatione relinquere.",
 
 	"get_test_error": "Gaunant bandymo informaciją įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
 	"get_test_question_error": "Gaunant klausimą įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",

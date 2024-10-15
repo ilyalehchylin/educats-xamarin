@@ -99,6 +99,10 @@
 	"testing_self_study": "Tests for self-study",
 	"testing_start_test_title": "Do you want to start the test?",
 	"testing_start_test_description": "A timer will start after confirmation. Every question without an answer will become wrong after timer expiration.",
+	"testing_end_test_title": "The test is already open on another device!",
+	"testing_end_test_description": "Continue taking the test on the running device. If you want to interrupt the test, click on the \"Yes\". In this case, questions left unanswered will be considered as incorrectly answered.. To retake the test, contact the lecturer.",
+	"testing_end_test_notification": "The test was completed on another device. To retake the test, contact your teacher.",
+	"testing_comment": "Tests are opened by the lecturer once. The test can only be taken on one device. It is prohibited to refresh or leave the page with the started test.",
 
 	"get_test_error": "Error occurred during retrieving test details. Please try again or contact support.",
 	"get_test_question_error": "Error occurred during retrieving a question. Please try again or contact support.",

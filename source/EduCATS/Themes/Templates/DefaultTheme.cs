@@ -117,6 +117,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string TestResultsCorrectAnswerColor => "#00AA55";
 		virtual public string TestResultsNotCorrectAnswerColor => "#E63022";
 		virtual public string TestResultsRatingColor => _blackColor;
+		
 
 		virtual public string EemcHeaderImage => "image_book_rectangle";
 		virtual public string EemcBackButtonColor => _baseBlueColor;
