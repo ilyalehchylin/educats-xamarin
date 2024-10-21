@@ -81,8 +81,8 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 					() => PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage));
 			}
 
-			var testsForSelfStudy = getGroup(tests, "testing_self_study", true);
-			var testsForControl = getGroup(tests, "testing_knowledge_control", false);
+			var testsForSelfStudy = getGroup(tests, "testing_self_study", "testing_comment", true);
+			var testsForControl = getGroup(tests, "testing_knowledge_control", "testing_comment", false);
 			var groups = new List<TestingGroupModel>();
 			groups = addNonEmptyGroup(groups, testsForControl);
 			groups = addNonEmptyGroup(groups, testsForSelfStudy);
@@ -98,11 +98,12 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 			return groups;
 		}
 
-		TestingGroupModel getGroup(IList<TestModel> tests, string localizedTag, bool isSelfStudy)
+		TestingGroupModel getGroup(IList<TestModel> tests, string localizedTag, string localizeCom, bool isSelfStudy)
 		{
 			return new TestingGroupModel(
-				CrossLocalization.Translate(localizedTag),
-				getSeparateTests(tests, isSelfStudy));
+				CrossLocalization.Translate(localizedTag), 
+				CrossLocalization.Translate(localizeCom),
+				getSeparateTests(tests, isSelfStudy), isSelfStudy);
 		}
 
 		List<TestModel> getSeparateTests(IList<TestModel> tests, bool isSelfStudy)

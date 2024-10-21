@@ -100,6 +100,10 @@
 	"testing_self_study": "Savikontrolės testai",
 	"testing_start_test_title": "Ar norite pradėti testą?",
 	"testing_start_test_description": "Po patvirtinimo įsijungs laikmatis. Kiekvienas neatsakytas klausimas taps neteisingas pasibaigus laikmačiui.",
+	"testing_end_test_title": "Žinių testas jau atidarytas kitame įrenginyje",
+	"testing_end_test_description": "Tęskite testą veikiančiame įrenginyje. Jei norite nutraukti testą, spustelėkite mygtuką \"Taip\". Tokiu atveju neatsakyti klausimai bus laikomi neteisingai atsakytais. Norėdami pakartoti testą, susisiekite su savo mokytoju.",
+	"testing_end_test_notification": "Žinių patikrinimas buvo atliktas kitu įrenginiu. Susisiekite su mokytoju, kad perlaikytumėte testą.",
+	"testing_comment": "Testus mokytojas atidaro vieną kartą. Testą galima atlikti tik vienu įrenginiu. Draudžiama atnaujinti arba išeiti iš puslapio su pradėtu testu",
 
 	"get_test_error": "Gaunant bandymo informaciją įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
 	"get_test_question_error": "Gaunant klausimą įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",

@@ -160,6 +160,8 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		async Task getAndSetTest()
 		{
 			var test = await getTest();
+			if(test == null)
+				return;
 			setTestData(test);
 		}
 
@@ -168,11 +170,27 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			var test = await DataAccess.GetTest(_testId);
 
 			if (DataAccess.IsError) {
-				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
+				await showEndTestDialog();
 				return new TestDetailsModel();
 			}
 
 			return test;
+		}
+		async Task showEndTestDialog()
+		{
+			var result = await _services.Dialogs.ShowConfirmationMessage(
+				CrossLocalization.Translate("testing_end_test_title"),
+				CrossLocalization.Translate("testing_end_test_description"));
+
+			if (result)
+			{
+				completeTest();
+			}
+			else
+			{
+				await _services.Navigation.ClosePage(true, false);
+
+			}
 		}
 
 		async Task getAndSetQuestion(int number)
@@ -224,7 +242,8 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				await DataAccess.AnswerQuestionAndGetNext(answerModel);
 
 				if (DataAccess.IsError) {
-					_services.Dialogs.ShowError(DataAccess.ErrorMessage);
+					_services.Dialogs.ShowError(CrossLocalization.Translate("testing_end_test_notification"));
+					completeTest();
 					return;
 				}
 
