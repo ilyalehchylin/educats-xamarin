@@ -60,6 +60,7 @@ namespace EduCATS.Pages.Settings.Profile.Views
 			{
 				CornerRadius = 10,
 				Padding = 0,
+				HasShadow = false,
 				BackgroundColor = Color.FromHex(Theme.Current.SettingsTableColor),
 				Content = new StackLayout
 				{
@@ -102,6 +103,7 @@ namespace EduCATS.Pages.Settings.Profile.Views
 			{
 				CornerRadius = 10,
 				Padding = 0,
+				HasShadow = false,
 				BackgroundColor = Color.FromHex(Theme.Current.SettingsTableColor),
 				Content = new StackLayout
 				{
@@ -174,6 +176,7 @@ namespace EduCATS.Pages.Settings.Profile.Views
 			{
 				CornerRadius = 10,
 				Padding = 0,
+				HasShadow = false,
 				BackgroundColor = Color.FromHex(Theme.Current.SettingsTableColor),
 				Content = layout
 			};
