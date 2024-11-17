@@ -131,6 +131,10 @@
 	"files_megabytes": "MB",
 
 	"recommendations_fetch_error": "Fehler beim abrufen von Empfehlungen. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"recommendations_pred_test": "Machen Sie den Vortest",
+	"recommendations_rec_mat": "Empfohlene Lektüre",
+	"recommendations_compl_test": "Machen Sie den Test!",
+	"recommendations_end": "Der Lernprozess ist abgeschlossen.",
 
 	"settings_server": "Server",
 	"settings_language": "Sprache",

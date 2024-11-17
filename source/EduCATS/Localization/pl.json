@@ -50,7 +50,7 @@
 	"main_statistics": "Statystyk",
 	"main_settings": "Konfiguracja",
 
-	"today_subjects": "harmonogram",
+	"today_subjects": "Harmonogram",
 	"today_news": "Wiadomości",
 	"today_news_load_error": "Wystąpił błąd podczas pobierania listy wiadomości. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
 	"today_subjects_error": "Wystąpił błąd podczas pobierania listy dyscyplin. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
@@ -130,6 +130,10 @@
 	"files_megabytes": "MB",
 
 	"recommendations_fetch_error": "Wystąpił błąd podczas pobierania rekomendacji. Spróbuj ponownie lub skontaktuj się z obsługą klienta.",
+	"recommendations_pred_test": "Weź udział w teście wstępnym",
+	"recommendations_rec_mat": "Polecany materiał do przeczytania",
+	"recommendations_compl_test": "Podejmij test!",
+	"recommendations_end": "Podejmij test!",
 
 	"settings_server": "Serwer",
 	"settings_language": "Język",

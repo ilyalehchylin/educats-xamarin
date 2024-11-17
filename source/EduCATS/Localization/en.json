@@ -131,6 +131,10 @@
 	"files_megabytes": "MB",
 
 	"recommendations_fetch_error": "Error occurred during retrieving recommendations. Please try again or contact support.",
+	"recommendations_pred_test": "Take the pre-test",
+	"recommendations_rec_mat": "Recommended reading material",
+	"recommendations_compl_test": "Take the test!",
+	"recommendations_end": "The learning process is complete",
 
 	"settings_server": "Server",
 	"settings_language": "Language",

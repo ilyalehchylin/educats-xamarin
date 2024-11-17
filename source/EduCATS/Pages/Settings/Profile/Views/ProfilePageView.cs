@@ -19,9 +19,9 @@ namespace EduCATS.Pages.Settings.Profile.Views
 		static Thickness _buttonsPadding = new Thickness(0, 0, 0, 10);
 		static Thickness _listMargin = new Thickness(20, 0, 10, 0);
 		static Thickness _listMarginLabel = new Thickness(20, 0, 0, 0);
-		static Thickness _listMarginBlock = new Thickness(0, 3, 0, 3);
+		static Thickness _listMarginBlock = new Thickness(0, 6, 0, 6);
 
-		const double _spacing = 25;
+		const double _spacing = 10;
 		const double _spacingLabel = 0;
 		const double _buttonHeight = 50;
 		const double _avatarHeight = 200;
@@ -205,7 +205,7 @@ namespace EduCATS.Pages.Settings.Profile.Views
 				TextColor = Color.FromHex(Theme.Current.SettingsProfileLabelColor),
 				Style = AppStyles.GetLabelStyle(),
 				Text = CrossLocalization.Translate(text),
-				FontSize = Device.GetNamedSize(NamedSize.Default, typeof(Label)),
+				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
 				Margin = _listMarginLabel
 			};
 		}
@@ -228,7 +228,7 @@ namespace EduCATS.Pages.Settings.Profile.Views
 				Margin = _listMarginLabel
 			};
 		}
-		CachedImage createAvatar()
+		View createAvatar()
 		{
 			var avatarImage = new CachedImage
 			{
@@ -238,7 +238,46 @@ namespace EduCATS.Pages.Settings.Profile.Views
 
 			avatarImage.SetBinding(CachedImage.SourceProperty, "Avatar",
 				converter: new Base64ToImageSourceConverter());
-			return avatarImage;
+
+			var initialsLabel = new Label
+			{
+				TextColor = Color.Black,
+				FontSize = 50,
+				BackgroundColor = Color.LightGray,
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.Center,
+				WidthRequest = _avatarHeight,
+				HeightRequest = _avatarHeight,
+				HorizontalTextAlignment = TextAlignment.Center,
+				VerticalTextAlignment = TextAlignment.Center,
+			};
+
+			initialsLabel.SetBinding(Label.TextProperty, "Initials");
+
+			avatarImage.Triggers.Add(new DataTrigger(typeof(CachedImage))
+			{
+				Binding = new Binding("Avatar"),
+				Value = null,
+				Setters = { new Setter { Property = CachedImage.IsVisibleProperty, Value = false } }
+			});
+
+			initialsLabel.Triggers.Add(new DataTrigger(typeof(Label))
+			{
+				Binding = new Binding("Avatar"),
+				Value = null,
+				Setters = { new Setter { Property = Label.IsVisibleProperty, Value = true } }
+			});
+
+			var grid = new Grid
+			{
+				WidthRequest = _avatarHeight,
+				HeightRequest = _avatarHeight,
+			};
+
+			grid.Children.Add(initialsLabel);
+			grid.Children.Add(avatarImage);
+
+			return grid;
 		}
 	}
 }

@@ -87,7 +87,17 @@ namespace EduCATS.Pages.Recommendations.ViewModels
 		async Task getRecList()
 		{
 			var recsList = await DataAccess.GetRecommendations(CurrentSubject.Id, AppUserData.UserId);
-
+			foreach(var recs in recsList)
+			{
+				if (recs.Text == "Пройдите предтест")
+					recs.Text = CrossLocalization.Translate("recommendations_pred_test");
+				else if(recs.Text == "Рекомендуемый для прочтения материал")
+					recs.Text = CrossLocalization.Translate("recommendations_rec_mat");
+				else if (recs.Text == "Пройдите тест!")
+					recs.Text = CrossLocalization.Translate("recommendations_compl_test");
+				else if (recs.Text == "Процесс обучения завершен")
+					recs.Text = CrossLocalization.Translate("recommendations_end");
+			}
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
 				PlatformServices.Device.MainThread(
 					() => PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage));
