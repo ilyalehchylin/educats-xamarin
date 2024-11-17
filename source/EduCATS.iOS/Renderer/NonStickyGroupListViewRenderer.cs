@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 using EduCATS.iOS; 
@@ -16,7 +16,6 @@ namespace EduCATS.iOS
 
 			if (Control != null)
 			{
-
 				Control.SectionHeaderHeight = 0;
 			}
 		}
