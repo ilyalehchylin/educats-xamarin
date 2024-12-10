@@ -129,6 +129,10 @@
 	"files_megabytes": "МБ",
 
 	"recommendations_fetch_error": "Здарылася памылка падчас атрымання рэкамендацый. Калі ласка паспрабуйце зноў альбо звярніцеся ў службу падтрымкі.",
+	"recommendations_pred_test": "Прайдзіце тэст!",
+	"recommendations_rec_mat": "Рэкамендуемы для чытання матэрыял",
+	"recommendations_compl_test": "Прайдзіце тэст!",
+	"recommendations_end": "Працэс навучання завершаны",
 
 	"settings_server": "Сервер",
 	"settings_language": "Мова",

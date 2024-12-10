@@ -135,6 +135,10 @@
 	"files_megabytes": "МБ",
 
 	"recommendations_fetch_error": "Произошла ошибка во время получения рекомендаций. Пожалуйста, попробуйте снова или обратитесь в службу поддержки.",
+	"recommendations_pred_test": "Пройдите предтест",
+	"recommendations_rec_mat": "Рекомендуемый для прочтения материал",
+	"recommendations_compl_test": "Пройдите тест!",
+	"recommendations_end": "Процесс обучения завершен",
 
 	"settings_server": "Сервер",
 	"settings_language": "Язык",
