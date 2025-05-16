@@ -13,7 +13,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.1.7
-
+      
+      - name: Setup .NET 7.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '7.0.x'
+      
       - name: Unit-Tests Build + Coverlet
         run: |
           dotnet tool install --global coverlet.console
