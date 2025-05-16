@@ -198,7 +198,13 @@ jobs:
           brew install --cask xamarin-ios
           brew install --cask xamarin-android
 
-      - uses: nuget/setup-nuget@v2.0.0
+      - name: Install Mono
+        run: |
+          brew install mono
+          echo "/opt/homebrew/opt/mono/bin" >> "$GITHUB_PATH"
+      
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v2.0.0
         with:
           nuget-version: 'latest'
         
