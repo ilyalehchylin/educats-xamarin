@@ -186,7 +186,7 @@ jobs:
           path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
         
   build_ipa:
-    runs-on: macos-latest
+    runs-on: macos-15
     environment: github-actions-release
     needs: prepare_build
     steps:
