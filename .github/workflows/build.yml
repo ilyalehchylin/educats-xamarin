@@ -12,8 +12,13 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.7
-
+        uses: actions/checkout@v4.2.2
+      
+      - name: Setup .NET 7.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '7.0.x'
+      
       - name: Unit-Tests Build + Coverlet
         run: |
           dotnet tool install --global coverlet.console
@@ -28,19 +33,19 @@ jobs:
           COVERAGE_INFO_FILENAME: coverage.info          
         
       - name: Codecov Deploy
-        uses: codecov/codecov-action@v4.5.0
+        uses: codecov/codecov-action@v5.4.3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
           os: macos
 
   build:
-    runs-on: macos-13
+    runs-on: macos-latest
     needs: test
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.2
 
       - name: Setup Xamarin
         run: |
@@ -48,7 +53,7 @@ jobs:
           brew install --cask xamarin-android
         
       - name: NuGet Cache
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.2.3
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
