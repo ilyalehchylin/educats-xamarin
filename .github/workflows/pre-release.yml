@@ -24,8 +24,13 @@ jobs:
     environment: github-actions-release
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.7
-    
+        uses: actions/checkout@v4.2.2
+      
+      - name: Setup .NET 7.0
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '7.0.x'
+      
       - name: Unit-Tests
         run: dotnet test $PROJECT_PATH
         env:
@@ -40,7 +45,7 @@ jobs:
       incremented_build_number: ${{ steps.increase_build_number.outputs.app_build_number }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.2
         
       - name: Setup App Version
         id: app_version_setup
@@ -72,7 +77,7 @@ jobs:
     needs: prepare_build
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.2
 
       - name: Setup Xamarin
         run: |
@@ -80,7 +85,7 @@ jobs:
           brew install --cask xamarin-android
         
       - name: NuGet Cache
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.2.3
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
@@ -118,7 +123,7 @@ jobs:
           ARTIFACTS_APK_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
           
       - name: Upload APK Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
           path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
@@ -129,7 +134,7 @@ jobs:
     needs: prepare_build
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.2
 
       - name: Setup Xamarin
         run: |
@@ -137,7 +142,7 @@ jobs:
           brew install --cask xamarin-android
         
       - name: NuGet Cache
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.2.3
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
@@ -175,7 +180,7 @@ jobs:
           ARTIFACTS_AAB_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
           
       - name: Upload AAB Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
           path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
@@ -186,7 +191,7 @@ jobs:
     needs: prepare_build
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4.2.2
 
       - name: Setup Xamarin
         run: |
@@ -194,7 +199,7 @@ jobs:
           brew install --cask xamarin-android
         
       - name: NuGet Cache
-        uses: actions/cache@v4.0.2
+        uses: actions/cache@v4.2.3
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
@@ -240,7 +245,7 @@ jobs:
           ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
           
       - name: Upload IPA Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.6.2
         with:
           name: EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
           path: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
@@ -251,7 +256,7 @@ jobs:
     needs: build_aab
     steps:
       - name: Artifacts Download
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4.3.0
         
       - name: Google Play Deploy
         id: google_play_deploy
@@ -281,7 +286,7 @@ jobs:
     needs: build_ipa
     steps:
       - name: Artifacts Download
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4.3.0
         
       - name: AppStore Deploy
         run: xcrun altool --upload-app -f $IPA_FILE_PATH --type ios -u ${{ secrets.APPLE_ID }} -p ${{ secrets.APPLE_SPECIFIC_PASSWORD }}
