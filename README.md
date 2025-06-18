@@ -18,7 +18,7 @@ A cross-platform client for the [Learning Management System EduCATS](https://git
 | Pre-release | [![pre-release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml) |
 | Release     | [![release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml)     |
 
-## Tables of Contents
+## Table of Contents
 
 * [Documentation](https://ilyalehchylin.github.io/educats-xamarin/)
 * [Downloads](#downloads)
