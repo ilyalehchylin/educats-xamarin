@@ -15,7 +15,7 @@ You can contribute in many ways:
 - Feature requests
 
 > [!IMPORTANT]
-> Start by reading the [README](README.md) and browsing the project's [open issues](../../issues) to see where help is needed.
+> Start by reading the [README](../README.md) and browsing the project's [open issues](../../issues) to see where help is needed.
 
 ---
 
@@ -25,7 +25,7 @@ You can contribute in many ways:
 2. Create a branch from `develop` and follow naming conventions from the [Branch naming](#3-branch-naming).
 3. Do your work - follow the [Code rules](#2-code-rules).
 4. Use commit format as described in [Commit messages](#4-commit-messages).
-5. Open a pull request back to `develop`.
+5. Open a pull request back to `develop` ([Pull requests](#5-pull-requests)).
 6. Request at least one review and ensure the pipeline passes.
 
 ---
@@ -37,6 +37,8 @@ You can contribute in many ways:
 3. Document any code using the project's documentation style.  
 4. Keep scope focused - one feature or bug-fix per branch/pull request.  
 5. Delete obsolete code instead of commenting it out.  
+6. Any secret or sensitive content must be stored in separate file and added to [.gitignore](../.gitignore).
+7. If the current version is released, a new one should be provided in [VERSION](../VERSION) file.
 
 ---
 
@@ -97,7 +99,7 @@ Tag list:
 
 ---
 
-## 5. Pull / Merge requests
+## 5. Pull requests
 
 - **Title** begins with the same tag as your commits (`[ADD]`, `[FIX]`, `[UPDATE]`, `[DELETE]`).  
   Example: `[ADD] Dark mode toggle`
