@@ -57,9 +57,10 @@ Branch names example:
 - delete/short-description
 - bug/#123-short-description
 - feature/#98-short-description
+- bug/JIRA-1234-description
 
 > [!NOTE]
-> Include the related issue number whenever one exists.
+> Include the related issue number (or identifier for JIRA/other services) whenever one exists.
 
 ### Keyword guide
 
@@ -87,6 +88,7 @@ Examples:
 > If the work is related to an issue, include the number just like in the branch name:  
 >  
 > [FIX] [#123] Handle null user session
+> [ADD] [JIRA-1234] New feature
 
 Tag list:
 
@@ -108,7 +110,13 @@ Tag list:
 
 ---
 
-## 6. Feature & bug requests
+## 6. Tags and Releases
+
+Both tags and releases must be named **without** `v` prefix, e.g. `1.2.3`.
+
+---
+
+## 7. Feature & bug requests
 
 1. **Search first** to avoid duplicates.
 2. **Use the issue templates** for clear reproduction steps or acceptance criteria.
