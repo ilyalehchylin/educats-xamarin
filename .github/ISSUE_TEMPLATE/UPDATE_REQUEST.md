@@ -1,7 +1,7 @@
 ---
 name: Update request
 about: Tell us what should be updated in the project or repository
-title: "[UPDATE] "
+title: "[Update] "
 labels: update
 assignees: ''
 
