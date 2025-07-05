@@ -1,0 +1,44 @@
+name: 🚀 Feature request
+description: Suggest an idea for this project
+title: "[Feature] "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Is your request related to a problem?
+      description: Describe the problem.
+      placeholder: |
+        I'm always frustrated when ...
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe the solution you'd like.
+      placeholder: |
+        It would be great if ...
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any alternative solutions you've looked at?
+      placeholder: |
+        I also considered ...
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context or screenshots that might help.
+      placeholder: |
+        (Optional) Extra details, links, or images
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/ilyalehchylin/educats-xamarin/blob/develop/.github/CODE_OF_CONDUCT.md). 
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
+  

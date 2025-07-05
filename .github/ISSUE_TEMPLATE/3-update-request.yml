@@ -1,0 +1,29 @@
+name: 🔄 Update request
+description: Tell us what should be updated in the project or repository
+title: "[Update] "
+labels: ["update"]
+body:
+  - type: textarea
+    id: update-description
+    attributes:
+      label: "Describe what should be updated"
+      description: "A clear and concise description of the change you’re requesting."
+      placeholder: |
+        The GitHub issue template still references the old branch name...
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: "Additional context"
+      description: "Add any other context, links, or screenshots that might help."
+      placeholder: |
+        (Optional) Supporting details or images
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/ilyalehchylin/educats-xamarin/blob/develop/.github/CODE_OF_CONDUCT.md). 
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
