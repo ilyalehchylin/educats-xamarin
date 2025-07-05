@@ -25,7 +25,7 @@ You can contribute in many ways:
 2. Create a branch from `develop` and follow naming conventions from the [Branch naming](#3-branch-naming).
 3. Do your work - follow the [Code rules](#2-code-rules).
 4. Use commit format as described in [Commit messages](#4-commit-messages).
-5. Open a pull request back to `develop` ([Pull requests](#5-pull-requests)).
+5. Open a pull request back to `develop` (see [Pull requests](#5-pull-requests)).
 6. Request at least one review and ensure the pipeline passes.
 
 ---
