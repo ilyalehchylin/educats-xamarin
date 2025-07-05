@@ -8,7 +8,7 @@ body:
     attributes:
       label: Describe the bug
       description: A clear and concise description of what the bug is.
-      placeholder: The app crashes when I tap on any setting item in app **Settings**.
+      placeholder: The app crashes when I tap on any setting item in app Settings.
     validations:
       required: true
   - type: textarea
@@ -17,7 +17,7 @@ body:
       label: Steps to reproduce
       description: Explain exactly how we can reproduce the behavior.
       placeholder: |
-        1. Go to **Settings**  
+        1. Go to Settings  
         2. Tap on any settings item  
         3. Observe the crash
     validations:
@@ -57,7 +57,7 @@ body:
     id: app-version
     attributes:
       label: App version & build
-      description: Found in **Settings → About** (or similar).
+      description: Found in Settings → About (or similar).
       placeholder: 2.2.7 (build 1089)
   - type: textarea
     id: additional-context
