@@ -87,7 +87,7 @@ Examples:
 > [!NOTE]
 > If the work is related to an issue, include the number just like in the branch name:  
 >  
-> [FIX] [#123] Handle null user session
+> [FIX] [#123] Handle null user session  
 > [ADD] [JIRA-1234] New feature
 
 Tag list:
