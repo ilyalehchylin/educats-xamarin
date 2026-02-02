@@ -71,14 +71,14 @@ jobs:
           SOLUTION_PATH: ./source/EduCATS.sln
         
       - name: Build iOS        
-        run: msbuild /t:Build /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM $PROJECT_PATH
+        run: dotnet msbuild /t:Build /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM $PROJECT_PATH
         env:
           CONFIGURATION: Release
           PLATFORM: iPhoneSimulator
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           
       - name: Build Android
-        run: msbuild /t:Build /p:Configuration=$CONFIGURATION $PROJECT_PATH
+        run: dotnet msbuild /t:Build /p:Configuration=$CONFIGURATION $PROJECT_PATH
         env:
           CONFIGURATION: Release
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
