@@ -47,23 +47,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.2.2
 
-      - name: Setup .NET 7.0
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '7.0.x'
+      - name: Setup mono-mdk
+        run: |
+          brew install --cask mono-mdk
+          echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
 
       - name: Setup Xamarin
         run: |
           brew install --cask xamarin-ios
           brew install --cask xamarin-android
-        
-      - name: NuGet Cache
-        uses: actions/cache@v4.2.3
-        with:
-          path: ~/.nuget/packages
-          key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/*.props', '**/*.targets', '**/packages.lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-nuget-
+
+      - name: Verify msbuild and Xamarin targets
+        run: |
+          which msbuild
+          msbuild -version
+          ls -la /Library/Frameworks/Mono.framework/External/xbuild/Xamarin/iOS || true
       
       - name: .NET Restore
         run: dotnet restore $SOLUTION_PATH
@@ -71,14 +69,14 @@ jobs:
           SOLUTION_PATH: ./source/EduCATS.sln
         
       - name: Build iOS        
-        run: dotnet msbuild /t:Build /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM $PROJECT_PATH
+        run: msbuild /t:Build /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM $PROJECT_PATH
         env:
           CONFIGURATION: Release
           PLATFORM: iPhoneSimulator
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           
       - name: Build Android
-        run: dotnet msbuild /t:Build /p:Configuration=$CONFIGURATION $PROJECT_PATH
+        run: msbuild /t:Build /p:Configuration=$CONFIGURATION $PROJECT_PATH
         env:
           CONFIGURATION: Release
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
