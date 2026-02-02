@@ -47,6 +47,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.2.2
 
+      - name: Setup mono
+        run: brew install mono
+
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v2.0.1
 
