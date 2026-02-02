@@ -52,6 +52,17 @@ jobs:
           brew install --cask mono-mdk
           echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
 
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: NuGet Cache
+        uses: actions/cache@v4.2.3
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
       - name: Setup Xamarin
         run: |
           brew install --cask xamarin-ios
@@ -63,8 +74,8 @@ jobs:
           msbuild -version
           ls -la /Library/Frameworks/Mono.framework/External/xbuild/Xamarin/iOS || true
       
-      - name: .NET Restore
-        run: dotnet restore $SOLUTION_PATH
+      - name: NuGet Restore
+        run: nuget restore $SOLUTION_PATH
         env:
           SOLUTION_PATH: ./source/EduCATS.sln
         
