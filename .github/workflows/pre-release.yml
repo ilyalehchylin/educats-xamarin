@@ -72,7 +72,7 @@ jobs:
           value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
           
   build_apk:
-    runs-on: macos-latest
+    runs-on: macos-14
     environment: github-actions-release
     needs: prepare_build
     steps:
@@ -129,7 +129,7 @@ jobs:
           path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
         
   build_aab:
-    runs-on: macos-latest
+    runs-on: macos-14
     environment: github-actions-release
     needs: prepare_build
     steps:
