@@ -282,16 +282,6 @@ jobs:
           keychain: github-actions-xamarin
           keychain-password: ${{ secrets.IOS_KEYCHAIN_PASSWORD }}
       
-      - name: Configure Keychain For Codesign
-        run: |
-          KEYCHAIN="$HOME/Library/Keychains/github-actions-xamarin.keychain-db"
-          security list-keychains -d user -s "$KEYCHAIN" login.keychain-db
-          security default-keychain -s "$KEYCHAIN"
-          security unlock-keychain -p "${{ secrets.IOS_KEYCHAIN_PASSWORD }}" "$KEYCHAIN"
-          security set-keychain-settings -lut 21600 "$KEYCHAIN"
-          echo "== Available codesigning identities =="
-          security find-identity -p codesigning -v
-      
       - name: iOS Provisioning Profiles Install
         uses: akiojin/install-provisioning-profile-github-action@v1.0
         with:
