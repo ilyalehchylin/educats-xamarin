@@ -306,18 +306,20 @@ jobs:
       - name: iOS Build (ipa)
         run: |
           msbuild /t:Build \
-            /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} \
-            /p:Platform=$PLATFORM \
+            /p:Configuration="${{ env.RELEASE_BUILD_CONFIGURATION }}" \
+            /p:Platform="$PLATFORM" \
             /p:BuildIpa=true \
-            /p:CodesignKey=${{ secrets.IOS_CODESIGN_KEY }} \
-            /p:CodesignProvision=${{ secrets.IOS_CODESIGN_PROVISION }} \
-            $PROJECT_PATH
-          cp $IPA_PATH $ARTIFACTS_IPA_PATH
+            /p:CodesignKey="$IOS_CODESIGN_KEY" \
+            /p:CodesignProvision="$IOS_CODESIGN_PROVISION" \
+            "$PROJECT_PATH"
+          cp "$IPA_PATH" "$ARTIFACTS_IPA_PATH"
         env:
           PLATFORM: iPhone
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
           ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
+          IOS_CODESIGN_KEY: ${{ secrets.IOS_CODESIGN_KEY }}
+          IOS_CODESIGN_PROVISION: ${{ secrets.IOS_CODESIGN_PROVISION }}
       
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v4.6.2
