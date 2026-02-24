@@ -22,7 +22,12 @@ jobs:
           mkdir -p "$COVERAGE_DIRECTORY"
           dotnet --version
           dotnet build $PROJECT_PATH
-          dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
+          dotnet test $PROJECT_PATH \
+            /p:CollectCoverage=true \
+            /p:CoverletOutput="$COVERAGE_DIRECTORY/" \
+            /p:CoverletOutputFormat="lcov,cobertura" \
+            /p:Exclude="[xunit.*]*" \
+            --results-directory:"$COVERAGE_DIRECTORY"
           echo "Coverage files found:"
           find "$COVERAGE_DIRECTORY" -type f | sort || true
           LCOV_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f -name "$COVERAGE_INFO_FILENAME" -print -quit)"
@@ -33,7 +38,6 @@ jobs:
           fi
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
-          COVERLET_SETTINGS: ./source/coverlet.runsettings
           COVERAGE_DIRECTORY: ./coverage
           COVERAGE_INFO_FILENAME: coverage.info          
         
