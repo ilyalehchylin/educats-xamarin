@@ -94,7 +94,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
       
-      - name: Verify mono-mdk
+      - name: Setup mono-mdk
         run: echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
       
       - name: Setup NuGet
@@ -172,7 +172,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: Verify mono-mdk
+      - name: Setup mono-mdk
         run: echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
       
       - name: Setup NuGet
@@ -255,7 +255,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: Verify mono-mdk
+      - name: Setup mono-mdk
         run: echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
       
       - name: Setup NuGet
@@ -282,7 +282,7 @@ jobs:
           keychain: github-actions-xamarin
           keychain-password: ${{ secrets.IOS_KEYCHAIN_PASSWORD }}
       
-      - name: Configure keychain for codesign
+      - name: Configure Keychain For Codesign
         run: |
           KEYCHAIN="$HOME/Library/Keychains/github-actions-xamarin.keychain-db"
           security list-keychains -d user -s "$KEYCHAIN" login.keychain-db
