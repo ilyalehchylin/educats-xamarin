@@ -21,11 +21,17 @@ jobs:
       
       - name: Unit-Tests Build + Coverlet
         run: |
-          dotnet tool install --global coverlet.console
-          dotnet add $PROJECT_PATH package coverlet.collector
+          rm -rf "$COVERAGE_DIRECTORY"
+          mkdir -p "$COVERAGE_DIRECTORY"
+          dotnet --version
           dotnet build $PROJECT_PATH
           dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
-          mv $COVERAGE_DIRECTORY/*/$COVERAGE_INFO_FILENAME ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
+          COVERAGE_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f -name "$COVERAGE_INFO_FILENAME" -print -quit)"
+          if [ -z "$COVERAGE_FILE_PATH" ]; then
+            echo "Coverage file '$COVERAGE_INFO_FILENAME' was not generated."
+            exit 1
+          fi
+          mv "$COVERAGE_FILE_PATH" "${{ env.COVERAGE_COVERAGE_FILE_PATH }}"
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
           COVERLET_SETTINGS: ./source/coverlet.runsettings
