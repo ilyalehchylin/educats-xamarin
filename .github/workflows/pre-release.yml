@@ -72,7 +72,7 @@ jobs:
           value: ${{ env.APP_BUILD_NUMBER_INCREMENTED }}
           
   build_apk:
-    runs-on: macos-14
+    runs-on: macos-latest
     environment: github-actions-release
     needs: prepare_build
     steps:
@@ -91,6 +91,19 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+      
+      - name: Setup mono-mdk
+        run: |
+          brew install --cask mono-mdk
+          echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
+      
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+        
+      - name: Verify msbuild
+        run: |
+          which msbuild
+          msbuild -version
         
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
@@ -98,7 +111,7 @@ jobs:
           SOLUTION_PATH: ./source/EduCATS.sln
       
       - name: Artifacts Directory Setup
-        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
+        run: mkdir -p ${{ env.ARTIFACTS_DIRECTORY }}
           
       - name: Android Signing Setup
         run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
@@ -114,7 +127,15 @@ jobs:
       
       - name: Android Build (apk)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          msbuild /t:SignAndroidPackage \
+            /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} \
+            /p:AndroidPackageFormat=apk \
+            /p:AndroidKeyStore=true \
+            /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' \
+            /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' \
+            /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME \
+            /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' \
+            $PROJECT_PATH
           cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
@@ -129,7 +150,7 @@ jobs:
           path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.apk
         
   build_aab:
-    runs-on: macos-14
+    runs-on: macos-latest
     environment: github-actions-release
     needs: prepare_build
     steps:
@@ -148,14 +169,27 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+
+      - name: Setup mono-mdk
+        run: |
+          brew install --cask mono-mdk
+          echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
+      
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
         
+      - name: Verify msbuild
+        run: |
+          which msbuild
+          msbuild -version
+      
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
         env:
           SOLUTION_PATH: ./source/EduCATS.sln
       
       - name: Artifacts Directory Setup
-        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
+        run: mkdir -p ${{ env.ARTIFACTS_DIRECTORY }}
           
       - name: Android Signing Setup
         run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
@@ -171,7 +205,15 @@ jobs:
       
       - name: Android Build (aab)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          msbuild /t:SignAndroidPackage \
+            /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} \
+            /p:AndroidPackageFormat=aab \
+            /p:AndroidKeyStore=true \
+            /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' \
+            /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' \
+            /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME \
+            /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' \
+            $PROJECT_PATH
           cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
@@ -186,7 +228,7 @@ jobs:
           path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
         
   build_ipa:
-    runs-on: macos-14
+    runs-on: macos-latest
     environment: github-actions-release
     needs: prepare_build
     steps:
@@ -210,14 +252,27 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+
+      - name: Setup mono-mdk
+        run: |
+          brew install --cask mono-mdk
+          echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
+      
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
         
+      - name: Verify msbuild
+        run: |
+          which msbuild
+          msbuild -version
+      
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
         env:
           SOLUTION_PATH: ./source/EduCATS.sln
       
       - name: Artifacts Directory Setup
-        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
+        run: mkdir -p ${{ env.ARTIFACTS_DIRECTORY }}
         
       - name: iOS Certificates Install
         uses: apple-actions/import-codesign-certs@v3
@@ -241,7 +296,7 @@ jobs:
           
       - name: iOS Build (ipa)
         run: |
-          MSBuild /t:Build /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:Platform=$PLATFORM /p:BuildIpa=true $PROJECT_PATH
+          msbuild /t:Build /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:Platform=$PLATFORM /p:BuildIpa=true $PROJECT_PATH
           cp $IPA_PATH $ARTIFACTS_IPA_PATH
         env:
           PLATFORM: iPhone
