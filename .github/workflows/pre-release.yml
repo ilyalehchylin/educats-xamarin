@@ -282,6 +282,15 @@ jobs:
           keychain: github-actions-xamarin
           keychain-password: ${{ secrets.IOS_KEYCHAIN_PASSWORD }}
       
+      - name: Configure keychain for codesign
+        run: |
+          KEYCHAIN="$HOME/Library/Keychains/github-actions-xamarin.keychain-db"
+          security list-keychains -d user -s "$KEYCHAIN" login.keychain-db
+          security default-keychain -s "$KEYCHAIN"
+          security unlock-keychain -p "${{ secrets.IOS_KEYCHAIN_PASSWORD }}" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security find-identity -p codesigning -v
+      
       - name: iOS Provisioning Profiles Install
         uses: akiojin/install-provisioning-profile-github-action@v1.0
         with:
@@ -300,6 +309,8 @@ jobs:
             /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} \
             /p:Platform=$PLATFORM \
             /p:BuildIpa=true \
+            /p:CodesignKey=${{ secrets.IOS_CODESIGN_KEY }} \
+            /p:CodesignProvision=${{ secrets.IOS_CODESIGN_PROVISION }} \
             $PROJECT_PATH
           cp $IPA_PATH $ARTIFACTS_IPA_PATH
         env:
@@ -307,7 +318,7 @@ jobs:
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
           ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
-          
+      
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v4.6.2
         with:
