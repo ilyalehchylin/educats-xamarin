@@ -25,15 +25,14 @@ jobs:
           dotnet test $PROJECT_PATH \
             /p:CollectCoverage=true \
             /p:CoverletOutput="$COVERAGE_DIRECTORY/" \
-            /p:CoverletOutputFormat="lcov,cobertura" \
+            /p:CoverletOutputFormat=lcov \
             /p:Exclude="[xunit.*]*" \
             --results-directory:"$COVERAGE_DIRECTORY"
           echo "Coverage files found:"
           find "$COVERAGE_DIRECTORY" -type f | sort || true
-          LCOV_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f -name "$COVERAGE_INFO_FILENAME" -print -quit)"
-          COBERTURA_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f -name "coverage.cobertura.xml" -print -quit)"
-          if [ -z "$LCOV_FILE_PATH" ] && [ -z "$COBERTURA_FILE_PATH" ]; then
-            echo "No coverage output was generated (expected '$COVERAGE_INFO_FILENAME' or 'coverage.cobertura.xml')."
+          LCOV_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f \( -name "$COVERAGE_INFO_FILENAME" -o -name "*.info" \) -print -quit)"
+          if [ -z "$LCOV_FILE_PATH" ]; then
+            echo "No coverage output was generated (expected '$COVERAGE_INFO_FILENAME' or another '*.info' file)."
             exit 1
           fi
         env:
