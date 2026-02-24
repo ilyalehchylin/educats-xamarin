@@ -289,12 +289,35 @@ jobs:
           security default-keychain -s "$KEYCHAIN"
           security unlock-keychain -p "${{ secrets.IOS_KEYCHAIN_PASSWORD }}" "$KEYCHAIN"
           security set-keychain-settings -lut 21600 "$KEYCHAIN"
-          security find-identity -p codesigning -v
+          security find-identity -p codesigning -v "$KEYCHAIN"
       
       - name: iOS Provisioning Profiles Install
         uses: akiojin/install-provisioning-profile-github-action@v1.0
         with:
           base64: ${{ secrets.IOS_PROVISIONING_PROFILE_APPSTORE }}
+
+      - name: Resolve iOS Codesign Identity
+        id: resolve_ios_codesign_identity
+        run: |
+          KEYCHAIN="$HOME/Library/Keychains/github-actions-xamarin.keychain-db"
+          REQUESTED_KEY="$IOS_CODESIGN_KEY"
+          RESOLVED_KEY=""
+
+          if [ -n "$REQUESTED_KEY" ] && security find-identity -v -p codesigning "$KEYCHAIN" | grep -F "\"$REQUESTED_KEY\"" >/dev/null; then
+            RESOLVED_KEY="$REQUESTED_KEY"
+          else
+            RESOLVED_KEY="$(security find-identity -v -p codesigning "$KEYCHAIN" | sed -n 's/.*"\(Apple Distribution:[^"]*\|iPhone Distribution:[^"]*\)".*/\1/p' | head -n 1)"
+          fi
+
+          if [ -z "$RESOLVED_KEY" ]; then
+            echo "No usable iOS distribution identity was found in the configured keychain."
+            security find-identity -v -p codesigning "$KEYCHAIN"
+            exit 1
+          fi
+
+          echo "codesign_key=$RESOLVED_KEY" >> "$GITHUB_OUTPUT"
+        env:
+          IOS_CODESIGN_KEY: ${{ secrets.IOS_CODESIGN_KEY }}
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.2.0
@@ -308,8 +331,9 @@ jobs:
           msbuild /t:Build \
             /p:Configuration="${{ env.RELEASE_BUILD_CONFIGURATION }}" \
             /p:Platform="$PLATFORM" \
+            /p:MtouchArch=ARM64 \
             /p:BuildIpa=true \
-            /p:CodesignKey="$IOS_CODESIGN_KEY" \
+            /p:CodesignKey="${{ steps.resolve_ios_codesign_identity.outputs.codesign_key }}" \
             /p:CodesignProvision="$IOS_CODESIGN_PROVISION" \
             "$PROJECT_PATH"
           cp "$IPA_PATH" "$ARTIFACTS_IPA_PATH"
@@ -318,7 +342,6 @@ jobs:
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
           ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
-          IOS_CODESIGN_KEY: ${{ secrets.IOS_CODESIGN_KEY }}
           IOS_CODESIGN_PROVISION: ${{ secrets.IOS_CODESIGN_PROVISION }}
       
       - name: Upload IPA Artifact
