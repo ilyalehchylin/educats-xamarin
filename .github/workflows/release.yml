@@ -10,6 +10,9 @@ env:
   ARTIFACTS_DIRECTORY: ./artifacts
   DOCS_PATH: ./docs
 
+permissions:
+  actions: write
+
 jobs:
   pre_release:
     uses: ilyalehchylin/educats-xamarin/.github/workflows/pre-release.yml@update/deployment # temporary solution for tests only
