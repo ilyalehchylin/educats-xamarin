@@ -275,12 +275,10 @@ jobs:
         run: mkdir -p ${{ env.ARTIFACTS_DIRECTORY }}
         
       - name: iOS Certificates Install
-        uses: apple-actions/import-codesign-certs@v3
+        uses: apple-actions/import-codesign-certs@v6
         with: 
           p12-file-base64: ${{ secrets.IOS_CERTIFICATE_APPSTORE }}
           p12-password: ${{ secrets.IOS_CERTIFICATE_APPSTORE_PASSWORD }}
-          keychain: github-actions-xamarin
-          keychain-password: ''
       
       - name: iOS Provisioning Profiles Install
         uses: akiojin/install-provisioning-profile-github-action@v1.0
