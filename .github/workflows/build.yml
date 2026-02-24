@@ -2,9 +2,6 @@ name: build
 
 on: [ workflow_dispatch, pull_request ]
   
-env:
-  COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
-
 jobs:
   test:
     runs-on: macos-latest
@@ -26,12 +23,14 @@ jobs:
           dotnet --version
           dotnet build $PROJECT_PATH
           dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
-          COVERAGE_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f -name "$COVERAGE_INFO_FILENAME" -print -quit)"
-          if [ -z "$COVERAGE_FILE_PATH" ]; then
-            echo "Coverage file '$COVERAGE_INFO_FILENAME' was not generated."
+          echo "Coverage files found:"
+          find "$COVERAGE_DIRECTORY" -type f | sort || true
+          LCOV_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f -name "$COVERAGE_INFO_FILENAME" -print -quit)"
+          COBERTURA_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f -name "coverage.cobertura.xml" -print -quit)"
+          if [ -z "$LCOV_FILE_PATH" ] && [ -z "$COBERTURA_FILE_PATH" ]; then
+            echo "No coverage output was generated (expected '$COVERAGE_INFO_FILENAME' or 'coverage.cobertura.xml')."
             exit 1
           fi
-          mv "$COVERAGE_FILE_PATH" "${{ env.COVERAGE_COVERAGE_FILE_PATH }}"
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
           COVERLET_SETTINGS: ./source/coverlet.runsettings
@@ -42,7 +41,7 @@ jobs:
         uses: codecov/codecov-action@v5.4.3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
+          files: ./coverage/**/*.info,./coverage/**/*.xml
           os: macos
 
   build:
