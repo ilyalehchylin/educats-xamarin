@@ -11,7 +11,7 @@ env:
   DOCS_PATH: ./docs
 
 permissions:
-  actions: write
+  contents: read
 
 jobs:
   pre_release:
@@ -22,25 +22,19 @@ jobs:
     runs-on: macos-latest
     needs: pre_release
     environment: github-actions-release
+    permissions:
+      contents: write
+      pull-requests: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
         
       - name: Artifacts Download
         uses: actions/download-artifact@v4.3.0
-        
-      - name: Release Tag
-        uses: qoomon/actions--create-tag@v1.0.0
-        with:
-         name: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
-         message: Release ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
-         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-
-      - run: git push origin "${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}"
           
       - name: GitHub Release
         id: github_release
-        uses: release-drafter/release-drafter@v6.0.0
+        uses: release-drafter/release-drafter@v6.2.0
         with:
           name: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
           tag: ${{ needs.pre_release.outputs.app_version_number }}.${{ needs.pre_release.outputs.app_build_number }}
