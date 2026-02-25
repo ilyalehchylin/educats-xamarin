@@ -55,7 +55,7 @@ jobs:
           
   generate_documentation:
     runs-on: macos-latest
-    needs: create_release_tag
+    # needs: create_release_tag
     environment: github-actions-release
     steps:
       - name: Checkout
