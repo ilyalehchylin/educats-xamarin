@@ -127,7 +127,6 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
-
 		Command _parentalCommand;
 		public Command ParentalCommand
 		{
@@ -137,7 +136,6 @@ namespace EduCATS.Pages.Login.ViewModels
 					async () => await openParental()));
 			}
 		}
-
 
 		Command _registrationCommand;
 		public Command RegistrationOpenCommand
@@ -161,56 +159,31 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		public async Task openForgotPassword()
 		{
-			if(Servers.Current == Servers.EduCatsAddress)
+			if (_services.Device.CheckConnectivity())
 			{
-				if (_services.Device.CheckConnectivity())
-				{
-					await _services.Navigation.OpenForgotPassword(CrossLocalization.Translate("reset_password"));
-				}
-				else
-				{
-					_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
-				}
+				await _services.Navigation.OpenForgotPassword(CrossLocalization.Translate("reset_password"));
 			}
 			else
 			{
-				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
-							CrossLocalization.Translate("change_server"));
+				_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
 			}
 		}
 
 		protected async Task openRegistration()
 		{
-			if (Servers.Current == Servers.EduCatsAddress)
+			if (_services.Device.CheckConnectivity())
 			{
-				if (_services.Device.CheckConnectivity())
-				{
-					await _services.Navigation.OpenRegistration(CrossLocalization.Translate("chek_In"));
-				}
-				else
-				{
-					_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
-				}
+				await _services.Navigation.OpenRegistration(CrossLocalization.Translate("chek_In"));
 			}
 			else
 			{
-				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
-							CrossLocalization.Translate("change_server"));
+				_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
 			}
 		}
 
-
 		protected async Task openParental()
 		{
-			if (Servers.Current == Servers.EduCatsAddress)
-			{
-				await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
-			}
-			else
-			{
-				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
-							CrossLocalization.Translate("change_server"));
-			}
+			await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
 		}
 
 		/// <summary>
@@ -225,7 +198,6 @@ namespace EduCATS.Pages.Login.ViewModels
 				{
 					setLoading(true, CrossLocalization.Translate("login_loading"));
 					var user = await loginRequest();
-					
 					await loginCompleted(user);
 				}
 				else
@@ -313,7 +285,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns><see cref="UserModel"/> on success, <code>null</code> otherwise.</returns>
 		async Task<UserModel> loginRequest()
 		{
-			if (AppDemo.Instance.IsDemoAccount || _services.Preferences.Server != Servers.EduCatsAddress)
+			if (AppDemo.Instance.IsDemoAccount)
 			{
 				var userLogin = await DataAccess.Login(Username, Password);
 				AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);

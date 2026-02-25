@@ -149,10 +149,8 @@ namespace EduCATS.Networking
 					_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
 
-				if (_services.Preferences.Server == Servers.EduCatsAddress)
-				{
-					_client.DefaultRequestHeaders.Add("Origin", Servers.EduCatsAddress);
-				}
+				_client.DefaultRequestHeaders.Remove("Origin");
+				_client.DefaultRequestHeaders.TryAddWithoutValidation("Origin", _services.Preferences.Server);
 
 				var response = await _client.PostAsync(Uri, _postContent);
 

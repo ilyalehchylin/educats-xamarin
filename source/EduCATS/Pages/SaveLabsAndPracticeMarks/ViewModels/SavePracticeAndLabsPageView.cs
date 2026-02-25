@@ -120,13 +120,13 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(services.Preferences.AccessToken);
 			if (_title == CrossLocalization.Translate("practice_mark"))
 			{
-				var responce = client.PostAsync(Servers.EduCatsByAddress + link, _postContent).Result;
+				var responce = client.PostAsync(Servers.Current + link, _postContent).Result;
 				var result = await responce.Content.ReadAsStringAsync();
 				return result;
 			}
 			else
 			{
-				var responce = client.GetAsync(Servers.EduCatsByAddress + link).Result;
+				var responce = client.GetAsync(Servers.Current + link).Result;
 				var result = await responce.Content.ReadAsStringAsync();
 				return result;
 			}

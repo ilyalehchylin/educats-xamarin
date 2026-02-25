@@ -80,7 +80,7 @@
 		/// </summary>
 		public static string GetLabsTest => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2?";
 
-		public static string GetPracticialsTest => $"{Servers.EduCatsByAddress}/subject/Services/Practicals/PracticalService.svc/GetPracticalsV2?";
+		public static string GetPracticialsTest => $"{Servers.Current}/subject/Services/Practicals/PracticalService.svc/GetPracticalsV2?";
 		
 		/// <summary>
 		/// Get lectures URL.
@@ -185,7 +185,7 @@
 		/// </summary>
 		public static string Registration => $"{Servers.Current}/Account/Register/";
 
-		public static string VerifyUserExists => $"{Servers.EduCatsByAddress}/Account/UserExists?";
+		public static string VerifyUserExists => $"{Servers.Current}/Account/UserExists?";
 		/// <summary>
 		/// Get verification URL.
 		/// </summary>
@@ -225,11 +225,11 @@
 
 		public static string SaveStudentLabsMark => $"{Servers.Current}/Services/Labs/LabsService.svc/SaveStudentLabsMark";
 
-		public static string SaveStudentPracticalMark => $"{Servers.EduCatsByAddress}/subject/Services/Practicals/PracticalService.svc/SavePracticalsVisitingData";
+		public static string SaveStudentPracticalMark => $"{Servers.Current}/subject/Services/Practicals/PracticalService.svc/SavePracticalsVisitingData";
 
-		public static string SaveSingleLab => $"{Servers.EduCatsByAddress}/subject/Services/Labs/LabsService.svc/SaveStudentLabsMark";
+		public static string SaveSingleLab => $"{Servers.Current}/subject/Services/Labs/LabsService.svc/SaveStudentLabsMark";
 
-		public static string SaveSinglePract => $"{Servers.EduCatsByAddress}/subject/Services/Practicals/PracticalService.svc/SaveStudentPracticalMark";
+		public static string SaveSinglePract => $"{Servers.Current}/subject/Services/Practicals/PracticalService.svc/SaveStudentPracticalMark";
 		/// <summary>
 		/// Get save marks calendar data lectures URL.
 		/// </summary>

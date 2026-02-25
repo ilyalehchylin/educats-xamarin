@@ -116,7 +116,7 @@ namespace EduCATS.Pages.Settings.Base.ViewModels
 				createItem(Theme.Current.SettingsAboutIcon, "settings_about"),
 			};
 
-			if (_services.Preferences.Server == Servers.EduCatsAddress && IsLoggedIn && !string.IsNullOrEmpty(_services.Preferences.GroupName))
+			if (IsLoggedIn && !string.IsNullOrEmpty(_services.Preferences.GroupName))
 			{
 				SettingsList.Add(createItem(Theme.Current.BaseCloseIcon, "settings_delete"));
 			}

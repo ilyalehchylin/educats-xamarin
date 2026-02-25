@@ -94,11 +94,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetProfileInfoSubjects(string username)
 		{
 			var body = getUserLoginBody(username);
-			
-			if (Servers.Current == Servers.EduCatsBntuAddress)
-				return await AppServicesController.Request(Links.GetProfileInfoSubjects, body, AppDemoType.ProfileInfoSubjects);
-			else
-				return await AppServicesController.Request(Links.GetProfileInfoSubjectsTest, AppDemoType.ProfileInfoSubjectsTest);
+			return await AppServicesController.Request(Links.GetProfileInfoSubjectsTest, AppDemoType.ProfileInfoSubjectsTest);
 		}
 
 		/// <summary>
@@ -172,7 +168,7 @@ namespace EduCATS.Networking.AppServices
 			groupItems.SubjectId = subjectId;
 			var body = JsonConvert.SerializeObject(groupItems);
 			return await AppServicesController.Request(
-				$"{Servers.EduCatsByAddress + Links.GetParticialsMarks}", body);
+				$"{Servers.Current + Links.GetParticialsMarks}", body);
 		}
 
 		/// <summary>
@@ -184,7 +180,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetTestStatistics(int subjectId, int groupId)
 		{
 			return await AppServicesController.Request(
-				$"{Servers.EduCatsByAddress + Links.GetLabsCalendarData}subjectId={subjectId}&groupId={groupId}");
+				$"{Servers.Current + Links.GetLabsCalendarData}subjectId={subjectId}&groupId={groupId}");
 		}
 
 		/// <summary>
@@ -240,7 +236,7 @@ namespace EduCATS.Networking.AppServices
 
 		public static async Task<object> GetLecturesEducatsBy(int subjectId, int groupId)
 		{
-			string link = Servers.EduCatsByAddress + Links.GetLecturesCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
+			string link = Servers.Current + Links.GetLecturesCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
 			return await AppServicesController.Request(link);
 		}
 
@@ -367,10 +363,7 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Files data.</returns>
 		public static async Task<object> GetFiles(int subjectId)
 		{
-			if (Servers.Current == Servers.EduCatsBntuAddress)
-				return await AppServicesController.Request($"{Links.GetFiles}?subjectId={subjectId}", AppDemoType.Files);
-			else
-				return await AppServicesController.Request($"{Links.GetFilesTest}?subjectId={subjectId}", AppDemoType.FilesTest);
+			return await AppServicesController.Request($"{Links.GetFilesTest}?subjectId={subjectId}", AppDemoType.FilesTest);
 		}
 
 		/// <summary>

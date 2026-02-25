@@ -125,29 +125,17 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getLabsMarksAndVisiting()
 		{
-			StatsModel stats = new StatsModel();
-			LabsVisitingList statsTest = new LabsVisitingList();
-			if (Servers.Current == Servers.EduCatsAddress)
-			{
-				statsTest = await DataAccess.GetTestStatistics(_currentSubjectId, _currentGroupId);
-			}
-			else
-			{
-				stats = await DataAccess.GetStatistics(_currentSubjectId, _currentGroupId);
-			}
-
-			var student = stats?.Students?.SingleOrDefault(
-				s => string.Compare(s.Name?.ToLower(), _currentUserName?.ToLower()) == 0);
+			var statsTest = await DataAccess.GetTestStatistics(_currentSubjectId, _currentGroupId);
 			var studentTest = statsTest?.Students?.SingleOrDefault(
 				s => string.Compare(s.FullName?.ToLower(), _currentUserName?.ToLower()) == 0);
 
 			if (_statisticsPage == StatsPageEnum.LabsRating)
 			{
-				setMarks(student, studentTest);
+				setMarks(null, studentTest);
 			}
 			else
 			{
-				setLabsVisiting(student, studentTest);
+				setLabsVisiting(null, studentTest);
 			}
 		}
 
@@ -210,42 +198,25 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getLabs(bool isVisiting)
 		{
-			var dataLabs = new LabsModel();
-			var dataTestLabs = new TakedLabs();
-			if (Servers.Current == Servers.EduCatsAddress)
-			{
-				dataTestLabs = await DataAccess.GetLabsTest(_currentSubjectId, _currentGroupId);
-			}
-			else
-			{
-				dataLabs = await DataAccess.GetLabs(_currentSubjectId, _currentGroupId);
-			}
+			var dataTestLabs = await DataAccess.GetLabsTest(_currentSubjectId, _currentGroupId);
 
 			if (dataTestLabs == null){
 				return;
 			}
 
-			if (dataLabs == null) {
-				return;
-			}
-
 			if (isVisiting) {
-				setVisitingLabsStatistics(dataLabs, dataTestLabs);
+				setVisitingLabsStatistics(dataTestLabs);
 			} else {
-				setRatingLabsStatistics(dataLabs, dataTestLabs);
+				setRatingLabsStatistics(dataTestLabs);
 			}
 		}
 
-		void setVisitingLabsStatistics(LabsModel dataLabs, TakedLabs takedLabs)
+		void setVisitingLabsStatistics(TakedLabs takedLabs)
 		{
 			_takedLabs = takedLabs.Labs;
 
 			var labsTetsVisitingStatus = takedLabs.ScheduleProtectionLabs?.Select(labs =>
 				new StatsPageLabsVisitingModel(labs.ScheduleProtectionLabId, labs.Date));
-
-			var labsVisitingStatus = dataLabs.ProtectionLabs?.Select(
-					labs => new StatsPageLabsVisitingModel(
-						labs.ProtectionLabId, labs.Date));
 
 			var practVisitingStatus = takedLabs.ScheduleProtectionPracticals?.Select(
 				pract => new StatsPageLabsVisitingModel(
@@ -254,14 +225,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			if (_statisticsPage == StatsPageEnum.LabsVisiting)
 			{
-				if (Servers.Current == Servers.EduCatsAddress)
-				{
-					_currentLabsVisitingList = new List<StatsPageLabsVisitingModel>(labsTetsVisitingStatus);
-				}
-				else
-				{
-					_currentLabsVisitingList = new List<StatsPageLabsVisitingModel>(labsVisitingStatus);
-				}
+				_currentLabsVisitingList = new List<StatsPageLabsVisitingModel>(labsTetsVisitingStatus);
 			}
 			else
 			{
@@ -269,22 +233,12 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 		}
 
-		void setRatingLabsStatistics(LabsModel dataLabs, TakedLabs takedLabs)
+		void setRatingLabsStatistics(TakedLabs takedLabs)
 		{
 			var marksTestLabsList = takedLabs.Labs?.Select(
 					labs => new StatsPageLabsRatingModel(
 						labs.LabId, labs.ShortName, labs.Theme, labs.SubGroup));
-			var marksLabsList = dataLabs.Labs?.Select(
-					labs => new StatsPageLabsRatingModel(
-						labs.LabId, labs.ShortName, labs.Theme, labs.SubGroup));
-			if (Servers.Current == Servers.EduCatsAddress)
-			{
-				_currentLabsMarksList = new List<StatsPageLabsRatingModel>(marksTestLabsList);
-			}
-			else
-			{
-				_currentLabsMarksList = new List<StatsPageLabsRatingModel>(marksLabsList);
-			}
+			_currentLabsMarksList = new List<StatsPageLabsRatingModel>(marksTestLabsList);
 			
 		}
 
@@ -304,14 +258,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 				}
 			}
 
-			if (Servers.Current == Servers.EduCatsAddress)
-			{
-				visitingData = await DataAccess.GetLecturesTest(_currentSubjectId, _currentGroupId);
-			}
-			else
-			{
-				visitingData = await DataAccess.GetLectures(_currentSubjectId, _currentGroupId);
-			}
+			visitingData = await DataAccess.GetLecturesTest(_currentSubjectId, _currentGroupId);
 			
 			var groupVisiting = visitingData?.GroupsVisiting?[0];
 
@@ -343,35 +290,20 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		{
 			if (_statisticsPage == StatsPageEnum.LabsRating)
 			{
-				if (Servers.Current == Servers.EduCatsAddress)
-				{
-					List<StatsResultsPageModel> marksTestResults = new List<StatsResultsPageModel>();
+				List<StatsResultsPageModel> marksTestResults = new List<StatsResultsPageModel>();
 
-					foreach (var l in _currentLabsMarksList)
-					{
-						var lab = labs.LabsMarks?.FirstOrDefault(m => l.LabId == m.LabId && l.SubGroup == labs.SubGroup);
-						if (lab != null)
-						{
-							var labTitle = lab == null ? null : $"{l.ShortName}. {l.Theme}";
-							var result = string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark;
-							marksTestResults.Add(new StatsResultsPageModel(labTitle, lab.Date, setCommentByRole(lab.Comment, lab.ShowForStudent), result));
-						}
-					}
-
-					Marks = new List<StatsResultsPageModel>(marksTestResults);
-				}
-				else
+				foreach (var l in _currentLabsMarksList)
 				{
-					var marksResults = _currentLabsMarksList?.Select(l =>
+					var lab = labs.LabsMarks?.FirstOrDefault(m => l.LabId == m.LabId && l.SubGroup == labs.SubGroup);
+					if (lab != null)
 					{
-						var lab = student.MarkList?.FirstOrDefault(m => l.LabId == m.LabId);
 						var labTitle = lab == null ? null : $"{l.ShortName}. {l.Theme}";
 						var result = string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark;
-						return new StatsResultsPageModel(labTitle, lab.Date, setCommentByRole(lab.Comment, true), result);
-					});
-
-					Marks = new List<StatsResultsPageModel>(marksResults);
+						marksTestResults.Add(new StatsResultsPageModel(labTitle, lab.Date, setCommentByRole(lab.Comment, lab.ShowForStudent), result));
+					}
 				}
+
+				Marks = new List<StatsResultsPageModel>(marksTestResults);
 			}
 			else
 			{
@@ -391,54 +323,40 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		{
 			if (_statisticsPage == StatsPageEnum.LabsVisiting)
 			{
-				if (Servers.Current == Servers.EduCatsAddress)
+				Queue<Theme> queueTheme = new Queue<Theme>();
+
+				foreach (var lecture in _takedLabs.FindAll(l => l.SubGroup == labs.SubGroup))
 				{
-					Queue<Theme> queueTheme = new Queue<Theme>();
-
-					foreach (var lecture in _takedLabs.FindAll(l => l.SubGroup == labs.SubGroup))
+					for (int i = 0; i < lecture.Duration / 2; i++)
 					{
-						for (int i = 0; i < lecture.Duration / 2; i++)
-						{
-							queueTheme.Enqueue(new Theme(lecture.ShortName, lecture.Theme));
-						}
+						queueTheme.Enqueue(new Theme(lecture.ShortName, lecture.Theme));
 					}
-
-					var labsVisitingList = _currentLabsVisitingList.OrderBy(vis => DateTime.Parse(vis.Date)).ToList();
-
-					List<StatsResultsPageModel> temp = new List<StatsResultsPageModel>();
-
-					foreach (var vis in labsVisitingList)
-					{
-						var lab = labs.LabVisitingMark.FirstOrDefault(l => l.ScheduleProtectionLabId == vis.ProtectionLabId);
-
-						if (lab != null)
-						{
-							Theme theme = null;
-							if (queueTheme.Count > 0)
-							{
-								theme = queueTheme.Dequeue();
-							}
-
-							var labTitle = lab == null ? null : $"{theme.ShortName}. {theme.LabTheme}";
-							var result = string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark;
-
-							temp.Add(new StatsResultsPageModel(labTitle, vis?.Date, setCommentByRole(lab.Comment, lab.ShowForStudent), result));
-						}
-					}
-;
-					Marks = new List<StatsResultsPageModel>(temp);
 				}
-				else
+
+				var labsVisitingList = _currentLabsVisitingList.OrderBy(vis => DateTime.Parse(vis.Date)).ToList();
+
+				List<StatsResultsPageModel> temp = new List<StatsResultsPageModel>();
+
+				foreach (var vis in labsVisitingList)
 				{
-					var visitingLabsResult = student.VisitingList.Select(v =>
+					var lab = labs.LabVisitingMark.FirstOrDefault(l => l.ScheduleProtectionLabId == vis.ProtectionLabId);
+
+					if (lab != null)
 					{
-						var lab = _currentLabsVisitingList.FirstOrDefault(
-							l => l.ProtectionLabId == v.ScheduleProtectionLabId);
-						var result = string.IsNullOrEmpty(v.Mark) ? _emptyRatingString : v.Mark;
-						return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment, true), result);
-					});
-					Marks = new List<StatsResultsPageModel>(visitingLabsResult);
+						Theme theme = null;
+						if (queueTheme.Count > 0)
+						{
+							theme = queueTheme.Dequeue();
+						}
+
+						var labTitle = lab == null ? null : $"{theme.ShortName}. {theme.LabTheme}";
+						var result = string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark;
+
+						temp.Add(new StatsResultsPageModel(labTitle, vis?.Date, setCommentByRole(lab.Comment, lab.ShowForStudent), result));
+					}
 				}
+
+				Marks = new List<StatsResultsPageModel>(temp);
 			}
 			else
 			{
