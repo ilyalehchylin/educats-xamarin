@@ -2,14 +2,14 @@
 
 # EduCATS Xamarin
 
-A cross-platform client for the [Learning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
-
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
 [![Latest GitHub release)](https://img.shields.io/github/v/release/ilyalehchylin/educats-xamarin?logo=github)](https://github.com/ilyalehchylin/educats-xamarin/releases)
 [![Codecov](https://codecov.io/gh/ilyalehchylin/educats-xamarin/branch/develop/graph/badge.svg)](https://codecov.io/gh/ilyalehchylin/educats-xamarin)
 [![build](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml)
 [![pre-release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml)
 [![release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml)
+
+A cross-platform client for the [Learning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
 
 ## Table of Contents
 
