@@ -7,16 +7,9 @@ A cross-platform client for the [Learning Management System EduCATS](https://git
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
 [![Latest GitHub release)](https://img.shields.io/github/v/release/ilyalehchylin/educats-xamarin?logo=github)](https://github.com/ilyalehchylin/educats-xamarin/releases)
 [![Codecov](https://codecov.io/gh/ilyalehchylin/educats-xamarin/branch/develop/graph/badge.svg)](https://codecov.io/gh/ilyalehchylin/educats-xamarin)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/ilyalehchylin/educats-xamarin?logo=codeclimate)](https://codeclimate.com/github/ilyalehchylin/educats-xamarin/maintainability)
-[![CodeFactor](https://www.codefactor.io/repository/github/ilyalehchylin/educats-xamarin/badge)](https://www.codefactor.io/repository/github/ilyalehchylin/educats-xamarin)
-
-## Pipelines
-
-| Workflow    | Status                                                               |
-| :---        | :---                                                                 |
-| Build | [![build](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml)                                                 |
-| Pre-release | [![pre-release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml) |
-| Release     | [![release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml)     |
+[![build](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml)
+[![pre-release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml)
+[![release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml)
 
 ## Table of Contents
 
