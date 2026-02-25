@@ -78,12 +78,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
-
-      - name: Setup Xamarin
-        run: |
-          brew install --cask xamarin-ios
-          brew install --cask xamarin-android
-        
+      
+      - name: Setup Xamarin (Brew Cask)
+        uses: gerlero/brew-install@v1.1.2
+        with:
+          packages: xamarin-ios xamarin-android mono-mdk
+          cache: true
+          type: cask
+      
       - name: NuGet Cache
         uses: actions/cache@v4.2.3
         with:
@@ -91,6 +93,17 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+      
+      - name: Setup mono-mdk
+        run: echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
+      
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+        
+      - name: Verify msbuild
+        run: |
+          which msbuild
+          msbuild -version
         
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
@@ -98,7 +111,7 @@ jobs:
           SOLUTION_PATH: ./source/EduCATS.sln
       
       - name: Artifacts Directory Setup
-        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
+        run: mkdir -p ${{ env.ARTIFACTS_DIRECTORY }}
           
       - name: Android Signing Setup
         run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
@@ -114,7 +127,15 @@ jobs:
       
       - name: Android Build (apk)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:AndroidPackageFormat=apk /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          msbuild /t:SignAndroidPackage \
+            /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} \
+            /p:AndroidPackageFormat=apk \
+            /p:AndroidKeyStore=true \
+            /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' \
+            /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' \
+            /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME \
+            /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' \
+            $PROJECT_PATH
           cp $APK_FILE_PATH $ARTIFACTS_APK_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
@@ -135,12 +156,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
-
-      - name: Setup Xamarin
-        run: |
-          brew install --cask xamarin-ios
-          brew install --cask xamarin-android
-        
+      
+      - name: Setup Xamarin (Brew Cask)
+        uses: gerlero/brew-install@v1.1.2
+        with:
+          packages: xamarin-ios xamarin-android mono-mdk
+          cache: true
+          type: cask
+      
       - name: NuGet Cache
         uses: actions/cache@v4.2.3
         with:
@@ -148,14 +171,25 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+
+      - name: Setup mono-mdk
+        run: echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
+      
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
         
+      - name: Verify msbuild
+        run: |
+          which msbuild
+          msbuild -version
+      
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
         env:
           SOLUTION_PATH: ./source/EduCATS.sln
       
       - name: Artifacts Directory Setup
-        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
+        run: mkdir -p ${{ env.ARTIFACTS_DIRECTORY }}
           
       - name: Android Signing Setup
         run: (echo ${{ secrets.ANDROID_KEYSTORE_FILE }} | base64 --decode) > $KEYSTORE
@@ -171,7 +205,15 @@ jobs:
       
       - name: Android Build (aab)
         run: |
-          MSBuild /t:SignAndroidPackage /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:AndroidPackageFormat=aab /p:AndroidKeyStore=true /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' $PROJECT_PATH
+          msbuild /t:SignAndroidPackage \
+            /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} \
+            /p:AndroidPackageFormat=aab \
+            /p:AndroidKeyStore=true \
+            /p:AndroidSigningKeyAlias='${{ secrets.ANDROID_KEYSTORE_ALIAS }}' \
+            /p:AndroidSigningKeyPass='${{ secrets.ANDROID_KEYSTORE_PRIVATE_KEY_PASSWORD }}' \
+            /p:AndroidSigningKeyStore=$KEYSTORE_FILENAME \
+            /p:AndroidSigningStorePass='${{ secrets.ANDROID_KEYSTORE_PASSWORD }}' \
+            $PROJECT_PATH
           cp $AAB_FILE_PATH $ARTIFACTS_AAB_PATH
         env:
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
@@ -186,7 +228,7 @@ jobs:
           path: ${{ env.ARTIFACTS_DIRECTORY }}/by.bntu.educats_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.aab
         
   build_ipa:
-    runs-on: macos-14
+    runs-on: macos-latest
     environment: github-actions-release
     needs: prepare_build
     steps:
@@ -197,12 +239,14 @@ jobs:
         uses: maxim-lobanov/setup-xcode@v1.6.0
         with:
           xcode-version: latest-stable
-
-      - name: Setup Xamarin
-        run: |
-          brew install --cask xamarin-ios
-          brew install --cask xamarin-android
-        
+      
+      - name: Setup Xamarin (Brew Cask)
+        uses: gerlero/brew-install@v1.1.2
+        with:
+          packages: xamarin-ios xamarin-android mono-mdk
+          cache: true
+          type: cask
+      
       - name: NuGet Cache
         uses: actions/cache@v4.2.3
         with:
@@ -210,27 +254,70 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+
+      - name: Setup mono-mdk
+        run: echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
+      
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
         
+      - name: Verify msbuild
+        run: |
+          which msbuild
+          msbuild -version
+      
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
         env:
           SOLUTION_PATH: ./source/EduCATS.sln
       
       - name: Artifacts Directory Setup
-        run: mkdir ${{ env.ARTIFACTS_DIRECTORY }}
+        run: mkdir -p ${{ env.ARTIFACTS_DIRECTORY }}
         
       - name: iOS Certificates Install
-        uses: apple-actions/import-codesign-certs@v3
-        with: 
+        uses: apple-actions/import-codesign-certs@v6
+        with:
           p12-file-base64: ${{ secrets.IOS_CERTIFICATE_APPSTORE }}
           p12-password: ${{ secrets.IOS_CERTIFICATE_APPSTORE_PASSWORD }}
           keychain: github-actions-xamarin
-          keychain-password: ''
+          keychain-password: ${{ secrets.IOS_KEYCHAIN_PASSWORD }}
+      
+      - name: Configure Keychain For Codesign
+        run: |
+          KEYCHAIN="$HOME/Library/Keychains/github-actions-xamarin.keychain-db"
+          security list-keychains -d user -s "$KEYCHAIN" login.keychain-db
+          security default-keychain -s "$KEYCHAIN"
+          security unlock-keychain -p "${{ secrets.IOS_KEYCHAIN_PASSWORD }}" "$KEYCHAIN"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN"
+          security find-identity -p codesigning -v "$KEYCHAIN"
       
       - name: iOS Provisioning Profiles Install
         uses: akiojin/install-provisioning-profile-github-action@v1.0
         with:
           base64: ${{ secrets.IOS_PROVISIONING_PROFILE_APPSTORE }}
+
+      - name: Resolve iOS Codesign Identity
+        id: resolve_ios_codesign_identity
+        run: |
+          KEYCHAIN="$HOME/Library/Keychains/github-actions-xamarin.keychain-db"
+          REQUESTED_KEY="$IOS_CODESIGN_KEY"
+          RESOLVED_KEY=""
+
+          if [ -n "$REQUESTED_KEY" ] && security find-identity -v -p codesigning "$KEYCHAIN" | grep -F "\"$REQUESTED_KEY\"" >/dev/null; then
+            RESOLVED_KEY="$REQUESTED_KEY"
+          else
+            RESOLVED_KEY="$(security find-identity -v -p codesigning "$KEYCHAIN" | sed -n 's/.*"\(Apple Distribution:[^"]*\|iPhone Distribution:[^"]*\)".*/\1/p' | head -n 1)"
+          fi
+
+          if [ -z "$RESOLVED_KEY" ]; then
+            echo "No usable iOS distribution identity was found in the configured keychain."
+            security find-identity -v -p codesigning "$KEYCHAIN"
+            exit 1
+          fi
+
+          echo "codesign_key=$RESOLVED_KEY" >> "$GITHUB_OUTPUT"
+        env:
+          IOS_CODESIGN_KEY: ${{ secrets.IOS_CODESIGN_KEY }}
       
       - name: Info.plist Version Update
         uses: damienaicheh/update-ios-version-info-plist-action@v1.2.0
@@ -241,14 +328,22 @@ jobs:
           
       - name: iOS Build (ipa)
         run: |
-          MSBuild /t:Build /p:Configuration=${{ env.RELEASE_BUILD_CONFIGURATION }} /p:Platform=$PLATFORM /p:BuildIpa=true $PROJECT_PATH
-          cp $IPA_PATH $ARTIFACTS_IPA_PATH
+          msbuild /t:Build \
+            /p:Configuration="${{ env.RELEASE_BUILD_CONFIGURATION }}" \
+            /p:Platform="$PLATFORM" \
+            /p:MtouchArch=ARM64 \
+            /p:BuildIpa=true \
+            /p:CodesignKey="${{ steps.resolve_ios_codesign_identity.outputs.codesign_key }}" \
+            /p:CodesignProvision="$IOS_CODESIGN_PROVISION" \
+            "$PROJECT_PATH"
+          cp "$IPA_PATH" "$ARTIFACTS_IPA_PATH"
         env:
           PLATFORM: iPhone
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           IPA_PATH: ./source/EduCATS.iOS/bin/iPhone/Release/EduCATS.iOS.ipa
           ARTIFACTS_IPA_PATH: ${{ env.ARTIFACTS_DIRECTORY }}/EduCATS_${{ needs.prepare_build.outputs.app_version }}.${{ needs.prepare_build.outputs.incremented_build_number }}.ipa
-          
+          IOS_CODESIGN_PROVISION: ${{ secrets.IOS_CODESIGN_PROVISION }}
+      
       - name: Upload IPA Artifact
         uses: actions/upload-artifact@v4.6.2
         with:

@@ -2,9 +2,6 @@ name: build
 
 on: [ workflow_dispatch, pull_request ]
   
-env:
-  COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
-
 jobs:
   test:
     runs-on: macos-latest
@@ -21,14 +18,26 @@ jobs:
       
       - name: Unit-Tests Build + Coverlet
         run: |
-          dotnet tool install --global coverlet.console
-          dotnet add $PROJECT_PATH package coverlet.collector
+          rm -rf "$COVERAGE_DIRECTORY"
+          mkdir -p "$COVERAGE_DIRECTORY"
+          COVERAGE_OUTPUT_DIRECTORY="$(pwd)/$COVERAGE_DIRECTORY"
+          dotnet --version
           dotnet build $PROJECT_PATH
-          dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
-          mv $COVERAGE_DIRECTORY/*/$COVERAGE_INFO_FILENAME ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
+          dotnet test $PROJECT_PATH \
+            /p:CollectCoverage=true \
+            /p:CoverletOutput="$COVERAGE_OUTPUT_DIRECTORY/" \
+            /p:CoverletOutputFormat=lcov \
+            /p:Exclude="[xunit.*]*" \
+            --results-directory:"$COVERAGE_DIRECTORY"
+          echo "Coverage files found:"
+          find "$COVERAGE_DIRECTORY" -type f | sort || true
+          LCOV_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f \( -name "$COVERAGE_INFO_FILENAME" -o -name "*.info" \) -print -quit)"
+          if [ -z "$LCOV_FILE_PATH" ]; then
+            echo "No coverage output was generated (expected '$COVERAGE_INFO_FILENAME' or another '*.info' file)."
+            exit 1
+          fi
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
-          COVERLET_SETTINGS: ./source/coverlet.runsettings
           COVERAGE_DIRECTORY: ./coverage
           COVERAGE_INFO_FILENAME: coverage.info          
         
@@ -36,7 +45,7 @@ jobs:
         uses: codecov/codecov-action@v5.4.3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
+          files: ./coverage/**/*.info,./coverage/**/*.xml
           os: macos
 
   build:
@@ -47,11 +56,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4.2.2
 
-      - name: Setup Xamarin
+      - name: Setup mono-mdk
         run: |
-          brew install --cask xamarin-ios
-          brew install --cask xamarin-android
-        
+          brew install --cask mono-mdk
+          echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
       - name: NuGet Cache
         uses: actions/cache@v4.2.3
         with:
@@ -59,6 +71,17 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
+
+      - name: Setup Xamarin
+        run: |
+          brew install --cask xamarin-ios
+          brew install --cask xamarin-android
+
+      - name: Verify msbuild and Xamarin targets
+        run: |
+          which msbuild
+          msbuild -version
+          ls -la /Library/Frameworks/Mono.framework/External/xbuild/Xamarin/iOS || true
       
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
@@ -66,14 +89,14 @@ jobs:
           SOLUTION_PATH: ./source/EduCATS.sln
         
       - name: Build iOS        
-        run: MSBuild /t:Build /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM $PROJECT_PATH
+        run: msbuild /t:Build /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM $PROJECT_PATH
         env:
           CONFIGURATION: Release
           PLATFORM: iPhoneSimulator
           PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
           
       - name: Build Android
-        run: MSBuild /t:Build /p:Configuration=$CONFIGURATION $PROJECT_PATH
+        run: msbuild /t:Build /p:Configuration=$CONFIGURATION $PROJECT_PATH
         env:
           CONFIGURATION: Release
           PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
