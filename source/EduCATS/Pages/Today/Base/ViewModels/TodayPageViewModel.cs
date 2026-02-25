@@ -227,53 +227,17 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		async Task getAndSetCalendarNotes()
 		{
-			if (_services.Preferences.Server == Networking.Servers.EduCatsBntuAddress)
+			DateTime date;
+			if (_isManualSelectedCalendarDay)
 			{
-				var calendar = await DataAccess.GetProfileInfoCalendar(_services.Preferences.UserLogin);
-
-				if (calendar == null)
-				{
-					return;
-				}
-
-				var calendarList = new List<CalendarSubjectsModel>();
-				var calendarLabsList = calendar.Labs?.Select(c => new CalendarSubjectsModel(c));
-				var calendarLectsList = calendar.Lectures?.Select(c => new CalendarSubjectsModel(c));
-
-				if (calendarLabsList == null && calendarLectsList == null)
-				{
-					return;
-				}
-				else if (calendarLabsList == null && calendarLectsList != null)
-				{
-					calendarList = new List<CalendarSubjectsModel>(calendarLectsList);
-				}
-				else if (calendarLabsList != null && calendarLectsList == null)
-				{
-					calendarList = new List<CalendarSubjectsModel>(calendarLabsList);
-				}
-				else
-				{
-					calendarList = calendarLabsList.Concat(calendarLectsList).ToList();
-				}
-
-				_calendarSubjectsBackup = new List<CalendarSubjectsModel>(calendarList);
-				setFilteredSubjectsList();
+				date = _manualSelectedCalendarDay;
 			}
 			else
 			{
-				DateTime date;
-				if (_isManualSelectedCalendarDay)
-				{
-					date = _manualSelectedCalendarDay;
-				}
-				else
-				{
-					date = DateTime.Today;
-				}
-
-				await setNewSubjectList(date);
+				date = DateTime.Today;
 			}
+
+			await setNewSubjectList(date);
 		}
 
 		async Task getAndSetNews()
@@ -551,16 +515,9 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				_isManualSelectedCalendarDay = true;
 				selectCalendarDay(date);
 
-				if (_services.Preferences.Server == Networking.Servers.EduCatsBntuAddress)
-				{
-					setFilteredSubjectsList();
-				}
-				else
-				{
-					_services.Device.MainThread(async () => {
-						await setNewSubjectList(date);
-					});
-				}
+				_services.Device.MainThread(async () => {
+					await setNewSubjectList(date);
+				});
 
 			}
 			catch (Exception ex)

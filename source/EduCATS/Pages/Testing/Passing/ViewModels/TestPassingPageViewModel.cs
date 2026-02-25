@@ -197,10 +197,6 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		{
 			if (number == -1)
 			{
-				if (Servers.EduCatsBntuAddress == _services.Preferences.Server)
-				{
-					await getQuestion(number);
-				}
 				completeTest();
 			}
 			else

@@ -136,67 +136,43 @@ namespace EduCATS.Pages.Files.ViewModels
 
 			var appDataDirectory = PlatformServices.Device.GetAppDataDirectory();
 
-			if (Servers.Current == Servers.EduCatsBntuAddress)
+			var filesModel = await DataAccess.GetFilesTest(CurrentSubject.Id);
+			if (DataAccess.IsError && !DataAccess.IsConnectionError)
 			{
-				var filesModel = await DataAccess.GetFiles(CurrentSubject.Id);
-
-				if (DataAccess.IsError && !DataAccess.IsConnectionError)
-				{
-					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
-				}
-
-				files = filesModel.Lectures?.Select(f =>
-				{
-					var file = Path.Combine(appDataDirectory, f.Name);
-					var exists = File.Exists(file);
-					return new FilesPageModel(f, exists);
-				});
-
-				if (files != null)
-				{
-					FileList = new List<FilesPageModel>(files);
-				}
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
-			else
+
+			files = filesModel.Files?.Select(f =>
 			{
-				var filesModel = await DataAccess.GetFilesTest(CurrentSubject.Id);
-				if (DataAccess.IsError && !DataAccess.IsConnectionError)
-				{
-					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
-				}
+				var file = Path.Combine(appDataDirectory, f.Name);
+				var exists = File.Exists(file);
+				return new FilesPageModel(f, exists);
+			});
 
-
-				files = filesModel.Files?.Select(f =>
-				{
-					var file = Path.Combine(appDataDirectory, f.Name);
-					var exists = File.Exists(file);
-					return new FilesPageModel(f, exists);
-				});
-
-				if (files != null)
-				{
-
-					var filesList = new List<FilesPageModel>(files);
-					string URIForDetails = "";
-
-					foreach (var file in filesList)
-					{
-						URIForDetails += $"\"{file.Name}/{file.Id}/{file.PathName}/{file.FileName}\",";
-					}
-
-					URIForDetails = URIForDetails.Remove(URIForDetails.Length - 1);
-
-					var filesDetails = await DataAccess.GetDetailsFilesTest(URIForDetails);
-
-					filesList.ForEach(file =>
-					{
-						file.Size = ConverterSize.FormatSize(long.Parse(
-							filesDetails.FirstOrDefault(detail => file.Id == detail.Id).Size));
-					});
-
-					FileList = new List<FilesPageModel>(filesList);
-				}
+			if (files == null)
+			{
+				return;
 			}
+
+			var filesList = new List<FilesPageModel>(files);
+			string URIForDetails = "";
+
+			foreach (var file in filesList)
+			{
+				URIForDetails += $"\"{file.Name}/{file.Id}/{file.PathName}/{file.FileName}\",";
+			}
+
+			URIForDetails = URIForDetails.Remove(URIForDetails.Length - 1);
+
+			var filesDetails = await DataAccess.GetDetailsFilesTest(URIForDetails);
+
+			filesList.ForEach(file =>
+			{
+				file.Size = ConverterSize.FormatSize(long.Parse(
+					filesDetails.FirstOrDefault(detail => file.Id == detail.Id).Size));
+			});
+
+			FileList = new List<FilesPageModel>(filesList);
 		}
 
 		/// <summary>

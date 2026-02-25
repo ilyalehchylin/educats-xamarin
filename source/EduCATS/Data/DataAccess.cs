@@ -89,18 +89,9 @@ namespace EduCATS.Data
 		/// <returns>Subjects data.</returns>
 		public async static Task<List<SubjectModel>> GetProfileInfoSubjects(string username)
 		{
-			if (Servers.Current == Servers.EduCatsBntuAddress)
-			{
-				var dataAccess = new DataAccess<SubjectModel>(
-					"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
-				return await GetDataObject(dataAccess, true) as List<SubjectModel>;
-			}
-			else
-			{
-				var dataAccess = new DataAccess<SubjectModelTest>(
-					"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
-				return (await GetDataObject(dataAccess, false) as SubjectModelTest).Subjects;
-			}
+			var dataAccess = new DataAccess<SubjectModelTest>(
+				"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
+			return (await GetDataObject(dataAccess, false) as SubjectModelTest).Subjects;
 		}
 
 		/// <summary>
@@ -361,20 +352,10 @@ namespace EduCATS.Data
 		/// <returns>Root concept data.</returns>
 		public async static Task<RootConceptModel> GetRootConcepts(string userId, string subjectId)
 		{
-			DataAccess<RootConceptModel> dataAccess = null;
-			if (Servers.Current == Servers.EduCatsBntuAddress)
-			{
-				 dataAccess = new DataAccess<RootConceptModel>(
-				"eemc_root_concepts_error", getRootConceptsCallback(userId, subjectId),
-				GetKey(GlobalConsts.DataGetRootConceptKey, userId, subjectId));
-			}
-			else
-			{
-				dataAccess = new DataAccess<RootConceptModel>(
+			var dataAccess = new DataAccess<RootConceptModel>(
 				"eemc_root_concepts_error", getRootConceptsCallback(subjectId),
 				GetKey(GlobalConsts.DataGetRootConceptKey, subjectId));
-			}
-				return await GetDataObject(dataAccess, false) as RootConceptModel;
+			return await GetDataObject(dataAccess, false) as RootConceptModel;
 		}
 
 		/// <summary>
