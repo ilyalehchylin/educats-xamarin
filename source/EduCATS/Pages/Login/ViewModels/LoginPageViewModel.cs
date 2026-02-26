@@ -292,6 +292,7 @@ namespace EduCATS.Pages.Login.ViewModels
 				return userLogin;
 			}
 
+			_services.Preferences.AccessToken = string.Empty;
 			var tokenData = await DataAccess.GetToken(Username, Password);
 			_services.Preferences.AccessToken = tokenData.Token;
 			var accountData = await DataAccess.GetAccountData();

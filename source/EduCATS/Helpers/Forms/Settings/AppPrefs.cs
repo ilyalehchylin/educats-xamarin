@@ -246,17 +246,21 @@ namespace EduCATS.Helpers.Forms.Settings
 		}
 
 		/// <summary>
-		/// Default AccessToken
+		/// Access token key.
 		/// </summary>
-		const string AccessTokenValue = "";
-		
-		readonly string _isAccessToken = "";
+		const string _accessTokenKey = "ACCESS_TOKEN";
+
+		/// <summary>
+		/// Default access token value.
+		/// </summary>
+		readonly string _accessTokenDefault = string.Empty;
+
 		/// <summary>
 		/// AccessToken.
 		/// </summary>
 		public string AccessToken { 
-			get => Preferences.Get(AccessTokenValue, _isAccessToken);
-			set => Preferences.Set(AccessTokenValue, value); 
+			get => Preferences.Get(_accessTokenKey, _accessTokenDefault);
+			set => Preferences.Set(_accessTokenKey, value); 
 		}
 
 		/// <summary>
@@ -267,7 +271,6 @@ namespace EduCATS.Helpers.Forms.Settings
 			var fontPrefs = Font;
 			var themePrefs = Theme;
 			var isLargeFont = IsLargeFont;
-			var accessToken = AccessToken;
 			var server = Server;
 
 			Preferences.Clear();
@@ -275,7 +278,6 @@ namespace EduCATS.Helpers.Forms.Settings
 			Font = fontPrefs;
 			Theme = themePrefs;
 			IsLargeFont = isLargeFont;
-			AccessToken = accessToken;
 			Server = server;
 		}
 	}

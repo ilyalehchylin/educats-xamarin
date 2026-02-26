@@ -84,7 +84,10 @@ namespace EduCATS.Pages.Settings.Server.ViewModels
 		void changeServer(ServerPageModel server)
 		{
 			AppDemo.Instance.IsDemoAccount = false;
-			Servers.SetCurrent(server.Address);
+			var selectedServer = server.Address;
+			Servers.SetCurrent(selectedServer);
+			_services.Preferences.ResetPrefs();
+			_services.Preferences.Server = selectedServer;
 			_services.Preferences.IsLoggedIn = false;
 			AppUserData.Clear();
 			DataAccess.ResetData();

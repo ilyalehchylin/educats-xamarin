@@ -7,8 +7,7 @@
     </debug-overrides> 
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">educats.by</domain>
-        <domain includeSubdomains="true">172.16.11.72:2020</domain>
+        <domain includeSubdomains="true">172.16.11.72</domain>
         <domain includeSubdomains="true">educats.bntu.by</domain>
-        <domain includeSubdomains="true">host27072020.of.by</domain>
     </domain-config>
 </network-security-config>
