@@ -93,6 +93,11 @@
 		public static string GetAvailableTests => $"{Servers.Current}/TestPassing/GetAvailableTestsForMobile";
 
 		/// <summary>
+		/// Get tests by subject URL.
+		/// </summary>
+		public static string GetTestsBySubject => $"{Servers.Current}/Tests/GetTests";
+
+		/// <summary>
 		/// Get available tests legacy URL.
 		/// </summary>
 		public static string GetAvailableTestsLegacy => $"{Servers.Current}/TestPassing/GetAvailableTests";

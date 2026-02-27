@@ -36,33 +36,20 @@ namespace EduCATS.Networking.Models.Testing
 		public int Id { get; set; }
 
 		/// <summary>
-		/// Legacy answer ID alias.
-		/// </summary>
-		[JsonProperty("id")]
-		public int LegacyId => Id;
-
-		/// <summary>
 		/// Is answer correct.
 		/// </summary>
 		[JsonProperty("IsCorrect")]
 		public int IsCorrect { get; set; }
 
 		/// <summary>
-		/// Legacy correctness alias.
-		/// </summary>
-		[JsonProperty("isCorrect")]
-		public int LegacyIsCorrect => IsCorrect;
-
-		/// <summary>
 		/// Answer content.
 		/// </summary>
-		[JsonProperty("Content")]
+		[JsonProperty("Content", NullValueHandling = NullValueHandling.Ignore)]
 		public string Content { get; set; }
 
-		/// <summary>
-		/// Legacy content alias.
-		/// </summary>
-		[JsonProperty("content")]
-		public string LegacyContent => Content;
+		public bool ShouldSerializeIsCorrect()
+		{
+			return string.IsNullOrWhiteSpace(Content);
+		}
 	}
 }

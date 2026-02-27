@@ -79,7 +79,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			return new TestAnswerPostModel {
 				Answers = answersList,
 				QuestionNumber = _questionNumber,
-				TestId = _testIdString,
+				TestId = _testId,
 				UserId = AppUserData.UserId
 			};
 		}

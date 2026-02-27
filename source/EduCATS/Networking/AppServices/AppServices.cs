@@ -266,7 +266,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetAvailableTests(int subjectId, int userId)
 		{
 			var primaryResponse = normalizeTestsListResponse(await AppServicesController.Request(
-				$"{Links.GetAvailableTests}?subjectId={subjectId}&userId={userId}",
+				$"{Links.GetTestsBySubject}?subjectId={subjectId}",
 				AppDemoType.AvailableTests));
 
 			if (isValidTestsListResponse(primaryResponse)) {
@@ -274,11 +274,19 @@ namespace EduCATS.Networking.AppServices
 			}
 
 			var fallbackResponse = normalizeTestsListResponse(await AppServicesController.Request(
-				$"{Links.GetAvailableTests}?subjectId={subjectId}&studentId={userId}",
+				$"{Links.GetAvailableTests}?subjectId={subjectId}&userId={userId}",
 				AppDemoType.AvailableTests));
 
 			if (isValidTestsListResponse(fallbackResponse)) {
 				return fallbackResponse;
+			}
+
+			var secondFallbackResponse = normalizeTestsListResponse(await AppServicesController.Request(
+				$"{Links.GetAvailableTests}?subjectId={subjectId}&studentId={userId}",
+				AppDemoType.AvailableTests));
+
+			if (isValidTestsListResponse(secondFallbackResponse)) {
+				return secondFallbackResponse;
 			}
 
 			var legacyResponse = normalizeTestsListResponse(await AppServicesController.Request(
@@ -509,10 +517,13 @@ namespace EduCATS.Networking.AppServices
 		static List<string> getNextQuestionLinks(int testId, int questionNumber, int userId)
 		{
 			return new List<string> {
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=true&userId={userId}",
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=true&studentId={userId}",
 				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&userId={userId}",
 				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&studentId={userId}",
 				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&userId={userId}",
 				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&studentId={userId}",
+				$"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=true&studentId={userId}",
 				$"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&studentId={userId}",
 				$"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}&studentId={userId}",
 				$"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}&userId={userId}"
