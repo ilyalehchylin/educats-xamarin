@@ -152,9 +152,10 @@ namespace EduCATS.Networking
 					_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
 
-				var response = await sendPostRequest(withOriginHeader: false);
+				var sendOriginInitially = shouldSendOriginInitially();
+				var response = await sendPostRequest(withOriginHeader: sendOriginInitially);
 
-				if (shouldRetryWithOrigin(response.StatusCode)) {
+				if (!sendOriginInitially && shouldRetryWithOrigin(response.StatusCode)) {
 					try {
 						AppLogs.Log(
 							$"[NETWORK] POST fallback with Origin for {Url}. " +
@@ -196,6 +197,13 @@ namespace EduCATS.Networking
 				statusCode == HttpStatusCode.Forbidden ||
 				statusCode == HttpStatusCode.MethodNotAllowed ||
 				statusCode == HttpStatusCode.UnsupportedMediaType;
+		}
+
+		bool shouldSendOriginInitially()
+		{
+			var absolutePath = Uri?.AbsolutePath;
+			return !string.IsNullOrWhiteSpace(absolutePath) &&
+				absolutePath.Equals("/Account/LoginJWT", StringComparison.OrdinalIgnoreCase);
 		}
 
 		/// <summary>
