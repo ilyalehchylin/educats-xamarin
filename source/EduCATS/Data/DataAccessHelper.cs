@@ -194,15 +194,15 @@ namespace EduCATS.Data
 		/// <returns>List of objects.</returns>
 		public List<T> GetListAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
-				switch (response.Value)
-				{
-					case HttpStatusCode.OK:
-						var data = parseResponse(response, _key, _isCaching);
+			switch (response.Value)
+			{
+				case HttpStatusCode.OK:
+					var data = parseResponse(response, _key, _isCaching);
 
-						if (isNonJsonSuccessResponse(data))
-						{
-							return new List<T>();
-						}
+					if (isNonJsonSuccessResponse(data))
+					{
+						return new List<T>();
+					}
 
 					if (!JsonController.IsJsonValid(data))
 					{
@@ -222,15 +222,15 @@ namespace EduCATS.Data
 		/// <returns>Object.</returns>
 		public T GetAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
-				switch (response.Value)
-				{
-					case HttpStatusCode.OK:
-						var data = parseResponse(response, _key, _isCaching);
+			switch (response.Value)
+			{
+				case HttpStatusCode.OK:
+					var data = parseResponse(response, _key, _isCaching);
 
-						if (isNonJsonSuccessResponse(data))
-						{
-							return new T();
-						}
+					if (isNonJsonSuccessResponse(data, allowExtended: typeof(T) == typeof(object)))
+					{
+						return new T();
+					}
 
 					if (!JsonController.IsJsonValid(data))
 					{
@@ -249,7 +249,7 @@ namespace EduCATS.Data
 		/// <param name="message">Error message.</param>
 		/// <param name="sessionExpired">Session expired error.</param>
 		/// <param name="isConnectionError">Is connection error.</param>
-		void setError(string message, bool sessionExpired = true, bool isConnectionError = false)
+		void setError(string message, bool isConnectionError = false, bool sessionExpired = false)
 		{
 			IsError = true;
 			ErrorMessageKey = message;
@@ -281,14 +281,25 @@ namespace EduCATS.Data
 		/// </summary>
 		/// <param name="response">Server response payload.</param>
 		/// <returns><c>true</c> if response indicates success.</returns>
-		static bool isNonJsonSuccessResponse(string response)
+		static bool isNonJsonSuccessResponse(string response, bool allowExtended = false)
 		{
 			if (string.IsNullOrWhiteSpace(response)) {
-				return false;
+				return allowExtended;
 			}
 
 			var normalized = response.Trim().Trim('"');
-			return normalized.Equals("Ok", StringComparison.OrdinalIgnoreCase);
+
+			if (normalized.Equals("Ok", StringComparison.OrdinalIgnoreCase)) {
+				return true;
+			}
+
+			if (!allowExtended) {
+				return false;
+			}
+
+			return normalized.Equals("true", StringComparison.OrdinalIgnoreCase) ||
+				normalized.Equals("success", StringComparison.OrdinalIgnoreCase) ||
+				normalized.Equals("1", StringComparison.Ordinal);
 		}
 
 		/// <summary>

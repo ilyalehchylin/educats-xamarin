@@ -317,27 +317,25 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Test question data.</returns>
 		public static async Task<object> GetNextQuestion(int testId, int questionNumber, int userId)
 		{
-			var primaryResponse = normalizeNextQuestionResponse(await AppServicesController.Request(
-				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&userId={userId}",
-				AppDemoType.TestNextQuestion));
+			var links = getNextQuestionLinks(testId, questionNumber, userId);
+			var hasPrimaryResponse = false;
+			var primaryResponse = default(KeyValuePair<string, HttpStatusCode>);
 
-			if (isValidNextQuestionResponse(primaryResponse)) {
-				return primaryResponse;
+			foreach (var link in links) {
+				var response = normalizeNextQuestionResponse(
+					await AppServicesController.Request(link, AppDemoType.TestNextQuestion));
+
+				if (!hasPrimaryResponse) {
+					primaryResponse = response;
+					hasPrimaryResponse = true;
+				}
+
+				if (isValidNextQuestionResponse(response)) {
+					return response;
+				}
 			}
 
-			var fallbackResponse = normalizeNextQuestionResponse(await AppServicesController.Request(
-				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&studentId={userId}",
-				AppDemoType.TestNextQuestion));
-
-			if (isValidNextQuestionResponse(fallbackResponse)) {
-				return fallbackResponse;
-			}
-
-			var legacyResponse = normalizeNextQuestionResponse(await AppServicesController.Request(
-				$"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&studentId={userId}",
-				AppDemoType.TestNextQuestion));
-
-			return isValidNextQuestionResponse(legacyResponse) ? legacyResponse : primaryResponse;
+			return primaryResponse;
 		}
 
 		/// <summary>
@@ -348,17 +346,24 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> AnswerQuestionAndGetNext(TestAnswerPostModel answer)
 		{
 			var body = JsonController.ConvertObjectToJson(answer);
-			var primaryResponse = await AppServicesController.Request(
-				$"{Links.AnswerQuestionAndGetNext}", body, AppDemoType.TestAnswerAndGetNext);
+			var links = getAnswerQuestionLinks(answer);
+			var hasPrimaryResponse = false;
+			var primaryResponse = default(KeyValuePair<string, HttpStatusCode>);
 
-			if (isSuccessfulActionResponse(primaryResponse)) {
-				return primaryResponse;
+			foreach (var link in links) {
+				var response = await AppServicesController.Request(link, body, AppDemoType.TestAnswerAndGetNext);
+
+				if (!hasPrimaryResponse) {
+					primaryResponse = response;
+					hasPrimaryResponse = true;
+				}
+
+				if (isSuccessfulActionResponse(response)) {
+					return response;
+				}
 			}
 
-			var fallbackResponse = await AppServicesController.Request(
-				$"{Links.AnswerQuestionAndGetNextLegacy}", body, AppDemoType.TestAnswerAndGetNext);
-
-			return isSuccessfulActionResponse(fallbackResponse) ? fallbackResponse : primaryResponse;
+			return primaryResponse;
 		}
 
 		/// <summary>
@@ -499,6 +504,35 @@ namespace EduCATS.Networking.AppServices
 		{
 			return isSuccessResponse(response) &&
 				(isNonJsonSuccessResponse(response.Key) || JsonController.IsJsonValid(response.Key));
+		}
+
+		static List<string> getNextQuestionLinks(int testId, int questionNumber, int userId)
+		{
+			return new List<string> {
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&userId={userId}",
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&studentId={userId}",
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&userId={userId}",
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&studentId={userId}",
+				$"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&studentId={userId}",
+				$"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}&studentId={userId}",
+				$"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}&userId={userId}"
+			};
+		}
+
+		static List<string> getAnswerQuestionLinks(TestAnswerPostModel answer)
+		{
+			var testId = answer?.TestId;
+			var questionNumber = answer?.QuestionNumber ?? 0;
+			var userId = answer?.UserId ?? 0;
+
+			return new List<string> {
+				Links.AnswerQuestionAndGetNext,
+				$"{Links.AnswerQuestionAndGetNext}?testId={testId}&questionNumber={questionNumber}&userId={userId}",
+				$"{Links.AnswerQuestionAndGetNext}?testId={testId}&questionNumber={questionNumber}&studentId={userId}",
+				Links.AnswerQuestionAndGetNextLegacy,
+				$"{Links.AnswerQuestionAndGetNextLegacy}?testId={testId}&questionNumber={questionNumber}&studentId={userId}",
+				$"{Links.AnswerQuestionAndGetNextLegacy}?testId={testId}&questionNumber={questionNumber}&userId={userId}"
+			};
 		}
 
 		static KeyValuePair<string, HttpStatusCode> normalizeSubjectsResponse(

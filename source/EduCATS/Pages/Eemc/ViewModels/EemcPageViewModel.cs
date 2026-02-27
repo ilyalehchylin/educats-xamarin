@@ -311,8 +311,14 @@ namespace EduCATS.Pages.Eemc.ViewModels
 				return;
 			}
 
+			var encodedFilePath = Uri.EscapeDataString(filePath);
+			var downloadEndpoint = Servers.Current == Servers.EduCatsAddress ?
+				Links.GetFile :
+				Links.GetFilesDetails;
+			var fileUrl = $"{downloadEndpoint}?fileName={encodedFilePath}";
+
 			PlatformServices.Device.MainThread(
-				async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/api/Upload?fileName={filePath}"));
+				async () => await PlatformServices.Device.OpenUri(fileUrl));
 		}
 
 		/// <summary>
