@@ -205,8 +205,8 @@ namespace EduCATS.Pages.Files.ViewModels
 					return;
 				}
 
-				var filePath = Uri.EscapeDataString($"{file.PathName}/{file.FileName}");
-				var fileUri = new Uri($"{Links.GetFile}?fileName={filePath}");
+					var filePath = Uri.EscapeDataString($"{file.PathName}//{file.FileName}");
+					var fileUri = new Uri($"{Links.GetFile}?filename={filePath}");
 
 				totalBytes = bytesIn = 0;
 				_client = new WebClient();

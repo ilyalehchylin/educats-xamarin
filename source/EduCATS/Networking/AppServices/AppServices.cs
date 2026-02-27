@@ -336,29 +336,15 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Root concept data.</returns>
 		public static async Task<object> GetRootConcepts(string userId, string subjectId)
 		{
-			var body = new RootConceptsPostModel(userId, subjectId);
-			var bodyString = JsonController.ConvertObjectToJson(body);
-			var primaryResponse = await AppServicesController.Request(
-				$"{Links.GetRootConcepts}", bodyString, AppDemoType.RootConcepts);
-
-			if (hasConcepts(primaryResponse)) {
-				return primaryResponse;
-			}
-
-			var fallbackResponse = await AppServicesController.Request(
-				$"{Links.GetRootConceptsTest}?subjectId={subjectId}", AppDemoType.RootConcepts);
-
-			if (hasConcepts(fallbackResponse)) {
-				return fallbackResponse;
-			}
-
-			return isSuccessResponse(primaryResponse) ? primaryResponse : fallbackResponse;
+			return await AppServicesController.Request(
+				$"{Links.GetRootConcepts}?subjectId={subjectId}",
+				AppDemoType.RootConcepts);
 		}
 
 		public static async Task<object> GetRootConcepts(string subjectId)
 		{
 			return await AppServicesController.Request(
-					$"{Links.GetRootConceptsTest}?subjectId={subjectId}",
+					$"{Links.GetRootConcepts}?subjectId={subjectId}",
 					AppDemoType.RootConcepts);
 		}
 

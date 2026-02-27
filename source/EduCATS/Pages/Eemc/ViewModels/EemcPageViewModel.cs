@@ -312,10 +312,7 @@ namespace EduCATS.Pages.Eemc.ViewModels
 			}
 
 			var encodedFilePath = Uri.EscapeDataString(filePath);
-			var downloadEndpoint = Servers.Current == Servers.EduCatsAddress ?
-				Links.GetFile :
-				Links.GetFilesDetails;
-			var fileUrl = $"{downloadEndpoint}?fileName={encodedFilePath}";
+			var fileUrl = $"{Links.GetFile}?filename={encodedFilePath}";
 
 			PlatformServices.Device.MainThread(
 				async () => await PlatformServices.Device.OpenUri(fileUrl));

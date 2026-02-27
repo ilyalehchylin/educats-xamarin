@@ -158,7 +158,7 @@
 		/// Get EEMC root concepts URL.
 		/// </summary>
 		public static string GetRootConcepts =>
-			$"{Servers.Current}/Services/Concept/ConceptService.svc/GetRootConceptsMobile";
+			$"{Servers.Current}/Services/Concept/ConceptService.svc/GetRootConcepts";
 
 		/// <summary>
 		/// Get EEMC root concepts test URL.
@@ -170,7 +170,7 @@
 		/// Get EEMC concept tree URL.
 		/// </summary>
 		public static string GetConceptTree =>
-			$"{Servers.Current}/Services/Concept/ConceptService.svc/GetConceptTreeMobile";
+			$"{Servers.Current}/Services/Concept/ConceptService.svc/GetConcept";
 
 		/// <summary>
 		/// Get EEMC concept cascade URL.
