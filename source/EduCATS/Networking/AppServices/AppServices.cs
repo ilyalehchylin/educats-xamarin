@@ -265,35 +265,9 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>List of test data.</returns>
 		public static async Task<object> GetAvailableTests(int subjectId, int userId)
 		{
-			var primaryResponse = normalizeTestsListResponse(await AppServicesController.Request(
+			return await AppServicesController.Request(
 				$"{Links.GetTestsBySubject}?subjectId={subjectId}",
-				AppDemoType.AvailableTests));
-
-			if (isValidTestsListResponse(primaryResponse)) {
-				return primaryResponse;
-			}
-
-			var fallbackResponse = normalizeTestsListResponse(await AppServicesController.Request(
-				$"{Links.GetAvailableTests}?subjectId={subjectId}&userId={userId}",
-				AppDemoType.AvailableTests));
-
-			if (isValidTestsListResponse(fallbackResponse)) {
-				return fallbackResponse;
-			}
-
-			var secondFallbackResponse = normalizeTestsListResponse(await AppServicesController.Request(
-				$"{Links.GetAvailableTests}?subjectId={subjectId}&studentId={userId}",
-				AppDemoType.AvailableTests));
-
-			if (isValidTestsListResponse(secondFallbackResponse)) {
-				return secondFallbackResponse;
-			}
-
-			var legacyResponse = normalizeTestsListResponse(await AppServicesController.Request(
-				$"{Links.GetAvailableTestsLegacy}?subjectId={subjectId}&studentId={userId}",
-				AppDemoType.AvailableTests));
-
-			return isValidTestsListResponse(legacyResponse) ? legacyResponse : primaryResponse;
+				AppDemoType.AvailableTests);
 		}
 
 		/// <summary>
@@ -303,17 +277,7 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Test details data.</returns>
 		public static async Task<object> GetTest(int testId)
 		{
-			var primaryResponse = normalizeTestResponse(
-				await AppServicesController.Request($"{Links.GetTest}?id={testId}", AppDemoType.Test));
-
-			if (isValidTestResponse(primaryResponse)) {
-				return primaryResponse;
-			}
-
-			var fallbackResponse = normalizeTestResponse(
-				await AppServicesController.Request($"{Links.GetTestLegacy}?testId={testId}", AppDemoType.Test));
-
-			return isValidTestResponse(fallbackResponse) ? fallbackResponse : primaryResponse;
+			return await AppServicesController.Request($"{Links.GetTest}?id={testId}", AppDemoType.Test);
 		}
 
 		/// <summary>
@@ -325,35 +289,9 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Test question data.</returns>
 		public static async Task<object> GetNextQuestion(int testId, int questionNumber, int userId)
 		{
-			var primaryResponse = normalizeNextQuestionResponse(await AppServicesController.Request(
-				getPrimaryNextQuestionLink(testId, questionNumber, userId),
-				AppDemoType.TestNextQuestion));
-
-			if (isValidNextQuestionResponse(primaryResponse)) {
-				return primaryResponse;
-			}
-
-			if (shouldTryStudentIdFallback(primaryResponse.Value)) {
-				var studentIdResponse = normalizeNextQuestionResponse(await AppServicesController.Request(
-					getStudentIdNextQuestionLink(testId, questionNumber, userId),
-					AppDemoType.TestNextQuestion));
-
-				if (isValidNextQuestionResponse(studentIdResponse)) {
-					return studentIdResponse;
-				}
-
-				return studentIdResponse;
-			}
-
-			if (shouldTryLegacyFallback(primaryResponse.Value)) {
-				var legacyResponse = normalizeNextQuestionResponse(await AppServicesController.Request(
-					getLegacyNextQuestionLink(testId, questionNumber, userId),
-					AppDemoType.TestNextQuestion));
-
-				return isValidNextQuestionResponse(legacyResponse) ? legacyResponse : primaryResponse;
-			}
-
-			return primaryResponse;
+			return await AppServicesController.Request(
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=true&userId={userId}",
+				AppDemoType.TestNextQuestion);
 		}
 
 		/// <summary>
@@ -364,21 +302,8 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> AnswerQuestionAndGetNext(TestAnswerPostModel answer)
 		{
 			var body = JsonController.ConvertObjectToJson(answer);
-			var primaryResponse = await AppServicesController.Request(
-				Links.AnswerQuestionAndGetNext, body, AppDemoType.TestAnswerAndGetNext);
-
-			if (isSuccessfulActionResponse(primaryResponse)) {
-				return primaryResponse;
-			}
-
-			if (shouldTryLegacyFallback(primaryResponse.Value)) {
-				var legacyResponse = await AppServicesController.Request(
-					Links.AnswerQuestionAndGetNextLegacy, body, AppDemoType.TestAnswerAndGetNext);
-
-				return isSuccessfulActionResponse(legacyResponse) ? legacyResponse : primaryResponse;
-			}
-
-			return primaryResponse;
+			return await AppServicesController.Request(
+				$"{Links.AnswerQuestionAndGetNext}", body, AppDemoType.TestAnswerAndGetNext);
 		}
 
 		/// <summary>
@@ -519,36 +444,6 @@ namespace EduCATS.Networking.AppServices
 		{
 			return isSuccessResponse(response) &&
 				(isNonJsonSuccessResponse(response.Key) || JsonController.IsJsonValid(response.Key));
-		}
-
-		static string getPrimaryNextQuestionLink(int testId, int questionNumber, int userId)
-		{
-			return $"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}" +
-				$"&excludeCorrectnessIndicator=true&userId={userId}";
-		}
-
-		static string getStudentIdNextQuestionLink(int testId, int questionNumber, int userId)
-		{
-			return $"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}" +
-				$"&excludeCorrectnessIndicator=true&studentId={userId}";
-		}
-
-		static string getLegacyNextQuestionLink(int testId, int questionNumber, int userId)
-		{
-			return $"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}" +
-				$"&excludeCorrectnessIndicator=true&studentId={userId}";
-		}
-
-		static bool shouldTryStudentIdFallback(HttpStatusCode statusCode)
-		{
-			return statusCode == HttpStatusCode.BadRequest;
-		}
-
-		static bool shouldTryLegacyFallback(HttpStatusCode statusCode)
-		{
-			return statusCode == HttpStatusCode.NotFound ||
-				statusCode == HttpStatusCode.MethodNotAllowed ||
-				statusCode == HttpStatusCode.UnsupportedMediaType;
 		}
 
 		static KeyValuePair<string, HttpStatusCode> normalizeSubjectsResponse(

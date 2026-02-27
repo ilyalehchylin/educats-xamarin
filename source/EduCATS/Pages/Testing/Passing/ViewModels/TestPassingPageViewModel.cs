@@ -35,15 +35,14 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 		/// If <c>_isTimeForEntireTest</c> is set to <c>true</c>,
 		/// the time will be in minutes, in seconds otherwise.
 		/// </remarks>
-			bool _isTimeForEntireTest;
+		bool _isTimeForEntireTest;
 
-			int _questionCount;
-			int _questionsLeft;
-			List<int> _incompleteQuestionsNumbers = new List<int>();
-			string _testIdString;
-			int _questionNumber;
-			int _questionType;
-			DateTime _started;
+		int _questionCount;
+		int _questionsLeft;
+		string _testIdString;
+		int _questionNumber;
+		int _questionType;
+		DateTime _started;
 
 		public TestPassingPageViewModel(IPlatformServices services, int testId, bool forSelfStudy)
 		{
@@ -153,20 +152,14 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 						return;
 					}
 
-						var isQuestionLoaded = await getAndSetQuestion(number);
-						if (!isQuestionLoaded) {
-							setLoading(false);
-							return;
-						}
-						setTimer();
-						_questionsLeft = _incompleteQuestionsNumbers?.Count > 0
-							? _incompleteQuestionsNumbers.Count
-							: _questionCount - _questionNumber + 1;
-						setLoading(false);
-					} catch (Exception ex) {
-						AppLogs.Log(ex);
-					}
-				});
+					await getAndSetQuestion(number);
+					setTimer();
+					_questionsLeft = _questionCount - _questionNumber + 1;
+					setLoading(false);
+				} catch (Exception ex) {
+					AppLogs.Log(ex);
+				}
+			});
 		}
 
 		async Task<bool> getAndSetTest()
@@ -218,40 +211,39 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
-		async Task<bool> getAndSetQuestion(int number)
+		async Task getAndSetQuestion(int number)
 		{
 			if (number == -1)
 			{
 				completeTest();
-				return true;
 			}
-
-			var question = await getQuestion(number);
-
-			if (question == null)
+			else
 			{
-				return false;
-			}
+				var question = await getQuestion(number);
 
-			if (question.Question == null)
-			{
-				completeTest();
-				return true;
-			}
+				if (question == null)
+				{
+					return;
+				}
 
-			setQuestionData(question);
-			return true;
+				if (question.Question == null)
+				{
+					completeTest();
+				}
+				else
+				{
+					setQuestionData(question);
+				}
+			}
 		}
 
-		async Task<TestQuestionModel> getQuestion(int number, bool showError = true)
+		async Task<TestQuestionModel> getQuestion(int number)
 		{
 			var question = await DataAccess.GetNextQuestion(
 				_testId, number, AppUserData.UserId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
-				if (showError) {
-					_services.Dialogs.ShowError(DataAccess.ErrorMessage);
-				}
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 				return null;
 			}
 
@@ -283,29 +275,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 					_questionsLeft--;
 				}
 
-				var nextQuestionNumber = getNextQuestion();
-				if (nextQuestionNumber == -1) {
-					completeTest();
-					return;
-				}
-
-				var nextQuestion = await getQuestion(nextQuestionNumber, showError: false);
-				if (nextQuestion == null) {
-					if (DataAccess.IsConnectionError) {
-						_services.Dialogs.ShowError(DataAccess.ErrorMessage);
-						return;
-					}
-
-					completeTest();
-					return;
-				}
-
-				if (nextQuestion.Question == null) {
-					completeTest();
-					return;
-				}
-
-				setQuestionData(nextQuestion);
+				await getAndSetQuestion(getNextQuestion());
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}
@@ -317,20 +287,16 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 			if (testQuestionModel != null) {
 				Question = testQuestionModel.Title;
-					Description = $"<head><meta charset=\"utf-8\">" +
-						$"<font size=\"5\" " +
-						$"color=\"{Theme.Current.TestPassingQuestionColor}\">" +
-						$"{testQuestionModel.Description}" +
-						$"</font>";
-					_questionNumber = testQuestionCommonModel.Number;
-					_questionType = testQuestionModel.QuestionType;
-					_incompleteQuestionsNumbers = testQuestionCommonModel.IncompleteQuestionsNumbers ?? new List<int>();
-					_questionsLeft = _incompleteQuestionsNumbers.Count > 0
-						? _incompleteQuestionsNumbers.Count
-						: _questionCount - _questionNumber + 1;
-					setAnswers(testQuestionModel.Answers);
-				}
+				Description = $"<head><meta charset=\"utf-8\">" +
+					$"<font size=\"5\" " +
+					$"color=\"{Theme.Current.TestPassingQuestionColor}\">" +
+					$"{testQuestionModel.Description}" +
+					$"</font>";
+				_questionNumber = testQuestionCommonModel.Number;
+				_questionType = testQuestionModel.QuestionType;
+				setAnswers(testQuestionModel.Answers);
 			}
+		}
 
 		void setAnswers(List<TestAnswerModel> testQuestionAnswers)
 		{
@@ -486,24 +452,17 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			moveAnswer(obj, true);
 		}
 
-			protected async Task ExecuteSkipCommand()
-			{
-				try {
-					setLoading(true);
-					var isQuestionLoaded = await getAndSetQuestion(getNextQuestion());
-					if (!isQuestionLoaded) {
-						if (DataAccess.IsConnectionError) {
-							_services.Dialogs.ShowError(DataAccess.ErrorMessage);
-						} else {
-							completeTest();
-						}
-					}
+		protected async Task ExecuteSkipCommand()
+		{
+			try {
+				setLoading(true);
+				await getAndSetQuestion(getNextQuestion());
 
-					if (!_isTimeForEntireTest) {
-						_started = DateTime.Now;
-					}
+				if (!_isTimeForEntireTest) {
+					_started = DateTime.Now;
+				}
 
-					setLoading(false);
+				setLoading(false);
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
 			}

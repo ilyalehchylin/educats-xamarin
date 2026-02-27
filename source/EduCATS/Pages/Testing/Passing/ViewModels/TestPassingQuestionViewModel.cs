@@ -178,17 +178,9 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			}
 		}
 
-			int getNextQuestion()
-			{
-				if (_incompleteQuestionsNumbers != null && _incompleteQuestionsNumbers.Count > 0) {
-					var nextQuestion = _incompleteQuestionsNumbers
-						.Where(number => number != _questionNumber)
-						.OrderBy(number => number)
-						.FirstOrDefault();
-					return nextQuestion == 0 ? -1 : nextQuestion;
-				}
-
-				return _questionNumber + 1 <= _questionCount ? _questionNumber + 1 : -1;
-			}
+		int getNextQuestion()
+		{
+			return _questionNumber + 1 <= _questionCount ? _questionNumber + 1 : -1;
 		}
 	}
+}
