@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using EduCATS.Data.Models;
 using EduCATS.Demo;
@@ -8,6 +10,7 @@ using EduCATS.Networking.Models.Login;
 using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Networking.Models.Testing;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 
 namespace EduCATS.Networking.AppServices
@@ -94,7 +97,21 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetProfileInfoSubjects(string username)
 		{
 			var body = getUserLoginBody(username);
-			return await AppServicesController.Request(Links.GetProfileInfoSubjectsTest, AppDemoType.ProfileInfoSubjectsTest);
+			var primaryResponse = normalizeSubjectsResponse(
+				await AppServicesController.Request(Links.GetProfileInfoSubjectsTest, AppDemoType.ProfileInfoSubjectsTest));
+
+			if (isValidSubjectsResponse(primaryResponse)) {
+				return primaryResponse;
+			}
+
+			var fallbackResponse = normalizeSubjectsResponse(
+				await AppServicesController.Request(Links.GetProfileInfoSubjects, body, AppDemoType.ProfileInfoSubjectsTest));
+
+			if (isValidSubjectsResponse(fallbackResponse)) {
+				return fallbackResponse;
+			}
+
+			return primaryResponse;
 		}
 
 		/// <summary>
@@ -248,9 +265,27 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>List of test data.</returns>
 		public static async Task<object> GetAvailableTests(int subjectId, int userId)
 		{
-			return await AppServicesController.Request(
+			var primaryResponse = normalizeTestsListResponse(await AppServicesController.Request(
 				$"{Links.GetAvailableTests}?subjectId={subjectId}&userId={userId}",
-				AppDemoType.AvailableTests);
+				AppDemoType.AvailableTests));
+
+			if (isValidTestsListResponse(primaryResponse)) {
+				return primaryResponse;
+			}
+
+			var fallbackResponse = normalizeTestsListResponse(await AppServicesController.Request(
+				$"{Links.GetAvailableTests}?subjectId={subjectId}&studentId={userId}",
+				AppDemoType.AvailableTests));
+
+			if (isValidTestsListResponse(fallbackResponse)) {
+				return fallbackResponse;
+			}
+
+			var legacyResponse = normalizeTestsListResponse(await AppServicesController.Request(
+				$"{Links.GetAvailableTestsLegacy}?subjectId={subjectId}&studentId={userId}",
+				AppDemoType.AvailableTests));
+
+			return isValidTestsListResponse(legacyResponse) ? legacyResponse : primaryResponse;
 		}
 
 		/// <summary>
@@ -260,7 +295,17 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Test details data.</returns>
 		public static async Task<object> GetTest(int testId)
 		{
-			return await AppServicesController.Request($"{Links.GetTest}?id={testId}", AppDemoType.Test);
+			var primaryResponse = normalizeTestResponse(
+				await AppServicesController.Request($"{Links.GetTest}?id={testId}", AppDemoType.Test));
+
+			if (isValidTestResponse(primaryResponse)) {
+				return primaryResponse;
+			}
+
+			var fallbackResponse = normalizeTestResponse(
+				await AppServicesController.Request($"{Links.GetTestLegacy}?testId={testId}", AppDemoType.Test));
+
+			return isValidTestResponse(fallbackResponse) ? fallbackResponse : primaryResponse;
 		}
 
 		/// <summary>
@@ -272,9 +317,27 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Test question data.</returns>
 		public static async Task<object> GetNextQuestion(int testId, int questionNumber, int userId)
 		{
-			return await AppServicesController.Request(
+			var primaryResponse = normalizeNextQuestionResponse(await AppServicesController.Request(
 				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&userId={userId}",
-				AppDemoType.TestNextQuestion);
+				AppDemoType.TestNextQuestion));
+
+			if (isValidNextQuestionResponse(primaryResponse)) {
+				return primaryResponse;
+			}
+
+			var fallbackResponse = normalizeNextQuestionResponse(await AppServicesController.Request(
+				$"{Links.GetNextQuestion}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&studentId={userId}",
+				AppDemoType.TestNextQuestion));
+
+			if (isValidNextQuestionResponse(fallbackResponse)) {
+				return fallbackResponse;
+			}
+
+			var legacyResponse = normalizeNextQuestionResponse(await AppServicesController.Request(
+				$"{Links.GetNextQuestionLegacy}?testId={testId}&questionNumber={questionNumber}&excludeCorrectnessIndicator=false&studentId={userId}",
+				AppDemoType.TestNextQuestion));
+
+			return isValidNextQuestionResponse(legacyResponse) ? legacyResponse : primaryResponse;
 		}
 
 		/// <summary>
@@ -285,7 +348,17 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> AnswerQuestionAndGetNext(TestAnswerPostModel answer)
 		{
 			var body = JsonController.ConvertObjectToJson(answer);
-			return await AppServicesController.Request($"{Links.AnswerQuestionAndGetNext}", body, AppDemoType.TestAnswerAndGetNext);
+			var primaryResponse = await AppServicesController.Request(
+				$"{Links.AnswerQuestionAndGetNext}", body, AppDemoType.TestAnswerAndGetNext);
+
+			if (isSuccessfulActionResponse(primaryResponse)) {
+				return primaryResponse;
+			}
+
+			var fallbackResponse = await AppServicesController.Request(
+				$"{Links.AnswerQuestionAndGetNextLegacy}", body, AppDemoType.TestAnswerAndGetNext);
+
+			return isSuccessfulActionResponse(fallbackResponse) ? fallbackResponse : primaryResponse;
 		}
 
 		/// <summary>
@@ -320,7 +393,21 @@ namespace EduCATS.Networking.AppServices
 		{
 			var body = new RootConceptsPostModel(userId, subjectId);
 			var bodyString = JsonController.ConvertObjectToJson(body);
-			return await AppServicesController.Request($"{Links.GetRootConcepts}", bodyString, AppDemoType.RootConcepts);
+			var primaryResponse = await AppServicesController.Request(
+				$"{Links.GetRootConcepts}", bodyString, AppDemoType.RootConcepts);
+
+			if (hasConcepts(primaryResponse)) {
+				return primaryResponse;
+			}
+
+			var fallbackResponse = await AppServicesController.Request(
+				$"{Links.GetRootConceptsTest}?subjectId={subjectId}", AppDemoType.RootConcepts);
+
+			if (hasConcepts(fallbackResponse)) {
+				return fallbackResponse;
+			}
+
+			return isSuccessResponse(primaryResponse) ? primaryResponse : fallbackResponse;
 		}
 
 		public static async Task<object> GetRootConcepts(string subjectId)
@@ -391,6 +478,239 @@ namespace EduCATS.Networking.AppServices
 		{
 			return await AppServicesController.Request(
 				$"{Links.GetGroupInfo}{groupName}");
+		}
+
+		static bool isSuccessResponse(KeyValuePair<string, HttpStatusCode> response)
+		{
+			return response.Value == HttpStatusCode.OK;
+		}
+
+		static bool isNonJsonSuccessResponse(string response)
+		{
+			if (string.IsNullOrWhiteSpace(response)) {
+				return false;
+			}
+
+			var normalized = response.Trim().Trim('"');
+			return normalized.Equals("Ok", StringComparison.OrdinalIgnoreCase);
+		}
+
+		static bool isSuccessfulActionResponse(KeyValuePair<string, HttpStatusCode> response)
+		{
+			return isSuccessResponse(response) &&
+				(isNonJsonSuccessResponse(response.Key) || JsonController.IsJsonValid(response.Key));
+		}
+
+		static KeyValuePair<string, HttpStatusCode> normalizeSubjectsResponse(
+			KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response) || !JsonController.IsJsonValid(response.Key)) {
+				return response;
+			}
+
+			var payload = response.Key.Trim();
+
+			if (payload.StartsWith("[", StringComparison.Ordinal)) {
+				var wrapped = new JObject {
+					["Subjects"] = JArray.Parse(payload)
+				};
+
+				return new KeyValuePair<string, HttpStatusCode>(
+					wrapped.ToString(Formatting.None), response.Value);
+			}
+
+			var payloadObject = JObject.Parse(payload);
+
+			if (payloadObject["Subjects"] is JArray) {
+				return response;
+			}
+
+			var subjects = getArrayToken(payloadObject, "Subjects", "Data", "Items");
+			if (subjects == null) {
+				return response;
+			}
+
+			var normalized = new JObject {
+				["Subjects"] = subjects
+			};
+
+			return new KeyValuePair<string, HttpStatusCode>(
+				normalized.ToString(Formatting.None), response.Value);
+		}
+
+		static bool isValidSubjectsResponse(KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response) || !JsonController.IsJsonValid(response.Key)) {
+				return false;
+			}
+
+			var payload = response.Key.Trim();
+			if (!payload.StartsWith("{", StringComparison.Ordinal)) {
+				return false;
+			}
+
+			var payloadObject = JObject.Parse(payload);
+			return payloadObject["Subjects"] is JArray;
+		}
+
+		static KeyValuePair<string, HttpStatusCode> normalizeTestsListResponse(
+			KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response) || !JsonController.IsJsonValid(response.Key)) {
+				return response;
+			}
+
+			var payload = response.Key.Trim();
+
+			if (payload.StartsWith("[", StringComparison.Ordinal)) {
+				return response;
+			}
+
+			var payloadObject = JObject.Parse(payload);
+			var tests = getArrayToken(payloadObject, "Tests", "Data", "Items", "AvailableTests");
+
+			return tests == null ?
+				response :
+				new KeyValuePair<string, HttpStatusCode>(tests.ToString(Formatting.None), response.Value);
+		}
+
+		static bool isValidTestsListResponse(KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response)) {
+				return false;
+			}
+
+			var payload = response.Key?.Trim();
+
+			return !string.IsNullOrEmpty(payload) &&
+				(payload.StartsWith("[", StringComparison.Ordinal) || isNonJsonSuccessResponse(payload));
+		}
+
+		static KeyValuePair<string, HttpStatusCode> normalizeTestResponse(
+			KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response) || !JsonController.IsJsonValid(response.Key)) {
+				return response;
+			}
+
+			var payload = response.Key.Trim();
+			if (!payload.StartsWith("{", StringComparison.Ordinal)) {
+				return response;
+			}
+
+			var payloadObject = JObject.Parse(payload);
+
+			if (payloadObject["Id"] != null) {
+				return response;
+			}
+
+			var testObject = getObjectToken(payloadObject, "Data", "Test", "Result");
+
+			return testObject == null ?
+				response :
+				new KeyValuePair<string, HttpStatusCode>(testObject.ToString(Formatting.None), response.Value);
+		}
+
+		static bool isValidTestResponse(KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response) || !JsonController.IsJsonValid(response.Key)) {
+				return false;
+			}
+
+			var payload = response.Key.Trim();
+			if (!payload.StartsWith("{", StringComparison.Ordinal)) {
+				return false;
+			}
+
+			var payloadObject = JObject.Parse(payload);
+			return payloadObject["Id"] != null;
+		}
+
+		static KeyValuePair<string, HttpStatusCode> normalizeNextQuestionResponse(
+			KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response) || !JsonController.IsJsonValid(response.Key)) {
+				return response;
+			}
+
+			var payload = response.Key.Trim();
+			if (!payload.StartsWith("{", StringComparison.Ordinal)) {
+				return response;
+			}
+
+			var payloadObject = JObject.Parse(payload);
+
+			if (payloadObject["Question"] != null) {
+				return response;
+			}
+
+			var questionObject = getObjectToken(payloadObject, "Data", "Result");
+
+			return questionObject == null ?
+				response :
+				new KeyValuePair<string, HttpStatusCode>(questionObject.ToString(Formatting.None), response.Value);
+		}
+
+		static bool isValidNextQuestionResponse(KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response) || !JsonController.IsJsonValid(response.Key)) {
+				return false;
+			}
+
+			var payload = response.Key.Trim();
+			if (!payload.StartsWith("{", StringComparison.Ordinal)) {
+				return false;
+			}
+
+			var payloadObject = JObject.Parse(payload);
+			return payloadObject["Question"] != null;
+		}
+
+		static bool hasConcepts(KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response) || !JsonController.IsJsonValid(response.Key)) {
+				return false;
+			}
+
+			var payload = response.Key.Trim();
+			if (!payload.StartsWith("{", StringComparison.Ordinal)) {
+				return false;
+			}
+
+			var payloadObject = JObject.Parse(payload);
+			var concepts = getArrayToken(payloadObject, "Concepts", "Data");
+
+			return concepts != null && concepts.Count > 0;
+		}
+
+		static JArray getArrayToken(JObject payloadObject, params string[] keys)
+		{
+			foreach (var key in keys) {
+				if (payloadObject[key] is JArray array) {
+					return array;
+				}
+
+				if (payloadObject[key] is JObject nestedObject) {
+					foreach (var nestedKey in keys) {
+						if (nestedObject[nestedKey] is JArray nestedArray) {
+							return nestedArray;
+						}
+					}
+				}
+			}
+
+			return null;
+		}
+
+		static JObject getObjectToken(JObject payloadObject, params string[] keys)
+		{
+			foreach (var key in keys) {
+				if (payloadObject[key] is JObject objectToken) {
+					return objectToken;
+				}
+			}
+
+			return null;
 		}
 
 		/// <summary>

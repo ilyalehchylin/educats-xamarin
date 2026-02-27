@@ -17,11 +17,6 @@ namespace EduCATS.Data
 	public partial class DataAccess<T> : IDataAccess<T> where T : new()
 	{
 		/// <summary>
-		/// Success string response.
-		/// </summary>
-		const string _nonJsonSuccessResponse = "\"Ok\"";
-
-		/// <summary>
 		/// Caching key.
 		/// </summary>
 		readonly string _key;
@@ -199,15 +194,15 @@ namespace EduCATS.Data
 		/// <returns>List of objects.</returns>
 		public List<T> GetListAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
-			switch (response.Value)
-			{
-				case HttpStatusCode.OK:
-					var data = parseResponse(response, _key, _isCaching);
+				switch (response.Value)
+				{
+					case HttpStatusCode.OK:
+						var data = parseResponse(response, _key, _isCaching);
 
-					if (data.Equals(_nonJsonSuccessResponse))
-					{
-						return new List<T>();
-					}
+						if (isNonJsonSuccessResponse(data))
+						{
+							return new List<T>();
+						}
 
 					if (!JsonController.IsJsonValid(data))
 					{
@@ -227,15 +222,15 @@ namespace EduCATS.Data
 		/// <returns>Object.</returns>
 		public T GetAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
-			switch (response.Value)
-			{
-				case HttpStatusCode.OK:
-					var data = parseResponse(response, _key, _isCaching);
+				switch (response.Value)
+				{
+					case HttpStatusCode.OK:
+						var data = parseResponse(response, _key, _isCaching);
 
-					if (data.Equals(_nonJsonSuccessResponse))
-					{
-						return new T();
-					}
+						if (isNonJsonSuccessResponse(data))
+						{
+							return new T();
+						}
 
 					if (!JsonController.IsJsonValid(data))
 					{
@@ -279,6 +274,21 @@ namespace EduCATS.Data
 			}
 
 			return response.Key;
+		}
+
+		/// <summary>
+		/// Check if non-json server response should be treated as successful.
+		/// </summary>
+		/// <param name="response">Server response payload.</param>
+		/// <returns><c>true</c> if response indicates success.</returns>
+		static bool isNonJsonSuccessResponse(string response)
+		{
+			if (string.IsNullOrWhiteSpace(response)) {
+				return false;
+			}
+
+			var normalized = response.Trim().Trim('"');
+			return normalized.Equals("Ok", StringComparison.OrdinalIgnoreCase);
 		}
 
 		/// <summary>

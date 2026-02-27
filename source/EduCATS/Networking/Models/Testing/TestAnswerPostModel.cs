@@ -31,5 +31,11 @@ namespace EduCATS.Networking.Models.Testing
 		/// </summary>
 		[JsonProperty("userId")]
 		public int UserId { get; set; }
+
+		/// <summary>
+		/// Student ID alias for legacy API compatibility.
+		/// </summary>
+		[JsonProperty("studentId")]
+		public int StudentId => UserId;
 	}
 }

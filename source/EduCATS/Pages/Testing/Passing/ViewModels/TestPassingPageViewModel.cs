@@ -146,7 +146,12 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			_services.Device.MainThread(async () => {
 				try {
 					setLoading(true);
-					await getAndSetTest();
+					var isTestLoaded = await getAndSetTest();
+					if (!isTestLoaded) {
+						setLoading(false);
+						return;
+					}
+
 					await getAndSetQuestion(number);
 					setTimer();
 					_questionsLeft = _questionCount - _questionNumber + 1;
@@ -157,12 +162,15 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			});
 		}
 
-		async Task getAndSetTest()
+		async Task<bool> getAndSetTest()
 		{
 			var test = await getTest();
-			if(test == null)
-				return;
+			if (test == null) {
+				return false;
+			}
+
 			setTestData(test);
+			return true;
 		}
 
 		async Task<TestDetailsModel> getTest()
@@ -170,11 +178,21 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			var test = await DataAccess.GetTest(_testId);
 
 			if (DataAccess.IsError) {
-				await showEndTestDialog();
-				return new TestDetailsModel();
+				if (shouldHandleAsTestCompletedOnAnotherDevice()) {
+					await showEndTestDialog();
+				} else {
+					_services.Dialogs.ShowError(DataAccess.ErrorMessage);
+				}
+
+				return null;
 			}
 
 			return test;
+		}
+
+		bool shouldHandleAsTestCompletedOnAnotherDevice()
+		{
+			return !IsTestForSelfStudy && AppUserData.UserType == UserTypeEnum.Student;
 		}
 		async Task showEndTestDialog()
 		{
@@ -203,6 +221,11 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 			{
 				var question = await getQuestion(number);
 
+				if (question == null)
+				{
+					return;
+				}
+
 				if (question.Question == null)
 				{
 					completeTest();
@@ -221,7 +244,7 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
 				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
-				return new TestQuestionModel();
+				return null;
 			}
 
 			return question;
@@ -238,8 +261,13 @@ namespace EduCATS.Pages.Testing.Passing.ViewModels
 				await DataAccess.AnswerQuestionAndGetNext(answerModel);
 
 				if (DataAccess.IsError) {
-					_services.Dialogs.ShowError(CrossLocalization.Translate("testing_end_test_notification"));
-					completeTest();
+					if (shouldHandleAsTestCompletedOnAnotherDevice()) {
+						_services.Dialogs.ShowError(CrossLocalization.Translate("testing_end_test_notification"));
+						completeTest();
+					} else {
+						_services.Dialogs.ShowError(DataAccess.ErrorMessage);
+					}
+
 					return;
 				}
 

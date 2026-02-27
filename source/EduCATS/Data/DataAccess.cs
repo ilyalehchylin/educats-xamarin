@@ -353,7 +353,7 @@ namespace EduCATS.Data
 		public async static Task<RootConceptModel> GetRootConcepts(string userId, string subjectId)
 		{
 			var dataAccess = new DataAccess<RootConceptModel>(
-				"eemc_root_concepts_error", getRootConceptsCallback(subjectId),
+				"eemc_root_concepts_error", getRootConceptsCallback(userId, subjectId),
 				GetKey(GlobalConsts.DataGetRootConceptKey, subjectId));
 			return await GetDataObject(dataAccess, false) as RootConceptModel;
 		}

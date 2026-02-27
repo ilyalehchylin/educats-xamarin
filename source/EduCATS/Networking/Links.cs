@@ -93,14 +93,29 @@
 		public static string GetAvailableTests => $"{Servers.Current}/TestPassing/GetAvailableTestsForMobile";
 
 		/// <summary>
+		/// Get available tests legacy URL.
+		/// </summary>
+		public static string GetAvailableTestsLegacy => $"{Servers.Current}/TestPassing/GetAvailableTests";
+
+		/// <summary>
 		/// Get test details URL.
 		/// </summary>
 		public static string GetTest => $"{Servers.Current}/Tests/GetTest";
 
 		/// <summary>
+		/// Get test details legacy URL.
+		/// </summary>
+		public static string GetTestLegacy => $"{Servers.Current}/TestPassing/GetTest";
+
+		/// <summary>
 		/// Get next test's question URL.
 		/// </summary>
 		public static string GetNextQuestion => $"{Servers.Current}/TestPassing/GetNextQuestionJson";
+
+		/// <summary>
+		/// Get next test question legacy URL.
+		/// </summary>
+		public static string GetNextQuestionLegacy => $"{Servers.Current}/TestPassing/GetNextQuestion";
 
 		/// <summary>
 		/// Get test's result URL.
@@ -112,6 +127,12 @@
 		/// </summary>
 		public static string AnswerQuestionAndGetNext =>
 			$"{Servers.Current}/TestPassing/AnswerQuestionAndGetNextMobile";
+
+		/// <summary>
+		/// Answer test question legacy URL.
+		/// </summary>
+		public static string AnswerQuestionAndGetNextLegacy =>
+			$"{Servers.Current}/TestPassing/AnswerQuestionAndGetNext";
 
 		/// <summary>
 		/// Get test answers URL.
