@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace EduCATS.Data.Models
 {
@@ -18,5 +19,11 @@ namespace EduCATS.Data.Models
 		/// </summary>
 		[JsonProperty("Number")]
 		public int Number { get; set; }
+
+		/// <summary>
+		/// Remaining question numbers in current test attempt.
+		/// </summary>
+		[JsonProperty("IncompleteQuestionsNumbers")]
+		public List<int> IncompleteQuestionsNumbers { get; set; }
 	}
 }

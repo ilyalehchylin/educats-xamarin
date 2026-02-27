@@ -58,13 +58,21 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 
 		async Task getResults()
 		{
-			List<TestResultsModel> resultList;
+			List<TestResultsModel> resultList = null;
 			ExtendedTestResultModel extendedResultList = await DataAccess.GetUserAnswers(_testId);
 
-			KeyValuePair<string, object> answer = extendedResultList.Data.SingleOrDefault(x => Equals(x.Key, "Answers"));
-			resultList = JsonConvert.DeserializeObject<List<TestResultsModel>>(answer.Value.ToString());
+			if (!DataAccess.IsError && extendedResultList?.Data != null) {
+				KeyValuePair<string, object> answer = extendedResultList.Data.SingleOrDefault(x => Equals(x.Key, "Answers"));
+				if (answer.Value != null) {
+					resultList = JsonConvert.DeserializeObject<List<TestResultsModel>>(answer.Value.ToString());
+				}
+			}
 
-			if (DataAccess.IsError) {
+			if (resultList == null || resultList.Count == 0) {
+				resultList = await DataAccess.GetUserAnswers(AppUserData.UserId, _testId);
+			}
+
+			if (DataAccess.IsError || resultList == null) {
 				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 				return;
 			}
