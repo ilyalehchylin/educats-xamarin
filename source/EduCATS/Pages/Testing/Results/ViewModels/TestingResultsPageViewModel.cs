@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
 using EduCATS.Data.User;
+using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
-using EduCATS.Networking;
 using Newtonsoft.Json;
+using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.Testing.Results.ViewModels
@@ -21,11 +22,16 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 		readonly int _testId;
 		readonly bool _fromComplexLearning;
 
-		public TestingResultsPageViewModel(int testId, bool fromComplexLearning, IPlatformServices services)
+		public TestingResultsPageViewModel(
+			int testId,
+			bool fromComplexLearning,
+			string timePassed,
+			IPlatformServices services)
 		{
 			_services = services;
 			_testId = testId;
 			_fromComplexLearning = fromComplexLearning;
+			TimePassed = timePassed;
 
 			Task.Run(async () => {
 				try {
@@ -49,6 +55,22 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 			set { SetProperty(ref _mark, value); }
 		}
 
+		string _timePassed;
+		public string TimePassed {
+			get { return _timePassed; }
+			set {
+				if (SetProperty(ref _timePassed, value)) {
+					IsTimePassedVisible = !string.IsNullOrWhiteSpace(value);
+				}
+			}
+		}
+
+		bool _isTimePassedVisible;
+		public bool IsTimePassedVisible {
+			get { return _isTimePassedVisible; }
+			set { SetProperty(ref _isTimePassedVisible, value); }
+		}
+
 		Command _closeCommand;
 		public Command CloseCommand {
 			get {
@@ -62,13 +84,30 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 			ExtendedTestResultModel extendedResultList = await DataAccess.GetUserAnswers(_testId);
 
 			if (DataAccess.IsError || extendedResultList?.Data == null) {
-				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
+				var errorMessage = string.IsNullOrWhiteSpace(DataAccess.ErrorMessage) ?
+					CrossLocalization.Translate("test_results_error") :
+					DataAccess.ErrorMessage;
+				_services.Dialogs.ShowError(errorMessage);
+				Results = new List<TestResultsModel>();
 				return;
 			}
 
-			KeyValuePair<string, object> answer = extendedResultList.Data.SingleOrDefault(x => Equals(x.Key, "Answers"));
+			var markData = getDataByKey(extendedResultList, "Mark");
+			if (markData.Value != null) {
+				Mark = markData.Value.ToString();
+			}
+
+			if (string.IsNullOrWhiteSpace(TimePassed)) {
+				TimePassed = getTimePassed(extendedResultList);
+			}
+
+			KeyValuePair<string, object> answer = getDataByKey(extendedResultList, "Answers");
 			if (answer.Value != null) {
-				resultList = JsonConvert.DeserializeObject<List<TestResultsModel>>(answer.Value.ToString());
+				try {
+					resultList = JsonConvert.DeserializeObject<List<TestResultsModel>>(answer.Value.ToString());
+				} catch {
+					resultList = new List<TestResultsModel>();
+				}
 			}
 
 			if (resultList == null) {
@@ -92,6 +131,10 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 
 		void estimateRating()
 		{
+			if (!string.IsNullOrWhiteSpace(Mark)) {
+				return;
+			}
+
 			if (Results == null || Results.Count == 0) {
 				return;
 			}
@@ -105,6 +148,42 @@ namespace EduCATS.Pages.Testing.Results.ViewModels
 
 			Mark = Convert.ToInt32(
 				correctAnswers * _maximumRating / Results.Count).ToString();
+		}
+
+		static KeyValuePair<string, object> getDataByKey(ExtendedTestResultModel extendedResult, string key)
+		{
+			if (extendedResult?.Data == null || string.IsNullOrWhiteSpace(key)) {
+				return default;
+			}
+
+			return extendedResult.Data.SingleOrDefault(x =>
+				x.Key != null &&
+				x.Key.Equals(key, StringComparison.OrdinalIgnoreCase));
+		}
+
+		static string getTimePassed(ExtendedTestResultModel extendedResult)
+		{
+			var start = getDataByKey(extendedResult, "StartTime").Value?.ToString();
+			var end = getDataByKey(extendedResult, "EndTime").Value?.ToString();
+
+			if (string.IsNullOrWhiteSpace(start) || string.IsNullOrWhiteSpace(end)) {
+				return null;
+			}
+
+			try {
+				var startUnix = DateHelper.GetUnixFromString(start);
+				var endUnix = DateHelper.GetUnixFromString(end);
+				var startDate = DateHelper.Convert13DigitsUnixToDateTime(startUnix);
+				var endDate = DateHelper.Convert13DigitsUnixToDateTime(endUnix);
+
+				if (endDate <= startDate) {
+					return null;
+				}
+
+				return DateHelper.CheckDatesDifference(startDate, endDate).ToString(@"hh\:mm\:ss");
+			} catch {
+				return null;
+			}
 		}
 	}
 }

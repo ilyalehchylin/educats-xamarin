@@ -34,7 +34,7 @@ namespace EduCATS.Data
 		/// <summary>
 		/// Callback to invoke.
 		/// </summary>
-		static Func<Task<KeyValuePair<string, HttpStatusCode>>> _callback;
+		readonly Func<Task<KeyValuePair<string, HttpStatusCode>>> _callback;
 
 		/// <summary>
 		/// Is error occurred.
@@ -77,7 +77,7 @@ namespace EduCATS.Data
 			_messageForError = messageForError;
 			_services = services ?? new PlatformServices();
 			_isCaching = !string.IsNullOrEmpty(_key);
-			setCallback(callback);
+			_callback = setCallback(callback);
 		}
 
 		/// <summary>
@@ -316,18 +316,17 @@ namespace EduCATS.Data
 		/// Set callback variable.
 		/// </summary>
 		/// <param name="callback">Callback object.</param>
-		static void setCallback(Task<object> callback)
+		static Func<Task<KeyValuePair<string, HttpStatusCode>>> setCallback(Task<object> callback)
 		{
 			if (callback == null)
 			{
-				_callback = async () => {
+				return async () => {
 					await Task.Run(() => { });
 					return new KeyValuePair<string, HttpStatusCode>();
 				};
-				return;
 			}
 
-			_callback = async () => {
+			return async () => {
 				var result = await callback;
 				return (KeyValuePair<string, HttpStatusCode>)result;
 			};

@@ -19,8 +19,12 @@ namespace EduCATS.Helpers.Json
 				return default;
 			}
 
-			var items = JsonConvert.DeserializeObject<T>(content);
-			return items;
+			try {
+				var items = JsonConvert.DeserializeObject<T>(content);
+				return items;
+			} catch {
+				return default;
+			}
 		}
 	}
 }

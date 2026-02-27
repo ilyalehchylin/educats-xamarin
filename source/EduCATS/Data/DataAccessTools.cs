@@ -36,6 +36,10 @@ namespace EduCATS.Data
 		public static void ResetData()
 		{
 			DataCaching<object>.RemoveCache();
+			IsError = false;
+			IsConnectionError = false;
+			IsSessionExpiredError = false;
+			ErrorMessage = null;
 		}
 
 		/// <summary>
@@ -45,18 +49,26 @@ namespace EduCATS.Data
 		/// <param name="dataAccess">Data Access instance.</param>
 		/// <param name="isList">Is object a list or a single object.</param>
 		/// <returns>Object.</returns>
-		public async static Task<object> GetDataObject<T>(IDataAccess<T> dataAccess, bool isList)
+		public async static Task<object> GetDataObject<T>(IDataAccess<T> dataAccess, bool isList) where T : new()
 		{
-			object objectToGet;
+			// Ensure stale error flags from previous requests do not affect current flow.
+			SetError(null, false, false);
 
-			if (isList) {
-				objectToGet = await dataAccess.GetList();
-			} else {
-				objectToGet = await dataAccess.GetSingle();
+			try {
+				object objectToGet;
+
+				if (isList) {
+					objectToGet = await dataAccess.GetList();
+				} else {
+					objectToGet = await dataAccess.GetSingle();
+				}
+
+				SetError(dataAccess.ErrorMessageKey, dataAccess.IsConnectionError, dataAccess.IsSessionExpiredError);
+				return objectToGet;
+			} catch {
+				SetError("base_error", false, false);
+				return isList ? new System.Collections.Generic.List<T>() : new T();
 			}
-
-			SetError(dataAccess.ErrorMessageKey, dataAccess.IsConnectionError, dataAccess.IsSessionExpiredError);
-			return objectToGet;
 		}
 
 		/// <summary>

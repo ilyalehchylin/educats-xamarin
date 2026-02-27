@@ -321,9 +321,11 @@ namespace EduCATS.Networking.AppServices
 
 		public static async Task<object> GetUserAnswers(int testId)
 		{
-			return await AppServicesController.Request(
-					$"{Links.GetResultTest}?testId={testId}",
-					AppDemoType.TestUserAnswersExtended);
+			var response = await AppServicesController.Request(
+				$"{Links.GetResultTest}?testId={testId}",
+				AppDemoType.TestUserAnswersExtended);
+
+			return normalizeExtendedTestResultResponse(response);
 		}
 		
 
@@ -595,6 +597,73 @@ namespace EduCATS.Networking.AppServices
 
 			var payloadObject = JObject.Parse(payload);
 			return payloadObject["Question"] != null;
+		}
+
+		static KeyValuePair<string, HttpStatusCode> normalizeExtendedTestResultResponse(
+			KeyValuePair<string, HttpStatusCode> response)
+		{
+			if (!isSuccessResponse(response) || !JsonController.IsJsonValid(response.Key)) {
+				return response;
+			}
+
+			var payload = response.Key.Trim();
+
+			if (payload.StartsWith("[", StringComparison.Ordinal)) {
+				var wrappedArray = new JObject {
+					["Data"] = new JArray {
+						new JObject {
+							["Key"] = "Answers",
+							["Value"] = JArray.Parse(payload)
+						}
+					}
+				};
+
+				return new KeyValuePair<string, HttpStatusCode>(
+					wrappedArray.ToString(Formatting.None), response.Value);
+			}
+
+			if (!payload.StartsWith("{", StringComparison.Ordinal)) {
+				return response;
+			}
+
+			var payloadObject = JObject.Parse(payload);
+
+			if (payloadObject["Data"] is JObject dataObject) {
+				var normalizedDataArray = new JArray();
+				foreach (var property in dataObject.Properties()) {
+					normalizedDataArray.Add(new JObject {
+						["Key"] = property.Name,
+						["Value"] = property.Value
+					});
+				}
+
+				payloadObject["Data"] = normalizedDataArray;
+				return new KeyValuePair<string, HttpStatusCode>(
+					payloadObject.ToString(Formatting.None), response.Value);
+			}
+
+			if (payloadObject["Data"] is JArray) {
+				return response;
+			}
+
+			if (payloadObject["Answers"] == null) {
+				return response;
+			}
+
+			var normalizedArray = new JArray();
+			foreach (var property in payloadObject.Properties()) {
+				normalizedArray.Add(new JObject {
+					["Key"] = property.Name,
+					["Value"] = property.Value
+				});
+			}
+
+			var wrappedObject = new JObject {
+				["Data"] = normalizedArray
+			};
+
+			return new KeyValuePair<string, HttpStatusCode>(
+				wrappedObject.ToString(Formatting.None), response.Value);
 		}
 
 		static bool hasConcepts(KeyValuePair<string, HttpStatusCode> response)
