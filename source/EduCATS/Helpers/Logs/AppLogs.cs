@@ -53,6 +53,22 @@ namespace EduCATS.Helpers.Logs
 		}
 
 		/// <summary>
+		/// Log plain message.
+		/// </summary>
+		/// <param name="message">Message to log.</param>
+		public static void Log(string message)
+		{
+			checkFiles();
+
+			if (!logFileExists() || string.IsNullOrWhiteSpace(message)) {
+				return;
+			}
+
+			var logDate = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
+			FileManager.Append(LogsFilePath, $"[{logDate}] {message}\n");
+		}
+
+		/// <summary>
 		/// Log exception.
 		/// </summary>
 		/// <param name="ex">Exception.</param>

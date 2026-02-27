@@ -1,8 +1,10 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 
 namespace EduCATS.Networking.AppServices
 {
@@ -15,6 +17,7 @@ namespace EduCATS.Networking.AppServices
 		/// <c>JSON</c> ContentType. 
 		/// </summary>
 		const string _mediaTypeJson = "application/json";
+		const int _maxPayloadLength = 6000;
 
 		bool IsToken = default;
 		/// <summary>
@@ -50,11 +53,22 @@ namespace EduCATS.Networking.AppServices
 			setUpController(url, content);
 			if (_services.Device.CheckConnectivity()) {
 				var response = await _restController.SendRequest(httpMethod);
+
+				if (response == null) {
+					StatusCode = HttpStatusCode.BadRequest;
+					Json = string.Empty;
+					logNetworkTrace(httpMethod, url, content, StatusCode, Json);
+					return;
+				}
+
 				setStatusCode(response.StatusCode);
-				Json = await response.Content.ReadAsStringAsync();
+				Json = response.Content == null ? string.Empty : await response.Content.ReadAsStringAsync();
+				logNetworkTrace(httpMethod, url, content, StatusCode, Json);
 			} 
 			else {
 				StatusCode = HttpStatusCode.ServiceUnavailable;
+				Json = string.Empty;
+				logNetworkTrace(httpMethod, url, content, StatusCode, Json);
 			}
 		}
 
@@ -75,5 +89,39 @@ namespace EduCATS.Networking.AppServices
 		/// <param name="statusCode">Status code.</param>
 		void setStatusCode(HttpStatusCode statusCode) =>
 			StatusCode = statusCode;
+
+		void logNetworkTrace(
+			HttpMethod httpMethod,
+			string url,
+			string requestContent,
+			HttpStatusCode statusCode,
+			string responseContent)
+		{
+			try {
+				var method = httpMethod?.Method ?? "UNKNOWN";
+				var requestBody = normalizeForLogging(requestContent);
+				var responseBody = normalizeForLogging(responseContent);
+				var message =
+					$"[NETWORK] {method} {url}\n" +
+					$"Request: {requestBody}\n" +
+					$"Response ({(int)statusCode} {statusCode}): {responseBody}";
+				AppLogs.Log(message);
+			} catch {
+				// Logging must not affect networking behavior.
+			}
+		}
+
+		static string normalizeForLogging(string payload)
+		{
+			if (string.IsNullOrWhiteSpace(payload)) {
+				return "<empty>";
+			}
+
+			var normalized = payload.Trim();
+
+			return normalized.Length <= _maxPayloadLength ?
+				normalized :
+				$"{normalized.Substring(0, _maxPayloadLength)}...[truncated]";
+		}
 	}
 }

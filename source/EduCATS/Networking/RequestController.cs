@@ -1,5 +1,6 @@
 ﻿using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Settings;
+using EduCATS.Helpers.Logs;
 using EduCATS.Pages.Login.ViewModels;
 using EduCATS.Pages.Login.Views;
 using System;
@@ -28,9 +29,11 @@ namespace EduCATS.Networking
 		bool IsAccessToken = false;
 
 		/// <summary>
-		/// <c>POST</c> content.
+		/// <c>POST</c> payload.
 		/// </summary>
-		StringContent _postContent;
+		string _postContent = string.Empty;
+		Encoding _postEncoding = Encoding.UTF8;
+		string _postMediaType = "application/json";
 
 		/// <summary>
 		/// Request timeout in seconds.
@@ -80,9 +83,9 @@ namespace EduCATS.Networking
 		/// <param name="mediaType">Content type.</param>
 		public void SetPostContent(string content, Encoding encoding, string mediaType)
 		{
-			if (!string.IsNullOrEmpty(content)) {
-				_postContent = new StringContent(content, encoding, mediaType);
-			}
+			_postContent = content ?? string.Empty;
+			_postEncoding = encoding ?? Encoding.UTF8;
+			_postMediaType = string.IsNullOrWhiteSpace(mediaType) ? "application/json" : mediaType;
 		}
 
 		/// <summary>
@@ -149,10 +152,19 @@ namespace EduCATS.Networking
 					_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
 				}
 
-				_client.DefaultRequestHeaders.Remove("Origin");
-				_client.DefaultRequestHeaders.TryAddWithoutValidation("Origin", _services.Preferences.Server);
+				var response = await sendPostRequest(withOriginHeader: false);
 
-				var response = await _client.PostAsync(Uri, _postContent);
+				if (shouldRetryWithOrigin(response.StatusCode)) {
+					try {
+						AppLogs.Log(
+							$"[NETWORK] POST fallback with Origin for {Url}. " +
+							$"First response status: {(int)response.StatusCode} {response.StatusCode}");
+					} catch {
+						// Logging must not affect networking behavior.
+					}
+					response.Dispose();
+					response = await sendPostRequest(withOriginHeader: true);
+				}
 
 				if (response.StatusCode == HttpStatusCode.Unauthorized)
 				{
@@ -165,6 +177,25 @@ namespace EduCATS.Networking
 			} catch (Exception) {
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
+		}
+
+		async Task<HttpResponseMessage> sendPostRequest(bool withOriginHeader)
+		{
+			_client.DefaultRequestHeaders.Remove("Origin");
+
+			if (withOriginHeader && !string.IsNullOrWhiteSpace(_services.Preferences.Server)) {
+				_client.DefaultRequestHeaders.TryAddWithoutValidation("Origin", _services.Preferences.Server);
+			}
+
+			return await _client.PostAsync(Uri, new StringContent(_postContent, _postEncoding, _postMediaType));
+		}
+
+		static bool shouldRetryWithOrigin(HttpStatusCode statusCode)
+		{
+			return statusCode == HttpStatusCode.BadRequest ||
+				statusCode == HttpStatusCode.Forbidden ||
+				statusCode == HttpStatusCode.MethodNotAllowed ||
+				statusCode == HttpStatusCode.UnsupportedMediaType;
 		}
 
 		/// <summary>
