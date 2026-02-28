@@ -116,7 +116,9 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 
 		private async Task<object> requestDataAsync(string link, HttpContent _postContent)
 		{
-			var client = new HttpClient();
+			var client = new HttpClient {
+				Timeout = TimeSpan.FromSeconds(RequestController.RequestTimeoutSeconds)
+			};
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(services.Preferences.AccessToken);
 			if (_title == CrossLocalization.Translate("practice_mark"))
 			{

@@ -9,6 +9,7 @@ using EduCATS.Pages.Statistics.Marks.Views.ViewCells;
 using EduCATS.Themes;
 using Newtonsoft.Json;
 using Nyxbull.Plugins.CrossLocalization;
+using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -73,7 +74,9 @@ namespace EduCATS.Pages.SaveMarks.Views
 
 		private async Task<object> requestDataAsync(string link, HttpContent _postContent)
 		{
-			var client = new HttpClient();
+			var client = new HttpClient {
+				Timeout = TimeSpan.FromSeconds(RequestController.RequestTimeoutSeconds)
+			};
 			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(services.Preferences.AccessToken);
 			if (_title == CrossLocalization.Translate("practiсe_visiting"))
 			{

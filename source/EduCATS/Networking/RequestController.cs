@@ -35,7 +35,12 @@ namespace EduCATS.Networking
 		/// <summary>
 		/// Request timeout in seconds.
 		/// </summary>
-		const int _timeoutSeconds = 30;
+		public const int RequestTimeoutSeconds = 300;
+
+		/// <summary>
+		/// Request timeout in milliseconds.
+		/// </summary>
+		public const int RequestTimeoutMilliseconds = RequestTimeoutSeconds * 1000;
 
 		/// <summary>
 		/// IsAccessToken.
@@ -57,7 +62,7 @@ namespace EduCATS.Networking
 		/// Constructor.
 		/// </summary>
 		/// <param name="url">URL.</param>
-		
+
 		///<summary>
 		///Constrctor.
 		///</summary> 
@@ -67,8 +72,9 @@ namespace EduCATS.Networking
 			_services = services ?? new PlatformServices();
 			Url = url;
 
-			_client = new HttpClient {
-				Timeout = TimeSpan.FromSeconds(_timeoutSeconds)
+			_client = new HttpClient
+			{
+				Timeout = TimeSpan.FromSeconds(RequestTimeoutSeconds)
 			};
 		}
 
@@ -80,7 +86,8 @@ namespace EduCATS.Networking
 		/// <param name="mediaType">Content type.</param>
 		public void SetPostContent(string content, Encoding encoding, string mediaType)
 		{
-			if (!string.IsNullOrEmpty(content)) {
+			if (!string.IsNullOrEmpty(content))
+			{
 				_postContent = new StringContent(content, encoding, mediaType);
 			}
 		}
@@ -93,11 +100,13 @@ namespace EduCATS.Networking
 		/// <returns>Response.</returns>
 		public async Task<HttpResponseMessage> SendRequest(HttpMethod httpMethod)
 		{
-			if (httpMethod == HttpMethod.Get) {
+			if (httpMethod == HttpMethod.Get)
+			{
 				return await get();
 			}
 
-			if (httpMethod == HttpMethod.Post) {
+			if (httpMethod == HttpMethod.Post)
+			{
 				return await post();
 			}
 
@@ -154,9 +163,13 @@ namespace EduCATS.Networking
 				}
 
 				return response;
-			} catch (TaskCanceledException) {
+			}
+			catch (TaskCanceledException)
+			{
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
-			} catch (Exception) {
+			}
+			catch (Exception)
+			{
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
 		}
@@ -167,7 +180,8 @@ namespace EduCATS.Networking
 		/// <param name="statusCode">Status code.</param>
 		/// <returns>Error response.</returns>
 		HttpResponseMessage errorResponseMessage(HttpStatusCode statusCode) =>
-			new HttpResponseMessage {
+			new HttpResponseMessage
+			{
 				Content = new StringContent(string.Empty),
 				StatusCode = statusCode
 			};

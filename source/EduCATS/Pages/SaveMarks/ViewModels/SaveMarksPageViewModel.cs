@@ -61,6 +61,11 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				labsVisitingList = stat as LabsVisitingList;
 				_takedLabs = new TakedLabs();
 				WebRequest request = WebRequest.Create(Links.GetLabsTest + "subjectId=" + _subjectId + "&groupId=" + groupId);
+				if (request is HttpWebRequest httpRequestLabs)
+				{
+					httpRequestLabs.Timeout = RequestController.RequestTimeoutMilliseconds;
+					httpRequestLabs.ReadWriteTimeout = RequestController.RequestTimeoutMilliseconds;
+				}
 				request.Headers.Add("Authorization", _services.Preferences.AccessToken);
 				WebResponse response = request.GetResponse();
 				string json = "";
@@ -84,6 +89,11 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				practiceVisitingList = stat as LabsVisitingList;
 				_takedLabs = new TakedLabs();
 				WebRequest request = WebRequest.Create(Links.GetPracticialsTest + "subjectId=" + _subjectId + "&groupId=" + groupId);
+				if (request is HttpWebRequest httpRequestPracticals)
+				{
+					httpRequestPracticals.Timeout = RequestController.RequestTimeoutMilliseconds;
+					httpRequestPracticals.ReadWriteTimeout = RequestController.RequestTimeoutMilliseconds;
+				}
 				request.Headers.Add("Authorization", _services.Preferences.AccessToken);
 				WebResponse response = request.GetResponse();
 				string json = "";
