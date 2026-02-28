@@ -189,10 +189,7 @@ namespace EduCATS.Pages.Files.ViewModels
 		void openFile(object selectedObject)
 		{
 			try {
-				logOpenFile($"openFile called. Selected object type: {selectedObject?.GetType().Name ?? "null"}");
-
 				if (AppDemo.Instance.IsDemoAccount) {
-					logOpenFile("Demo account detected. Download is disabled.");
 					PlatformServices.Device.MainThread(
 						() => PlatformServices.Dialogs.ShowError(
 							CrossLocalization.Translate("demo_files_download_error")));
@@ -200,60 +197,44 @@ namespace EduCATS.Pages.Files.ViewModels
 				}
 
 				if (selectedObject == null || !(selectedObject is FilesPageModel)) {
-					logOpenFile("Selected object is null or not FilesPageModel. Aborting.");
 					return;
 				}
 
 				_lastSelectedObject = selectedObject;
 				setDownloading();
 				SelectedItem = null;
-				logOpenFile("Download dialog shown and selected item reset.");
 
 				var file = selectedObject as FilesPageModel;
-				logOpenFile(
-					$"Preparing file: Id={file.Id}, Name='{file.Name}', PathName='{file.PathName}', FileName='{file.FileName}', Url='{file.Url}'.");
 				var storageFilePath = Path.Combine(PlatformServices.Device.GetAppDataDirectory(), file.Name);
-				logOpenFile($"Storage path: '{storageFilePath}'.");
 
 				if (File.Exists(storageFilePath) && new FileInfo(storageFilePath).Length != 0) {
-					logOpenFile("File already exists locally. Launching cached file.");
 					completeDownload(file.Name, storageFilePath);
 					return;
 				}
 
 				var fileUri = getFileUri(file);
 				if (fileUri == null) {
-					logOpenFile("Failed to resolve file URI. Aborting download.");
 					hideDownloading();
 					PlatformServices.Device.MainThread(
 						() => PlatformServices.Dialogs.ShowError(
 							CrossLocalization.Translate("files_downloading_error")));
 					return;
 				}
-				logOpenFile($"Resolved file URI: '{fileUri}'.");
 
 				totalBytes = bytesIn = 0;
 				_client = new WebClient();
-				logOpenFile("WebClient created. Subscribing to progress and completion events.");
 				_client.DownloadProgressChanged += downloadProgressChanged;
 				_client.DownloadFileCompleted += downloadCompleted;
 				if (!string.IsNullOrEmpty(PlatformServices.Preferences.AccessToken))
 				{
 					_client.Headers[HttpRequestHeader.Authorization] =
 						PlatformServices.Preferences.AccessToken;
-					logOpenFile("Authorization header set for file download request.");
-				}
-				else
-				{
-					logOpenFile("Authorization header is empty for file download request.");
 				}
 				_client.QueryString.Add(_filenameKey, file.Name);
 				_client.QueryString.Add(_filepathKey, storageFilePath);
-				logOpenFile("Starting async file download.");
 				_client.DownloadFileAsync(fileUri, storageFilePath);
 			} catch (Exception ex) {
 				AppLogs.Log(ex);
-				logOpenFile($"openFile failed with exception: '{ex.Message}'.");
 				hideDownloading();
 				PlatformServices.Device.MainThread(
 					() => PlatformServices.Dialogs.ShowError(
@@ -394,7 +375,6 @@ namespace EduCATS.Pages.Files.ViewModels
 		Uri getFileUri(FilesPageModel file)
 		{
 			if (file == null) {
-				logOpenFile("getFileUri: file is null.");
 				return null;
 			}
 
@@ -402,38 +382,21 @@ namespace EduCATS.Pages.Files.ViewModels
 			{
 				if (Uri.TryCreate(file.Url, UriKind.Absolute, out var fullUrl) &&
 					(fullUrl.Scheme == Uri.UriSchemeHttp || fullUrl.Scheme == Uri.UriSchemeHttps)) {
-					logOpenFile($"getFileUri: absolute URL from metadata: '{fullUrl}'.");
 					return fullUrl;
 				}
 
 				var relativeUrl = file.Url.StartsWith("/") ? file.Url : $"/{file.Url}";
 				var metadataUrl = new Uri($"{Servers.Current}{relativeUrl}");
-				logOpenFile($"getFileUri: relative metadata URL resolved to: '{metadataUrl}'.");
 				return metadataUrl;
 			}
 
 			if (string.IsNullOrEmpty(file.PathName) || string.IsNullOrEmpty(file.FileName)) {
-				logOpenFile("getFileUri: fallback failed because PathName/FileName is empty.");
 				return null;
 			}
 
 			var fileNameParam = $"{file.PathName}//{file.FileName}";
 			var fallbackUrl = new Uri($"{Links.GetFile}?filename={fileNameParam}");
-			logOpenFile($"getFileUri: fallback URL generated: '{fallbackUrl}'.");
 			return fallbackUrl;
-		}
-
-		/// <summary>
-		/// Log openFile related step.
-		/// </summary>
-		/// <param name="message">Message.</param>
-		void logOpenFile(string message)
-		{
-			try {
-				AppLogs.Log($"[FilesPageViewModel.openFile] {message}", nameof(openFile));
-			} catch {
-				// Keep file flow functional even if logging is unavailable.
-			}
 		}
 	}
 }
