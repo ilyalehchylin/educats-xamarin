@@ -285,15 +285,18 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns><see cref="UserModel"/> on success, <code>null</code> otherwise.</returns>
 		async Task<UserModel> loginRequest()
 		{
-			if (AppDemo.Instance.IsDemoAccount)
-			{
-				var userLogin = await DataAccess.Login(Username, Password);
-				AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
-				return userLogin;
-			}
+				if (AppDemo.Instance.IsDemoAccount)
+				{
+					var userLogin = await DataAccess.Login(Username, Password);
+					AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
+					return userLogin;
+				}
 
-			// Prevent stale session reuse when a new login attempt starts.
-			_services.Preferences.AccessToken = string.Empty;
+				// Recreate shared network client for a fresh authorization flow.
+				RequestController.ResetHttpClient();
+
+				// Prevent stale session reuse when a new login attempt starts.
+				_services.Preferences.AccessToken = string.Empty;
 
 			var tokenData = await DataAccess.GetToken(Username, Password);
 			if (DataAccess.IsError || tokenData == null || string.IsNullOrWhiteSpace(tokenData.Token))

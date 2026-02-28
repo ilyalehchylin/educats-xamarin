@@ -15,6 +15,16 @@ namespace EduCATS.Networking
 	public class RequestController
 	{
 		/// <summary>
+		/// Shared HTTP client sync root.
+		/// </summary>
+		static readonly object _clientSync = new object();
+
+		/// <summary>
+		/// Shared HTTP client instance.
+		/// </summary>
+		static HttpClient _sharedClient;
+
+		/// <summary>
 		/// HTTP client.
 		/// </summary>
 		readonly HttpClient _client;
@@ -66,11 +76,29 @@ namespace EduCATS.Networking
 		{
 			_services = services ?? new PlatformServices();
 			Url = url;
+			_client = getOrCreateClient();
+		}
 
-			_client = new HttpClient
+		/// <summary>
+		/// Reset shared HTTP client.
+		/// </summary>
+		/// <remarks>Use before login/re-login to rebuild transport state.</remarks>
+		public static void ResetHttpClient()
+		{
+			lock (_clientSync)
 			{
-				Timeout = TimeSpan.FromSeconds(RequestTimeoutSeconds)
-			};
+				var oldClient = _sharedClient;
+				_sharedClient = createClient();
+
+				try
+				{
+					oldClient?.Dispose();
+				}
+				catch (Exception ex)
+				{
+					AppLogs.Log(ex);
+				}
+			}
 		}
 
 		/// <summary>
@@ -257,6 +285,35 @@ namespace EduCATS.Networking
 
 			return !path.Equals("/Account/LoginJWT", StringComparison.OrdinalIgnoreCase) &&
 				!path.Equals("/RemoteApi/Login", StringComparison.OrdinalIgnoreCase);
+		}
+
+		/// <summary>
+		/// Get shared HTTP client or create it.
+		/// </summary>
+		/// <returns>HTTP client instance.</returns>
+		static HttpClient getOrCreateClient()
+		{
+			lock (_clientSync)
+			{
+				if (_sharedClient == null)
+				{
+					_sharedClient = createClient();
+				}
+
+				return _sharedClient;
+			}
+		}
+
+		/// <summary>
+		/// Create HTTP client with default config.
+		/// </summary>
+		/// <returns>HTTP client instance.</returns>
+		static HttpClient createClient()
+		{
+			return new HttpClient
+			{
+				Timeout = TimeSpan.FromSeconds(RequestTimeoutSeconds)
+			};
 		}
 	}
 }

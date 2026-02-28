@@ -14,6 +14,12 @@ namespace EduCATS.UnitTests
 		static readonly BindingFlags _privateInstance =
 			BindingFlags.Instance | BindingFlags.NonPublic;
 
+		[SetUp]
+		public void SetUp()
+		{
+			RequestController.ResetHttpClient();
+		}
+
 		[Test]
 		public void UriNullTest()
 		{
@@ -36,6 +42,28 @@ namespace EduCATS.UnitTests
 			Assert.AreEqual(
 				RequestController.RequestTimeoutSeconds * 1000,
 				RequestController.RequestTimeoutMilliseconds);
+		}
+
+		[Test]
+		public void HttpClientIsSharedAcrossControllers()
+		{
+			var first = createController("https://educats.by/Profile/GetProfileInfo", "token");
+			var second = createController("https://educats.by/Profile/GetNews", "token");
+
+			Assert.AreSame(getHttpClient(first), getHttpClient(second));
+		}
+
+		[Test]
+		public void ResetHttpClientCreatesNewInstance()
+		{
+			var first = createController("https://educats.by/Profile/GetProfileInfo", "token");
+			var oldClient = getHttpClient(first);
+
+			RequestController.ResetHttpClient();
+
+			var second = createController("https://educats.by/Profile/GetNews", "token");
+			var newClient = getHttpClient(second);
+			Assert.AreNotSame(oldClient, newClient);
 		}
 
 		[Test]
