@@ -46,6 +46,18 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 			set { SetProperty(ref _testList, value); }
 		}
 
+		string _testingComment;
+		public string TestingComment {
+			get { return _testingComment; }
+			set { SetProperty(ref _testingComment, value); }
+		}
+
+		bool _isTestingCommentVisible;
+		public bool IsTestingCommentVisible {
+			get { return _isTestingCommentVisible; }
+			set { SetProperty(ref _isTestingCommentVisible, value); }
+		}
+
 		Command _refreshCommand;
 		public Command RefreshCommand {
 			get {
@@ -74,7 +86,8 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 
 		async Task<List<TestingGroupModel>> getTests()
 		{
-			var tests = await DataAccess.GetAvailableTests(CurrentSubject.Id, AppUserData.UserId);
+			var tests = await DataAccess.GetAvailableTests(CurrentSubject.Id, AppUserData.UserId) ??
+				new List<TestModel>();
 
 			     if (DataAccess.IsError && !DataAccess.IsConnectionError) {
 				PlatformServices.Device.MainThread(
@@ -86,6 +99,10 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 			var groups = new List<TestingGroupModel>();
 			groups = addNonEmptyGroup(groups, testsForControl);
 			groups = addNonEmptyGroup(groups, testsForSelfStudy);
+
+			TestingComment = testsForControl?.Count > 0 ? testsForControl.Comment : string.Empty;
+			IsTestingCommentVisible = !string.IsNullOrWhiteSpace(TestingComment);
+
 			return groups;
 		}
 
