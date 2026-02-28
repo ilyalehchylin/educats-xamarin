@@ -1,13 +1,11 @@
-﻿using EduCATS.Helpers.Forms;
-using EduCATS.Helpers.Forms.Settings;
-using EduCATS.Pages.Login.ViewModels;
-using EduCATS.Pages.Login.Views;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using EduCATS.Helpers.Forms;
+using EduCATS.Helpers.Logs;
 
 namespace EduCATS.Networking
 {
@@ -20,12 +18,6 @@ namespace EduCATS.Networking
 		/// HTTP client.
 		/// </summary>
 		readonly HttpClient _client;
-
-		/// <summary>
-		/// Access token.
-		/// </summary>
-
-		bool IsAccessToken = false;
 
 		/// <summary>
 		/// <c>POST</c> content.
@@ -43,31 +35,34 @@ namespace EduCATS.Networking
 		public const int RequestTimeoutMilliseconds = RequestTimeoutSeconds * 1000;
 
 		/// <summary>
-		/// IsAccessToken.
-		/// </summary>
-		bool isAccessToken = false;
-
-		/// <summary>
 		/// URL.
 		/// </summary>
 		public string Url { get; set; }
 
 		/// <summary>
-		/// Uri.
+		/// Parsed URL.
 		/// </summary>
-		public Uri Uri => Url == null ? null : new Uri(Url);
+		public Uri Uri
+		{
+			get
+			{
+				if (string.IsNullOrWhiteSpace(Url))
+				{
+					return null;
+				}
+
+				return System.Uri.TryCreate(Url, UriKind.Absolute, out var uri) ? uri : null;
+			}
+		}
 
 		public IPlatformServices _services;
+
 		/// <summary>
 		/// Constructor.
 		/// </summary>
 		/// <param name="url">URL.</param>
-
-		///<summary>
-		///Constrctor.
-		///</summary> 
-		///<param name="services">Param</param>
-		public RequestController(string url = null, PlatformServices services = null)
+		/// <param name="services">Platform services.</param>
+		public RequestController(string url = null, IPlatformServices services = null)
 		{
 			_services = services ?? new PlatformServices();
 			Url = url;
@@ -121,9 +116,17 @@ namespace EduCATS.Networking
 		{
 			try
 			{
+				if (Uri == null)
+				{
+					AppLogs.Log($"GET request skipped because URL is invalid: '{Url}'", nameof(get));
+					return errorResponseMessage(HttpStatusCode.BadRequest);
+				}
+
 				setAuthorizationHeader();
+				AppLogs.Log($"GET {Uri}", nameof(get));
 
 				var response = await _client.GetAsync(Uri);
+				AppLogs.Log($"GET {Uri} -> {(int)response.StatusCode}", nameof(get));
 
 				if (response.StatusCode == HttpStatusCode.Unauthorized)
 				{
@@ -134,10 +137,12 @@ namespace EduCATS.Networking
 			}
 			catch (TaskCanceledException)
 			{
+				AppLogs.Log($"GET timeout for URL: '{Url}'", nameof(get));
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
+				AppLogs.Log(ex);
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
 		}
@@ -150,12 +155,20 @@ namespace EduCATS.Networking
 		{
 			try
 			{
+				if (Uri == null)
+				{
+					AppLogs.Log($"POST request skipped because URL is invalid: '{Url}'", nameof(post));
+					return errorResponseMessage(HttpStatusCode.BadRequest);
+				}
+
 				setAuthorizationHeader();
+				AppLogs.Log($"POST {Uri}", nameof(post));
 
 				_client.DefaultRequestHeaders.Remove("Origin");
 				_client.DefaultRequestHeaders.TryAddWithoutValidation("Origin", _services.Preferences.Server);
 
 				var response = await _client.PostAsync(Uri, _postContent);
+				AppLogs.Log($"POST {Uri} -> {(int)response.StatusCode}", nameof(post));
 
 				if (response.StatusCode == HttpStatusCode.Unauthorized)
 				{
@@ -166,10 +179,12 @@ namespace EduCATS.Networking
 			}
 			catch (TaskCanceledException)
 			{
+				AppLogs.Log($"POST timeout for URL: '{Url}'", nameof(post));
 				return errorResponseMessage(HttpStatusCode.RequestTimeout);
 			}
-			catch (Exception)
+			catch (Exception ex)
 			{
+				AppLogs.Log(ex);
 				return errorResponseMessage(HttpStatusCode.BadRequest);
 			}
 		}
@@ -191,14 +206,36 @@ namespace EduCATS.Networking
 		/// </summary>
 		void setAuthorizationHeader()
 		{
-			_client.DefaultRequestHeaders.Authorization = null;
+			_client.DefaultRequestHeaders.Remove("Authorization");
 			if (!shouldAttachAuthorizationHeader())
 			{
 				return;
 			}
 
-			_client.DefaultRequestHeaders.Authorization =
-				new AuthenticationHeaderValue(_services.Preferences.AccessToken);
+			var accessToken = _services.Preferences.AccessToken?.Trim();
+			if (string.IsNullOrEmpty(accessToken))
+			{
+				return;
+			}
+
+			try
+			{
+				var separatorIndex = accessToken.IndexOf(' ');
+				if (separatorIndex > 0 && separatorIndex < accessToken.Length - 1)
+				{
+					var scheme = accessToken.Substring(0, separatorIndex);
+					var parameter = accessToken.Substring(separatorIndex + 1).Trim();
+					_client.DefaultRequestHeaders.Authorization =
+						new AuthenticationHeaderValue(scheme, parameter);
+					return;
+				}
+
+				_client.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", accessToken);
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+			}
 		}
 
 		/// <summary>

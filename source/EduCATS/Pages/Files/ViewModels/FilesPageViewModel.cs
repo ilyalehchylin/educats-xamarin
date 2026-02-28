@@ -400,7 +400,8 @@ namespace EduCATS.Pages.Files.ViewModels
 
 			if (!string.IsNullOrEmpty(file.Url))
 			{
-				if (Uri.TryCreate(file.Url, UriKind.Absolute, out var fullUrl)) {
+				if (Uri.TryCreate(file.Url, UriKind.Absolute, out var fullUrl) &&
+					(fullUrl.Scheme == Uri.UriSchemeHttp || fullUrl.Scheme == Uri.UriSchemeHttps)) {
 					logOpenFile($"getFileUri: absolute URL from metadata: '{fullUrl}'.");
 					return fullUrl;
 				}

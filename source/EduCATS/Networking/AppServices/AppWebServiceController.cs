@@ -16,7 +16,6 @@ namespace EduCATS.Networking.AppServices
 		/// </summary>
 		const string _mediaTypeJson = "application/json";
 
-		bool IsToken = default;
 		/// <summary>
 		/// Controller variable.
 		/// </summary>
@@ -36,24 +35,24 @@ namespace EduCATS.Networking.AppServices
 		/// </summary>
 		public HttpStatusCode StatusCode { get; set; }
 
-		IPlatformServices _services;
-		PlatformServices Services = new PlatformServices();
+		readonly IPlatformServices _services;
 
 		public AppWebServiceController(IPlatformServices services = null)
 		{
 			_services = services ?? new PlatformServices();
-			Services = (PlatformServices)_services;
 		}
 
 		public async Task SendRequest(HttpMethod httpMethod, string url, string content = null)
 		{
 			setUpController(url, content);
-			if (_services.Device.CheckConnectivity()) {
+			if (_services.Device.CheckConnectivity())
+			{
 				var response = await _restController.SendRequest(httpMethod);
 				setStatusCode(response.StatusCode);
 				Json = await response.Content.ReadAsStringAsync();
-			} 
-			else {
+			}
+			else
+			{
 				StatusCode = HttpStatusCode.ServiceUnavailable;
 			}
 		}
@@ -65,7 +64,7 @@ namespace EduCATS.Networking.AppServices
 		/// <param name="content">(optional) Body for POST request.</param>
 		void setUpController(string url, string content = null)
 		{
-			_restController = new RequestController(url, Services);
+			_restController = new RequestController(url, _services);
 			_restController.SetPostContent(content, Encoding.UTF8, _mediaTypeJson);
 		}
 
