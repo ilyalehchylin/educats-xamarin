@@ -15,5 +15,13 @@ namespace EduCATS.UnitTests
 			var expected = new DateTime(2020, 4, 6);
 			Assert.AreEqual(expected, actual);
 		}
+
+		[Test]
+		public void StartOfWeekWhenAlreadyStartDayReturnsSameDate()
+		{
+			var date = new DateTime(2020, 4, 12);
+			var actual = date.StartOfWeek(DayOfWeek.Sunday);
+			Assert.AreEqual(date.Date, actual);
+		}
 	}
 }
