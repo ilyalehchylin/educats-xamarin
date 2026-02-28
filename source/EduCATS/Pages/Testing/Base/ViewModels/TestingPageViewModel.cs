@@ -23,44 +23,53 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 		}
 
 		bool _isRefreshing;
-		public bool IsRefreshing {
+		public bool IsRefreshing
+		{
 			get { return _isRefreshing; }
 			set { SetProperty(ref _isRefreshing, value); }
 		}
 
 		object _selectedItem;
-		public object SelectedItem {
+		public object SelectedItem
+		{
 			get { return _selectedItem; }
-			set {
+			set
+			{
 				SetProperty(ref _selectedItem, value);
 
-				if (_selectedItem != null) {
+				if (_selectedItem != null)
+				{
 					openTest(_selectedItem);
 				}
 			}
 		}
 
 		List<TestingGroupModel> _testList;
-		public List<TestingGroupModel> TestList {
+		public List<TestingGroupModel> TestList
+		{
 			get { return _testList; }
 			set { SetProperty(ref _testList, value); }
 		}
 
 		string _testingComment;
-		public string TestingComment {
+		public string TestingComment
+		{
 			get { return _testingComment; }
 			set { SetProperty(ref _testingComment, value); }
 		}
 
 		bool _isTestingCommentVisible;
-		public bool IsTestingCommentVisible {
+		public bool IsTestingCommentVisible
+		{
 			get { return _isTestingCommentVisible; }
 			set { SetProperty(ref _isTestingCommentVisible, value); }
 		}
 
 		Command _refreshCommand;
-		public Command RefreshCommand {
-			get {
+		public Command RefreshCommand
+		{
+			get
+			{
 				return _refreshCommand ?? (
 					_refreshCommand = new Command(async () => await refresh()));
 			}
@@ -68,12 +77,15 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 
 		async Task update()
 		{
-			try {
+			try
+			{
 				PlatformServices.Dialogs.ShowLoading();
 				await SetupSubjects();
 				await getAndSetTests();
 				PlatformServices.Dialogs.HideLoading();
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
@@ -89,7 +101,8 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 			var tests = await DataAccess.GetAvailableTests(CurrentSubject.Id, AppUserData.UserId) ??
 				new List<TestModel>();
 
-			     if (DataAccess.IsError && !DataAccess.IsConnectionError) {
+			if (DataAccess.IsError && !DataAccess.IsConnectionError)
+			{
 				PlatformServices.Device.MainThread(
 					() => PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage));
 			}
@@ -108,7 +121,8 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 
 		List<TestingGroupModel> addNonEmptyGroup(List<TestingGroupModel> groups, TestingGroupModel group)
 		{
-			if (group.Count > 0) {
+			if (group.Count > 0)
+			{
 				groups.Add(group);
 			}
 
@@ -118,28 +132,43 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 		TestingGroupModel getGroup(IList<TestModel> tests, string localizedTag, string localizeCom, bool isSelfStudy)
 		{
 			return new TestingGroupModel(
-				CrossLocalization.Translate(localizedTag), 
+				CrossLocalization.Translate(localizedTag),
 				CrossLocalization.Translate(localizeCom),
 				getSeparateTests(tests, isSelfStudy), isSelfStudy);
 		}
 
 		List<TestModel> getSeparateTests(IList<TestModel> tests, bool isSelfStudy)
 		{
-			return tests.Where(
-				t => t.ForSelfStudy.Equals(isSelfStudy) && t.Title.Contains("ИНС") == false).ToList();
+			return tests
+				.Where(t =>
+					t != null &&
+					t.ForSelfStudy.Equals(isSelfStudy) &&
+					!t.ForNN.GetValueOrDefault() &&
+					!containsLegacyNeuralNetworkTag(t.Title))
+				.GroupBy(t => t.Id)
+				.Select(g => g.First())
+				.ToList();
 		}
+
+		bool containsLegacyNeuralNetworkTag(string title) =>
+			!string.IsNullOrEmpty(title) &&
+			title.IndexOf("ИНС", StringComparison.OrdinalIgnoreCase) >= 0;
 
 		void openTest(object testObject)
 		{
-			try {
-				if (testObject == null || testObject.GetType() != typeof(TestModel)) {
+			try
+			{
+				if (testObject == null || testObject.GetType() != typeof(TestModel))
+				{
 					return;
 				}
 
 				var test = testObject as TestModel;
 				PlatformServices.Device.MainThread(
 					async () => await showStartTestDialog(test.Id, test.ForSelfStudy));
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
@@ -150,18 +179,22 @@ namespace EduCATS.Pages.Testing.Base.ViewModels
 				CrossLocalization.Translate("testing_start_test_title"),
 				CrossLocalization.Translate("testing_start_test_description"));
 
-			if (result) {
+			if (result)
+			{
 				await PlatformServices.Navigation.OpenTestPassing(testId, forSelfStudy);
 			}
 		}
 
 		protected async Task refresh()
 		{
-			try {
+			try
+			{
 				IsRefreshing = true;
 				await getAndSetTests();
 				IsRefreshing = false;
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
