@@ -407,11 +407,10 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, false) as FilesModelTest;
 		}
 
-		public async static Task<List<FileDetailsModelTest>> GetDetailsFilesTest(string uri)
+		public async static Task<List<FileDetailsModelTest>> GetDetailsFilesTest(IEnumerable<string> values)
 		{
 			var dataAccess = new DataAccess<FileDetailsModelTest>(
-				"files_fetch_error", getFilesDetailsCallback(uri),
-				GetKey(GlobalConsts.DataGetFilesKey, uri));
+				"files_fetch_error", getFilesDetailsCallback(values));
 			return await GetDataObject(dataAccess, true) as List<FileDetailsModelTest>;
 		}
 

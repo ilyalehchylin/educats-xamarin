@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data.Models;
 using EduCATS.Demo;
@@ -380,11 +381,16 @@ namespace EduCATS.Networking.AppServices
 
 		/// Fetch files details request.
 		/// </summary>
-		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="values">Values list.</param>
 		/// <returns>Files data.</returns>
-		public static async Task<object> GetFilesDetails(string uri)
+		public static async Task<object> GetFilesDetails(IEnumerable<string> values)
 		{
-			return await AppServicesController.Request($"{Links.GetFilesDetails}?values=[{uri}]&deleteValues=DELETE", AppDemoType.FilesDetailsTest);
+			var encodedValues = Uri.EscapeDataString(
+				JsonConvert.SerializeObject(values ?? Array.Empty<string>()));
+
+			return await AppServicesController.Request(
+				$"{Links.GetFilesDetails}?values={encodedValues}&deleteValues=DELETE",
+				AppDemoType.FilesDetailsTest);
 		}
 
 		public static async Task<object> GetGroupInfo(string groupName)

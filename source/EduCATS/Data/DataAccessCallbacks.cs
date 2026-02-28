@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using EduCATS.Networking.AppServices;
 using EduCATS.Networking.Models.Testing;
 
@@ -236,10 +237,10 @@ namespace EduCATS.Data
 		/// <summary>
 		/// Files details callback.
 		/// </summary>
-		/// <param name="content uri">content uri.</param>
+		/// <param name="values">Values list.</param>
 		/// <returns>Files data.</returns>
 		static async Task<object> getFilesDetailsCallback(
-			string uri) => await AppServices.GetFilesDetails(uri);
+			IEnumerable<string> values) => await AppServices.GetFilesDetails(values);
 
 		/// <summary>
 		/// GroupInfo Callback
