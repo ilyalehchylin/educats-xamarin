@@ -1,5 +1,4 @@
 ﻿using EduCATS.Controls.Pickers;
-using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Helpers.Forms;
 using EduCATS.Pages.Testing.Base.ViewModels;
 using EduCATS.Pages.Testing.Base.Views.ViewCells;
@@ -50,8 +49,6 @@ namespace EduCATS.Pages.Testing.Base.Views
 
 		ListView createTestList(View subjectsView)
 		{
-			var testingCommentBanner = createTestingCommentBanner();
-
 			var testListView = new ListView {
 				HasUnevenRows = true,
 				IsGroupingEnabled = true,
@@ -65,8 +62,7 @@ namespace EduCATS.Pages.Testing.Base.Views
 					BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 					Padding = _headerPadding,
 					Children = {
-						subjectsView,
-						testingCommentBanner
+						subjectsView
 					}
 				}
 			};
@@ -77,28 +73,6 @@ namespace EduCATS.Pages.Testing.Base.Views
 			testListView.SetBinding(ListView.SelectedItemProperty, "SelectedItem");
 			testListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "TestList");
 			return testListView;
-		}
-
-		View createTestingCommentBanner()
-		{
-			var label = new Label {
-				TextColor = Color.FromHex(Theme.Current.TestingDescriptionColor),
-				Style = AppStyles.GetLabelStyle(NamedSize.Small),
-				LineBreakMode = LineBreakMode.WordWrap
-			};
-
-			label.SetBinding(Label.TextProperty, "TestingComment");
-
-			var frame = new Frame {
-				HasShadow = false,
-				Padding = new Thickness(12, 10),
-				Margin = new Thickness(0, 10, 0, 0),
-				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
-				Content = label
-			};
-
-			frame.SetBinding(VisualElement.IsVisibleProperty, "IsTestingCommentVisible");
-			return frame;
 		}
 	}
 }
