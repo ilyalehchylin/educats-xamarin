@@ -118,10 +118,20 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 					_services.Device.MainThread(
 						() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
 				}
-			} catch (Exception ex) {
-				AppLogs.Log(ex);
+				} catch (NullReferenceException ex) {
+					AppLogs.Log(ex);
+					Marks = new List<StatsResultsPageModel>();
+					setSummary(_emptyRatingString);
+
+					if (DataAccess.IsError && !string.IsNullOrEmpty(DataAccess.ErrorMessage))
+					{
+						_services.Device.MainThread(
+							() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
+					}
+				} catch (Exception ex) {
+					AppLogs.Log(ex);
+				}
 			}
-		}
 
 		async Task getLabsMarksAndVisiting()
 		{
