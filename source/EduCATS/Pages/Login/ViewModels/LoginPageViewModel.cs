@@ -292,9 +292,22 @@ namespace EduCATS.Pages.Login.ViewModels
 				return userLogin;
 			}
 
+			// Prevent stale session reuse when a new login attempt starts.
+			_services.Preferences.AccessToken = string.Empty;
+
 			var tokenData = await DataAccess.GetToken(Username, Password);
+			if (DataAccess.IsError || tokenData == null || string.IsNullOrWhiteSpace(tokenData.Token))
+			{
+				return new UserModel();
+			}
+
 			_services.Preferences.AccessToken = tokenData.Token;
 			var accountData = await DataAccess.GetAccountData();
+			if (DataAccess.IsError || accountData == null || string.IsNullOrWhiteSpace(accountData.Username))
+			{
+				return new UserModel();
+			}
+
 			AppUserData.SetLoginData(_services, accountData.Id, accountData.Username);
 			var user = new UserModel
 			{
@@ -324,7 +337,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns><code>true</code> on success, <code>false</code> otherwise.</returns>
 		bool checkCredentials()
 		{
-			if (string.IsNullOrEmpty(Username) &&
+			if (string.IsNullOrEmpty(Username) ||
 				string.IsNullOrEmpty(Password))
 			{
 				return false;

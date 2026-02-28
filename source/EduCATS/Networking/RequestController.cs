@@ -112,10 +112,7 @@ namespace EduCATS.Networking
 		{
 			try
 			{
-				if (!string.IsNullOrEmpty(_services.Preferences.AccessToken))
-				{
-					_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
-				}
+				setAuthorizationHeader();
 
 				var response = await _client.GetAsync(Uri);
 
@@ -144,10 +141,7 @@ namespace EduCATS.Networking
 		{
 			try
 			{
-				if (_services.Preferences.AccessToken != "")
-				{
-					_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
-				}
+				setAuthorizationHeader();
 
 				_client.DefaultRequestHeaders.Remove("Origin");
 				_client.DefaultRequestHeaders.TryAddWithoutValidation("Origin", _services.Preferences.Server);
@@ -177,5 +171,41 @@ namespace EduCATS.Networking
 				Content = new StringContent(string.Empty),
 				StatusCode = statusCode
 			};
+
+		/// <summary>
+		/// Set authorization header for endpoints that require it.
+		/// </summary>
+		void setAuthorizationHeader()
+		{
+			_client.DefaultRequestHeaders.Authorization = null;
+			if (!shouldAttachAuthorizationHeader())
+			{
+				return;
+			}
+
+			_client.DefaultRequestHeaders.Authorization =
+				new AuthenticationHeaderValue(_services.Preferences.AccessToken);
+		}
+
+		/// <summary>
+		/// Determine whether current endpoint should use auth header.
+		/// </summary>
+		/// <returns>True for authorized endpoints.</returns>
+		bool shouldAttachAuthorizationHeader()
+		{
+			if (string.IsNullOrWhiteSpace(_services.Preferences.AccessToken))
+			{
+				return false;
+			}
+
+			var path = Uri?.AbsolutePath;
+			if (string.IsNullOrEmpty(path))
+			{
+				return true;
+			}
+
+			return !path.Equals("/Account/LoginJWT", StringComparison.OrdinalIgnoreCase) &&
+				!path.Equals("/RemoteApi/Login", StringComparison.OrdinalIgnoreCase);
+		}
 	}
 }
