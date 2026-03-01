@@ -11,6 +11,7 @@ using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Networking.Models.SaveMarks;
 using EduCATS.Networking.Models.SaveMarks.LabSchedule;
+using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Pages.Statistics.Enums;
 using EduCATS.Pages.Statistics.Results.Models;
 using Xamarin.Forms;
@@ -31,7 +32,6 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		List<StatsPageLabsRatingModel> _currentPractMarksList;
 		List<StatsPageLabsVisitingModel> _currentPractVisitingList;
 		List<TakedLab> _takedLabs;
-		string _cachedVisitingSummary;
 
 		const string _emptyRatingString = "-";
 		const string _doubleStringFormat = "0.0";
@@ -90,8 +90,6 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getData()
 		{
-			_cachedVisitingSummary = null;
-
 			try {
 				switch (_statisticsPage) {
 					case StatsPageEnum.LabsRating:
@@ -148,7 +146,6 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 			else
 			{
-				_cachedVisitingSummary = normalizeVisitingSummary(studentTest?.LabsMarkTotal);
 				setLabsVisiting(null, studentTest);
 			}
 		}
@@ -169,7 +166,6 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 			else if (_statisticsPage == StatsPageEnum.LabsVisiting)
 			{
-				_cachedVisitingSummary = normalizeVisitingSummary(studentTest?.LabsMarkTotal);
 				setLabsVisiting(student, studentTest);
 			}
 			else if (_statisticsPage == StatsPageEnum.PractiseMarks)
@@ -178,7 +174,6 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 			else
 			{
-				_cachedVisitingSummary = normalizeVisitingSummary(studentTest?.PracticalsMarkTotal);
 				setLabsVisiting(student, studentTest);
 			}
 		}
@@ -304,6 +299,12 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		void setMarks(StatsStudentModel student, LaboratoryWorksModel labs)
 		{
+			if (labs == null)
+			{
+				Marks = new List<StatsResultsPageModel>();
+				return;
+			}
+
 			if (_statisticsPage == StatsPageEnum.LabsRating)
 			{
 				List<StatsResultsPageModel> marksTestResults = new List<StatsResultsPageModel>();
@@ -337,11 +338,17 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		void setLabsVisiting(StatsStudentModel student, LaboratoryWorksModel labs)
 		{
+			if (labs == null)
+			{
+				Marks = new List<StatsResultsPageModel>();
+				return;
+			}
+
 			if (_statisticsPage == StatsPageEnum.LabsVisiting)
 			{
 				Queue<Theme> queueTheme = new Queue<Theme>();
 
-				foreach (var lecture in _takedLabs.FindAll(l => l.SubGroup == labs.SubGroup))
+				foreach (var lecture in _takedLabs?.FindAll(l => l.SubGroup == labs.SubGroup) ?? new List<TakedLab>())
 				{
 					for (int i = 0; i < lecture.Duration / 2; i++)
 					{
@@ -349,13 +356,16 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 					}
 				}
 
-				var labsVisitingList = _currentLabsVisitingList.OrderBy(vis => DateTime.Parse(vis.Date)).ToList();
+				var labsVisitingList = (_currentLabsVisitingList ?? new List<StatsPageLabsVisitingModel>())
+					.OrderBy(vis => DateTime.Parse(vis.Date))
+					.ToList();
 
 				List<StatsResultsPageModel> temp = new List<StatsResultsPageModel>();
 
 				foreach (var vis in labsVisitingList)
 				{
-					var lab = labs.LabVisitingMark.FirstOrDefault(l => l.ScheduleProtectionLabId == vis.ProtectionLabId);
+					var lab = labs.LabVisitingMark?
+						.FirstOrDefault(l => l.ScheduleProtectionLabId == vis.ProtectionLabId);
 
 					if (lab != null)
 					{
@@ -365,7 +375,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 							theme = queueTheme.Dequeue();
 						}
 
-						var labTitle = lab == null ? null : $"{theme.ShortName}. {theme.LabTheme}";
+						var labTitle = theme == null ? null : $"{theme.ShortName}. {theme.LabTheme}";
 						var result = string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark;
 
 						temp.Add(new StatsResultsPageModel(labTitle, vis?.Date, setCommentByRole(lab.Comment, lab.ShowForStudent), result));
@@ -376,9 +386,12 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 			else
 			{
-				var practVisitingTestResult = labs.PracticalVisitingMark.Select(v =>
+				var practVisiting = labs.PracticalVisitingMark ?? new List<PracticialVisMark>();
+				var currentPractVisitingList = _currentPractVisitingList ?? new List<StatsPageLabsVisitingModel>();
+
+				var practVisitingTestResult = practVisiting.Select(v =>
 				{
-					var lab = _currentPractVisitingList.FirstOrDefault(
+					var lab = currentPractVisitingList.FirstOrDefault(
 						l => l.ProtectionLabId == v.ScheduleProtectionPracticalId);
 					var result = string.IsNullOrEmpty(v.Mark) ? _emptyRatingString : v.Mark;
 					return new StatsResultsPageModel(null, lab?.Date, setCommentByRole(v.Comment, v.ShowForStudent), result);
@@ -391,14 +404,6 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		void calculateSummary()
 		{
-			if ((_statisticsPage == StatsPageEnum.LabsVisiting ||
-				_statisticsPage == StatsPageEnum.PractiseVisiting) &&
-				!string.IsNullOrWhiteSpace(_cachedVisitingSummary))
-			{
-				setSummary(_cachedVisitingSummary);
-				return;
-			}
-
 			if (Marks == null) {
 				setSummary(_emptyRatingString);
 				return;
@@ -415,7 +420,10 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 
 			if (resultCount == 0) {
-				setSummary(_emptyRatingString);
+				setSummary(_statisticsPage == StatsPageEnum.LabsVisiting ||
+					_statisticsPage == StatsPageEnum.PractiseVisiting
+					? "0"
+					: _emptyRatingString);
 				return;
 			}
 
@@ -428,22 +436,6 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		void setSummary(string summary)
 		{
 			_services.Device.MainThread(() => Summary = summary);
-		}
-
-		string normalizeVisitingSummary(string summaryFromServer)
-		{
-			if (string.IsNullOrWhiteSpace(summaryFromServer))
-			{
-				return null;
-			}
-
-			if (int.TryParse(summaryFromServer, NumberStyles.Integer, CultureInfo.InvariantCulture, out var value) ||
-				int.TryParse(summaryFromServer, NumberStyles.Integer, CultureInfo.CurrentCulture, out value))
-			{
-				return value.ToString(CultureInfo.InvariantCulture);
-			}
-
-			return null;
 		}
 
 		string setCommentByRole(string comment, bool show)
