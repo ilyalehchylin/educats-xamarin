@@ -281,8 +281,9 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				savePracticial.subjectId = subjectId;
 				body = JsonController.ConvertObjectToJson(savePracticial);
 			}
+			var response = await AppServicesController.Request(link, body);
 			await _services.Navigation.ClosePage(false);
-			return await AppServicesController.Request(link, body);
+			return response;
 		}
 
 		public List<int> currentSubGroups = new List<int>();
