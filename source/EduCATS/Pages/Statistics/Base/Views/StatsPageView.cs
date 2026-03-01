@@ -28,7 +28,6 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		static Thickness _expandableViewPadding = new Thickness(0, 5, 0, 0);
 
 		readonly StatsPageViewModel _statsPageViewModel;
-		bool _isFirstAppearance = true;
 
 		public StatsPageView()
 		{
@@ -39,24 +38,6 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			_statsPageViewModel.Init();
 			BindingContext = _statsPageViewModel;
 			createViews();
-		}
-
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-
-			if (_isFirstAppearance)
-			{
-				_isFirstAppearance = false;
-				return;
-			}
-
-			if (_statsPageViewModel.IsLoading)
-			{
-				return;
-			}
-
-			Device.BeginInvokeOnMainThread(async () => await _statsPageViewModel.Update(false, false));
 		}
 
 		void createViews()

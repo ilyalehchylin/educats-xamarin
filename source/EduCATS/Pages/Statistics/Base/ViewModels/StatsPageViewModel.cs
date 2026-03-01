@@ -180,6 +180,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 					PlatformServices.Device.MainThread(() => IsLoading = true);
 				}
 
+				await ensureProfileIsLoaded();
 				checkStudent();
 
 				if (reloadSubjects)
@@ -204,6 +205,16 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				PlatformServices.Device.MainThread(() => IsLoading = false);
 				_isUpdating = false;
 			}
+		}
+
+		async Task ensureProfileIsLoaded()
+		{
+			if (AppUserData.IsProfileLoaded)
+			{
+				return;
+			}
+
+			await getProfile();
 		}
 
 		Command _expandCommand;
