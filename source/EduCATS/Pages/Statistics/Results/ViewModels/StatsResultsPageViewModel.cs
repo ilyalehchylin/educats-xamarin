@@ -374,7 +374,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 				}
 
 				var labsVisitingList = (_currentLabsVisitingList ?? new List<StatsPageLabsVisitingModel>())
-					.OrderBy(vis => DateTime.Parse(vis.Date))
+					.OrderBy(vis => parseStatisticsDate(vis.Date))
 					.ToList();
 
 				if (labsVisitingList.Count == 0)
@@ -532,6 +532,31 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		string setCommentByRole(string comment, bool show)
 		{
 			return show ? comment : null;
+		}
+
+		DateTime parseStatisticsDate(string date)
+		{
+			if (string.IsNullOrEmpty(date))
+			{
+				return DateTime.MaxValue;
+			}
+
+			if (DateTime.TryParseExact(
+				date,
+				"dd.MM.yyyy",
+				CultureInfo.InvariantCulture,
+				DateTimeStyles.None,
+				out var parsedDate))
+			{
+				return parsedDate;
+			}
+
+			if (DateTime.TryParse(date, out parsedDate))
+			{
+				return parsedDate;
+			}
+
+			return DateTime.MaxValue;
 		}
 	}
 }

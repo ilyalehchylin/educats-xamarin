@@ -213,7 +213,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetLabs(int subjectId, int groupId)
 		{
 			return await AppServicesController.Request(
-				$"{Links.GetLabsTest}subjectID={subjectId}&groupID={groupId}",
+				$"{Links.GetLabsTest}subjectId={subjectId}&groupId={groupId}",
 				AppDemoType.LabsResults);
 		}
 

@@ -78,7 +78,7 @@
 		/// <summary>
 		/// Get laboratory works URL.
 		/// </summary>
-		public static string GetLabsTest => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2?";
+		public static string GetLabsTest => $"{Servers.Current}/subject/Services/Labs/LabsService.svc/GetLabsV2?";
 
 		public static string GetPracticialsTest => $"{Servers.Current}/subject/Services/Practicals/PracticalService.svc/GetPracticalsV2?";
 		
