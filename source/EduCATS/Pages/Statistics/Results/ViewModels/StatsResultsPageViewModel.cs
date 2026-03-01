@@ -46,7 +46,8 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			_currentGroupId = groupId;
 			_statisticsPage = statisticsPage;
 			_currentUserName = name;
-			_services.Device.MainThread(async () => {
+			_services.Device.MainThread(async () =>
+			{
 				_services.Dialogs.ShowLoading();
 				await getData();
 				_services.Dialogs.HideLoading();
@@ -54,26 +55,31 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		}
 
 		List<StatsResultsPageModel> _marks;
-		public List<StatsResultsPageModel> Marks {
+		public List<StatsResultsPageModel> Marks
+		{
 			get { return _marks; }
 			set { SetProperty(ref _marks, value); }
 		}
 
 		bool _isLoading;
-		public bool IsLoading {
+		public bool IsLoading
+		{
 			get { return _isLoading; }
 			set { SetProperty(ref _isLoading, value); }
 		}
 
 		string _summary;
-		public string Summary {
+		public string Summary
+		{
 			get { return _summary; }
 			set { SetProperty(ref _summary, value); }
 		}
 
 		Command refreshCommand;
-		public Command RefreshCommand {
-			get {
+		public Command RefreshCommand
+		{
+			get
+			{
 				return refreshCommand ?? (
 					refreshCommand = new Command(async () => await executeRefreshCommand()));
 			}
@@ -90,8 +96,10 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getData()
 		{
-			try {
-				switch (_statisticsPage) {
+			try
+			{
+				switch (_statisticsPage)
+				{
 					case StatsPageEnum.LabsRating:
 						await getLabs(false);
 						await getLabsMarksAndVisiting();
@@ -115,30 +123,36 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 				calculateSummary();
 
-				if (DataAccess.IsError) {
+				if (DataAccess.IsError)
+				{
 					_services.Device.MainThread(
 						() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
 				}
-				} catch (NullReferenceException ex) {
-					AppLogs.Log(ex);
-					Marks = new List<StatsResultsPageModel>();
-					setSummary(_emptyRatingString);
+			}
+			catch (NullReferenceException ex)
+			{
+				AppLogs.Log(ex);
+				Marks = new List<StatsResultsPageModel>();
+				setSummary(_emptyRatingString);
 
-					if (DataAccess.IsError && !string.IsNullOrEmpty(DataAccess.ErrorMessage))
-					{
-						_services.Device.MainThread(
-							() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
-					}
-				} catch (Exception ex) {
-					AppLogs.Log(ex);
+				if (DataAccess.IsError && !string.IsNullOrEmpty(DataAccess.ErrorMessage))
+				{
+					_services.Device.MainThread(
+						() => _services.Dialogs.ShowError(DataAccess.ErrorMessage));
 				}
 			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+			}
+		}
 
 		async Task getLabsMarksAndVisiting()
 		{
 			var statsTest = await DataAccess.GetTestStatistics(_currentSubjectId, _currentGroupId);
-			var studentTest = statsTest?.Students?.SingleOrDefault(
-				s => string.Compare(s.FullName?.ToLower(), _currentUserName?.ToLower()) == 0);
+			var stats = await DataAccess.GetStatistics(_currentSubjectId, _currentGroupId);
+			var student = findStatsStudent(stats);
+			var studentTest = findTestStudent(statsTest, student?.StudentId);
 
 			if (_statisticsPage == StatsPageEnum.LabsRating)
 			{
@@ -156,10 +170,8 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			LabsVisitingList statsTest = new LabsVisitingList();
 			statsTest = await DataAccess.GetTestPracticialStatistics(_currentSubjectId, _currentGroupId);
 			stats = await DataAccess.GetStatistics(_currentSubjectId, _currentGroupId);
-			var student = stats?.Students?.SingleOrDefault(
-				s => string.Compare(s.Name?.ToLower(), _currentUserName?.ToLower()) == 0);
-			var studentTest = statsTest?.Students?.SingleOrDefault(
-				s => string.Compare(s.FullName?.ToLower(), _currentUserName?.ToLower()) == 0);
+			var student = findStatsStudent(stats);
+			var studentTest = findTestStudent(statsTest, student?.StudentId);
 			if (_statisticsPage == StatsPageEnum.LabsRating)
 			{
 				setMarks(student, studentTest);
@@ -211,13 +223,17 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		{
 			var dataTestLabs = await DataAccess.GetLabsTest(_currentSubjectId, _currentGroupId);
 
-			if (dataTestLabs == null){
+			if (dataTestLabs == null)
+			{
 				return;
 			}
 
-			if (isVisiting) {
+			if (isVisiting)
+			{
 				setVisitingLabsStatistics(dataTestLabs);
-			} else {
+			}
+			else
+			{
 				setRatingLabsStatistics(dataTestLabs);
 			}
 		}
@@ -250,7 +266,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 					labs => new StatsPageLabsRatingModel(
 						labs.LabId, labs.ShortName, labs.Theme, labs.SubGroup));
 			_currentLabsMarksList = new List<StatsPageLabsRatingModel>(marksTestLabsList);
-			
+
 		}
 
 		async Task getLecturesVisiting()
@@ -263,21 +279,21 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			foreach (var lecture in listLectures.Lectures)
 			{
-				for (int i = 0; i <  lecture.Duration/2; i++)
+				for (int i = 0; i < lecture.Duration / 2; i++)
 				{
 					queueTheme.Enqueue(lecture.Theme);
 				}
 			}
 
 			visitingData = await DataAccess.GetLecturesTest(_currentSubjectId, _currentGroupId);
-			
+
 			var groupVisiting = visitingData?.GroupsVisiting?[0];
 
 			var userLecturesVisiting = groupVisiting?.LecturesVisiting
-				.SingleOrDefault(v => string.Compare(v.StudentName?.ToLower(), _currentUserName?.ToLower()) == 0);
+				.FirstOrDefault(v => isSameUser(v.StudentName, v.Login, _currentUserName, _currentUserLogin));
 
 			var stats = userLecturesVisiting?.VisitingList?.Select(
-				u => 
+				u =>
 				{
 					string theme = null;
 					if (queueTheme.Count > 0)
@@ -290,7 +306,8 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 			var statsList = stats.ToList();
 
-			if (statsList == null) {
+			if (statsList == null)
+			{
 				return;
 			}
 
@@ -360,6 +377,18 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 					.OrderBy(vis => DateTime.Parse(vis.Date))
 					.ToList();
 
+				if (labsVisitingList.Count == 0)
+				{
+					var fallback = (labs.LabVisitingMark ?? new List<LabsVisitingMark>())
+						.Select(lab => new StatsResultsPageModel(
+							null,
+							null,
+							setCommentByRole(lab.Comment, lab.ShowForStudent),
+							string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark));
+					Marks = new List<StatsResultsPageModel>(fallback);
+					return;
+				}
+
 				List<StatsResultsPageModel> temp = new List<StatsResultsPageModel>();
 
 				foreach (var vis in labsVisitingList)
@@ -382,6 +411,17 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 					}
 				}
 
+				if (temp.Count == 0 && (labs.LabVisitingMark?.Count ?? 0) > 0)
+				{
+					var fallback = labs.LabVisitingMark.Select(lab => new StatsResultsPageModel(
+						null,
+						null,
+						setCommentByRole(lab.Comment, lab.ShowForStudent),
+						string.IsNullOrEmpty(lab.Mark) ? _emptyRatingString : lab.Mark));
+					Marks = new List<StatsResultsPageModel>(fallback);
+					return;
+				}
+
 				Marks = new List<StatsResultsPageModel>(temp);
 			}
 			else
@@ -398,28 +438,32 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 				});
 				Marks = new List<StatsResultsPageModel>(practVisitingTestResult);
 			}
-			
+
 		}
 
 
 		void calculateSummary()
 		{
-			if (Marks == null) {
+			if (Marks == null)
+			{
 				setSummary(_emptyRatingString);
 				return;
 			}
 
 			var resultCount = 0;
 			var resultSummary = 0;
-			foreach (var mark in Marks) {
-				if (!string.IsNullOrEmpty(mark.Result) && !mark.Result.Equals(_emptyRatingString)) {
+			foreach (var mark in Marks)
+			{
+				if (!string.IsNullOrEmpty(mark.Result) && !mark.Result.Equals(_emptyRatingString))
+				{
 					int.TryParse(mark.Result, out int result);
 					resultSummary += result;
 					resultCount++;
 				}
 			}
 
-			if (resultCount == 0) {
+			if (resultCount == 0)
+			{
 				setSummary(_statisticsPage == StatsPageEnum.LabsVisiting ||
 					_statisticsPage == StatsPageEnum.PractiseVisiting
 					? "0"
@@ -436,6 +480,53 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		void setSummary(string summary)
 		{
 			_services.Device.MainThread(() => Summary = summary);
+		}
+
+		StatsStudentModel findStatsStudent(StatsModel stats)
+		{
+			return stats?.Students?.FirstOrDefault(
+				s => isSameUser(s.Name, s.Login, _currentUserName, _currentUserLogin));
+		}
+
+		LaboratoryWorksModel findTestStudent(LabsVisitingList statsTest, int? studentId = null)
+		{
+			var students = statsTest?.Students;
+			if (students == null || students.Count == 0)
+			{
+				return null;
+			}
+
+			if (studentId.HasValue)
+			{
+				var studentById = students.FirstOrDefault(s => s.StudentId == studentId.Value);
+				if (studentById != null)
+				{
+					return studentById;
+				}
+			}
+
+			var studentByUser = students.FirstOrDefault(
+				s => isSameUser(s.FullName, s.Login, _currentUserName, _currentUserLogin));
+			if (studentByUser != null)
+			{
+				return studentByUser;
+			}
+
+			return students.Count == 1 ? students[0] : null;
+		}
+
+		bool isSameUser(string fullName, string login, string targetFullName, string targetLogin)
+		{
+			if (!string.IsNullOrEmpty(login) &&
+				!string.IsNullOrEmpty(targetLogin) &&
+				login == targetLogin)
+			{
+				return true;
+			}
+
+			return !string.IsNullOrEmpty(fullName) &&
+				!string.IsNullOrEmpty(targetFullName) &&
+				fullName == targetFullName;
 		}
 
 		string setCommentByRole(string comment, bool show)
