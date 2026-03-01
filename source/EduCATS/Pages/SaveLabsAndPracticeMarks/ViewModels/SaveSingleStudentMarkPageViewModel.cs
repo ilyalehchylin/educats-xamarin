@@ -51,6 +51,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 			_takedLabs = prOrLabStat;
 			SelectedShortName = nameofLabOrPr[0];
 			NameOfLabOrPr = nameofLabOrPr;
+			setMarks(SelectedShortName);
 		}
 
 		Command _saveMarksButton;
@@ -65,20 +66,25 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 
 		public void setMarks(object selectedLab)
 		{
-			foreach (var student in fullMarksLabs.Students)
+			if (selectedLab == null)
 			{
-				if (student.FullName == studentName)
-				{
-					for (int i = 0; i < NameOfLabOrPr.Count; i++)
-					{
-						if (NameOfLabOrPr[i] == selectedLab.ToString())
-						{
-							MarkStudent = Convert.ToInt32(student.LabsMarks[i].Mark);
-							return;
-						}
-					}
-				}
+				resetSelectedMarkDetails();
+				return;
 			}
+
+			var shortName = selectedLab.ToString();
+			if (string.IsNullOrWhiteSpace(shortName))
+			{
+				resetSelectedMarkDetails();
+				return;
+			}
+
+			if (trySetLabMarkDetails(shortName) || trySetPracticalMarkDetails(shortName))
+			{
+				return;
+			}
+
+			resetSelectedMarkDetails();
 		}
 
 		private async Task saveMarks()
@@ -97,9 +103,11 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 					{
 						save.studentId = practic.StudentId;
 						save.showForStudent = ShowForStud;
-						save.mark = Mark;
+						save.mark = MarkStudent;
 						save.Comment = Comment;
-						save.date = DateTime.Today.ToString("dd.MM.yyyy");
+						save.date = string.IsNullOrWhiteSpace(SelectedDate)
+							? DateTime.Today.ToString("dd.MM.yyyy")
+							: SelectedDate;
 						foreach (var practMark in practic.PracticalsMarks.Where(v => v.PracticalId == save.practicalId))
 						{
 							save.id = practMark.StudentPracticalMarkId;
@@ -119,9 +127,11 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 					{
 						save.studentId = labs.StudentId;
 						save.showForStudent = ShowForStud;
-						save.mark = Mark;
+						save.mark = MarkStudent;
 						save.Comment = Comment;
-						save.date = DateTime.Today.ToString("dd.MM.yyyy");
+						save.date = string.IsNullOrWhiteSpace(SelectedDate)
+							? DateTime.Today.ToString("dd.MM.yyyy")
+							: SelectedDate;
 						foreach (var labMark in labs.LabsMarks.Where(v => v.LabId == save.labId))
 						{
 							save.id = labMark.StudentLabMarkId;
@@ -177,6 +187,65 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 		{
 			get { return _selectedDate; }
 			set { SetProperty(ref _selectedDate, value); }
+		}
+
+		bool trySetLabMarkDetails(string shortName)
+		{
+			var selectedLab = _takedLabs?.Labs?
+				.FirstOrDefault(v => v.ShortName == shortName && v.SubGroup == _subGruop);
+			if (selectedLab == null)
+			{
+				return false;
+			}
+
+			var student = fullMarksLabs?.Students?.FirstOrDefault(v => v.FullName == studentName);
+			if (student == null)
+			{
+				return false;
+			}
+
+			var mark = student.LabsMarks?.FirstOrDefault(v => v.LabId == selectedLab.LabId);
+			setSelectedMarkDetails(mark?.Mark, mark?.Comment, mark?.ShowForStudent ?? false, mark?.Date);
+			return true;
+		}
+
+		bool trySetPracticalMarkDetails(string shortName)
+		{
+			var selectedPractical = _takedLabs?.Practicals?
+				.FirstOrDefault(v => v.ShortName == shortName && v.SubGroup == _subGruop);
+			if (selectedPractical == null)
+			{
+				return false;
+			}
+
+			var student = fullPractice?.Students?.FirstOrDefault(v => v.FullName == studentName);
+			if (student == null)
+			{
+				return false;
+			}
+
+			var mark = student.PracticalsMarks?
+				.FirstOrDefault(v => v.PracticalId == selectedPractical.PracticalId);
+			setSelectedMarkDetails(mark?.Mark, mark?.Comment, mark?.ShowForStudent ?? false, mark?.Date);
+			return true;
+		}
+
+		void setSelectedMarkDetails(string mark, string comment, bool showForStud, string date)
+		{
+			MarkStudent = int.TryParse(mark, out var parsedMark) ? parsedMark : 0;
+			Comment = comment ?? string.Empty;
+			ShowForStud = showForStud;
+			SelectedDate = string.IsNullOrWhiteSpace(date)
+				? DateTime.Today.ToString("dd.MM.yyyy")
+				: date;
+		}
+
+		void resetSelectedMarkDetails()
+		{
+			MarkStudent = 0;
+			Comment = string.Empty;
+			ShowForStud = false;
+			SelectedDate = DateTime.Today.ToString("dd.MM.yyyy");
 		}
 	}
 }

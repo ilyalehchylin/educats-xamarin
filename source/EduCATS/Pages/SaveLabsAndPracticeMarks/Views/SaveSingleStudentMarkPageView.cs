@@ -137,11 +137,11 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			{
 				Style = entryStyle,
 				ReturnType = ReturnType.Done,
-				Text = DateTime.Today.ToString("dd.MM.yyyy"),
 				TextColor = Color.Black,
 				IsReadOnly = true,
 				HeightRequest = _heightRequest
 			};
+			datePicker.SetBinding(Entry.TextProperty, "SelectedDate");
 
 			var commentEntry = new Entry
 			{

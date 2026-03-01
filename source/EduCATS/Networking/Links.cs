@@ -223,7 +223,7 @@
 
 		public static string SaveLabsMark => $"{Servers.Current}/Services/Labs/LabsService.svc/SaveLabsVisitingData";
 
-		public static string SaveStudentLabsMark => $"{Servers.Current}/Services/Labs/LabsService.svc/SaveStudentLabsMark";
+		public static string SaveStudentLabsMark => $"{Servers.Current}/subject/Services/Labs/LabsService.svc/SaveStudentLabsMark";
 
 		public static string SaveStudentPracticalMark => $"{Servers.Current}/subject/Services/Practicals/PracticalService.svc/SavePracticalsVisitingData";
 
