@@ -139,6 +139,13 @@
 		string SettingsProfileLabelColor { get; }
 		string SettingsProfileColor { get; }
 		string SettingsTableColor { get; }
+		string ProfileNameIcon { get; }
+		string ProfileLoginIcon { get; }
+		string ProfileEmailIcon { get; }
+		string ProfilePhoneIcon { get; }
+		string ProfileSocialMediaIcon { get; }
+		string ProfileGroupIcon { get; }
+		string ProfileAboutIcon { get; }
 
 		string CheckboxIcon { get; }
 		string CheckboxDescriptionColor { get; }

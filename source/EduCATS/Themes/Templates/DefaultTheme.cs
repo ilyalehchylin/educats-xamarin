@@ -149,6 +149,13 @@ namespace EduCATS.Themes.Templates
 		virtual public string SettingsProfileColor => _whiteColor;
 		virtual public string SettingsTableColor => _whiteColor;
 		virtual public string SettingsProfileLabelColor => _greyColor;
+		virtual public string ProfileNameIcon => "icon_profile_name";
+		virtual public string ProfileLoginIcon => "icon_profile_login";
+		virtual public string ProfileEmailIcon => "icon_profile_email";
+		virtual public string ProfilePhoneIcon => "icon_profile_phone";
+		virtual public string ProfileSocialMediaIcon => "icon_profile_social_media";
+		virtual public string ProfileGroupIcon => "icon_profile_group";
+		virtual public string ProfileAboutIcon => "icon_profile_about";
 
 
 		virtual public string CheckboxIcon => "icon_checkmark";
