@@ -23,7 +23,7 @@ namespace EduCATS.Pages.Settings.Profile.Views
 		const double _avatarHeight = 200;
 		const double _photoBlockHeight = 400;
 		const double _sectionIconSize = 16;
-		static readonly Thickness _sectionIconMargin = new Thickness(0, 0, 8, 0);
+		static readonly Thickness _sectionIconMargin = new Thickness(0, 0, 4, 0);
 		readonly StringNotEmptyToBoolConverter _stringNotEmptyToBoolConverter = new StringNotEmptyToBoolConverter();
 
 		public ProfilePageView()
