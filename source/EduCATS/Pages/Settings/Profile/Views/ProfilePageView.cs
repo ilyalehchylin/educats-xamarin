@@ -18,12 +18,12 @@ namespace EduCATS.Pages.Settings.Profile.Views
 		static Thickness _listMarginBlock = new Thickness(0, 6, 0, 6);
 
 		const double _spacing = 10;
-		const double _spacingLabel = 0;
+		const double _spacingLabel = 6;
 		const double _buttonHeight = 50;
 		const double _avatarHeight = 200;
 		const double _photoBlockHeight = 400;
 		const double _sectionIconSize = 16;
-		static readonly Thickness _sectionIconMargin = new Thickness(0, 0, 4, 0);
+		static readonly Thickness _sectionIconMargin = new Thickness(0, 0, 2, 0);
 		readonly StringNotEmptyToBoolConverter _stringNotEmptyToBoolConverter = new StringNotEmptyToBoolConverter();
 
 		public ProfilePageView()

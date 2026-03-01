@@ -1,4 +1,5 @@
 ﻿using EduCATS.Helpers.Forms.Styles;
+using EduCATS.Pages.Testing.Base.Models;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
@@ -6,13 +7,17 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 {
 	public class TestingHeaderViewCell : ViewCell
 	{
+		const double _defaultHeaderHeight = 44;
+		const double _commentHeaderHeight = 160;
+
 		static readonly Thickness _padding = new Thickness(10);
 		static readonly Thickness _commentPadding = new Thickness(12, 10);
 		static readonly Thickness _commentMargin = new Thickness(0, 8, 0, 0);
 
 		public TestingHeaderViewCell()
 		{
-			var sectionLabel = new Label {
+			var sectionLabel = new Label
+			{
 				FontAttributes = FontAttributes.Bold,
 				VerticalOptions = LayoutOptions.Start,
 				TextColor = Color.FromHex(Theme.Current.BaseSectionTextColor),
@@ -21,7 +26,8 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 
 			sectionLabel.SetBinding(Label.TextProperty, "SectionName");
 
-			var commentLabel = new Label {
+			var commentLabel = new Label
+			{
 				TextColor = Color.FromHex(Theme.Current.TestingDescriptionColor),
 				Style = AppStyles.GetLabelStyle(NamedSize.Small),
 				LineBreakMode = LineBreakMode.WordWrap
@@ -29,7 +35,8 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 
 			commentLabel.SetBinding(Label.TextProperty, "Comment");
 
-			var commentFrame = new Frame {
+			var commentFrame = new Frame
+			{
 				HasShadow = false,
 				Padding = _commentPadding,
 				Margin = _commentMargin,
@@ -39,7 +46,8 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 
 			commentFrame.SetBinding(VisualElement.IsVisibleProperty, "IsCommentVisible");
 
-			View = new StackLayout {
+			View = new StackLayout
+			{
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				Padding = _padding,
 				Children = {
@@ -52,7 +60,18 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged();
+			Height = getHeaderHeight();
 			Device.BeginInvokeOnMainThread(ForceUpdateSize);
+		}
+
+		double getHeaderHeight()
+		{
+			if (!(BindingContext is TestingGroupModel group))
+			{
+				return _defaultHeaderHeight;
+			}
+
+			return group.IsCommentVisible ? _commentHeaderHeight : _defaultHeaderHeight;
 		}
 	}
 }
