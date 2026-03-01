@@ -186,5 +186,3 @@ FakesAssemblies/
 .vscode/settings.json
 
 mono_crash*
-
-requests.txt
