@@ -28,6 +28,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		private List<StatsStudentModel> _students;
 		private LabsVisitingList _studentsTest;
 		private IPlatformServices _service;
+		bool _isUpdating;
 
 		public StatsPageViewModel(IPlatformServices services) : base(services)
 		{
@@ -38,22 +39,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			setCollapsedDetails();
 
-			_service.Device.MainThread(async () => {
-				_service.Device.MainThread(() => _service.Dialogs.ShowLoading());
-				checkStudent();
-				await SetupSubjects();
-				await getAndSetStatistics();
-				await setButtonsList();
-				_service.Device.MainThread(() => _service.Dialogs.HideLoading());
-				IsLoading = false;
-			});
+			_service.Device.MainThread(async () => await Update(true));
 
 			SubjectChanged += async (id, name) => {
-				_service.Dialogs.ShowLoading();
-				checkStudent();
-				await setButtonsList();
-				await getAndSetStatistics();
-				_service.Dialogs.HideLoading();
+				await Update(true, false);
 			};
 
 		}
@@ -171,6 +160,52 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 		}
 
+		public async Task Update(bool showLoadingDialog, bool reloadSubjects = true)
+		{
+			if (_isUpdating)
+			{
+				return;
+			}
+
+			_isUpdating = true;
+
+			try
+			{
+				if (showLoadingDialog)
+				{
+					PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.ShowLoading());
+				}
+				else
+				{
+					PlatformServices.Device.MainThread(() => IsLoading = true);
+				}
+
+				checkStudent();
+
+				if (reloadSubjects)
+				{
+					await SetupSubjects();
+				}
+
+				await setButtonsList();
+				await getAndSetStatistics();
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+			}
+			finally
+			{
+				if (showLoadingDialog)
+				{
+					PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideLoading());
+				}
+
+				PlatformServices.Device.MainThread(() => IsLoading = false);
+				_isUpdating = false;
+			}
+		}
+
 		Command _expandCommand;
 		public Command ExpandCommand {
 			get {
@@ -273,17 +308,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		protected virtual async Task executeRefreshCommand()
 		{
-			try {
-				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.ShowLoading());
-				checkStudent();
-				await SetupSubjects();
-				await getAndSetStatistics();
-				PlatformServices.Device.MainThread(() => PlatformServices.Dialogs.HideLoading());
-				PlatformServices.Device.MainThread(() => IsLoading = false);
-			}
-			catch (Exception ex) {
-				AppLogs.Log(ex);
-			}
+			await Update(false);
 		}
 
 		protected virtual void openPage(object selectedObject)

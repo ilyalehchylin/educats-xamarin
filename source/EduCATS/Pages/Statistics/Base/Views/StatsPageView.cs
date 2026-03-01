@@ -27,15 +27,36 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		static Thickness _hiddenDetailsPadding = new Thickness(0, 10, 0, 0);
 		static Thickness _expandableViewPadding = new Thickness(0, 5, 0, 0);
 
+		readonly StatsPageViewModel _statsPageViewModel;
+		bool _isFirstAppearance = true;
+
 		public StatsPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
-			var statsPageViewModel = new StatsPageViewModel(new PlatformServices());
-			statsPageViewModel.Init();
-			BindingContext = statsPageViewModel;
+			_statsPageViewModel = new StatsPageViewModel(new PlatformServices());
+			_statsPageViewModel.Init();
+			BindingContext = _statsPageViewModel;
 			createViews();
+		}
+
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+
+			if (_isFirstAppearance)
+			{
+				_isFirstAppearance = false;
+				return;
+			}
+
+			if (_statsPageViewModel.IsLoading)
+			{
+				return;
+			}
+
+			Device.BeginInvokeOnMainThread(async () => await _statsPageViewModel.Update(false, false));
 		}
 
 		void createViews()
