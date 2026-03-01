@@ -1,5 +1,5 @@
-﻿using EduCATS.Helpers.Forms.Styles;
-using EduCATS.Pages.Testing.Base.Models;
+﻿using System;
+using EduCATS.Helpers.Forms.Styles;
 using EduCATS.Themes;
 using Xamarin.Forms;
 
@@ -7,12 +7,10 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 {
 	public class TestingHeaderViewCell : ViewCell
 	{
-		const double _defaultHeaderHeight = 44;
-		const double _commentHeaderHeight = 160;
-
 		static readonly Thickness _padding = new Thickness(10);
 		static readonly Thickness _commentPadding = new Thickness(12, 10);
 		static readonly Thickness _commentMargin = new Thickness(0, 8, 0, 0);
+		readonly StackLayout _root;
 
 		public TestingHeaderViewCell()
 		{
@@ -46,7 +44,7 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 
 			commentFrame.SetBinding(VisualElement.IsVisibleProperty, "IsCommentVisible");
 
-			View = new StackLayout
+			_root = new StackLayout
 			{
 				BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor),
 				Padding = _padding,
@@ -55,23 +53,36 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 					commentFrame
 				}
 			};
+
+			View = _root;
+			_root.SizeChanged += (_, __) => updateHeightIfPossible();
 		}
 
 		protected override void OnBindingContextChanged()
 		{
 			base.OnBindingContextChanged();
-			Height = getHeaderHeight();
-			Device.BeginInvokeOnMainThread(ForceUpdateSize);
+			Device.BeginInvokeOnMainThread(updateHeightIfPossible);
 		}
 
-		double getHeaderHeight()
+		void updateHeightIfPossible()
 		{
-			if (!(BindingContext is TestingGroupModel group))
+			if (_root.Width <= 0)
 			{
-				return _defaultHeaderHeight;
+				return;
 			}
 
-			return group.IsCommentVisible ? _commentHeaderHeight : _defaultHeaderHeight;
+			var request = _root.Measure(_root.Width, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+			var newHeight = request.Request.Height;
+			if (newHeight <= 0)
+			{
+				return;
+			}
+
+			if (Math.Abs(Height - newHeight) > 0.5)
+			{
+				Height = newHeight;
+				ForceUpdateSize();
+			}
 		}
 	}
 }
