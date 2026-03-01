@@ -211,7 +211,7 @@
 		/// Save marks calendar data lectures URL.
 		/// </summary>
 		public static string SaveLecturesCalendarData =>
-			$"{Servers.Current}/Services/Lectures/LecturesService.svc/SaveMarksCalendarData";
+			$"{Servers.Current}/subject/Services/Lectures/LecturesService.svc/SaveMarksCalendarData";
 
 		/// <summary>
 		/// Get save marks calendar data lectures URL.
@@ -221,7 +221,7 @@
 
 		public static string GetParticialsMarks => $"/subject/Services/Practicals/PracticalService.svc/GetMarks";
 
-		public static string SaveLabsMark => $"{Servers.Current}/Services/Labs/LabsService.svc/SaveLabsVisitingData";
+		public static string SaveLabsMark => $"{Servers.Current}/subject/Services/Labs/LabsService.svc/SaveLabsVisitingData";
 
 		public static string SaveStudentLabsMark => $"{Servers.Current}/subject/Services/Labs/LabsService.svc/SaveStudentLabsMark";
 

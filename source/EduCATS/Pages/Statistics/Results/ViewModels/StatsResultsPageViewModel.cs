@@ -31,6 +31,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		List<StatsPageLabsRatingModel> _currentPractMarksList;
 		List<StatsPageLabsVisitingModel> _currentPractVisitingList;
 		List<TakedLab> _takedLabs;
+		string _cachedVisitingSummary;
 
 		const string _emptyRatingString = "-";
 		const string _doubleStringFormat = "0.0";
@@ -89,6 +90,8 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getData()
 		{
+			_cachedVisitingSummary = null;
+
 			try {
 				switch (_statisticsPage) {
 					case StatsPageEnum.LabsRating:
@@ -145,6 +148,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 			else
 			{
+				_cachedVisitingSummary = normalizeVisitingSummary(studentTest?.LabsMarkTotal);
 				setLabsVisiting(null, studentTest);
 			}
 		}
@@ -165,6 +169,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 			else if (_statisticsPage == StatsPageEnum.LabsVisiting)
 			{
+				_cachedVisitingSummary = normalizeVisitingSummary(studentTest?.LabsMarkTotal);
 				setLabsVisiting(student, studentTest);
 			}
 			else if (_statisticsPage == StatsPageEnum.PractiseMarks)
@@ -173,6 +178,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			}
 			else
 			{
+				_cachedVisitingSummary = normalizeVisitingSummary(studentTest?.PracticalsMarkTotal);
 				setLabsVisiting(student, studentTest);
 			}
 		}
@@ -385,6 +391,14 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		void calculateSummary()
 		{
+			if ((_statisticsPage == StatsPageEnum.LabsVisiting ||
+				_statisticsPage == StatsPageEnum.PractiseVisiting) &&
+				!string.IsNullOrWhiteSpace(_cachedVisitingSummary))
+			{
+				setSummary(_cachedVisitingSummary);
+				return;
+			}
+
 			if (Marks == null) {
 				setSummary(_emptyRatingString);
 				return;
@@ -414,6 +428,22 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 		void setSummary(string summary)
 		{
 			_services.Device.MainThread(() => Summary = summary);
+		}
+
+		string normalizeVisitingSummary(string summaryFromServer)
+		{
+			if (string.IsNullOrWhiteSpace(summaryFromServer))
+			{
+				return null;
+			}
+
+			if (int.TryParse(summaryFromServer, NumberStyles.Integer, CultureInfo.InvariantCulture, out var value) ||
+				int.TryParse(summaryFromServer, NumberStyles.Integer, CultureInfo.CurrentCulture, out value))
+			{
+				return value.ToString(CultureInfo.InvariantCulture);
+			}
+
+			return null;
 		}
 
 		string setCommentByRole(string comment, bool show)

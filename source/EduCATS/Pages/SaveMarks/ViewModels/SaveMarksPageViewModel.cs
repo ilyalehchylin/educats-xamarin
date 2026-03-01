@@ -167,10 +167,10 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 						}
 						if (Date[0] == groupVisit.Date &&
 							!(_currentLecturesVisitingMarks.Contains(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
-							groupVisit.Mark, false))))
+							groupVisit.Mark, groupVisit.ShowForStudent))))
 						{
 							_currentLecturesVisitingMarks.Add(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
-							groupVisit.Mark, false));
+							groupVisit.Mark, groupVisit.ShowForStudent));
 						}
 					}
 				}
@@ -206,7 +206,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 						{
 							lect.Marks[m].Mark = _currentLecturesVisitingMarks[i].Mark;
 							lect.Marks[m].Comment = _currentLecturesVisitingMarks[i].Comment;
-							//lect.Marks[m]. = _currentLecturesVisitingMarksReady[i].ShowForStud;
+							lect.Marks[m].ShowForStudent = _currentLecturesVisitingMarks[i].ShowForStud;
 							i++;
 						};
 					};
@@ -233,6 +233,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 						{
 							mark.Mark = LabsVisitingMarksSubGroup[i].Mark;
 							mark.Comment = LabsVisitingMarksSubGroup[i].Comment;
+							mark.ShowForStudent = LabsVisitingMarksSubGroup[i].ShowForStud;
 							labsMarks.comments.Add(LabsVisitingMarksSubGroup[i].Comment);
 							labsMarks.Id.Add(mark.LabVisitingMarkId);
 							labsMarks.marks.Add(mark.Mark);
@@ -268,6 +269,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 					{
 						mark.Mark = LecturesMarks[i].Mark;
 						mark.Comment = LecturesMarks[i].Comment;
+						mark.ShowForStudent = LecturesMarks[i].ShowForStud;
 						savePracticial.Id.Add(mark.PracticalVisitingMarkId);
 						savePracticial.marks.Add(mark.Mark);
 						savePracticial.showForStudents.Add(LecturesMarks[i].ShowForStud);
@@ -367,10 +369,10 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 						{
 							if (_selectedDate == groupVisit.Date &&
 								!(_currentLecturesVisitingMarks.Contains(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
-								groupVisit.Mark, false))))
+								groupVisit.Mark, groupVisit.ShowForStudent))))
 							{
 								_currentLecturesVisitingMarks.Add(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
-								groupVisit.Mark, false));
+								groupVisit.Mark, groupVisit.ShowForStudent));
 							}
 						}
 					}
@@ -400,7 +402,8 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				{
 					foreach (var stud in group.PracticalVisitingMark.Where(v => v.ScheduleProtectionPracticalId == prVisId))
 					{
-						_currentLecturesVisitingMarks.Add(new VisitingPageModel(group.FullName, stud.Comment, stud.Mark, false));
+						_currentLecturesVisitingMarks.Add(new VisitingPageModel(
+							group.FullName, stud.Comment, stud.Mark, stud.ShowForStudent));
 					}
 				}
 				LecturesMarks = _currentLecturesVisitingMarks;
