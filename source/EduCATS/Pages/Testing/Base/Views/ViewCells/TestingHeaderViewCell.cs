@@ -48,5 +48,11 @@ namespace EduCATS.Pages.Testing.Base.Views.ViewCells
 				}
 			};
 		}
+
+		protected override void OnBindingContextChanged()
+		{
+			base.OnBindingContextChanged();
+			Device.BeginInvokeOnMainThread(ForceUpdateSize);
+		}
 	}
 }
