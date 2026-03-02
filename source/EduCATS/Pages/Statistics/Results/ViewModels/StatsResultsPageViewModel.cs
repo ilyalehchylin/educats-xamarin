@@ -531,7 +531,12 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		string setCommentByRole(string comment, bool show)
 		{
-			return show ? comment : null;
+			if (AppUserData.UserType == UserTypeEnum.Student)
+			{
+				return show ? comment : null;
+			}
+
+			return comment;
 		}
 
 		DateTime parseStatisticsDate(string date)
