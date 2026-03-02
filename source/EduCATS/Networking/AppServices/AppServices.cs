@@ -143,6 +143,24 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch student summary statistics request.
+		/// </summary>
+		/// <returns>Statistics data.</returns>
+		public static async Task<object> GetStudentStatisticsSummary()
+		{
+			return await AppServicesController.Request(Links.LoadStudentStatistics);
+		}
+
+		/// <summary>
+		/// Fetch teacher summary statistics request.
+		/// </summary>
+		/// <returns>Statistics data.</returns>
+		public static async Task<object> GetTeacherStatisticsSummary()
+		{
+			return await AppServicesController.Request(Links.GetTeacherStatistics);
+		}
+
+		/// <summary>
 		/// Fetch statistics request.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>

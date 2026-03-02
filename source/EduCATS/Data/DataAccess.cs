@@ -136,12 +136,34 @@ namespace EduCATS.Data
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Statistics data.</returns>
-			public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
+		public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
 		{
 			var dataAccess = new DataAccess<StatsModel>(
 				"stats_marks_error", getStatsCallback(subjectId, groupId),
 				GetKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
 			return await GetDataObject(dataAccess, false) as StatsModel;
+		}
+
+		/// <summary>
+		/// Fetch student summary statistics.
+		/// </summary>
+		/// <returns>Student summary statistics data.</returns>
+		public async static Task<StudentStatisticsSummaryModel> GetStudentStatisticsSummary()
+		{
+			var dataAccess = new DataAccess<StudentStatisticsSummaryModel>(
+				"stats_marks_error", getStudentStatisticsSummaryCallback());
+			return await GetDataObject(dataAccess, false) as StudentStatisticsSummaryModel;
+		}
+
+		/// <summary>
+		/// Fetch teacher summary statistics.
+		/// </summary>
+		/// <returns>Teacher summary statistics data.</returns>
+		public async static Task<TeacherStatisticsSummaryModel> GetTeacherStatisticsSummary()
+		{
+			var dataAccess = new DataAccess<TeacherStatisticsSummaryModel>(
+				"stats_marks_error", getTeacherStatisticsSummaryCallback());
+			return await GetDataObject(dataAccess, false) as TeacherStatisticsSummaryModel;
 		}
 
 		/// <summary>

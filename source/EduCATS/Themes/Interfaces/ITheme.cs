@@ -70,6 +70,7 @@
 		string StatisticsChartLabsColor { get; }
 		string StatisticsChartPractColor { get; }
 		string StatisticsChartTestsColor { get; }
+		string StatisticsChartCourseColor { get; }
 		string StatisticsChartRatingColor { get; }
 		string StatisticsBoxTextColor { get; }
 		string StatisticsExpandableTextColor { get; }

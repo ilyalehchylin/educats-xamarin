@@ -67,6 +67,7 @@
 	"stats_chart_average_labs": "Durchschnittliche Note für Laborarbeiten",
 	"stats_chart_average_pract": "Durchschnittsnote für praktische Arbeit",
 	"stats_chart_average_tests": "Durchschnittliche Note für Tests",
+	"stats_chart_average_course": "Bewertung für das Kursprojekt",
 	"stats_chart_rating": "Bewertung",
 	"stats_chart_not_enough_data": "Nicht genügend Daten, um das Diagramm anzuzeigen",
 	"stats_page_labs_rating": "Noten zu Laborarbeiten",

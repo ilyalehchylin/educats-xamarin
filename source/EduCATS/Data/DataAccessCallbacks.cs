@@ -83,6 +83,12 @@ namespace EduCATS.Data
 		static async Task<object> getStatsCallback(
 			int subjectId, int groupId) => await AppServices.GetStatistics(subjectId, groupId);
 
+		static async Task<object> getStudentStatisticsSummaryCallback() =>
+			await AppServices.GetStudentStatisticsSummary();
+
+		static async Task<object> getTeacherStatisticsSummaryCallback() =>
+			await AppServices.GetTeacherStatisticsSummary();
+
 		static async Task<object> getTestStatsCallback(
 			int subjectId, int groupId) => await AppServices.GetTestStatistics(subjectId, groupId);
 

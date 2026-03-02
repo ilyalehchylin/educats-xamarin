@@ -185,6 +185,18 @@
 		/// </summary>
 		public static string Registration => $"{Servers.Current}/Account/Register/";
 
+		/// <summary>
+		/// Get student summary statistics URL.
+		/// </summary>
+		public static string LoadStudentStatistics =>
+			$"{Servers.Current}/Services/Parental/ParentalService.svc/LoadStudent";
+
+		/// <summary>
+		/// Get teacher summary statistics URL.
+		/// </summary>
+		public static string GetTeacherStatistics =>
+			$"{Servers.Current}/Services/Statistics/StatisticsService.svc/GetTeacherStatistics";
+
 		public static string VerifyUserExists => $"{Servers.Current}/Account/UserExists?";
 		/// <summary>
 		/// Get verification URL.

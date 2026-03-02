@@ -124,6 +124,12 @@ namespace EduCATS.Pages.Statistics.Base.Views
 				Color.FromHex(Theme.Current.StatisticsChartTestsColor),
 				"AverageTests");
 
+			var avgCourseView = createStatisticsView(
+				CrossLocalization.Translate("stats_chart_average_course"),
+				Color.FromHex(Theme.Current.StatisticsChartCourseColor),
+				"AverageCourse");
+			avgCourseView.SetBinding(IsVisibleProperty, "IsCourse");
+
 			var avgRatingView = createStatisticsView(
 				CrossLocalization.Translate("stats_chart_rating"),
 				Color.FromHex(Theme.Current.StatisticsChartRatingColor),
@@ -132,7 +138,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			var avgStatsLayout = new StackLayout
 			{
 				Children = {
-					avgLabsView, avgTestsView, avgPractView, avgRatingView
+					avgLabsView, avgTestsView, avgPractView, avgCourseView, avgRatingView
 				}
 			};
 
