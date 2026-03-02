@@ -26,6 +26,8 @@
 	"type_activity_lecture": "Vortrag",
 	"type_activity_lab": "Laborarbeit",
 	"type_activity_practical": "Praktische Arbeit",
+	"type_activity_kconsultation": "KP",
+	"type_activity_dconsultation": "DP",
 
 	"server_test": "Testserver",
 	"server_local": "Lokaler Server",
