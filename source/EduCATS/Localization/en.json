@@ -26,6 +26,8 @@
 	"type_activity_lecture": "Lecture",
 	"type_activity_lab": "Lab",
 	"type_activity_practical": "Workshop",
+	"type_activity_kconsultation": "CP",
+	"type_activity_dconsultation": "DP",
 
 	"server_test": "Test server",
 	"server_local": "Local server",
@@ -56,6 +58,7 @@
 	"today_news_load_error": "Error occurred during retrieving news. Please try to refresh page or contact support.",
 	"today_subjects_error": "Error occurred during retrieving subjects. Please try to refresh page or contact support.",
 	"today_calendar_error": "Error occurred during retrieving subjects in calendar. Please try to refresh page or contact support.",
+	"today_diplom_projecting": "Diploma project",
 
 	"news_details_title": "News",
 
@@ -67,6 +70,7 @@
 	"stats_chart_average_labs": "Average laboratory works rating",
 	"stats_chart_average_pract": "Average practical works rating",
 	"stats_chart_average_tests": "Average tests rating",
+	"stats_chart_average_course": "Course project mark",
 	"stats_chart_rating": "Average rating",
 	"stats_chart_not_enough_data": "Not enough data to display chart",
 	"stats_page_labs_rating": "Laboratory works rating",

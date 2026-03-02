@@ -15,5 +15,11 @@ namespace EduCATS.Data.Models
 		/// </summary>
 		[JsonProperty("Size")]
 		public string Size { get; set; }
+
+		/// <summary>
+		/// Relative URL for file download.
+		/// </summary>
+		[JsonProperty("Url")]
+		public string Url { get; set; }
 	}
 }

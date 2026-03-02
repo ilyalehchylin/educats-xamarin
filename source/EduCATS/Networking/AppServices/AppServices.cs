@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EduCATS.Data.Models;
 using EduCATS.Demo;
@@ -121,11 +122,57 @@ namespace EduCATS.Networking.AppServices
 		/// <summary>
 		/// Fetch calendar data request.
 		/// </summary>
-		/// <param name="username">Username.</param>
+		/// <param name="date">Date.</param>
 		/// <returns>Calendar data.</returns>
 		public static async Task<object> GetSchedule(string date)
 		{
-			return await AppServicesController.Request(Links.GetSchedule + $"dateStart={date}&dateEnd={date}", AppDemoType.Schedule);
+			return await GetSchedule(date, date);
+		}
+
+		/// <summary>
+		/// Fetch calendar data request.
+		/// </summary>
+		/// <param name="dateStart">Start date.</param>
+		/// <param name="dateEnd">End date.</param>
+		/// <returns>Calendar data.</returns>
+		public static async Task<object> GetSchedule(string dateStart, string dateEnd)
+		{
+			return await AppServicesController.Request(
+				Links.GetSchedule + $"dateStart={dateStart}&dateEnd={dateEnd}", AppDemoType.Schedule);
+		}
+
+		/// <summary>
+		/// Fetch diploma project consultations request.
+		/// </summary>
+		/// <param name="count">Items count.</param>
+		/// <param name="page">Page number.</param>
+		/// <returns>Consultations data.</returns>
+		public static async Task<object> GetDiplomProjectConsultation(int count = 1000, int page = 1)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetDiplomProjectConsultation}?count={count}&page={page}");
+		}
+
+		/// <summary>
+		/// Fetch course project consultations request.
+		/// </summary>
+		/// <param name="count">Items count.</param>
+		/// <param name="page">Page number.</param>
+		/// <returns>Consultations data.</returns>
+		public static async Task<object> GetCourseProjectConsultation(int count = 1000, int page = 1)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetCourseProjectConsultation}?count={count}&page={page}");
+		}
+
+		/// <summary>
+		/// Fetch profile info by id request.
+		/// </summary>
+		/// <param name="userId">User id.</param>
+		/// <returns>Profile data.</returns>
+		public static async Task<object> GetProfileInfoById(int userId)
+		{
+			return await AppServicesController.Request($"{Links.GetProfileInfoById}/{userId}");
 		}
 
 		/// <summary>
@@ -139,6 +186,24 @@ namespace EduCATS.Networking.AppServices
 			return await AppServicesController.Request(
 				$"{Links.GetStatistics}?subjectID={subjectId}&groupID={groupId}",
 				AppDemoType.Statistics);
+		}
+
+		/// <summary>
+		/// Fetch student summary statistics request.
+		/// </summary>
+		/// <returns>Statistics data.</returns>
+		public static async Task<object> GetStudentStatisticsSummary()
+		{
+			return await AppServicesController.Request(Links.LoadStudentStatistics);
+		}
+
+		/// <summary>
+		/// Fetch teacher summary statistics request.
+		/// </summary>
+		/// <returns>Statistics data.</returns>
+		public static async Task<object> GetTeacherStatisticsSummary()
+		{
+			return await AppServicesController.Request(Links.GetTeacherStatistics);
 		}
 
 		/// <summary>
@@ -212,7 +277,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetLabs(int subjectId, int groupId)
 		{
 			return await AppServicesController.Request(
-				$"{Links.GetLabsTest}subjectID={subjectId}&groupID={groupId}",
+				$"{Links.GetLabsTest}subjectId={subjectId}&groupId={groupId}",
 				AppDemoType.LabsResults);
 		}
 
@@ -380,11 +445,16 @@ namespace EduCATS.Networking.AppServices
 
 		/// Fetch files details request.
 		/// </summary>
-		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="values">Values list.</param>
 		/// <returns>Files data.</returns>
-		public static async Task<object> GetFilesDetails(string uri)
+		public static async Task<object> GetFilesDetails(IEnumerable<string> values)
 		{
-			return await AppServicesController.Request($"{Links.GetFilesDetails}?values=[{uri}]&deleteValues=DELETE", AppDemoType.FilesDetailsTest);
+			var encodedValues = Uri.EscapeDataString(
+				JsonConvert.SerializeObject(values ?? Array.Empty<string>()));
+
+			return await AppServicesController.Request(
+				$"{Links.GetFilesDetails}?values={encodedValues}&deleteValues=DELETE",
+				AppDemoType.FilesDetailsTest);
 		}
 
 		public static async Task<object> GetGroupInfo(string groupName)

@@ -27,6 +27,8 @@
 
 	"type_activity_lab": "Laboratoriniai darbai",
 	"type_activity_practical": "Praktinė pamoka",
+	"type_activity_kconsultation": "KP",
+	"type_activity_dconsultation": "DP",
 
 	"server_test": "Testavimo serveris",
 	"server_local": "Vietinis serveris",
@@ -57,6 +59,7 @@
 	"today_news_load_error": "Gaunant naujienų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
 	"today_subjects_error": "Gaunant elementų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
 	"today_calendar_error": "Gaunant kalendoriaus elementų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
+	"today_diplom_projecting": "Diplominis projektas",
 
 	"news_details_title": "Naujienos",
 
@@ -68,6 +71,7 @@
 	"stats_chart_average_labs": "Vidutinis laboratorinių darbų įvertinimas",
 	"stats_chart_average_pract": "Vidutinis praktinio darbo įvertinimas",
 	"stats_chart_average_tests": "Vidutinis testo rezultatas",
+	"stats_chart_average_course": "Kursinio projekto įvertinimas",
 	"stats_chart_rating": "Vertinimo balas",
 	"stats_chart_not_enough_data": "Nepakanka duomenų diagramai parodyti",
 	"stats_page_labs_rating": "Laboratorinių darbų įvertinimai",

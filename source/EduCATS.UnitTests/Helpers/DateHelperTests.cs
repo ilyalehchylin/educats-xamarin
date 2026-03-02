@@ -61,6 +61,13 @@ namespace EduCATS.UnitTests
 		}
 
 		[Test]
+		public void GetUnixFromInvalidStringReturnsZero()
+		{
+			var actual = DateHelper.GetUnixFromString("InvalidUnixString");
+			Assert.AreEqual(0, actual);
+		}
+
+		[Test]
 		public void Convert13DigitsUnixToDateTimeTest()
 		{
 			var expected = DateTime.Parse(_convertedUnixDateString);
@@ -167,6 +174,15 @@ namespace EduCATS.UnitTests
 			var date = _defaultDate;
 			var expected = new DateTime(2020, 4, 13);
 			var actual = DateHelper.GetWeekStartDate(date, WeekEnum.Next);
+			Assert.AreEqual(expected, actual);
+		}
+
+		[Test]
+		public void GetUnknownWeekStartDateFallsBackToCurrentWeek()
+		{
+			var date = _defaultDate;
+			var expected = new DateTime(2020, 4, 6);
+			var actual = DateHelper.GetWeekStartDate(date, (WeekEnum)(-1));
 			Assert.AreEqual(expected, actual);
 		}
 

@@ -71,6 +71,24 @@ namespace EduCATS.Helpers.Logs
 		}
 
 		/// <summary>
+		/// Log message.
+		/// </summary>
+		/// <param name="message">Message.</param>
+		/// <param name="caller">Used to get method caller.</param>
+		public static void Log(string message, [CallerMemberName] string caller = "")
+		{
+			checkFiles();
+
+			if (!logFileExists() || string.IsNullOrEmpty(message)) {
+				return;
+			}
+
+			var writeDate = DateTime.Now.ToString("dd-MM-yyyy hh:mm:ss");
+			var logMessage = $"[{writeDate}] Message: '{message}' > target method: {caller}\n";
+			FileManager.Append(LogsFilePath, logMessage);
+		}
+
+		/// <summary>
 		/// Get logs file contents.
 		/// </summary>
 		/// <returns>Logs contents.</returns>

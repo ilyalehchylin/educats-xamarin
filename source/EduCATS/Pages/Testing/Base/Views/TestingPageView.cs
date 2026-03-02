@@ -49,7 +49,7 @@ namespace EduCATS.Pages.Testing.Base.Views
 
 		ListView createTestList(View subjectsView)
 		{
-			var testListView = new ListView {
+			var testListView = new ListView(ListViewCachingStrategy.RetainElement) {
 				HasUnevenRows = true,
 				IsGroupingEnabled = true,
 				IsPullToRefreshEnabled = true,

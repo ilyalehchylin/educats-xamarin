@@ -1,15 +1,11 @@
-using EduCATS.Constants;
-using EduCATS.Data.Models;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
+using EduCATS.Helpers.Forms.Converters;
 using EduCATS.Pages.Settings.Profile.ViewModels;
 using EduCATS.Themes;
 using FFImageLoading.Forms;
 using Nyxbull.Plugins.CrossLocalization;
-using System.Collections.Generic;
 using Xamarin.Forms;
-using EduCATS.Helpers.Forms.Converters;
-using FFImageLoading.Transformations;
 
 namespace EduCATS.Pages.Settings.Profile.Views
 {
@@ -22,10 +18,13 @@ namespace EduCATS.Pages.Settings.Profile.Views
 		static Thickness _listMarginBlock = new Thickness(0, 6, 0, 6);
 
 		const double _spacing = 10;
-		const double _spacingLabel = 0;
+		const double _spacingLabel = 6;
 		const double _buttonHeight = 50;
 		const double _avatarHeight = 200;
 		const double _photoBlockHeight = 400;
+		const double _sectionIconSize = 16;
+		static readonly Thickness _sectionIconMargin = new Thickness(0, 0, 2, 0);
+		readonly StringNotEmptyToBoolConverter _stringNotEmptyToBoolConverter = new StringNotEmptyToBoolConverter();
 
 		public ProfilePageView()
 		{
@@ -75,29 +74,29 @@ namespace EduCATS.Pages.Settings.Profile.Views
 		}
 		Frame createSecondInfoBlock()
 		{
-			var emailLabel = createLabel("email");
+			var emailLabel = createSectionLabel("email", Theme.Current.ProfileEmailIcon);
 			var emailText = createInfoLabel();
 			emailText.SetBinding(Label.TextProperty, "Email");
 
-			var email = createBlock(emailText, emailLabel);
+			var email = createBlock(emailText, emailLabel, "Email");
 
-			var phoneLabel = createLabel("phone");
+			var phoneLabel = createSectionLabel("phone", Theme.Current.ProfilePhoneIcon);
 			var phoneText = createInfoLabel();
 			phoneText.SetBinding(Label.TextProperty, "Phone");
 
-			var phone = createBlock(phoneText, phoneLabel);
+			var phone = createBlock(phoneText, phoneLabel, "Phone");
 
-			var accountinfoLabel = createLabel("accountinfo");
+			var accountinfoLabel = createSectionLabel("accountinfo", Theme.Current.ProfileSocialMediaIcon);
 			var accountinfoText = createInfoLabel();
 			accountinfoText.SetBinding(Label.TextProperty, "AccountInfo");
 
-			var accountinfo = createBlock(accountinfoText, accountinfoLabel);
+			var accountinfo = createBlock(accountinfoText, accountinfoLabel, "AccountInfo");
 
-			var aboutLabel = createLabel("about");
+			var aboutLabel = createSectionLabel("about", Theme.Current.ProfileAboutIcon);
 			var aboutText = createInfoLabel();
 			aboutText.SetBinding(Label.TextProperty, "About");
 
-			var about = createBlock(aboutText, aboutLabel);
+			var about = createBlock(aboutText, aboutLabel, "About");
 
 			var roundedLayout = new Frame
 			{
@@ -123,36 +122,35 @@ namespace EduCATS.Pages.Settings.Profile.Views
 
 		Frame createMainInfoBlock()
 		{
-			var surnameLabel = createLabel("surname");
+			var surnameLabel = createSectionLabel("surname", Theme.Current.ProfileNameIcon);
 			var surnameText = createInfoLabel();
 			surnameText.SetBinding(Label.TextProperty, "SecondName");
 
-			var surname = createBlock(surnameText, surnameLabel);
+			var surname = createBlock(surnameText, surnameLabel, "SecondName");
 
-			var nameLabel = createLabel("name");
+			var nameLabel = createSectionLabel("name", Theme.Current.ProfileNameIcon);
 			var nameText = createInfoLabel();
 			nameText.SetBinding(Label.TextProperty, "Name");
 
-			var name = createBlock(nameText, nameLabel);
+			var name = createBlock(nameText, nameLabel, "Name");
 
-			var patronymicLabel = createLabel("patronymic");
+			var patronymicLabel = createSectionLabel("patronymic", Theme.Current.ProfileNameIcon);
 			var patronymicText = createInfoLabel();
 			patronymicText.SetBinding(Label.TextProperty, "Patronymic");
 
-			var patronymic = createBlock(patronymicText, patronymicLabel);
+			var patronymic = createBlock(patronymicText, patronymicLabel, "Patronymic");
 
-			var usernameLabel = createLabel("login");
+			var usernameLabel = createSectionLabel("login", Theme.Current.ProfileLoginIcon);
 			var loginText = createInfoLabel();
 			loginText.SetBinding(Label.TextProperty, "Username");
 
-			var login = createBlock(loginText, usernameLabel);
+			var login = createBlock(loginText, usernameLabel, "Username");
 
-			var groupLabel = createGroupLabel();
-			groupLabel.SetBinding(Label.TextProperty, "GroupLabel");
+			var groupLabel = createSectionLabelWithBinding("GroupLabel", Theme.Current.ProfileGroupIcon);
 			var groupName = createInfoLabel();
 			groupName.SetBinding(Label.TextProperty, "Group");
 
-			var group = createBlock(groupName, groupLabel);
+			var group = createBlock(groupName, groupLabel, "Group");
 
 			var layout = new StackLayout
 			{
@@ -184,9 +182,9 @@ namespace EduCATS.Pages.Settings.Profile.Views
 			return roundedLayout;
 		}
 
-		StackLayout createBlock(Label firstText, Label secondText)
+		StackLayout createBlock(View firstText, View secondText, string valueBindingPath)
 		{
-			return new StackLayout
+			var block = new StackLayout
 			{
 				Margin = _listMarginBlock,
 				Spacing = _spacingLabel,
@@ -196,19 +194,69 @@ namespace EduCATS.Pages.Settings.Profile.Views
 				secondText,
 				}
 			};
+
+			if (!string.IsNullOrWhiteSpace(valueBindingPath))
+			{
+				block.SetBinding(
+					IsVisibleProperty,
+					new Binding(valueBindingPath, converter: _stringNotEmptyToBoolConverter));
+			}
+
+			return block;
 		}
 
-		Label createLabel(string text)
+		View createSectionLabel(string text, string icon)
+		{
+			var label = createLabel();
+			label.Text = CrossLocalization.Translate(text);
+			return createSectionHeader(label, icon);
+		}
+
+		View createSectionLabelWithBinding(string bindingPath, string icon)
+		{
+			var label = createLabel();
+			label.SetBinding(Label.TextProperty, bindingPath);
+			return createSectionHeader(label, icon);
+		}
+
+		View createSectionHeader(Label label, string icon)
+		{
+			return new StackLayout
+			{
+				Orientation = StackOrientation.Horizontal,
+				HorizontalOptions = LayoutOptions.Start,
+				Margin = _listMarginLabel,
+				Children =
+				{
+					createSectionIcon(icon),
+					label
+				}
+			};
+		}
+
+		CachedImage createSectionIcon(string icon)
+		{
+			return new CachedImage
+			{
+				HeightRequest = _sectionIconSize,
+				WidthRequest = _sectionIconSize,
+				VerticalOptions = LayoutOptions.Center,
+				Margin = _sectionIconMargin,
+				Source = ImageSource.FromFile(icon)
+			};
+		}
+
+		Label createLabel()
 		{
 			return new Label
 			{
 				TextColor = Color.FromHex(Theme.Current.SettingsProfileLabelColor),
 				Style = AppStyles.GetLabelStyle(),
-				Text = CrossLocalization.Translate(text),
 				FontSize = Device.GetNamedSize(NamedSize.Small, typeof(Label)),
-				Margin = _listMarginLabel
+				VerticalOptions = LayoutOptions.Center
 			};
 		}
+
 		Label createInfoLabel()
 		{
 			return new Label
@@ -216,16 +264,6 @@ namespace EduCATS.Pages.Settings.Profile.Views
 				TextColor = Color.FromHex(Theme.Current.SettingsGroupUserColor),
 				Style = AppStyles.GetLabelStyle(),
 				Margin = _listMargin
-			};
-		}
-		Label createGroupLabel()
-		{
-			return new Label
-			{
-				TextColor = Color.FromHex(Theme.Current.SettingsProfileLabelColor),
-				Style = AppStyles.GetLabelStyle(),
-				FontSize = Device.GetNamedSize(NamedSize.Default, typeof(Label)),
-				Margin = _listMarginLabel
 			};
 		}
 		View createAvatar()
@@ -241,9 +279,9 @@ namespace EduCATS.Pages.Settings.Profile.Views
 
 			var initialsLabel = new Label
 			{
-				TextColor = Color.Black,
+				TextColor = Color.FromHex(Theme.Current.BaseAppColor),
 				FontSize = 50,
-				BackgroundColor = Color.LightGray,
+				BackgroundColor = Color.FromHex(Theme.Current.BaseBlockColor),
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 				WidthRequest = _avatarHeight,

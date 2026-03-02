@@ -26,6 +26,8 @@
 	"type_activity_lecture": "Лекцыя",
 	"type_activity_lab": "Лаб. праца",
 	"type_activity_practical": "Практ. праца",
+	"type_activity_kconsultation": "КП",
+	"type_activity_dconsultation": "ДП",
 
 	"server_test": "Тэставы сервер",
 	"server_local": "Лакальны сервер",
@@ -56,6 +58,7 @@
 	"today_news_load_error": "Здарылася памылка падчас атрымання спісу навін. Калі ласка абнавіце старонку альбо звярніцеся ў службу падтрымкі.",
 	"today_subjects_error": "Здарылася памылка падчас атрымання спісу прадметаў. Калі ласка абнавіце старонку альбо звярніцеся ў службу падтрымкі.",
 	"today_calendar_error": "Здарылася памылка падчас атрымання спісу прадметаў у календары. Калі ласка абнавіце старонку альбо звярніцеся ў службу падтрымкі.",
+	"today_diplom_projecting": "Дыпломнае праектаванне",
 
 	"subjects_choose": "Абярыце прадмет",
 
@@ -65,6 +68,7 @@
 	"stats_chart_average_labs": "Сярэдняя адзнака за лабараторныя працы",
 	"stats_chart_average_pract": "Сярэдняя адзнака за практычныя работы",
 	"stats_chart_average_tests": "Сярэдняя адзнака за тэсты",
+	"stats_chart_average_course": "Адзнака за курсавы праект",
 	"stats_chart_rating": "Рэйтынгавая адзнака",
 	"stats_chart_not_enough_data": "Недастаткова даных для адлюстравання графіка",
 	"stats_page_labs_rating": "Адзнакі за лабараторныя працы",

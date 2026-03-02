@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using EduCATS.Networking.AppServices;
 using EduCATS.Networking.Models.Testing;
 
@@ -68,10 +69,28 @@ namespace EduCATS.Data
 		/// <summary>
 		/// Schedule callback.
 		/// </summary>
-		/// <param name="username">Username.</param>
+		/// <param name="date">Date.</param>
 		/// <returns>Calendar data.</returns>
 		static async Task<object> getScheduleCallback(
 			string date) => await AppServices.GetSchedule(date);
+
+		/// <summary>
+		/// Schedule callback.
+		/// </summary>
+		/// <param name="dateStart">Start date.</param>
+		/// <param name="dateEnd">End date.</param>
+		/// <returns>Calendar data.</returns>
+		static async Task<object> getScheduleCallback(
+			string dateStart, string dateEnd) => await AppServices.GetSchedule(dateStart, dateEnd);
+
+		static async Task<object> getDiplomProjectConsultationCallback(int count, int page) =>
+			await AppServices.GetDiplomProjectConsultation(count, page);
+
+		static async Task<object> getCourseProjectConsultationCallback(int count, int page) =>
+			await AppServices.GetCourseProjectConsultation(count, page);
+
+		static async Task<object> getProfileInfoByIdCallback(int userId) =>
+			await AppServices.GetProfileInfoById(userId);
 
 		/// <summary>
 		/// Statistics callback.
@@ -81,6 +100,12 @@ namespace EduCATS.Data
 		/// <returns>Statistics data.</returns>
 		static async Task<object> getStatsCallback(
 			int subjectId, int groupId) => await AppServices.GetStatistics(subjectId, groupId);
+
+		static async Task<object> getStudentStatisticsSummaryCallback() =>
+			await AppServices.GetStudentStatisticsSummary();
+
+		static async Task<object> getTeacherStatisticsSummaryCallback() =>
+			await AppServices.GetTeacherStatisticsSummary();
 
 		static async Task<object> getTestStatsCallback(
 			int subjectId, int groupId) => await AppServices.GetTestStatistics(subjectId, groupId);
@@ -236,10 +261,10 @@ namespace EduCATS.Data
 		/// <summary>
 		/// Files details callback.
 		/// </summary>
-		/// <param name="content uri">content uri.</param>
+		/// <param name="values">Values list.</param>
 		/// <returns>Files data.</returns>
 		static async Task<object> getFilesDetailsCallback(
-			string uri) => await AppServices.GetFilesDetails(uri);
+			IEnumerable<string> values) => await AppServices.GetFilesDetails(values);
 
 		/// <summary>
 		/// GroupInfo Callback

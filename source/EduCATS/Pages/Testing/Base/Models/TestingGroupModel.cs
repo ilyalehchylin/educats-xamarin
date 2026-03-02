@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using EduCATS.Data.Models;
 
 namespace EduCATS.Pages.Testing.Base.Models
@@ -7,6 +8,7 @@ namespace EduCATS.Pages.Testing.Base.Models
 	{
 		public string SectionName { get; set; }
 		public string Comment { get; set; }
+		public bool IsCommentVisible => !string.IsNullOrWhiteSpace(Comment);
 
 		public List<TestModel> Tests => this;
 

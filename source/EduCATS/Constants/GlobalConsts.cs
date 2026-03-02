@@ -32,7 +32,7 @@
 		/// <summary>
 		/// Release notes link.
 		/// </summary>
-		public const string ReleaseNotesLink = "https://github.com/ilyalehchylin/educats-xamarin/releases";
+		public const string ReleaseNotesLink = "https://github.com/ilyalehchylin/educats-xamarin/releases/latest";
 
 		/// <summary>
 		/// GitHub repository.

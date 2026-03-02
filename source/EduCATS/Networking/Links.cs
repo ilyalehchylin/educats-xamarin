@@ -61,6 +61,23 @@
 		public static string GetSchedule => $"{Servers.Current}/Services/Schedule/ScheduleService.svc/GetSchedule?";
 
 		/// <summary>
+		/// Get diploma project consultations URL.
+		/// </summary>
+		public static string GetDiplomProjectConsultation =>
+			$"{Servers.Current}/api/DiplomProjectConsultation";
+
+		/// <summary>
+		/// Get course project consultations URL.
+		/// </summary>
+		public static string GetCourseProjectConsultation =>
+			$"{Servers.Current}/api/CourseProjectConsultation";
+
+		/// <summary>
+		/// Get profile info by id URL.
+		/// </summary>
+		public static string GetProfileInfoById => $"{Servers.Current}/Profile/GetProfileInfoById";
+
+		/// <summary>
 		/// Get laboratory works statistics URL.
 		/// </summary>
 		public static string GetStatistics => $"{Servers.Current}/Services/Labs/LabsService.svc/GetMarksV2";
@@ -78,7 +95,7 @@
 		/// <summary>
 		/// Get laboratory works URL.
 		/// </summary>
-		public static string GetLabsTest => $"{Servers.Current}/Services/Labs/LabsService.svc/GetLabsV2?";
+		public static string GetLabsTest => $"{Servers.Current}/subject/Services/Labs/LabsService.svc/GetLabsV2?";
 
 		public static string GetPracticialsTest => $"{Servers.Current}/subject/Services/Practicals/PracticalService.svc/GetPracticalsV2?";
 		
@@ -185,6 +202,18 @@
 		/// </summary>
 		public static string Registration => $"{Servers.Current}/Account/Register/";
 
+		/// <summary>
+		/// Get student summary statistics URL.
+		/// </summary>
+		public static string LoadStudentStatistics =>
+			$"{Servers.Current}/Services/Parental/ParentalService.svc/LoadStudent";
+
+		/// <summary>
+		/// Get teacher summary statistics URL.
+		/// </summary>
+		public static string GetTeacherStatistics =>
+			$"{Servers.Current}/Services/Statistics/StatisticsService.svc/GetTeacherStatistics";
+
 		public static string VerifyUserExists => $"{Servers.Current}/Account/UserExists?";
 		/// <summary>
 		/// Get verification URL.
@@ -211,7 +240,7 @@
 		/// Save marks calendar data lectures URL.
 		/// </summary>
 		public static string SaveLecturesCalendarData =>
-			$"{Servers.Current}/Services/Lectures/LecturesService.svc/SaveMarksCalendarData";
+			$"{Servers.Current}/subject/Services/Lectures/LecturesService.svc/SaveMarksCalendarData";
 
 		/// <summary>
 		/// Get save marks calendar data lectures URL.
@@ -221,9 +250,9 @@
 
 		public static string GetParticialsMarks => $"/subject/Services/Practicals/PracticalService.svc/GetMarks";
 
-		public static string SaveLabsMark => $"{Servers.Current}/Services/Labs/LabsService.svc/SaveLabsVisitingData";
+		public static string SaveLabsMark => $"{Servers.Current}/subject/Services/Labs/LabsService.svc/SaveLabsVisitingData";
 
-		public static string SaveStudentLabsMark => $"{Servers.Current}/Services/Labs/LabsService.svc/SaveStudentLabsMark";
+		public static string SaveStudentLabsMark => $"{Servers.Current}/subject/Services/Labs/LabsService.svc/SaveStudentLabsMark";
 
 		public static string SaveStudentPracticalMark => $"{Servers.Current}/subject/Services/Practicals/PracticalService.svc/SavePracticalsVisitingData";
 

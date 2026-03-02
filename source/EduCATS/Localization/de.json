@@ -26,6 +26,8 @@
 	"type_activity_lecture": "Vortrag",
 	"type_activity_lab": "Laborarbeit",
 	"type_activity_practical": "Praktische Arbeit",
+	"type_activity_kconsultation": "KP",
+	"type_activity_dconsultation": "DP",
 
 	"server_test": "Testserver",
 	"server_local": "Lokaler Server",
@@ -56,6 +58,7 @@
 	"today_news_load_error": "Fehler beim abrufen der Nachrichtenliste. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
 	"today_subjects_error": "Fehler beim abrufen der Artikelliste. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
 	"today_calendar_error": "Fehler beim abrufen der Liste der Studienfachern im Kalender. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+	"today_diplom_projecting": "Diplomprojekt",
 
 	"news_details_title": "Nachrichten",
 
@@ -67,6 +70,7 @@
 	"stats_chart_average_labs": "Durchschnittliche Note für Laborarbeiten",
 	"stats_chart_average_pract": "Durchschnittsnote für praktische Arbeit",
 	"stats_chart_average_tests": "Durchschnittliche Note für Tests",
+	"stats_chart_average_course": "Bewertung für das Kursprojekt",
 	"stats_chart_rating": "Bewertung",
 	"stats_chart_not_enough_data": "Nicht genügend Daten, um das Diagramm anzuzeigen",
 	"stats_page_labs_rating": "Noten zu Laborarbeiten",

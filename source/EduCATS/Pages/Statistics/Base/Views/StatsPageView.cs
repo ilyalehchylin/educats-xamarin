@@ -27,14 +27,16 @@ namespace EduCATS.Pages.Statistics.Base.Views
 		static Thickness _hiddenDetailsPadding = new Thickness(0, 10, 0, 0);
 		static Thickness _expandableViewPadding = new Thickness(0, 5, 0, 0);
 
+		readonly StatsPageViewModel _statsPageViewModel;
+
 		public StatsPageView()
 		{
 			NavigationPage.SetHasNavigationBar(this, false);
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
-			var statsPageViewModel = new StatsPageViewModel(new PlatformServices());
-			statsPageViewModel.Init();
-			BindingContext = statsPageViewModel;
+			_statsPageViewModel = new StatsPageViewModel(new PlatformServices());
+			_statsPageViewModel.Init();
+			BindingContext = _statsPageViewModel;
 			createViews();
 		}
 
@@ -122,6 +124,12 @@ namespace EduCATS.Pages.Statistics.Base.Views
 				Color.FromHex(Theme.Current.StatisticsChartTestsColor),
 				"AverageTests");
 
+			var avgCourseView = createStatisticsView(
+				CrossLocalization.Translate("stats_chart_average_course"),
+				Color.FromHex(Theme.Current.StatisticsChartCourseColor),
+				"AverageCourse");
+			avgCourseView.SetBinding(IsVisibleProperty, "IsCourse");
+
 			var avgRatingView = createStatisticsView(
 				CrossLocalization.Translate("stats_chart_rating"),
 				Color.FromHex(Theme.Current.StatisticsChartRatingColor),
@@ -130,7 +138,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			var avgStatsLayout = new StackLayout
 			{
 				Children = {
-					avgLabsView, avgTestsView, avgPractView, avgRatingView
+					avgLabsView, avgTestsView, avgPractView, avgCourseView, avgRatingView
 				}
 			};
 

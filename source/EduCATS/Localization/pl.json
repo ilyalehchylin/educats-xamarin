@@ -26,6 +26,8 @@
 	"type_activity_lecture": "Wykład",
 	"type_activity_lab": "Praca laboratoryjna",
 	"type_activity_practical": "Praca praktyczna",
+	"type_activity_kconsultation": "KP",
+	"type_activity_dconsultation": "DP",
 
 	"server_test": "Serwer testowy",
 	"server_local": "Serwer lokalny",
@@ -55,6 +57,7 @@
 	"today_news_load_error": "Wystąpił błąd podczas pobierania listy wiadomości. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
 	"today_subjects_error": "Wystąpił błąd podczas pobierania listy dyscyplin. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
 	"today_calendar_error": "Wystąpił błąd podczas pobierania listy dyscyplin w kalendarzu. Proszę odświeżyć stronę lub skontaktować się z obsługą klienta.",
+	"today_diplom_projecting": "Projekt dyplomowy",
 
 	"news_details_title": "Wiadomości",
 
@@ -66,6 +69,7 @@
 	"stats_chart_average_labs": "Średnia ocean za pracę laboratoryjne",
 	"stats_chart_average_pract": "Średnia ocena za pracę praktyczną",
 	"stats_chart_average_tests": "Średnia ocena za testy",
+	"stats_chart_average_course": "Ocena za projekt kursowy",
 	"stats_chart_rating": "Ocena ratingowa",
 	"stats_chart_not_enough_data": "Brak danych do wyświetlenia grafiku",
 	"stats_page_labs_rating": "Wyniki prac laboratoryjnych",
