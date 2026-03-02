@@ -122,11 +122,57 @@ namespace EduCATS.Networking.AppServices
 		/// <summary>
 		/// Fetch calendar data request.
 		/// </summary>
-		/// <param name="username">Username.</param>
+		/// <param name="date">Date.</param>
 		/// <returns>Calendar data.</returns>
 		public static async Task<object> GetSchedule(string date)
 		{
-			return await AppServicesController.Request(Links.GetSchedule + $"dateStart={date}&dateEnd={date}", AppDemoType.Schedule);
+			return await GetSchedule(date, date);
+		}
+
+		/// <summary>
+		/// Fetch calendar data request.
+		/// </summary>
+		/// <param name="dateStart">Start date.</param>
+		/// <param name="dateEnd">End date.</param>
+		/// <returns>Calendar data.</returns>
+		public static async Task<object> GetSchedule(string dateStart, string dateEnd)
+		{
+			return await AppServicesController.Request(
+				Links.GetSchedule + $"dateStart={dateStart}&dateEnd={dateEnd}", AppDemoType.Schedule);
+		}
+
+		/// <summary>
+		/// Fetch diploma project consultations request.
+		/// </summary>
+		/// <param name="count">Items count.</param>
+		/// <param name="page">Page number.</param>
+		/// <returns>Consultations data.</returns>
+		public static async Task<object> GetDiplomProjectConsultation(int count = 1000, int page = 1)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetDiplomProjectConsultation}?count={count}&page={page}");
+		}
+
+		/// <summary>
+		/// Fetch course project consultations request.
+		/// </summary>
+		/// <param name="count">Items count.</param>
+		/// <param name="page">Page number.</param>
+		/// <returns>Consultations data.</returns>
+		public static async Task<object> GetCourseProjectConsultation(int count = 1000, int page = 1)
+		{
+			return await AppServicesController.Request(
+				$"{Links.GetCourseProjectConsultation}?count={count}&page={page}");
+		}
+
+		/// <summary>
+		/// Fetch profile info by id request.
+		/// </summary>
+		/// <param name="userId">User id.</param>
+		/// <returns>Profile data.</returns>
+		public static async Task<object> GetProfileInfoById(int userId)
+		{
+			return await AppServicesController.Request($"{Links.GetProfileInfoById}/{userId}");
 		}
 
 		/// <summary>

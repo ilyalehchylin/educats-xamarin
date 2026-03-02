@@ -69,10 +69,28 @@ namespace EduCATS.Data
 		/// <summary>
 		/// Schedule callback.
 		/// </summary>
-		/// <param name="username">Username.</param>
+		/// <param name="date">Date.</param>
 		/// <returns>Calendar data.</returns>
 		static async Task<object> getScheduleCallback(
 			string date) => await AppServices.GetSchedule(date);
+
+		/// <summary>
+		/// Schedule callback.
+		/// </summary>
+		/// <param name="dateStart">Start date.</param>
+		/// <param name="dateEnd">End date.</param>
+		/// <returns>Calendar data.</returns>
+		static async Task<object> getScheduleCallback(
+			string dateStart, string dateEnd) => await AppServices.GetSchedule(dateStart, dateEnd);
+
+		static async Task<object> getDiplomProjectConsultationCallback(int count, int page) =>
+			await AppServices.GetDiplomProjectConsultation(count, page);
+
+		static async Task<object> getCourseProjectConsultationCallback(int count, int page) =>
+			await AppServices.GetCourseProjectConsultation(count, page);
+
+		static async Task<object> getProfileInfoByIdCallback(int userId) =>
+			await AppServices.GetProfileInfoById(userId);
 
 		/// <summary>
 		/// Statistics callback.

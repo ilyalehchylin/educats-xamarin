@@ -121,13 +121,65 @@ namespace EduCATS.Data
 		/// <summary>
 		/// Fetch schedule calendar data.
 		/// </summary>
-		/// <param name="username">Username.</param>
+		/// <param name="date">Date.</param>
 		/// <returns>Calendar data.</returns>
 		public async static Task<CalendarSubjectModelTest> GetSchedule(string date)
 		{
+			return await GetSchedule(date, date);
+		}
+
+		/// <summary>
+		/// Fetch schedule calendar data.
+		/// </summary>
+		/// <param name="dateStart">Start date.</param>
+		/// <param name="dateEnd">End date.</param>
+		/// <returns>Calendar data.</returns>
+		public async static Task<CalendarSubjectModelTest> GetSchedule(string dateStart, string dateEnd)
+		{
 			var dataAccess = new DataAccess<CalendarSubjectModelTest>(
-				"today_calendar_error", getScheduleCallback(date), GlobalConsts.DataGetCalendarKey);
+				"today_calendar_error", getScheduleCallback(dateStart, dateEnd),
+				GetKey(GlobalConsts.DataGetCalendarKey, dateStart, dateEnd));
 			return await GetDataObject(dataAccess, false) as CalendarSubjectModelTest;
+		}
+
+		/// <summary>
+		/// Fetch diploma project consultations.
+		/// </summary>
+		/// <param name="count">Items count.</param>
+		/// <param name="page">Page number.</param>
+		/// <returns>Consultations data.</returns>
+		public async static Task<DiplomProjectConsultationModel> GetDiplomProjectConsultation(
+			int count = 1000, int page = 1)
+		{
+			var dataAccess = new DataAccess<DiplomProjectConsultationModel>(
+				"today_calendar_error", getDiplomProjectConsultationCallback(count, page));
+			return await GetDataObject(dataAccess, false) as DiplomProjectConsultationModel;
+		}
+
+		/// <summary>
+		/// Fetch course project consultations.
+		/// </summary>
+		/// <param name="count">Items count.</param>
+		/// <param name="page">Page number.</param>
+		/// <returns>Consultations data.</returns>
+		public async static Task<CourseProjectConsultationModel> GetCourseProjectConsultation(
+			int count = 1000, int page = 1)
+		{
+			var dataAccess = new DataAccess<CourseProjectConsultationModel>(
+				"today_calendar_error", getCourseProjectConsultationCallback(count, page));
+			return await GetDataObject(dataAccess, false) as CourseProjectConsultationModel;
+		}
+
+		/// <summary>
+		/// Fetch profile info by id.
+		/// </summary>
+		/// <param name="userId">User id.</param>
+		/// <returns>User profile data.</returns>
+		public async static Task<UserProfileByIdModel> GetProfileInfoById(int userId)
+		{
+			var dataAccess = new DataAccess<UserProfileByIdModel>(
+				"today_calendar_error", getProfileInfoByIdCallback(userId));
+			return await GetDataObject(dataAccess, false) as UserProfileByIdModel;
 		}
 
 		/// <summary>

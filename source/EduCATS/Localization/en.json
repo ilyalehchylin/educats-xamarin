@@ -56,6 +56,7 @@
 	"today_news_load_error": "Error occurred during retrieving news. Please try to refresh page or contact support.",
 	"today_subjects_error": "Error occurred during retrieving subjects. Please try to refresh page or contact support.",
 	"today_calendar_error": "Error occurred during retrieving subjects in calendar. Please try to refresh page or contact support.",
+	"today_diplom_projecting": "Diploma project",
 
 	"news_details_title": "News",
 

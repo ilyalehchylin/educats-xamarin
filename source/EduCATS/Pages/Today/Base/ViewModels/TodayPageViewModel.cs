@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
-using System.Net.Http;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using EduCATS.Data;
 using EduCATS.Data.Models;
+using EduCATS.Data.Models.Calendar;
 using EduCATS.Helpers.Date;
 using EduCATS.Helpers.Date.Enums;
 using EduCATS.Helpers.Forms;
@@ -15,11 +15,9 @@ using EduCATS.Networking;
 using EduCATS.Networking.AppServices;
 using EduCATS.Pages.Today.Base.Models;
 using EduCATS.Themes;
-using Newtonsoft.Json.Linq;
 using Nyxbull.Plugins.CrossLocalization;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using EduCATS.Networking.AppServices;
 using EduCATS.Data.User;
 using EduCATS.Demo;
 
@@ -37,11 +35,31 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 		const int _maximumCalendarPosition = 2;
 		const double _emptySubjectsHeight = 120;
 		const double _emptySubjectsHeightLarge = 130;
+		const int _consultationsCount = 1000;
+		const int _consultationsPage = 1;
+		const string _scheduleQueryDateFormat = "dd-MM-yyyy";
+
+		static readonly string[] _scheduleDateFormats = {
+			"dd/MM/yyyy",
+			"dd.MM.yyyy",
+			"yyyy-MM-dd",
+			"yyyy-MM-ddTHH:mm:ss",
+			"yyyy-MM-ddTHH:mm:ss.fff",
+			"MM/dd/yyyy"
+		};
+
+		static readonly string[] _timeFormats = {
+			"HH:mm",
+			"H:mm",
+			"HH:mm:ss",
+			"H:mm:ss"
+		};
 
 		// bool _isCreation = true;
 		bool _isManualSelectedCalendarDay;
 		DateTime _manualSelectedCalendarDay;
 		List<CalendarSubjectsModel> _calendarSubjectsBackup;
+		readonly Dictionary<int, string> _lecturerNamesCache = new Dictionary<int, string>();
 
 		public TodayPageViewModel(double subjectHeight, double subjectsHeaderHeight, IPlatformServices services)
 		{
@@ -528,14 +546,256 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		async Task setNewSubjectList(DateTime dateTime)
 		{
-			var subjects = await DataAccess.GetSchedule(dateTime.ToString(DateHelper.DateTime.Replace('.', '-')));
+			try
+			{
+				var selectedDate = dateTime.Date;
 
-			List<SubjectPageModel> temp = subjects.Schedule.Select(n => {
-				return new SubjectPageModel(n);
-			}).ToList().OrderBy(l => l.Date).ToList();
+				var scheduleItemsTask = getScheduleItemsForDate(selectedDate);
+				var consultationItemsTask = getConsultationItemsForDate(selectedDate);
+				await Task.WhenAll(scheduleItemsTask, consultationItemsTask);
 
-			NewsSubjectList = temp.OrderBy(x => x.Date).ToList();
-			setupNewsSubjectsHeight();
+				var scheduleItems = scheduleItemsTask.Result;
+				var consultationItems = consultationItemsTask.Result;
+
+				var mergedItems = scheduleItems
+					.Concat(consultationItems)
+					.OrderBy(item => getStartTimeSortKey(item.Start))
+					.ThenBy(item => item.Name)
+					.Select(item => new SubjectPageModel(item))
+					.ToList();
+
+				NewsSubjectList = mergedItems;
+				setupNewsSubjectsHeight();
+			}
+			catch (Exception ex)
+			{
+				AppLogs.Log(ex);
+				NewsSubjectList = new List<SubjectPageModel>();
+				setupNewsSubjectsHeight();
+			}
+		}
+
+		async Task<List<Schedule>> getScheduleItemsForDate(DateTime selectedDate)
+		{
+			var weekStartDate = DateHelper.GetWeekStartDate(selectedDate, WeekEnum.Current);
+			var weekEndDate = weekStartDate.AddDays(6);
+
+			var dateStart = weekStartDate.ToString(_scheduleQueryDateFormat, CultureInfo.InvariantCulture);
+			var dateEnd = weekEndDate.ToString(_scheduleQueryDateFormat, CultureInfo.InvariantCulture);
+
+			var subjects = await DataAccess.GetSchedule(dateStart, dateEnd);
+			var schedule = subjects?.Schedule ?? new List<Schedule>();
+
+			return schedule
+				.Where(item => isDateForSelectedDay(item.Date, selectedDate))
+				.ToList();
+		}
+
+		async Task<List<Schedule>> getConsultationItemsForDate(DateTime selectedDate)
+		{
+			var courseConsultationsTask =
+				DataAccess.GetCourseProjectConsultation(_consultationsCount, _consultationsPage);
+			var diplomaConsultationsTask =
+				DataAccess.GetDiplomProjectConsultation(_consultationsCount, _consultationsPage);
+
+			var courseConsultations = await courseConsultationsTask;
+			var diplomaConsultations = await diplomaConsultationsTask;
+
+			var result = mapCourseProjectConsultations(courseConsultations, selectedDate);
+
+			var lecturerNames = await getLecturerNames(
+				diplomaConsultations?.DiplomProjectConsultationDates?
+					.Select(item => item.LecturerId));
+
+			result.AddRange(mapDiplomProjectConsultations(
+				diplomaConsultations, lecturerNames, selectedDate));
+
+			return result;
+		}
+
+		List<Schedule> mapCourseProjectConsultations(
+			CourseProjectConsultationModel consultations, DateTime selectedDate)
+		{
+			var result = new List<Schedule>();
+			foreach (var consultation in consultations?.Consultations
+				?? new List<CourseProjectConsultationDetailsModel>())
+			{
+				if (!tryParseDate(consultation.Day, out var consultationDate) ||
+					consultationDate.Date != selectedDate.Date)
+				{
+					continue;
+				}
+
+				var teacher = consultation.Teacher ?? new Teacher();
+				teacher.FullName = teacher.FullName ?? string.Empty;
+
+				result.Add(new Schedule
+				{
+					Id = consultation.Id,
+					Date = consultationDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
+					Name = consultation.Subject?.Name,
+					Color = consultation.Subject?.Color,
+					Start = normalizeTime(consultation.StartTime),
+					End = normalizeTime(consultation.EndTime),
+					Building = consultation.Building,
+					Audience = consultation.Audience,
+					Teacher = teacher,
+					Type = 3
+				});
+			}
+
+			return result;
+		}
+
+		List<Schedule> mapDiplomProjectConsultations(
+			DiplomProjectConsultationModel consultations,
+			IDictionary<int, string> lecturerNames,
+			DateTime selectedDate)
+		{
+			var result = new List<Schedule>();
+			var diplomProjectTitle = CrossLocalization.Translate("today_diplom_projecting");
+			foreach (var consultation in consultations?.DiplomProjectConsultationDates
+				?? new List<DiplomProjectConsultationDateModel>())
+			{
+				if (!tryParseDate(consultation.Day, out var consultationDate) ||
+					consultationDate.Date != selectedDate.Date)
+				{
+					continue;
+				}
+
+				lecturerNames.TryGetValue(consultation.LecturerId, out var lecturerName);
+
+				result.Add(new Schedule
+				{
+					Id = consultation.Id,
+					Date = consultationDate.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
+					Name = diplomProjectTitle,
+					Start = normalizeTime(consultation.StartTime),
+					End = normalizeTime(consultation.EndTime),
+					Building = consultation.Building,
+					Audience = consultation.Audience,
+					Teacher = new Teacher
+					{
+						LectorId = consultation.LecturerId,
+						FullName = lecturerName ?? string.Empty
+					},
+					Type = 4
+				});
+			}
+
+			return result;
+		}
+
+		async Task<Dictionary<int, string>> getLecturerNames(IEnumerable<int> lecturerIds)
+		{
+			var ids = (lecturerIds ?? Enumerable.Empty<int>())
+				.Where(id => id > 0)
+				.Distinct()
+				.ToList();
+
+			if (ids.Count == 0)
+			{
+				return new Dictionary<int, string>();
+			}
+
+			var missingIds = ids
+				.Where(id => !_lecturerNamesCache.ContainsKey(id))
+				.ToList();
+
+			var profileTasks = missingIds.Select(async id => new
+			{
+				Id = id,
+				Profile = await DataAccess.GetProfileInfoById(id)
+			});
+
+			var profiles = await Task.WhenAll(profileTasks);
+			foreach (var profile in profiles)
+			{
+				if (!string.IsNullOrWhiteSpace(profile.Profile?.Name))
+				{
+					_lecturerNamesCache[profile.Id] = profile.Profile.Name;
+				}
+			}
+
+			return ids
+				.Where(id => _lecturerNamesCache.ContainsKey(id))
+				.ToDictionary(id => id, id => _lecturerNamesCache[id]);
+		}
+
+		bool isDateForSelectedDay(string rawDate, DateTime selectedDate)
+		{
+			if (string.IsNullOrWhiteSpace(rawDate))
+			{
+				return true;
+			}
+
+			return tryParseDate(rawDate, out var parsedDate) &&
+				parsedDate.Date == selectedDate.Date;
+		}
+
+		bool tryParseDate(string rawDate, out DateTime parsedDate)
+		{
+			if (DateTime.TryParseExact(
+				rawDate,
+				_scheduleDateFormats,
+				CultureInfo.InvariantCulture,
+				DateTimeStyles.AllowWhiteSpaces,
+				out parsedDate))
+			{
+				return true;
+			}
+
+			if (DateTime.TryParse(
+				rawDate,
+				CultureInfo.InvariantCulture,
+				DateTimeStyles.AllowWhiteSpaces,
+				out parsedDate))
+			{
+				return true;
+			}
+
+			return DateTime.TryParse(rawDate, out parsedDate);
+		}
+
+		string normalizeTime(string rawTime)
+		{
+			if (string.IsNullOrWhiteSpace(rawTime))
+			{
+				return string.Empty;
+			}
+
+			if (DateTime.TryParseExact(
+				rawTime,
+				_timeFormats,
+				CultureInfo.InvariantCulture,
+				DateTimeStyles.None,
+				out var parsedDate))
+			{
+				return parsedDate.ToString("HH:mm", CultureInfo.InvariantCulture);
+			}
+
+			if (TimeSpan.TryParse(rawTime, CultureInfo.InvariantCulture, out var time))
+			{
+				return $"{time.Hours:00}:{time.Minutes:00}";
+			}
+
+			return rawTime;
+		}
+
+		int getStartTimeSortKey(string startTime)
+		{
+			var normalizedStartTime = normalizeTime(startTime);
+			if (DateTime.TryParseExact(
+				normalizedStartTime,
+				"HH:mm",
+				CultureInfo.InvariantCulture,
+				DateTimeStyles.None,
+				out var parsedDate))
+			{
+				return parsedDate.Hour * 60 + parsedDate.Minute;
+			}
+
+			return int.MaxValue;
 		}
 
 

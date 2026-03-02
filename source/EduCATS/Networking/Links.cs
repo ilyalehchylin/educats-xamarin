@@ -61,6 +61,23 @@
 		public static string GetSchedule => $"{Servers.Current}/Services/Schedule/ScheduleService.svc/GetSchedule?";
 
 		/// <summary>
+		/// Get diploma project consultations URL.
+		/// </summary>
+		public static string GetDiplomProjectConsultation =>
+			$"{Servers.Current}/api/DiplomProjectConsultation";
+
+		/// <summary>
+		/// Get course project consultations URL.
+		/// </summary>
+		public static string GetCourseProjectConsultation =>
+			$"{Servers.Current}/api/CourseProjectConsultation";
+
+		/// <summary>
+		/// Get profile info by id URL.
+		/// </summary>
+		public static string GetProfileInfoById => $"{Servers.Current}/Profile/GetProfileInfoById";
+
+		/// <summary>
 		/// Get laboratory works statistics URL.
 		/// </summary>
 		public static string GetStatistics => $"{Servers.Current}/Services/Labs/LabsService.svc/GetMarksV2";
