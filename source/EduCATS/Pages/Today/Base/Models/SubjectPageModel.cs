@@ -1,5 +1,4 @@
-﻿using System;
-using EduCATS.Controls.RoundedListView.Enums;
+﻿using EduCATS.Controls.RoundedListView.Enums;
 using EduCATS.Controls.RoundedListView.Interfaces;
 using EduCATS.Data.Models.Calendar;
 using Nyxbull.Plugins.CrossLocalization;
@@ -17,15 +16,7 @@ namespace EduCATS.Pages.Today.Base.Models
 		{
 			get
 			{
-				if (string.IsNullOrWhiteSpace(_teacherFullName))
-				{
-					return string.Empty;
-				}
-
-				var splitted = _teacherFullName
-					.Trim()
-					.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
+				var splitted = _teacherFullName.Split(' ');
 				var surname = "";
 				var name = "";
 				var patronymic = "";
@@ -83,7 +74,7 @@ namespace EduCATS.Pages.Today.Base.Models
 			}
 			set
 			{
-				_teacherFullName = value ?? string.Empty;
+				_teacherFullName = value;
 			}
 		}
 

@@ -57,7 +57,6 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		// bool _isCreation = true;
 		bool _isManualSelectedCalendarDay;
-		bool _isCalendarPositionChangeInProgress;
 		DateTime _manualSelectedCalendarDay;
 		List<CalendarSubjectsModel> _calendarSubjectsBackup;
 		readonly Dictionary<int, string> _lecturerNamesCache = new Dictionary<int, string>();
@@ -402,55 +401,32 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				return;
 			}
 
-			for (var calendarModelIndex = 0; calendarModelIndex < CalendarList.Count; calendarModelIndex++)
+			foreach (var calendarModel in CalendarList)
 			{
-				var calendarModel = CalendarList[calendarModelIndex];
-				if (calendarModel?.Days == null)
+				var calendarDayModel = calendarModel.Days.FirstOrDefault(d => {
+					return deselect ?
+					d.Selected :
+					d.Date.ToShortDateString().Equals(dateToCheck.ToShortDateString());
+
+				});
+
+				if (calendarDayModel != null)
 				{
-					continue;
-				}
-
-				for (var calendarDayModelIndex = 0; calendarDayModelIndex < calendarModel.Days.Count; calendarDayModelIndex++)
-				{
-					var calendarDayModel = calendarModel.Days[calendarDayModelIndex];
-					var isSelectedDay = deselect
-						? calendarDayModel.Selected
-						: calendarDayModel.Date.Date == dateToCheck.Date;
-
-					if (!isSelectedDay)
-					{
-						continue;
-					}
-
-					changeCalendarSelection(calendarModelIndex, calendarDayModelIndex, selected);
-					return;
+					changeCalendarSelection(calendarModel, calendarDayModel, selected);
+					break;
 				}
 			}
 		}
 
 		void changeCalendarSelection(
-			int indexCalendarModel,
-			int indexCalendarDayModel,
+			CalendarViewModel calendarModel,
+			CalendarViewDayModel calendarDayModel,
 			bool selected)
 		{
 			try
 			{
-				if (CalendarList == null ||
-					indexCalendarModel < 0 ||
-					indexCalendarModel >= CalendarList.Count)
-				{
-					return;
-				}
-
-				var calendarModel = CalendarList[indexCalendarModel];
-				if (calendarModel?.Days == null ||
-					indexCalendarDayModel < 0 ||
-					indexCalendarDayModel >= calendarModel.Days.Count)
-				{
-					return;
-				}
-
-				var calendarDayModel = calendarModel.Days[indexCalendarDayModel];
+				var indexCalendarModel = CalendarList.IndexOf(calendarModel);
+				var indexCalendarDayModel = calendarModel.Days.IndexOf(calendarDayModel);
 
 				if (DateTime.Today == calendarDayModel.Date)
 				{
@@ -493,20 +469,8 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 
 		protected void calendarPositionChangedEvent(CarouselView.FormsPlugin.Abstractions.PositionSelectedEventArgs e)
 		{
-			if (_isCalendarPositionChangeInProgress)
-			{
-				return;
-			}
-
 			try
 			{
-				if (CalendarList == null || CalendarList.Count <= _maximumCalendarPosition)
-				{
-					return;
-				}
-
-				_isCalendarPositionChangeInProgress = true;
-
 				selectTodayDateWithoutSelectedFlag();
 				deselectAllCalendarDays();
 
@@ -522,20 +486,16 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 				switch (CalendarPosition)
 				{
 					case _minimumCalendarPosition:
-						CalendarPosition = getCalendarPosition(_minimumCalendarPosition, WeekEnum.Previous);
+						getCalendarPosition(_minimumCalendarPosition, WeekEnum.Previous);
 						break;
 					case _maximumCalendarPosition:
-						CalendarPosition = getCalendarPosition(_maximumCalendarPosition, WeekEnum.Next);
+						getCalendarPosition(_maximumCalendarPosition, WeekEnum.Next);
 						break;
 				}
 			}
 			catch (Exception ex)
 			{
 				AppLogs.Log(ex);
-			}
-			finally
-			{
-				_isCalendarPositionChangeInProgress = false;
 			}
 		}
 		int getCalendarPosition(int boundaryPosition, WeekEnum week)
@@ -557,19 +517,8 @@ namespace EduCATS.Pages.Today.Base.ViewModels
 			var date = CalendarList[boundaryPosition].Date;
 			var weekViewModel = getCalendarViewModel(date, week);
 
-			var updatedCalendarList = CalendarList.ToList();
-			updatedCalendarList.RemoveAt(removePosition);
-
-			if (boundaryPosition == _maximumCalendarPosition)
-			{
-				updatedCalendarList.Add(weekViewModel);
-			}
-			else
-			{
-				updatedCalendarList.Insert(_minimumCalendarPosition, weekViewModel);
-			}
-
-			CalendarList = new ObservableCollection<CalendarViewModel>(updatedCalendarList);
+			CalendarList.RemoveAt(removePosition);
+			CalendarList.Insert(boundaryPosition, weekViewModel);
 
 			return calculatedPosition;
 		}
