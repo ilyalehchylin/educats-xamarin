@@ -47,23 +47,34 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./coverage/**/*.info,./coverage/**/*.xml
           os: macos
-
   build:
     runs-on: macos-latest
     needs: test
-
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - OS: iOS
+            PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
+            CONFIGURATION: Release
+            PLATFORM: iPhoneSimulator
+          - OS: Android
+            PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
+            CONFIGURATION: Release
+    name: Build (${{ matrix.OS }})
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4.2.2
-
+      
       - name: Setup mono-mdk
         run: |
           brew install --cask mono-mdk
           echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
-
+      
       - name: Setup NuGet
         uses: NuGet/setup-nuget@v2
-
+      
       - name: NuGet Cache
         uses: actions/cache@v4.2.3
         with:
@@ -71,12 +82,12 @@ jobs:
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
-
+      
       - name: Setup Xamarin
         run: |
           brew install --cask xamarin-ios
           brew install --cask xamarin-android
-
+      
       - name: Verify msbuild and Xamarin targets
         run: |
           which msbuild
@@ -87,16 +98,18 @@ jobs:
         run: nuget restore $SOLUTION_PATH
         env:
           SOLUTION_PATH: ./source/EduCATS.sln
-        
-      - name: Build iOS        
-        run: msbuild /t:Build /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM $PROJECT_PATH
-        env:
-          CONFIGURATION: Release
-          PLATFORM: iPhoneSimulator
-          PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
-          
-      - name: Build Android
-        run: msbuild /t:Build /p:Configuration=$CONFIGURATION $PROJECT_PATH
-        env:
-          CONFIGURATION: Release
-          PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
+      
+      - name: Build
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ matrix.OS }}" = "iOS" ]; then
+            msbuild /t:Build \
+              /p:Configuration="${{ matrix.CONFIGURATION }}" \
+              /p:Platform="${{ matrix.PLATFORM }}" \
+              "${{ matrix.PROJECT_PATH }}"
+          else
+            msbuild /t:Build \
+              /p:Configuration="${{ matrix.CONFIGURATION }}" \
+              "${{ matrix.PROJECT_PATH }}"
+          fi
