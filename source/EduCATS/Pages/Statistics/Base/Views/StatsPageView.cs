@@ -123,6 +123,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 				CrossLocalization.Translate("stats_chart_average_tests"),
 				Color.FromHex(Theme.Current.StatisticsChartTestsColor),
 				"AverageTests");
+			avgTestsView.SetBinding(IsVisibleProperty, "IsTests");
 
 			var avgCourseView = createStatisticsView(
 				CrossLocalization.Translate("stats_chart_average_course"),

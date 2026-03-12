@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using EduCATS.Pages.Statistics.Base.Models;
 using EduCATS.Themes;
 using Microcharts;
 using SkiaSharp;
@@ -48,23 +49,16 @@ namespace EduCATS.Helpers.Forms.Converters
 				return null;
 			}
 
-			var doubleList = value as List<double>;
-			var chartEntries = doubleList.Select(d => new ChartEntry((float)d)).ToArray();
-
-			if (chartEntries != null && chartEntries.Length == 4) {
-				chartEntries[0].Color = SKColor.Parse(Theme.Current.StatisticsChartPractColor);
-				chartEntries[1].Color = SKColor.Parse(Theme.Current.StatisticsChartLabsColor);
-				chartEntries[2].Color = SKColor.Parse(Theme.Current.StatisticsChartTestsColor);
-				chartEntries[3].Color = SKColor.Parse(Theme.Current.StatisticsChartRatingColor);
+			var metrics = value as List<StatsChartEntryModel>;
+			if (metrics == null || metrics.Count == 0)
+			{
+				return null;
 			}
 
-			if (chartEntries != null && chartEntries.Length == 5) {
-				chartEntries[0].Color = SKColor.Parse(Theme.Current.StatisticsChartPractColor);
-				chartEntries[1].Color = SKColor.Parse(Theme.Current.StatisticsChartLabsColor);
-				chartEntries[2].Color = SKColor.Parse(Theme.Current.StatisticsChartTestsColor);
-				chartEntries[3].Color = SKColor.Parse(Theme.Current.StatisticsChartCourseColor);
-				chartEntries[4].Color = SKColor.Parse(Theme.Current.StatisticsChartRatingColor);
-			}
+			var chartEntries = metrics.Select(entry => new ChartEntry((float)entry.Value)
+			{
+				Color = getMetricColor(entry.Type)
+			}).ToArray();
 
 			return new RadarChart {
 				LineSize = _lineSize,
@@ -86,6 +80,18 @@ namespace EduCATS.Helpers.Forms.Converters
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			return null;
+		}
+
+		static SKColor getMetricColor(StatsChartMetricType type)
+		{
+			return type switch
+			{
+				StatsChartMetricType.Pract => SKColor.Parse(Theme.Current.StatisticsChartPractColor),
+				StatsChartMetricType.Labs => SKColor.Parse(Theme.Current.StatisticsChartLabsColor),
+				StatsChartMetricType.Tests => SKColor.Parse(Theme.Current.StatisticsChartTestsColor),
+				StatsChartMetricType.Course => SKColor.Parse(Theme.Current.StatisticsChartCourseColor),
+				_ => SKColor.Parse(Theme.Current.StatisticsChartRatingColor)
+			};
 		}
 	}
 }

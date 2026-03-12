@@ -20,8 +20,13 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 	{
 		const string _doubleStringFormat = "0.0";
 		const double _defaultChartValue = 0;
+		const int _labsModuleType = 3;
+		const int _courseModuleType = 4;
+		const int _testsModuleType = 8;
+		const int _practicalsModuleType = 10;
 		private List<StatsStudentModel> _students;
 		private IPlatformServices _service;
+		bool _hasModuleVisibilityRules;
 		bool _isUpdating;
 
 		public StatsPageViewModel(IPlatformServices services) : base(services)
@@ -119,8 +124,8 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			set { SetProperty(ref _rating, value); }
 		}
 
-		List<double> _chartEntries;
-		public List<double> ChartEntries
+		List<StatsChartEntryModel> _chartEntries;
+		public List<StatsChartEntryModel> ChartEntries
 		{
 			get { return _chartEntries; }
 			set { SetProperty(ref _chartEntries, value); }
@@ -173,6 +178,13 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			get { return _isCourse; }
 			set { SetProperty(ref _isCourse, value); }
+		}
+
+		bool _isTests;
+		public bool IsTests
+		{
+			get { return _isTests; }
+			set { SetProperty(ref _isTests, value); }
 		}
 
 		Command _refreshCommand;
@@ -242,7 +254,8 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		public async Task setButtonsList()
 		{
-			IsPract = IsLabs = IsCourse = false;
+			IsPract = IsLabs = IsTests = IsCourse = false;
+			_hasModuleVisibilityRules = false;
 
 			if (CurrentSubject == null)
 			{
@@ -250,14 +263,32 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				return;
 			}
 
+			var modules = await DataAccess.GetSubjectModules(CurrentSubject.Id);
+			if (modules?.Count > 0)
+			{
+				var enabledModuleTypes = new HashSet<int>(
+					modules.Where(m => m != null && m.Checked).Select(m => m.Type));
+
+				IsPract = enabledModuleTypes.Contains(_practicalsModuleType);
+				IsLabs = enabledModuleTypes.Contains(_labsModuleType);
+				IsTests = enabledModuleTypes.Contains(_testsModuleType);
+				IsCourse = enabledModuleTypes.Contains(_courseModuleType);
+				_hasModuleVisibilityRules = true;
+				setPagesList();
+				return;
+			}
+
+			// Fallback for environments where modules are unavailable.
+			IsTests = true;
+
 			var dataPract = await DataAccess.GetPracticals(CurrentSubject.Id);
-			if (dataPract.Practicals.Count != 0)
+			if (dataPract?.Practicals?.Count != 0)
 			{
 				IsPract = true;
 			}
 
 			var dataLabs = await DataAccess.GetLabs(CurrentSubject.Id);
-			if (dataLabs.Labs.Count != 0)
+			if (dataLabs?.Labs?.Count != 0)
 			{
 				IsLabs = true;
 			}
@@ -489,9 +520,12 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			var averageCourse = getSubjectMetricById(studentSummary.UserAvgCourseMark, subjectId);
 			var courseCount = getSubjectMetricById(studentSummary.UserCourseCount, subjectId);
 
-			IsPract = IsPract || getSubjectMetricById(studentSummary.UserPracticalCount, subjectId) > 0 || averagePract > 0;
-			IsCourse = courseCount > 0 ||
-				(hasSubjectMetric(studentSummary.UserAvgCourseMark, subjectId) && averageCourse > 0);
+			if (!_hasModuleVisibilityRules)
+			{
+				IsPract = IsPract || getSubjectMetricById(studentSummary.UserPracticalCount, subjectId) > 0 || averagePract > 0;
+				IsCourse = courseCount > 0 ||
+					(hasSubjectMetric(studentSummary.UserAvgCourseMark, subjectId) && averageCourse > 0);
+			}
 
 			setChartData(averageLabs, averageTests, averagePract, averageCourse, includeCourseInRating: true);
 		}
@@ -512,8 +546,11 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				return;
 			}
 
-			IsPract = IsPract || subjectSummary.AveragePracticalsMark > 0;
-			IsCourse = subjectSummary.AverageCourseProjectMark > 0;
+			if (!_hasModuleVisibilityRules)
+			{
+				IsPract = IsPract || subjectSummary.AveragePracticalsMark > 0;
+				IsCourse = subjectSummary.AverageCourseProjectMark > 0;
+			}
 
 			setChartData(
 				subjectSummary.AverageLabsMark,
@@ -534,8 +571,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				return;
 			}
 
-			IsCourse = false;
-
 			setChartData(
 				parseChartMetric(student.AverageLabsMark),
 				parseChartMetric(student.AverageTestMark),
@@ -552,8 +587,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				resetChartData();
 				return;
 			}
-
-			IsCourse = false;
 
 			setChartData(
 				getAverageMetric(students.Select(s => s.AverageLabsMark)),
@@ -580,20 +613,32 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				var rating = calculateRating(averageLabs, averageTests, averagePract, averageCourse, includeCourseInRating);
 				Rating = formatChartValue(rating);
 
-				ChartEntries = new List<double> {
-					averagePract,
-					averageLabs,
-					averageTests
-				};
+				var chartEntries = new List<StatsChartEntryModel>();
+
+				if (IsPract)
+				{
+					chartEntries.Add(new StatsChartEntryModel(StatsChartMetricType.Pract, averagePract));
+				}
+
+				if (IsLabs)
+				{
+					chartEntries.Add(new StatsChartEntryModel(StatsChartMetricType.Labs, averageLabs));
+				}
+
+				if (IsTests)
+				{
+					chartEntries.Add(new StatsChartEntryModel(StatsChartMetricType.Tests, averageTests));
+				}
 
 				if (IsCourse)
 				{
-					ChartEntries.Add(averageCourse);
+					chartEntries.Add(new StatsChartEntryModel(StatsChartMetricType.Course, averageCourse));
 				}
 
-				ChartEntries.Add(rating);
+				chartEntries.Add(new StatsChartEntryModel(StatsChartMetricType.Rating, rating));
+				ChartEntries = chartEntries;
 
-				setNotEnoughDetails(ChartEntries.All(v => v == _defaultChartValue));
+				setNotEnoughDetails(ChartEntries.All(v => v.Value == _defaultChartValue));
 			}
 			catch (Exception ex)
 			{
@@ -603,7 +648,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		void resetChartData()
 		{
-			IsCourse = false;
 			setChartData(
 				_defaultChartValue,
 				_defaultChartValue,
@@ -626,7 +670,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				values.Add(averageLabs);
 			}
 
-			values.Add(averageTests);
+			if (IsTests)
+			{
+				values.Add(averageTests);
+			}
 
 			if (IsPract)
 			{

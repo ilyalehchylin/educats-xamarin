@@ -109,6 +109,16 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch subject modules request.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Subject modules data.</returns>
+		public static async Task<object> GetSubjectModules(int subjectId)
+		{
+			return await AppServicesController.Request($"{Links.GetSubjectModules}/{subjectId}");
+		}
+
+		/// <summary>
 		/// Fetch calendar data request.
 		/// </summary>
 		/// <param name="username">Username.</param>

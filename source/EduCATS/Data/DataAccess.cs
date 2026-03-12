@@ -95,6 +95,20 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
+		/// Fetch subject modules.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Subject modules data.</returns>
+		public async static Task<List<SubjectModuleModel>> GetSubjectModules(int subjectId)
+		{
+			var dataAccess = new DataAccess<SubjectModuleModel>(
+				"stats_marks_error",
+				getSubjectModulesCallback(subjectId),
+				GetKey(GlobalConsts.DataGetSubjectModulesKey, subjectId));
+			return await GetDataObject(dataAccess, true) as List<SubjectModuleModel>;
+		}
+
+		/// <summary>
 		/// Fetch subjects.
 		/// </summary>
 		/// <param name="username">Username.</param>
