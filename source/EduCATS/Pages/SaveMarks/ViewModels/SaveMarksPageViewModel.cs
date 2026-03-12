@@ -1,7 +1,6 @@
 ﻿using EduCATS.Data;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Json;
-using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Networking.AppServices;
 using EduCATS.Networking.Models.SaveMarks;
@@ -43,7 +42,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 		public string _titleOfPage { get; set; }
 		public List<string> FullNames { get; set; }
 
-		public TakedLabs _takedLabs { get; set; }
+		public TakedLabs _takedLabs { get; set; } = new TakedLabs();
 
 		public SaveMarksPageViewModel(IPlatformServices services, int subjectId, int groupId, string title)
 		{
@@ -60,9 +59,8 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 					await initializeData(subjectId, groupId);
 					showDataAccessErrorIfNeeded();
 				}
-				catch (Exception ex)
+				catch (Exception)
 				{
-					AppLogs.Log(ex);
 				}
 				finally
 				{
@@ -81,7 +79,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			}
 			else if (_titleOfPage == CrossLocalization.Translate("stats_page_labs_visiting"))
 			{
-				labsVisitingList = await DataAccess.GetStatistics(subjectId, groupId)
+				labsVisitingList = await DataAccess.GetTestStatistics(subjectId, groupId)
 					?? new LabsVisitingList();
 				_takedLabs = await DataAccess.GetLabsTest(subjectId, groupId)
 					?? new TakedLabs();
@@ -126,10 +124,15 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			Date = new List<string>();
 			FullNames = new List<string>();
 			_currentLecturesVisitingMarks = new List<VisitingPageModel>();
-			foreach (var pract in _takedLabs.ScheduleProtectionPracticals)
+			foreach (var pract in _takedLabs?.ScheduleProtectionPracticals ?? new List<ScheduleProtectionLabs>())
 			{
 				Date.Add(pract.Date);
 			}
+			if (Date.Count == 0)
+			{
+				return;
+			}
+
 			selDateForSave = Date[Date.Count - 1];
 			SelectedPracDate = selDateForSave;
 		}
@@ -140,7 +143,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			SubGroup = new List<string>();
 			FullNames = new List<string>();
 			fullVisitingLabs = statistics;
-			foreach (var subGroup in _takedLabs.Labs)
+			foreach (var subGroup in _takedLabs?.Labs ?? new List<TakedLab>())
 			{
 				if (!currentSubGroups.Contains(subGroup.SubGroup))
 				{
@@ -151,6 +154,12 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			{
 				SubGroup.Add(CrossLocalization.Translate("sub_group") + subGruop.ToString());
 			}
+			if (currentSubGroups.Count == 0)
+			{
+				LabsVisitingMarksSubGroup = new List<VisitingPageModel>();
+				return;
+			}
+
 			selSubGroup = currentSubGroups[0];
 			SelectedSubGroup = SubGroup.FirstOrDefault();
 		}
@@ -160,7 +169,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			_currentLecturesVisitingMarks = new List<VisitingPageModel>();
 			LecturesMarks = new List<VisitingPageModel>();
 			Date = new List<string>();
-			foreach (var group in statistics.GroupsVisiting)
+			foreach (var group in statistics?.GroupsVisiting ?? new List<ListSaveMarksVisiting>())
 			{
 				fullVisitingLectures = statistics;
 				foreach (var groupVis in group.LecturesMarksVisiting)
@@ -181,6 +190,11 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 					}
 				}
 			}
+			if (Date.Count == 0)
+			{
+				return;
+			}
+
 			SelectedDate = Date[Date.Count - 1];
 			LecturesMarks = _currentLecturesVisitingMarks;
 		}
@@ -201,6 +215,11 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			string body = "";
 			if (_titleOfPage == CrossLocalization.Translate("stats_page_lectures_visiting"))
 			{
+				if (fullVisitingLectures?.GroupsVisiting == null || fullVisitingLectures.GroupsVisiting.Count == 0)
+				{
+					return default;
+				}
+
 				var lecturesVisiting = fullVisitingLectures.GroupsVisiting[0];
 				link = Links.SaveLecturesCalendarData;
 				var i = 0;
@@ -371,7 +390,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			get
 			{
 				_currentLecturesVisitingMarks = new List<VisitingPageModel>();
-				foreach (var group in fullVisitingLectures.GroupsVisiting)
+				foreach (var group in fullVisitingLectures?.GroupsVisiting ?? new List<ListSaveMarksVisiting>())
 				{
 					foreach (var groupVis in group.LecturesMarksVisiting)
 					{
@@ -402,6 +421,11 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 		{
 			get
 			{
+				if (_takedLabs?.ScheduleProtectionPracticals == null || fullVisitingPract?.Students == null)
+				{
+					return _selectedPracDate;
+				}
+
 				_currentLecturesVisitingMarks = new List<VisitingPageModel>();
 				foreach (var pract in _takedLabs.ScheduleProtectionPracticals.Where(v => v.Date == selDateForSave))
 				{
@@ -485,6 +509,17 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			{
 				Date1 = new List<string>();
 				_currentLabsVisitingMarksSubGroup1 = new List<VisitingPageModel>();
+
+				if (_takedLabs?.ScheduleProtectionLabs == null ||
+					fullVisitingLabs?.Students == null ||
+					currentSubGroups == null ||
+					currentSubGroups.Count == 0)
+				{
+					DateLabs = Date1;
+					LabsVisitingMarksSubGroup = _currentLabsVisitingMarksSubGroup1;
+					return _selectedSubGroup;
+				}
+
 				var subgroupDigits = new string((_selectedSubGroup ?? string.Empty).Where(char.IsDigit).ToArray());
 				if (!int.TryParse(subgroupDigits, out var parsedSubGroup))
 				{

@@ -22,7 +22,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 	{
 		public readonly IPlatformServices _services;
 		public string _title { get; set; }
-		public TakedLabs _takedLabs { get; set; }
+		public TakedLabs _takedLabs { get; set; } = new TakedLabs();
 		public LabsVisitingList labsVisitingList;
 		public LabsVisitingList practiceVisitingList;
 		public List<StudentsPageModel> _currentLabsVisitingMarksSubGroup1;
@@ -41,9 +41,8 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 					await initializeData(subjectId, groupId);
 					showDataAccessErrorIfNeeded();
 				}
-				catch (Exception ex)
+				catch (Exception)
 				{
-					AppLogs.Log(ex);
 				}
 				finally
 				{
@@ -64,7 +63,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			}
 			else if (_title == CrossLocalization.Translate("stats_page_labs_rating"))
 			{
-				labsVisitingList = await DataAccess.GetStatistics(subjectId, groupId)
+				labsVisitingList = await DataAccess.GetTestStatistics(subjectId, groupId)
 					?? new LabsVisitingList();
 				_takedLabs = await DataAccess.GetLabsTest(subjectId, groupId)
 					?? new TakedLabs();
@@ -90,7 +89,7 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			_currentLabsVisitingMarksSubGroup1 = new List<StudentsPageModel>();
 			_currentLabsVisitingMarksSubGroup2 = new List<StudentsPageModel>();
 			var currentStudents = new List<StudentsPageModel>();
-			foreach (var group in labsVisitingList.Students)
+			foreach (var group in labsVisitingList?.Students ?? new List<LaboratoryWorksModel>())
 			{
 				if (group.SubGroup == 1)
 				{
@@ -103,15 +102,17 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 					FullNames.Add(group.FullName);
 				}
 			}
-			foreach (var lab in _takedLabs.ScheduleProtectionLabs.Where(v => v.SubGroup == 1))
+			foreach (var lab in _takedLabs?.ScheduleProtectionLabs?.Where(v => v.SubGroup == 1) ??
+				Enumerable.Empty<ScheduleProtectionLabs>())
 			{
 				Date1.Add(lab.Date);
 			};
-			foreach (var lab in _takedLabs.ScheduleProtectionLabs.Where(v => v.SubGroup == 2))
+			foreach (var lab in _takedLabs?.ScheduleProtectionLabs?.Where(v => v.SubGroup == 2) ??
+				Enumerable.Empty<ScheduleProtectionLabs>())
 			{
 				Date2.Add(lab.Date);
 			};
-			foreach (var lab in _takedLabs.ScheduleProtectionLabs)
+			foreach (var lab in _takedLabs?.ScheduleProtectionLabs ?? new List<ScheduleProtectionLabs>())
 			{
 				if (!SubGroup.Contains(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString()))
 				{
@@ -219,20 +220,22 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		{
 			get
 			{
-				if (SubGroup.Count != 0)
+				if (SubGroup == null || SubGroup.Count == 0)
 				{
-					if (_selectedSubGroup == SubGroup[0])
-					{
-						LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupOne;
-						DateLabs = Date1;
-						selSubGroup = 1;
-					}
-					else if (_selectedSubGroup == SubGroup[1])
-					{
-						LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupTwo;
-						DateLabs = Date2;
-						selSubGroup = 2;
-					}
+					return _selectedSubGroup;
+				}
+
+				if (_selectedSubGroup == SubGroup[0])
+				{
+					LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupOne;
+					DateLabs = Date1;
+					selSubGroup = 1;
+				}
+				else if (SubGroup.Count > 1 && _selectedSubGroup == SubGroup[1])
+				{
+					LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupTwo;
+					DateLabs = Date2;
+					selSubGroup = 2;
 				}
 				return _selectedSubGroup;
 			}

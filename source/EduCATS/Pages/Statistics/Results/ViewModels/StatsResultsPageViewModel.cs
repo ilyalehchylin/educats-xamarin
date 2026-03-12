@@ -149,8 +149,8 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 
 		async Task getLabsMarksAndVisiting()
 		{
-			var statsTest = await DataAccess.GetStatistics(_currentSubjectId, _currentGroupId);
-			var stats = await DataAccess.GetStudentsStatistics(_currentSubjectId, _currentGroupId);
+			var statsTest = await DataAccess.GetTestStatistics(_currentSubjectId, _currentGroupId);
+			var stats = await DataAccess.GetStatistics(_currentSubjectId, _currentGroupId);
 			var student = findStatsStudent(stats);
 			var studentTest = findTestStudent(statsTest, student?.StudentId);
 
@@ -169,7 +169,7 @@ namespace EduCATS.Pages.Statistics.Results.ViewModels
 			StatsModel stats = new StatsModel();
 			LabsVisitingList statsTest = new LabsVisitingList();
 			statsTest = await DataAccess.GetTestPracticialStatistics(_currentSubjectId, _currentGroupId);
-			stats = await DataAccess.GetStudentsStatistics(_currentSubjectId, _currentGroupId);
+			stats = await DataAccess.GetStatistics(_currentSubjectId, _currentGroupId);
 			var student = findStatsStudent(stats);
 			var studentTest = findTestStudent(statsTest, student?.StudentId);
 			if (_statisticsPage == StatsPageEnum.LabsRating)

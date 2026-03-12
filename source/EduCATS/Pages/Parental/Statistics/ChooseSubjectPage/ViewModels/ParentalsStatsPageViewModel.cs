@@ -128,7 +128,7 @@ namespace EduCATS.Pages.Parental.Statistics
 		{
 			try
 			{
-				var statisticsModel = await DataAccess.GetStudentsStatistics(
+				var statisticsModel = await DataAccess.GetStatistics(
 					CurrentSubject.Id, Group.GroupId);
 
 				if (DataAccess.IsError && !DataAccess.IsConnectionError)

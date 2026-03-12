@@ -191,11 +191,22 @@ namespace EduCATS.Networking.AppServices
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Statistics data.</returns>
-		public static async Task<object> GetStudentsStatistics(int subjectId, int groupId)
+		public static async Task<object> GetStatistics(int subjectId, int groupId)
 		{
 			return await AppServicesController.Request(
-				$"{Servers.Current + Links.GetStatistics}subjectId={subjectId}&groupId={groupId}",
+				$"{Links.GetStatistics}?subjectID={subjectId}&groupID={groupId}",
 				AppDemoType.Statistics);
+		}
+
+		/// <summary>
+		/// Fetch students statistics request.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Statistics data.</returns>
+		public static async Task<object> GetStudentsStatistics(int subjectId, int groupId)
+		{
+			return await GetStatistics(subjectId, groupId);
 		}
 
 		/// <summary>
@@ -244,6 +255,18 @@ namespace EduCATS.Networking.AppServices
 			var body = JsonConvert.SerializeObject(groupItems);
 			return await AppServicesController.Request(
 				$"{Servers.Current + Links.GetParticialsMarks}", body);
+		}
+
+		/// <summary>
+		/// Fetch test statistics request.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Statistics data.</returns>
+		public static async Task<object> GetTestStatistics(int subjectId, int groupId)
+		{
+			return await AppServicesController.Request(
+				$"{Servers.Current + Links.GetLabsCalendarData}subjectId={subjectId}&groupId={groupId}");
 		}
 
 		/// <summary>

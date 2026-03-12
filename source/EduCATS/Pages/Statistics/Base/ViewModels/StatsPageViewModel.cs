@@ -201,14 +201,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			if (_isUpdating)
 			{
-				AppLogs.Log("StatsPage.Update skipped: update already in progress.");
 				return;
 			}
 
 			_isUpdating = true;
-			AppLogs.Log(
-				$"StatsPage.Update started. showLoadingDialog={showLoadingDialog}, reloadSubjects={reloadSubjects}, " +
-				$"currentSubjectId={CurrentSubject?.Id}, userType={AppUserData.UserType}");
 
 			try
 			{
@@ -221,29 +217,18 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 					PlatformServices.Device.MainThread(() => IsLoading = true);
 				}
 
-				AppLogs.Log("StatsPage.Update step: checkStudent.");
 				checkStudent();
 
 				if (reloadSubjects)
 				{
-					AppLogs.Log("StatsPage.Update step: SetupSubjects start.");
 					await SetupSubjects();
-					AppLogs.Log($"StatsPage.Update step: SetupSubjects done. currentSubjectId={CurrentSubject?.Id}");
 				}
 
-				AppLogs.Log("StatsPage.Update step: setButtonsList start.");
 				await setButtonsList();
-				AppLogs.Log(
-					$"StatsPage.Update step: setButtonsList done. isLabs={IsLabs}, isPract={IsPract}, " +
-					$"isTests={IsTests}, isCourse={IsCourse}, hasModuleRules={_hasModuleVisibilityRules}");
-
-				AppLogs.Log("StatsPage.Update step: getAndSetStatistics start.");
 				await getAndSetStatistics();
-				AppLogs.Log("StatsPage.Update step: getAndSetStatistics done.");
 			}
 			catch (Exception ex)
 			{
-				AppLogs.Log($"StatsPage.Update exception: {ex.Message}");
 				AppLogs.Log(ex);
 			}
 			finally
@@ -255,7 +240,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 				PlatformServices.Device.MainThread(() => IsLoading = false);
 				_isUpdating = false;
-				AppLogs.Log("StatsPage.Update finished.");
 			}
 		}
 
@@ -272,11 +256,9 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			IsPract = IsLabs = IsTests = IsCourse = false;
 			_hasModuleVisibilityRules = false;
-			AppLogs.Log($"StatsPage.setButtonsList started. subjectId={CurrentSubject?.Id}");
 
 			if (CurrentSubject == null)
 			{
-				AppLogs.Log("StatsPage.setButtonsList: current subject is null.");
 				setPagesList();
 				return;
 			}
@@ -292,17 +274,11 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				IsTests = enabledModuleTypes.Contains(_testsModuleType);
 				IsCourse = enabledModuleTypes.Contains(_courseModuleType);
 				_hasModuleVisibilityRules = true;
-				AppLogs.Log(
-					$"StatsPage.setButtonsList: modules applied. modulesCount={modules.Count}, " +
-					$"isLabs={IsLabs}, isPract={IsPract}, isTests={IsTests}, isCourse={IsCourse}");
 				setPagesList();
 				return;
 			}
 
 			// Fallback for environments where modules are unavailable.
-			AppLogs.Log(
-				$"StatsPage.setButtonsList: modules unavailable. isError={DataAccess.IsError}, " +
-				$"isConnectionError={DataAccess.IsConnectionError}, errorMessage={DataAccess.ErrorMessage}");
 			IsTests = true;
 
 			var dataPract = await DataAccess.GetPracticals(CurrentSubject.Id);
@@ -317,9 +293,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				IsLabs = true;
 			}
 
-			AppLogs.Log(
-				$"StatsPage.setButtonsList: fallback flags. isLabs={IsLabs}, isPract={IsPract}, " +
-				$"isTests={IsTests}, isCourse={IsCourse}");
 			setPagesList();
 		}
 
@@ -450,25 +423,14 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				}
 
 				var groupId = PlatformServices.Preferences.GroupId;
-				AppLogs.Log(
-					$"StatsPage.getStatistics started. subjectId={CurrentSubject?.Id}, groupId={groupId}, " +
-					$"userType={AppUserData.UserType}");
 
 				if (CurrentSubject == null || groupId == -1)
 				{
-					AppLogs.Log("StatsPage.getStatistics skipped: subject is null or groupId == -1.");
 					return null;
 				}
 
-				var statisticsModel = await DataAccess.GetStudentsStatistics(
+				var statisticsModel = await DataAccess.GetStatistics(
 					CurrentSubject.Id, PlatformServices.Preferences.GroupId);
-
-				if (DataAccess.IsError)
-				{
-					AppLogs.Log(
-						$"StatsPage.getStatistics data error. isConnectionError={DataAccess.IsConnectionError}, " +
-						$"message={DataAccess.ErrorMessage}");
-				}
 
 				if (DataAccess.IsError && !DataAccess.IsConnectionError)
 				{
@@ -476,12 +438,10 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				}
 
 				var result = statisticsModel?.Students?.ToList();
-				AppLogs.Log($"StatsPage.getStatistics finished. studentsCount={result?.Count ?? 0}");
 				return result;
 			}
 			catch (Exception ex)
 			{
-				AppLogs.Log($"StatsPage.getStatistics exception: {ex.Message}");
 				AppLogs.Log(ex);
 				return null;
 			}
@@ -491,41 +451,32 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		{
 			try
 			{
-				AppLogs.Log($"StatsPage.getAndSetStatistics started. currentSubjectId={CurrentSubject?.Id}");
 				if (CurrentSubject == null)
 				{
 					resetChartData();
-					AppLogs.Log("StatsPage.getAndSetStatistics: reset chart due to null subject.");
 					return;
 				}
 
 				if (!AppUserData.IsProfileLoaded)
 				{
-					AppLogs.Log("StatsPage.getAndSetStatistics: profile is not loaded, loading profile.");
 					await getProfile();
 				}
 
 				checkStudent();
-				AppLogs.Log($"StatsPage.getAndSetStatistics: resolved user type={AppUserData.UserType}.");
 
 				if (!_isStudent)
 				{
 					_students = null;
-					AppLogs.Log("StatsPage.getAndSetStatistics: teacher mode, skip GetMarksV3 and use teacher summary.");
 					await setTeacherChartData();
 					return;
 				}
 
 				var studentsStatistics = await getStatistics();
 				_students = studentsStatistics;
-				AppLogs.Log($"StatsPage.getAndSetStatistics: students loaded. count={_students?.Count ?? 0}");
-
-				AppLogs.Log("StatsPage.getAndSetStatistics: setting student chart data.");
 				await setStudentChartData();
 			}
 			catch (Exception ex)
 			{
-				AppLogs.Log($"StatsPage.getAndSetStatistics exception: {ex.Message}");
 				AppLogs.Log(ex);
 			}
 		}
@@ -555,9 +506,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			var summary = await DataAccess.GetStudentStatisticsSummary();
 			if (DataAccess.IsError)
 			{
-				AppLogs.Log(
-					$"StatsPage.setStudentChartData summary error. isConnectionError={DataAccess.IsConnectionError}, " +
-					$"message={DataAccess.ErrorMessage}");
 				setStudentChartDataFromMarks();
 				return;
 			}
@@ -594,9 +542,6 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			var summary = await DataAccess.GetTeacherStatisticsSummary();
 			if (DataAccess.IsError)
 			{
-				AppLogs.Log(
-					$"StatsPage.setTeacherChartData summary error. isConnectionError={DataAccess.IsConnectionError}, " +
-					$"message={DataAccess.ErrorMessage}");
 				setTeacherChartDataFromMarks();
 				return;
 			}
