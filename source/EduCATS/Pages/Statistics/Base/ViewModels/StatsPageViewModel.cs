@@ -466,7 +466,11 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		async Task setStudentChartData()
 		{
 			var summary = await DataAccess.GetStudentStatisticsSummary();
-			showDataAccessErrorIfNeeded();
+			if (DataAccess.IsError)
+			{
+				setStudentChartDataFromMarks();
+				return;
+			}
 
 			var studentSummary =
 				summary?.Students?.FirstOrDefault(s => s.StudentId == PlatformServices.Preferences.UserId) ??
@@ -474,7 +478,7 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 			if (studentSummary == null)
 			{
-				resetChartData();
+				setStudentChartDataFromMarks();
 				return;
 			}
 
@@ -495,12 +499,16 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		async Task setTeacherChartData()
 		{
 			var summary = await DataAccess.GetTeacherStatisticsSummary();
-			showDataAccessErrorIfNeeded();
+			if (DataAccess.IsError)
+			{
+				setTeacherChartDataFromMarks();
+				return;
+			}
 
 			var subjectSummary = summary?.SubjectStatistics?.FirstOrDefault(s => s.SubjectId == CurrentSubject.Id);
 			if (subjectSummary == null)
 			{
-				resetChartData();
+				setTeacherChartDataFromMarks();
 				return;
 			}
 
@@ -513,6 +521,46 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				subjectSummary.AveragePracticalsMark,
 				subjectSummary.AverageCourseProjectMark,
 				includeCourseInRating: true);
+		}
+
+		void setStudentChartDataFromMarks()
+		{
+			var student = _students?.FirstOrDefault(s => s.StudentId == PlatformServices.Preferences.UserId) ??
+				_students?.FirstOrDefault();
+
+			if (student == null)
+			{
+				resetChartData();
+				return;
+			}
+
+			IsCourse = false;
+
+			setChartData(
+				parseChartMetric(student.AverageLabsMark),
+				parseChartMetric(student.AverageTestMark),
+				_defaultChartValue,
+				_defaultChartValue,
+				includeCourseInRating: false);
+		}
+
+		void setTeacherChartDataFromMarks()
+		{
+			var students = _students;
+			if (students == null || students.Count == 0)
+			{
+				resetChartData();
+				return;
+			}
+
+			IsCourse = false;
+
+			setChartData(
+				getAverageMetric(students.Select(s => s.AverageLabsMark)),
+				getAverageMetric(students.Select(s => s.AverageTestMark)),
+				_defaultChartValue,
+				_defaultChartValue,
+				includeCourseInRating: false);
 		}
 
 		void setChartData(
@@ -607,12 +655,47 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 		static bool hasSubjectMetric(IList<StudentStatisticsSubjectValueModel> metrics, int subjectId) =>
 			metrics?.Any(m => m.SubjectId == subjectId) == true;
 
-		void showDataAccessErrorIfNeeded()
+		static double parseChartMetric(string value) =>
+			tryParseChartMetric(value) ?? _defaultChartValue;
+
+		static double getAverageMetric(IEnumerable<string> values)
 		{
-			if (DataAccess.IsError && !DataAccess.IsConnectionError)
+			var parsedValues = values?
+				.Select(tryParseChartMetric)
+				.Where(v => v.HasValue)
+				.Select(v => v.Value)
+				.ToList();
+
+			if (parsedValues == null || parsedValues.Count == 0)
 			{
-				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
+				return _defaultChartValue;
 			}
+
+			return parsedValues.Average();
+		}
+
+		static double? tryParseChartMetric(string value)
+		{
+			if (string.IsNullOrWhiteSpace(value))
+			{
+				return null;
+			}
+
+			if (double.TryParse(value, NumberStyles.Float, CultureInfo.InvariantCulture, out var parsed))
+			{
+				return parsed;
+			}
+
+			// Some backend values use comma as decimal separator.
+			if (double.TryParse(value.Replace(',', '.'),
+				NumberStyles.Float, CultureInfo.InvariantCulture, out parsed))
+			{
+				return parsed;
+			}
+
+			return double.TryParse(value, NumberStyles.Float, CultureInfo.CurrentCulture, out parsed) ?
+				parsed :
+				(double?)null;
 		}
 
 
