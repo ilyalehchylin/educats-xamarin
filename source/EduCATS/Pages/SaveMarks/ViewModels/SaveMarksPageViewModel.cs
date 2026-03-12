@@ -1,5 +1,7 @@
-﻿using EduCATS.Helpers.Forms;
+﻿using EduCATS.Data;
+using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Json;
+using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
 using EduCATS.Networking.AppServices;
 using EduCATS.Networking.Models.SaveMarks;
@@ -9,12 +11,10 @@ using Newtonsoft.Json;
 using Nyxbull.Plugins.CrossLocalization;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -45,71 +45,77 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 
 		public TakedLabs _takedLabs { get; set; }
 
-		public SaveMarksPageViewModel(IPlatformServices services, int _subjectId, object stat, int groupId, string title)
+		public SaveMarksPageViewModel(IPlatformServices services, int subjectId, int groupId, string title)
 		{
 			ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
 
 			_titleOfPage = title;
 			_services = services;
-			if (title == CrossLocalization.Translate("stats_page_lectures_visiting"))
+			this.subjectId = subjectId;
+			_services.Device.MainThread(async () =>
 			{
-				groupData = stat as VisitingLecturesList;
+				try
+				{
+					_services.Dialogs.ShowLoading();
+					await initializeData(subjectId, groupId);
+					showDataAccessErrorIfNeeded();
+				}
+				catch (Exception ex)
+				{
+					AppLogs.Log(ex);
+				}
+				finally
+				{
+					_services.Dialogs.HideLoading();
+				}
+			});
+		}
+
+		async Task initializeData(int subjectId, int groupId)
+		{
+			if (_titleOfPage == CrossLocalization.Translate("stats_page_lectures_visiting"))
+			{
+				groupData = await getLecturesVisiting(subjectId, groupId)
+					?? new VisitingLecturesList();
 				createLecturesVisitingPage(groupData);
 			}
-			else if (title == CrossLocalization.Translate("stats_page_labs_visiting"))
+			else if (_titleOfPage == CrossLocalization.Translate("stats_page_labs_visiting"))
 			{
-				labsVisitingList = stat as LabsVisitingList;
-				_takedLabs = new TakedLabs();
-				WebRequest request = WebRequest.Create(Links.GetLabsTest + "subjectId=" + _subjectId + "&groupId=" + groupId);
-				if (request is HttpWebRequest httpRequestLabs)
-				{
-					httpRequestLabs.Timeout = RequestController.RequestTimeoutMilliseconds;
-					httpRequestLabs.ReadWriteTimeout = RequestController.RequestTimeoutMilliseconds;
-				}
-				request.Headers.Add("Authorization", _services.Preferences.AccessToken);
-				WebResponse response = request.GetResponse();
-				string json = "";
-				using (Stream stream = response.GetResponseStream())
-				{
-					using (StreamReader reader = new StreamReader(stream))
-					{
-						string line = "";
-						while ((line = reader.ReadLine()) != null)
-						{
-							json += line;
-						}
-					}
-				};
-				_takedLabs = JsonConvert.DeserializeObject<TakedLabs>(json);
+				labsVisitingList = await DataAccess.GetStatistics(subjectId, groupId)
+					?? new LabsVisitingList();
+				_takedLabs = await DataAccess.GetLabsTest(subjectId, groupId)
+					?? new TakedLabs();
 				createLabsVisitingPage(labsVisitingList);
 			}
-			else if (title == CrossLocalization.Translate("practiсe_visiting"))
+			else if (_titleOfPage == CrossLocalization.Translate("practiсe_visiting"))
 			{
-				subjectId = _subjectId;
-				practiceVisitingList = stat as LabsVisitingList;
-				_takedLabs = new TakedLabs();
-				WebRequest request = WebRequest.Create(Links.GetPracticialsTest + "subjectId=" + _subjectId + "&groupId=" + groupId);
-				if (request is HttpWebRequest httpRequestPracticals)
-				{
-					httpRequestPracticals.Timeout = RequestController.RequestTimeoutMilliseconds;
-					httpRequestPracticals.ReadWriteTimeout = RequestController.RequestTimeoutMilliseconds;
-				}
-				request.Headers.Add("Authorization", _services.Preferences.AccessToken);
-				WebResponse response = request.GetResponse();
-				string json = "";
-				using (Stream stream = response.GetResponseStream())
-				{
-					using (StreamReader reader = new StreamReader(stream))
-					{
-						string line = "";
-						while ((line = reader.ReadLine()) != null)
-						{
-							json += line;
-						}
-					}
-				};
-				_takedLabs = JsonConvert.DeserializeObject<TakedLabs>(json);
+				practiceVisitingList = await DataAccess.GetTestPracticialStatistics(subjectId, groupId)
+					?? new LabsVisitingList();
+				_takedLabs = await DataAccess.GetPractTest(subjectId, groupId)
+					?? new TakedLabs();
 				createPracticialsVisitingPage(practiceVisitingList);
+			}
+		}
+
+		async Task<VisitingLecturesList> getLecturesVisiting(int subjectId, int groupId)
+		{
+			var client = new HttpClient
+			{
+				Timeout = TimeSpan.FromSeconds(RequestController.RequestTimeoutSeconds)
+			};
+			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(_services.Preferences.AccessToken);
+
+			var link = $"{Servers.Current + Links.GetLecturesCalendarData}subjectId={subjectId}&groupId={groupId}";
+			var response = await client.GetAsync(link);
+			var result = await response.Content.ReadAsStringAsync();
+			return JsonConvert.DeserializeObject<VisitingLecturesList>(result);
+		}
+
+		void showDataAccessErrorIfNeeded()
+		{
+			if (DataAccess.IsError && !DataAccess.IsConnectionError)
+			{
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 		}
 

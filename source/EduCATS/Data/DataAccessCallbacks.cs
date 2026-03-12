@@ -98,8 +98,8 @@ namespace EduCATS.Data
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Statistics data.</returns>
-		static async Task<object> getStatsCallback(
-			int subjectId, int groupId) => await AppServices.GetStatistics(subjectId, groupId);
+		static async Task<object> getStudentsStatsCallback(
+			int subjectId, int groupId) => await AppServices.GetStudentsStatistics(subjectId, groupId);
 
 		static async Task<object> getStudentStatisticsSummaryCallback() =>
 			await AppServices.GetStudentStatisticsSummary();
@@ -107,8 +107,8 @@ namespace EduCATS.Data
 		static async Task<object> getTeacherStatisticsSummaryCallback() =>
 			await AppServices.GetTeacherStatisticsSummary();
 
-		static async Task<object> getTestStatsCallback(
-			int subjectId, int groupId) => await AppServices.GetTestStatistics(subjectId, groupId);
+		static async Task<object> getStatsCallback(
+			int subjectId, int groupId) => await AppServices.GetStudentsStatistics(subjectId, groupId);
 
 		static async Task<object> getTestPracticialStatsCallback(
 			int subjectId, int groupId) => await AppServices.GetPracticials(subjectId, groupId);

@@ -80,7 +80,8 @@
 		/// <summary>
 		/// Get laboratory works statistics URL.
 		/// </summary>
-		public static string GetStatistics => $"{Servers.Current}/Services/Labs/LabsService.svc/GetMarksV2";
+		public static string GetStatistics =>
+			"/subject/Services/Labs/LabsService.svc/GetMarksV3?";
 
 		/// <summary>
 		/// Get groups URL.
@@ -241,12 +242,6 @@
 		/// </summary>
 		public static string SaveLecturesCalendarData =>
 			$"{Servers.Current}/subject/Services/Lectures/LecturesService.svc/SaveMarksCalendarData";
-
-		/// <summary>
-		/// Get save marks calendar data lectures URL.
-		/// </summary>
-		public static string GetLabsCalendarData =>
-			$"/subject/Services/Labs/LabsService.svc/GetMarksV3?";
 
 		public static string GetParticialsMarks => $"/subject/Services/Practicals/PracticalService.svc/GetMarks";
 

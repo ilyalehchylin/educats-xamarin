@@ -3,25 +3,11 @@ using EduCATS.Controls.RoundedListView;
 using EduCATS.Fonts;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
-using EduCATS.Networking;
-using EduCATS.Networking.Models.SaveMarks;
-using EduCATS.Networking.Models.SaveMarks.LabSchedule;
-using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Pages.SaveLabsAndPracticeMarks.Views;
 using EduCATS.Pages.Statistics.Marks.Views.ViewCells;
-using EduCATS.Pages.Statistics.Students.Models;
 using EduCATS.Pages.Statistics.Students.Views.ViewCells;
 using EduCATS.Themes;
-using Newtonsoft.Json;
 using Nyxbull.Plugins.CrossLocalization;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
@@ -33,39 +19,24 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 
 		private string _groupName;
 
-		public PlatformServices services = new PlatformServices();
 		public string _title { get; set; }
-		public LabsVisitingList practicMarksList;
-		public LabsVisitingList labMarksList;
 
 		public SavePracticeAndLabsPageView(string title, int subjectId, int groupId, string groupName)
 		{
 			_title = title;
 			_groupName = groupName;
-			var httpContent = new StringContent("", Encoding.UTF8, "application/json");
-			ServicePointManager.ServerCertificateValidationCallback += (sender, certificate, chain, sslPolicyErrors) => { return true; };
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
 			NavigationPage.SetHasNavigationBar(this, false);
+			BindingContext = new SavePracticeAndLabsPageViewModel(
+				new PlatformServices(), subjectId, groupId, title);
+
 			if (_title == CrossLocalization.Translate("practice_mark"))
 			{
-				string link = Links.GetParticialsMarks;
-				var groupItems = new GroupAndSubjModel();
-				groupItems.GroupId = groupId;
-				groupItems.SubjectId = subjectId;
-				var body = JsonConvert.SerializeObject(groupItems);
-				httpContent = new StringContent(body, Encoding.UTF8, "application/json");
-				var obj = requestDataAsync(link, httpContent);
-				practicMarksList = JsonConvert.DeserializeObject<LabsVisitingList>(obj.Result.ToString());
-				BindingContext = new SavePracticeAndLabsPageViewModel(new PlatformServices(), subjectId, practicMarksList, groupId, title);
 				createViews();
 			}
 			else if (_title == CrossLocalization.Translate("stats_page_labs_rating"))
 			{
-				string link = Links.GetLabsCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
-				var obj = requestDataAsync(link, httpContent);
-				labMarksList = JsonConvert.DeserializeObject<LabsVisitingList>(obj.Result.ToString());
-				BindingContext = new SavePracticeAndLabsPageViewModel(new PlatformServices(), subjectId, labMarksList, groupId, title);
 				createLabsMarks();
 			}
 
@@ -90,7 +61,6 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 				IsPullToRefreshEnabled = false,
 			};
 			resultsListViewSubGroup.ItemTapped += (sender, e) => ((RoundedListView)sender).SelectedItem = null;
-			resultsListViewSubGroup.ItemsSource = labMarksList.Students;
 			resultsListViewSubGroup.SetBinding(RoundedListView.SelectedItemProperty, "SelectedItem");
 			resultsListViewSubGroup.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "LabsVisitingMarksSubGroup");
 			stackLayout = new StackLayout
@@ -112,26 +82,6 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.ViewModels
 		{
 			var roundedListView = createRoundedListView();
 			Content = roundedListView;
-		}
-
-		private async Task<object> requestDataAsync(string link, HttpContent _postContent)
-		{
-			var client = new HttpClient {
-				Timeout = TimeSpan.FromSeconds(RequestController.RequestTimeoutSeconds)
-			};
-			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(services.Preferences.AccessToken);
-			if (_title == CrossLocalization.Translate("practice_mark"))
-			{
-				var responce = client.PostAsync(Servers.Current + link, _postContent).Result;
-				var result = await responce.Content.ReadAsStringAsync();
-				return result;
-			}
-			else
-			{
-				var responce = client.GetAsync(Servers.Current + link).Result;
-				var result = await responce.Content.ReadAsStringAsync();
-				return result;
-			}
 		}
 
 		Picker subGroupPicker()

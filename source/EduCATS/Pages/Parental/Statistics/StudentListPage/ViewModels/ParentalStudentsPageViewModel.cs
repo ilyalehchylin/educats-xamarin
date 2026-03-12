@@ -69,7 +69,7 @@ namespace EduCATS.Pages.Parental.Statistics.ViewsModels
 				return null;
 			}
 
-			var statisticsModel = await DataAccess.GetStatistics(SubjectId, CurrentGroup.GroupId);
+			var statisticsModel = await DataAccess.GetStudentsStatistics(SubjectId, CurrentGroup.GroupId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError)
 			{
@@ -80,4 +80,3 @@ namespace EduCATS.Pages.Parental.Statistics.ViewsModels
 		}
 	}
 }
-

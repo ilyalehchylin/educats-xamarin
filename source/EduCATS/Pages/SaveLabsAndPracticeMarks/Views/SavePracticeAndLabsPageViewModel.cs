@@ -1,4 +1,5 @@
 ﻿using EduCATS.Data.Models;
+using EduCATS.Data;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
@@ -11,10 +12,8 @@ using Newtonsoft.Json;
 using Nyxbull.Plugins.CrossLocalization;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
@@ -30,63 +29,54 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		public List<StudentsPageModel> _currentLabsVisitingMarksSubGroup2;
 		public List<string> FullNames { get; set; }
 
-		public SavePracticeAndLabsPageViewModel(IPlatformServices services, int subjectId, object stat, int groupId, string title)
+		public SavePracticeAndLabsPageViewModel(IPlatformServices services, int subjectId, int groupId, string title)
 		{
 			_services = services;
 			_title = title;
-			if (title == CrossLocalization.Translate("practice_mark"))
+			_services.Device.MainThread(async () =>
 			{
-				practiceVisitingList = stat as LabsVisitingList;
-				_takedLabs = new TakedLabs();
-				WebRequest request = WebRequest.Create(Links.GetPracticialsTest + "subjectId=" + subjectId + "&groupId=" + groupId);
-				if (request is HttpWebRequest httpRequestPracticals)
+				try
 				{
-					httpRequestPracticals.Timeout = RequestController.RequestTimeoutMilliseconds;
-					httpRequestPracticals.ReadWriteTimeout = RequestController.RequestTimeoutMilliseconds;
+					_services.Dialogs.ShowLoading();
+					await initializeData(subjectId, groupId);
+					showDataAccessErrorIfNeeded();
 				}
-				request.Headers.Add("Authorization", _services.Preferences.AccessToken);
-				WebResponse response = request.GetResponse();
-				string json = "";
-				using (Stream stream = response.GetResponseStream())
+				catch (Exception ex)
 				{
-					using (StreamReader reader = new StreamReader(stream))
-					{
-						string line = "";
-						while ((line = reader.ReadLine()) != null)
-						{
-							json += line;
-						}
-					}
-				};
-				_takedLabs = JsonConvert.DeserializeObject<TakedLabs>(json);
+					AppLogs.Log(ex);
+				}
+				finally
+				{
+					_services.Dialogs.HideLoading();
+				}
+			});
+		}
+
+		async Task initializeData(int subjectId, int groupId)
+		{
+			if (_title == CrossLocalization.Translate("practice_mark"))
+			{
+				practiceVisitingList = await DataAccess.GetTestPracticialStatistics(subjectId, groupId)
+					?? new LabsVisitingList();
+				_takedLabs = await DataAccess.GetPractTest(subjectId, groupId)
+					?? new TakedLabs();
 				createPracticialsMarksPage(practiceVisitingList);
 			}
-			else if (title == CrossLocalization.Translate("stats_page_labs_rating"))
+			else if (_title == CrossLocalization.Translate("stats_page_labs_rating"))
 			{
-				labsVisitingList = stat as LabsVisitingList;
-				_takedLabs = new TakedLabs();
-				WebRequest request = WebRequest.Create(Links.GetLabsTest + "subjectId=" + subjectId + "&groupId=" + groupId);
-				if (request is HttpWebRequest httpRequestLabs)
-				{
-					httpRequestLabs.Timeout = RequestController.RequestTimeoutMilliseconds;
-					httpRequestLabs.ReadWriteTimeout = RequestController.RequestTimeoutMilliseconds;
-				}
-				request.Headers.Add("Authorization", _services.Preferences.AccessToken);
-				WebResponse response = request.GetResponse();
-				string json = "";
-				using (Stream stream = response.GetResponseStream())
-				{
-					using (StreamReader reader = new StreamReader(stream))
-					{
-						string line = "";
-						while ((line = reader.ReadLine()) != null)
-						{
-							json += line;
-						}
-					}
-				};
-				_takedLabs = JsonConvert.DeserializeObject<TakedLabs>(json);
+				labsVisitingList = await DataAccess.GetStatistics(subjectId, groupId)
+					?? new LabsVisitingList();
+				_takedLabs = await DataAccess.GetLabsTest(subjectId, groupId)
+					?? new TakedLabs();
 				createLabsMarksPage(labsVisitingList);
+			}
+		}
+
+		void showDataAccessErrorIfNeeded()
+		{
+			if (DataAccess.IsError && !DataAccess.IsConnectionError)
+			{
+				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 		}
 

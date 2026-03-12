@@ -183,15 +183,15 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
-		/// Fetch statistics.
+		/// Fetch students statistics.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
-		/// <returns>Statistics data.</returns>
-		public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
+		/// <returns>Students statistics data.</returns>
+		public async static Task<StatsModel> GetStudentsStatistics(int subjectId, int groupId)
 		{
 			var dataAccess = new DataAccess<StatsModel>(
-				"stats_marks_error", getStatsCallback(subjectId, groupId),
+				"stats_marks_error", getStudentsStatsCallback(subjectId, groupId),
 				GetKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
 			return await GetDataObject(dataAccess, false) as StatsModel;
 		}
@@ -224,10 +224,10 @@ namespace EduCATS.Data
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Statistics data.</returns>
-		public async static Task<LabsVisitingList> GetTestStatistics(int subjectId, int groupId)
+		public async static Task<LabsVisitingList> GetStatistics(int subjectId, int groupId)
 		{
 			var dataAccess = new DataAccess<LabsVisitingList>(
-				"stats_marks_error", getTestStatsCallback(subjectId, groupId),
+				"stats_marks_error", getStatsCallback(subjectId, groupId),
 				GetKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
 			return await GetDataObject(dataAccess, false) as LabsVisitingList;
 		}
