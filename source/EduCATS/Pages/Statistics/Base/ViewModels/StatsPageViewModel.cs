@@ -499,20 +499,29 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 					return;
 				}
 
+				if (!AppUserData.IsProfileLoaded)
+				{
+					AppLogs.Log("StatsPage.getAndSetStatistics: profile is not loaded, loading profile.");
+					await getProfile();
+				}
+
+				checkStudent();
+				AppLogs.Log($"StatsPage.getAndSetStatistics: resolved user type={AppUserData.UserType}.");
+
+				if (!_isStudent)
+				{
+					_students = null;
+					AppLogs.Log("StatsPage.getAndSetStatistics: teacher mode, skip GetMarksV3 and use teacher summary.");
+					await setTeacherChartData();
+					return;
+				}
+
 				var studentsStatistics = await getStatistics();
 				_students = studentsStatistics;
 				AppLogs.Log($"StatsPage.getAndSetStatistics: students loaded. count={_students?.Count ?? 0}");
 
-				if (_isStudent)
-				{
-					AppLogs.Log("StatsPage.getAndSetStatistics: setting student chart data.");
-					await setStudentChartData();
-				}
-				else
-				{
-					AppLogs.Log("StatsPage.getAndSetStatistics: setting teacher chart data.");
-					await setTeacherChartData();
-				}
+				AppLogs.Log("StatsPage.getAndSetStatistics: setting student chart data.");
+				await setStudentChartData();
 			}
 			catch (Exception ex)
 			{
