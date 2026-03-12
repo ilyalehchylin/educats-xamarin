@@ -52,10 +52,18 @@ namespace EduCATS.Helpers.Forms.Converters
 			var chartEntries = doubleList.Select(d => new ChartEntry((float)d)).ToArray();
 
 			if (chartEntries != null && chartEntries.Length == 4) {
-				chartEntries[0].Color = SKColor.Parse(Theme.Current.StatisticsChartLabsColor);
-				chartEntries[1].Color = SKColor.Parse(Theme.Current.StatisticsChartTestsColor);
-				chartEntries[2].Color = SKColor.Parse(Theme.Current.StatisticsChartRatingColor);
-				chartEntries[3].Color = SKColor.Parse(Theme.Current.StatisticsChartPractColor);
+				chartEntries[0].Color = SKColor.Parse(Theme.Current.StatisticsChartPractColor);
+				chartEntries[1].Color = SKColor.Parse(Theme.Current.StatisticsChartLabsColor);
+				chartEntries[2].Color = SKColor.Parse(Theme.Current.StatisticsChartTestsColor);
+				chartEntries[3].Color = SKColor.Parse(Theme.Current.StatisticsChartRatingColor);
+			}
+
+			if (chartEntries != null && chartEntries.Length == 5) {
+				chartEntries[0].Color = SKColor.Parse(Theme.Current.StatisticsChartPractColor);
+				chartEntries[1].Color = SKColor.Parse(Theme.Current.StatisticsChartLabsColor);
+				chartEntries[2].Color = SKColor.Parse(Theme.Current.StatisticsChartTestsColor);
+				chartEntries[3].Color = SKColor.Parse(Theme.Current.StatisticsChartCourseColor);
+				chartEntries[4].Color = SKColor.Parse(Theme.Current.StatisticsChartRatingColor);
 			}
 
 			return new RadarChart {

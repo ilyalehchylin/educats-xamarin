@@ -483,9 +483,11 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			var averageTests = getSubjectMetricById(studentSummary.UserAvgTestMarks, subjectId);
 			var averagePract = getSubjectMetricById(studentSummary.UserAvgPracticalMarks, subjectId);
 			var averageCourse = getSubjectMetricById(studentSummary.UserAvgCourseMark, subjectId);
+			var courseCount = getSubjectMetricById(studentSummary.UserCourseCount, subjectId);
 
 			IsPract = IsPract || getSubjectMetricById(studentSummary.UserPracticalCount, subjectId) > 0 || averagePract > 0;
-			IsCourse = hasSubjectMetric(studentSummary.UserAvgCourseMark, subjectId);
+			IsCourse = courseCount > 0 ||
+				(hasSubjectMetric(studentSummary.UserAvgCourseMark, subjectId) && averageCourse > 0);
 
 			setChartData(averageLabs, averageTests, averagePract, averageCourse, includeCourseInRating: true);
 		}
@@ -503,14 +505,14 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 			}
 
 			IsPract = IsPract || subjectSummary.AveragePracticalsMark > 0;
-			IsCourse = true;
+			IsCourse = subjectSummary.AverageCourseProjectMark > 0;
 
 			setChartData(
 				subjectSummary.AverageLabsMark,
 				subjectSummary.AverageTestsMark,
 				subjectSummary.AveragePracticalsMark,
 				subjectSummary.AverageCourseProjectMark,
-				includeCourseInRating: false);
+				includeCourseInRating: true);
 		}
 
 		void setChartData(
@@ -531,15 +533,19 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 				Rating = formatChartValue(rating);
 
 				ChartEntries = new List<double> {
-					averageLabs, averageTests, rating, averagePract
+					averagePract,
+					averageLabs,
+					averageTests
 				};
 
-				setNotEnoughDetails(
-					averageLabs == _defaultChartValue &&
-					averageTests == _defaultChartValue &&
-					averagePract == _defaultChartValue &&
-					averageCourse == _defaultChartValue &&
-					rating == _defaultChartValue);
+				if (IsCourse)
+				{
+					ChartEntries.Add(averageCourse);
+				}
+
+				ChartEntries.Add(rating);
+
+				setNotEnoughDetails(ChartEntries.All(v => v == _defaultChartValue));
 			}
 			catch (Exception ex)
 			{
@@ -549,8 +555,13 @@ namespace EduCATS.Pages.Statistics.Base.ViewModels
 
 		void resetChartData()
 		{
-			IsCourse = true;
-			setChartData(_defaultChartValue, _defaultChartValue, _defaultChartValue, _defaultChartValue, includeCourseInRating: _isStudent);
+			IsCourse = false;
+			setChartData(
+				_defaultChartValue,
+				_defaultChartValue,
+				_defaultChartValue,
+				_defaultChartValue,
+				includeCourseInRating: _isStudent);
 		}
 
 		double calculateRating(

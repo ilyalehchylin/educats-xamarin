@@ -138,7 +138,7 @@ namespace EduCATS.Pages.Statistics.Base.Views
 			var avgStatsLayout = new StackLayout
 			{
 				Children = {
-					avgLabsView, avgTestsView, avgPractView, avgCourseView, avgRatingView
+					avgPractView, avgLabsView, avgTestsView, avgCourseView, avgRatingView
 				}
 			};
 
