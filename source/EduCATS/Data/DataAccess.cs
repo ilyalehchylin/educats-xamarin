@@ -204,8 +204,10 @@ namespace EduCATS.Data
 		/// <returns>Students statistics data.</returns>
 		public async static Task<StatsModel> GetStudentsStatistics(int subjectId, int groupId)
 		{
-			// Backward-compatible alias for callers migrated to GetStudentsStatistics.
-			return await GetStatistics(subjectId, groupId);
+			var dataAccess = new DataAccess<StatsModel>(
+				"stats_marks_error", getStudentsStatsCallback(subjectId, groupId),
+				GetKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
+			return await GetDataObject(dataAccess, false) as StatsModel;
 		}
 
 		/// <summary>

@@ -206,7 +206,9 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Statistics data.</returns>
 		public static async Task<object> GetStudentsStatistics(int subjectId, int groupId)
 		{
-			return await GetStatistics(subjectId, groupId);
+			return await AppServicesController.Request(
+				$"{Servers.Current + Links.GetLabsCalendarData}subjectId={subjectId}&groupId={groupId}",
+				AppDemoType.Statistics);
 		}
 
 		/// <summary>

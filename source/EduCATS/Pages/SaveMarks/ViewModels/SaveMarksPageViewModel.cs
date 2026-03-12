@@ -121,26 +121,28 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 		{
 			LecturesMarks = new List<VisitingPageModel>();
 			fullVisitingPract = statistics;
-			Date = new List<string>();
+			var dates = new List<string>();
 			FullNames = new List<string>();
 			_currentLecturesVisitingMarks = new List<VisitingPageModel>();
 			foreach (var pract in _takedLabs?.ScheduleProtectionPracticals ?? new List<ScheduleProtectionLabs>())
 			{
-				Date.Add(pract.Date);
+				dates.Add(pract.Date);
 			}
-			if (Date.Count == 0)
+			Date = dates;
+
+			if (dates.Count == 0)
 			{
 				return;
 			}
 
-			selDateForSave = Date[Date.Count - 1];
+			selDateForSave = dates[dates.Count - 1];
 			SelectedPracDate = selDateForSave;
 		}
 
 		void createLabsVisitingPage(LabsVisitingList statistics)
 		{
 			LabsVisitingMarks = new List<VisitingPageModel>();
-			SubGroup = new List<string>();
+			var subGroups = new List<string>();
 			FullNames = new List<string>();
 			fullVisitingLabs = statistics;
 			foreach (var subGroup in _takedLabs?.Labs ?? new List<TakedLab>())
@@ -152,8 +154,10 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 			}
 			foreach (var subGruop in currentSubGroups)
 			{
-				SubGroup.Add(CrossLocalization.Translate("sub_group") + subGruop.ToString());
+				subGroups.Add(CrossLocalization.Translate("sub_group") + subGruop.ToString());
 			}
+			SubGroup = subGroups;
+
 			if (currentSubGroups.Count == 0)
 			{
 				LabsVisitingMarksSubGroup = new List<VisitingPageModel>();
@@ -168,7 +172,7 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 		{
 			_currentLecturesVisitingMarks = new List<VisitingPageModel>();
 			LecturesMarks = new List<VisitingPageModel>();
-			Date = new List<string>();
+			var dates = new List<string>();
 			foreach (var group in statistics?.GroupsVisiting ?? new List<ListSaveMarksVisiting>())
 			{
 				fullVisitingLectures = statistics;
@@ -176,11 +180,11 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 				{
 					foreach (var groupVisit in groupVis.Marks)
 					{
-						if (!Date.Contains(groupVisit.Date))
+						if (!dates.Contains(groupVisit.Date))
 						{
-							Date.Add(groupVisit.Date);
+							dates.Add(groupVisit.Date);
 						}
-						if (Date[0] == groupVisit.Date &&
+						if (dates[0] == groupVisit.Date &&
 							!(_currentLecturesVisitingMarks.Contains(new VisitingPageModel(groupVis.StudentName, groupVisit.Comment,
 							groupVisit.Mark, groupVisit.ShowForStudent))))
 						{
@@ -190,12 +194,14 @@ namespace EduCATS.Pages.SaveMarks.ViewModels
 					}
 				}
 			}
-			if (Date.Count == 0)
+			Date = dates;
+
+			if (dates.Count == 0)
 			{
 				return;
 			}
 
-			SelectedDate = Date[Date.Count - 1];
+			SelectedDate = dates[dates.Count - 1];
 			LecturesMarks = _currentLecturesVisitingMarks;
 		}
 

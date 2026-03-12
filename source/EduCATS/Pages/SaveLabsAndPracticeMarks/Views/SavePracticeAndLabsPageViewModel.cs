@@ -83,9 +83,9 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		{
 			FullNames = new List<string>();
 			LabsVisitingMarks = new List<StudentsPageModel>();
-			Date1 = new List<string>();
-			Date2 = new List<string>();
-			SubGroup = new List<string>();
+			var date1 = new List<string>();
+			var date2 = new List<string>();
+			var subGroups = new List<string>();
 			_currentLabsVisitingMarksSubGroup1 = new List<StudentsPageModel>();
 			_currentLabsVisitingMarksSubGroup2 = new List<StudentsPageModel>();
 			var currentStudents = new List<StudentsPageModel>();
@@ -105,20 +105,24 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 			foreach (var lab in _takedLabs?.ScheduleProtectionLabs?.Where(v => v.SubGroup == 1) ??
 				Enumerable.Empty<ScheduleProtectionLabs>())
 			{
-				Date1.Add(lab.Date);
+				date1.Add(lab.Date);
 			};
 			foreach (var lab in _takedLabs?.ScheduleProtectionLabs?.Where(v => v.SubGroup == 2) ??
 				Enumerable.Empty<ScheduleProtectionLabs>())
 			{
-				Date2.Add(lab.Date);
+				date2.Add(lab.Date);
 			};
 			foreach (var lab in _takedLabs?.ScheduleProtectionLabs ?? new List<ScheduleProtectionLabs>())
 			{
-				if (!SubGroup.Contains(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString()))
+				if (!subGroups.Contains(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString()))
 				{
-					SubGroup.Add(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString());
+					subGroups.Add(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString());
 				}
 			}
+			Date1 = date1;
+			Date2 = date2;
+			SubGroup = subGroups;
+
 			LabsVisitingMarksSubGroup = currentStudents;
 			LabsVisitingMarksSubGroupOne = _currentLabsVisitingMarksSubGroup1;
 			LabsVisitingMarksSubGroupTwo = _currentLabsVisitingMarksSubGroup2;
