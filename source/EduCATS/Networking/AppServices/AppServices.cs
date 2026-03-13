@@ -109,6 +109,16 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch subject modules request.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Subject modules data.</returns>
+		public static async Task<object> GetSubjectModules(int subjectId)
+		{
+			return await AppServicesController.Request($"{Links.GetSubjectModules}/{subjectId}");
+		}
+
+		/// <summary>
 		/// Fetch calendar data request.
 		/// </summary>
 		/// <param name="username">Username.</param>
@@ -189,6 +199,19 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
+		/// Fetch students statistics request.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Statistics data.</returns>
+		public static async Task<object> GetStudentsStatistics(int subjectId, int groupId)
+		{
+			return await AppServicesController.Request(
+				$"{Servers.Current + Links.GetLabsCalendarData}subjectId={subjectId}&groupId={groupId}",
+				AppDemoType.Statistics);
+		}
+
+		/// <summary>
 		/// Fetch student summary statistics request.
 		/// </summary>
 		/// <returns>Statistics data.</returns>
@@ -237,7 +260,7 @@ namespace EduCATS.Networking.AppServices
 		}
 
 		/// <summary>
-		/// Fetch statistics request.
+		/// Fetch test statistics request.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>

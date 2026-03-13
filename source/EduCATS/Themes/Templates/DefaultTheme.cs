@@ -75,11 +75,11 @@ namespace EduCATS.Themes.Templates
 		virtual public string NewsTextColor => _blackColor;
 
 
-		virtual public string StatisticsChartLabsColor => "#FF3900";
-		virtual public string StatisticsChartPractColor => "#1ad2d9";
-		virtual public string StatisticsChartTestsColor => "#086CA2";
-		virtual public string StatisticsChartCourseColor => "#B07D00";
-		virtual public string StatisticsChartRatingColor => "#00B454";
+		virtual public string StatisticsChartLabsColor => "#D32F2F";
+		virtual public string StatisticsChartPractColor => "#FFA500";
+		virtual public string StatisticsChartTestsColor => "#1976D2";
+		virtual public string StatisticsChartCourseColor => "#7F00FF";
+		virtual public string StatisticsChartRatingColor => "#3F51B5";
 		virtual public string StatisticsBoxTextColor => _whiteColor;
 		virtual public string StatisticsExpandableTextColor => _greyColor;
 		virtual public string StatisticsDetailsTitleColor => _blackColor;

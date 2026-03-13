@@ -59,6 +59,14 @@ namespace EduCATS.Data
 			int subjectId) => await AppServices.GetInfoLecturers(subjectId);
 
 		/// <summary>
+		/// Subject modules callback.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Subject modules data.</returns>
+		static async Task<object> getSubjectModulesCallback(
+			int subjectId) => await AppServices.GetSubjectModules(subjectId);
+
+		/// <summary>
 		/// Calendar callback.
 		/// </summary>
 		/// <param name="username">Username.</param>
@@ -98,14 +106,17 @@ namespace EduCATS.Data
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Statistics data.</returns>
-		static async Task<object> getStatsCallback(
-			int subjectId, int groupId) => await AppServices.GetStatistics(subjectId, groupId);
+		static async Task<object> getStudentsStatsCallback(
+			int subjectId, int groupId) => await AppServices.GetStudentsStatistics(subjectId, groupId);
 
 		static async Task<object> getStudentStatisticsSummaryCallback() =>
 			await AppServices.GetStudentStatisticsSummary();
 
 		static async Task<object> getTeacherStatisticsSummaryCallback() =>
 			await AppServices.GetTeacherStatisticsSummary();
+
+		static async Task<object> getStatsCallback(
+			int subjectId, int groupId) => await AppServices.GetStatistics(subjectId, groupId);
 
 		static async Task<object> getTestStatsCallback(
 			int subjectId, int groupId) => await AppServices.GetTestStatistics(subjectId, groupId);

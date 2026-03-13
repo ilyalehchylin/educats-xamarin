@@ -95,6 +95,20 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
+		/// Fetch subject modules.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <returns>Subject modules data.</returns>
+		public async static Task<List<SubjectModuleModel>> GetSubjectModules(int subjectId)
+		{
+			var dataAccess = new DataAccess<SubjectModuleModel>(
+				"stats_marks_error",
+				getSubjectModulesCallback(subjectId),
+				GetKey(GlobalConsts.DataGetSubjectModulesKey, subjectId));
+			return await GetDataObject(dataAccess, true) as List<SubjectModuleModel>;
+		}
+
+		/// <summary>
 		/// Fetch subjects.
 		/// </summary>
 		/// <param name="username">Username.</param>
@@ -183,6 +197,20 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
+		/// Fetch students statistics.
+		/// </summary>
+		/// <param name="subjectId">Subject ID.</param>
+		/// <param name="groupId">Group ID.</param>
+		/// <returns>Students statistics data.</returns>
+		public async static Task<StatsModel> GetStudentsStatistics(int subjectId, int groupId)
+		{
+			var dataAccess = new DataAccess<StatsModel>(
+				"stats_marks_error", getStudentsStatsCallback(subjectId, groupId),
+				GetKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
+			return await GetDataObject(dataAccess, false) as StatsModel;
+		}
+
+		/// <summary>
 		/// Fetch statistics.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
@@ -219,7 +247,7 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
-		/// Fetch statistics.
+		/// Fetch test statistics.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>

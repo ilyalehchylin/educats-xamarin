@@ -169,7 +169,7 @@ namespace EduCATS.Pages.Statistics.Students.ViewModels
 				return null;
 			}
 
-			var statisticsModel = await DataAccess.GetStatistics(SubjectId, CurrentGroup.GroupId);
+			var statisticsModel = await DataAccess.GetStudentsStatistics(SubjectId, CurrentGroup.GroupId);
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
 				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);

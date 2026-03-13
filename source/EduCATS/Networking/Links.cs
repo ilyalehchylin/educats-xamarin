@@ -46,6 +46,11 @@
 		public static string GetProfileInfoSubjectsTest => $"{Servers.Current}/Services/Subjects/SubjectsService.svc/GetUserSubjects";
 
 		/// <summary>
+		/// Get subject modules URL.
+		/// </summary>
+		public static string GetSubjectModules => $"{Servers.Current}/Services/Subjects/SubjectsService.svc/Modules";
+
+		/// <summary>
 		/// Get lecturers URL.
 		/// </summary>
 		public static string GetInfoLectures => $"{Servers.Current}/subject/Services/Lectures/LecturesService.svc/GetLectures/";
