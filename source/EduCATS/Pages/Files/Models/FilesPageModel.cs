@@ -30,7 +30,6 @@ namespace EduCATS.Pages.Files.Models
 		public string Name { get; set; }
 		public string FileName { get; set; }
 		public string PathName { get; set; }
-		public string Url { get; set; }
 		public bool IsDownloaded { get; set; }
 		public string Size { get; set; }
 

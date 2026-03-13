@@ -13,7 +13,6 @@ namespace EduCATS.Pages.Testing.Base.Views
 		const double _spacing = 1;
 
 		static Thickness _headerPadding = new Thickness(10);
-		bool _isInitialAppearing = true;
 
 		public TestingPageView()
 		{
@@ -21,22 +20,6 @@ namespace EduCATS.Pages.Testing.Base.Views
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			BindingContext = new TestingPageViewModel(new PlatformServices());
 			createViews();
-		}
-
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-
-			if (_isInitialAppearing)
-			{
-				_isInitialAppearing = false;
-				return;
-			}
-
-			if (BindingContext is TestingPageViewModel pageViewModel && !pageViewModel.IsRefreshing)
-			{
-				pageViewModel.RefreshCommand.Execute(null);
-			}
 		}
 
 		void createViews()
@@ -66,7 +49,7 @@ namespace EduCATS.Pages.Testing.Base.Views
 
 		ListView createTestList(View subjectsView)
 		{
-			var testListView = new ListView(ListViewCachingStrategy.RetainElement) {
+			var testListView = new ListView {
 				HasUnevenRows = true,
 				IsGroupingEnabled = true,
 				IsPullToRefreshEnabled = true,

@@ -18,9 +18,6 @@ namespace EduCATS.Data.Models.Calendar
 
 	public class Schedule
 	{
-		[JsonProperty("Id")]
-		public int Id { get; set; }
-
 		[JsonProperty("Audience")]
 		public string Audience { get; set; }
 
@@ -33,17 +30,11 @@ namespace EduCATS.Data.Models.Calendar
 		[JsonProperty("End")]
 		public string End { get; set; }
 
-		[JsonProperty("Date")]
-		public string Date { get; set; }
-
 		[JsonProperty("Name")]
 		public string Name { get; set; }
 
 		[JsonProperty("Start")]
 		public string Start { get; set; }
-
-		[JsonProperty("SubjectId")]
-		public int SubjectId { get; set; }
 
 		[JsonProperty("Teacher")]
 		public Teacher Teacher { get; set; }
@@ -57,8 +48,5 @@ namespace EduCATS.Data.Models.Calendar
 	{
 		[JsonProperty("FullName")]
 		public string FullName { get; set; }
-
-		[JsonProperty("LectorId")]
-		public int LectorId { get; set; }
 	}
 }

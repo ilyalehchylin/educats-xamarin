@@ -89,23 +89,18 @@ namespace EduCATS.Data
 		/// <returns>Subjects data.</returns>
 		public async static Task<List<SubjectModel>> GetProfileInfoSubjects(string username)
 		{
-			var dataAccess = new DataAccess<SubjectModelTest>(
-				"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
-			return (await GetDataObject(dataAccess, false) as SubjectModelTest).Subjects;
-		}
-
-		/// <summary>
-		/// Fetch subject modules.
-		/// </summary>
-		/// <param name="subjectId">Subject ID.</param>
-		/// <returns>Subject modules data.</returns>
-		public async static Task<List<SubjectModuleModel>> GetSubjectModules(int subjectId)
-		{
-			var dataAccess = new DataAccess<SubjectModuleModel>(
-				"stats_marks_error",
-				getSubjectModulesCallback(subjectId),
-				GetKey(GlobalConsts.DataGetSubjectModulesKey, subjectId));
-			return await GetDataObject(dataAccess, true) as List<SubjectModuleModel>;
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+			{
+				var dataAccess = new DataAccess<SubjectModel>(
+					"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
+				return await GetDataObject(dataAccess, true) as List<SubjectModel>;
+			}
+			else
+			{
+				var dataAccess = new DataAccess<SubjectModelTest>(
+					"today_subjects_error", getSubjectsCallback(username), GlobalConsts.DataGetSubjectsKey);
+				return (await GetDataObject(dataAccess, false) as SubjectModelTest).Subjects;
+			}
 		}
 
 		/// <summary>
@@ -135,79 +130,13 @@ namespace EduCATS.Data
 		/// <summary>
 		/// Fetch schedule calendar data.
 		/// </summary>
-		/// <param name="date">Date.</param>
+		/// <param name="username">Username.</param>
 		/// <returns>Calendar data.</returns>
 		public async static Task<CalendarSubjectModelTest> GetSchedule(string date)
 		{
-			return await GetSchedule(date, date);
-		}
-
-		/// <summary>
-		/// Fetch schedule calendar data.
-		/// </summary>
-		/// <param name="dateStart">Start date.</param>
-		/// <param name="dateEnd">End date.</param>
-		/// <returns>Calendar data.</returns>
-		public async static Task<CalendarSubjectModelTest> GetSchedule(string dateStart, string dateEnd)
-		{
 			var dataAccess = new DataAccess<CalendarSubjectModelTest>(
-				"today_calendar_error", getScheduleCallback(dateStart, dateEnd),
-				GetKey(GlobalConsts.DataGetCalendarKey, dateStart, dateEnd));
+				"today_calendar_error", getScheduleCallback(date), GlobalConsts.DataGetCalendarKey);
 			return await GetDataObject(dataAccess, false) as CalendarSubjectModelTest;
-		}
-
-		/// <summary>
-		/// Fetch diploma project consultations.
-		/// </summary>
-		/// <param name="count">Items count.</param>
-		/// <param name="page">Page number.</param>
-		/// <returns>Consultations data.</returns>
-		public async static Task<DiplomProjectConsultationModel> GetDiplomProjectConsultation(
-			int count = 1000, int page = 1)
-		{
-			var dataAccess = new DataAccess<DiplomProjectConsultationModel>(
-				"today_calendar_error", getDiplomProjectConsultationCallback(count, page));
-			return await GetDataObject(dataAccess, false) as DiplomProjectConsultationModel;
-		}
-
-		/// <summary>
-		/// Fetch course project consultations.
-		/// </summary>
-		/// <param name="count">Items count.</param>
-		/// <param name="page">Page number.</param>
-		/// <returns>Consultations data.</returns>
-		public async static Task<CourseProjectConsultationModel> GetCourseProjectConsultation(
-			int count = 1000, int page = 1)
-		{
-			var dataAccess = new DataAccess<CourseProjectConsultationModel>(
-				"today_calendar_error", getCourseProjectConsultationCallback(count, page));
-			return await GetDataObject(dataAccess, false) as CourseProjectConsultationModel;
-		}
-
-		/// <summary>
-		/// Fetch profile info by id.
-		/// </summary>
-		/// <param name="userId">User id.</param>
-		/// <returns>User profile data.</returns>
-		public async static Task<UserProfileByIdModel> GetProfileInfoById(int userId)
-		{
-			var dataAccess = new DataAccess<UserProfileByIdModel>(
-				"today_calendar_error", getProfileInfoByIdCallback(userId));
-			return await GetDataObject(dataAccess, false) as UserProfileByIdModel;
-		}
-
-		/// <summary>
-		/// Fetch students statistics.
-		/// </summary>
-		/// <param name="subjectId">Subject ID.</param>
-		/// <param name="groupId">Group ID.</param>
-		/// <returns>Students statistics data.</returns>
-		public async static Task<StatsModel> GetStudentsStatistics(int subjectId, int groupId)
-		{
-			var dataAccess = new DataAccess<StatsModel>(
-				"stats_marks_error", getStudentsStatsCallback(subjectId, groupId),
-				GetKey(GlobalConsts.DataGetMarksKey, subjectId, groupId));
-			return await GetDataObject(dataAccess, false) as StatsModel;
 		}
 
 		/// <summary>
@@ -216,7 +145,7 @@ namespace EduCATS.Data
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
 		/// <returns>Statistics data.</returns>
-		public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
+			public async static Task<StatsModel> GetStatistics(int subjectId, int groupId)
 		{
 			var dataAccess = new DataAccess<StatsModel>(
 				"stats_marks_error", getStatsCallback(subjectId, groupId),
@@ -225,29 +154,7 @@ namespace EduCATS.Data
 		}
 
 		/// <summary>
-		/// Fetch student summary statistics.
-		/// </summary>
-		/// <returns>Student summary statistics data.</returns>
-		public async static Task<StudentStatisticsSummaryModel> GetStudentStatisticsSummary()
-		{
-			var dataAccess = new DataAccess<StudentStatisticsSummaryModel>(
-				"stats_marks_error", getStudentStatisticsSummaryCallback());
-			return await GetDataObject(dataAccess, false) as StudentStatisticsSummaryModel;
-		}
-
-		/// <summary>
-		/// Fetch teacher summary statistics.
-		/// </summary>
-		/// <returns>Teacher summary statistics data.</returns>
-		public async static Task<TeacherStatisticsSummaryModel> GetTeacherStatisticsSummary()
-		{
-			var dataAccess = new DataAccess<TeacherStatisticsSummaryModel>(
-				"stats_marks_error", getTeacherStatisticsSummaryCallback());
-			return await GetDataObject(dataAccess, false) as TeacherStatisticsSummaryModel;
-		}
-
-		/// <summary>
-		/// Fetch test statistics.
+		/// Fetch statistics.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
@@ -454,10 +361,20 @@ namespace EduCATS.Data
 		/// <returns>Root concept data.</returns>
 		public async static Task<RootConceptModel> GetRootConcepts(string userId, string subjectId)
 		{
-			var dataAccess = new DataAccess<RootConceptModel>(
+			DataAccess<RootConceptModel> dataAccess = null;
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+			{
+				 dataAccess = new DataAccess<RootConceptModel>(
+				"eemc_root_concepts_error", getRootConceptsCallback(userId, subjectId),
+				GetKey(GlobalConsts.DataGetRootConceptKey, userId, subjectId));
+			}
+			else
+			{
+				dataAccess = new DataAccess<RootConceptModel>(
 				"eemc_root_concepts_error", getRootConceptsCallback(subjectId),
 				GetKey(GlobalConsts.DataGetRootConceptKey, subjectId));
-			return await GetDataObject(dataAccess, false) as RootConceptModel;
+			}
+				return await GetDataObject(dataAccess, false) as RootConceptModel;
 		}
 
 		/// <summary>
@@ -509,10 +426,11 @@ namespace EduCATS.Data
 			return await GetDataObject(dataAccess, false) as FilesModelTest;
 		}
 
-		public async static Task<List<FileDetailsModelTest>> GetDetailsFilesTest(IEnumerable<string> values)
+		public async static Task<List<FileDetailsModelTest>> GetDetailsFilesTest(string uri)
 		{
 			var dataAccess = new DataAccess<FileDetailsModelTest>(
-				"files_fetch_error", getFilesDetailsCallback(values));
+				"files_fetch_error", getFilesDetailsCallback(uri),
+				GetKey(GlobalConsts.DataGetFilesKey, uri));
 			return await GetDataObject(dataAccess, true) as List<FileDetailsModelTest>;
 		}
 

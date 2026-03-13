@@ -166,14 +166,32 @@ namespace EduCATS.Pages.Today.Base.Views
 		ListView createSubjectsList()
 		{
 			var subjectsLabel = createSubjectsLabel();
-			var subjectsListView = new RoundedListView(typeof(SubjectPageViewCell), header: subjectsLabel, services: _services)
-			{
-				RowHeight = (int)_subjectDetailedRowHeight,
-				IsEnabled = false,
-				Margin = _subjectsMargin
-			};
+			RoundedListView subjectsListView;
 
-			subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "NewsSubjectList");
+			if (Networking.Servers.Current == Networking.Servers.EduCatsByAddress)
+			{
+				subjectsListView = new RoundedListView(typeof(SubjectPageViewCell), header: subjectsLabel, services: _services)
+				{
+					RowHeight = (int)_subjectDetailedRowHeight,
+					IsEnabled = false,
+					Margin = _subjectsMargin
+				};
+
+				subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "NewsSubjectList");
+			}
+			else
+			{
+				subjectsListView = new RoundedListView(typeof(CalendarSubjectsViewCell), header: subjectsLabel, services: _services) {
+					RowHeight = (int)_subjectRowHeight,
+					IsEnabled = false,
+					Margin = _subjectsMargin,
+				};
+
+				subjectsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "CalendarSubjects");
+			}
+
+
+
 			subjectsListView.SetBinding(HeightRequestProperty, "CalendarSubjectsHeight");
 			return subjectsListView;
 		}

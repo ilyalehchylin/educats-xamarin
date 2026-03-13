@@ -3,15 +3,15 @@
 <!-- Please provide summary of the changes -->
 Summary: 
 
-### Issues closed
+### Issues resolved
 
-<!-- List all related issue numbers here if any exist, delete this section otherwise -->
+<!-- List all related issue numbers here -->
 - Fixes #
-- Closes #
 
 ### Platforms affected
 
 <!-- Remove unnecessary items -->
+- All platforms (iOS, Android)
 - Android
 - iOS
 
@@ -20,3 +20,23 @@ Summary:
 <!-- Remove unnecessary items -->
 - Behavioral (Logic)
 - Visual (UI)
+
+### Screenshots
+
+<!-- If there are visual changes, please add screenshots -->
+<details>
+ <summary>Open screenshots</summary>
+ 
+ <!-- Screenshots here -->
+ 
+ 
+</details>
+
+### Checks
+
+- [ ] Targets the correct branch
+- [ ] Fully localized
+- [ ] Documentation for added code
+- [ ] Unit tests for added code
+- [ ] Works on Android
+- [ ] Works on iOS

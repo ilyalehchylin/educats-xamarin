@@ -1,6 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using EduCATS.Data.Models;
 using EduCATS.Demo;
 using EduCATS.Helpers.Json;
@@ -9,7 +7,6 @@ using EduCATS.Networking.Models.Login;
 using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Networking.Models.Testing;
 using Newtonsoft.Json;
-using Xamarin.Forms;
 
 namespace EduCATS.Networking.AppServices
 {
@@ -95,7 +92,11 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetProfileInfoSubjects(string username)
 		{
 			var body = getUserLoginBody(username);
-			return await AppServicesController.Request(Links.GetProfileInfoSubjectsTest, AppDemoType.ProfileInfoSubjectsTest);
+			
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+				return await AppServicesController.Request(Links.GetProfileInfoSubjects, body, AppDemoType.ProfileInfoSubjects);
+			else
+				return await AppServicesController.Request(Links.GetProfileInfoSubjectsTest, AppDemoType.ProfileInfoSubjectsTest);
 		}
 
 		/// <summary>
@@ -106,16 +107,6 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetInfoLecturers(int subjectId)
 		{
 			return await AppServicesController.Request(Links.GetInfoLectures + $"{subjectId}", AppDemoType.InfoLecturers);
-		}
-
-		/// <summary>
-		/// Fetch subject modules request.
-		/// </summary>
-		/// <param name="subjectId">Subject ID.</param>
-		/// <returns>Subject modules data.</returns>
-		public static async Task<object> GetSubjectModules(int subjectId)
-		{
-			return await AppServicesController.Request($"{Links.GetSubjectModules}/{subjectId}");
 		}
 
 		/// <summary>
@@ -132,57 +123,11 @@ namespace EduCATS.Networking.AppServices
 		/// <summary>
 		/// Fetch calendar data request.
 		/// </summary>
-		/// <param name="date">Date.</param>
+		/// <param name="username">Username.</param>
 		/// <returns>Calendar data.</returns>
 		public static async Task<object> GetSchedule(string date)
 		{
-			return await GetSchedule(date, date);
-		}
-
-		/// <summary>
-		/// Fetch calendar data request.
-		/// </summary>
-		/// <param name="dateStart">Start date.</param>
-		/// <param name="dateEnd">End date.</param>
-		/// <returns>Calendar data.</returns>
-		public static async Task<object> GetSchedule(string dateStart, string dateEnd)
-		{
-			return await AppServicesController.Request(
-				Links.GetSchedule + $"dateStart={dateStart}&dateEnd={dateEnd}", AppDemoType.Schedule);
-		}
-
-		/// <summary>
-		/// Fetch diploma project consultations request.
-		/// </summary>
-		/// <param name="count">Items count.</param>
-		/// <param name="page">Page number.</param>
-		/// <returns>Consultations data.</returns>
-		public static async Task<object> GetDiplomProjectConsultation(int count = 1000, int page = 1)
-		{
-			return await AppServicesController.Request(
-				$"{Links.GetDiplomProjectConsultation}?count={count}&page={page}");
-		}
-
-		/// <summary>
-		/// Fetch course project consultations request.
-		/// </summary>
-		/// <param name="count">Items count.</param>
-		/// <param name="page">Page number.</param>
-		/// <returns>Consultations data.</returns>
-		public static async Task<object> GetCourseProjectConsultation(int count = 1000, int page = 1)
-		{
-			return await AppServicesController.Request(
-				$"{Links.GetCourseProjectConsultation}?count={count}&page={page}");
-		}
-
-		/// <summary>
-		/// Fetch profile info by id request.
-		/// </summary>
-		/// <param name="userId">User id.</param>
-		/// <returns>Profile data.</returns>
-		public static async Task<object> GetProfileInfoById(int userId)
-		{
-			return await AppServicesController.Request($"{Links.GetProfileInfoById}/{userId}");
+			return await AppServicesController.Request(Links.GetSchedule + $"dateStart={date}&dateEnd={date}", AppDemoType.Schedule);
 		}
 
 		/// <summary>
@@ -196,37 +141,6 @@ namespace EduCATS.Networking.AppServices
 			return await AppServicesController.Request(
 				$"{Links.GetStatistics}?subjectID={subjectId}&groupID={groupId}",
 				AppDemoType.Statistics);
-		}
-
-		/// <summary>
-		/// Fetch students statistics request.
-		/// </summary>
-		/// <param name="subjectId">Subject ID.</param>
-		/// <param name="groupId">Group ID.</param>
-		/// <returns>Statistics data.</returns>
-		public static async Task<object> GetStudentsStatistics(int subjectId, int groupId)
-		{
-			return await AppServicesController.Request(
-				$"{Servers.Current + Links.GetLabsCalendarData}subjectId={subjectId}&groupId={groupId}",
-				AppDemoType.Statistics);
-		}
-
-		/// <summary>
-		/// Fetch student summary statistics request.
-		/// </summary>
-		/// <returns>Statistics data.</returns>
-		public static async Task<object> GetStudentStatisticsSummary()
-		{
-			return await AppServicesController.Request(Links.LoadStudentStatistics);
-		}
-
-		/// <summary>
-		/// Fetch teacher summary statistics request.
-		/// </summary>
-		/// <returns>Statistics data.</returns>
-		public static async Task<object> GetTeacherStatisticsSummary()
-		{
-			return await AppServicesController.Request(Links.GetTeacherStatistics);
 		}
 
 		/// <summary>
@@ -256,11 +170,11 @@ namespace EduCATS.Networking.AppServices
 			groupItems.SubjectId = subjectId;
 			var body = JsonConvert.SerializeObject(groupItems);
 			return await AppServicesController.Request(
-				$"{Servers.Current + Links.GetParticialsMarks}", body);
+				$"{Servers.EduCatsByAddress + Links.GetParticialsMarks}", body);
 		}
 
 		/// <summary>
-		/// Fetch test statistics request.
+		/// Fetch statistics request.
 		/// </summary>
 		/// <param name="subjectId">Subject ID.</param>
 		/// <param name="groupId">Group ID.</param>
@@ -268,7 +182,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetTestStatistics(int subjectId, int groupId)
 		{
 			return await AppServicesController.Request(
-				$"{Servers.Current + Links.GetLabsCalendarData}subjectId={subjectId}&groupId={groupId}");
+				$"{Servers.EduCatsByAddress + Links.GetLabsCalendarData}subjectId={subjectId}&groupId={groupId}");
 		}
 
 		/// <summary>
@@ -300,7 +214,7 @@ namespace EduCATS.Networking.AppServices
 		public static async Task<object> GetLabs(int subjectId, int groupId)
 		{
 			return await AppServicesController.Request(
-				$"{Links.GetLabsTest}subjectId={subjectId}&groupId={groupId}",
+				$"{Links.GetLabsTest}subjectID={subjectId}&groupID={groupId}",
 				AppDemoType.LabsResults);
 		}
 
@@ -324,7 +238,7 @@ namespace EduCATS.Networking.AppServices
 
 		public static async Task<object> GetLecturesEducatsBy(int subjectId, int groupId)
 		{
-			string link = Servers.Current + Links.GetLecturesCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
+			string link = Servers.EduCatsByAddress + Links.GetLecturesCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
 			return await AppServicesController.Request(link);
 		}
 
@@ -451,7 +365,10 @@ namespace EduCATS.Networking.AppServices
 		/// <returns>Files data.</returns>
 		public static async Task<object> GetFiles(int subjectId)
 		{
-			return await AppServicesController.Request($"{Links.GetFilesTest}?subjectId={subjectId}", AppDemoType.FilesTest);
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+				return await AppServicesController.Request($"{Links.GetFiles}?subjectId={subjectId}", AppDemoType.Files);
+			else
+				return await AppServicesController.Request($"{Links.GetFilesTest}?subjectId={subjectId}", AppDemoType.FilesTest);
 		}
 
 		/// <summary>
@@ -468,16 +385,11 @@ namespace EduCATS.Networking.AppServices
 
 		/// Fetch files details request.
 		/// </summary>
-		/// <param name="values">Values list.</param>
+		/// <param name="subjectId">Subject ID.</param>
 		/// <returns>Files data.</returns>
-		public static async Task<object> GetFilesDetails(IEnumerable<string> values)
+		public static async Task<object> GetFilesDetails(string uri)
 		{
-			var encodedValues = Uri.EscapeDataString(
-				JsonConvert.SerializeObject(values ?? Array.Empty<string>()));
-
-			return await AppServicesController.Request(
-				$"{Links.GetFilesDetails}?values={encodedValues}&deleteValues=DELETE",
-				AppDemoType.FilesDetailsTest);
+			return await AppServicesController.Request($"{Links.GetFilesDetails}?values=[{uri}]&deleteValues=DELETE", AppDemoType.FilesDetailsTest);
 		}
 
 		public static async Task<object> GetGroupInfo(string groupName)
@@ -498,24 +410,6 @@ namespace EduCATS.Networking.AppServices
 			};
 
 			return JsonController.ConvertObjectToJson(userLogin);
-		}
-
-		/// Fetch files details request.
-		/// </summary>
-		/// <param name="subjectId">Subject ID.</param>
-		/// <returns>Files data.</returns>
-		public static async Task<string> GerVersionStore()
-		{
-			if (Device.RuntimePlatform == Device.Android)
-			{
-				var ads = await AppServicesController.GetAndroidVersion();
-				return ads;
-			}
-			else if (Device.RuntimePlatform == Device.iOS)
-			{
-				return await AppServicesController.GetIOSVersion();
-			}
-			return "";
 		}
 	}
 }

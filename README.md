@@ -2,16 +2,23 @@
 
 # EduCATS Xamarin
 
+A cross-platform client for the [Learning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
+
 [![Framework](./graphics/badge-xamarin.svg)](https://github.com/xamarin/Xamarin.Forms)
 [![Latest GitHub release)](https://img.shields.io/github/v/release/ilyalehchylin/educats-xamarin?logo=github)](https://github.com/ilyalehchylin/educats-xamarin/releases)
 [![Codecov](https://codecov.io/gh/ilyalehchylin/educats-xamarin/branch/develop/graph/badge.svg)](https://codecov.io/gh/ilyalehchylin/educats-xamarin)
-[![build](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml)
-[![pre-release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml)
-[![release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml)
+[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/ilyalehchylin/educats-xamarin?logo=codeclimate)](https://codeclimate.com/github/ilyalehchylin/educats-xamarin/maintainability)
+[![CodeFactor](https://www.codefactor.io/repository/github/ilyalehchylin/educats-xamarin/badge)](https://www.codefactor.io/repository/github/ilyalehchylin/educats-xamarin)
 
-A cross-platform client for the [Learning Management System EduCATS](https://github.com/hawkrai/lmsystem) written with [Xamarin.Forms](https://github.com/xamarin/Xamarin.Forms) framework.
+## Pipelines
 
-## Table of Contents
+| Workflow    | Status                                                               |
+| :---        | :---                                                                 |
+| Build | [![build](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/build.yml)                                                 |
+| Pre-release | [![pre-release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/pre-release.yml) |
+| Release     | [![release](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml/badge.svg)](https://github.com/ilyalehchylin/educats-xamarin/actions/workflows/release.yml)     |
+
+## Tables of Contents
 
 * [Documentation](https://ilyalehchylin.github.io/educats-xamarin/)
 * [Downloads](#downloads)
@@ -42,12 +49,9 @@ Check [CONTRIBUTING](.github/CONTRIBUTING.md) to know how to help with the proje
 | **[CrossLocalization](https://github.com/nyxbull/CrossLocalization)**     | Custom localization library with JSON files           |
 | **[Icons8](https://icons8.com/)**                                         | Icons for application                                 |
 | **[ACR User Dialogs](https://github.com/aritchie/userdialogs)**           | Cross-platform library for calling standard dialogs   |
-| **[CarouselView](https://github.com/alexrainman/CarouselView)**   	  	| Carousel view for Xamarin.Forms  		                |
-| **[SkiaSharp](https://github.com/mono/SkiaSharp)**   	  	                | API based on Google's Skia Graphics Library           |
 | **[Microcharts](https://github.com/dotnet-ad/Microcharts)**               | Charting library (e.g. Radar chart)                   |
 | **[Monkey Cache](https://github.com/jamesmontemagno/monkey-cache)**       | Data caching                                          |
 | **[Xamarin.Essentials](https://docs.microsoft.com/xamarin/essentials/)**  | Helper tools for Xamarin.Forms                        |
 | **[FFImageLoading](https://github.com/luberda-molinet/FFImageLoading)**   | Library for extended image loading & handling         |
-| **[JWT](https://nuget.org/packages/system.identitymodel.tokens.jwt/)**    | Helper for JSON Web Tokens                            |
 | **[DocFX](https://github.com/dotnet/docfx)**  						  	| Project's documentation tools	  		                |
 | **[Google Fonts](https://fonts.google.com/)**  						  	| Open-source fonts				  		                |
