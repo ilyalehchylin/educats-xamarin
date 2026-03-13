@@ -1,0 +1,73 @@
+name: 🚩 Bug report
+description: Create a report to help us improve
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: describe-the-bug
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+      placeholder: The app crashes when I tap on the Login button.
+    validations:
+      required: true
+      
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Explain exactly how we can reproduce the behavior.
+      placeholder: |
+        1. Go to Login page  
+        2. Tap on login button  
+        3. Observe the crash
+    validations:
+        required: true
+        
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+      placeholder: |
+        The main page should open.
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: platforms
+    attributes:
+      label: Which platforms are affected?
+      multiple: true
+      options:
+        - Android
+        - iOS
+    validations:
+      required: true
+      
+  - type: input
+    id: device-model
+    attributes:
+      label: Device model(s)
+      description: e.g. iPhone 14 Pro, Google Pixel 7.
+      placeholder: iPhone 14 Pro
+      
+  - type: input
+    id: device-os
+    attributes:
+      label: Device OS
+      description: e.g. iOS 18.5, Android 15.
+      placeholder: iOS 18.5
+      
+  - type: input
+    id: app-version
+    attributes:
+      label: App version & build
+      description: Exact version/build identifier (tag, commit or build number) where you observed the issue.
+      placeholder: 2.2.7 (build 1089)
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here (logs, network conditions, etc.).

@@ -47,29 +47,15 @@ namespace EduCATS.Pages.Statistics.Students.Views
 			var groupsPicker = new GroupsPickerView();
 			var searchBar = createSearchBar();
 			var addMarks = createAddMarksButton();
-			if (Servers.Current == Servers.EduCatsAddress)
+			return new StackLayout
 			{
-				return new StackLayout
-				{
-					Padding = _headerPadding,
-					Children = {
+				Padding = _headerPadding,
+				Children = {
 					groupsPicker,
 					addMarks,
 					searchBar
 				}
-				};
-			}
-			else
-			{
-				return new StackLayout
-				{
-					Padding = _headerPadding,
-					Children = {
-					groupsPicker,
-					searchBar
-				}
-				};
-			}
+			};
 		}
 
 		Button createAddMarksButton()

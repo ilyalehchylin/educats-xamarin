@@ -140,11 +140,18 @@ namespace EduCATS.Pages.Settings.Profile.ViewModels
 			get { return _about; }
 			set { SetProperty(ref _about, value); }
 		}
+		string _initials;
+		public string Initials
+		{
+			get { return _initials; }
+			set { SetProperty(ref _initials, value); }
+		}
 
 		async void setInitData()
 		{
 			Username = _services.Preferences.UserLogin;
 			Avatar = _services.Preferences.Avatar;
+			
 			var isProfessor = string.IsNullOrEmpty(_services.Preferences.GroupName);
 			Group = isProfessor ? null : _services.Preferences.GroupName;
 			GroupLabel = isProfessor ? null : CrossLocalization.Translate("choose_group");
@@ -156,6 +163,10 @@ namespace EduCATS.Pages.Settings.Profile.ViewModels
 				SecondName = fio[0];
 				Name = fio[1];
 				Patronymic = fio[2];
+				if (Avatar == "")
+				{
+					Initials = SecondName[0] + " " + Name[0];
+				}
 			}
 			else
 			{

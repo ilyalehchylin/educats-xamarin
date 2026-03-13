@@ -34,67 +34,83 @@ namespace EduCATS.Pages.Pickers
 		}
 
 		string _chosenSubject;
-		public string ChosenSubject {
+		public string ChosenSubject
+		{
 			get { return _chosenSubject; }
 			set { SetProperty(ref _chosenSubject, value); }
 		}
 
 		string _chosenSubjectColor;
-		public string ChosenSubjectColor {
+		public string ChosenSubjectColor
+		{
 			get { return _chosenSubjectColor; }
 			set { SetProperty(ref _chosenSubjectColor, value); }
 		}
 
 		Command _chooseSubjectCommand;
-		public Command ChooseSubjectCommand {
-			get {
+		public Command ChooseSubjectCommand
+		{
+			get
+			{
 				return _chooseSubjectCommand ?? (
 					_chooseSubjectCommand = new Command(chooseSubject));
 			}
 		}
 
 		Command _subjectSelectedCommand;
-		public Command SubjectSelectedCommand {
-			get {
+		public Command SubjectSelectedCommand
+		{
+			get
+			{
 				return _subjectSelectedCommand ?? (_subjectSelectedCommand = new Command(subjectChosen));
 			}
 		}
 
 		protected void chooseSubject()
 		{
-			try {
-				if (CurrentSubjects == null) {
+			try
+			{
+				if (CurrentSubjects == null)
+				{
 					return;
 				}
 
 				var buttons = new Dictionary<int, string>();
-				foreach (var subject in CurrentSubjects) {
+				foreach (var subject in CurrentSubjects)
+				{
 					buttons.Add(subject.Id, subject.Name);
 				}
 
 				PlatformServices.Dialogs.ShowSheet(
 					CrossLocalization.Translate("subjects_choose"), buttons, SubjectSelectedCommand);
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
 
 		protected void subjectChosen(object chosenObject)
 		{
-			try {
+			try
+			{
 				var id = Convert.ToInt32(chosenObject);
 
-				if (id == -1) {
+				if (id == -1)
+				{
 					return;
 				}
 
 				var subject = CurrentSubjects.SingleOrDefault(s => s.Id == id);
 				var isChosen = setChosenSubject(subject);
 
-				if (isChosen) {
+				if (isChosen)
+				{
 					SubjectChanged?.Invoke(PlatformServices.Preferences.ChosenSubjectId, subject.Name);
 				}
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
@@ -105,16 +121,20 @@ namespace EduCATS.Pages.Pickers
 		/// <returns>Task.</returns>
 		public async Task SetupSubjects()
 		{
-			try {
+			try
+			{
 				var subjects = await getSubjects();
 
-				if (subjects == null) {
+				if (subjects == null)
+				{
 					return;
 				}
 
 				SetCurrentSubjectsList(subjects.Distinct().ToList());
 				SetupSubject();
-			} catch (Exception ex) {
+			}
+			catch (Exception ex)
+			{
 				AppLogs.Log(ex);
 			}
 		}
@@ -126,8 +146,12 @@ namespace EduCATS.Pages.Pickers
 		async Task<IList<SubjectModel>> getSubjects()
 		{
 			var subjects = await DataAccess.GetProfileInfoSubjects(PlatformServices.Preferences.UserLogin);
-
-			if (DataAccess.IsError) {
+			if (DataAccess.IsSessionExpiredError)
+			{
+				return null;
+			}
+			else if (DataAccess.IsError)
+			{
 				PlatformServices.Device.MainThread(
 					() => PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage));
 			}
@@ -140,14 +164,16 @@ namespace EduCATS.Pages.Pickers
 		/// </summary>
 		public void SetupSubject()
 		{
-			if (!checkSubjectsList()) {
+			if (!checkSubjectsList())
+			{
 				return;
 			}
 
 			var savedSubjectId = PlatformServices.Preferences.ChosenSubjectId;
 			var success = setChosenSubject(savedSubjectId);
 
-			if (!success) {
+			if (!success)
+			{
 				setChosenSubject(CurrentSubjects[0]);
 			}
 		}
@@ -162,7 +188,8 @@ namespace EduCATS.Pages.Pickers
 
 		bool setChosenSubject(SubjectModel subject)
 		{
-			if (subject != null) {
+			if (subject != null)
+			{
 				CurrentSubject = subject;
 				ChosenSubject = subject.Name;
 				ChosenSubjectColor = subject.Color;
@@ -180,7 +207,8 @@ namespace EduCATS.Pages.Pickers
 
 		bool checkSubjectsList()
 		{
-			if (CurrentSubjects != null && CurrentSubjects.Count > 0) {
+			if (CurrentSubjects != null && CurrentSubjects.Count > 0)
+			{
 				return true;
 			}
 

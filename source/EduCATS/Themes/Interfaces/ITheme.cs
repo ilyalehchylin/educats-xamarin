@@ -70,6 +70,7 @@
 		string StatisticsChartLabsColor { get; }
 		string StatisticsChartPractColor { get; }
 		string StatisticsChartTestsColor { get; }
+		string StatisticsChartCourseColor { get; }
 		string StatisticsChartRatingColor { get; }
 		string StatisticsBoxTextColor { get; }
 		string StatisticsExpandableTextColor { get; }
@@ -136,7 +137,17 @@
 		string SettingsLogoutIcon { get; }
 		string SettingsGroupUserColor { get; }
 		string SettingsTitleColor { get; }
+		string SettingsProfileLabelColor { get; }
 		string SettingsProfileColor { get; }
+		string SettingsTableColor { get; }
+		string ProfileNameIcon { get; }
+		string ProfileLoginIcon { get; }
+		string ProfileEmailIcon { get; }
+		string ProfilePhoneIcon { get; }
+		string ProfileSocialMediaIcon { get; }
+		string ProfileGroupIcon { get; }
+		string ProfileAboutIcon { get; }
+
 		string CheckboxIcon { get; }
 		string CheckboxDescriptionColor { get; }
 

@@ -30,5 +30,11 @@ namespace EduCATS.Data.Models
 		/// </summary>
         [JsonProperty("ForSelfStudy")]
         public bool ForSelfStudy { get; set; }
+
+		/// <summary>
+		/// Is test for individual trajectory (NN).
+		/// </summary>
+		[JsonProperty("ForNN")]
+		public bool? ForNN { get; set; }
     }
 }

@@ -10,6 +10,7 @@ namespace EduCATS.UnitTests
 	{
 		const string _emptyJson = "{}";
 		const string _nonValidJson = "Not JSON";
+		const string _malformedJson = "{ \"data\": }";
 		const string _validJson = "{ \"data\": 25 }";
 		const string _validJsonArray = "[ { \"data\": 25 }, { \"data\": 50 } ]";
 
@@ -40,6 +41,13 @@ namespace EduCATS.UnitTests
 		}
 
 		[Test]
+		public void IsMalformedJsonValidTest()
+		{
+			var actual = JsonController.IsJsonValid(_malformedJson);
+			Assert.AreEqual(false, actual);
+		}
+
+		[Test]
 		public void IsNullJsonValid()
 		{
 			var actual = JsonController.IsJsonValid(null);
@@ -59,6 +67,16 @@ namespace EduCATS.UnitTests
 		{
 			var actual = JsonController.ConvertObjectToJson(null);
 			Assert.AreEqual(null, actual);
+		}
+
+		[Test]
+		public void ConvertObjectToJsonPositiveTest()
+		{
+			var user = new UserCredentials { Username = _username, Password = _password };
+			var actual = JsonController.ConvertObjectToJson(user);
+			Assert.IsTrue(JsonController.IsJsonValid(actual));
+			Assert.IsTrue(actual.Contains(_username));
+			Assert.IsTrue(actual.Contains(_password));
 		}
 
 		[Test]
