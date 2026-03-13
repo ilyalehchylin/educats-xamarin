@@ -1,10 +1,18 @@
 ﻿using EduCATS.Controls.RoundedListView;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Forms.Styles;
+using EduCATS.Networking;
+using EduCATS.Networking.Models.SaveMarks;
+using EduCATS.Networking.Models.SaveMarks.Practicals;
 using EduCATS.Pages.SaveMarks.ViewModels;
 using EduCATS.Pages.Statistics.Marks.Views.ViewCells;
 using EduCATS.Themes;
+using Newtonsoft.Json;
 using Nyxbull.Plugins.CrossLocalization;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.SaveMarks.Views
@@ -20,16 +28,65 @@ namespace EduCATS.Pages.SaveMarks.Views
 		private string _groupName;
 		const double _controlHeight = 50;
 
+		public PlatformServices services = new PlatformServices();
+
+		public VisitingLecturesList groupData;
+		public LabsVisitingList labsVisitingList;
+		public LabsVisitingList particialVisitingList;
+
 		public SaveMarksPageView(int subjectId, int groupId, string title, string groupName)
 		{
 			_title = title;
 			_groupName = groupName;
+			var httpContent = new StringContent("", Encoding.UTF8, "application/json");
 			BackgroundColor = Color.FromHex(Theme.Current.AppBackgroundColor);
 			Padding = _padding;
 			NavigationPage.SetHasNavigationBar(this, false);
-			BindingContext = new SaveMarksPageViewModel(
-				new PlatformServices(), subjectId, groupId, title);
+			if (title == CrossLocalization.Translate("stats_page_lectures_visiting"))
+			{
+				string link = Links.GetLecturesCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
+				var obj = requestDataAsync(link, httpContent);
+				groupData = JsonConvert.DeserializeObject<VisitingLecturesList>(obj.Result.ToString());
+				BindingContext = new SaveMarksPageViewModel(new PlatformServices(), subjectId, groupData, groupId, title);
+			}
+			else if (title == CrossLocalization.Translate("stats_page_labs_visiting"))
+			{
+				string link = Links.GetLabsCalendarData + "subjectId=" + subjectId + "&groupId=" + groupId;
+				var obj = requestDataAsync(link, httpContent);
+				labsVisitingList = JsonConvert.DeserializeObject<LabsVisitingList>(obj.Result.ToString());
+				BindingContext = new SaveMarksPageViewModel(new PlatformServices(), subjectId, labsVisitingList, groupId, title);
+			}
+			else if (title == CrossLocalization.Translate("practiсe_visiting"))
+			{
+				string link = Links.GetParticialsMarks;
+				var groupItems = new GroupAndSubjModel();
+				groupItems.GroupId = groupId;
+				groupItems.SubjectId = subjectId;
+				var body = JsonConvert.SerializeObject(groupItems);
+				httpContent = new StringContent(body, Encoding.UTF8, "application/json");
+				var obj = requestDataAsync(link, httpContent);
+				particialVisitingList = JsonConvert.DeserializeObject<LabsVisitingList>(obj.Result.ToString());
+				BindingContext = new SaveMarksPageViewModel(new PlatformServices(), subjectId, particialVisitingList, groupId, title);
+			}
 			createView();
+		}
+
+		private async Task<object> requestDataAsync(string link, HttpContent _postContent)
+		{
+			var client = new HttpClient();
+			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(services.Preferences.AccessToken);
+			if (_title == CrossLocalization.Translate("practiсe_visiting"))
+			{
+				var responce = client.PostAsync(Servers.EduCatsByAddress + link, _postContent).Result;
+				var result = await responce.Content.ReadAsStringAsync();
+				return result;
+			}
+			else
+			{
+				var responce = client.GetAsync(Servers.EduCatsByAddress + link).Result;
+				var result = await responce.Content.ReadAsStringAsync();
+				return result;
+			}
 		}
 
 		void createView()
@@ -53,6 +110,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 				{
 					IsPullToRefreshEnabled = false,
 				};
+				resultsListView.ItemsSource = groupData.GroupsVisiting;
 				resultsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "LecturesMarks");
 				stackLayout = new StackLayout
 				{
@@ -75,6 +133,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 				{
 					IsPullToRefreshEnabled = false,
 				};
+				resultsListViewSubGroup.ItemsSource = labsVisitingList.Students;
 				resultsListViewSubGroup.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "LabsVisitingMarksSubGroup");
 				stackLayout = new StackLayout
 				{
@@ -97,6 +156,7 @@ namespace EduCATS.Pages.SaveMarks.Views
 				{
 					IsPullToRefreshEnabled = false,
 				};
+				resultsListView.ItemsSource = particialVisitingList.Students;
 				resultsListView.SetBinding(ItemsView<Cell>.ItemsSourceProperty, "LecturesMarks");
 				stackLayout = new StackLayout
 				{

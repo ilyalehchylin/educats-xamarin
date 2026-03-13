@@ -1,5 +1,4 @@
 ﻿using EduCATS.Data.Models;
-using EduCATS.Data;
 using EduCATS.Helpers.Forms;
 using EduCATS.Helpers.Logs;
 using EduCATS.Networking;
@@ -12,8 +11,10 @@ using Newtonsoft.Json;
 using Nyxbull.Plugins.CrossLocalization;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Net;
+using System.Text;
 using Xamarin.Forms;
 
 namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
@@ -22,60 +23,60 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 	{
 		public readonly IPlatformServices _services;
 		public string _title { get; set; }
-		public TakedLabs _takedLabs { get; set; } = new TakedLabs();
+		public TakedLabs _takedLabs { get; set; }
 		public LabsVisitingList labsVisitingList;
 		public LabsVisitingList practiceVisitingList;
 		public List<StudentsPageModel> _currentLabsVisitingMarksSubGroup1;
 		public List<StudentsPageModel> _currentLabsVisitingMarksSubGroup2;
 		public List<string> FullNames { get; set; }
 
-		public SavePracticeAndLabsPageViewModel(IPlatformServices services, int subjectId, int groupId, string title)
+		public SavePracticeAndLabsPageViewModel(IPlatformServices services, int subjectId, object stat, int groupId, string title)
 		{
 			_services = services;
 			_title = title;
-			_services.Device.MainThread(async () =>
+			if (title == CrossLocalization.Translate("practice_mark"))
 			{
-				try
+				practiceVisitingList = stat as LabsVisitingList;
+				_takedLabs = new TakedLabs();
+				WebRequest request = WebRequest.Create(Links.GetPracticialsTest + "subjectId=" + subjectId + "&groupId=" + groupId);
+				request.Headers.Add("Authorization", _services.Preferences.AccessToken);
+				WebResponse response = request.GetResponse();
+				string json = "";
+				using (Stream stream = response.GetResponseStream())
 				{
-					_services.Dialogs.ShowLoading();
-					await initializeData(subjectId, groupId);
-					showDataAccessErrorIfNeeded();
-				}
-				catch (Exception)
-				{
-				}
-				finally
-				{
-					_services.Dialogs.HideLoading();
-				}
-			});
-		}
-
-		async Task initializeData(int subjectId, int groupId)
-		{
-			if (_title == CrossLocalization.Translate("practice_mark"))
-			{
-				practiceVisitingList = await DataAccess.GetTestPracticialStatistics(subjectId, groupId)
-					?? new LabsVisitingList();
-				_takedLabs = await DataAccess.GetPractTest(subjectId, groupId)
-					?? new TakedLabs();
+					using (StreamReader reader = new StreamReader(stream))
+					{
+						string line = "";
+						while ((line = reader.ReadLine()) != null)
+						{
+							json += line;
+						}
+					}
+				};
+				_takedLabs = JsonConvert.DeserializeObject<TakedLabs>(json);
 				createPracticialsMarksPage(practiceVisitingList);
 			}
-			else if (_title == CrossLocalization.Translate("stats_page_labs_rating"))
+			else if (title == CrossLocalization.Translate("stats_page_labs_rating"))
 			{
-				labsVisitingList = await DataAccess.GetTestStatistics(subjectId, groupId)
-					?? new LabsVisitingList();
-				_takedLabs = await DataAccess.GetLabsTest(subjectId, groupId)
-					?? new TakedLabs();
+				labsVisitingList = stat as LabsVisitingList;
+				_takedLabs = new TakedLabs();
+				WebRequest request = WebRequest.Create(Links.GetLabsTest + "subjectId=" + subjectId + "&groupId=" + groupId);
+				request.Headers.Add("Authorization", _services.Preferences.AccessToken);
+				WebResponse response = request.GetResponse();
+				string json = "";
+				using (Stream stream = response.GetResponseStream())
+				{
+					using (StreamReader reader = new StreamReader(stream))
+					{
+						string line = "";
+						while ((line = reader.ReadLine()) != null)
+						{
+							json += line;
+						}
+					}
+				};
+				_takedLabs = JsonConvert.DeserializeObject<TakedLabs>(json);
 				createLabsMarksPage(labsVisitingList);
-			}
-		}
-
-		void showDataAccessErrorIfNeeded()
-		{
-			if (DataAccess.IsError && !DataAccess.IsConnectionError)
-			{
-				_services.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
 		}
 
@@ -83,13 +84,13 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		{
 			FullNames = new List<string>();
 			LabsVisitingMarks = new List<StudentsPageModel>();
-			var date1 = new List<string>();
-			var date2 = new List<string>();
-			var subGroups = new List<string>();
+			Date1 = new List<string>();
+			Date2 = new List<string>();
+			SubGroup = new List<string>();
 			_currentLabsVisitingMarksSubGroup1 = new List<StudentsPageModel>();
 			_currentLabsVisitingMarksSubGroup2 = new List<StudentsPageModel>();
 			var currentStudents = new List<StudentsPageModel>();
-			foreach (var group in labsVisitingList?.Students ?? new List<LaboratoryWorksModel>())
+			foreach (var group in labsVisitingList.Students)
 			{
 				if (group.SubGroup == 1)
 				{
@@ -102,27 +103,21 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 					FullNames.Add(group.FullName);
 				}
 			}
-			foreach (var lab in _takedLabs?.ScheduleProtectionLabs?.Where(v => v.SubGroup == 1) ??
-				Enumerable.Empty<ScheduleProtectionLabs>())
+			foreach (var lab in _takedLabs.ScheduleProtectionLabs.Where(v => v.SubGroup == 1))
 			{
-				date1.Add(lab.Date);
+				Date1.Add(lab.Date);
 			};
-			foreach (var lab in _takedLabs?.ScheduleProtectionLabs?.Where(v => v.SubGroup == 2) ??
-				Enumerable.Empty<ScheduleProtectionLabs>())
+			foreach (var lab in _takedLabs.ScheduleProtectionLabs.Where(v => v.SubGroup == 2))
 			{
-				date2.Add(lab.Date);
+				Date2.Add(lab.Date);
 			};
-			foreach (var lab in _takedLabs?.ScheduleProtectionLabs ?? new List<ScheduleProtectionLabs>())
+			foreach (var lab in _takedLabs.ScheduleProtectionLabs)
 			{
-				if (!subGroups.Contains(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString()))
+				if (!SubGroup.Contains(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString()))
 				{
-					subGroups.Add(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString());
+					SubGroup.Add(CrossLocalization.Translate("sub_group") + lab.SubGroup.ToString());
 				}
 			}
-			Date1 = date1;
-			Date2 = date2;
-			SubGroup = subGroups;
-
 			LabsVisitingMarksSubGroup = currentStudents;
 			LabsVisitingMarksSubGroupOne = _currentLabsVisitingMarksSubGroup1;
 			LabsVisitingMarksSubGroupTwo = _currentLabsVisitingMarksSubGroup2;
@@ -224,22 +219,20 @@ namespace EduCATS.Pages.SaveLabsAndPracticeMarks.Views
 		{
 			get
 			{
-				if (SubGroup == null || SubGroup.Count == 0)
+				if (SubGroup.Count != 0)
 				{
-					return _selectedSubGroup;
-				}
-
-				if (_selectedSubGroup == SubGroup[0])
-				{
-					LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupOne;
-					DateLabs = Date1;
-					selSubGroup = 1;
-				}
-				else if (SubGroup.Count > 1 && _selectedSubGroup == SubGroup[1])
-				{
-					LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupTwo;
-					DateLabs = Date2;
-					selSubGroup = 2;
+					if (_selectedSubGroup == SubGroup[0])
+					{
+						LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupOne;
+						DateLabs = Date1;
+						selSubGroup = 1;
+					}
+					else if (_selectedSubGroup == SubGroup[1])
+					{
+						LabsVisitingMarksSubGroup = LabsVisitingMarksSubGroupTwo;
+						DateLabs = Date2;
+						selSubGroup = 2;
+					}
 				}
 				return _selectedSubGroup;
 			}

@@ -253,8 +253,14 @@ namespace EduCATS.Pages.Eemc.ViewModels
 		async Task setConceptsFromRoot(int id)
 		{
 			ConceptModel conceptTree = null;
-			ConceptModelTest conceptCascade = await DataAccess.GetConceptCascade(id);
-			conceptTree = JsonConvert.DeserializeObject<ConceptModel>(conceptCascade.Concept.ToString());
+
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+				conceptTree = await DataAccess.GetConceptTree(id);
+			else
+			{
+				ConceptModelTest conceptCascade = await DataAccess.GetConceptCascade(id);
+				conceptTree = JsonConvert.DeserializeObject<ConceptModel>(conceptCascade.Concept.ToString());
+			}
 
 			if (DataAccess.IsError && !DataAccess.IsConnectionError) {
 				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
@@ -311,8 +317,14 @@ namespace EduCATS.Pages.Eemc.ViewModels
 				return;
 			}
 
-			PlatformServices.Device.MainThread(
-				async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/api/Upload?fileName={filePath}"));
+			if (Servers.Current == Servers.EduCatsBntuAddress)
+				PlatformServices.Device.MainThread(
+					async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/{filePath}"));
+			else
+			{
+				PlatformServices.Device.MainThread(
+					async () => await PlatformServices.Device.OpenUri($"{Servers.Current}/api/Upload?fileName={filePath}"));
+			}
 		}
 
 		/// <summary>

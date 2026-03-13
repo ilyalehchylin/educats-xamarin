@@ -28,7 +28,7 @@
     <DefineConstants>DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <MtouchArch>ARM64, x86_64</MtouchArch>
+    <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <LangVersion>latest</LangVersion>
@@ -42,7 +42,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchLink>SdkOnly</MtouchLink>
-    <MtouchArch>ARM64, x86_64</MtouchArch>
+    <MtouchArch>i386, x86_64</MtouchArch>
     <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignProvision>Automatic:AppStore</CodesignProvision>
     <MtouchFloat32>true</MtouchFloat32>
@@ -86,7 +86,6 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="Renderer\NonStickyGroupListViewRenderer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -653,90 +652,6 @@
     <ImageAsset Include="Resources\Light.xcassets\image_mascot_tail.imageset\image_mascot_tail.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_about.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_about.imageset\icon_profile_about%401x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_about.imageset\icon_profile_about%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_about.imageset\icon_profile_about%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_email.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_email.imageset\icon_profile_email%401x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_email.imageset\icon_profile_email%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_email.imageset\icon_profile_email%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_group.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_group.imageset\icon_profile_group%401x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_group.imageset\icon_profile_group%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_group.imageset\icon_profile_group%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_login.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_login.imageset\icon_profile_login%401x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_login.imageset\icon_profile_login%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_login.imageset\icon_profile_login%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_name.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_name.imageset\icon_profile_name%401x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_name.imageset\icon_profile_name%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_name.imageset\icon_profile_name%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_phone.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_phone.imageset\icon_profile_phone%401x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_phone.imageset\icon_profile_phone%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_phone.imageset\icon_profile_phone%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_social_media.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_social_media.imageset\icon_profile_social_media%401x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_social_media.imageset\icon_profile_social_media%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Resources\Light.xcassets\icon_profile_social_media.imageset\icon_profile_social_media%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -815,13 +730,6 @@
     <Folder Include="Resources\Light.xcassets\icon_headphones_blue.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_headphones_cancel_blue.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_learning.imageset\" />
-    <Folder Include="Resources\Light.xcassets\icon_profile_about.imageset\" />
-    <Folder Include="Resources\Light.xcassets\icon_profile_email.imageset\" />
-    <Folder Include="Resources\Light.xcassets\icon_profile_group.imageset\" />
-    <Folder Include="Resources\Light.xcassets\icon_profile_login.imageset\" />
-    <Folder Include="Resources\Light.xcassets\icon_profile_name.imageset\" />
-    <Folder Include="Resources\Light.xcassets\icon_profile_phone.imageset\" />
-    <Folder Include="Resources\Light.xcassets\icon_profile_social_media.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_settings.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_settings_about.imageset\" />
     <Folder Include="Resources\Light.xcassets\icon_settings_font.imageset\" />

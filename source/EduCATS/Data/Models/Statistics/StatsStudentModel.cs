@@ -35,8 +35,8 @@ namespace EduCATS.Data.Models
 		/// <summary>
 		/// Student laboratory works rating marks list.
 		/// </summary>
-		[JsonProperty("LabsMarks")]
-		public IList<StatsMarkModel> MarkList { get; set; }
+		[JsonProperty("Marks")]
+		public IList<StatsMarkModel> MarkList { get; set;  }
 
 		/// <summary>
 		/// Average labs rating mark.

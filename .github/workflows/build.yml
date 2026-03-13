@@ -2,6 +2,9 @@ name: build
 
 on: [ workflow_dispatch, pull_request ]
   
+env:
+  COVERAGE_COVERAGE_FILE_PATH: ./coverage/lcov.info
+
 jobs:
   test:
     runs-on: macos-latest
@@ -9,107 +12,63 @@ jobs:
     
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.2
-      
-      - name: Setup .NET 7.0
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '7.0.x'
-      
+        uses: actions/checkout@v3.5.2
+
       - name: Unit-Tests Build + Coverlet
         run: |
-          rm -rf "$COVERAGE_DIRECTORY"
-          mkdir -p "$COVERAGE_DIRECTORY"
-          COVERAGE_OUTPUT_DIRECTORY="$(pwd)/$COVERAGE_DIRECTORY"
-          dotnet --version
+          dotnet tool install --global coverlet.console
+          dotnet add $PROJECT_PATH package coverlet.collector
           dotnet build $PROJECT_PATH
-          dotnet test $PROJECT_PATH \
-            /p:CollectCoverage=true \
-            /p:CoverletOutput="$COVERAGE_OUTPUT_DIRECTORY/" \
-            /p:CoverletOutputFormat=lcov \
-            /p:Exclude="[xunit.*]*" \
-            --results-directory:"$COVERAGE_DIRECTORY"
-          echo "Coverage files found:"
-          find "$COVERAGE_DIRECTORY" -type f | sort || true
-          LCOV_FILE_PATH="$(find "$COVERAGE_DIRECTORY" -type f \( -name "$COVERAGE_INFO_FILENAME" -o -name "*.info" \) -print -quit)"
-          if [ -z "$LCOV_FILE_PATH" ]; then
-            echo "No coverage output was generated (expected '$COVERAGE_INFO_FILENAME' or another '*.info' file)."
-            exit 1
-          fi
+          dotnet test --collect:"XPlat Code Coverage" --settings $COVERLET_SETTINGS --results-directory:"$COVERAGE_DIRECTORY" $PROJECT_PATH
+          mv $COVERAGE_DIRECTORY/*/$COVERAGE_INFO_FILENAME ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
         env:
           PROJECT_PATH: ./source/EduCATS.UnitTests/EduCATS.UnitTests.csproj
+          COVERLET_SETTINGS: ./source/coverlet.runsettings
           COVERAGE_DIRECTORY: ./coverage
           COVERAGE_INFO_FILENAME: coverage.info          
         
       - name: Codecov Deploy
-        uses: codecov/codecov-action@v5.4.3
+        uses: codecov/codecov-action@v3.1.2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage/**/*.info,./coverage/**/*.xml
+          file: ${{ env.COVERAGE_COVERAGE_FILE_PATH }}
           os: macos
+
   build:
-    runs-on: macos-latest
+    runs-on: macos-13
     needs: test
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - OS: iOS
-            PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
-            CONFIGURATION: Release
-            PLATFORM: iPhoneSimulator
-          - OS: Android
-            PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj
-            CONFIGURATION: Release
-    name: Build (${{ matrix.OS }})
-    
+
     steps:
       - name: Checkout
-        uses: actions/checkout@v4.2.2
-      
-      - name: Setup mono-mdk
+        uses: actions/checkout@v3.5.2
+
+      - name: Setup Xamarin
         run: |
-          brew install --cask mono-mdk
-          echo "/Library/Frameworks/Mono.framework/Versions/Current/Commands" >> $GITHUB_PATH
-      
-      - name: Setup NuGet
-        uses: NuGet/setup-nuget@v2
-      
+          brew install --cask xamarin-ios
+          brew install --cask xamarin-android
+        
       - name: NuGet Cache
-        uses: actions/cache@v4.2.3
+        uses: actions/cache@v3.3.1
         with:
           path: ~/.nuget/packages
           key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
           restore-keys: |
             ${{ runner.os }}-nuget-
       
-      - name: Setup Xamarin
-        run: |
-          brew install --cask xamarin-ios
-          brew install --cask xamarin-android
-      
-      - name: Verify msbuild and Xamarin targets
-        run: |
-          which msbuild
-          msbuild -version
-          ls -la /Library/Frameworks/Mono.framework/External/xbuild/Xamarin/iOS || true
-      
       - name: NuGet Restore
         run: nuget restore $SOLUTION_PATH
         env:
           SOLUTION_PATH: ./source/EduCATS.sln
-      
-      - name: Build
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [ "${{ matrix.OS }}" = "iOS" ]; then
-            msbuild /t:Build \
-              /p:Configuration="${{ matrix.CONFIGURATION }}" \
-              /p:Platform="${{ matrix.PLATFORM }}" \
-              "${{ matrix.PROJECT_PATH }}"
-          else
-            msbuild /t:Build \
-              /p:Configuration="${{ matrix.CONFIGURATION }}" \
-              "${{ matrix.PROJECT_PATH }}"
-          fi
+        
+      - name: Build iOS        
+        run: MSBuild /t:Build /p:Configuration=$CONFIGURATION /p:Platform=$PLATFORM $PROJECT_PATH
+        env:
+          CONFIGURATION: Release
+          PLATFORM: iPhoneSimulator
+          PROJECT_PATH: ./source/EduCATS.iOS/EduCATS.iOS.csproj
+          
+      - name: Build Android
+        run: MSBuild /t:Build /p:Configuration=$CONFIGURATION $PROJECT_PATH
+        env:
+          CONFIGURATION: Release
+          PROJECT_PATH: ./source/EduCATS.Android/EduCATS.Android.csproj

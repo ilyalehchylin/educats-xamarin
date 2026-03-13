@@ -61,21 +61,5 @@ namespace EduCATS.UnitTests
 			var actual = value.RemoveHTMLTags();
 			Assert.IsNull(actual);
 		}
-
-		[Test]
-		public void RemoveLinksTest()
-		{
-			var value = "Info http://educats.by/docs and https://educats.bntu.by/path";
-			var actual = value.RemoveLinks();
-			Assert.AreEqual("Info  and ", actual);
-		}
-
-		[Test]
-		public void RemoveNullLinksTest()
-		{
-			string value = null;
-			var actual = value.RemoveLinks();
-			Assert.IsNull(actual);
-		}
 	}
 }

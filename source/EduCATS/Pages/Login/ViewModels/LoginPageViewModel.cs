@@ -127,6 +127,7 @@ namespace EduCATS.Pages.Login.ViewModels
 			}
 		}
 
+
 		Command _parentalCommand;
 		public Command ParentalCommand
 		{
@@ -136,6 +137,7 @@ namespace EduCATS.Pages.Login.ViewModels
 					async () => await openParental()));
 			}
 		}
+
 
 		Command _registrationCommand;
 		public Command RegistrationOpenCommand
@@ -159,31 +161,56 @@ namespace EduCATS.Pages.Login.ViewModels
 
 		public async Task openForgotPassword()
 		{
-			if (_services.Device.CheckConnectivity())
+			if(Servers.Current == Servers.EduCatsAddress)
 			{
-				await _services.Navigation.OpenForgotPassword(CrossLocalization.Translate("reset_password"));
+				if (_services.Device.CheckConnectivity())
+				{
+					await _services.Navigation.OpenForgotPassword(CrossLocalization.Translate("reset_password"));
+				}
+				else
+				{
+					_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
+				}
 			}
 			else
 			{
-				_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
+				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
+							CrossLocalization.Translate("change_server"));
 			}
 		}
 
 		protected async Task openRegistration()
 		{
-			if (_services.Device.CheckConnectivity())
+			if (Servers.Current == Servers.EduCatsAddress)
 			{
-				await _services.Navigation.OpenRegistration(CrossLocalization.Translate("chek_In"));
+				if (_services.Device.CheckConnectivity())
+				{
+					await _services.Navigation.OpenRegistration(CrossLocalization.Translate("chek_In"));
+				}
+				else
+				{
+					_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
+				}
 			}
 			else
 			{
-				_services.Dialogs.ShowError(CrossLocalization.Translate("base_connection_error"));
+				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
+							CrossLocalization.Translate("change_server"));
 			}
 		}
 
+
 		protected async Task openParental()
 		{
-			await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
+			if (Servers.Current == Servers.EduCatsAddress)
+			{
+				await _services.Navigation.OpenFindGroup(CrossLocalization.Translate("parental_login"));
+			}
+			else
+			{
+				_services.Dialogs.ShowMessage(CrossLocalization.Translate("invaild_server"),
+							CrossLocalization.Translate("change_server"));
+			}
 		}
 
 		/// <summary>
@@ -198,6 +225,7 @@ namespace EduCATS.Pages.Login.ViewModels
 				{
 					setLoading(true, CrossLocalization.Translate("login_loading"));
 					var user = await loginRequest();
+					
 					await loginCompleted(user);
 				}
 				else
@@ -285,32 +313,16 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns><see cref="UserModel"/> on success, <code>null</code> otherwise.</returns>
 		async Task<UserModel> loginRequest()
 		{
-				if (AppDemo.Instance.IsDemoAccount)
-				{
-					var userLogin = await DataAccess.Login(Username, Password);
-					AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
-					return userLogin;
-				}
-
-				// Recreate shared network client for a fresh authorization flow.
-				RequestController.ResetHttpClient();
-
-				// Prevent stale session reuse when a new login attempt starts.
-				_services.Preferences.AccessToken = string.Empty;
+			if (AppDemo.Instance.IsDemoAccount || _services.Preferences.Server != Servers.EduCatsAddress)
+			{
+				var userLogin = await DataAccess.Login(Username, Password);
+				AppUserData.SetLoginData(_services, userLogin.UserId, userLogin.Username);
+				return userLogin;
+			}
 
 			var tokenData = await DataAccess.GetToken(Username, Password);
-			if (DataAccess.IsError || tokenData == null || string.IsNullOrWhiteSpace(tokenData.Token))
-			{
-				return new UserModel();
-			}
-
 			_services.Preferences.AccessToken = tokenData.Token;
 			var accountData = await DataAccess.GetAccountData();
-			if (DataAccess.IsError || accountData == null || string.IsNullOrWhiteSpace(accountData.Username))
-			{
-				return new UserModel();
-			}
-
 			AppUserData.SetLoginData(_services, accountData.Id, accountData.Username);
 			var user = new UserModel
 			{
@@ -340,7 +352,7 @@ namespace EduCATS.Pages.Login.ViewModels
 		/// <returns><code>true</code> on success, <code>false</code> otherwise.</returns>
 		bool checkCredentials()
 		{
-			if (string.IsNullOrEmpty(Username) ||
+			if (string.IsNullOrEmpty(Username) &&
 				string.IsNullOrEmpty(Password))
 			{
 				return false;
