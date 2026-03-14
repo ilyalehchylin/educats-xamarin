@@ -3,7 +3,12 @@
 set -e
 
 # Install DocFX
-dotnet tool update -g docfx
+DOCFX_VERSION=2.65.3
+if dotnet tool list -g | awk 'NR>2 {print $1}' | grep -Fxq docfx; then
+  dotnet tool update -g docfx --version "$DOCFX_VERSION"
+else
+  dotnet tool install -g docfx --version "$DOCFX_VERSION"
+fi
 # curl -OL https://github.com/dotnet/docfx/releases/download/v2.65.3/docfx-osx-x64-v2.65.3.zip
 # unzip docfx*.zip -d docfx_tool
 

@@ -27,6 +27,8 @@
 
 	"type_activity_lab": "Laboratoriniai darbai",
 	"type_activity_practical": "Praktinė pamoka",
+	"type_activity_kconsultation": "KP",
+	"type_activity_dconsultation": "DP",
 
 	"server_test": "Testavimo serveris",
 	"server_local": "Vietinis serveris",
@@ -57,6 +59,7 @@
 	"today_news_load_error": "Gaunant naujienų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
 	"today_subjects_error": "Gaunant elementų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
 	"today_calendar_error": "Gaunant kalendoriaus elementų sąrašą įvyko klaida. Atnaujinkite puslapį arba susisiekite su palaikymo tarnyba.",
+	"today_diplom_projecting": "Diplominis projektas",
 
 	"news_details_title": "Naujienos",
 
@@ -68,6 +71,7 @@
 	"stats_chart_average_labs": "Vidutinis laboratorinių darbų įvertinimas",
 	"stats_chart_average_pract": "Vidutinis praktinio darbo įvertinimas",
 	"stats_chart_average_tests": "Vidutinis testo rezultatas",
+	"stats_chart_average_course": "Kursinio projekto įvertinimas",
 	"stats_chart_rating": "Vertinimo balas",
 	"stats_chart_not_enough_data": "Nepakanka duomenų diagramai parodyti",
 	"stats_page_labs_rating": "Laboratorinių darbų įvertinimai",
@@ -100,6 +104,10 @@
 	"testing_self_study": "Savikontrolės testai",
 	"testing_start_test_title": "Ar norite pradėti testą?",
 	"testing_start_test_description": "Po patvirtinimo įsijungs laikmatis. Kiekvienas neatsakytas klausimas taps neteisingas pasibaigus laikmačiui.",
+	"testing_end_test_title": "Žinių testas jau atidarytas kitame įrenginyje",
+	"testing_end_test_description": "Tęskite testą veikiančiame įrenginyje. Jei norite nutraukti testą, spustelėkite mygtuką \"Taip\". Tokiu atveju neatsakyti klausimai bus laikomi neteisingai atsakytais. Norėdami pakartoti testą, susisiekite su savo mokytoju.",
+	"testing_end_test_notification": "Žinių patikrinimas buvo atliktas kitu įrenginiu. Susisiekite su mokytoju, kad perlaikytumėte testą.",
+	"testing_comment": "Testus mokytojas atidaro vieną kartą. Testą galima atlikti tik vienu įrenginiu. Draudžiama atnaujinti arba išeiti iš puslapio su pradėtu testu",
 
 	"get_test_error": "Gaunant bandymo informaciją įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
 	"get_test_question_error": "Gaunant klausimą įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
@@ -128,6 +136,10 @@
 	"files_megabytes": "MB",
 
 	"recommendations_fetch_error": "Gaunant rekomendaciją įvyko klaida. Bandykite dar kartą arba susisiekite su palaikymo tarnyba.",
+	"recommendations_pred_test": "Atlikite pretestą",
+	"recommendations_rec_mat": "Rekomenduojama skaitymo medžiaga",
+	"recommendations_compl_test": "Atlik testą!",
+	"recommendations_end": "Mokymosi procesas baigtas",
 
 	"settings_server": "Serveris",
 	"settings_language": "Kalba",
@@ -136,7 +148,7 @@
 	"settings_delete": "Eliminare l'account",
 	"settings_about": "Apie programą",
 	"settings_about_profile": "Apie paskyrą",
-	"settings_logout": "Atsijungti",
+	"settings_logout": "Ištrinti paskyrą",
 	"settings_logout_message": "Ar tikrai norite atsijungti ?",
 
 	"settings_language_system": "Sistemos kalba",

@@ -75,10 +75,11 @@ namespace EduCATS.Themes.Templates
 		virtual public string NewsTextColor => _blackColor;
 
 
-		virtual public string StatisticsChartLabsColor => "#FF3900";
-		virtual public string StatisticsChartPractColor => "#1ad2d9";
-		virtual public string StatisticsChartTestsColor => "#086CA2";
-		virtual public string StatisticsChartRatingColor => "#00B454";
+		virtual public string StatisticsChartLabsColor => "#D32F2F";
+		virtual public string StatisticsChartPractColor => "#FFA500";
+		virtual public string StatisticsChartTestsColor => "#1976D2";
+		virtual public string StatisticsChartCourseColor => "#7F00FF";
+		virtual public string StatisticsChartRatingColor => "#3F51B5";
 		virtual public string StatisticsBoxTextColor => _whiteColor;
 		virtual public string StatisticsExpandableTextColor => _greyColor;
 		virtual public string StatisticsDetailsTitleColor => _blackColor;
@@ -117,6 +118,7 @@ namespace EduCATS.Themes.Templates
 		virtual public string TestResultsCorrectAnswerColor => "#00AA55";
 		virtual public string TestResultsNotCorrectAnswerColor => "#E63022";
 		virtual public string TestResultsRatingColor => _blackColor;
+		
 
 		virtual public string EemcHeaderImage => "image_book_rectangle";
 		virtual public string EemcBackButtonColor => _baseBlueColor;
@@ -143,9 +145,19 @@ namespace EduCATS.Themes.Templates
 		virtual public string SettingsAboutIcon => "icon_settings_about";
 		virtual public string SettingsFontIcon => "icon_settings_font";
 		virtual public string SettingsLogoutIcon => "icon_settings_logout";
-		virtual public string SettingsGroupUserColor => _greyColor;
+		virtual public string SettingsGroupUserColor => _blackColor;
 		virtual public string SettingsTitleColor => _blackColor;
 		virtual public string SettingsProfileColor => _whiteColor;
+		virtual public string SettingsTableColor => _whiteColor;
+		virtual public string SettingsProfileLabelColor => _greyColor;
+		virtual public string ProfileNameIcon => "icon_profile_name";
+		virtual public string ProfileLoginIcon => "icon_profile_login";
+		virtual public string ProfileEmailIcon => "icon_profile_email";
+		virtual public string ProfilePhoneIcon => "icon_profile_phone";
+		virtual public string ProfileSocialMediaIcon => "icon_profile_social_media";
+		virtual public string ProfileGroupIcon => "icon_profile_group";
+		virtual public string ProfileAboutIcon => "icon_profile_about";
+
 
 		virtual public string CheckboxIcon => "icon_checkmark";
 		virtual public string CheckboxDescriptionColor => _greyColor;

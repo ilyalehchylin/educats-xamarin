@@ -132,71 +132,54 @@ namespace EduCATS.Pages.Files.ViewModels
 		/// <returns>Task.</returns>
 		async Task getFiles()
 		{
-			IEnumerable<FilesPageModel> files = null;
-
 			var appDataDirectory = PlatformServices.Device.GetAppDataDirectory();
 
-			if (Servers.Current == Servers.EduCatsBntuAddress)
+			var filesModel = await DataAccess.GetFilesTest(CurrentSubject.Id);
+			if (DataAccess.IsError && !DataAccess.IsConnectionError)
 			{
-				var filesModel = await DataAccess.GetFiles(CurrentSubject.Id);
-
-				if (DataAccess.IsError && !DataAccess.IsConnectionError)
-				{
-					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
-				}
-
-				files = filesModel.Lectures?.Select(f =>
-				{
-					var file = Path.Combine(appDataDirectory, f.Name);
-					var exists = File.Exists(file);
-					return new FilesPageModel(f, exists);
-				});
-
-				if (files != null)
-				{
-					FileList = new List<FilesPageModel>(files);
-				}
+				PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
 			}
-			else
+
+			var files = filesModel?.Files?.Select(f =>
 			{
-				var filesModel = await DataAccess.GetFilesTest(CurrentSubject.Id);
-				if (DataAccess.IsError && !DataAccess.IsConnectionError)
+				var file = Path.Combine(appDataDirectory, f.Name);
+				var exists = File.Exists(file);
+				return new FilesPageModel(f, exists);
+			}).ToList();
+
+			if (files == null || files.Count == 0)
+			{
+				FileList = new List<FilesPageModel>();
+				return;
+			}
+
+			var valuesForDetails = files
+				.Select(file => $"{file.Name}/{file.Id}/{file.PathName}/{file.FileName}")
+				.ToList();
+
+			var filesDetails = await DataAccess.GetDetailsFilesTest(valuesForDetails);
+			if (filesDetails != null)
+			{
+				files.ForEach(file =>
 				{
-					PlatformServices.Dialogs.ShowError(DataAccess.ErrorMessage);
-				}
-
-
-				files = filesModel.Files?.Select(f =>
-				{
-					var file = Path.Combine(appDataDirectory, f.Name);
-					var exists = File.Exists(file);
-					return new FilesPageModel(f, exists);
-				});
-
-				if (files != null)
-				{
-
-					var filesList = new List<FilesPageModel>(files);
-					string URIForDetails = "";
-
-					foreach (var file in filesList)
-					{
-						URIForDetails += $"\"{file.Name}/{file.Id}/{file.PathName}/{file.FileName}\",";
+					var detail = filesDetails.FirstOrDefault(item => item.Id == file.Id);
+					if (detail == null) {
+						return;
 					}
 
-					URIForDetails = URIForDetails.Remove(URIForDetails.Length - 1);
-
-					var filesDetails = await DataAccess.GetDetailsFilesTest(URIForDetails);
-
-					filesList.ForEach(file =>
+					if (long.TryParse(detail.Size, out var size))
 					{
-						file.Size = ConverterSize.FormatSize(long.Parse(
-							filesDetails.FirstOrDefault(detail => file.Id == detail.Id).Size));
-					});
+						file.Size = ConverterSize.FormatSize(size);
+					}
 
-					FileList = new List<FilesPageModel>(filesList);
-				}
+					if (!string.IsNullOrEmpty(detail.Url))
+					{
+						file.Url = detail.Url;
+					}
+				});
 			}
+
+			FileList = new List<FilesPageModel>(files);
 		}
 
 		/// <summary>
@@ -229,12 +212,24 @@ namespace EduCATS.Pages.Files.ViewModels
 					return;
 				}
 
-				var fileUri = new Uri($"{Links.GetFile}?fileName={file.PathName}/{file.FileName}");
+				var fileUri = getFileUri(file);
+				if (fileUri == null) {
+					hideDownloading();
+					PlatformServices.Device.MainThread(
+						() => PlatformServices.Dialogs.ShowError(
+							CrossLocalization.Translate("files_downloading_error")));
+					return;
+				}
 
 				totalBytes = bytesIn = 0;
 				_client = new WebClient();
 				_client.DownloadProgressChanged += downloadProgressChanged;
 				_client.DownloadFileCompleted += downloadCompleted;
+				if (!string.IsNullOrEmpty(PlatformServices.Preferences.AccessToken))
+				{
+					_client.Headers[HttpRequestHeader.Authorization] =
+						PlatformServices.Preferences.AccessToken;
+				}
 				_client.QueryString.Add(_filenameKey, file.Name);
 				_client.QueryString.Add(_filepathKey, storageFilePath);
 				_client.DownloadFileAsync(fileUri, storageFilePath);
@@ -370,6 +365,38 @@ namespace EduCATS.Pages.Files.ViewModels
 
 			_client.CancelAsync();
 			PlatformServices.Dialogs.HideProgress(_progressDialog);
+		}
+
+		/// <summary>
+		/// Build file download URI.
+		/// </summary>
+		/// <param name="file">Selected file.</param>
+		/// <returns>File URI.</returns>
+		Uri getFileUri(FilesPageModel file)
+		{
+			if (file == null) {
+				return null;
+			}
+
+			if (!string.IsNullOrEmpty(file.Url))
+			{
+				if (Uri.TryCreate(file.Url, UriKind.Absolute, out var fullUrl) &&
+					(fullUrl.Scheme == Uri.UriSchemeHttp || fullUrl.Scheme == Uri.UriSchemeHttps)) {
+					return fullUrl;
+				}
+
+				var relativeUrl = file.Url.StartsWith("/") ? file.Url : $"/{file.Url}";
+				var metadataUrl = new Uri($"{Servers.Current}{relativeUrl}");
+				return metadataUrl;
+			}
+
+			if (string.IsNullOrEmpty(file.PathName) || string.IsNullOrEmpty(file.FileName)) {
+				return null;
+			}
+
+			var fileNameParam = $"{file.PathName}//{file.FileName}";
+			var fallbackUrl = new Uri($"{Links.GetFile}?filename={fileNameParam}");
+			return fallbackUrl;
 		}
 	}
 }

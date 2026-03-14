@@ -26,6 +26,8 @@
 	"type_activity_lecture": "Vortrag",
 	"type_activity_lab": "Laborarbeit",
 	"type_activity_practical": "Praktische Arbeit",
+	"type_activity_kconsultation": "KP",
+	"type_activity_dconsultation": "DP",
 
 	"server_test": "Testserver",
 	"server_local": "Lokaler Server",
@@ -56,6 +58,7 @@
 	"today_news_load_error": "Fehler beim abrufen der Nachrichtenliste. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
 	"today_subjects_error": "Fehler beim abrufen der Artikelliste. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
 	"today_calendar_error": "Fehler beim abrufen der Liste der Studienfachern im Kalender. Bitte aktualisieren Sie die Seite oder Kontaktieren Sie den Support.",
+	"today_diplom_projecting": "Diplomprojekt",
 
 	"news_details_title": "Nachrichten",
 
@@ -67,6 +70,7 @@
 	"stats_chart_average_labs": "Durchschnittliche Note für Laborarbeiten",
 	"stats_chart_average_pract": "Durchschnittsnote für praktische Arbeit",
 	"stats_chart_average_tests": "Durchschnittliche Note für Tests",
+	"stats_chart_average_course": "Bewertung für das Kursprojekt",
 	"stats_chart_rating": "Bewertung",
 	"stats_chart_not_enough_data": "Nicht genügend Daten, um das Diagramm anzuzeigen",
 	"stats_page_labs_rating": "Noten zu Laborarbeiten",
@@ -99,6 +103,10 @@
 	"testing_self_study": "Tests zur Selbstkontrolle",
 	"testing_start_test_title": "Möchten Sie den Test starten?",
 	"testing_start_test_description": "Nach der Bestätigung startet der Timer. Jede unbeantwortete Frage wird nach Ablauf des Timers falsch sein.",
+	"testing_end_test_title": "Der Test ist bereits auf einem anderen Gerät geöffnet!",
+	"testing_end_test_description": "Setzen Sie den Test auf einem laufenden Gerät fort. Wenn Sie den Test abbrechen möchten, klicken Sie auf die Schaltfläche \"Ja\". In diesem Fall werden unbeantwortete Fragen als falsch beantwortet gewertet. Um den Test zu wiederholen, wenden Sie sich an Ihren Lehrer.",
+	"testing_end_test_notification": "Der Test wurde auf einem anderen Gerät durchgeführt. Um den Test zu wiederholen, wenden Sie sich an Ihren Lehrer.",
+	"testing_comment": "Tests werden vom Lehrer einmalig geöffnet. Der Test kann nur auf einem Gerät durchgeführt werden. Es ist untersagt, die Seite mit dem gestarteten Test zu aktualisieren oder zu verlassen.",
 
 	"get_test_error": "Fehler beim abrufen von Testdetails. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
 	"get_test_question_error": "Fehler beim abrufen der Frage. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
@@ -127,6 +135,10 @@
 	"files_megabytes": "MB",
 
 	"recommendations_fetch_error": "Fehler beim abrufen von Empfehlungen. Bitte versuchen Sie es erneut oder Kontaktieren Sie den Support.",
+	"recommendations_pred_test": "Machen Sie den Vortest",
+	"recommendations_rec_mat": "Empfohlene Lektüre",
+	"recommendations_compl_test": "Machen Sie den Test!",
+	"recommendations_end": "Der Lernprozess ist abgeschlossen.",
 
 	"settings_server": "Server",
 	"settings_language": "Sprache",

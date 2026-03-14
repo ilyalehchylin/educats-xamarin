@@ -80,4 +80,3 @@ namespace EduCATS.Pages.Parental.Statistics.ViewsModels
 		}
 	}
 }
-

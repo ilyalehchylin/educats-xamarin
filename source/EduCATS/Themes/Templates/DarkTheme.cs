@@ -1,4 +1,4 @@
-﻿namespace EduCATS.Themes.Templates
+namespace EduCATS.Themes.Templates
 {
 	/// <summary>
 	/// Dark theme to override the <see cref="DefaultTheme"/>.
@@ -75,6 +75,12 @@
 		override public string SettingsTitleColor => _whiteColor;
 
 		override public string SettingsLogoutIcon => "icon_settings_logout_dark";
+		override public string SettingsGroupUserColor => _whiteColor;
+		override public string SettingsProfileColor => _blackColor;
+		override public string SettingsProfileLabelColor => _greyColor;
+		override public string SettingsTableColor => _baseDarkColor;
+
+
 
 		override public string EemcBackButtonColor => _baseDarkColor;
 		override public string EemcBackButtonTextColor => _whiteColor;

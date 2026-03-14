@@ -14,7 +14,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 
 		const double _controlHeight = 50;
 
-		public List<string> listOfMarks = new List<string> { "1", "2", "3", "4" };
+		public List<string> listOfMarks = new List<string> { "", "1", "2", "3", "4" };
 
 		public BindableProperty HeightRequestProperty { get; private set; }
 		public BindableProperty BackgroundColorProperty { get; private set; }
@@ -26,7 +26,7 @@ namespace EduCATS.Pages.Statistics.Marks.Views.ViewCells
 			{
 				VerticalOptions = LayoutOptions.CenterAndExpand,
 				TextColor = Color.FromHex(Theme.Current.StatisticsDetailsTitleColor),
-				//Font = Font.SystemFontOfSize(NamedSize.Large).WithAttributes(FontAttributes.Bold),
+				Font = Font.SystemFontOfSize(NamedSize.Large).WithSize(20),
 				Style = AppStyles.GetLabelStyle()
 			};
 

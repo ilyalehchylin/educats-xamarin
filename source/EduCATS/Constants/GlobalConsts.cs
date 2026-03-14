@@ -32,7 +32,7 @@
 		/// <summary>
 		/// Release notes link.
 		/// </summary>
-		public const string ReleaseNotesLink = "https://github.com/ilyalehchylin/educats-xamarin/releases";
+		public const string ReleaseNotesLink = "https://github.com/ilyalehchylin/educats-xamarin/releases/latest";
 
 		/// <summary>
 		/// GitHub repository.
@@ -126,6 +126,11 @@
 		/// Subjects key.
 		/// </summary>
 		public const string DataGetSubjectsKey = "GET_PROFILE_INFO_SUBJECT_KEY";
+
+		/// <summary>
+		/// Subject modules key.
+		/// </summary>
+		public const string DataGetSubjectModulesKey = "GET_SUBJECT_MODULES_KEY";
 
 		/// <summary>
 		/// Calendar subjects key.

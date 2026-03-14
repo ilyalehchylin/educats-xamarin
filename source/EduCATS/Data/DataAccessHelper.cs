@@ -93,7 +93,8 @@ namespace EduCATS.Data
 		{
 			var singleObject = checkSingleObjectReadyForResponse();
 
-			if (singleObject != null) {
+			if (singleObject != null)
+			{
 				return singleObject;
 			}
 
@@ -107,7 +108,8 @@ namespace EduCATS.Data
 
 			singleObject = GetAccess(response);
 
-			if (singleObject == null) {
+			if (singleObject == null)
+			{
 				setError(_messageForError);
 				return new T();
 			}
@@ -123,7 +125,8 @@ namespace EduCATS.Data
 		{
 			var list = checkListReadyForResponse();
 
-			if (list != null) {
+			if (list != null)
+			{
 				return list;
 			}
 
@@ -137,7 +140,8 @@ namespace EduCATS.Data
 
 			list = GetListAccess(response);
 
-			if (list == null) {
+			if (list == null)
+			{
 				setError(_messageForError);
 				return new List<T>();
 			}
@@ -152,7 +156,8 @@ namespace EduCATS.Data
 		/// <returns>Data object.</returns>
 		T checkSingleObjectReadyForResponse()
 		{
-			if (CheckConnectionEstablished()) {
+			if (CheckConnectionEstablished())
+			{
 				return default;
 			}
 
@@ -167,7 +172,8 @@ namespace EduCATS.Data
 		/// <returns>List of data.</returns>
 		List<T> checkListReadyForResponse()
 		{
-			if (CheckConnectionEstablished()) {
+			if (CheckConnectionEstablished())
+			{
 				return null;
 			}
 
@@ -193,15 +199,18 @@ namespace EduCATS.Data
 		/// <returns>List of objects.</returns>
 		public List<T> GetListAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
-			switch (response.Value) {
+			switch (response.Value)
+			{
 				case HttpStatusCode.OK:
 					var data = parseResponse(response, _key, _isCaching);
 
-					if (data.Equals(_nonJsonSuccessResponse)) {
+					if (data.Equals(_nonJsonSuccessResponse))
+					{
 						return new List<T>();
 					}
 
-					if (!JsonController.IsJsonValid(data)) {
+					if (!JsonController.IsJsonValid(data))
+					{
 						return default;
 					}
 
@@ -218,15 +227,18 @@ namespace EduCATS.Data
 		/// <returns>Object.</returns>
 		public T GetAccess(KeyValuePair<string, HttpStatusCode> response)
 		{
-			switch (response.Value) {
+			switch (response.Value)
+			{
 				case HttpStatusCode.OK:
 					var data = parseResponse(response, _key, _isCaching);
 
-					if (data.Equals(_nonJsonSuccessResponse)) {
+					if (data.Equals(_nonJsonSuccessResponse))
+					{
 						return new T();
 					}
 
-					if (!JsonController.IsJsonValid(data)) {
+					if (!JsonController.IsJsonValid(data))
+					{
 						return default;
 					}
 
@@ -242,7 +254,7 @@ namespace EduCATS.Data
 		/// <param name="message">Error message.</param>
 		/// <param name="sessionExpired">Session expired error.</param>
 		/// <param name="isConnectionError">Is connection error.</param>
-		void setError(string message, bool sessionExpired = false, bool isConnectionError = false)
+		void setError(string message, bool sessionExpired = true, bool isConnectionError = false)
 		{
 			IsError = true;
 			ErrorMessageKey = message;
@@ -261,7 +273,8 @@ namespace EduCATS.Data
 		{
 			var response = (KeyValuePair<string, HttpStatusCode>)responseObject;
 
-			if (isCaching && !string.IsNullOrEmpty(key)) {
+			if (isCaching && !string.IsNullOrEmpty(key))
+			{
 				DataCaching<string>.Save(key, response.Key);
 			}
 
@@ -284,7 +297,8 @@ namespace EduCATS.Data
 		/// <param name="callback">Callback object.</param>
 		static void setCallback(Task<object> callback)
 		{
-			if (callback == null) {
+			if (callback == null)
+			{
 				_callback = async () => {
 					await Task.Run(() => { });
 					return new KeyValuePair<string, HttpStatusCode>();
@@ -304,7 +318,8 @@ namespace EduCATS.Data
 		/// <returns><c>True</c> if established.</returns>
 		public virtual bool CheckConnectionEstablished()
 		{
-			if (AppDemo.Instance.IsDemoAccount) {
+			if (AppDemo.Instance.IsDemoAccount)
+			{
 				return true;
 			}
 
