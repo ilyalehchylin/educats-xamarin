@@ -1,7 +1,18 @@
 {
+  "homepages": [],
   "source_base_path": "/Users/runner/work/educats-xamarin/educats-xamarin",
   "xrefmap": "xrefmap.yml",
   "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "THIRD_PARTY_NOTICES.md",
+      "output": {
+        ".html": {
+          "relative_path": "THIRD_PARTY_NOTICES.html"
+        }
+      },
+      "version": ""
+    },
     {
       "type": "ManagedReference",
       "source_relative_path": "api/EduCATS.App.yml",
@@ -268,6 +279,46 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.Calendar.CalendarSubjectModelTest.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Calendar.CourseProjectConsultationDetailsModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Calendar.CourseProjectConsultationDetailsModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Calendar.CourseProjectConsultationModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Calendar.CourseProjectConsultationModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Calendar.DiplomProjectConsultationDateModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Calendar.DiplomProjectConsultationDateModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.Calendar.DiplomProjectConsultationModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.Calendar.DiplomProjectConsultationModel.html"
         }
       },
       "version": ""
@@ -584,10 +635,70 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StudentStatisticsSubjectValueModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StudentStatisticsSubjectValueModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StudentStatisticsSummaryItemModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StudentStatisticsSummaryItemModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.StudentStatisticsSummaryModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.StudentStatisticsSummaryModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EduCATS.Data.Models.SubjectModel.yml",
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.SubjectModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.SubjectModuleModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.SubjectModuleModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TeacherStatisticsSummaryModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TeacherStatisticsSummaryModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.TeacherSubjectStatisticsSummaryModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.TeacherSubjectStatisticsSummaryModel.html"
         }
       },
       "version": ""
@@ -698,6 +809,16 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Data.Models.UserModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Data.Models.UserProfileByIdModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Data.Models.UserProfileByIdModel.html"
         }
       },
       "version": ""
@@ -978,6 +1099,16 @@
       "output": {
         ".html": {
           "relative_path": "api/EduCATS.Helpers.Forms.Converters.DoubleListToRadarChartConverter.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Helpers.Forms.Converters.StringNotEmptyToBoolConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Helpers.Forms.Converters.StringNotEmptyToBoolConverter.html"
         }
       },
       "version": ""
@@ -2874,6 +3005,26 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsChartEntryModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsChartEntryModel.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsChartMetricType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsChartMetricType.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/EduCATS.Pages.Statistics.Base.Models.StatsPageModel.yml",
       "output": {
         ".html": {
@@ -3853,16 +4004,9 @@
       "version": ""
     },
     {
-      "type": "Toc",
-      "source_relative_path": "api/toc.yml",
-      "output": {
-        ".json": {
-          "relative_path": "api/toc.json"
-        }
-      },
-      "version": ""
-    },
-    {
+      "log_codes": [
+        "InvalidFileLink"
+      ],
       "type": "Conceptual",
       "source_relative_path": "articles/project-structure.md",
       "output": {
@@ -3888,16 +4032,6 @@
       "output": {
         ".html": {
           "relative_path": "articles/services.html"
-        }
-      },
-      "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "articles/toc.yml",
-      "output": {
-        ".json": {
-          "relative_path": "articles/toc.json"
         }
       },
       "version": ""
@@ -3941,18 +4075,9 @@
         }
       },
       "version": ""
-    },
-    {
-      "type": "Toc",
-      "source_relative_path": "toc.yml",
-      "output": {
-        ".json": {
-          "relative_path": "toc.json"
-        }
-      },
-      "version": ""
     }
   ],
+  "version_info": {},
   "groups": [
     {
       "xrefmap": "xrefmap.yml"
